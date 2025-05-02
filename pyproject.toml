@@ -1,0 +1,15 @@
+[project]
+name = "ty"
+version = "0.0.0a1"
+description = "This project is coming soon."
+readme = "README.md"
+authors = [{ name = "Astral Software Inc.", email = "hey@astral.sh" }]
+requires-python = ">=3.8"
+dependencies = []
+
+[project.scripts]
+ty = "ty:main"
+
+[build-system]
+requires = ["uv_build>=0.7.1,<0.8"]
+build-backend = "uv_build"
