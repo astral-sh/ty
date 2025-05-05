@@ -57,3 +57,10 @@ git switch -c "sync/ruff-${commit}"
 git add ruff
 git commit -m 'Update ruff submodule to https://github.com/astral-sh/ruff/commit/${commit}'
 ```
+
+To restore the Ruff submodule to a clean-state, reset, then update the submodule:
+
+```
+git -C ruff reset --hard
+git submodule update
+```
