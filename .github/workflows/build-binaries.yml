@@ -94,7 +94,7 @@ jobs:
           ARCHIVE_FILE=$ARCHIVE_NAME.tar.gz
 
           mkdir -p $ARCHIVE_NAME
-          cp target/$TARGET/release/ty $ARCHIVE_NAME/ty
+          cp ruff/target/$TARGET/release/ty $ARCHIVE_NAME/ty
           tar czvf $ARCHIVE_FILE $ARCHIVE_NAME
           shasum -a 256 $ARCHIVE_FILE > $ARCHIVE_FILE.sha256
       - name: "Upload binary"
@@ -139,7 +139,7 @@ jobs:
           ARCHIVE_FILE=$ARCHIVE_NAME.tar.gz
 
           mkdir -p $ARCHIVE_NAME
-          cp target/$TARGET/release/ty $ARCHIVE_NAME/ty
+          cp ruff/target/$TARGET/release/ty $ARCHIVE_NAME/ty
           tar czvf $ARCHIVE_FILE $ARCHIVE_NAME
           shasum -a 256 $ARCHIVE_FILE > $ARCHIVE_FILE.sha256
       - name: "Upload binary"
@@ -251,7 +251,7 @@ jobs:
           ARCHIVE_FILE=$ARCHIVE_NAME.tar.gz
 
           mkdir -p $ARCHIVE_NAME
-          cp target/$TARGET/release/ty $ARCHIVE_NAME/ty
+          cp ruff/target/$TARGET/release/ty $ARCHIVE_NAME/ty
           tar czvf $ARCHIVE_FILE $ARCHIVE_NAME
           shasum -a 256 $ARCHIVE_FILE > $ARCHIVE_FILE.sha256
       - name: "Upload binary"
@@ -332,7 +332,7 @@ jobs:
           ARCHIVE_FILE=$ARCHIVE_NAME.tar.gz
 
           mkdir -p $ARCHIVE_NAME
-          cp target/$TARGET/release/ty $ARCHIVE_NAME/ty
+          cp ruff/target/$TARGET/release/ty $ARCHIVE_NAME/ty
           tar czvf $ARCHIVE_FILE $ARCHIVE_NAME
           shasum -a 256 $ARCHIVE_FILE > $ARCHIVE_FILE.sha256
       - name: "Upload binary"
@@ -392,7 +392,7 @@ jobs:
           ARCHIVE_FILE=$ARCHIVE_NAME.tar.gz
 
           mkdir -p $ARCHIVE_NAME
-          cp target/$TARGET/release/ty $ARCHIVE_NAME/ty
+          cp ruff/target/$TARGET/release/ty $ARCHIVE_NAME/ty
           tar czvf $ARCHIVE_FILE $ARCHIVE_NAME
           shasum -a 256 $ARCHIVE_FILE > $ARCHIVE_FILE.sha256
       - name: "Upload binary"
@@ -457,7 +457,7 @@ jobs:
           ARCHIVE_FILE=$ARCHIVE_NAME.tar.gz
 
           mkdir -p $ARCHIVE_NAME
-          cp target/$TARGET/release/ty $ARCHIVE_NAME/ty
+          cp ruff/target/$TARGET/release/ty $ARCHIVE_NAME/ty
           tar czvf $ARCHIVE_FILE $ARCHIVE_NAME
           shasum -a 256 $ARCHIVE_FILE > $ARCHIVE_FILE.sha256
       - name: "Upload binary"
