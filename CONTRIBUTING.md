@@ -34,3 +34,26 @@ The Python package can be built with any Python build frontend (Maturin is used 
 ```
 uv build
 ```
+
+## Updating the Ruff commit
+
+To update the Ruff submodule to the latest commit:
+
+```
+git -C ruff pull origin main
+```
+
+Or, to update the Ruff submodule to a specific commit:
+
+```
+git -C ruff checkout <commit>
+```
+
+To commit the changes:
+
+```
+commit=$(git -C ruff rev-parse --short HEAD)
+git switch -c "sync/ruff-${commit}"
+git add ruff
+git commit -m 'Update ruff submodule to https://github.com/astral-sh/ruff/commit/${commit}'
+```
