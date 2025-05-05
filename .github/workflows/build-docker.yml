@@ -156,6 +156,8 @@ jobs:
       name: release
     needs:
       - docker-publish
+    permissions:
+      packages: write
     if: ${{ inputs.plan != '' && !fromJson(inputs.plan).announcement_tag_is_implicit }}
     strategy:
       fail-fast: false
@@ -253,6 +255,8 @@ jobs:
       name: release
     needs:
       - docker-publish-extra
+    permissions:
+      packages: write
     if: ${{ inputs.plan != '' && !fromJson(inputs.plan).announcement_tag_is_implicit }}
     steps:
       - name: Download digests
