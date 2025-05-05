@@ -311,11 +311,12 @@ jobs:
           githubToken: ${{ github.token }}
           install: |
             apt-get update
-            apt-get install -y --no-install-recommends python3 python3-pip
-            pip3 install -U pip
+            apt-get install -y --no-install-recommends curl
+            curl -LsSf https://astral.sh/uv/install.sh | sh
           run: |
-            pip3 install ${{ env.PACKAGE_NAME }} --no-index --find-links dist/ --force-reinstall
-            ty --help
+            uv venv
+            uv pip install ${{ env.PACKAGE_NAME }} --no-index --find-links dist/ --force-reinstall
+            uv run -- ty --help
       - name: "Upload wheels"
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
         with:
