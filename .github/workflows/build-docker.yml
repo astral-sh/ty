@@ -129,6 +129,7 @@ jobs:
           # Order is on purpose such that the label org.opencontainers.image.version has the first pattern with the full version
           tags: |
             type=pep440,pattern={{ version }},value=${{ fromJson(inputs.plan).announcement_tag }}
+            type=raw,value=${{ fromJson(inputs.plan).announcement_tag }}
             type=pep440,pattern={{ major }}.{{ minor }},value=${{ fromJson(inputs.plan).announcement_tag }}
 
       - uses: docker/login-action@74a5d142397b4f367a81961eba4e8cd7edddf772 # v3
@@ -278,6 +279,7 @@ jobs:
           # Order is on purpose such that the label org.opencontainers.image.version has the first pattern with the full version
           tags: |
             type=pep440,pattern={{ version }},value=${{ fromJson(inputs.plan).announcement_tag }}
+            type=raw,value=${{ fromJson(inputs.plan).announcement_tag }}
             type=pep440,pattern={{ major }}.{{ minor }},value=${{ fromJson(inputs.plan).announcement_tag }}
 
       - uses: docker/login-action@74a5d142397b4f367a81961eba4e8cd7edddf772 # v3
