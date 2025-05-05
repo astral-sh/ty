@@ -1,6 +1,6 @@
 [project]
 name = "ty"
-version = "0.0.0a1"
+version = "0.0.0a2"
 description = "An extremely fast Python type checker, written in Rust."
 readme = "README.md"
 authors = [{ name = "Astral Software Inc.", email = "hey@astral.sh" }]
