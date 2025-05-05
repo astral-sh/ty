@@ -26,3 +26,11 @@ Then, ensure the submodule is initialized:
 ```
 git submodule update --init --recursive
 ```
+
+## Building the Python package
+
+The Python package can be built with any Python build frontend (Maturin is used as a backend), e.g.:
+
+```
+uv build
+```

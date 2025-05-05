@@ -1,15 +1,26 @@
 [project]
 name = "ty"
 version = "0.0.0a1"
-description = "This project is coming soon."
+description = "An extremely fast Python type checker, written in Rust."
 readme = "README.md"
 authors = [{ name = "Astral Software Inc.", email = "hey@astral.sh" }]
 requires-python = ">=3.8"
 dependencies = []
 
-[project.scripts]
-ty = "ty:main"
-
 [build-system]
-requires = ["uv_build>=0.7.1,<0.8"]
-build-backend = "uv_build"
+requires = ["maturin>=1.0,<2.0"]
+build-backend = "maturin"
+
+[tool.maturin]
+bindings = "bin"
+manifest-path = "ruff/crates/ty/Cargo.toml"
+module-name = "ty"
+python-source = "python"
+strip = true
+include = [
+    { path = "ruff/rust-toolchain.toml", format = [
+        "sdist",
+        "wheel",
+    ] },
+    { path = "LICENSE-MIT", format = "sdist" },
+]
