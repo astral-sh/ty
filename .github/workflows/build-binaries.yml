@@ -196,7 +196,7 @@ jobs:
         shell: bash
         run: |
           ARCHIVE_FILE=ty-${{ matrix.platform.target }}.zip
-          7z a $ARCHIVE_FILE ./target/${{ matrix.platform.target }}/release/ty.exe
+          7z a $ARCHIVE_FILE ./ruff/target/${{ matrix.platform.target }}/release/ty.exe
           sha256sum $ARCHIVE_FILE > $ARCHIVE_FILE.sha256
       - name: "Upload binary"
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
