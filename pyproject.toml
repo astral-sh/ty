@@ -22,5 +22,8 @@ include = [
         "sdist",
         "wheel",
     ] },
+    { path = "dist-workspace.toml", format = [
+        "sdist"
+    ] },
     { path = "LICENSE", format = "sdist" },
 ]
