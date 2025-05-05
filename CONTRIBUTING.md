@@ -27,6 +27,19 @@ Then, ensure the submodule is initialized:
 git submodule update --init --recursive
 ```
 
+### Prerequisites
+
+You'll need [uv](https://docs.astral.sh/uv/getting-started/installation/) (or `pipx` and `pip`) to
+run Python utility commands.
+
+You can optionally install pre-commit hooks to automatically run the validation checks
+when making a commit:
+
+```shell
+uv tool install pre-commit
+pre-commit install
+```
+
 ## Building the Python package
 
 The Python package can be built with any Python build frontend (Maturin is used as a backend), e.g.:
