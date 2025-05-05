@@ -190,7 +190,7 @@ jobs:
           # Generate Dockerfile content
           cat <<EOF > Dockerfile
           FROM ${BASE_IMAGE}
-          COPY --from=${TY_BASE_IMG}:latest /ty /usr/local/bin/ty
+          COPY --from=${TY_BASE_IMG}:${TAG_VALUE} /ty /usr/local/bin/ty
           ENTRYPOINT []
           CMD ["/usr/local/bin/ty"]
           EOF
