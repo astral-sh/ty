@@ -22,5 +22,5 @@ include = [
         "sdist",
         "wheel",
     ] },
-    { path = "LICENSE-MIT", format = "sdist" },
+    { path = "LICENSE", format = "sdist" },
 ]

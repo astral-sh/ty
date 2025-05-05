@@ -18,17 +18,12 @@ See the
 
 ## License
 
-ty is licensed under either of
-
-- Apache License, Version 2.0, ([LICENSE-APACHE](LICENSE-APACHE) or
-  <https://www.apache.org/licenses/LICENSE-2.0>)
-- MIT license ([LICENSE-MIT](LICENSE-MIT) or <https://opensource.org/licenses/MIT>)
-
-at your option.
+ty is licensed under the MIT license ([LICENSE](LICENSE) or
+<https://opensource.org/licenses/MIT>).
 
 Unless you explicitly state otherwise, any contribution intentionally submitted for inclusion in ty
-by you, as defined in the Apache-2.0 license, shall be dually licensed as above, without any
-additional terms or conditions.
+by you, as defined in the MIT license, shall be licensed as above, without any additional terms or
+conditions.
 
 <div align="center">
   <a target="_blank" href="https://astral.sh" style="background:none">
