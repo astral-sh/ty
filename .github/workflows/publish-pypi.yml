@@ -2,7 +2,7 @@
 #
 # Assumed to run as a subworkflow of .github/workflows/release.yml; specifically, as a publish job
 # within `cargo-dist`.
-name: "[ty] Publish to PyPI"
+name: "Publish to PyPI"
 
 on:
   workflow_call:
