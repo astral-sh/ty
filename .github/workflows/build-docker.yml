@@ -13,9 +13,9 @@ on:
       plan:
         required: true
         type: string
-  # pull_request:
-  #  paths:
-  #    - .github/workflows/build-docker.yml
+  pull_request:
+   paths:
+     - .github/workflows/build-docker.yml
 
 env:
   TY_BASE_IMG: ghcr.io/${{ github.repository_owner }}/ty
