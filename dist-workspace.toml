@@ -43,6 +43,8 @@ auto-includes = false
 create-release = true
 # Which actions to run on pull requests
 pr-run-mode = "plan"
+# Whether to publish prereleases to package managers
+publish-prereleases = true
 # Whether CI should trigger releases with dispatches instead of tag pushes
 dispatch-releases = true
 # Which phase dist should use to create the GitHub release
