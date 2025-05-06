@@ -41,7 +41,7 @@ jobs:
           args: --out dist
       - name: "Test wheel"
         run: |
-          pip install --force-reinstall --find-links dist "${PACKAGE_NAME}"
+          pip install --force-reinstall --find-links dist "${PACKAGE_NAME}" --pre
           ty --help
           python -m ty --help
       - name: "Remove wheels from cache"
