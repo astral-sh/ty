@@ -5,6 +5,8 @@ version = "0.0.0-alpha.4"
 
 # Config for 'dist'
 [dist]
+# Temporarily for pre-release workflows
+allow-dirty = ["ci"]
 # The preferred dist version to use in CI (Cargo.toml SemVer syntax)
 cargo-dist-version = "0.28.5-prerelease.2"
 # Whether to consider the binaries in a package for distribution (defaults true)
