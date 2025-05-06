@@ -7,6 +7,15 @@ authors = [{ name = "Astral Software Inc.", email = "hey@astral.sh" }]
 requires-python = ">=3.8"
 dependencies = []
 
+[build-system]
+requires = ["maturin>=1.0,<2.0"]
+build-backend = "maturin"
+
+[dependency-groups]
+release = [
+    "rooster-blue",
+]
+
 [tool.uv]
 cache-keys = [
     { file = "pyproject.toml" },
@@ -16,9 +25,8 @@ cache-keys = [
     { file = "**/*.rs" }
 ]
 
-[build-system]
-requires = ["maturin>=1.0,<2.0"]
-build-backend = "maturin"
+[tool.uv.sources]
+rooster-blue = { git = "https://github.com/zanieb/rooster", rev = "1e7eeca" }
 
 [tool.maturin]
 bindings = "bin"

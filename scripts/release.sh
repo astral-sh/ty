@@ -43,7 +43,5 @@ echo "Running rooster..."
 cd "$project_root"
 
 # Generate the changelog and bump versions
-uvx \
-    --from rooster-blue@git+https://github.com/zanieb/rooster@1e7eeca \
-    --python 3.13 -- \
+uv run --only-group release \
     rooster release "$@"
