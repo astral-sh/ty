@@ -77,3 +77,10 @@ To restore the Ruff submodule to a clean-state, reset, then update the submodule
 git -C ruff reset --hard
 git submodule update
 ```
+
+To restore the Ruff submodule to the commit from `main`:
+
+```bash
+git -C ruff reset --hard $(git ls-tree main -- ruff | awk '{print $3}')
+git add ruff
+```
