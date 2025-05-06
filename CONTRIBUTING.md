@@ -17,13 +17,13 @@ The ty repository only includes code relevant to distributing the ty project.
 
 Clone the repository:
 
-```bash
+```shell
 git clone https://github.com/astral-sh/ty.git
 ```
 
 Then, ensure the submodule is initialized:
 
-```bash
+```shell
 git submodule update --init --recursive
 ```
 
@@ -44,7 +44,7 @@ pre-commit install
 
 The Python package can be built with any Python build frontend (Maturin is used as a backend), e.g.:
 
-```bash
+```shell
 uv build
 ```
 
@@ -52,19 +52,19 @@ uv build
 
 To update the Ruff submodule to the latest commit:
 
-```bash
+```shell
 git -C ruff pull origin main
 ```
 
 Or, to update the Ruff submodule to a specific commit:
 
-```bash
+```shell
 git -C ruff checkout <commit>
 ```
 
 To commit the changes:
 
-```bash
+```shell
 commit=$(git -C ruff rev-parse --short HEAD)
 git switch -c "sync/ruff-${commit}"
 git add ruff
@@ -73,14 +73,14 @@ git commit -m "Update ruff submodule to https://github.com/astral-sh/ruff/commit
 
 To restore the Ruff submodule to a clean-state, reset, then update the submodule:
 
-```bash
+```shell
 git -C ruff reset --hard
 git submodule update
 ```
 
 To restore the Ruff submodule to the commit from `main`:
 
-```bash
+```shell
 git -C ruff reset --hard $(git ls-tree main -- ruff | awk '{print $3}')
 git add ruff
 ```
@@ -89,7 +89,9 @@ git add ruff
 
 Releases can only be performed by Astral team members.
 
-Preparation for the release is automated. First, run:
+Preparation for the release is automated.
+
+1. Run `./scripts/release.sh`
 
 ```shell
 ./scripts/release.sh
@@ -101,17 +103,20 @@ The release script will:
 - Generate changelog entries based on pull requests here, and in Ruff
 - Bump the versions in the `pyproject.toml` and `dist-workspace.toml`
 
-After running the script, editorialize the `CHANGELOG.md` file to ensure entries are consistently
-styled.
-
-Then, open a pull request, e.g., `Bump version to ...`.
-
-Binary builds will automatically be tested for the release.
-
-After merging the pull request, run the
-[release workflow](https://github.com/astral-sh/ty/actions/workflows/release.yml) with the version
-tag. **Do not include a leading `v`**. The release will automatically be created on GitHub after
-everything else publishes.
+1. Editorialize the `CHANGELOG.md` file to ensure entries are consistently styled.
+1. Create a pull request with the changelog and version changes, e.g., `Bump version to ...`.
+    Binary builds will automatically be tested for the release.
+1. Merge the PR
+1. Run the [release workflow](https://github.com/astral-sh/ty/actions/workflows/release.yml) with the version
+    tag. **Do not include a leading `v`**. The release will automatically be created on GitHub after
+    everything else publishes.
+1. Run `uv run --no-project  ./scripts/update_schemastore.py` to prepare a PR to update the `ty.json` schema in the schemastore repository.
+    Follow the link in the script's output to submit the PR. The script is a no-op if there are no schema changes.
+1. If necessary, update and release [`ty-vscode`](https://github.com/astral-sh/ty-vscode).
+    Follow the instructions in the `ty-vscode` repository. Updating the extension is required when:
+    - for minor releases to bump the bundled ty version
+    - for patch releases after fixing an important bug in `ty lsp` to bump the bundled ty version
+    - when releasing new `ty lsp` features that require changes in `ty-vscode`
 
 When running the release workflow for pre-release versions, use the Cargo version format (not PEP
 440), e.g. `0.0.0-alpha.5` (not `0.0.0a5`). For stable releases, these formats are identical.
