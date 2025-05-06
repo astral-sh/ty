@@ -20,6 +20,9 @@ on:
 env:
   TY_BASE_IMG: ghcr.io/${{ github.repository_owner }}/ty
 
+permissions:
+  contents: read
+
 jobs:
   docker-build:
     name: Build Docker image (ghcr.io/astral-sh/ty) for ${{ matrix.platform }}
