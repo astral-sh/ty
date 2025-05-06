@@ -84,3 +84,34 @@ To restore the Ruff submodule to the commit from `main`:
 git -C ruff reset --hard $(git ls-tree main -- ruff | awk '{print $3}')
 git add ruff
 ```
+
+## Releasing ty
+
+Releases can only be performed by Astral team members.
+
+Preparation for the release is automated. First, run:
+
+```shell
+./scripts/release.sh
+```
+
+The release script will:
+
+- Update the Ruff submodule to the latest commit on `main` upstream
+- Generate changelog entries based on pull requests here, and in Ruff
+- Bump the versions in the `pyproject.toml` and `dist-workspace.toml`
+
+After running the script, editorialize the `CHANGELOG.md` file to ensure entries are consistently
+styled.
+
+Then, open a pull request, e.g., `Bump version to ...`.
+
+Binary builds will automatically be tested for the release.
+
+After merging the pull request, run the
+[release workflow](https://github.com/astral-sh/ty/actions/workflows/release.yml) with the version
+tag. **Do not include a leading `v`**. The release will automatically be created on GitHub after
+everything else publishes.
+
+When running the release workflow for pre-release versions, use the Cargo version format (not PEP
+440), e.g. `0.0.0-alpha.5` (not `0.0.0a5`). For stable releases, these formats are identical.
