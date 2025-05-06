@@ -1,0 +1,11 @@
+[files]
+extend-exclude = []
+
+[default.extend-words]
+
+[default]
+extend-ignore-re = [
+    # Line ignore with trailing "spellchecker:disable-line"
+    "(?Rm)^.*#\\s*spellchecker:disable-line$",
+    "LICENSEs",
+]
