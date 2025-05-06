@@ -69,7 +69,7 @@ jobs:
         # we specify bash to get pipefail; it guards against the `curl` command
         # failing. otherwise `sh` won't catch that `curl` returned non-0
         shell: bash
-        run: "curl --proto '=https' --tlsv1.2 -LsSf https://github.com/astral-sh/cargo-dist/releases/download/v0.28.5-prerelease.2/cargo-dist-installer.sh | sh"
+        run: "curl --proto '=https' --tlsv1.2 -LsSf https://github.com/astral-sh/cargo-dist/releases/download/v0.28.5-prerelease.3/cargo-dist-installer.sh | sh"
       - name: Cache dist
         uses: actions/upload-artifact@6027e3dd177782cd8ab9af838c04fd81a07f1d47
         with:
@@ -211,6 +211,7 @@ jobs:
     needs:
       - plan
       - host
+    if: ${{ !fromJson(needs.plan.outputs.val).announcement_is_prerelease || fromJson(needs.plan.outputs.val).publish_prereleases }}
     uses: ./.github/workflows/publish-pypi.yml
     with:
       plan: ${{ needs.plan.outputs.val }}
@@ -220,32 +221,16 @@ jobs:
       "id-token": "write"
       "packages": "write"
 
-  custom-publish-wasm:
-    needs:
-      - plan
-      - host
-    if: ${{ !fromJson(needs.plan.outputs.val).announcement_is_prerelease || fromJson(needs.plan.outputs.val).publish_prereleases }}
-    uses: ./.github/workflows/publish-wasm.yml
-    with:
-      plan: ${{ needs.plan.outputs.val }}
-    secrets: inherit
-    # publish jobs get escalated permissions
-    permissions:
-      "contents": "read"
-      "id-token": "write"
-      "packages": "write"
-
   # Create a GitHub Release while uploading all files to it
   announce:
     needs:
       - plan
       - host
       - custom-publish-pypi
-      - custom-publish-wasm
     # use "always() && ..." to allow us to wait for all publish jobs while
     # still allowing individual publish jobs to skip themselves (for prereleases).
     # "host" however must run to completion, no skipping allowed!
-    if: ${{ always() && needs.host.result == 'success' && (needs.custom-publish-pypi.result == 'skipped' || needs.custom-publish-pypi.result == 'success') && (needs.custom-publish-wasm.result == 'skipped' || needs.custom-publish-wasm.result == 'success') }}
+    if: ${{ always() && needs.host.result == 'success' && (needs.custom-publish-pypi.result == 'skipped' || needs.custom-publish-pypi.result == 'success') }}
     runs-on: "depot-ubuntu-latest-4"
     env:
       GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -276,30 +261,3 @@ jobs:
           echo "$ANNOUNCEMENT_BODY" > $RUNNER_TEMP/notes.txt
 
           gh release create "${{ needs.plan.outputs.tag }}" --target "$RELEASE_COMMIT" $PRERELEASE_FLAG --title "$ANNOUNCEMENT_TITLE" --notes-file "$RUNNER_TEMP/notes.txt" artifacts/*
-
-  custom-notify-dependents:
-    needs:
-      - plan
-      - announce
-    uses: ./.github/workflows/notify-dependents.yml
-    with:
-      plan: ${{ needs.plan.outputs.val }}
-    secrets: inherit
-
-  custom-publish-docs:
-    needs:
-      - plan
-      - announce
-    uses: ./.github/workflows/publish-docs.yml
-    with:
-      plan: ${{ needs.plan.outputs.val }}
-    secrets: inherit
-
-  custom-publish-playground:
-    needs:
-      - plan
-      - announce
-    uses: ./.github/workflows/publish-playground.yml
-    with:
-      plan: ${{ needs.plan.outputs.val }}
-    secrets: inherit
