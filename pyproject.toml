@@ -36,3 +36,13 @@ include = [
     ] },
     { path = "LICENSE", format = "sdist" },
 ]
+
+[tool.rooster]
+version-files = [
+    "pyproject.toml",
+    { path = "dist-workspace.toml", field = "workspace.version", format = "cargo"},
+]
+submodules = ["ruff"]
+required-labels = [{ submodule = "ruff", labels = ["ty"] }]
+version-format = "cargo"
+default-bump-type = "pre"
