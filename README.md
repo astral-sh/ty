@@ -7,7 +7,7 @@ An extremely fast Python type checker and language server, written in Rust.
 ## Status
 
 ty is pre-release software. Expect to encounter bugs, missing features, and fatal errors.
-We are in active development and working hard to make ty stable and feature-complete.
+ty is in active development, and we're working hard to make it stable and feature-complete.
 
 ## Getting involved
 
