@@ -6,28 +6,26 @@ dependencies = []
 description = "An extremely fast Python type checker, written in Rust."
 readme = "README.md"
 authors = [{ name = "Astral Software Inc.", email = "hey@astral.sh" }]
-keywords = [
-  "ty", "typing", "analysis", "check"
-]
+keywords = ["ty", "typing", "analysis", "check"]
 classifiers = [
-  "Development Status :: 3 - Alpha",
-  "Environment :: Console",
-  "Intended Audience :: Developers",
-  "Operating System :: OS Independent",
-  "License :: OSI Approved :: MIT License",
-  "Programming Language :: Python",
-  "Programming Language :: Python :: 3.8",
-  "Programming Language :: Python :: 3.9",
-  "Programming Language :: Python :: 3.10",
-  "Programming Language :: Python :: 3.11",
-  "Programming Language :: Python :: 3.12",
-  "Programming Language :: Python :: 3.13",
-  "Programming Language :: Python :: 3 :: Only",
-  "Programming Language :: Rust",
-  "Topic :: Software Development :: Quality Assurance",
-  "Topic :: Software Development :: Testing",
-  "Topic :: Software Development :: Libraries",
-  "Topic :: Software Development :: Python Modules",
+    "Development Status :: 3 - Alpha",
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "Operating System :: OS Independent",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Rust",
+    "Topic :: Software Development :: Quality Assurance",
+    "Topic :: Software Development :: Testing",
+    "Topic :: Software Development :: Libraries",
+    "Topic :: Software Development :: Libraries :: Python Modules",
 ]
 
 [project.urls]
@@ -41,9 +39,7 @@ requires = ["maturin>=1.0,<2.0"]
 build-backend = "maturin"
 
 [dependency-groups]
-release = [
-    "rooster-blue",
-]
+release = ["rooster-blue"]
 
 [tool.uv]
 cache-keys = [
@@ -109,7 +105,7 @@ include = [
 [tool.rooster]
 version-files = [
     "pyproject.toml",
-    { path = "dist-workspace.toml", field = "workspace.version", format = "cargo"},
+    { path = "dist-workspace.toml", field = "workspace.version", format = "cargo" },
 ]
 submodules = ["ruff"]
 required-labels = [{ submodule = "ruff", labels = ["ty"] }]
