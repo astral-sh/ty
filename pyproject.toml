@@ -83,7 +83,7 @@ required-imports = ["from __future__ import annotations"]
 
 
 [tool.uv.sources]
-rooster-blue = { git = "https://github.com/zanieb/rooster", rev = "e070bc9" }
+rooster-blue = { git = "https://github.com/zanieb/rooster", rev = "f6e61d2" }
 
 [tool.maturin]
 bindings = "bin"
@@ -104,7 +104,8 @@ version-files = [
     { path = "dist-workspace.toml", field = "workspace.version", format = "cargo" },
 ]
 submodules = ["ruff"]
-required-labels = [{ submodule = "ruff", labels = ["ty"] }]
+require-labels = [{ submodule = "ruff", labels = ["ty"] }]
+ignore-labels = ["internal"]
 version-format = "cargo"
 default-bump-type = "pre"
 trim-title-prefixes = ["[ty]"]
