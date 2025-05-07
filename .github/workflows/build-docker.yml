@@ -22,6 +22,9 @@ env:
 
 permissions:
   contents: read
+  # TODO(zanieb): Ideally, this would be `read` on dry-run but that will require
+  # significant changes to the workflow.
+  packages: write # zizmor: ignore[excessive-permissions]
 
 jobs:
   docker-build:
@@ -160,8 +163,6 @@ jobs:
       name: release
     needs:
       - docker-publish
-    permissions:
-      packages: write
     if: ${{ inputs.plan != '' && !fromJson(inputs.plan).announcement_tag_is_implicit }}
     strategy:
       fail-fast: false
@@ -259,8 +260,6 @@ jobs:
       name: release
     needs:
       - docker-publish-extra
-    permissions:
-      packages: write
     if: ${{ inputs.plan != '' && !fromJson(inputs.plan).announcement_tag_is_implicit }}
     steps:
       - name: Download digests
