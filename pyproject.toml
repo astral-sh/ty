@@ -32,7 +32,6 @@ classifiers = [
 
 [project.urls]
 Repository = "https://github.com/astral-sh/ty"
-Documentation = "https://docs.astral.sh/ty"
 Changelog = "https://github.com/astral-sh/ty/blob/main/CHANGELOG.md"
 Releases = "https://github.com/astral-sh/ty/releases"
 Discord = "https://discord.gg/astral-sh"
