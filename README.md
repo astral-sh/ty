@@ -1,6 +1,6 @@
 # ty
 
-An extremely fast Python type checker, written in Rust.
+An extremely fast Python type checker and language server, written in Rust.
 
 **This project is still in development and is not ready for production use.**
 
