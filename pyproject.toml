@@ -92,10 +92,6 @@ module-name = "ty"
 python-source = "python"
 strip = true
 include = [
-    { path = "ruff/rust-toolchain.toml", format = [
-        "sdist",
-        "wheel",
-    ] },
     { path = "dist-workspace.toml", format = [
         "sdist",
     ] },
