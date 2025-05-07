@@ -4,6 +4,11 @@ An extremely fast Python type checker and language server, written in Rust.
 
 **This project is still in development and is not ready for production use.**
 
+## Status
+
+ty is pre-release software. Expect to encounter bugs, missing features, and fatal errors.
+We are in active development and working hard to make ty stable and feature-complete.
+
 ## Getting involved
 
 If you have questions or want to report a bug, please open an
