@@ -73,7 +73,7 @@ git commit -m "Update ruff submodule to https://github.com/astral-sh/ruff/commit
 
 To restore the Ruff submodule to a clean-state, reset, then update the submodule:
 
-```
+```bash
 git -C ruff reset --hard
 git submodule update
 ```
