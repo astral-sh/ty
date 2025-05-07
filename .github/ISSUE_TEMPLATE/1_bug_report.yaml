@@ -1,0 +1,31 @@
+name: Bug report
+description: Report an error or unexpected behavior
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for taking the time to report an issue! We're glad to have you involved with ty.
+
+        **Before reporting, please make sure to search through [existing issues](https://github.com/astral-sh/ty/issues?q=is:issue+is:open+label:bug) (including [closed](https://github.com/astral-sh/ty/issues?q=is:issue%20state:closed%20label:bug)).**
+
+  - type: textarea
+    attributes:
+      label: Summary
+      description: |
+        A clear and concise description of the bug, including a minimal reproducible example.
+
+        Be sure to include the command you invoked (e.g., `ty check`) and
+        the current ty settings (e.g., relevant sections from your `pyproject.toml`).
+
+        If possible, try to include the [playground](https://play.ty.dev) link that reproduces this issue.
+
+    validations:
+      required: true
+
+  - type: input
+    attributes:
+      label: Version
+      description: What version of ty are you using? (see `ty version`)
+      placeholder: e.g., ty 0.0.1 (ff9000864 2025-05-06)
+    validations:
+      required: false

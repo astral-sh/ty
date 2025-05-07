@@ -1,0 +1,18 @@
+name: Question
+description: Ask a question about ty
+labels: ["question"]
+body:
+  - type: textarea
+    attributes:
+      label: Question
+      description: Describe your question in detail.
+    validations:
+      required: true
+
+  - type: input
+    attributes:
+      label: Version
+      description: What version of ty are you using? (see `ty version`)
+      placeholder: e.g., ty 0.0.1 (ff9000864 2025-05-06)
+    validations:
+      required: false
