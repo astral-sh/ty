@@ -1,6 +1,6 @@
 [project]
 name = "ty"
-version = "0.0.0a5"
+version = "0.0.0a6"
 requires-python = ">=3.8"
 dependencies = []
 description = "An extremely fast Python type checker, written in Rust."
@@ -83,7 +83,7 @@ required-imports = ["from __future__ import annotations"]
 
 
 [tool.uv.sources]
-rooster-blue = { git = "https://github.com/zanieb/rooster", rev = "1e7eeca" }
+rooster-blue = { git = "https://github.com/zanieb/rooster", rev = "e070bc9" }
 
 [tool.maturin]
 bindings = "bin"
@@ -111,3 +111,4 @@ submodules = ["ruff"]
 required-labels = [{ submodule = "ruff", labels = ["ty"] }]
 version-format = "cargo"
 default-bump-type = "pre"
+trim-title-prefixes = ["[ty]"]
