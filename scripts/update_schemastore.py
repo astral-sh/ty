@@ -14,11 +14,8 @@ from subprocess import check_call, check_output
 from tempfile import TemporaryDirectory
 from typing import NamedTuple, assert_never
 
-ty_repo = "https://github.com/astral-sh/ty"
-root = Path(
-    check_output(["git", "rev-parse", "--show-toplevel"], text=True).strip(),
-)
-ty_json = Path("schemas/json/ty.json")
+TY_REPO = "https://github.com/astral-sh/ty"
+TY_JSON = Path("schemas/json/ty.json")
 
 
 class SchemastoreRepos(NamedTuple):
@@ -47,7 +44,7 @@ class GitProtocol(enum.Enum):
 
 
 def update_schemastore(
-    schemastore_path: Path, schemastore_repos: SchemastoreRepos
+    schemastore_path: Path, schemastore_repos: SchemastoreRepos, root: Path
 ) -> None:
     if not schemastore_path.is_dir():
         check_call(
@@ -84,7 +81,7 @@ def update_schemastore(
     # Update the schema and format appropriately
     schema = json.loads(root.joinpath("ruff/ty.schema.json").read_text())
     schema["$id"] = "https://json.schemastore.org/ty.json"
-    src.joinpath(ty_json).write_text(
+    src.joinpath(TY_JSON).write_text(
         json.dumps(dict(schema.items()), indent=2, ensure_ascii=False),
     )
     check_call(
@@ -93,7 +90,7 @@ def update_schemastore(
             "--plugin",
             "prettier-plugin-sort-json",
             "--write",
-            ty_json,
+            TY_JSON,
         ],
         cwd=src,
     )
@@ -102,7 +99,7 @@ def update_schemastore(
     # https://stackoverflow.com/a/9393642/3549270
     if check_output(["git", "status", "-s"], cwd=schemastore_path).strip():
         # Schema has changed, commit and push
-        commit_url = f"{ty_repo}/commit/{current_sha}"
+        commit_url = f"{TY_REPO}/commit/{current_sha}"
         commit_body = f"This updates ty's JSON schema to [{current_sha}]({commit_url})"
         # https://stackoverflow.com/a/22909204/3549270
         check_call(
@@ -143,6 +140,10 @@ def determine_git_protocol(argv: list[str] | None = None) -> GitProtocol:
 
 
 def main() -> None:
+    root = Path(
+        check_output(["git", "rev-parse", "--show-toplevel"], text=True).strip(),
+    )
+
     expected_ruff_revision = check_output(
         ["git", "ls-tree", "main", "--format", "%(objectname)", "ruff"]
     ).strip()
@@ -172,11 +173,11 @@ def main() -> None:
     schemastore_repos = determine_git_protocol().schemastore_repos()
     schemastore_existing = root.joinpath("schemastore")
     if schemastore_existing.is_dir():
-        update_schemastore(schemastore_existing, schemastore_repos)
+        update_schemastore(schemastore_existing, schemastore_repos, root)
     else:
         with TemporaryDirectory() as temp_dir:
             update_schemastore(
-                Path(temp_dir).joinpath("schemastore"), schemastore_repos
+                Path(temp_dir).joinpath("schemastore"), schemastore_repos, root
             )
 
 
