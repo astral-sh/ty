@@ -45,3 +45,6 @@ cd "$project_root"
 # Generate the changelog and bump versions
 uv run --only-group release \
     rooster release "$@"
+
+echo "Updating lockfile..."
+uv lock
