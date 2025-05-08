@@ -7,6 +7,13 @@ exclude: |
   )$
 
 repos:
+  - repo: local
+    hooks:
+      - id: uv-lock-check
+        name: uv lock check
+        entry: uv lock --check
+        language: system
+        pass_filenames: false
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v5.0.0
     hooks:
