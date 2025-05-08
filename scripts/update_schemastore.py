@@ -1,8 +1,12 @@
 """Update ty.json in schemastore.
 
-This script will clone astral-sh/schemastore, update the schema and push the changes
+This script will clone `astral-sh/schemastore`, update the schema and push the changes
 to a new branch tagged with the ty git hash. You should see a URL to create the PR
 to schemastore in the CLI.
+
+Usage:
+
+    uv run --only-dev scripts/update_schemastore.py
 """
 
 from __future__ import annotations
@@ -14,7 +18,16 @@ from subprocess import check_call, check_output
 from tempfile import TemporaryDirectory
 from typing import NamedTuple, assert_never
 
+# The remote URL for the `ty` repository.
 TY_REPO = "https://github.com/astral-sh/ty"
+
+# The path to the root of the `ty` repository.
+TY_ROOT = Path(__file__).parent.parent
+
+# The path to the JSON schema in the `ty` repository.
+TY_SCHEMA = TY_ROOT / "ruff" / "ty.schema.json"
+
+# The path to the JSON schema in the `schemastore` repository.
 TY_JSON = Path("schemas/json/ty.json")
 
 
@@ -44,11 +57,11 @@ class GitProtocol(enum.Enum):
 
 
 def update_schemastore(
-    schemastore_path: Path, schemastore_repos: SchemastoreRepos, root: Path
+    schemastore_path: Path, schemastore_repos: SchemastoreRepos
 ) -> None:
-    if not schemastore_path.is_dir():
+    if not (schemastore_path / ".git").is_dir():
         check_call(
-            ["git", "clone", schemastore_repos.fork, schemastore_path, "--depth=1"]
+            ["git", "clone", schemastore_repos.fork, schemastore_path, "--depth=1"],
         )
         check_call(
             [
@@ -60,6 +73,7 @@ def update_schemastore(
             ],
             cwd=schemastore_path,
         )
+
     # Create a new branch tagged with the current ty commit up to date with the latest
     # upstream schemastore
     check_call(["git", "fetch", "upstream"], cwd=schemastore_path)
@@ -75,13 +89,13 @@ def update_schemastore(
     )
 
     # Run npm install
-    src = schemastore_path.joinpath("src")
+    src = schemastore_path / "src"
     check_call(["npm", "install"], cwd=schemastore_path)
 
     # Update the schema and format appropriately
-    schema = json.loads(root.joinpath("ruff/ty.schema.json").read_text())
+    schema = json.loads(TY_SCHEMA.read_text())
     schema["$id"] = "https://json.schemastore.org/ty.json"
-    src.joinpath(TY_JSON).write_text(
+    (src / TY_JSON).write_text(
         json.dumps(dict(schema.items()), indent=2, ensure_ascii=False),
     )
     check_call(
@@ -140,15 +154,11 @@ def determine_git_protocol(argv: list[str] | None = None) -> GitProtocol:
 
 
 def main() -> None:
-    root = Path(
-        check_output(["git", "rev-parse", "--show-toplevel"], text=True).strip(),
-    )
-
     expected_ruff_revision = check_output(
-        ["git", "ls-tree", "main", "--format", "%(objectname)", "ruff"]
+        ["git", "ls-tree", "main", "--format", "%(objectname)", "ruff"], cwd=TY_ROOT
     ).strip()
     actual_ruff_revision = check_output(
-        ["git", "-C", "ruff", "rev-parse", "HEAD"]
+        ["git", "-C", "ruff", "rev-parse", "HEAD"], cwd=TY_ROOT
     ).strip()
 
     if expected_ruff_revision != actual_ruff_revision:
@@ -160,7 +170,8 @@ def main() -> None:
         ):
             case "u":
                 check_call(
-                    ["git", "-C", "ruff", "reset", "--hard", expected_ruff_revision]
+                    ["git", "-C", "ruff", "reset", "--hard", expected_ruff_revision],
+                    cwd=TY_ROOT,
                 )
             case "n":
                 return
@@ -171,14 +182,12 @@ def main() -> None:
                 return
 
     schemastore_repos = determine_git_protocol().schemastore_repos()
-    schemastore_existing = root.joinpath("schemastore")
+    schemastore_existing = TY_ROOT / "schemastore"
     if schemastore_existing.is_dir():
-        update_schemastore(schemastore_existing, schemastore_repos, root)
+        update_schemastore(schemastore_existing, schemastore_repos)
     else:
-        with TemporaryDirectory() as temp_dir:
-            update_schemastore(
-                Path(temp_dir).joinpath("schemastore"), schemastore_repos, root
-            )
+        with TemporaryDirectory(prefix="ty-schemastore-") as temp_dir:
+            update_schemastore(Path(temp_dir), schemastore_repos)
 
 
 if __name__ == "__main__":
