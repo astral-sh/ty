@@ -9,6 +9,31 @@ An extremely fast Python type checker and language server, written in Rust.
 ty is in active development, and we're working hard to make it stable
 and feature-complete.
 
+## Getting started
+
+### Installation
+
+```shell
+uv tool install ty
+```
+
+### Basic usage
+
+Type check a Python file or project:
+
+```shell
+ty check myfile.py
+ty check my_project/
+```
+
+Start the language server for IDE integration:
+
+```shell
+ty server
+```
+
+For detailed information about command-line options, see the [CLI documentation](ruff/crates/ty/docs/cli.md).
+
 ## Getting involved
 
 If you have questions or want to report a bug, please open an
