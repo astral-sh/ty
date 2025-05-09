@@ -17,22 +17,105 @@ and feature-complete.
 uv tool install ty
 ```
 
-### Basic usage
-
-Type check a Python file or project:
+or add ty to your project:
 
 ```shell
-ty check myfile.py
-ty check my_project/
+uv add --dev ty
+
+# With pip.
+pip install ty
 ```
 
-Start the language server for IDE integration:
+### First steps
+
+After installing ty, you can check that ty is available by running the `ty` command:
 
 ```shell
-ty server
+ty
+An extremely fast Python type checker.
+
+Usage: ty <COMMAND>
+
+...
 ```
+
+You should see a help menu listing the available commands.
 
 For detailed information about command-line options, see the [CLI documentation](./docs/cli.md).
+
+### Checking your project
+
+```shell
+ty check
+```
+
+## Editor integration
+
+ty can be integrated with various editors and IDEs to provide a seamless development experience. This section provides instructions on how to set up ty with your editor and configure it to your liking.
+
+### VS Code
+
+Install the [ty extension](https://marketplace.visualstudio.com/items?itemName=astral-sh.ty) from the VS Code Marketplace.
+
+For more documentation on the ty extension, refer to the extension's [README](https://github.com/astral-sh/ty-vscode).
+
+### Other editors
+
+ty can be used with any editor that supports the [language server protocol](https://microsoft.github.io/language-server-protocol/). To start the language server, run `ty server`. Refer to your editor's documentation
+to learn how to connect to an LSP server.
+
+<!-- ## Concepts
+
+### Projects
+
+### Rules
+
+### Suppression comments -->
+
+## Configuration
+
+<!-- ### Configuration files -->
+
+### Environment variables
+
+ty defines and respects the following environment variables:
+
+#### `TY_LOG`
+
+If set, ty will use this value as the log level for its `--verbose` output. Accepts any filter compatible with the `tracing_subscriber` crate. For example:
+
+- `TY_LOG=uv=debug` is the equivalent of `-vv` to the command line
+- `TY_LOG=trace` will enable all trace-level logging.
+
+See the [tracing documentation](https://docs.rs/tracing-subscriber/latest/tracing_subscriber/filter/struct.EnvFilter.html#example-syntax) for more.
+
+#### `TY_MAX_PARALLELISM`
+
+Specifies an upper limit for the number of tasks ty is allowed to run in parallel. For example, how many files should be checked in parallel.
+
+This isn’t the same as a thread limit. ty may spawn additional threads when necessary, e.g. to watch for file system changes or a dedicated UI thread.
+
+#### Externally defined variables
+
+ty also reads the following externally defined environment variables:
+
+##### `RAYON_NUM_THREADS`
+
+Specifies an upper limit for the number of threads ty uses when performing work in parallel. Equivalent to `TY_MAX_PARALLELISM`.
+
+##### `VIRTUAL_ENV`
+
+Used to detect an activated virtual environment.
+
+##### `XDG_CONFIG_HOME`
+
+Path to user-level configuration directory on Unix systems.
+
+## Reference
+
+- [Commands](./docs/cli.md)
+- [Rules](./docs/rules.md)
+- [Settings](./docs/configuration.md)
 
 ## Getting involved
 
