@@ -76,7 +76,7 @@ to learn how to connect to an LSP server.
 
 #### Line-level suppression comments
 
-Suppression comments allow you to silence specific instances of ty violations in your code, be they false positives or permissable violations.
+Suppression comments allow you to silence specific instances of ty violations in your code, be they false positives or permissible violations.
 
 > [!NOTE]
 > To disable a rule entirely, set [its severity to `ignore`](https://github.com/astral-sh/ruff/ty/main/docs/configuration.md#rules) in your `ty.toml` or `pyproject.toml` or disable it using the [`--ignore` CLI argument](https://github.com/astral-sh/ruff/blob/main/crates/ty/docs/cli.md#ty-check--ignore).
