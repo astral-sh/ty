@@ -64,13 +64,84 @@ For more documentation on the ty extension, refer to the extension's [README](ht
 ty can be used with any editor that supports the [language server protocol](https://microsoft.github.io/language-server-protocol/). To start the language server, run `ty server`. Refer to your editor's documentation
 to learn how to connect to an LSP server.
 
-<!-- ## Concepts
+## Concepts
+
+<!--
 
 ### Projects
 
-### Rules
+### Rules -->
 
-### Suppression comments -->
+### Suppressions
+
+#### Line-level suppression comments
+
+Suppression comments allow you to silence specific instances of ty violations in your code, be they false positives or permissible violations.
+
+> [!NOTE]
+> To disable a rule entirely, set [its severity to `ignore`](https://github.com/astral-sh/ruff/ty/main/docs/configuration.md#rules) in your `ty.toml` or `pyproject.toml` or disable it using the [`--ignore` CLI argument](https://github.com/astral-sh/ruff/blob/main/crates/ty/docs/cli.md#ty-check--ignore).
+
+To suppress a violation inline add a `# ty: ignore[rule]` comment at the end of the line:
+
+```py
+a = 10 + "test"  # ty: ignore[unsupported-operator]
+```
+
+Multiline violations can be suppressed by adding the comment at the end of the violation's first or last line:
+
+```py
+def add_three(a: int, b: int, c: int): ...
+
+
+add_three(  # ty: ignore[missing-argument]
+    3,
+    2
+)
+```
+
+or when adding the suppression to the last line:
+
+```py
+add_three(
+    3,
+    2
+)  # ty: ignore[missing-argument]
+```
+
+To suppress multiple violations on the same line, list all rule names and separate them with a comma:
+
+```python
+add_three("one", 5)  # ty: ignore[missing-argument, invalid-argument-type]
+```
+
+The comma separated list of rule names (`[rule1, rule2]`) is optional. We recommend to always suppress specific error codes to avoid accidental suppression of other errors.
+
+ty supports the [`type: ignore` comment format](https://typing.python.org/en/latest/spec/directives.html#type-ignore-comments) introduced with PEP 484. ty handles them similarly to `ty: ignore` comments, but it suppresses all violations on that line, even when using `type: ignore[code]`.
+
+```py
+# Ignore all typing errors on the next line
+add_three("one", 5)  # type: ignore
+```
+
+ty reports unused `ty: ignore` and `type: ignore` comments if the rule [`unused-ignore-comment`](https://github.com/astral-sh/ty/blob/main/crates/ty/docs/rules.md#unused-ignore-comment) is enabled. `unused-ignore-comment` violations
+can only be suppressed using `ty: ignore[unused-ignore-comment]`. They can't be suppressed using `ty: ignore` (without a rule code) or a `type: ignore` comment.
+
+#### `@no_type_check` directive
+
+ty supports the [`@no_type_check`](https://typing.python.org/en/latest/spec/directives.html#no-type-check) decorator to suppress all violations inside a function.
+
+```python
+from typing import no_type_check
+
+def add_three(a: int, b: int, c: int):
+    a + b + c
+
+@no_type_check
+def main():
+    add_three(3, 4)
+```
+
+Decorating a class with `@no_type_check` isn't supported.
 
 ## Configuration
 
@@ -153,6 +224,18 @@ Path to user-level configuration directory on Unix systems.
 - [Commands](./docs/cli.md)
 - [Rules](./docs/rules.md)
 - [Settings](./docs/configuration.md)
+
+### Exit codes
+
+- `0` if no violations with severity `error` or higher were found.
+- `1` if any violations with severity `error` were found.
+- `2` if ty terminates abnormally due to invalid CLI options.
+- `101` if ty terminates abnormally due to an internal error.
+
+ty supports two command line arguments that change how exit codes work:
+
+- `--exit-zero`: ty will exit with `0` even if violations were found.
+- `--error-on-warning`: ty will exit with `1` if it finds any violations with severity `warning` or higher.
 
 ## Getting involved
 
