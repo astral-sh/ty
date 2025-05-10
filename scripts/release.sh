@@ -48,3 +48,9 @@ uv run --only-group release \
 
 echo "Updating lockfile..."
 uv lock
+
+echo "Copying documentation"
+cp ruff/crates/ty/docs/cli.md ./docs
+cp ruff/crates/ty/docs/configuration.md ./docs
+cp ./ruff/crates/ty/docs/rules.md ./docs
+git add ./docs
