@@ -68,9 +68,9 @@ ty checks the entire project by default, but you can also pass specific paths to
 uv run ty check src/main.py
 ```
 
-### First-party imports
+### First-party modules
 
-By default, ty searches for first-party imports in the project's root folder or the `src` folder if it exists. If you use a different project layout, explicitly set the project's [`src.root`](https://github.com/astral-sh/ty/blob/main/docs/configuration.md#root). For example, if your project's code is in the `app` directory, like so:
+First-party imports refer to modules that import other modules from your project. By default, ty searches for first-party imports in the project's root folder or the `src` folder if it exists. If you use a different project layout, explicitly set the project's [`src.root`](https://github.com/astral-sh/ty/blob/main/docs/configuration.md#root). For example, if your project's code is in the `app` directory, like so:
 
 ```text
 example-pkg
@@ -81,23 +81,27 @@ example-pkg
         └── __init__.py
 ```
 
-then set the `src.root` setting in the `pyproject.toml` to `./app`:
+then set [`src.root`](https://github.com/astral-sh/ty/blob/main/docs/configuration.md#root) in your `pyproject.toml` to `./app`:
 
 ```toml
 [tool.ty.src]
 root = "./app"
 ```
 
-### Third-party imports
+### Third-party modules
 
-By default, ty searches for third-party imports in a local virtual environment.
+Third-party modules are modules that are external to your project and aren't part of the Python standard library. Most commonly, they're installed using a package manager like uv or pip.
 
 - `VIRTUAL_ENV`
 
 ### Python version
 
-- `python-version`
-- `requires-python` constraint
+The supported Python syntax and standard library functions differ between Python versions. For example, support for `match` statements and the `sys.stdlib_module_names` symbol were introduced with Python 3.10.
+ty helps you to only use language features that are available in your project's Python version by emitting a violation if it detects any unsupported feature. For this, ty needs to know which Python version your project uses. It looks up the python version from (in order of precedence):
+
+- the exact version specified by the [\`python-version\](https://github.com/astral-sh/ty/blob/main/docs/configuration.md#python-version) configuration or \[\`--python-version\`](https://github.com/astral-sh/ty/blob/main/docs/cli.md#ty-check--python-version) CLI option.
+- the minimum supported Python version according to the project's [`requires-python`](https://packaging.python.org/en/latest/guides/writing-pyproject-toml/#python-requires) option.
+- the latest stable Python version supported by ty (Python 3.13)
 
 ### Excluding files
 
