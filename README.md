@@ -3,11 +3,11 @@
 An extremely fast Python type checker and language server, written in Rust.
 
 > [!WARNING]
-> ty is pre-release software and not ready for production use. Expect to encounter bugs, missing
-> features, and fatal errors.
-
-ty is in active development, and we're working hard to make it stable
-and feature-complete.
+>
+> ty is in preview and is not ready for production use.
+>
+> We're working hard to make ty stable and feature-complete, but until then, expect to encounter bugs,
+> missing features, and fatal errors.
 
 ## Getting started
 
