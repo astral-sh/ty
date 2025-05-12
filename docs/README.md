@@ -94,6 +94,11 @@ First, ty checks for an active virtual environment using the `VIRTUAL_ENV` envir
 not set, ty will search for a `.venv` directory in the project root or working directory. ty only
 supports discovery of virtual environments at this time.
 
+> [!NOTE]
+>
+> When using project management tools, such as uv or Poetry, the `run` command usually automatically
+> activates the virtual environment and will be detected by ty.
+
 The Python environment may be explicitly configured using the
 [`environment.python`](./reference/configuration.md#python) setting or
 [`--python`](./reference/cli.md#ty-check--python) flag.
