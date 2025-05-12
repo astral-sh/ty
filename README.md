@@ -14,7 +14,7 @@ and feature-complete.
 ### Installation
 
 ```shell
-uv tool install ty
+uv tool install ty@latest
 ```
 
 or add ty to your project:
