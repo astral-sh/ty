@@ -24,7 +24,9 @@ def main() -> None:
         else:
             raise ValueError("Version not found in dist-workspace.toml")
 
-    # Replace any relative URLs (e.g., `[PIP_COMPATIBILITY.md`) with absolute URLs.
+    content = Path("README.md").read_text(encoding="utf8")
+
+    # Replace any relative URLs (e.g., `[CONTRIBUTING.md`) with absolute URLs.
     def replace(match: re.Match) -> str:
         url = match.group(1)
         if not url.startswith("http"):
@@ -33,9 +35,14 @@ def main() -> None:
             )
         return f"]({url})"
 
-    content = re.sub(
-        r"]\(([^)]+)\)", replace, Path("README.md").read_text(encoding="utf8")
-    )
+    content = re.sub(r"]\(([^)]+)\)", replace, content)
+
+    # Replace any GitHub admonitions
+    def replace(match: re.Match) -> str:
+        name = match.group(1)
+        return f"> {name}:"
+
+    content = re.sub(r"> \[\!(\w*)\]", replace, content)
 
     with Path("README.md").open("w", encoding="utf8") as fp:
         fp.write(content)
