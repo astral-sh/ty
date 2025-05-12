@@ -56,8 +56,8 @@ By default, ty searches for first-party modules in the project's root directory 
 directory, if present.
 
 If your project uses a different layout, configure the project's
-[`src.root`](./reference/configuration.md#root) in your `pyproject.toml`. For example, if your
-project's code is in the `app` directory, like so:
+[`src.root`](./reference/configuration.md#root) in your `pyproject.toml` or `ty.toml`. For example, if your
+project's code is in an `app/` directory:
 
 ```text
 example-pkg
@@ -101,9 +101,18 @@ When setting the environment explicitly, non-virtual environments can be provide
 The Python version affects allowed syntax, type definitions of the standard library, and type
 definitions of first- and third-party modules that are conditional on the Python version.
 
-For example, Python 3.10 introduced support for `match` statements and added the the
-`sys.stdlib_module_names` symbol. However, if your project also supports Python 3.9, you cannot use
-these new features.
+For example, Python 3.10 introduced support for `match` statements and added the
+`sys.stdlib_module_names` symbol to the standard library. However, if your project also supports
+Python 3.9, you cannot use these new features unless they are inside an `if sys.version_info >= (3, 10)` branch:
+
+```python
+import sys
+
+if sys.version_info >= (3, 10):
+    print(sys.stdlib_module_names)  # okay whatever your python-version is set to, because of the `sys.version_info` condition
+else:
+    print(sys.stdlib_module_names)  # ty will emit an error here if the configured `python-version` is <3.10
+```
 
 By default, the lower bound of the project's [`requires-python`](<(https://packaging.python.org/en/latest/guides/writing-pyproject-toml/#python-requires)>) field (from the `pyproject.toml`) is
 used as the target Python version, ensuring that features and symbols only available in newer Python
@@ -130,7 +139,7 @@ You may also explicitly pass the paths that ty should check, e.g.:
 ty check src scripts/benchmark.py
 ```
 
-We plan on adding dedicated options for including and excluding files in an upcoming release.
+We plan on adding dedicated options for including and excluding files in future releases.
 
 ## Editor integration
 
