@@ -104,15 +104,15 @@ The release script will:
 - Bump the versions in the `pyproject.toml` and `dist-workspace.toml`
 
 1. Editorialize the `CHANGELOG.md` file to ensure entries are consistently styled.
-1. Create a pull request with the changelog and version changes, e.g., `Bump version to ...`.
+2. Create a pull request with the changelog and version changes, e.g., `Bump version to ...`.
     Binary builds will automatically be tested for the release.
-1. Merge the PR
-1. Run the [release workflow](https://github.com/astral-sh/ty/actions/workflows/release.yml) with the version
+3. Merge the PR
+4. Run the [release workflow](https://github.com/astral-sh/ty/actions/workflows/release.yml) with the version
     tag. **Do not include a leading `v`**. The release will automatically be created on GitHub after
     everything else publishes.
-1. Run `uv run --no-project  ./scripts/update_schemastore.py` to prepare a PR to update the `ty.json` schema in the schemastore repository.
+5. Run `uv run --no-project  ./scripts/update_schemastore.py` to prepare a PR to update the `ty.json` schema in the schemastore repository.
     Follow the link in the script's output to submit the PR. The script is a no-op if there are no schema changes.
-1. If necessary, update and release [`ty-vscode`](https://github.com/astral-sh/ty-vscode).
+6. If necessary, update and release [`ty-vscode`](https://github.com/astral-sh/ty-vscode).
     Follow the instructions in the `ty-vscode` repository. Updating the extension is required when:
     - for minor releases to bump the bundled ty version
     - for patch releases after fixing an important bug in `ty lsp` to bump the bundled ty version
