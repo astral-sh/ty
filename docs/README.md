@@ -78,8 +78,9 @@ root = "./app"
 ### Third-party modules
 
 Third-party modules are Python packages that are not part of your project or the standard library.
-These are usually dependencies of your project, and are installed using a package manager like uv or
-pip. Common examples include libraries such as `requests`, `numpy`, or `django`.
+These are usually declared as dependencies in a `pyproject.toml` or `requirements.txt` file
+and installed using a package manager like uv or pip. Examples of popular third-party
+modules are `requests`, `numpy` and `django`.
 
 ty searches for third-party modules in the configured [Python environment](#python-environment).
 
