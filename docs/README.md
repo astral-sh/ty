@@ -56,8 +56,8 @@ By default, ty searches for first-party modules in the project's root directory 
 directory, if present.
 
 If your project uses a different layout, configure the project's
-[`src.root`](./reference/configuration.md#root) in your `pyproject.toml` or `ty.toml`. For example, if your
-project's code is in an `app/` directory:
+[`src.root`](./reference/configuration.md#root) in your `pyproject.toml` or `ty.toml`. For example,
+if your project's code is in an `app/` directory:
 
 ```text
 example-pkg
@@ -86,12 +86,15 @@ ty searches for third-party modules in the configured [Python environment](#pyth
 
 ### Python environment
 
-ty only supports automatic discovery of virtual environments at this time.
+The Python environment is used for discovery of third-party modules.
 
-First, ty checks for an active environment using the `VIRTUAL_ENV` environment variable. If not set,
-ty will search for a `.venv` folder in the project root or working directory.
+By default, ty will attempt to discover a virtual environment.
 
-The Python environment may be explicitly specified using the
+First, ty checks for an active virtual environment using the `VIRTUAL_ENV` environment variable. If
+not set, ty will search for a `.venv` directory in the project root or working directory. ty only
+supports discovery of virtual environments at this time.
+
+The Python environment may be explicitly configured using the
 [`environment.python`](./reference/configuration.md#python) setting or
 [`--python`](./reference/cli.md#ty-check--python) flag.
 
@@ -104,15 +107,16 @@ definitions of first- and third-party modules that are conditional on the Python
 
 For example, Python 3.10 introduced support for `match` statements and added the
 `sys.stdlib_module_names` symbol to the standard library. However, if your project also supports
-Python 3.9, you cannot use these new features unless they are inside an `if sys.version_info >= (3, 10)` branch:
+Python 3.9, you cannot use these new features unless they are used in a `sys.version_info`
+conditional branch:
 
 ```python
 import sys
 
 if sys.version_info >= (3, 10):
-    print(sys.stdlib_module_names)  # okay whatever your python-version is set to, because of the `sys.version_info` condition
+    print(sys.stdlib_module_names)  # ok
 else:
-    print(sys.stdlib_module_names)  # ty will emit an error here if the configured `python-version` is <3.10
+    print(sys.stdlib_module_names)  # error if `python-version` is set to 3.9 or lower
 ```
 
 By default, the lower bound of the project's [`requires-python`](<(https://packaging.python.org/en/latest/guides/writing-pyproject-toml/#python-requires)>) field (from the `pyproject.toml`) is
