@@ -2,9 +2,9 @@ fail_fast: false
 
 exclude: |
   (?x)^(
-    .github/workflows/release.yml|
-    ruff/.*|
-    docs/(cli|configuration|rules).md
+    .github/workflows/release.yml
+    | ruff/.*
+    | docs/reference/\w+\.md
   )$
 
 repos:
