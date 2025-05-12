@@ -41,13 +41,75 @@ Usage: ty <COMMAND>
 
 You should see a help menu listing the available commands.
 
-For detailed information about command-line options, see the [CLI documentation](./docs/cli.md).
+For detailed information about command-line options, see the [commands] reference.
 
-### Checking your project
+## Checking a project
+
+The easiest way to type check your project is by running ty through [uv](https://docs.astral.sh/uv/). To do that, add ty as a project dependency:
 
 ```shell
-ty check
+uv add --dev ty
 ```
+
+and then just run `uv run ty check` to type check all python files in the project's root. If you don't have a project yet, run [`uv init`](https://docs.astral.sh/uv/concepts/projects/init/) to create one.
+
+```shell
+uv run ty check
+WARN ty is pre-release software and not ready for production use. Expect to encounter bugs, missing features, and fatal errors.
+All checks passed!
+```
+
+> [!NOTE]
+> As an alternative to `uv run`, you can also run ty by activating the project's virtual environment (source `.venv/bin/active` on Linux and macOS, or `.venv\Scripts\activate` on Windows) and running `ty check` directly.
+
+ty checks the entire project by default, but you can also pass specific paths to check:
+
+```shell
+uv run ty check src/main.py
+```
+
+### First-party modules
+
+First-party modules are Python files that are part of your own project’s codebase, unlike modules from the standard library modules or third-party packages installed via a package manager like uv or pip. By default, ty searches for first-party modules in the project's root folder or the `src` folder (if present). If your project uses a different layout, configure the project's [`src.root`](https://github.com/astral-sh/ty/blob/main/docs/configuration.md#root) in your `pyproject.toml`. For example, if your project's code is in the `app` directory, like so:
+
+```text
+example-pkg
+├── README.md
+├── pyproject.toml
+└── app
+    └── example_pkg
+        └── __init__.py
+```
+
+then set [`src.root`](https://github.com/astral-sh/ty/blob/main/docs/configuration.md#root) in your `pyproject.toml` to `./app`:
+
+```toml
+[tool.ty.src]
+root = "./app"
+```
+
+### Third-party modules
+
+Third-party modules are external Python packages that are not part of the standard library or your own project’s code. These are typically installed using a package manager like uv or pip and include libraries such as `requests`, `numpy`, or `django`.
+
+ty searches third-party modules in your project's virtual environment. By default, it looks for a virtual environment in a `.venv` folder located at the project root. If the `VIRTUAL_ENV` environment variable is set, ty will use the path specified there instead. If your project uses a different location for your virtual environment, specify the location by setting the [`environment.python`](https://github.com/astral-sh/ty/blob/main/docs/configuration.md#python) configuration or [`--python`](https://github.com/astral-sh/ty/blob/main/docs/cli.md#ty-check--python) CLI option.
+
+### Python version
+
+The supported Python syntax and standard library functions differ between Python versions. For example, Python 3.10 introduced support for `match` statements and the `sys.stdlib_module_names` symbol. While these features enhance the language, using them in a project targeting an older Python version can lead to compatibility issues.
+ty helps you avoid such compatibility issues by checking your code against the Python version your project targets, and flagging any use of features or standard library symbols not available in that version.
+
+ty determines the project's target Python version from:
+
+- The [`python-version`](https://github.com/astral-sh/ty/blob/main/docs/configuration.md#python-version) value in your configuration or the \[\`--python-version\`\](<https://github.com/astral-sh/ty/blob/main/docs/cli.md#ty-check--python-version>) command line option.
+- The lower bound of the project's [`requires-python`](https://packaging.python.org/en/latest/guides/writing-pyproject-toml/#python-requires) field in your `pyproject.toml`.
+- If neither is specified, ty defaults to the latest stable Python version it supports (Python 3.13)
+
+### Excluding files
+
+ty ignores files listed in an `.ignore` or `.gitignore` file unless [`respect-ignore-files`](https://github.com/astral-sh/ty/blob/main/docs/configuration.md#respect-ignore-files) is set to `false`.
+
+Alternatively, you can explicitly pass the paths that ty should check, like so: `ty check src scripts/benchmark.py`. We plan on adding dedicated options for including and excluding files in an upcoming release.
 
 ## Editor integration
 
@@ -66,11 +128,52 @@ to learn how to connect to an LSP server.
 
 ## Concepts
 
-<!--
+### Rules
 
-### Projects
+Rules are individual type checks that detect common issues in your code—such as incompatible assignments, missing imports, or invalid type annotations. Each rule focuses on a specific pattern and can be turned on or off depending on your project’s needs.
+See [rules] for a reference of all supported rules.
 
-### Rules -->
+#### Rule level
+
+Each rule has a configurable level:
+
+- `error`: violations are reported as errors and ty exits with an exit code of 1 if there's any.
+- `warn`: violations are reported as warnings. Depending on your configuration, ty exits with an exit code of 0 if there are only warning violations (default) or 1 when using `--error-on-warning`.
+- `ignore`: the rule is turned off
+
+#### Configuring rules on the command line
+
+You can configure the lint level for each rule on the command line using `--warn`, `--error`, and `--ignore`.
+
+```shell
+ty check --warn unused-ignore-comment --ignore redundant-cast --error possibly-unbound-attribute --error possibly-unbound-import
+```
+
+This command:
+
+- enables `unused-ignore-comment` and sets its level to warnings
+- disables `redundant-cast`
+- changes the lint level for `possibly-unbound-attribute` and `possibly-unbound-import` from warning to error
+
+The options can be repeated and options coming later take precedence over earlier options.
+
+#### Configuring rules in a configuration file
+
+You can turn rules on or of or change their level in your [configuration](#configuration-files)'s [`rules`](https://github.com/astral-sh/ty/blob/main/docs/configuration.md#rules) section.
+
+```toml
+[tool.ty.rules]
+unused-ignore-comment = "warn"
+redundant-cast = "warn"
+possibly-unbound-attribute = "error"
+possibly-unbound-import = "error"
+```
+
+This configuration:
+
+- enables `unused-ignore-comment` and sets its level to warnings
+- disables `redundant-cast`
+- changes the lint level for `possibly-unbound-attribute` and `possibly-unbound-import` from warning to error
 
 ### Suppressions
 
@@ -182,7 +285,7 @@ For example, if a string, number, or boolean is present in both the project- and
 
 Settings provided via command line take precedence over persistent configuration.
 
-See the [settings reference](./docs/configuration.md) for an enumeration of the available settings.
+See the [configuration] reference for an enumeration of the available settings.
 
 ### Environment variables
 
@@ -221,9 +324,9 @@ Path to user-level configuration directory on Unix systems.
 
 ## Reference
 
-- [Commands](./docs/cli.md)
-- [Rules](./docs/rules.md)
-- [Settings](./docs/configuration.md)
+- [commands]
+- [rules]
+- [configuration]
 
 ### Exit codes
 
@@ -263,3 +366,7 @@ conditions.
     <img src="https://raw.githubusercontent.com/astral-sh/uv/main/assets/svg/Astral.svg" alt="Made by Astral">
   </a>
 </div>
+
+[commands]: https://github.com/astral-sh/ty/blob/main/docs/cli.md
+[configuration]: https://github.com/astral-sh/ty/blob/main/docs/configuration.md
+[rules]: https://github.com/astral-sh/ty/blob/main/docs/rules.md
