@@ -41,13 +41,40 @@ Usage: ty <COMMAND>
 
 You should see a help menu listing the available commands.
 
-For detailed information about command-line options, see the [CLI documentation](./docs/cli.md).
+For detailed information about command-line options, see the [commands] reference.
 
-### Checking your project
+## Checking a project
+
+The easiest way to check your project is by running ty through [uv](https://docs.astral.sh/uv/). To do that, add ty as a project dependency:
 
 ```shell
-ty check
+uv add --dev ty
 ```
+
+and then just run `uv run ty check` to type check all python files in the project's root. If you don't have a project yet, run [`uv init`](https://docs.astral.sh/uv/concepts/projects/init/) to create one.
+
+
+
+
+### Missing first-party imports
+
+* `src.root`
+
+### Missing third-party imports
+
+* `VIRTUAL_ENV`
+
+### Missing standard library functions
+
+* `python-version`
+* `requires-python` constraint
+
+### Excluding files
+
+ty ignores files listed in an `.ignore` or `.gitignore` file unless [`respect-ignore-files`](https://github.com/astral-sh/ty/blob/main/docs/configuration.md#respect-ignore-files) is set to `false`.
+
+Alternatively, you can explicitly pass the paths that ty should be checked, like so: `ty check src scripts/benchmark.py`. We plan on adding dedicated options for including and excluding files in an upcoming release.
+
 
 ## Editor integration
 
@@ -68,9 +95,54 @@ to learn how to connect to an LSP server.
 
 <!--
 
-### Projects
+### Projects  -->
 
-### Rules -->
+### Rules
+
+Rules are individual type checks that detect common issues in your code—such as incompatible assignments, missing imports, or invalid type annotations. Each rule focuses on a specific pattern and can be turned on or off depending on your project’s needs.
+See [rules] for a reference of all supported rules.
+
+#### Rule level
+
+Each rule has a configurable level:
+
+- `error`: violations are reported as errors and ty exits with an exit code of 1 if there's any.
+- `warn`: violations are reported as warnings. Depending on your configuration, ty exits with an exit code of 0 if there are only warning violations (default) or 1 when using `--error-on-warning`.
+- `ignore`: the rule is turned off
+
+#### Configuring rules on the command line
+
+You can configure the lint level for each rule on the command line using `--warn`, `--error`, and `--ignore`.
+
+```shell
+ty check --warn unused-ignore-comment --ignore redundant-cast --error possibly-unbound-attribute --error possibly-unbound-import
+```
+
+This command:
+
+- enables `unused-ignore-comment` and sets its level to warnings
+- disables `redundant-cast`
+- changes the lint level for `possibly-unbound-attribute` and `possibly-unbound-import` from warning to error
+
+The options can be repeated and options coming later take precedence over earlier options.
+
+#### Configuring rules in a configuration file
+
+You can turn rules on or of or change their level in your [configuration](#configuration-files)'s [`rules`](https://github.com/astral-sh/ty/blob/main/docs/configuration.md#rules) section.
+
+```toml
+[tool.ty.rules]
+unused-ignore-comment = "warn"
+redundant-cast = "warn"
+possibly-unbound-attribute = "error"
+possibly-unbound-import = "error"
+```
+
+This configuration:
+
+- enables `unused-ignore-comment` and sets its level to warnings
+- disables `redundant-cast`
+- changes the lint level for `possibly-unbound-attribute` and `possibly-unbound-import` from warning to error
 
 ### Suppressions
 
@@ -182,7 +254,7 @@ For example, if a string, number, or boolean is present in both the project- and
 
 Settings provided via command line take precedence over persistent configuration.
 
-See the [settings reference](./docs/configuration.md) for an enumeration of the available settings.
+See the [configuration] reference for an enumeration of the available settings.
 
 ### Environment variables
 
@@ -221,9 +293,9 @@ Path to user-level configuration directory on Unix systems.
 
 ## Reference
 
-- [Commands](./docs/cli.md)
-- [Rules](./docs/rules.md)
-- [Settings](./docs/configuration.md)
+- [commands]
+- [rules]
+- [configuration]
 
 ### Exit codes
 
@@ -263,3 +335,7 @@ conditions.
     <img src="https://raw.githubusercontent.com/astral-sh/uv/main/assets/svg/Astral.svg" alt="Made by Astral">
   </a>
 </div>
+
+[commands]: https://github.com/astral-sh/ty/blob/main/docs/cli.md
+[configuration]: https://github.com/astral-sh/ty/blob/main/docs/configuration.md
+[rules]: https://github.com/astral-sh/ty/blob/main/docs/rules.md
