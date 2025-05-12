@@ -45,7 +45,7 @@ For detailed information about command-line options, see the [commands] referenc
 
 ## Checking a project
 
-The easiest way to check your project is by running ty through [uv](https://docs.astral.sh/uv/). To do that, add ty as a project dependency:
+The easiest way to type check your project is by running ty through [uv](https://docs.astral.sh/uv/). To do that, add ty as a project dependency:
 
 ```shell
 uv add --dev ty
@@ -53,28 +53,57 @@ uv add --dev ty
 
 and then just run `uv run ty check` to type check all python files in the project's root. If you don't have a project yet, run [`uv init`](https://docs.astral.sh/uv/concepts/projects/init/) to create one.
 
+```shell
+uv run ty check
+WARN ty is pre-release software and not ready for production use. Expect to encounter bugs, missing features, and fatal errors.
+All checks passed!
+```
 
+> [!NOTE]
+> As an alternative to `uv run`, you can also run ty by activating the project's virtual environment (source `.venv/bin/active` on Linux and macOS, or `.venv\Scripts\activate` on Windows) and running `ty check` directly.
 
+ty checks the entire project by default, but you can also pass specific paths to check:
 
-### Missing first-party imports
+```shell
+uv run ty check src/main.py
+```
 
-* `src.root`
+### First-party imports
 
-### Missing third-party imports
+By default, ty searches for first-party imports in the project's root folder or the `src` folder if it exists. If you use a different project layout, explicitly set the project's [`src.root`](https://github.com/astral-sh/ty/blob/main/docs/configuration.md#root). For example, if your project's code is in the `app` directory, like so:
 
-* `VIRTUAL_ENV`
+```text
+example-pkg
+├── README.md
+├── pyproject.toml
+└── app
+    └── example_pkg
+        └── __init__.py
+```
 
-### Missing standard library functions
+then set the `src.root` setting in the `pyproject.toml` to `./app`:
 
-* `python-version`
-* `requires-python` constraint
+```toml
+[tool.ty.src]
+root = "./app"
+```
+
+### Third-party imports
+
+By default, ty searches for third-party imports in a local virtual environment.
+
+- `VIRTUAL_ENV`
+
+### Python version
+
+- `python-version`
+- `requires-python` constraint
 
 ### Excluding files
 
 ty ignores files listed in an `.ignore` or `.gitignore` file unless [`respect-ignore-files`](https://github.com/astral-sh/ty/blob/main/docs/configuration.md#respect-ignore-files) is set to `false`.
 
 Alternatively, you can explicitly pass the paths that ty should be checked, like so: `ty check src scripts/benchmark.py`. We plan on adding dedicated options for including and excluding files in an upcoming release.
-
 
 ## Editor integration
 
