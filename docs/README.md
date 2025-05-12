@@ -50,7 +50,14 @@ pip install ty
 
 ### First-party modules
 
-First-party modules are Python files that are part of your own project’s codebase, unlike modules from the standard library modules or third-party packages installed via a package manager like uv or pip. By default, ty searches for first-party modules in the project's root folder or the `src` folder (if present). If your project uses a different layout, configure the project's [`src.root`](./reference/configuration.md#root) in your `pyproject.toml`. For example, if your project's code is in the `app` directory, like so:
+First-party modules are Python files that are part of your project source code.
+
+By default, ty searches for first-party modules in the project's root directory or the `src`
+directory, if present.
+
+If your project uses a different layout, configure the project's
+[`src.root`](./reference/configuration.md#root) in your `pyproject.toml` or `ty.toml`. For example,
+if your project's code is in an `app/` directory:
 
 ```text
 example-pkg
@@ -70,41 +77,104 @@ root = "./app"
 
 ### Third-party modules
 
-Third-party modules are external Python packages that are not part of the standard library or your own project’s code. These are typically installed using a package manager like uv or pip and include libraries such as `requests`, `numpy`, or `django`.
+Third-party modules are Python packages that are not part of your project or the standard library.
+These are usually declared as dependencies in a `pyproject.toml` or `requirements.txt` file
+and installed using a package manager like uv or pip. Examples of popular third-party
+modules are `requests`, `numpy` and `django`.
 
-ty searches third-party modules in your project's virtual environment. By default, it looks for a virtual environment in a `.venv` folder located at the project root. If the `VIRTUAL_ENV` environment variable is set, ty will use the path specified there instead. If your project uses a different location for your virtual environment, specify the location by setting the [`environment.python`](./reference/configuration.md#python) configuration or [`--python`](./reference/cli.md#ty-check--python) CLI option.
+ty searches for third-party modules in the configured [Python environment](#python-environment).
+
+### Python environment
+
+The Python environment is used for discovery of third-party modules.
+
+By default, ty will attempt to discover a virtual environment.
+
+First, ty checks for an active virtual environment using the `VIRTUAL_ENV` environment variable. If
+not set, ty will search for a `.venv` directory in the project root or working directory. ty only
+supports discovery of virtual environments at this time.
+
+> [!NOTE]
+>
+> When using project management tools, such as uv or Poetry, the `run` command usually automatically
+> activates the virtual environment and will be detected by ty.
+
+The Python environment may be explicitly configured using the
+[`environment.python`](./reference/configuration.md#python) setting or
+[`--python`](./reference/cli.md#ty-check--python) flag.
+
+When setting the environment explicitly, non-virtual environments can be provided.
 
 ## Python version
 
-The supported Python syntax and standard library functions differ between Python versions. For example, Python 3.10 introduced support for `match` statements and the `sys.stdlib_module_names` symbol. While these features enhance the language, using them in a project targeting an older Python version can lead to compatibility issues.
-ty helps you avoid such compatibility issues by checking your code against the Python version your project targets, and flagging any use of features or standard library symbols not available in that version.
+The Python version affects allowed syntax, type definitions of the standard library, and type
+definitions of first- and third-party modules that are conditional on the Python version.
 
-ty determines the project's target Python version from:
+For example, Python 3.10 introduced support for `match` statements and added the
+`sys.stdlib_module_names` symbol to the standard library. However, if your project also supports
+Python 3.9, you cannot use these new features unless they are used in a `sys.version_info`
+conditional branch:
 
-- The [`python-version`](./reference/configuration.md#python-version) value in your configuration or the [`--python-version`](./reference/cli.md#ty-check--python-version) command line option.
-- The lower bound of the project's [`requires-python`](https://packaging.python.org/en/latest/guides/writing-pyproject-toml/#python-requires) field in your `pyproject.toml`.
-- If neither is specified, ty defaults to the latest stable Python version it supports (Python 3.13)
+```python
+import sys
+
+if sys.version_info >= (3, 10):
+    print(sys.stdlib_module_names)  # ok
+else:
+    print(sys.stdlib_module_names)  # error if `python-version` is set to 3.9 or lower
+```
+
+By default, the lower bound of the project's [`requires-python`](<(https://packaging.python.org/en/latest/guides/writing-pyproject-toml/#python-requires)>) field (from the `pyproject.toml`) is
+used as the target Python version, ensuring that features and symbols only available in newer Python
+versions are not used.
+
+If the `requires-python` field is not available, the latest stable version supported by ty is used,
+which is currently 3.13.
+
+ty will not infer the Python version from the Python environment at this time.
+
+The Python version may be explicitly specified using the
+[`python-version`](./reference/configuration.md#python-version) setting or the
+[`--python-version`](./reference/cli.md#ty-check--python-version) flag.
 
 ## Excluding files
 
-ty ignores files listed in an `.ignore` or `.gitignore` file unless [`respect-ignore-files`](./reference/configuration.md#respect-ignore-files) is set to `false`.
+By default, ty ignores files listed in an `.ignore` or `.gitignore` file.
 
-Alternatively, you can explicitly pass the paths that ty should check, like so: `ty check src scripts/benchmark.py`. We plan on adding dedicated options for including and excluding files in an upcoming release.
+To disable this functionality, set [`respect-ignore-files`](./reference/configuration.md#respect-ignore-files) to `false`.
+
+You may also explicitly pass the paths that ty should check, e.g.:
+
+```shell
+ty check src scripts/benchmark.py
+```
+
+We plan on adding dedicated options for including and excluding files in future releases.
 
 ## Editor integration
 
-ty can be integrated with various editors and IDEs to provide a seamless development experience. This section provides instructions on how to set up ty with your editor and configure it to your liking.
+ty can be integrated with various editors to provide a seamless development experience.
 
 ### VS Code
 
+The Astral team maintains an official VS Code extension.
+
 Install the [ty extension](https://marketplace.visualstudio.com/items?itemName=astral-sh.ty) from the VS Code Marketplace.
 
-For more documentation on the ty extension, refer to the extension's [README](https://github.com/astral-sh/ty-vscode).
+See the extension's [README](https://github.com/astral-sh/ty-vscode) for more details on usage.
 
 ### Other editors
 
-ty can be used with any editor that supports the [language server protocol](https://microsoft.github.io/language-server-protocol/). To start the language server, run `ty server`. Refer to your editor's documentation
-to learn how to connect to an LSP server.
+ty can be used with any editor that supports the [language server
+protocol](https://microsoft.github.io/language-server-protocol/).
+
+To start the language server, use the `server` subcommand:
+
+```shell
+ty server
+```
+
+Refer to your editor's documentation to learn how to connect to an LSP server.
 
 ## Rules
 
