@@ -11,62 +11,38 @@ An extremely fast Python type checker and language server, written in Rust.
 
 ## Getting started
 
-### Installation
+Run ty with [uvx](https://docs.astral.sh/uv/guides/tools/#running-tools) to get started quickly:
 
 ```shell
-uv tool install ty@latest
+uvx ty
 ```
 
-or add ty to your project:
+For other ways to install ty, see the [installation](./docs/README.md#installation) documentation.
+
+If you do not provide a subcommand, ty will list available commands — for detailed information about
+command-line options, see the [CLI reference](./docs/reference/cli.md).
+
+Use the `check` command to run the type checker:
 
 ```shell
-uv add --dev ty
-
-# With pip.
-pip install ty
+uvx ty check
 ```
 
-### First steps
+ty will run on all Python files in the working directory and or subdirectories. If used from a
+project, ty will run on all Python files in the project (starting in the directory with the
+`pyproject.toml`)
 
-After installing ty, you can check that ty is available by running the `ty` command:
+You can also provide specific paths to check:
 
 ```shell
-ty
-An extremely fast Python type checker.
-
-Usage: ty <COMMAND>
-
-...
+uvx ty check example.py
 ```
 
-You should see a help menu listing the available commands.
-
-For detailed information about command-line options, see the [commands](./docs/reference/cli.md) reference.
-
-## Checking a project
-
-The easiest way to type check your project is by running ty through [uv](https://docs.astral.sh/uv/). To do that, add ty as a project dependency:
-
-```shell
-uv add --dev ty
-```
-
-and then just run `uv run ty check` to type check all python files in the project's root. If you don't have a project yet, run [`uv init`](https://docs.astral.sh/uv/concepts/projects/init/) to create one.
-
-```shell
-uv run ty check
-WARN ty is pre-release software and not ready for production use. Expect to encounter bugs, missing features, and fatal errors.
-All checks passed!
-```
-
-> [!NOTE]
-> As an alternative to `uv run`, you can also run ty by activating the project's virtual environment (source `.venv/bin/active` on Linux and macOS, or `.venv\Scripts\activate` on Windows) and running `ty check` directly.
-
-ty checks the entire project by default, but you can also pass specific paths to check:
-
-```shell
-uv run ty check src/main.py
-```
+When type checking, ty will find installed packages in the active virtual environment (via
+`VIRTUAL_ENV`) or discover a virtual environment named `.venv` in the project root or working
+directory. It will not find packackes in non-virtual environments without specifying the target path
+with `--python`. See the [module discovery](./docs/README.md#module-discovery) documentation for
+details.
 
 ## Learning more
 
