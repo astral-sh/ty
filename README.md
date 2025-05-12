@@ -11,87 +11,38 @@ and feature-complete.
 
 ## Getting started
 
-Use [uvx](https://docs.astral.sh/uv/guides/tools/#running-tools) to get started quickly:
+Run ty with [uvx](https://docs.astral.sh/uv/guides/tools/#running-tools) to get started quickly:
+
+```shell
+uvx ty
+```
+
+For other ways to install ty, see the [installation](./docs/README.md#installation) documentation.
+
+If you do not provide a subcommand, ty will list available commands — for detailed information about
+command-line options, see the [CLI reference](./docs/reference/cli.md).
+
+Use the `check` command to run the type checker:
 
 ```shell
 uvx ty check
 ```
 
-> [!NOTE]
-> When using uvx, ty will find installed packages in the active virtual environment (via
->  `VIRTUAL_ENV`) or discover a virtual environment named `.venv` in the project root or working
-> directory. See [module discovery](./docs/README.md#module-discovery) for details.
+ty will run on all Python files in the working directory and or subdirectories. If used from a
+project, ty will run on all Python files in the project (starting in the directory with the
+`pyproject.toml`)
 
-## Installation
-
-### Adding ty to your project
-
-Use [uv](https://github.com/astral-sh/uv) (or your project manager of choice) to add ty as a
-development dependency:
+You can also provide specific paths to check:
 
 ```shell
-uv add --dev ty
+uvx ty check example.py
 ```
 
-Adding ty as a dependency ensures that all developers on the project are using the same version of
-ty.
-
-Then, use `uv run` to invoke ty:
-
-```shell
-uv run ty
-```
-
-### Installing ty
-
-Install ty globally with uv:
-
-```shell
-uv tool install ty@latest
-```
-
-Or, into an existing environment with pip:
-
-```shell
-pip install ty
-```
-
-## Viewing ty commands
-
-Running ty will list available commands:
-
-```console
-$ ty
-An extremely fast Python type checker.
-
-Usage: ty <COMMAND>
-
-...
-```
-
-For detailed information about command-line options, see the [commands] reference.
-
-## Checking a project
-
-To run ty on all files in your project:
-
-```console
-$ ty check
-All checks passed!
-```
-
-> [!NOTE]
-> If you added ty as a dependency in your project, use `uv run` to invoke ty. Alternatively, you can
-> [activate](https://docs.astral.sh/uv/pip/environments/#using-a-virtual-environment) the virtual
-> environment and run ty directly. If you installed ty globally, you can run it without activating
-> the environment but it may not see installed packages; see [module discovery](./docs/README.md#module-discovery)
-> for details.
-
-ty checks the entire project by default, but you can also provide specific paths to check:
-
-```shell
-ty check src/main.py
-```
+When type checking, ty will find installed packages in the active virtual environment (via
+`VIRTUAL_ENV`) or discover a virtual environment named `.venv` in the project root or working
+directory. It will not find packackes in non-virtual environments without specifying the target path
+with `--python`. See the [module discovery](./docs/README.md#module-discovery) documentation for
+details.
 
 ## Learning more
 
