@@ -97,11 +97,9 @@ ty searches third-party modules in your project's virtual environment. By defaul
 ### Python version
 
 The supported Python syntax and standard library functions differ between Python versions. For example, Python 3.10 introduced support for `match` statements and the `sys.stdlib_module_names` symbol. While these features enhance the language, using them in a project targeting an older Python version can lead to compatibility issues.
-ty helps you to only use language features that are available in your project's Python version by emitting a violation if it detects any unsupported feature. For this, ty needs to know which Python version your project uses. It looks up the python version from (in order of precedence):
+ty helps you avoid such compatibility issues by checking your code against the Python version your project targets, and flagging any use of features or standard library symbols not available in that version.
 
-To help you avoid compatibility issues, ty checks your code against the Python version your project targets, and flags any use of features or standard library symbols not available in that version.
-
-ty determines the target Python version in the following order:
+ty determines the project's target Python version from:
 
 - The [`python-version`](https://github.com/astral-sh/ty/blob/main/docs/configuration.md#python-version) value in your configuration or the \[\`--python-version\`\](<https://github.com/astral-sh/ty/blob/main/docs/cli.md#ty-check--python-version>) command line option.
 - The lower bound of the project's [`requires-python`](https://packaging.python.org/en/latest/guides/writing-pyproject-toml/#python-requires) field in your `pyproject.toml`.
