@@ -178,7 +178,7 @@ Refer to your editor's documentation to learn how to connect to an LSP server.
 
 ## Rules
 
-Rules are individual checks that ty performs to detect common issues in your code — such as
+Rules are individual checks that ty performs to detect common issues in your code, such as
 incompatible assignments, missing imports, or invalid type annotations. Each rule focuses on a
 specific pattern and can be turned on or off depending on your project’s needs.
 
