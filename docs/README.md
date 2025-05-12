@@ -178,10 +178,13 @@ Refer to your editor's documentation to learn how to connect to an LSP server.
 
 ## Rules
 
-Rules are individual type checks that detect common issues in your code—such as incompatible assignments, missing imports, or invalid type annotations. Each rule focuses on a specific pattern and can be turned on or off depending on your project’s needs.
-See [rules] for a reference of all supported rules.
+Rules are individual checks that ty performs to detect common issues in your code — such as
+incompatible assignments, missing imports, or invalid type annotations. Each rule focuses on a
+specific pattern and can be turned on or off depending on your project’s needs.
 
-### Rule level
+See [rules](./reference/rules.md) for an enumeration of all supported rules.
+
+### Rule levels
 
 Each rule has a configurable level:
 
@@ -189,97 +192,108 @@ Each rule has a configurable level:
 - `warn`: violations are reported as warnings. Depending on your configuration, ty exits with an exit code of 0 if there are only warning violations (default) or 1 when using `--error-on-warning`.
 - `ignore`: the rule is turned off
 
-### Configuring rules on the command line
-
-You can configure the lint level for each rule on the command line using `--warn`, `--error`, and `--ignore`.
+You can configure the level for each rule on the command line using the `--warn`, `--error`, and
+`--ignore` flags. For example:
 
 ```shell
-ty check --warn unused-ignore-comment --ignore redundant-cast --error possibly-unbound-attribute --error possibly-unbound-import
+
+ty check \
+    --warn unused-ignore-comment \          # Enable `unused-ignore-comment` at warn
+    --ignore redundant-cast \               # Disable `redundant-cast`
+    --error possibly-unbound-attribute \    # Error on `possibly-unbound-attribute`
+    --error possibly-unbound-import         # Error on `possibly-unbound-import` 
 ```
 
-This command:
+The options can be repeated. Subsequent options override earlier options.
 
-- enables `unused-ignore-comment` and sets its level to warnings
-- disables `redundant-cast`
-- changes the lint level for `possibly-unbound-attribute` and `possibly-unbound-import` from warning to error
+Rule levels can also be changed in the [`rules`](./reference/configuration.md#rules) section of a
+[configuration file](#configuration-files).
 
-The options can be repeated and options coming later take precedence over earlier options.
-
-### Configuring rules in a configuration file
-
-You can turn rules on or of or change their level in your [configuration](#configuration-files)'s [`rules`](./reference/configuration.md#rules) section.
+For example, the following is equivalent to the command above:
 
 ```toml
 [tool.ty.rules]
 unused-ignore-comment = "warn"
-redundant-cast = "warn"
+redundant-cast = "ignore"
 possibly-unbound-attribute = "error"
 possibly-unbound-import = "error"
 ```
 
-This configuration:
-
-- enables `unused-ignore-comment` and sets its level to warnings
-- disables `redundant-cast`
-- changes the lint level for `possibly-unbound-attribute` and `possibly-unbound-import` from warning to error
-
 ## Suppressions
 
-### Line-level suppression comments
-
-Suppression comments allow you to silence specific instances of ty violations in your code, be they false positives or permissible violations.
+Rules can also be ignored in specific locations in your code (instead of disabling the rule
+entirely) to silence false positives or permissible violations.
 
 > [!NOTE]
-> To disable a rule entirely, set [its severity to `ignore`](./reference/configuration.md#rules) in your `ty.toml` or `pyproject.toml` or disable it using the [`--ignore` CLI argument](./reference//cli.md#ty-check--ignore).
+>
+> To disable a rule entirely, set it to the `ignore` level as described in [rule levels](#rule-levels).
 
-To suppress a violation inline add a `# ty: ignore[rule]` comment at the end of the line:
+### ty suppression comments
+
+To suppress a rule violation inline add a `# ty: ignore[<rule>]` comment at the end of the line:
 
 ```py
 a = 10 + "test"  # ty: ignore[unsupported-operator]
 ```
 
-Multiline violations can be suppressed by adding the comment at the end of the violation's first or last line:
+Rule violations spanning multiple lines can be suppressed by adding the comment at the end of the
+violation's first or last line:
 
 ```py
 def add_three(a: int, b: int, c: int): ...
 
+# on the first line
 
 add_three(  # ty: ignore[missing-argument]
     3,
     2
 )
-```
 
-or when adding the suppression to the last line:
+# or, on the last line
 
-```py
 add_three(
     3,
     2
 )  # ty: ignore[missing-argument]
 ```
 
-To suppress multiple violations on the same line, list all rule names and separate them with a comma:
+To suppress multiple violations on a single line, enumerate each rule separated by a comma:
 
 ```python
 add_three("one", 5)  # ty: ignore[missing-argument, invalid-argument-type]
 ```
 
-The comma separated list of rule names (`[rule1, rule2]`) is optional. We recommend to always suppress specific error codes to avoid accidental suppression of other errors.
+> [!NOTE]
+>
+> Enumerating rule names (e.g., `[rule1, rule2]`) is optional. However, we strongly recommend
+> including suppressing specific rules to avoid accidental suppression of other errors.
 
-ty supports the [`type: ignore` comment format](https://typing.python.org/en/latest/spec/directives.html#type-ignore-comments) introduced with PEP 484. ty handles them similarly to `ty: ignore` comments, but it suppresses all violations on that line, even when using `type: ignore[code]`.
+### Standard suppression comments
 
-```py
+ty supports the standard [`type:ignore`](https://typing.python.org/en/latest/spec/directives.html#type-ignore-comments) comment
+format introduced by PEP 484.
+
+ty handles these similarly to `ty: ignore` comments, but suppresses all violations on that line,
+even when `type: ignore[code]` is used.
+
+```python
 # Ignore all typing errors on the next line
 add_three("one", 5)  # type: ignore
 ```
 
-ty reports unused `ty: ignore` and `type: ignore` comments if the rule [`unused-ignore-comment`](https://github.com/astral-sh/ty/blob/main/crates/ty/docs/rules.md#unused-ignore-comment) is enabled. `unused-ignore-comment` violations
-can only be suppressed using `ty: ignore[unused-ignore-comment]`. They can't be suppressed using `ty: ignore` (without a rule code) or a `type: ignore` comment.
+### Unused suppression comments
+
+If the [`unused-ignore-comment`](./reference/rules.md#unused-ignore-comment) rule is enabled, ty
+will report unused `ty: ignore` and `type: ignore` comments.
+
+`unused-ignore-comment` violations can only be suppressed using `# ty: ignore[unused-ignore-comment]`.
+They cannot be suppressed using `# ty: ignore` without a rule code or `# type: ignore`.
 
 ### `@no_type_check` directive
 
-ty supports the [`@no_type_check`](https://typing.python.org/en/latest/spec/directives.html#no-type-check) decorator to suppress all violations inside a function.
+ty supports the
+[`@no_type_check`](https://typing.python.org/en/latest/spec/directives.html#no-type-check) decorator
+to suppress all violations inside a function.
 
 ```python
 from typing import no_type_check
