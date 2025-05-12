@@ -70,7 +70,7 @@ uv run ty check src/main.py
 
 ### First-party modules
 
-First-party imports refer to modules that import other modules from your project. By default, ty searches for first-party imports in the project's root folder or the `src` folder if it exists. If you use a different project layout, explicitly set the project's [`src.root`](https://github.com/astral-sh/ty/blob/main/docs/configuration.md#root). For example, if your project's code is in the `app` directory, like so:
+First-party modules are Python files that are part of your own project’s codebase, unlike modules from the standard library modules or third-party packages installed via a package manager like uv or pip. By default, ty searches for first-party modules in the project's root folder or the `src` folder (if present). If your project uses a different layout, configure the project's [`src.root`](https://github.com/astral-sh/ty/blob/main/docs/configuration.md#root) in your `pyproject.toml`. For example, if your project's code is in the `app` directory, like so:
 
 ```text
 example-pkg
@@ -90,24 +90,28 @@ root = "./app"
 
 ### Third-party modules
 
-Third-party modules are modules that are external to your project and aren't part of the Python standard library. Most commonly, they're installed using a package manager like uv or pip.
+Third-party modules are external Python packages that are not part of the standard library or your own project’s code. These are typically installed using a package manager like uv or pip and include libraries such as `requests`, `numpy`, or `django`.
 
-- `VIRTUAL_ENV`
+ty searches third-party modules in your project's virtual environment. By default, it looks for a virtual environment in a `.venv` folder located at the project root. If the `VIRTUAL_ENV` environment variable is set, ty will use the path specified there instead. If your project uses a different location for your virtual environment, specify the location by setting the [`environment.python`](https://github.com/astral-sh/ty/blob/main/docs/configuration.md#python) configuration or [`--python`](https://github.com/astral-sh/ty/blob/main/docs/cli.md#ty-check--python) CLI option.
 
 ### Python version
 
-The supported Python syntax and standard library functions differ between Python versions. For example, support for `match` statements and the `sys.stdlib_module_names` symbol were introduced with Python 3.10.
+The supported Python syntax and standard library functions differ between Python versions. For example, Python 3.10 introduced support for `match` statements and the `sys.stdlib_module_names` symbol. While these features enhance the language, using them in a project targeting an older Python version can lead to compatibility issues.
 ty helps you to only use language features that are available in your project's Python version by emitting a violation if it detects any unsupported feature. For this, ty needs to know which Python version your project uses. It looks up the python version from (in order of precedence):
 
-- the exact version specified by the [\`python-version\](https://github.com/astral-sh/ty/blob/main/docs/configuration.md#python-version) configuration or \[\`--python-version\`](https://github.com/astral-sh/ty/blob/main/docs/cli.md#ty-check--python-version) CLI option.
-- the minimum supported Python version according to the project's [`requires-python`](https://packaging.python.org/en/latest/guides/writing-pyproject-toml/#python-requires) option.
-- the latest stable Python version supported by ty (Python 3.13)
+To help you avoid compatibility issues, ty checks your code against the Python version your project targets, and flags any use of features or standard library symbols not available in that version.
+
+ty determines the target Python version in the following order:
+
+- The [`python-version`](https://github.com/astral-sh/ty/blob/main/docs/configuration.md#python-version) value in your configuration or the \[\`--python-version\`\](<https://github.com/astral-sh/ty/blob/main/docs/cli.md#ty-check--python-version>) command line option.
+- The lower bound of the project's [`requires-python`](https://packaging.python.org/en/latest/guides/writing-pyproject-toml/#python-requires) field in your `pyproject.toml`.
+- If neither is specified, ty defaults to the latest stable Python version it supports (Python 3.13)
 
 ### Excluding files
 
 ty ignores files listed in an `.ignore` or `.gitignore` file unless [`respect-ignore-files`](https://github.com/astral-sh/ty/blob/main/docs/configuration.md#respect-ignore-files) is set to `false`.
 
-Alternatively, you can explicitly pass the paths that ty should be checked, like so: `ty check src scripts/benchmark.py`. We plan on adding dedicated options for including and excluding files in an upcoming release.
+Alternatively, you can explicitly pass the paths that ty should check, like so: `ty check src scripts/benchmark.py`. We plan on adding dedicated options for including and excluding files in an upcoming release.
 
 ## Editor integration
 
@@ -125,10 +129,6 @@ ty can be used with any editor that supports the [language server protocol](http
 to learn how to connect to an LSP server.
 
 ## Concepts
-
-<!--
-
-### Projects  -->
 
 ### Rules
 
