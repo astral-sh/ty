@@ -1,5 +1,53 @@
 # Changelog
 
+## 0.0.1a1
+
+### Enhancements
+
+- Add basic support for non-virtual Python environments ([#17991](https://github.com/astral-sh/ruff/pull/17991))
+- Do not allow invalid virtual environments from discovered `.venv` or `VIRTUAL_ENV` ([#18003](https://github.com/astral-sh/ruff/pull/18003))
+- Refine message for why a rule is enabled ([#18038](https://github.com/astral-sh/ruff/pull/18038))
+- Update `--python` to accept paths to executables in environments ([#17954](https://github.com/astral-sh/ruff/pull/17954))
+- Improve diagnostics for `assert_type` and `assert_never` ([#18050](https://github.com/astral-sh/ruff/pull/18050))
+- Add a note to the diagnostic if a new builtin is used on an old Python version ([#18068](https://github.com/astral-sh/ruff/pull/18068))
+
+### Bug fixes
+
+- Fix infinite recursion bug in `is_disjoint_from` ([#18043](https://github.com/astral-sh/ruff/pull/18043))
+- Recognize submodules in self-referential imports ([#18005](https://github.com/astral-sh/ruff/pull/18005))
+
+### Typing
+
+- Allow a class to inherit from an intersection if the intersection contains a dynamic type and the intersection is not disjoint from `type` ([#18055](https://github.com/astral-sh/ruff/pull/18055))
+- Allow classes to inherit from `type[Any]` or `type[Unknown]` ([#18060](https://github.com/astral-sh/ruff/pull/18060))
+- Apply function specialization to all overloads ([#18020](https://github.com/astral-sh/ruff/pull/18020))
+- Implement `DataClassInstance` protocol for dataclasses ([#18018](https://github.com/astral-sh/ruff/pull/18018))
+- Induct into instances and subclasses when finding and applying generics ([#18052](https://github.com/astral-sh/ruff/pull/18052))
+- Infer parameter specializations of generic aliases ([#18021](https://github.com/astral-sh/ruff/pull/18021))
+- Narrowing for `hasattr()` ([#18053](https://github.com/astral-sh/ruff/pull/18053))
+- Silence false positives for PEP-695 ParamSpec annotations ([#18001](https://github.com/astral-sh/ruff/pull/18001))
+- Understand homogeneous tuple annotations ([#17998](https://github.com/astral-sh/ruff/pull/17998))
+- `__file__` is always a string inside a Python module ([#18071](https://github.com/astral-sh/ruff/pull/18071))
+
+### CLI
+
+- Avoid initializing progress bars early ([#18049](https://github.com/astral-sh/ruff/pull/18049))
+
+### Contributors
+
+- [@soof-golan](https://github.com/soof-golan)
+- [@ibraheemdev](https://github.com/ibraheemdev)
+- [@dhruvmanila](https://github.com/dhruvmanila)
+- [@charliermarsh](https://github.com/charliermarsh)
+- [@MichaReiser](https://github.com/MichaReiser)
+- [@carljm](https://github.com/carljm)
+- [@abhijeetbodas2001](https://github.com/abhijeetbodas2001)
+- [@zanieb](https://github.com/zanieb)
+- [@AlexWaygood](https://github.com/AlexWaygood)
+- [@dcreager](https://github.com/dcreager)
+- [@mtshiba](https://github.com/mtshiba)
+- [@sharkdp](https://github.com/sharkdp)
+
 ## 0.0.0a8
 
 ### Changes
