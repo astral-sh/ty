@@ -144,5 +144,5 @@ Preparation for the release is automated.
     Updating the extension is required for:
 
     - Minor releases
-    - Patch releases, if a critical bug in `ty lsp` is fixed
-    - When releasing new `ty lsp` features that require changes in `ty-vscode`
+    - Patch releases, if a critical bug in `ty server` is fixed
+    - When releasing new `ty server` features that require changes in `ty-vscode`
