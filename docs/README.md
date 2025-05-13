@@ -176,6 +176,9 @@ ty server
 
 Refer to your editor's documentation to learn how to connect to an LSP server.
 
+See the [editor settings](./editors/settings.md) for more details on configuring the language
+server.
+
 ## Rules
 
 Rules are individual checks that ty performs to detect common issues in your code, such as
