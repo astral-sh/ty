@@ -29,6 +29,7 @@
 - Refine message for why a rule is enabled ([#18038](https://github.com/astral-sh/ruff/pull/18038))
 - Update `--python` to accept paths to executables in environments ([#17954](https://github.com/astral-sh/ruff/pull/17954))
 - Improve diagnostics for assert_type and assert_never ([#18050](https://github.com/astral-sh/ruff/pull/18050))
+- Add a note to the diagnostic if a new builtin is used on an old Python version ([#18068](https://github.com/astral-sh/ruff/pull/18068))
 
 ### Contributors
 
