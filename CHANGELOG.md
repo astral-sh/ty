@@ -4,7 +4,7 @@
 
 ### Bug fixes
 
-- fix infinite recursion bug in `is_disjoint_from` ([#18043](https://github.com/astral-sh/ruff/pull/18043))
+- Fix infinite recursion bug in `is_disjoint_from` ([#18043](https://github.com/astral-sh/ruff/pull/18043))
 
 ### Typing
 
