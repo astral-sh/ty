@@ -18,6 +18,7 @@
 - Narrowing for `hasattr()` ([#18053](https://github.com/astral-sh/ruff/pull/18053))
 - Silence false positives for PEP-695 ParamSpec annotations ([#18001](https://github.com/astral-sh/ruff/pull/18001))
 - Understand homogeneous tuple annotations ([#17998](https://github.com/astral-sh/ruff/pull/17998))
+- `__file__` is always a string inside a Python module ([#18071](https://github.com/astral-sh/ruff/pull/18071))
 
 ### CLI
 
