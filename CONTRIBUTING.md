@@ -94,10 +94,6 @@ Releases can only be performed by Astral team members.
 
 Preparation for the release is automated.
 
-> [!NOTE]
-> When running the release workflow for pre-release versions, use the Cargo version format (not PEP
-> 440), e.g. `0.0.0-alpha.5` (not `0.0.0a5`). For stable releases, these formats are identical.
-
 1. Run `./scripts/release.sh`.
 
     The release script will:
@@ -109,21 +105,44 @@ Preparation for the release is automated.
 
 1. Editorialize the `CHANGELOG.md` file to ensure entries are consistently styled.
 
-1. Create a pull request with the changelog and version changes, e.g., `Bump version to ...`.
+    This usually involves simple edits, like consistent capitalization and leading verbs like
+    "Add ...".
+
+1. Create a pull request with the changelog and version changes
+
+    The pull requests are usually titled as: `Bump version to <version>`.
+
     Binary builds will automatically be tested for the release.
 
-1. Merge the PR
+1. Merge the pull request.
 
-1. Run the [release workflow](https://github.com/astral-sh/ty/actions/workflows/release.yml) with the version
-    tag. **Do not include a leading `v`**. The release will automatically be created on GitHub after
-    everything else publishes.
+1. Run the [release workflow](https://github.com/astral-sh/ty/actions/workflows/release.yml) with
+    the version tag.
 
-1. Run `uv run --no-project  ./scripts/update_schemastore.py` to prepare a PR to update the `ty.json` schema in the schemastore repository.
-    Follow the link in the script's output to submit the PR. The script is a no-op if there are no schema changes.
+    **Do not include a leading `v`**.
+
+    When running the release workflow for pre-release versions, use the Cargo version format (not PEP
+    440), e.g. `0.0.0-alpha.5` (not `0.0.0a5`). For stable releases, these formats are identical.
+
+    The release will automatically be created on GitHub after the distributions are published.
+
+1. Run `uv run --no-project ./scripts/update_schemastore.py`
+
+    This script will prepare a branch to update the `ty.json` schema in the `schemastore`
+    repository.
+
+    Follow the link in the script's output to submit the pull request.
+
+    The script is a no-op if there are no schema changes.
 
 1. If necessary, update and release [`ty-vscode`](https://github.com/astral-sh/ty-vscode).
-    Follow the instructions in the `ty-vscode` repository. Updating the extension is required when:
 
-    - for minor releases to bump the bundled ty version
-    - for patch releases after fixing an important bug in `ty lsp` to bump the bundled ty version
-    - when releasing new `ty lsp` features that require changes in `ty-vscode`
+    The instructions are in the `ty-vscode` repository.
+
+    Updating the extension bumps the bundled ty version, which is used if ty is not installed.
+
+    Updating the extension is required for:
+
+    - Minor releases
+    - Patch releases, if a critical bug in `ty lsp` is fixed
+    - When releasing new `ty lsp` features that require changes in `ty-vscode`
