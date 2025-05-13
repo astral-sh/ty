@@ -40,7 +40,7 @@ uvx ty check example.py
 
 When type checking, ty will find installed packages in the active virtual environment (via
 `VIRTUAL_ENV`) or discover a virtual environment named `.venv` in the project root or working
-directory. It will not find packackes in non-virtual environments without specifying the target path
+directory. It will not find packages in non-virtual environments without specifying the target path
 with `--python`. See the [module discovery](./docs/README.md#module-discovery) documentation for
 details.
 
