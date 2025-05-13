@@ -198,7 +198,7 @@ You can configure the level for each rule on the command line using the `--warn`
 ```shell
 
 ty check \
-    --warn unused-ignore-comment \          # Enable `unused-ignore-comment` at warn
+    --warn unused-ignore-comment \          # Make `unused-ignore-comment` a warning
     --ignore redundant-cast \               # Disable `redundant-cast`
     --error possibly-unbound-attribute \    # Error on `possibly-unbound-attribute`
     --error possibly-unbound-import         # Error on `possibly-unbound-import`
