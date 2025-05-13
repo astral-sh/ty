@@ -25,10 +25,10 @@
 ### Other changes
 
 - Add basic support for non-virtual Python environments ([#17991](https://github.com/astral-sh/ruff/pull/17991))
-- Add comma to panic message ([#18048](https://github.com/astral-sh/ruff/pull/18048))
 - Do not allow invalid virtual environments from discovered `.venv` or `VIRTUAL_ENV` ([#18003](https://github.com/astral-sh/ruff/pull/18003))
 - Refine message for why a rule is enabled ([#18038](https://github.com/astral-sh/ruff/pull/18038))
 - Update `--python` to accept paths to executables in environments ([#17954](https://github.com/astral-sh/ruff/pull/17954))
+- Improve diagnostics for assert_type and assert_never ([#18050](https://github.com/astral-sh/ruff/pull/18050))
 
 ### Contributors
 
