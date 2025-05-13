@@ -1,4 +1,3 @@
-
 # Environment variables
 
 ty defines and respects the following environment variables:
