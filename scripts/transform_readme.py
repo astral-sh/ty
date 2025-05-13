@@ -31,7 +31,7 @@ def main() -> None:
         url = match.group(1)
         if not url.startswith("http"):
             url = urllib.parse.urljoin(
-                f"https://github.com/astral-sh/uv/blob/{version}/README.md", url
+                f"https://github.com/astral-sh/ty/blob/{version}/README.md", url
             )
         return f"]({url})"
 
