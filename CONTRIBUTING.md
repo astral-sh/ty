@@ -91,32 +91,36 @@ Releases can only be performed by Astral team members.
 
 Preparation for the release is automated.
 
-1. Run `./scripts/release.sh`
+> [!NOTE]
+> When running the release workflow for pre-release versions, use the Cargo version format (not PEP
+> 440), e.g. `0.0.0-alpha.5` (not `0.0.0a5`). For stable releases, these formats are identical.
 
-```shell
-./scripts/release.sh
-```
+1. Run `./scripts/release.sh`.
 
-The release script will:
+    The release script will:
 
-- Update the Ruff submodule to the latest commit on `main` upstream
-- Generate changelog entries based on pull requests here, and in Ruff
-- Bump the versions in the `pyproject.toml` and `dist-workspace.toml`
+    - Update the Ruff submodule to the latest commit on `main` upstream
+    - Generate changelog entries based on pull requests here, and in Ruff
+    - Bump the versions in the `pyproject.toml` and `dist-workspace.toml`
+    - Update the generated reference documentation in `docs/reference`
 
 1. Editorialize the `CHANGELOG.md` file to ensure entries are consistently styled.
+
 1. Create a pull request with the changelog and version changes, e.g., `Bump version to ...`.
     Binary builds will automatically be tested for the release.
+
 1. Merge the PR
+
 1. Run the [release workflow](https://github.com/astral-sh/ty/actions/workflows/release.yml) with the version
     tag. **Do not include a leading `v`**. The release will automatically be created on GitHub after
     everything else publishes.
+
 1. Run `uv run --no-project  ./scripts/update_schemastore.py` to prepare a PR to update the `ty.json` schema in the schemastore repository.
     Follow the link in the script's output to submit the PR. The script is a no-op if there are no schema changes.
+
 1. If necessary, update and release [`ty-vscode`](https://github.com/astral-sh/ty-vscode).
     Follow the instructions in the `ty-vscode` repository. Updating the extension is required when:
+
     - for minor releases to bump the bundled ty version
     - for patch releases after fixing an important bug in `ty lsp` to bump the bundled ty version
     - when releasing new `ty lsp` features that require changes in `ty-vscode`
-
-When running the release workflow for pre-release versions, use the Cargo version format (not PEP
-440), e.g. `0.0.0-alpha.5` (not `0.0.0a5`). For stable releases, these formats are identical.
