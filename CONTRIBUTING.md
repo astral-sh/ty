@@ -1,17 +1,20 @@
 # Contributing
 
+> [!IMPORTANT]
+> If you want to contribute changes to ty's core, please check out the
+> [dedicated `ty` contributing guide](https://github.com/astral-sh/ruff/blob/main/crates/ty/CONTRIBUTING.md).
+> Keep reading if you want to contribute to ty's documentation or release process instead.
+
 ## Repository structure
 
-ty's Rust crates can be found in the [Ruff](https://github.com/astral-sh/ruff) project. While the
-relationship between these projects will evolve over time, they currently share foundational crates
-and it's easiest to use a single repository for development. To contribute changes to ty's core,
-open a pull request on the Ruff repository.
+This repository contains ty's documentation and release infrastructure. The core of ty's Rust codebase is
+located in the [Ruff](https://github.com/astral-sh/ruff) repository. While the relationship between these
+two projects will evolve over time, they currently share foundational crates and it's easiest to use a single
+repository for the Rust development.
 
-The Ruff repository is included as a submodule to allow ty's release tags to reflect an exact
-snapshot of the Ruff project. The submodule is only updated on release. To see the latest
-development code, visit the Ruff repository.
-
-The ty repository only includes code relevant to distributing the ty project.
+The Ruff repository is included as a submodule inside this repository to allow ty's release tags to reflect
+an exact snapshot of the Ruff project. The submodule is only updated on release. To see the latest development
+code, check out the `main` branch of the Ruff repository.
 
 ## Getting started with the ty repository
 
