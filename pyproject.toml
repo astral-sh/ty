@@ -83,7 +83,7 @@ required-imports = ["from __future__ import annotations"]
 
 
 [tool.uv.sources]
-rooster-blue = { git = "https://github.com/zanieb/rooster", rev = "6607e891731c88337c9c3e47956d43eae610bf50" }
+rooster-blue = { git = "https://github.com/zanieb/rooster", rev = "5466c1496853b93c6eff91f4c3a7f72767f4eafb" }
 
 [tool.maturin]
 bindings = "bin"

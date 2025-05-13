@@ -714,7 +714,7 @@ wheels = [
 [[package]]
 name = "rooster-blue"
 version = "0.0.0"
-source = { git = "https://github.com/zanieb/rooster?rev=6607e891731c88337c9c3e47956d43eae610bf50#6607e891731c88337c9c3e47956d43eae610bf50" }
+source = { git = "https://github.com/zanieb/rooster?rev=5466c1496853b93c6eff91f4c3a7f72767f4eafb#5466c1496853b93c6eff91f4c3a7f72767f4eafb" }
 dependencies = [
     { name = "hishel", version = "0.0.33", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.9'" },
     { name = "hishel", version = "0.1.2", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.9'" },
@@ -773,7 +773,7 @@ release = [
 [package.metadata]
 
 [package.metadata.requires-dev]
-release = [{ name = "rooster-blue", git = "https://github.com/zanieb/rooster?rev=6607e891731c88337c9c3e47956d43eae610bf50" }]
+release = [{ name = "rooster-blue", git = "https://github.com/zanieb/rooster?rev=5466c1496853b93c6eff91f4c3a7f72767f4eafb" }]
 
 [[package]]
 name = "typer"
