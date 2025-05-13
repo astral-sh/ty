@@ -111,17 +111,26 @@ The Python version affects allowed syntax, type definitions of the standard libr
 definitions of first- and third-party modules that are conditional on the Python version.
 
 For example, Python 3.10 introduced support for `match` statements and added the
-`sys.stdlib_module_names` symbol to the standard library. However, if your project also supports
-Python 3.9, you cannot use these new features unless they are used in a `sys.version_info`
-conditional branch:
+`sys.stdlib_module_names` symbol to the standard library. Syntactic features always
+need to be available in the lowest supported Python version, but symbols may be used
+in a `sys.version_info` conditional branch:
 
 ```python
 import sys
 
+# `invalid-syntax` error if `python-version` is set to 3.9 or lower:
+match "echo hello".split():
+    case ["echo", message]:
+        print(message)
+    case _:
+        print("unknown command")
+
+# `unresolved-attribute` error if `python-version` is set to 3.9 or lower:
+print(sys.stdlib_module_names)
+
 if sys.version_info >= (3, 10):
-    print(sys.stdlib_module_names)  # ok
-else:
-    print(sys.stdlib_module_names)  # error if `python-version` is set to 3.9 or lower
+    # ok, because the usage is guarded by a version check:
+    print(sys.stdlib_module_names)
 ```
 
 By default, the lower bound of the project's [`requires-python`](<(https://packaging.python.org/en/latest/guides/writing-pyproject-toml/#python-requires)>) field (from the `pyproject.toml`) is
