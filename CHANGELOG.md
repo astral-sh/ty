@@ -5,6 +5,7 @@
 ### Bug fixes
 
 - Fix infinite recursion bug in `is_disjoint_from` ([#18043](https://github.com/astral-sh/ruff/pull/18043))
+- Recognize submodules in self-referential imports ([#18005](https://github.com/astral-sh/ruff/pull/18005))
 
 ### Typing
 
