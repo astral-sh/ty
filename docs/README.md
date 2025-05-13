@@ -201,7 +201,7 @@ ty check \
     --warn unused-ignore-comment \          # Enable `unused-ignore-comment` at warn
     --ignore redundant-cast \               # Disable `redundant-cast`
     --error possibly-unbound-attribute \    # Error on `possibly-unbound-attribute`
-    --error possibly-unbound-import         # Error on `possibly-unbound-import` 
+    --error possibly-unbound-import         # Error on `possibly-unbound-import`
 ```
 
 The options can be repeated. Subsequent options override earlier options.
@@ -365,7 +365,7 @@ ty supports two command line arguments that change how exit codes work:
 
 For more details, see the reference documentation:
 
-- [Commands](./reference/commands.md)
+- [Commands](./reference/cli.md)
 - [Rules](./reference/rules.md)
 - [Configuration](./references/configuration.md)
 - [Environment variables](./reference/env.md)
