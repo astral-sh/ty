@@ -347,7 +347,7 @@ For example, if a string, number, or boolean is present in both the project- and
 
 Settings provided via command line take precedence over persistent configuration.
 
-See the [configuration](./references/configuration.md) reference for an enumeration of the available settings.
+See the [configuration](./reference/configuration.md) reference for an enumeration of the available settings.
 
 ## Exit codes
 
@@ -367,5 +367,5 @@ For more details, see the reference documentation:
 
 - [Commands](./reference/cli.md)
 - [Rules](./reference/rules.md)
-- [Configuration](./references/configuration.md)
+- [Configuration](./reference/configuration.md)
 - [Environment variables](./reference/env.md)
