@@ -1,14 +1,12 @@
-# Settings
+# Editor settings
 
-## Language server settings
+The editor settings supported by ty's language server, as well as the settings specific to [ty's VS Code extension](https://github.com/astral-sh/ty-vscode/).
 
-### `experimental`
+## `experimental`
 
-This setting is used to enable or disable experimental features in the language server.
+### `completions.enable`
 
-#### `completions.enable`
-
-Whether to enable completions from the language server.
+Enables ty's experimental support for code completions.
 
 **Default value**: `false`
 
@@ -22,11 +20,9 @@ Whether to enable completions from the language server.
 }
 ```
 
-### `logFile`
+## `logFile`
 
-Path to the log file to use for the language server.
-
-If not set, logs will be written to stderr.
+Path to the file to which the language server writes its log messages. By default, ty writes log messages to stderr.
 
 **Default value**: `null`
 
@@ -40,7 +36,7 @@ If not set, logs will be written to stderr.
 }
 ```
 
-### `logLevel`
+## `logLevel`
 
 The log level to use for the language server.
 
@@ -58,7 +54,7 @@ The log level to use for the language server.
 
 ### `trace.server`
 
-The trace level for the language server. Refer to the [LSP
+The detail level at which messages between the language server and the editor (client) are logged. Refer to the [LSP
 specification](https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#traceValue)
 for more information.
 
@@ -76,8 +72,7 @@ for more information.
 
 ## VS Code specific
 
-Additionally, the ty extension provides the following settings specific to VS Code. These settings
-are not used by the language server and are only relevant to the extension.
+The following settings are specific to ty's VS Code extension.
 
 ### `importStrategy`
 
@@ -122,7 +117,7 @@ The interpreter path is used to find the `ty` executable when
 
 A list of path to `ty` executables.
 
-The first executable in the list which is exists is used. This setting takes precedence over the
+The extension uses the first executable that exists. This setting takes precedence over the
 [`ty.importStrategy`](#importstrategy) setting.
 
 **Default value**: `[]`
