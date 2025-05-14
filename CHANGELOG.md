@@ -1,5 +1,46 @@
 # Changelog
 
+## 0.0.1a2
+
+### Enhancements
+
+- Improve diagnostics for failure to call overloaded function ([#18073](https://github.com/astral-sh/ruff/pull/18073))
+- Fix inconsistent casing in `invalid-return-type` diagnostic ([#18084](https://github.com/astral-sh/ruff/pull/18084))
+- Add type-expression syntax link to `invalid-type-expression` diagnostics ([#18104](https://github.com/astral-sh/ruff/pull/18104))
+
+### Bug fixes
+
+- Add cycle handling for unpacking targets ([#18078](https://github.com/astral-sh/ruff/pull/18078))
+- Do not look up `__init__` on instances ([#18092](https://github.com/astral-sh/ruff/pull/18092))
+
+### Typing
+
+- Infer parameter specializations of explicitly implemented generic protocols ([#18054](https://github.com/astral-sh/ruff/pull/18054))
+- Check assignments to implicit global symbols are assignable to the types declared on `types.ModuleType` ([#18077](https://github.com/astral-sh/ruff/pull/18077))
+- Fix various generics-related TODOs ([#18062](https://github.com/astral-sh/ruff/pull/18062))
+
+### Documentation
+
+- Fix rule link in the configuration description ([#381](https://github.com/astral-sh/ty/pull/381))
+- Use `https://ty.dev/rules` when linking to the rules table ([#18072](https://github.com/astral-sh/ruff/pull/18072))
+- Use `ty server` instead of `ty lsp` ([#360](https://github.com/astral-sh/ty/pull/360))
+- Fix missing `>` in HTML anchor tags in CLI reference ([#18096](https://github.com/astral-sh/ruff/pull/18096))
+- Fix link to rules docs ([#378](https://github.com/astral-sh/ty/pull/378))
+- Fix repository in README transform script ([#361](https://github.com/astral-sh/ty/pull/361))
+
+### Contributors
+
+- [@dhruvmanila](https://github.com/dhruvmanila)
+- [@Usul-Dev](https://github.com/Usul-Dev)
+- [@dcreager](https://github.com/dcreager)
+- [@AlexWaygood](https://github.com/AlexWaygood)
+- [@BurntSushi](https://github.com/BurntSushi)
+- [@MichaReiser](https://github.com/MichaReiser)
+- [@frgfm](https://github.com/frgfm)
+- [@kiran-4444](https://github.com/kiran-4444)
+- [@sharkdp](https://github.com/sharkdp)
+- [@eruditmorina](https://github.com/eruditmorina)
+
 ## 0.0.1a1
 
 ### Enhancements
