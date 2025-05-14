@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.0.1a2
+## 0.0.1-alpha.2
 
 ### Enhancements
 
@@ -41,7 +41,7 @@
 - [@sharkdp](https://github.com/sharkdp)
 - [@eruditmorina](https://github.com/eruditmorina)
 
-## 0.0.1a1
+## 0.0.1-alpha.1
 
 ### Enhancements
 
@@ -89,7 +89,7 @@
 - [@mtshiba](https://github.com/mtshiba)
 - [@sharkdp](https://github.com/sharkdp)
 
-## 0.0.0a8
+## 0.0.0-alpha.8
 
 ### Changes
 
