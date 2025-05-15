@@ -40,13 +40,11 @@ jobs:
         uses: rui314/setup-mold@e16410e7f8d9e167b74ad5697a9089a35126eb50 # v1
       - uses: Swatinem/rust-cache@9d47c6ad4b02e050fd481d890b2ea34778fd09d6 # v2.7.8
       - name: Build ty
-        working-directory: ruff
         # A release build takes longer (2 min vs 1 min), but the property tests run much faster in release
         # mode (1.5 min vs 14 min), so the overall time is shorter with a release build.
         run: cargo build --locked --release --package ty_python_semantic --tests
       - name: Run property tests
         shell: bash
-        working-directory: ruff
         run: |
           export QUICKCHECK_TESTS=100000
           for _ in {1..5}; do
