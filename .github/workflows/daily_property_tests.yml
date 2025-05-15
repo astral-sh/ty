@@ -6,7 +6,7 @@ on:
     - cron: "0 12 * * *"
   pull_request:
     paths:
-      - ".github/workflows/daily_property_tests.yaml"
+      - ".github/workflows/daily_property_tests.yml"
 
 permissions:
   contents: read
