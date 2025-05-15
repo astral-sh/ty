@@ -1,5 +1,33 @@
 # Changelog
 
+## 0.0.1-alpha.3
+
+### Enhancements
+
+- Include synthesized arguments in displayed counts for `too-many-positional-arguments` ([#18098](https://github.com/astral-sh/ruff/pull/18098))
+
+### Bug fixes
+
+- Fix `redundant-cast` false positives when casting to `Unknown` ([#18111](https://github.com/astral-sh/ruff/pull/18111))
+- Fix normalization of unions containing instances parameterized with unions ([#18112](https://github.com/astral-sh/ruff/pull/18112))
+- Make dataclass instances adhere to DataclassInstance ([#18115](https://github.com/astral-sh/ruff/pull/18115))
+
+### CLI
+
+- Change layout of extra verbose output and respect `--color` for verbose output ([#18089](https://github.com/astral-sh/ruff/pull/18089))
+
+### Documentation
+
+- Use Cargo-style versions in the changelog ([#397](https://github.com/astral-sh/ty/pull/397))
+
+### Contributors
+
+- [@zanieb](https://github.com/zanieb)
+- [@sharkdp](https://github.com/sharkdp)
+- [@AlexWaygood](https://github.com/AlexWaygood)
+- [@InSyncWithFoo](https://github.com/InSyncWithFoo)
+- [@MichaReiser](https://github.com/MichaReiser)
+
 ## 0.0.1-alpha.2
 
 ### Enhancements
