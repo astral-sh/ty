@@ -1,1 +1,5 @@
 * text=auto eol=lf
+
+docs/reference/cli.md linguist-generated=true
+docs/reference/configuration.md linguist-generated=true
+docs/reference/rules.md linguist-generated=true
