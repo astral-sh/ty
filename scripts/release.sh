@@ -46,11 +46,5 @@ cd "$project_root"
 uv run --only-group release \
     rooster release "$@"
 
-echo "Updating lockfile..."
-uv lock
-
-echo "Copying reference documentation from Ruff..."
-cp ruff/crates/ty/docs/cli.md ./docs/reference/
-cp ruff/crates/ty/docs/configuration.md ./docs/reference/
-cp ./ruff/crates/ty/docs/rules.md ./docs/reference/
+"${script_root}/autogenerate_files.sh"
 git add ./docs/reference
