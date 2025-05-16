@@ -1,5 +1,30 @@
 # Changelog
 
+## 0.0.1-alpha.4
+
+### Enhancements
+
+- Allow unions including `Any`/`Unknown` as bases ([#18094](https://github.com/astral-sh/ruff/pull/18094))
+- Better control flow for boolean expressions that are inside if ([#18010](https://github.com/astral-sh/ruff/pull/18010))
+- Improve invalid method calls for unmatched overloads ([#18122](https://github.com/astral-sh/ruff/pull/18122))
+- Add support for `NamedTuple` 'fallback' attributes ([#18127](https://github.com/astral-sh/ruff/pull/18127))
+- `type[…]` is always assignable to `type` ([#18121](https://github.com/astral-sh/ruff/pull/18121))
+- Support accessing `__builtins__` global ([#18118](https://github.com/astral-sh/ruff/pull/18118))
+
+### Bug fixes
+
+- Fix relative imports in stub packages ([#18132](https://github.com/astral-sh/ruff/pull/18132))
+
+### Contributors
+
+- [@MatthewMckee4](https://github.com/MatthewMckee4)
+- [@felixscherz](https://github.com/felixscherz)
+- [@BurntSushi](https://github.com/BurntSushi)
+- [@maxmynter](https://github.com/maxmynter)
+- [@sharkdp](https://github.com/sharkdp)
+- [@TomerBin](https://github.com/TomerBin)
+- [@MichaReiser](https://github.com/MichaReiser)
+
 ## 0.0.1-alpha.3
 
 ### Enhancements
