@@ -69,5 +69,5 @@ jobs:
               repo: "ty",
               title: `Daily property test run failed on ${new Date().toDateString()}`,
               body: "Run listed here: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}",
-              labels: ["bug", "testing"],
+              labels: ["bug", "type properties"],
             })
