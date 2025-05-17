@@ -1,5 +1,8 @@
 # ty
 
+[![PyPI](https://img.shields.io/pypi/v/ty.svg)](https://pypi.python.org/pypi/ty)
+[![Discord](https://img.shields.io/badge/Discord-%235865F2.svg?logo=discord&logoColor=white)](https://discord.com/invite/astral-sh)
+
 An extremely fast Python type checker and language server, written in Rust.
 
 > [!WARNING]
