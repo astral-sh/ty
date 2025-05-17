@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.0.1-alpha.5
+
+### Bug fixes
+
+- Fix assignability checks for invariant generics parameterized by gradual types ([#18138](https://github.com/astral-sh/ruff/pull/18138))
+- Revert boolean expression control flow change which caused a performance regression ([#18150](https://github.com/astral-sh/ruff/pull/18150))
+- Remove pyvenv.cfg validation check for lines with multiple `=` ([#18144](https://github.com/astral-sh/ruff/pull/18144))
+
+### Contributors
+
+- [@MatthewMckee4](https://github.com/MatthewMckee4)
+- [@AlexWaygood](https://github.com/AlexWaygood)
+
 ## 0.0.1-alpha.4
 
 ### Enhancements
