@@ -1,9 +1,7 @@
 # ty
 
 [![PyPI](https://img.shields.io/pypi/v/ty.svg)](https://pypi.python.org/pypi/ty)
-[![License](https://img.shields.io/pypi/l/ty.svg)](https://github.com/astral-sh/ty/blob/main/LICENSE)
 [![Supported versions](https://img.shields.io/pypi/pyversions/ty.svg)](https://pypi.python.org/pypi/ty)
-[![Actions status](https://github.com/astral-sh/ty/actions/workflows/ci.yaml/badge.svg)](https://github.com/astral-sh/ty/actions)
 [![Discord](https://img.shields.io/badge/Discord-%235865F2.svg?logo=discord&logoColor=white)](https://discord.com/invite/astral-sh)
 
 An extremely fast Python type checker and language server, written in Rust.
