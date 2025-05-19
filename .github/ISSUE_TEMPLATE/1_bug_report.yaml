@@ -6,7 +6,8 @@ body:
       value: |
         Thank you for taking the time to report an issue! We're glad to have you involved with ty.
 
-        **Before reporting, please make sure to search through [existing issues](https://github.com/astral-sh/ty/issues?q=is:issue+is:open+label:bug) (including [closed](https://github.com/astral-sh/ty/issues?q=is:issue%20state:closed%20label:bug)).**
+        **Before reporting, please make sure to search through [existing issues](https://github.com/astral-sh/ty/issues?q=is:issue+is:open+label:bug) (including [closed](https://github.com/astral-sh/ty/issues?q=is:issue%20state:closed%20label:bug)).**<br>
+        **In particular, check out the list of [frequently encountered problems](https://github.com/astral-sh/ty/issues/445).**
 
   - type: textarea
     attributes:
