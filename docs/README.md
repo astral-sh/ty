@@ -8,8 +8,8 @@
 **[Exit codes](#exit-codes)** |
 **[Reference](#reference)**
 
-
 ## Getting started
+
 For a quick guide on getting started, see the top-level [README](../README.md#getting-started).
 
 ## Installation
