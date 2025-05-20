@@ -3,8 +3,6 @@
 [![PyPI](https://img.shields.io/pypi/v/ty.svg)](https://pypi.python.org/pypi/ty)
 [![Discord](https://img.shields.io/badge/Discord-%235865F2.svg?logo=discord&logoColor=white)](https://discord.com/invite/astral-sh)
 
-[**Playground**](https://play.ty.dev/)
-
 An extremely fast Python type checker and language server, written in Rust.
 
 > [!WARNING]
@@ -16,7 +14,8 @@ An extremely fast Python type checker and language server, written in Rust.
 
 ## Getting started
 
-Run ty with [uvx](https://docs.astral.sh/uv/guides/tools/#running-tools) to get started quickly:
+Try out the [online playground](https://play.ty.dev), or run ty with
+[uvx](https://docs.astral.sh/uv/guides/tools/#running-tools) to get started quickly:
 
 ```shell
 uvx ty
