@@ -10,14 +10,11 @@
 
 
 ## Getting started
-
 For a quick guide on getting started, see the top-level [README](../README.md#getting-started).
 
 ## Installation
 
 ### Adding ty to your project
-
-Your project must use git for source control.
 
 Use [uv](https://github.com/astral-sh/uv) (or your project manager of choice) to add ty as a
 development dependency:
@@ -62,8 +59,9 @@ pip install ty
 Run [`ty check`](./reference/cli.md#ty-check), in your project's top-level directory,
 to check the project for type errors using ty's default configuration.
 
-If this provokes a cascade of errors, and you are using `venv` for a virtual environment, add
-the venv directory to your `.gitignore` and then retry.
+If this provokes a cascade of errors, and you are using the standard library `venv` module
+to provide your virtual environment, add the venv directory to your `.gitignore`
+or `.ignore` file and then retry.
 
 ## Module discovery
 
