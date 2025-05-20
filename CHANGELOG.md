@@ -1,5 +1,57 @@
 # Changelog
 
+## 0.0.1-alpha.6
+
+### Server
+
+- Add rule link to server diagnostics ([#18128](https://github.com/astral-sh/ruff/pull/18128))
+- Avoid panicking when there are multiple workspaces ([#18151](https://github.com/astral-sh/ruff/pull/18151))
+- Show related information in diagnostic ([#17359](https://github.com/astral-sh/ruff/pull/17359))
+
+### Configuration
+
+- Default `src.root` setting to `['.', '<project_name>']` if an `src/` directory does not exist but a `<project-name>/<project-name>` directory does exist ([#18141](https://github.com/astral-sh/ruff/pull/18141))
+
+### Typing semantics and features
+
+- Consider a class with a dynamic element in its MRO assignable to any subtype of `type` ([#18205](https://github.com/astral-sh/ruff/pull/18205))
+- Ensure that a function-literal type is always considered equivalent to itself ([#18227](https://github.com/astral-sh/ruff/pull/18227))
+- Promote literals when inferring class specializations from constructors ([#18102](https://github.com/astral-sh/ruff/pull/18102))
+- Support `typing.TypeAliasType` ([#18156](https://github.com/astral-sh/ruff/pull/18156))
+- Infer function-call type variables in both directions ([#18155](https://github.com/astral-sh/ruff/pull/18155))
+
+### Improvements to modeling of runtime semantics
+
+- Integer indexing into `bytes` returns `int` ([#18218](https://github.com/astral-sh/ruff/pull/18218))
+- Emit `invalid-exception-caught` diagnostics even when the caught exception is not bound to a variable ([#18202](https://github.com/astral-sh/ruff/pull/18202))
+
+### Usability improvements
+
+- Add hint to some diagnostics that [PEP 604](https://peps.python.org/pep-0604/) union syntax is only available on Python 3.10+ ([#18192](https://github.com/astral-sh/ruff/pull/18192))
+- Add note to `unresolved-import` diagnostic hinting to users to configure their Python environment ([#18207](https://github.com/astral-sh/ruff/pull/18207))
+- Make `division-by-zero` an opt-in diagnostic rather than opt-out ([#18220](https://github.com/astral-sh/ruff/pull/18220))
+
+### Import resolution improvements
+
+- Add support for PyPy virtual environments ([#18203](https://github.com/astral-sh/ruff/pull/18203))
+
+### Contributors
+
+- [@dhruvmanila](https://github.com/dhruvmanila)
+- [@InSyncWithFoo](https://github.com/InSyncWithFoo)
+- [@AlexWaygood](https://github.com/AlexWaygood)
+- [@MichaReiser](https://github.com/MichaReiser)
+- [@BradonZhang](https://github.com/BradonZhang)
+- [@dcreager](https://github.com/dcreager)
+- [@danielhollas](https://github.com/danielhollas)
+- [@esadek](https://github.com/esadek)
+- [@kiran-4444](https://github.com/kiran-4444)
+- [@Mathemmagician](https://github.com/Mathemmagician)
+- [@sharkdp](https://github.com/sharkdp)
+- [@felixscherz](https://github.com/felixscherz)
+- [@adamaaronson](https://github.com/adamaaronson)
+- [@carljm](https://github.com/carljm)
+
 ## 0.0.1-alpha.5
 
 ### Bug fixes
