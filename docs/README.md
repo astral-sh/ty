@@ -1,5 +1,14 @@
 # ty
 
+**[Installation](#installation)** |
+**[Module discovery](#module-discovery)** |
+**[Editor integration](#editor-integration)** |
+**[Rules](#rules)** |
+**[Suppressions](#suppressions)** |
+**[Exit codes](#exit-codes)** |
+**[Reference](#reference)**
+
+
 ## Getting started
 
 For a quick guide on getting started, see the top-level [README](../README.md#getting-started).
@@ -7,6 +16,8 @@ For a quick guide on getting started, see the top-level [README](../README.md#ge
 ## Installation
 
 ### Adding ty to your project
+
+Your project must use git for source control.
 
 Use [uv](https://github.com/astral-sh/uv) (or your project manager of choice) to add ty as a
 development dependency:
@@ -45,6 +56,14 @@ Install ty into your current Python environment with pip:
 ```shell
 pip install ty
 ```
+
+### Running ty
+
+Run [`ty check`](./reference/cli.md#ty-check), in your project's top-level directory,
+to check the project for type errors using ty's default configuration.
+
+If this provokes a cascade of errors, and you are using `venv` for a virtual environment, add
+the venv directory to your `.gitignore` and then retry.
 
 ## Module discovery
 
