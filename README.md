@@ -14,7 +14,8 @@ An extremely fast Python type checker and language server, written in Rust.
 
 ## Getting started
 
-Run ty with [uvx](https://docs.astral.sh/uv/guides/tools/#running-tools) to get started quickly:
+Try out the [online playground](https://play.ty.dev), or run ty with
+[uvx](https://docs.astral.sh/uv/guides/tools/#running-tools) to get started quickly:
 
 ```shell
 uvx ty
