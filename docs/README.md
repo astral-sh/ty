@@ -1,6 +1,6 @@
 # ty
 
-**[Installation](#installation)** |
+**[Installation and basic usage](#installation-and-basic-usage)** |
 **[Module discovery](#module-discovery)** |
 **[Editor integration](#editor-integration)** |
 **[Rules](#rules)** |
@@ -12,7 +12,7 @@
 
 For a quick guide on getting started, see the top-level [README](../README.md#getting-started).
 
-## Installation
+## Installation and basic usage
 
 ### Adding ty to your project
 
