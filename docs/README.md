@@ -1,6 +1,7 @@
 # ty
 
-**[Installation and basic usage](#installation-and-basic-usage)** |
+**[Installation](#installation)** |
+**[Usage](usage)** |
 **[Module discovery](#module-discovery)** |
 **[Editor integration](#editor-integration)** |
 **[Rules](#rules)** |
@@ -12,7 +13,7 @@
 
 For a quick guide on getting started, see the top-level [README](../README.md#getting-started).
 
-## Installation and basic usage
+## Installation
 
 ### Adding ty to your project
 
@@ -54,7 +55,7 @@ Install ty into your current Python environment with pip:
 pip install ty
 ```
 
-### Running ty
+### Usage
 
 Run [`ty check`](./reference/cli.md#ty-check), in your project's top-level directory,
 to check the project for type errors using ty's default configuration.
