@@ -190,9 +190,7 @@ server.
 
 #### Neovim
 
-Assuming that the command `ty` is already installed and the command is available in your session, you can add this to your configuration (e.g. `init.lua`):
-
-For `Neovim` 0.10 (with [`nvim-lspconfig`](https://github.com/neovim/nvim-lspconfig))"
+For Neovim 0.10 or earlier (with [`nvim-lspconfig`](https://github.com/neovim/nvim-lspconfig)):
 
 ```lua
 require('lspconfig').ty.setup({
@@ -204,10 +202,10 @@ require('lspconfig').ty.setup({
 })
 ```
 
-For `Neovim` 0.11+ (with [`vim.lsp.config`](<https://neovim.io/doc/user/lsp.html#vim.lsp.config()>))"
+For Neovim 0.11+ (with [`vim.lsp.config`](<https://neovim.io/doc/user/lsp.html#vim.lsp.config()>)):
 
 ```lua
--- Optional config
+-- Optional: Only required if you need to update the language server settings
 vim.lsp.config('ty', {
   init_options = {
     settings = {
@@ -215,7 +213,9 @@ vim.lsp.config('ty', {
     }
   }
 })
-vim.lsp.enable('ty')  -- Required
+
+-- Required: Enable the language server
+vim.lsp.enable('ty')
 ```
 
 ## Rules
