@@ -188,6 +188,36 @@ Refer to your editor's documentation to learn how to connect to an LSP server.
 See the [editor settings](./reference/editor-settings.md) for more details on configuring the language
 server.
 
+#### Neovim
+
+For Neovim 0.10 or earlier (with [`nvim-lspconfig`](https://github.com/neovim/nvim-lspconfig)):
+
+```lua
+require('lspconfig').ty.setup({
+  init_options = {
+    settings = {
+      -- ty language server settings go here
+    }
+  }
+})
+```
+
+For Neovim 0.11+ (with [`vim.lsp.config`](<https://neovim.io/doc/user/lsp.html#vim.lsp.config()>)):
+
+```lua
+-- Optional: Only required if you need to update the language server settings
+vim.lsp.config('ty', {
+  init_options = {
+    settings = {
+      -- ty language server settings go here
+    }
+  }
+})
+
+-- Required: Enable the language server
+vim.lsp.enable('ty')
+```
+
 ## Rules
 
 Rules are individual checks that ty performs to detect common issues in your code, such as
