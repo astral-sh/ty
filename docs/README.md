@@ -1,5 +1,14 @@
 # ty
 
+**[Installation](#installation)** |
+**[Usage](usage)** |
+**[Module discovery](#module-discovery)** |
+**[Editor integration](#editor-integration)** |
+**[Rules](#rules)** |
+**[Suppressions](#suppressions)** |
+**[Exit codes](#exit-codes)** |
+**[Reference](#reference)**
+
 ## Getting started
 
 For a quick guide on getting started, see the top-level [README](../README.md#getting-started).
@@ -45,6 +54,15 @@ Install ty into your current Python environment with pip:
 ```shell
 pip install ty
 ```
+
+### Usage
+
+Run [`ty check`](./reference/cli.md#ty-check), in your project's top-level directory,
+to check the project for type errors using ty's default configuration.
+
+If this provokes a cascade of errors, and you are using the standard library `venv` module
+to provide your virtual environment, add the venv directory to your `.gitignore`
+or `.ignore` file and then retry.
 
 ## Module discovery
 
