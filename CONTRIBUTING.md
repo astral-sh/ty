@@ -12,6 +12,17 @@ located in the [Ruff](https://github.com/astral-sh/ruff) repository. While the r
 two projects will evolve over time, they currently share foundational crates and it's easiest to use a single
 repository for the Rust development.
 
+ty's command-line help text, and part of `docs/reference/`, are auto-generated from Rust code in the Ruff
+repository, using generation scripts that live in
+[`crates/ruff_dev/src/`](https://github.com/astral-sh/ruff/blob/main/crates/ruff_dev/src/):
+
+- [Configuration options](docs/reference/configuration.md), from
+    [ruff/crates/ty_project/src/metadata/options.rs](https://github.com/astral-sh/ruff/blob/main/crates/ty_project/src/metadata/options.rs)
+- [Rules](docs/reference/rules.md), from
+    [ruff/crates/ty_python_semantic/src/](https://github.com/astral-sh/ruff/blob/main/crates/ty_python_semantic/src/)
+- [Command-line interface reference](docs/reference/cli.md), from
+    [ruff/crates/ty/src/args.rs](https://github.com/astral-sh/ruff/blob/main/crates/ty/src/args.rs)
+
 The Ruff repository is included as a submodule inside this repository to allow ty's release tags to reflect
 an exact snapshot of the Ruff project. The submodule is only updated on release. To see the latest development
 code, check out the `main` branch of the Ruff repository.
