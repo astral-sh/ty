@@ -1,7 +1,7 @@
 # ty
 
 **[Installation](#installation)** |
-**[Usage](usage)** |
+**[Usage](#usage)** |
 **[Module discovery](#module-discovery)** |
 **[Editor integration](#editor-integration)** |
 **[Rules](#rules)** |
