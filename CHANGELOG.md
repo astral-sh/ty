@@ -1,5 +1,58 @@
 # Changelog
 
+## 0.0.1-alpha.7
+
+### Bug fixes
+
+- Implement Python's floor-division semantics for `Literal` `int`s ([#18249](https://github.com/astral-sh/ruff/pull/18249))
+- Don't warn about a `yield` expression not being in a function if the `yield` expression is in a function ([#18008](https://github.com/astral-sh/ruff/pull/18008))
+- Fix inference of attribute writes to unions/intersections that including module-literal types ([#18313](https://github.com/astral-sh/ruff/pull/18313))
+- Fix false-positive diagnostics in binary comparison inference logic for intersection types ([#18266](https://github.com/astral-sh/ruff/pull/18266))
+- Fix instance vs callable subtyping/assignability ([#18260](https://github.com/astral-sh/ruff/pull/18260))
+- Ignore `ClassVar` declarations when resolving instance members ([#18241](https://github.com/astral-sh/ruff/pull/18241))
+- Fix crash when hovering over a `ty_extensions.Intersection[A, B]` expression in an IDE context ([#18321](https://github.com/astral-sh/ruff/pull/18321))
+- Respect `MRO_NO_OBJECT_FALLBACK` policy when looking up symbols on `type` instances ([#18312](https://github.com/astral-sh/ruff/pull/18312))
+- `get_protocol_members` returns a frozenset, not a tuple ([#18284](https://github.com/astral-sh/ruff/pull/18284))
+
+### Typing semantics and features
+
+- Support `import <namespace>` and `from <namespace> import module` ([#18137](https://github.com/astral-sh/ruff/pull/18137))
+- Support frozen dataclasses ([#17974](https://github.com/astral-sh/ruff/pull/17974))
+- Understand that the presence of a `__getattribute__` method indicates arbitrary members can exist on a type ([#18280](https://github.com/astral-sh/ruff/pull/18280))
+- Add a subdiagnostic if `invalid-return-type` is emitted on a method with an empty body on a non-protocol subclass of a protocol class ([#18243](https://github.com/astral-sh/ruff/pull/18243))
+- Improve `invalid-type-form` diagnostic where a module-literal type is used in a type expression and the module has a member which would be valid in a type expression ([#18244](https://github.com/astral-sh/ruff/pull/18244))
+- Split `invalid-base` error code into two error codes ([#18245](https://github.com/astral-sh/ruff/pull/18245))
+- Rename `call-possibly-unbound-method` to `possibly-unbound-implicit-call` ([#18017](https://github.com/astral-sh/ruff/pull/18017))
+
+### Configuration
+
+- Add `tests` to `src.root` by default if a `tests/` directory exists and is not a package ([#18286](https://github.com/astral-sh/ruff/pull/18286))
+- Tell the user why we inferred the Python version we inferred ([#18082](https://github.com/astral-sh/ruff/pull/18082))
+- Add support for detecting activated Conda and Pixi environments ([#18267](https://github.com/astral-sh/ruff/pull/18267))
+- Move `respect-ignore-files` configuration setting under `src` section ([#18322](https://github.com/astral-sh/ruff/pull/18322))
+
+### Server
+
+- Fix server panic when calling `system_mut` ([#18252](https://github.com/astral-sh/ruff/pull/18252))
+- Abort process if worker thread panics ([#18211](https://github.com/astral-sh/ruff/pull/18211))
+- Gracefully handle salsa cancellations and panics in background request handlers ([#18254](https://github.com/astral-sh/ruff/pull/18254))
+
+### Contributors
+
+- [@felixscherz](https://github.com/felixscherz)
+- [@carljm](https://github.com/carljm)
+- [@j178](https://github.com/j178)
+- [@thejchap](https://github.com/thejchap)
+- [@brainwane](https://github.com/brainwane)
+- [@AlexWaygood](https://github.com/AlexWaygood)
+- [@lipefree](https://github.com/lipefree)
+- [@InSyncWithFoo](https://github.com/InSyncWithFoo)
+- [@brandtbucher](https://github.com/brandtbucher)
+- [@MichaReiser](https://github.com/MichaReiser)
+- [@maxmynter](https://github.com/maxmynter)
+- [@fabridamicelli](https://github.com/fabridamicelli)
+- [@sharkdp](https://github.com/sharkdp)
+
 ## 0.0.1-alpha.6
 
 ### Server
