@@ -18,8 +18,8 @@ _THIS_FILE = Path(__file__)
 _REPO_ROOT = _THIS_FILE.parent.parent
 _DOCS_README = _REPO_ROOT / "docs" / "README.md"
 
-_TOC_START_MARKER = "<!-- TOC start -->\n"
-_TOC_END_MARKER = "\n<!-- TOC end -->"
+_TOC_START_MARKER = "<!-- TOC start -->\n\n"
+_TOC_END_MARKER = "\n\n<!-- TOC end -->"
 _TOC_SEPARATOR = " |\n"
 
 _CODE_BLOCK = re.compile(

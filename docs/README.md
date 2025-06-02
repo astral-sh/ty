@@ -1,6 +1,7 @@
 # ty
 
 <!-- TOC start -->
+
 **[Getting started](#getting-started)** |
 **[Installation](#installation)** |
 **[Module discovery](#module-discovery)** |
@@ -12,6 +13,7 @@
 **[Configuration](#configuration)** |
 **[Exit codes](#exit-codes)** |
 **[Reference](#reference)**
+
 <!-- TOC end -->
 
 ## Getting started
