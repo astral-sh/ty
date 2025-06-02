@@ -1,5 +1,54 @@
 # Changelog
 
+## 0.0.1-alpha.8
+
+### Typing semantics and features
+
+- Add subtyping between Callable types and class literals with `__init__` ([#17638](https://github.com/astral-sh/ruff/pull/17638))
+- Implement implicit inheritance from `Generic[]` for PEP-695 generic classes ([#18283](https://github.com/astral-sh/ruff/pull/18283))
+- Infer the Python version from the environment if feasible ([#18057](https://github.com/astral-sh/ruff/pull/18057))
+- Support ephemeral uv virtual environments ([#18335](https://github.com/astral-sh/ruff/pull/18335))
+- Synthetic function-like callables ([#18242](https://github.com/astral-sh/ruff/pull/18242))
+
+### Diagnostics
+
+- Add diagnosis for function with no return statement but with return type annotation ([#18359](https://github.com/astral-sh/ruff/pull/18359))
+- Add hint if async context manager is used in non-async with statement ([#18299](https://github.com/astral-sh/ruff/pull/18299))
+- Improve diagnostics if the user attempts to import a stdlib module that does not exist on their configured Python version ([#18403](https://github.com/astral-sh/ruff/pull/18403))
+- Tell the user why we inferred a certain Python version when reporting version-specific syntax errors ([#18295](https://github.com/astral-sh/ruff/pull/18295))
+
+### Bug fixes
+
+- Fix multithreading related hangs and panics ([#18238](https://github.com/astral-sh/ruff/pull/18238))
+- Ensure `Literal` types are considered assignable to anything their `Instance` supertypes are assignable to ([#18351](https://github.com/astral-sh/ruff/pull/18351))
+- Callable types are disjoint from non-callable `@final` nominal instance types ([#18368](https://github.com/astral-sh/ruff/pull/18368))
+- Support callability of bound/constrained typevars ([#18389](https://github.com/astral-sh/ruff/pull/18389))
+
+### Server
+
+- Fix server hang after shutdown request ([#18414](https://github.com/astral-sh/ruff/pull/18414))
+- Improve completions by leveraging scopes ([#18281](https://github.com/astral-sh/ruff/pull/18281))
+- Support cancellation and retry in the server ([#18273](https://github.com/astral-sh/ruff/pull/18273))
+- Support publishing diagnostics in the server ([#18309](https://github.com/astral-sh/ruff/pull/18309))
+
+### CLI
+
+- Add `--config-file` CLI arg ([#18083](https://github.com/astral-sh/ruff/pull/18083))
+
+### Contributors
+
+- [@AlexWaygood](https://github.com/AlexWaygood)
+- [@BurntSushi](https://github.com/BurntSushi)
+- [@lipefree](https://github.com/lipefree)
+- [@MatthewMckee4](https://github.com/MatthewMckee4)
+- [@dhruvmanila](https://github.com/dhruvmanila)
+- [@zanieb](https://github.com/zanieb)
+- [@carljm](https://github.com/carljm)
+- [@thejchap](https://github.com/thejchap)
+- [@sharkdp](https://github.com/sharkdp)
+- [@InSyncWithFoo](https://github.com/InSyncWithFoo)
+- [@MichaReiser](https://github.com/MichaReiser)
+
 ## 0.0.1-alpha.7
 
 ### Bug fixes
