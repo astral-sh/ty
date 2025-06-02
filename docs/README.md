@@ -155,12 +155,12 @@ By default, the lower bound of the project's [`requires-python`](https://packagi
 used as the target Python version, ensuring that features and symbols only available in newer Python
 versions are not used.
 
-If the `requires-python` field is not available, however, but a virtual environment has been
+If the `requires-python` field is not available but a virtual environment *has* been
 configured or detected, ty will try to infer the Python version being used from the virtual
 environment's metadata.
 
 If no virtual environment is present or inferring the Python version from the metadata fails,
-applies, ty will fall back to the latest stable Python version supported by ty (currently 3.13).
+ty will fall back to the latest stable Python version supported by ty (currently 3.13).
 
 The Python version may also be explicitly specified using the
 [`python-version`](./reference/configuration.md#python-version) setting or the
