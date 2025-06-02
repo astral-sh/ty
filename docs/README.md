@@ -1,13 +1,18 @@
 # ty
 
+<!-- TOC start -->
+**[Getting started](#getting-started)** |
 **[Installation](#installation)** |
-**[Usage](#usage)** |
 **[Module discovery](#module-discovery)** |
+**[Python version](#python-version)** |
+**[Excluding files](#excluding-files)** |
 **[Editor integration](#editor-integration)** |
 **[Rules](#rules)** |
 **[Suppressions](#suppressions)** |
+**[Configuration](#configuration)** |
 **[Exit codes](#exit-codes)** |
 **[Reference](#reference)**
+<!-- TOC end -->
 
 ## Getting started
 
