@@ -1,6 +1,6 @@
 # ty
 
-<!-- TOC start -->
+<!-- Generated table of contents start -->
 
 **[Getting started](#getting-started)** |
 **[Installation](#installation)** |
@@ -14,7 +14,7 @@
 **[Exit codes](#exit-codes)** |
 **[Reference](#reference)**
 
-<!-- TOC end -->
+<!-- Generated table of contents end -->
 
 ## Getting started
 
