@@ -8,11 +8,11 @@
 - Implement implicit inheritance from `Generic[]` for PEP-695 generic classes ([#18283](https://github.com/astral-sh/ruff/pull/18283))
 - Infer the Python version from the environment if feasible ([#18057](https://github.com/astral-sh/ruff/pull/18057))
 - Support ephemeral uv virtual environments ([#18335](https://github.com/astral-sh/ruff/pull/18335))
-- Synthetic function-like callables ([#18242](https://github.com/astral-sh/ruff/pull/18242))
+- Model that some `Callable` types should have all `FunctionType` attributes available ([#18242](https://github.com/astral-sh/ruff/pull/18242))
 
 ### Diagnostics
 
-- Add diagnosis for function with no return statement but with return type annotation ([#18359](https://github.com/astral-sh/ruff/pull/18359))
+- Add diagnostic hints for a function that has a non-`None` return-type annotation but no return statements ([#18359](https://github.com/astral-sh/ruff/pull/18359))
 - Add hint if async context manager is used in non-async with statement ([#18299](https://github.com/astral-sh/ruff/pull/18299))
 - Improve diagnostics if the user attempts to import a stdlib module that does not exist on their configured Python version ([#18403](https://github.com/astral-sh/ruff/pull/18403))
 - Tell the user why we inferred a certain Python version when reporting version-specific syntax errors ([#18295](https://github.com/astral-sh/ruff/pull/18295))
