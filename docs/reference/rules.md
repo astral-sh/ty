@@ -233,13 +233,13 @@ Static analysis tools like ty can't analyse type annotations that use f-string n
 
 ### Examples
 ```python
-def test(): -> f"int":
+def test() -> f"int":
     ...
 ```
 
 Use instead:
 ```python
-def test(): -> "int":
+def test() -> "int":
     ...
 ```
 
