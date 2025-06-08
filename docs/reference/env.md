@@ -11,6 +11,10 @@ If set, ty will use this value as the log level for its `--verbose` output. Acce
 
 See the [tracing documentation](https://docs.rs/tracing-subscriber/latest/tracing_subscriber/filter/struct.EnvFilter.html#example-syntax) for more.
 
+## `TY_LOG_PROFILE`
+
+If set to `"1"` or `"true"`, ty will enable flamegraph profiling. This creates a `tracing.folded` file that can be used to generate flame graphs for performance analysis.
+
 ## `TY_MAX_PARALLELISM`
 
 Specifies an upper limit for the number of tasks ty is allowed to run in parallel. For example, how many files should be checked in parallel.
@@ -28,6 +32,10 @@ Specifies an upper limit for the number of threads ty uses when performing work 
 ### `VIRTUAL_ENV`
 
 Used to detect an activated virtual environment.
+
+### `CONDA_PREFIX`
+
+Used to detect an activated Conda environment location. If both `VIRTUAL_ENV` and `CONDA_PREFIX` are present, `VIRTUAL_ENV` will be preferred.
 
 ### `XDG_CONFIG_HOME`
 
