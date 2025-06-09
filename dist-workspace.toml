@@ -6,7 +6,7 @@ version = "0.0.1-alpha.8"
 # Config for 'dist'
 [dist]
 # The preferred dist version to use in CI (Cargo.toml SemVer syntax)
-cargo-dist-version = "0.28.5-prerelease.3"
+cargo-dist-version = "0.28.6"
 # Whether to consider the binaries in a package for distribution (defaults true)
 dist = false
 # CI backends to support
@@ -63,6 +63,8 @@ github-custom-job-permissions = { "build-docker" = { packages = "write", content
 install-updater = false
 # Path that installers should place binaries in
 install-path = ["$XDG_BIN_HOME/", "$XDG_DATA_HOME/../bin", "~/.local/bin"]
+# Whether source tarballs should include submodules
+recursive-tarball = true
 
 [dist.github-custom-runners]
 global = "depot-ubuntu-latest-4"
