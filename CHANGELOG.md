@@ -1,5 +1,71 @@
 # Changelog
 
+## 0.0.1-alpha.9
+
+### Typing semantics and features
+
+- Add generic inference for dataclasses ([#18443](https://github.com/astral-sh/ruff/pull/18443))
+- Add support for global `__debug__` constant ([#18540](https://github.com/astral-sh/ruff/pull/18540))
+- Argument type expansion for overload call evaluation ([#18382](https://github.com/astral-sh/ruff/pull/18382))
+- Exclude members starting with `_abc_` from a protocol interface ([#18467](https://github.com/astral-sh/ruff/pull/18467))
+- Infer `list[T]` for starred target in unpacking ([#18401](https://github.com/astral-sh/ruff/pull/18401))
+- Infer `list[T]` when unpacking non-tuple type ([#18438](https://github.com/astral-sh/ruff/pull/18438))
+- Support type annotation for legacy typing aliases for generic classes ([#18404](https://github.com/astral-sh/ruff/pull/18404))
+- Allow using `dataclasses.dataclass` as a function ([#18440](https://github.com/astral-sh/ruff/pull/18440))
+- Type narrowing for attribute/subscript assignments ([#18041](https://github.com/astral-sh/ruff/pull/18041))
+
+### Diagnostics
+
+- Add hints to `invalid-type-form` for common mistakes ([#18543](https://github.com/astral-sh/ruff/pull/18543))
+- Add subdiagnostic suggestion to `unresolved-reference` diagnostic when variable exists on `self` ([#18444](https://github.com/astral-sh/ruff/pull/18444))
+- Track the origin of the `environment.python` setting for better error messages ([#18483](https://github.com/astral-sh/ruff/pull/18483))
+
+### CLI
+
+- Fix `--python` argument for Windows, and improve error messages for bad `--python` arguments ([#18457](https://github.com/astral-sh/ruff/pull/18457))
+
+### Bug fixes
+
+- Meta-type of type variables should be `type[..]` ([#18439](https://github.com/astral-sh/ruff/pull/18439))
+- Only consider a type `T` a subtype of a protocol `P` if all of `P`'s members are fully bound on `T` ([#18466](https://github.com/astral-sh/ruff/pull/18466))
+- Fix false positives for legacy `ParamSpec`s inside `Callable` type expressions ([#18426](https://github.com/astral-sh/ruff/pull/18426))
+- Fix panic when pulling types for `UnaryOp` expressions inside `Literal` slices ([#18536](https://github.com/astral-sh/ruff/pull/18536))
+- Fix panic when trying to pull types for attribute expressions inside `Literal` type expressions ([#18535](https://github.com/astral-sh/ruff/pull/18535))
+- Fix panic when trying to pull types for subscript expressions inside `Callable` type expressions ([#18534](https://github.com/astral-sh/ruff/pull/18534))
+- Treat lambda functions as instances of `types.FunctionType` ([#18431](https://github.com/astral-sh/ruff/pull/18431))
+- Implement disjointness between `Callable` and `SpecialForm` ([#18503](https://github.com/astral-sh/ruff/pull/18503))
+
+### Server
+
+- Fix stale diagnostics in documents on Windows ([#18544](https://github.com/astral-sh/ruff/pull/18544))
+- Add support for `object.<CURSOR>` completions ([#18468](https://github.com/astral-sh/ruff/pull/18468))
+- Only provide declarations and bindings as completions ([#18456](https://github.com/astral-sh/ruff/pull/18456))
+
+### Documentation
+
+- Add `CONDA_PREFIX` to `--python` documentation ([#18574](https://github.com/astral-sh/ruff/pull/18574))
+- Update list of referenced environment variables ([#612](https://github.com/astral-sh/ty/pull/612))
+- Document how the default value for `python-version` is determined ([#18549](https://github.com/astral-sh/ruff/pull/18549))
+- Document the `"all"` option for `python-platform` ([#18548](https://github.com/astral-sh/ruff/pull/18548))
+
+### Contributors
+
+- [@AlexWaygood](https://github.com/AlexWaygood)
+- [@charliermarsh](https://github.com/charliermarsh)
+- [@mtshiba](https://github.com/mtshiba)
+- [@benbaror](https://github.com/benbaror)
+- [@sharkdp](https://github.com/sharkdp)
+- [@carljm](https://github.com/carljm)
+- [@MichaReiser](https://github.com/MichaReiser)
+- [@lipefree](https://github.com/lipefree)
+- [@BurntSushi](https://github.com/BurntSushi)
+- [@DetachHead](https://github.com/DetachHead)
+- [@MatthewMckee4](https://github.com/MatthewMckee4)
+- [@suneettipirneni](https://github.com/suneettipirneni)
+- [@abhijeetbodas2001](https://github.com/abhijeetbodas2001)
+- [@ibraheemdev](https://github.com/ibraheemdev)
+- [@dhruvmanila](https://github.com/dhruvmanila)
+
 ## 0.0.1-alpha.8
 
 ### Typing semantics and features
