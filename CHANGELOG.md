@@ -13,12 +13,12 @@
 
 ### Bug fixes
 
-- Delay computation of 'unbound' visibility for implicit instance attributes ([#18669](https://github.com/astral-sh/ruff/pull/18669))
+- Delay computation of 'unbound' visibility for implicit instance attributes ([#18669](https://github.com/astral-sh/ruff/pull/18669)).
+  This fixes a significant performance regression on version 0.0.1-alpha.9.
 
 ### Typing semantics and features
 
-- Support del statement and deletion of except handler names ([#18593](https://github.com/astral-sh/ruff/pull/18593))
-- Generate the top and bottom materialization of a type ([#18594](https://github.com/astral-sh/ruff/pull/18594))
+- Support the `del` statement. Model implicit deletion of except handler names ([#18593](https://github.com/astral-sh/ruff/pull/18593))
 
 ### Release
 
