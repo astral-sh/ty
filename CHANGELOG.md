@@ -1,5 +1,39 @@
 # Changelog
 
+## 0.0.1-alpha.10
+
+### Server
+
+- Improve support for `object.<CURSOR>` completions ([#18629](https://github.com/astral-sh/ruff/pull/18629))
+
+### Configuration
+
+- Add file inclusion and exclusion ([#18498](https://github.com/astral-sh/ruff/pull/18498))
+- Infer the Python version from `--python=<system installation>` on Unix ([#18550](https://github.com/astral-sh/ruff/pull/18550))
+
+### Bug fixes
+
+- Delay computation of 'unbound' visibility for implicit instance attributes ([#18669](https://github.com/astral-sh/ruff/pull/18669))
+
+### Typing semantics and features
+
+- Support del statement and deletion of except handler names ([#18593](https://github.com/astral-sh/ruff/pull/18593))
+- Generate the top and bottom materialization of a type ([#18594](https://github.com/astral-sh/ruff/pull/18594))
+
+### Release
+
+- Include ruff/ directory in release source tarballs ([#617](https://github.com/astral-sh/ty/pull/617))
+
+### Contributors
+
+- [@AlexWaygood](https://github.com/AlexWaygood)
+- [@BurntSushi](https://github.com/BurntSushi)
+- [@Gankra](https://github.com/Gankra)
+- [@mtshiba](https://github.com/mtshiba)
+- [@sharkdp](https://github.com/sharkdp)
+- [@dhruvmanila](https://github.com/dhruvmanila)
+- [@MichaReiser](https://github.com/MichaReiser)
+
 ## 0.0.1-alpha.9
 
 ### Typing semantics and features
