@@ -168,9 +168,25 @@ The Python version may also be explicitly specified using the
 
 ## Excluding files
 
-By default, ty ignores files listed in an `.ignore` or `.gitignore` file.
+ty automatically discovers all Python files in your project. You can customize where ty searches by using the [`src.include`](./reference/configuration.md#include) and [`src.exclude`](./reference/configuration.md#exclude) settings.
 
-To disable this functionality, set [`respect-ignore-files`](./reference/configuration.md#respect-ignore-files) to `false`.
+For example, with the following configuration, ty checks all Python files in the `src` and `tests` directories except those in the `src/generated` directory:
+
+```toml
+[tool.ty.src]
+include = ["src", "tests"]
+exclude = ["src/generated"]
+```
+
+By default, ty excludes a [variety of commonly ignored directories](./reference/configuration.md#exclude). If you want to include one of these directories, you can do so by adding a negative `exclude`:
+
+```toml
+[tool.ty.src]
+# Remove `build` from the excluded directories.
+exclude = ["!build"]
+```
+
+By default, ty ignores files listed in an `.ignore` or `.gitignore` file. To disable this functionality, set [`respect-ignore-files`](./reference/configuration.md#respect-ignore-files) to `false`.
 
 You may also explicitly pass the paths that ty should check, e.g.:
 
@@ -178,7 +194,28 @@ You may also explicitly pass the paths that ty should check, e.g.:
 ty check src scripts/benchmark.py
 ```
 
-We plan on adding dedicated options for including and excluding files in future releases.
+Paths passed explicitly are checked even if they are otherwise ignored by an `exclude` or ignore file.
+
+### Include and exclude syntax
+
+Both `include` and `exclude` support gitignore like glob patterns:
+
+- `./src/` matches only a directory
+- `./src` matches both files and directories
+- `src` matches files or directories named `src`
+- `*` matches any (possibly empty) sequence of characters (except `/`).
+- `**` matches zero or more path components.
+    This sequence **must** form a single path component, so both `**a` and `b**` are invalid and will result in an error.
+    A sequence of more than two consecutive `*` characters is also invalid.
+- `?` matches any single character except `/`
+- `[abc]` matches any character inside the brackets. Character sequences can also specify ranges of characters, as ordered by Unicode,
+    so e.g. `[0-9]` specifies any character between `0` and `9` inclusive. An unclosed bracket is invalid.
+
+Include patterns are anchored: `src` includes only `<project_root>/src` and not `<project_root>/test/src`. To include any directory named `src`, use a prefix match like so: `**/src`, but note that these can notably slow down the Python file discovery.
+
+Exclude patterns aren't anchored unless they contain a `/`: `venv` excludes any directory named `venv`, e.g. it excludes `<project_root>/venv` and `<project_root>/sub/venv`.
+
+All fields accepting patterns use the reduced portable glob syntax from [PEP 639](https://peps.python.org/pep-0639/#add-license-FILES-key), with the addition that characters can be escaped with a backslash.
 
 ## Editor integration
 
