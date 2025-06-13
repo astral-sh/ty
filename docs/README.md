@@ -202,8 +202,8 @@ Paths passed explicitly are checked even if they are otherwise ignored by an `ex
 
 Both `include` and `exclude` support gitignore like glob patterns:
 
-- `./src/` matches only a directory
-- `./src` matches both files and directories
+- `src/` matches only a directory
+- `src` matches both files and directories
 - `src` matches files or directories named `src`
 - `*` matches any (possibly empty) sequence of characters (except `/`).
 - `**` matches zero or more path components.
@@ -215,7 +215,7 @@ Both `include` and `exclude` support gitignore like glob patterns:
 
 Include patterns are anchored: `src` includes only `<project_root>/src` and not `<project_root>/test/src`. To include any directory named `src`, use a prefix match like so: `**/src`, but note that these can notably slow down the Python file discovery.
 
-Exclude patterns aren't anchored unless they contain a `/`: `venv` excludes any directory named `venv`, e.g. it excludes `<project_root>/venv` and `<project_root>/sub/venv`.
+Unlike include patterns, exclude patterns aren't anchored unless they contain a `/`: `venv` excludes any directory named `venv`, e.g. it excludes `<project_root>/venv` and `<project_root>/sub/venv`.
 
 All fields accepting patterns use the reduced portable glob syntax from [PEP 639](https://peps.python.org/pep-0639/#add-license-FILES-key), with the addition that characters can be escaped with a backslash.
 
