@@ -4,7 +4,7 @@
 
 ### Breaking changes
 
-- Autocompletions have been stabilized, the opt-in setting has been removed ([#18650](https://github.com/astral-sh/ruff/pull/18650))
+- Stabilize auto-complete; remove the opt-in experimental setting ([#18650](https://github.com/astral-sh/ruff/pull/18650))
 
 ### Bug fixes
 
@@ -19,7 +19,7 @@
 - Add partial support for `TypeIs` ([#18589](https://github.com/astral-sh/ruff/pull/18589))
 - Support `dataclasses.KW_ONLY` ([#18677](https://github.com/astral-sh/ruff/pull/18677))
 - Filter overloads based on `Any` / `Unknown` ([#18607](https://github.com/astral-sh/ruff/pull/18607))
-- Improved reachability analysis ([#18621](https://github.com/astral-sh/ruff/pull/18621))
+- Improve reachability analysis ([#18621](https://github.com/astral-sh/ruff/pull/18621))
 - Model `T: Never` as a subtype of `Never` ([#18687](https://github.com/astral-sh/ruff/pull/18687))
 - Update typeshed stubs ([#18679](https://github.com/astral-sh/ruff/pull/18679))
 
