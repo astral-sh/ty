@@ -1,5 +1,51 @@
 # Changelog
 
+## 0.0.1-alpha.11
+
+### Breaking changes
+
+- Stabilize auto-complete; remove the opt-in experimental setting ([#18650](https://github.com/astral-sh/ruff/pull/18650))
+
+### Bug fixes
+
+- Fix binary expression inference between Boolean literals and `bool` instances ([#18663](https://github.com/astral-sh/ruff/pull/18663))
+- Fix panic that could occur when printing a class's "header" in diagnostic messages ([#18670](https://github.com/astral-sh/ruff/pull/18670))
+- Fix panic when attempting to provide autocompletions for an instance of a class that assigns attributes to `self[0]` ([#18707](https://github.com/astral-sh/ruff/pull/18707))
+- Fix panics when "pulling types" for various special forms that have the wrong number of parameters. These could cause issues when hovering over symbols in an IDE. ([#18642](https://github.com/astral-sh/ruff/pull/18642))
+
+### Typing semantics and features
+
+- Support type narrowing for attribute and subscript expressions ([#17643](https://github.com/astral-sh/ruff/pull/17643))
+- Add partial support for `TypeIs` ([#18589](https://github.com/astral-sh/ruff/pull/18589))
+- Support `dataclasses.KW_ONLY` ([#18677](https://github.com/astral-sh/ruff/pull/18677))
+- Filter overloads based on `Any` / `Unknown` ([#18607](https://github.com/astral-sh/ruff/pull/18607))
+- Improve reachability analysis ([#18621](https://github.com/astral-sh/ruff/pull/18621))
+- Model `T: Never` as a subtype of `Never` ([#18687](https://github.com/astral-sh/ruff/pull/18687))
+- Update typeshed stubs ([#18679](https://github.com/astral-sh/ruff/pull/18679)): [typeshed diff](https://github.com/python/typeshed/compare/5a3c495d2f6fa9b68cd99f39feba4426e4d17ea9...ecd5141cc036366cc9e3ca371096d6a14b0ccd13)
+
+### Configuration
+
+- Allow overriding rules for specific files ([#18648](https://github.com/astral-sh/ruff/pull/18648))
+
+### Server
+
+- Add `python.ty.disableLanguageServices` config ([#18230](https://github.com/astral-sh/ruff/pull/18230))
+
+### Contributors
+
+- [@dhruvmanila](https://github.com/dhruvmanila)
+- [@felixscherz](https://github.com/felixscherz)
+- [@MichaReiser](https://github.com/MichaReiser)
+- [@alpaylan](https://github.com/alpaylan)
+- [@mtshiba](https://github.com/mtshiba)
+- [@github-actions](https://github.com/github-actions)
+- [@BurntSushi](https://github.com/BurntSushi)
+- [@InSyncWithFoo](https://github.com/InSyncWithFoo)
+- [@AlexWaygood](https://github.com/AlexWaygood)
+- [@abhijeetbodas2001](https://github.com/abhijeetbodas2001)
+- [@sharkdp](https://github.com/sharkdp)
+- [@ibraheemdev](https://github.com/ibraheemdev)
+
 ## 0.0.1-alpha.10
 
 ### Server
