@@ -106,6 +106,8 @@ version-files = [
 submodules = ["ruff"]
 require-labels = [{ submodule = "ruff", labels = ["ty"] }]
 ignore-labels = ["internal", "testing"]
+major-labels = []  # We do not use the major version number yet
+minor-labels = []  # We do not use the minor version number yet
 version-format = "cargo"
 default-bump-type = "pre"
 trim-title-prefixes = ["[ty]"]
