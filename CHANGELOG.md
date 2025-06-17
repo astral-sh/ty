@@ -9,9 +9,9 @@
 ### Bug fixes
 
 - Fix binary expression inference between Boolean literals and `bool` instances ([#18663](https://github.com/astral-sh/ruff/pull/18663))
-- Avoid accessing class literal with incorrect AST ([#18670](https://github.com/astral-sh/ruff/pull/18670))
+- Fix panic that could occur when printing a class's "header" in diagnostic messages ([#18670](https://github.com/astral-sh/ruff/pull/18670))
 - Fix panic when attempting to provide autocompletions for an instance of a class that assigns attributes to `self[0]` ([#18707](https://github.com/astral-sh/ruff/pull/18707))
-- Fix panics when pulling types for various special forms that have the wrong number of parameters ([#18642](https://github.com/astral-sh/ruff/pull/18642))
+- Fix panics when "pulling types" for various special forms that have the wrong number of parameters. These could cause issues when hovering over symbols in an IDE. ([#18642](https://github.com/astral-sh/ruff/pull/18642))
 
 ### Typing semantics and features
 
@@ -21,7 +21,7 @@
 - Filter overloads based on `Any` / `Unknown` ([#18607](https://github.com/astral-sh/ruff/pull/18607))
 - Improve reachability analysis ([#18621](https://github.com/astral-sh/ruff/pull/18621))
 - Model `T: Never` as a subtype of `Never` ([#18687](https://github.com/astral-sh/ruff/pull/18687))
-- Update typeshed stubs ([#18679](https://github.com/astral-sh/ruff/pull/18679))
+- Update typeshed stubs ([#18679](https://github.com/astral-sh/ruff/pull/18679)): [typeshed diff](https://github.com/python/typeshed/compare/5a3c495d2f6fa9b68cd99f39feba4426e4d17ea9...ecd5141cc036366cc9e3ca371096d6a14b0ccd13)
 
 ### Configuration
 
