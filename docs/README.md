@@ -170,7 +170,7 @@ The Python version may also be explicitly specified using the
 
 ## Excluding files
 
-ty automatically discovers all Python files in your project. You can customize where ty searches by using the [`src.include`](./reference/configuration.md#include) and [`src.exclude`](./reference/configuration.md#exclude) settings.
+ty automatically discovers all Python files in your project. You can customize where ty searches by using the [`src.include`](./reference/configuration.md#include-1) and [`src.exclude`](./reference/configuration.md#exclude-1) settings.
 
 For example, with the following configuration, ty checks all Python files in the `src` and `tests` directories except those in the `src/generated` directory:
 
@@ -180,7 +180,7 @@ include = ["src", "tests"]
 exclude = ["src/generated"]
 ```
 
-By default, ty excludes a [variety of commonly ignored directories](./reference/configuration.md#exclude). If you want to include one of these directories, you can do so by adding a negative `exclude`:
+By default, ty excludes a [variety of commonly ignored directories](./reference/configuration.md#exclude-1). If you want to include one of these directories, you can do so by adding a negative `exclude`:
 
 ```toml
 [tool.ty.src]
