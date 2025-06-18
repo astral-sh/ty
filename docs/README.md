@@ -214,7 +214,8 @@ Both `include` and `exclude` support gitignore like glob patterns:
 
 All patterns are anchored: The pattern `src` only includes `<project_root>/src` but not something like `<project_root>/test/src`. To include any directory named `src`, use the prefix match `**/src`. The same applies for exclude patterns where `src` only excludes `<project_root>/src` but not something like `<project_root>/test/src`.
 
-> [!NOTE] A prefix include pattern like `**/src` can notably slow down the Python file discovery.
+> [!NOTE]
+> A prefix include pattern like `**/src` can notably slow down the Python file discovery.
 
 All fields accepting patterns use the reduced portable glob syntax from [PEP 639](https://peps.python.org/pep-0639/#add-license-FILES-key), with the addition that characters can be escaped with a backslash.
 
