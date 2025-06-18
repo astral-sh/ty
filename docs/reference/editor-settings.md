@@ -2,6 +2,26 @@
 
 The editor settings supported by ty's language server, as well as the settings specific to [ty's VS Code extension](https://github.com/astral-sh/ty-vscode/).
 
+## `python.ty.disableLanguageServices`
+
+Whether to disable the language services for the ty language server like code completion, hover,
+go to definition, etc.
+
+This is useful if you want to use ty exclusively for type checking and want to use another language
+server for features like code completion, hover, go to definition, etc.
+
+**Default value**: `false`
+
+**Type**: `boolean`
+
+**Example usage**:
+
+```json
+{
+  "python.ty.disableLanguageServices": true
+}
+```
+
 ## `logFile`
 
 Path to the file to which the language server writes its log messages. By default, ty writes log messages to stderr.
@@ -34,7 +54,7 @@ The log level to use for the language server.
 }
 ```
 
-### `trace.server`
+## `trace.server`
 
 The detail level at which messages between the language server and the editor (client) are logged. Refer to the [LSP
 specification](https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#traceValue)
