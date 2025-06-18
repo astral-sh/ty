@@ -185,7 +185,7 @@ By default, ty excludes a [variety of commonly ignored directories](./reference/
 ```toml
 [tool.ty.src]
 # Remove `build` from the excluded directories.
-exclude = ["!build"]
+exclude = ["!**/build/"]
 ```
 
 By default, ty ignores files listed in an `.ignore` or `.gitignore` file. To disable this functionality, set [`respect-ignore-files`](./reference/configuration.md#respect-ignore-files) to `false`.
@@ -196,26 +196,25 @@ You may also explicitly pass the paths that ty should check, e.g.:
 ty check src scripts/benchmark.py
 ```
 
-Paths passed explicitly are checked even if they are otherwise ignored by an `exclude` or ignore file.
+Paths that are passed as positional arguments to `ty check` are included even if they would otherwise be ignored through `exclude` filters or an ignore-file.
 
 ### Include and exclude syntax
 
 Both `include` and `exclude` support gitignore like glob patterns:
 
-- `src/` matches only a directory
-- `src` matches both files and directories
-- `src` matches files or directories named `src`
+- `src/` matches a directory (including its contents) named `src`.
+- `src` matches a file or directory (including its contents) named `src`.
 - `*` matches any (possibly empty) sequence of characters (except `/`).
 - `**` matches zero or more path components.
-    This sequence **must** form a single path component, so both `**a` and `b**` are invalid and will result in an error.
+    This sequence **must** form a single path component, so both `./**a` and `./b**/` are invalid and will result in an error.
     A sequence of more than two consecutive `*` characters is also invalid.
 - `?` matches any single character except `/`
 - `[abc]` matches any character inside the brackets. Character sequences can also specify ranges of characters, as ordered by Unicode,
     so e.g. `[0-9]` specifies any character between `0` and `9` inclusive. An unclosed bracket is invalid.
 
-Include patterns are anchored: `src` includes only `<project_root>/src` and not `<project_root>/test/src`. To include any directory named `src`, use a prefix match like so: `**/src`, but note that these can notably slow down the Python file discovery.
+All patterns are anchored: The pattern `src` only includes `<project_root>/src` but not something like `<project_root>/test/src`. To include any directory named `src`, use the prefix match `**/src`. The same applies for exclude patterns where `src` only excludes `<project_root>/src` but not something like `<project_root>/test/src`.
 
-Unlike include patterns, exclude patterns aren't anchored unless they contain a `/`: `venv` excludes any directory named `venv`, e.g. it excludes `<project_root>/venv` and `<project_root>/sub/venv`.
+> [!NOTE] A prefix include pattern like `**/src` can notably slow down the Python file discovery.
 
 All fields accepting patterns use the reduced portable glob syntax from [PEP 639](https://peps.python.org/pep-0639/#add-license-FILES-key), with the addition that characters can be escaped with a backslash.
 
