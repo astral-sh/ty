@@ -76,7 +76,7 @@ By default, ty searches for first-party modules in the project's root directory 
 directory, if present.
 
 If your project uses a different layout, configure the project's
-[`src.root`](./reference/configuration.md#root) in your `pyproject.toml` or `ty.toml`. For example,
+[`environment.root`](./reference/configuration.md#root) in your `pyproject.toml` or `ty.toml`. For example,
 if your project's code is in an `app/` directory:
 
 ```text
@@ -88,11 +88,11 @@ example-pkg
         └── __init__.py
 ```
 
-then set [`src.root`](./reference/configuration.md#root) in your `pyproject.toml` to `./app`:
+then set [`environment.root`](./reference/configuration.md#root) in your `pyproject.toml` to `["./app"]`:
 
 ```toml
 [tool.ty.src]
-root = "./app"
+root = ["./app"]
 ```
 
 ### Third-party modules
