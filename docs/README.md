@@ -91,7 +91,7 @@ example-pkg
 then set [`environment.root`](./reference/configuration.md#root) in your `pyproject.toml` to `["./app"]`:
 
 ```toml
-[tool.ty.src]
+[tool.ty.environment]
 root = ["./app"]
 ```
 
