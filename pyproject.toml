@@ -105,7 +105,7 @@ version-files = [
 ]
 submodules = ["ruff"]
 require-labels = [{ submodule = "ruff", labels = ["ty"] }]
-ignore-labels = ["internal", "testing"]
+ignore-labels = ["internal", "testing", "ci"]
 major-labels = []  # We do not use the major version number yet
 minor-labels = []  # We do not use the minor version number yet
 version-format = "cargo"
