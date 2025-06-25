@@ -1,5 +1,57 @@
 # Changelog
 
+## 0.0.1-alpha.12
+
+### Bug fixes
+
+- Avoid duplicate diagnostic when reporting errors in unpacked assignments ([#18897](https://github.com/astral-sh/ruff/pull/18897))
+- Fix panics when "pulling types" for `ClassVar` or `Final` parameterized with >1 argument ([#18824](https://github.com/astral-sh/ruff/pull/18824)). These could cause issues when hovering over symbols in an IDE.
+
+### Improved modeling of Python runtime semantics
+
+- Add support for `@staticmethod`s ([#18809](https://github.com/astral-sh/ruff/pull/18809))
+- Assignments in the body of a staticmethod are never instance attributes ([#18587](https://github.com/astral-sh/ruff/pull/18587))
+- Report when a dataclass contains more than one `KW_ONLY` field ([#18731](https://github.com/astral-sh/ruff/pull/18731))
+
+### Type narrowing improvements
+
+- Ty will now perform `isinstance()` and `issubclass()` narrowing when the second argument is a union type, intersection type or `TypeVar` type ([#18900](https://github.com/astral-sh/ruff/pull/18900))
+- Ty now narrows types in comprehensions and generator expressions ([#18934](https://github.com/astral-sh/ruff/pull/18934))
+- Understand two `NominalInstanceType`s as disjoint types if attempting to use multiple inheritance with their underlying classes would result in an instance memory layout conflict ([#18864](https://github.com/astral-sh/ruff/pull/18864))
+
+### Other typing semantics features
+
+- Support "mixed" tuples such as `tuple[int, *tuple[str, ...]]` ([#18600](https://github.com/astral-sh/ruff/pull/18600), [#18901](https://github.com/astral-sh/ruff/pull/18901))
+- Map subscript expression type inference over union types ([#18846](https://github.com/astral-sh/ruff/pull/18846))
+- Introduce a new subtyping framework such that gradual types can sometimes participate in subtyping ([#18799](https://github.com/astral-sh/ruff/pull/18799))
+- Surface the matched overload diagnostic directly when reporting a diagnostic for an invalid call to an overloaded function ([#18452](https://github.com/astral-sh/ruff/pull/18452))
+
+### Improvements to server autocompletions
+
+- Add completions for `from module import <CURSOR>` ([#18830](https://github.com/astral-sh/ruff/pull/18830))
+- Enforce sort order of completions ([#18917](https://github.com/astral-sh/ruff/pull/18917))
+- Include imported sub-modules as attributes on modules for completions ([#18898](https://github.com/astral-sh/ruff/pull/18898))
+
+### Configuration
+
+- Anchor all `src.exclude` patterns, for consistency with `src.include` patterns ([#18685](https://github.com/astral-sh/ruff/pull/18685))
+- Change `environment.root` to accept multiple paths ([#18913](https://github.com/astral-sh/ruff/pull/18913))
+- Rename `src.root` setting to `environment.root` ([#18760](https://github.com/astral-sh/ruff/pull/18760))
+- Support `--python=<symlink to executable>` ([#18827](https://github.com/astral-sh/ruff/pull/18827))
+
+### Contributors
+
+- [@BurntSushi](https://github.com/BurntSushi)
+- [@InSyncWithFoo](https://github.com/InSyncWithFoo)
+- [@suneettipirneni](https://github.com/suneettipirneni)
+- [@AlexWaygood](https://github.com/AlexWaygood)
+- [@dhruvmanila](https://github.com/dhruvmanila)
+- [@sharkdp](https://github.com/sharkdp)
+- [@MichaReiser](https://github.com/MichaReiser)
+- [@med1844](https://github.com/med1844)
+- [@dcreager](https://github.com/dcreager)
+- [@carljm](https://github.com/carljm)
+
 ## 0.0.1-alpha.11
 
 ### Breaking changes
