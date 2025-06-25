@@ -105,6 +105,10 @@ Releases can only be performed by Astral team members.
 
 Preparation for the release is automated.
 
+1. Checkout the `main` branch and run `git pull upstream main --recurse-submodules --tags`.
+
+1. Create and checkout a new branch for the release.
+
 1. Run `./scripts/release.sh`.
 
     The release script will:
