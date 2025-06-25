@@ -10,7 +10,7 @@
 ### Improved modeling of Python runtime semantics
 
 - Add support for `@staticmethod`s ([#18809](https://github.com/astral-sh/ruff/pull/18809))
-- Assignments in the body of a staticmethod are never instance attributes ([#18587](https://github.com/astral-sh/ruff/pull/18587))
+- Discover implicit class attribute assignments in `@classmethod`-decorated methods. Recognize that assignments in the body of a `@staticmethod`-decorated method are never instance attributes ([#18587](https://github.com/astral-sh/ruff/pull/18587))
 - Report when a dataclass contains more than one `KW_ONLY` field ([#18731](https://github.com/astral-sh/ruff/pull/18731))
 
 ### Type narrowing improvements
@@ -23,8 +23,8 @@
 
 - Support "mixed" tuples such as `tuple[int, *tuple[str, ...]]` ([#18600](https://github.com/astral-sh/ruff/pull/18600), [#18901](https://github.com/astral-sh/ruff/pull/18901))
 - Support type inference for subscript expressions on union types ([#18846](https://github.com/astral-sh/ruff/pull/18846))
-- Introduce a new subtyping framework in which gradual types do participate, allowing for more advanced union type simplification ([#18799](https://github.com/astral-sh/ruff/pull/18799))
-- Surface the matched overload diagnostic directly when reporting a diagnostic for an invalid call to an overloaded function ([#18452](https://github.com/astral-sh/ruff/pull/18452))
+- Introduce a new subtyping framework in which gradual types can participate, allowing for more advanced union type simplification ([#18799](https://github.com/astral-sh/ruff/pull/18799))
+- Surface the matched overload directly when reporting a diagnostic for an invalid call to an overloaded function ([#18452](https://github.com/astral-sh/ruff/pull/18452))
 
 ### Improvements to server autocompletions
 
