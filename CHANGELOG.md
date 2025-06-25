@@ -22,7 +22,7 @@
 ### Other typing semantics features
 
 - Support "mixed" tuples such as `tuple[int, *tuple[str, ...]]` ([#18600](https://github.com/astral-sh/ruff/pull/18600), [#18901](https://github.com/astral-sh/ruff/pull/18901))
-- Map subscript expression type inference over union types ([#18846](https://github.com/astral-sh/ruff/pull/18846))
+- Support type inference for subscript expressions on union types ([#18846](https://github.com/astral-sh/ruff/pull/18846))
 - Introduce a new subtyping framework such that gradual types can sometimes participate in subtyping ([#18799](https://github.com/astral-sh/ruff/pull/18799))
 - Surface the matched overload diagnostic directly when reporting a diagnostic for an invalid call to an overloaded function ([#18452](https://github.com/astral-sh/ruff/pull/18452))
 
