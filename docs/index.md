@@ -1,19 +1,8 @@
 # ty
 
-**[Installation](#installation)** |
-**[Module discovery](#module-discovery)** |
-**[Python version](#python-version)** |
-**[Excluding files](#excluding-files)** |
-**[Editor integration](#editor-integration)** |
-**[Rules](#rules)** |
-**[Suppressions](#suppressions)** |
-**[Configuration](#configuration)** |
-**[Exit codes](#exit-codes)** |
-**[Reference](#reference)**
-
 ## Getting started
 
-For a quick guide on getting started, see the top-level [README](../README.md#getting-started).
+For a quick guide on getting started, see the [README](https://github.com/astral-sh/ty/blob/main/README.md#getting-started).
 
 ## Installation
 
@@ -170,7 +159,7 @@ The Python version may also be explicitly specified using the
 
 ## Excluding files
 
-ty automatically discovers all Python files in your project. You can customize where ty searches by using the [`src.include`](./reference/configuration.md#include-1) and [`src.exclude`](./reference/configuration.md#exclude-1) settings.
+ty automatically discovers all Python files in your project. You can customize where ty searches by using the [`src.include`](./reference/configuration.md#include) and [`src.exclude`](./reference/configuration.md#exclude) settings.
 
 For example, with the following configuration, ty checks all Python files in the `src` and `tests` directories except those in the `src/generated` directory:
 

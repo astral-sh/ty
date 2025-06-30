@@ -1,0 +1,96 @@
+site_name: ty
+theme:
+  name: material
+  logo: assets/logo-letter.svg
+  favicon: assets/favicon.ico
+  features:
+    - navigation.path
+    - navigation.instant
+    - navigation.instant.prefetch
+    - navigation.instant.progress
+    - navigation.sections
+    - navigation.indexes
+    - navigation.tracking
+    - content.code.annotate
+    - toc.follow
+    - navigation.footer
+    - navigation.top
+    - content.code.copy
+    - content.tabs.link
+  palette:
+    # Note: Using the system theme works with the insiders version
+    # https://squidfunk.github.io/mkdocs-material/setup/changing-the-colors/#automatic-light-dark-mode
+    - media: "(prefers-color-scheme)"
+      toggle:
+        icon: material/brightness-auto
+        name: Switch to light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: astral-light
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: astral-dark
+      toggle:
+        icon: material/brightness-4
+        name: Switch to system preference
+  custom_dir: docs/.overrides
+repo_url: https://github.com/astral-sh/ty
+repo_name: ty
+site_author: astral-sh
+site_url: https://docs.astral.sh/ty/
+site_dir: site/ty
+site_description: ty is an extremely fast Python type checker.
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.snippets:
+  - pymdownx.magiclink:
+  - attr_list:
+  - toc:
+      anchorlink: true
+      anchorlink_class: "toclink"
+  - md_in_html:
+  - pymdownx.inlinehilite:
+  - pymdownx.superfences:
+  - markdown.extensions.attr_list:
+  - pymdownx.keys:
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.tabbed:
+      alternate_style: true
+plugins:
+  - search
+  - git-revision-date-localized:
+      timezone: UTC # It can only be in UTC unless the ISO time can include timezone.
+extra_css:
+  - stylesheets/extra.css
+extra_javascript:
+  - js/extra.js
+extra:
+  analytics:
+    provider: fathom
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/astral-sh/ty
+    - icon: fontawesome/brands/discord
+      link: https://discord.com/invite/astral-sh
+    - icon: fontawesome/brands/python
+      link: https://pypi.org/project/ty/
+    - icon: fontawesome/brands/x-twitter
+      link: https://x.com/astral_sh
+nav:
+  - Overview: index.md
+  - Reference:
+      - reference/index.md
+      - Rules: reference/rules.md
+      - CLI: reference/cli.md
+      - Configuration: reference/configuration.md
+      - Editor settings: reference/editor-settings.md
+      - Environment variables: reference/env.md
+validation:
+  omitted_files: warn
+  absolute_links: warn
+  unrecognized_links: warn
