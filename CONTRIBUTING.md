@@ -99,6 +99,39 @@ git -C ruff reset --hard $(git ls-tree main -- ruff | awk '{print $3}')
 git add ruff
 ```
 
+## Documentation
+
+To preview any changes to the documentation locally run the development server with:
+
+```shell
+# For contributors.
+uvx --with-requirements docs/requirements.txt -- mkdocs serve -f mkdocs.public.yml
+
+# For members of the Astral org, which has access to MkDocs Insiders via sponsorship.
+uvx --with-requirements docs/requirements-insiders.txt -- mkdocs serve -f mkdocs.insiders.yml
+```
+
+The documentation should then be available locally at
+[http://127.0.0.1:8000/ty/](http://127.0.0.1:8000/ty/).
+
+To update the documentation dependencies, edit `docs/requirements.in` and
+`docs/requirements-insiders.in`, then run:
+
+```shell
+uv pip compile docs/requirements.in -o docs/requirements.txt --universal -p 3.12
+uv pip compile docs/requirements-insiders.in -o docs/requirements-insiders.txt --universal -p 3.12
+```
+
+Documentation is deployed automatically on release by publishing to the
+[Astral documentation](https://github.com/astral-sh/docs) repository, which itself deploys via
+Cloudflare Pages.
+
+After making changes to the documentation, format the markdown files with:
+
+```shell
+npx prettier --prose-wrap always --write "**/*.md"
+```
+
 ## Releasing ty
 
 Releases can only be performed by Astral team members.

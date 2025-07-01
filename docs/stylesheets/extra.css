@@ -1,0 +1,229 @@
+:root {
+  --black: #261230;
+  --white: #ffffff;
+  --radiate: #d7ff64;
+  --flare: #6340ac;
+  --rock: #78876e;
+  --galaxy: #261230;
+  --space: #30173d;
+  --comet: #6f5d6f;
+  --cosmic: #de5fe9;
+  --sun: #ffac2f;
+  --electron: #46ebe1;
+  --aurora: #46eb74;
+  --constellation: #5f6de9;
+  --neutron: #cff3cf;
+  --proton: #f6afbc;
+  --nebula: #cdcbfb;
+  --supernova: #f1aff6;
+  --starlight: #f4f4f1;
+  --lunar: #fbf2fc;
+  --asteroid: #e3cee3;
+  --crater: #f0dfdf;
+}
+
+[data-md-color-scheme="astral-light"] {
+  --md-default-bg-color--dark: var(--black);
+  --md-primary-fg-color: var(--galaxy);
+  --md-typeset-a-color: var(--flare);
+  --md-accent-fg-color: var(--cosmic);
+}
+
+[data-md-color-scheme="astral-dark"] {
+  --md-default-bg-color: var(--galaxy);
+  --md-default-fg-color: var(--white);
+  --md-default-fg-color--light: var(--white);
+  --md-default-fg-color--lighter: var(--white);
+  --md-primary-fg-color: var(--space);
+  --md-primary-bg-color: var(--white);
+  --md-accent-fg-color: var(--cosmic);
+
+  --md-typeset-color: var(--white);
+  --md-typeset-a-color: var(--radiate);
+  --md-typeset-mark-color: var(--sun);
+
+  --md-code-fg-color: var(--white);
+  --md-code-bg-color: var(--space);
+
+  --md-code-hl-comment-color: var(--asteroid);
+  --md-code-hl-punctuation-color: var(--asteroid);
+  --md-code-hl-generic-color: var(--supernova);
+  --md-code-hl-variable-color: var(--starlight);
+  --md-code-hl-string-color: var(--radiate);
+  --md-code-hl-keyword-color: var(--supernova);
+  --md-code-hl-operator-color: var(--supernova);
+  --md-code-hl-number-color: var(--electron);
+  --md-code-hl-special-color: var(--electron);
+  --md-code-hl-function-color: var(--neutron);
+  --md-code-hl-constant-color: var(--radiate);
+  --md-code-hl-name-color: var(--md-code-fg-color);
+
+  --md-typeset-del-color: hsla(6, 90%, 60%, 0.15);
+  --md-typeset-ins-color: hsla(150, 90%, 44%, 0.15);
+
+  --md-typeset-table-color: hsla(0, 0%, 100%, 0.12);
+  --md-typeset-table-color--light: hsla(0, 0%, 100%, 0.035);
+}
+
+[data-md-color-scheme="astral-light"] img[src$="#only-dark"],
+[data-md-color-scheme="astral-light"] img[src$="#gh-dark-mode-only"] {
+  display: none; /* Hide dark images in light mode */
+}
+
+[data-md-color-scheme="astral-light"] img[src$="#only-light"],
+[data-md-color-scheme="astral-light"] img[src$="#gh-light-mode-only"] {
+  display: inline; /* Show light images in light mode */
+}
+
+[data-md-color-scheme="astral-dark"] img[src$="#only-light"],
+[data-md-color-scheme="astral-dark"] img[src$="#gh-light-mode-only"] {
+  display: none; /* Hide light images in dark mode */
+}
+
+[data-md-color-scheme="astral-dark"] img[src$="#only-dark"],
+[data-md-color-scheme="astral-dark"] img[src$="#gh-dark-mode-only"] {
+  display: inline; /* Show dark images in dark mode */
+}
+
+/* See: https://github.com/squidfunk/mkdocs-material/issues/175#issuecomment-616694465 */
+.md-typeset__table {
+  min-width: 100%;
+}
+.md-typeset table:not([class]) {
+  display: table;
+}
+
+/* See: https://github.com/astral-sh/ruff/issues/8519 */
+[data-md-color-scheme="astral-dark"] details summary a {
+  color: var(--flare);
+}
+
+/* See: https://github.com/astral-sh/ruff/issues/9046 */
+[data-md-color-scheme="astral-dark"] div.admonition {
+  color: var(--md-code-fg-color);
+  background-color: var(--md-code-bg-color);
+}
+
+/* Prevent the shadow from the nav title from blurring the top link.
+The box shadow isn't really doing anything anyway.
+
+This is a consequence of the reduced nav spacing below. */
+.md-nav--primary .md-nav__title {
+  box-shadow: none;
+}
+
+/* Omits the nav title "ty" entirely unless on a small screen, in which case
+the nav title is needed for backwards navigation in the collapsible
+nav variant.
+
+See https://github.com/astral-sh/uv/issues/5130 */
+@media screen and (min-width: 76.25em) {
+  .md-nav__title {
+    display: none;
+  }
+}
+
+
+/* Always take the full screen for content, require scrolling to see the footer
+This stops the size of the nav from jumping around when you visit a page without
+a lot of content (i.e., an overview page). We don't apply this to sma screens
+because the nav is in a hamburger menu anyway
+*/
+@media screen and (min-width: 76.25em) {
+  .md-main {
+    min-height: 100vh;
+  }
+}
+
+/* Tweak the formatting of the primary nav on a large screen */
+@media screen and (min-width: 76.25em) {
+  .md-nav--primary .md-nav {
+    font-size: 0.75rem;
+  }
+  /* Remove the bold from the section headings, use a larger font instead */
+  .md-nav__item--section > .md-nav__link {
+      font-weight: normal;
+      font-size: 0.85rem;
+  }
+  /* Reducing spacing between nav items to fit more content 
+  First, disable `nav__link` spacing then use `nav__item` to enforce margins this reduces inconsistencies in the spacing. */
+  .md-nav--primary .md-nav__link {
+    margin: 0;
+  }
+  .md-nav--primary .md-nav__item {
+    margin-top: 0.35em;
+  }
+  /* Use larger spacing for the sections headings */
+  .md-nav--primary .md-nav__item--section {
+    margin-bottom: 0.75em;
+    margin-top: 1em;
+  }
+  /* Decrease the font size of items in a collapsible section */
+  .md-nav__item--section> .md-nav > .md-nav__list > .md-nav__item > .md-nav > .md-nav__list {
+    font-size: 0.725rem;
+  }
+  /* Increase top margin on the first item of a collapsible section */
+  .md-nav__item--section> .md-nav > .md-nav__list > .md-nav__item > .md-nav > .md-nav__list > .md-nav__item:first-of-type {
+    margin-top: 0.5em;
+  }
+  /* Increase bottom margin on the last item of a collapsible section */
+  .md-nav__item--section> .md-nav > .md-nav__list > .md-nav__item > .md-nav > .md-nav__list > .md-nav__item:last-of-type {
+    margin-bottom: 0.575em;
+  }
+  /* Increase the size of the first nav item to match the sections 
+  It has no children, so it is not considered a section */
+  .md-nav--primary > .md-nav__list > .md-nav__item:first-of-type {
+    font-size: 0.85rem;
+    margin-bottom: 0.75em; 
+  }
+}
+
+/* Bold the active nav link for accessibility */
+.md-nav__link--active {
+  font-weight: bold;
+}
+
+/* See: https://mkdocstrings.github.io/recipes/#prevent-selection-of-prompts-and-output-in-python-code-blocks */
+.highlight .gp, .highlight .go { /* Generic.Prompt, Generic.Output */
+  user-select: none;
+}
+
+/* Styling for the generated CLI reference page */
+.cli-reference dd {
+  margin-top: 0.1em;
+  margin-bottom: 0.5em;
+}
+.cli-reference dd p {
+  margin-block-start: 0.2em;
+  margin-block-end: 0.3em;
+}
+.cli-reference ul {
+  margin-bottom: 0.1em;
+}
+h3.cli-reference {
+  font-size: 1.1em;
+  margin: 0 0 0 0;
+}
+
+/* Styling for anchor link headers */
+.toclink {
+  color: unset !important;
+}
+
+.toclink:hover {
+  color: var(--md-accent-fg-color) !important;
+}
+
+/* Omit the first breadcrumb item, which is the "Introduction" */
+.md-path__list > .md-path__item:first-of-type {
+  display: none;
+}
+.md-path__list > .md-path__item:nth-of-type(2):before {
+  display: none;
+}
+
+/* Hide the modified date — its positioning is awkward but will require theme
+modifications */
+.md-source-file__fact {
+  visibility: hidden;
+}
