@@ -112,7 +112,7 @@ This is a consequence of the reduced nav spacing below. */
   box-shadow: none;
 }
 
-/* Omits the nav title "uv" entirely unless on a small screen, in which case
+/* Omits the nav title "ty" entirely unless on a small screen, in which case
 the nav title is needed for backwards navigation in the collapsible
 nav variant.
 
