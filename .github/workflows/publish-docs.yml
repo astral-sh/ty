@@ -68,11 +68,6 @@ jobs:
         with:
           ssh-private-key: ${{ secrets.MKDOCS_INSIDERS_SSH_KEY }}
 
-      - name: "Install Rust toolchain"
-        run: rustup show
-
-      - uses: Swatinem/rust-cache@9d47c6ad4b02e050fd481d890b2ea34778fd09d6 # v2.7.8
-
       - name: "Install Insiders dependencies"
         if: ${{ env.MKDOCS_INSIDERS_SSH_KEY_EXISTS == 'true' }}
         run: pip install -r docs/requirements-insiders.txt
@@ -80,11 +75,6 @@ jobs:
       - name: "Install dependencies"
         if: ${{ env.MKDOCS_INSIDERS_SSH_KEY_EXISTS != 'true' }}
         run: pip install -r docs/requirements.txt
-
-      - name: "Copy README File"
-        run: |
-          python scripts/transform_readme.py --target mkdocs
-          python scripts/generate_mkdocs.py
 
       - name: "Build Insiders docs"
         if: ${{ env.MKDOCS_INSIDERS_SSH_KEY_EXISTS == 'true' }}
