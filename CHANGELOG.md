@@ -4,7 +4,7 @@
 
 ### Bug fixes
 
-- Fix stack-overflows related to mutually recursive protocols ([#19003](https://github.com/astral-sh/ruff/pull/19003))
+- Fix stack overflows related to mutually recursive protocols ([#19003](https://github.com/astral-sh/ruff/pull/19003))
 - Don't add incorrect subdiagnostic for `unresolved-reference` in `staticmethod`s and `classmethod`s ([#18487](https://github.com/astral-sh/ruff/pull/18487))
 - Fix rendering of long lines in diagnostic messages that are indented with tabs ([#18962](https://github.com/astral-sh/ruff/pull/18962))
 - Fix reachability of star import definitions for nonlocal lookups ([#19066](https://github.com/astral-sh/ruff/pull/19066))
@@ -19,10 +19,8 @@
 - Rework disjointness of protocol instances vs types with possibly unbound attributes, preventing some false instances of `Never` in `hasattr` narrowing ([#19043](https://github.com/astral-sh/ruff/pull/19043))
 - Make tuple instantiations sound ([#18987](https://github.com/astral-sh/ruff/pull/18987))
 - Add subdiagnostic about empty bodies in more cases ([#18942](https://github.com/astral-sh/ruff/pull/18942))
-- Add type-inference for `__import__(name)` and `importlib.import_module(name)` ([#19008](https://github.com/astral-sh/ruff/pull/19008))
-- Eagerly evaluate `True` and `False` constraints ([#18998](https://github.com/astral-sh/ruff/pull/18998))
-- Eagerly evaluate `TYPE_CHECKING` constraints ([#19044](https://github.com/astral-sh/ruff/pull/19044))
-- Eagerly evaluate more constraints based on the raw AST ([#19068](https://github.com/astral-sh/ruff/pull/19068))
+- Improve type-inference for `__import__(name)` and `importlib.import_module(name)` ([#19008](https://github.com/astral-sh/ruff/pull/19008))
+- Eagerly evaluate certain constraints when analyzing control flow ([#18998](https://github.com/astral-sh/ruff/pull/18998), [#19044](https://github.com/astral-sh/ruff/pull/19044), [#19068](https://github.com/astral-sh/ruff/pull/19068))
 - Update typeshed stubs ([#19060](https://github.com/astral-sh/ruff/pull/19060)): [typeshed diff](https://github.com/python/typeshed/compare/ecd5141cc036366cc9e3ca371096d6a14b0ccd13...3f727b0cd6620b7fca45318dd34542b1e1c7dbfb)
 
 ### Server
