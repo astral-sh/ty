@@ -5,7 +5,7 @@ entirely) to silence false positives or permissible violations.
 
 !!! note
 
-    To disable a rule entirely, set it to the `ignore` level as described in [rule levels](#rule-levels).
+    To disable a rule entirely, set it to the `ignore` level as described in [rule levels](rules.md/#rule-levels).
 
 ## ty suppression comments
 

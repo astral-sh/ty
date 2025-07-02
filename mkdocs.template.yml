@@ -85,21 +85,20 @@ nav:
   - Introduction: index.md
   - Concepts:
       - Installation: installation.md
-      - Module discovery: modules.md
       - Configuration: configuration.md
+      - Module discovery: modules.md
+      - Python version: python-version.md
       - File exclusions: exclusions.md
       - Rules: rules.md
-      - Editors: editors.md
       - Suppression: suppression.md
-      - Python version: python-version.md
+      - Editors: editors.md
   - Reference:
-      - reference/index.md
+      - Configuration: reference/configuration.md
       - Rules: reference/rules.md
       - CLI: reference/cli.md
       - Exit codes: reference/exit-codes.md
-      - Configuration: reference/configuration.md
-      - Editor settings: reference/editor-settings.md
       - Environment variables: reference/env.md
+      - Editor settings: reference/editor-settings.md
 validation:
   omitted_files: warn
   absolute_links: warn
