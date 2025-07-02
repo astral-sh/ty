@@ -30,9 +30,13 @@
 - Add `builtins` to completions ([#18982](https://github.com/astral-sh/ruff/pull/18982))
 - Support LSP go-to with vendored typeshed stubs ([#19057](https://github.com/astral-sh/ruff/pull/19057))
 
-### Other changes
+### Documentation
 
-- Improve performance by removing `ScopedExpressionId` ([#19019](https://github.com/astral-sh/ruff/pull/19019))
+- The ty documentation is now available at [docs.astral.sh/ty](https://docs.astral.sh/ty) ([#744](https://github.com/astral-sh/ty/pull/744))
+
+### Performance
+
+- Remove `ScopedExpressionId` ([#19019](https://github.com/astral-sh/ruff/pull/19019))
 
 ### Contributors
 
