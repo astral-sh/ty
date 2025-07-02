@@ -1,5 +1,54 @@
 # Changelog
 
+## 0.0.1-alpha.13
+
+### Bug fixes
+
+- Fix stack-overflows related to mutually recursive protocols ([#19003](https://github.com/astral-sh/ruff/pull/19003))
+- Don't add incorrect subdiagnostic for `unresolved-reference` in `staticmethod`s and `classmethod`s ([#18487](https://github.com/astral-sh/ruff/pull/18487))
+- Fix rendering of long lines in diagnostic messages that are indented with tabs ([#18962](https://github.com/astral-sh/ruff/pull/18962))
+- Fix reachability of star import definitions for nonlocal lookups ([#19066](https://github.com/astral-sh/ruff/pull/19066))
+
+### Typing semantics and features
+
+- Support variable-length tuples in unpacking assignments ([#18948](https://github.com/astral-sh/ruff/pull/18948))
+- Allow declared-only class-level attributes to be accessed on the class ([#19071](https://github.com/astral-sh/ruff/pull/19071))
+- Infer nonlocal types as unions of all reachable bindings ([#18750](https://github.com/astral-sh/ruff/pull/18750))
+- Use all reachable bindings for instance attributes and deferred lookups ([#18955](https://github.com/astral-sh/ruff/pull/18955))
+- Improve protocol member type checking and relation handling ([#18847](https://github.com/astral-sh/ruff/pull/18847))
+- Rework disjointness of protocol instances vs types with possibly unbound attributes ([#19043](https://github.com/astral-sh/ruff/pull/19043))
+- Make tuple instantiations sound ([#18987](https://github.com/astral-sh/ruff/pull/18987))
+- Add subdiagnostic about empty bodies in more cases ([#18942](https://github.com/astral-sh/ruff/pull/18942))
+- Add type-inference for `__import__(name)` and `importlib.import_module(name)` ([#19008](https://github.com/astral-sh/ruff/pull/19008))
+- Eagerly evaluate `True` and `False` constraints ([#18998](https://github.com/astral-sh/ruff/pull/18998))
+- Eagerly evaluate `TYPE_CHECKING` constraints ([#19044](https://github.com/astral-sh/ruff/pull/19044))
+- Eagerly evaluate more constraints based on the raw AST ([#19068](https://github.com/astral-sh/ruff/pull/19068))
+- Update typeshed stubs ([#19060](https://github.com/astral-sh/ruff/pull/19060)): [typeshed diff](https://github.com/python/typeshed/compare/ecd5141cc036366cc9e3ca371096d6a14b0ccd13...3f727b0cd6620b7fca45318dd34542b1e1c7dbfb)
+
+### Server
+
+- Add `builtins` to completions ([#18982](https://github.com/astral-sh/ruff/pull/18982))
+- Support LSP go-to with vendored typeshed stubs ([#19057](https://github.com/astral-sh/ruff/pull/19057))
+
+### Other changes
+
+- Improve performance by removing `ScopedExpressionId` ([#19019](https://github.com/astral-sh/ruff/pull/19019))
+
+### Contributors
+
+- [@InSyncWithFoo](https://github.com/InSyncWithFoo)
+- [@MatthewMckee4](https://github.com/MatthewMckee4)
+- [@dcreager](https://github.com/dcreager)
+- [@mtshiba](https://github.com/mtshiba)
+- [@BurntSushi](https://github.com/BurntSushi)
+- [@sharkdp](https://github.com/sharkdp)
+- [@ibraheemdev](https://github.com/ibraheemdev)
+- [@github-actions](https://github.com/github-actions)
+- [@carljm](https://github.com/carljm)
+- [@AlexWaygood](https://github.com/AlexWaygood)
+- [@MichaReiser](https://github.com/MichaReiser)
+- [@zanieb](https://github.com/zanieb)
+
 ## 0.0.1-alpha.12
 
 ### Bug fixes
