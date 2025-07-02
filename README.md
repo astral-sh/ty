@@ -21,10 +21,10 @@ Try out the [online playground](https://play.ty.dev), or run ty with
 uvx ty
 ```
 
-For other ways to install ty, see the [installation](./docs/README.md#installation) documentation.
+For other ways to install ty, see the [installation](https://docs.astral.sh/ty/installation/) documentation.
 
 If you do not provide a subcommand, ty will list available commands — for detailed information about
-command-line options, see the [CLI reference](./docs/reference/cli.md).
+command-line options, see the [CLI reference](https://docs.astral.sh/ty/reference/cli/).
 
 Use the `check` command to run the type checker:
 
@@ -45,12 +45,12 @@ uvx ty check example.py
 When type checking, ty will find installed packages in the active virtual environment (via
 `VIRTUAL_ENV`) or discover a virtual environment named `.venv` in the project root or working
 directory. It will not find packages in non-virtual environments without specifying the target path
-with `--python`. See the [module discovery](./docs/README.md#module-discovery) documentation for
+with `--python`. See the [module discovery](https://docs.astral.sh/ty/modules/) documentation for
 details.
 
 ## Learning more
 
-To learn more about using ty, see the [documentation](./docs/README.md).
+To learn more about using ty, see the [documentation](https://docs.astral.sh/ty/).
 
 ## Getting involved
 

@@ -16,11 +16,11 @@ ty's command-line help text, and part of `docs/reference/`, are auto-generated f
 repository, using generation scripts that live in
 [`crates/ruff_dev/src/`](https://github.com/astral-sh/ruff/blob/main/crates/ruff_dev/src/):
 
-- [Configuration options](docs/reference/configuration.md), from
+- [Configuration options](https://docs.astral.sh/ty/reference/configuration/), from
     [ruff/crates/ty_project/src/metadata/options.rs](https://github.com/astral-sh/ruff/blob/main/crates/ty_project/src/metadata/options.rs)
-- [Rules](docs/reference/rules.md), from
+- [Rules](https://docs.astral.sh/ty/reference/rules/), from
     [ruff/crates/ty_python_semantic/src/](https://github.com/astral-sh/ruff/blob/main/crates/ty_python_semantic/src/)
-- [Command-line interface reference](docs/reference/cli.md), from
+- [Command-line interface reference](https://docs.astral.sh/ty/reference/cli/), from
     [ruff/crates/ty/src/args.rs](https://github.com/astral-sh/ruff/blob/main/crates/ty/src/args.rs)
 
 The Ruff repository is included as a submodule inside this repository to allow ty's release tags to reflect
