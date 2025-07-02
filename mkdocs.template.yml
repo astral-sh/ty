@@ -82,7 +82,7 @@ extra:
     - icon: fontawesome/brands/x-twitter
       link: https://x.com/astral_sh
 nav:
-  - Introduction: index.md
+  - Getting started: index.md
   - Concepts:
       - Installation: installation.md
       - Configuration: configuration.md
