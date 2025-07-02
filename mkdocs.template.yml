@@ -82,11 +82,21 @@ extra:
     - icon: fontawesome/brands/x-twitter
       link: https://x.com/astral_sh
 nav:
-  - Overview: index.md
+  - Introduction: index.md
+  - Concepts:
+      - Installation: installation.md
+      - Module discovery: modules.md
+      - Configuration: configuration.md
+      - File exclusions: exclusions.md
+      - Rules: rules.md
+      - Editors: editors.md
+      - Suppression: suppression.md
+      - Python version: python-version.md
   - Reference:
       - reference/index.md
       - Rules: reference/rules.md
       - CLI: reference/cli.md
+      - Exit codes: reference/exit-codes.md
       - Configuration: reference/configuration.md
       - Editor settings: reference/editor-settings.md
       - Environment variables: reference/env.md
