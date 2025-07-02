@@ -16,7 +16,7 @@
 - Infer nonlocal types as unions of all reachable bindings ([#18750](https://github.com/astral-sh/ruff/pull/18750))
 - Use all reachable bindings for instance attributes and deferred lookups ([#18955](https://github.com/astral-sh/ruff/pull/18955))
 - Improve protocol member type checking and relation handling ([#18847](https://github.com/astral-sh/ruff/pull/18847))
-- Rework disjointness of protocol instances vs types with possibly unbound attributes ([#19043](https://github.com/astral-sh/ruff/pull/19043))
+- Rework disjointness of protocol instances vs types with possibly unbound attributes, preventing some false instances of `Never` in `hasattr` narrowing ([#19043](https://github.com/astral-sh/ruff/pull/19043))
 - Make tuple instantiations sound ([#18987](https://github.com/astral-sh/ruff/pull/18987))
 - Add subdiagnostic about empty bodies in more cases ([#18942](https://github.com/astral-sh/ruff/pull/18942))
 - Add type-inference for `__import__(name)` and `importlib.import_module(name)` ([#19008](https://github.com/astral-sh/ruff/pull/19008))
