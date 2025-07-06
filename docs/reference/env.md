@@ -25,6 +25,8 @@ This isn’t the same as a thread limit. ty may spawn additional threads when ne
 
 If set to `"full"` will generate and print a memory usage report to the CLI after a `ty check` run.
 
+If set to `"short"` will only print total number of memory usage.
+
 ## Externally defined variables
 
 ty also reads the following externally defined environment variables:
