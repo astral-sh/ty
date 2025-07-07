@@ -23,9 +23,9 @@ This isn’t the same as a thread limit. ty may spawn additional threads when ne
 
 ## `TY_MEMORY_REPORT`
 
-If set to `"full"` will generate and print a memory usage report to the CLI after a `ty check` run.
+If set to `"full"`, ty will generate and output a detailed memory usage report after a `ty check` run.
 
-If set to `"short"` will only print total number of memory usage.
+If set to `"short"`, ty will only print total memory usage numbers.
 
 ## Externally defined variables
 
