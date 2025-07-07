@@ -21,6 +21,12 @@ Specifies an upper limit for the number of tasks ty is allowed to run in paralle
 
 This isn’t the same as a thread limit. ty may spawn additional threads when necessary, e.g. to watch for file system changes or a dedicated UI thread.
 
+## `TY_MEMORY_REPORT`
+
+If set to `"full"`, ty will generate and output a detailed memory usage report after a `ty check` run.
+
+If set to `"short"`, ty will only print total memory usage numbers.
+
 ## Externally defined variables
 
 ty also reads the following externally defined environment variables:
