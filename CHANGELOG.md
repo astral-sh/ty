@@ -7,12 +7,13 @@
 - Fix descriptor lookups for most types that overlap with `None` ([#19120](https://github.com/astral-sh/ruff/pull/19120)).
     This means that e.g. `object().__str__()` now correctly binds the `self` argument of the `__str__`
     method, as the `object` type overlaps with `None`.
-- Don't allow first-party code to shadow the stdlib `types` module ([#19128](https://github.com/astral-sh/ruff/pull/19128))
+- Don't allow first-party code to shadow the stdlib `types` module ([#19128](https://github.com/astral-sh/ruff/pull/19128)).
+    This fixes a possible source of stack overflows.
 - Add cycle detection to our ty's implementation of disjointness, preventing another possible source of stack overflows when analysing recursive types ([#19139](https://github.com/astral-sh/ruff/pull/19139))
 
 ### Server
 
-- Filter symbols from stubs in autocomplete suggestions if they are implementation details of the stubs ([#19121](https://github.com/astral-sh/ruff/pull/19121))
+- Filter a symbol from a stub file in autocomplete suggestions if it is an implementation detail of the stub ([#19121](https://github.com/astral-sh/ruff/pull/19121))
 
 - Add initial support for [semantic tokens](https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#textDocument_semanticTokens). This feature allows editors to apply more advanced syntax highlighting. ([#19108](https://github.com/astral-sh/ruff/pull/19108)).
 
@@ -43,7 +44,7 @@
 - Add subtyping between `type[]` types and `Callable` types ([#19026](https://github.com/astral-sh/ruff/pull/19026))
 - Support bare `ClassVar` annotations ([#15768](https://github.com/astral-sh/ruff/pull/15768))
 - Understand that calls to functions returning `Never` / `NoReturn` are terminal with respect to control flow ([#18333](https://github.com/astral-sh/ruff/pull/18333))
-- Implement equivalence for protocols with method members ([#18659](https://github.com/astral-sh/ruff/pull/18659))
+- Understand that two protocols with equivalent method members are equivalent ([#18659](https://github.com/astral-sh/ruff/pull/18659))
 - Support declared-only intsance attributes such as `self.x: int` ([#19048](https://github.com/astral-sh/ruff/pull/19048))
 - Sync vendored typeshed stubs ([#19174](https://github.com/astral-sh/ruff/pull/19174)): [typeshed diff](https://github.com/python/typeshed/compare/3f727b0cd6620b7fca45318dd34542b1e1c7dbfb...f64707592dd3c32f756ddeebd012acb2b072aa0d)
 - Use the inferred type as the declared type for bare `Final` symbols ([#19142](https://github.com/astral-sh/ruff/pull/19142))
