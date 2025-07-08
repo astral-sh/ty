@@ -1,5 +1,49 @@
 # Changelog
 
+## 0.0.1-alpha.14
+
+### Bug fixes
+
+- Fix descriptor lookups for most types that overlap with `None` ([#19120](https://github.com/astral-sh/ruff/pull/19120))
+- don't allow first-party code to shadow stdlib types module ([#19128](https://github.com/astral-sh/ruff/pull/19128))
+
+### Server
+
+- Filter private symbols from stubs if they are internal types ([#19121](https://github.com/astral-sh/ruff/pull/19121))
+- First cut at semantic token provider ([#19108](https://github.com/astral-sh/ruff/pull/19108))
+- Initial support for workspace diagnostics ([#18939](https://github.com/astral-sh/ruff/pull/18939))
+- Use "python" for markdown code fences in on-hover content ([#19082](https://github.com/astral-sh/ruff/pull/19082))
+
+### Documentation
+
+- Document  `TY_MEMORY_REPORT` ([#768](https://github.com/astral-sh/ty/pull/768))
+
+### Other changes
+
+- Add into_callable method for Type ([#19130](https://github.com/astral-sh/ruff/pull/19130))
+- Add subtyping between SubclassOf and CallableType ([#19026](https://github.com/astral-sh/ruff/pull/19026))
+- Bare `ClassVar` annotations ([#15768](https://github.com/astral-sh/ruff/pull/15768))
+- Correctly handle calls to functions marked as returning `Never` / `NoReturn` ([#18333](https://github.com/astral-sh/ruff/pull/18333))
+- Implement equivalence for protocols with method members ([#18659](https://github.com/astral-sh/ruff/pull/18659))
+- Support declaration-only attributes ([#19048](https://github.com/astral-sh/ruff/pull/19048))
+- Sync vendored typeshed stubs ([#19174](https://github.com/astral-sh/ruff/pull/19174))
+- Use RHS inferred type for bare `Final` symbols ([#19142](https://github.com/astral-sh/ruff/pull/19142))
+- detect cycles in Type::is_disjoint_from ([#19139](https://github.com/astral-sh/ruff/pull/19139))
+
+### Contributors
+
+- [@iyakushev](https://github.com/iyakushev)
+- [@MatthewMckee4](https://github.com/MatthewMckee4)
+- [@zanieb](https://github.com/zanieb)
+- [@sharkdp](https://github.com/sharkdp)
+- [@UnboundVariable](https://github.com/UnboundVariable)
+- [@abhijeetbodas2001](https://github.com/abhijeetbodas2001)
+- [@github-actions](https://github.com/github-actions)
+- [@dhruvmanila](https://github.com/dhruvmanila)
+- [@AlexWaygood](https://github.com/AlexWaygood)
+- [@carljm](https://github.com/carljm)
+- [@CodeMan62](https://github.com/CodeMan62)
+
 ## 0.0.1-alpha.13
 
 ### Bug fixes
@@ -163,7 +207,7 @@
 ### Bug fixes
 
 - Delay computation of 'unbound' visibility for implicit instance attributes ([#18669](https://github.com/astral-sh/ruff/pull/18669)).
-    This fixes a significant performance regression in version 0.0.1-alpha.9.
+This fixes a significant performance regression in version 0.0.1-alpha.9.
 
 ### Typing semantics and features
 
