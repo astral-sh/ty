@@ -41,7 +41,7 @@
 
 - Use Python syntax highlighting in on-hover content ([#19082](https://github.com/astral-sh/ruff/pull/19082))
 
-### Other changes
+### Typing semantics and features
 
 - Add subtyping between `type[]` types and `Callable` types ([#19026](https://github.com/astral-sh/ruff/pull/19026))
 - Support bare `ClassVar` annotations ([#15768](https://github.com/astral-sh/ruff/pull/15768))
