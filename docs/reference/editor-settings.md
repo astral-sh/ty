@@ -22,6 +22,25 @@ server for features like code completion, hover, go to definition, etc.
 }
 ```
 
+## `diagnosticMode`
+
+Determines the scope of the diagnostics reported by the language server.
+
+- `workspace`: Diagnostics are reported for all files in the workspace.
+- `openFilesOnly`: Diagnostics are reported only for files that are currently open in the editor.
+
+**Default value**: `"openFilesOnly"`
+
+**Type**: `"workspace" | "openFilesOnly"`
+
+**Example usage**:
+
+```json
+{
+  "ty.diagnosticMode": "workspace"
+}
+```
+
 ## `logFile`
 
 Path to the file to which the language server writes its log messages. By default, ty writes log messages to stderr.
