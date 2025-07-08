@@ -39,7 +39,7 @@
 - Initial support for [workspace diagnostics](https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#workspace_diagnostic) ([#18939](https://github.com/astral-sh/ruff/pull/18939)).
     Enable this feature by setting the `ty.diagnosticMode` configuration setting to `"workspace"`.
 
-- Use Python syntax highlighting for Markdown code fences in on-hover content ([#19082](https://github.com/astral-sh/ruff/pull/19082))
+- Use Python syntax highlighting in on-hover content ([#19082](https://github.com/astral-sh/ruff/pull/19082))
 
 ### Other changes
 
