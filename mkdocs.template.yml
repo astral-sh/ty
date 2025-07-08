@@ -97,7 +97,7 @@ nav:
       - Rules: reference/rules.md
       - CLI: reference/cli.md
       - Exit codes: reference/exit-codes.md
-      - Environment variables: reference/env.md
+      - Environment variables: reference/environment.md
       - Editor settings: reference/editor-settings.md
 validation:
   omitted_files: warn

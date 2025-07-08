@@ -4,7 +4,7 @@ exclude: |
   (?x)^(
     .github/workflows/release.yml
     | ruff/.*
-    | docs/reference/(cli|configuration|rules).md
+    | docs/reference/(cli|configuration|rules|environment).md
   )$
 
 repos:

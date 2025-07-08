@@ -16,8 +16,9 @@ echo "Updating lockfile..."
 uv lock
 
 echo "Copying reference documentation from Ruff..."
-cp ruff/crates/ty/docs/cli.md ./docs/reference/
-cp ruff/crates/ty/docs/configuration.md ./docs/reference/
+cp ./ruff/crates/ty/docs/cli.md ./docs/reference/
+cp ./ruff/crates/ty/docs/configuration.md ./docs/reference/
 cp ./ruff/crates/ty/docs/rules.md ./docs/reference/
+cp ./ruff/crates/ty/docs/environment.md ./docs/reference/
 
 echo "Documentation has been copied from Ruff submodule"
