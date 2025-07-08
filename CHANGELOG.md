@@ -16,7 +16,7 @@
 
 ### Documentation
 
-- Document  `TY_MEMORY_REPORT` ([#768](https://github.com/astral-sh/ty/pull/768))
+- Document `TY_MEMORY_REPORT` ([#768](https://github.com/astral-sh/ty/pull/768))
 
 ### Other changes
 
@@ -207,7 +207,7 @@
 ### Bug fixes
 
 - Delay computation of 'unbound' visibility for implicit instance attributes ([#18669](https://github.com/astral-sh/ruff/pull/18669)).
-This fixes a significant performance regression in version 0.0.1-alpha.9.
+    This fixes a significant performance regression in version 0.0.1-alpha.9.
 
 ### Typing semantics and features
 
