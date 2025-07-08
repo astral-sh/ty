@@ -4,48 +4,27 @@
 
 ### Bug fixes
 
+- Add cycle detection to ty's implementation of disjointness between types, fixing a possible source of stack overflows when analysing recursive types ([#19139](https://github.com/astral-sh/ruff/pull/19139))
+- Don't allow first-party code to shadow the stdlib `types` module ([#19128](https://github.com/astral-sh/ruff/pull/19128)).
+    This fixes another possible source of stack overflows.
 - Fix descriptor lookups for most types that overlap with `None` ([#19120](https://github.com/astral-sh/ruff/pull/19120)).
     This means that e.g. `object().__str__()` now correctly binds the `self` argument of the `__str__`
     method, as the `object` type overlaps with `None`.
-- Don't allow first-party code to shadow the stdlib `types` module ([#19128](https://github.com/astral-sh/ruff/pull/19128)).
-    This fixes a possible source of stack overflows.
-- Add cycle detection to ty's implementation of disjointness between types, preventing another possible source of stack overflows when analysing recursive types ([#19139](https://github.com/astral-sh/ruff/pull/19139))
 
 ### Server
 
 - Filter a symbol from a stub file in autocomplete suggestions if it is an implementation detail of the stub ([#19121](https://github.com/astral-sh/ruff/pull/19121))
-
 - Add initial support for [semantic tokens](https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#textDocument_semanticTokens) ([#19108](https://github.com/astral-sh/ruff/pull/19108)).
-    This feature allows editors to apply more advanced syntax highlighting.
-
-    Currently, the supported tokens are:
-
-    - `Namespace`
-    - `Class`
-    - `Parameter`
-    - `SelfParameter`
-    - `ClsParameter`
-    - `Variable`
-    - `Property`
-    - `Function`
-    - `Method`
-    - `Keyword`
-    - `String`
-    - `Number`
-    - `Decorator`
-    - `BuiltinConstant`
-    - `TypeParameter`
-
+    This feature allows editors to apply more advanced syntax highlighting. Currently, the supported tokens are: `Namespace`, `Class`, `Parameter`, `SelfParameter`,`ClsParameter`, `Variable`, `Property`, `Function`, `Method`, `Keyword`, `String`, `Number`, `Decorator`, `BuiltinConstant` and `TypeParameter`.
 - Initial support for [workspace diagnostics](https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#workspace_diagnostic) ([#18939](https://github.com/astral-sh/ruff/pull/18939)).
     Enable this feature by setting the `ty.diagnosticMode` configuration setting to `"workspace"`.
-
 - Use Python syntax highlighting in on-hover content ([#19082](https://github.com/astral-sh/ruff/pull/19082))
 
 ### Typing semantics and features
 
+- Understand that calls to functions returning `Never` / `NoReturn` are terminal with respect to control flow ([#18333](https://github.com/astral-sh/ruff/pull/18333))
 - Add subtyping between `type[]` types and `Callable` types ([#19026](https://github.com/astral-sh/ruff/pull/19026))
 - Support bare `ClassVar` annotations ([#15768](https://github.com/astral-sh/ruff/pull/15768))
-- Understand that calls to functions returning `Never` / `NoReturn` are terminal with respect to control flow ([#18333](https://github.com/astral-sh/ruff/pull/18333))
 - Understand that two protocols with equivalent method members are equivalent ([#18659](https://github.com/astral-sh/ruff/pull/18659))
 - Support declared-only instance attributes such as `self.x: int` ([#19048](https://github.com/astral-sh/ruff/pull/19048))
 - Sync vendored typeshed stubs ([#19174](https://github.com/astral-sh/ruff/pull/19174)): [typeshed diff](https://github.com/python/typeshed/compare/3f727b0cd6620b7fca45318dd34542b1e1c7dbfb...f64707592dd3c32f756ddeebd012acb2b072aa0d)
