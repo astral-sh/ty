@@ -7,10 +7,9 @@ PyPI includes the README with different rendering.
 from __future__ import annotations
 
 import re
+import tomllib
 import urllib.parse
 from pathlib import Path
-
-import tomllib
 
 
 def main() -> None:
