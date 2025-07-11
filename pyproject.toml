@@ -52,6 +52,7 @@ cache-keys = [
 
 [tool.ruff]
 extend-exclude = ["ruff"]
+per-file-target-version = { "scripts/**" = "py313" }
 
 [tool.ruff.lint]
 select = [
