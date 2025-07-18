@@ -77,7 +77,9 @@ def update_schemastore(
     # Create a new branch tagged with the current ty commit up to date with the latest
     # upstream schemastore
     check_call(["git", "fetch", "upstream"], cwd=schemastore_path)
-    current_sha = check_output(["git", "rev-parse", "HEAD"], text=True).strip()
+    current_sha = check_output(
+        ["git", "rev-parse", "HEAD"], text=True, cwd=TY_ROOT
+    ).strip()
     branch = f"update-ty-{current_sha}"
     check_call(
         ["git", "switch", "-c", branch],
