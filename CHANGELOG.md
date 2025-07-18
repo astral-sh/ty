@@ -1,5 +1,64 @@
 # Changelog
 
+## 0.0.1-alpha.15
+
+### Bug fixes
+
+- Avoid stale diagnostics for open-files diagnostic mode ([#19273](https://github.com/astral-sh/ruff/pull/19273))
+- Fix inconsistent semantic syntax highlighting for parameters ([#19418](https://github.com/astral-sh/ruff/pull/19418))
+- Fix checking of virtual files after re-opening from an unsaved edit ([#19277](https://github.com/astral-sh/ruff/pull/19277))
+- Show the correct ty version in the LSP server ([#19284](https://github.com/astral-sh/ruff/pull/19284))
+- Do not surface settings errors in unrelated Python files ([#19206](https://github.com/astral-sh/ruff/pull/19206))
+- Do not ignore conditionally defined dataclass fields ([#19197](https://github.com/astral-sh/ruff/pull/19197))
+- Fix panic for attribute expressions with empty value ([#19069](https://github.com/astral-sh/ruff/pull/19069))
+- Fix assignabiliy of dataclasses to `Callable` types ([#19192](https://github.com/astral-sh/ruff/pull/19192))
+- Fix `__setattr__` call check precedence during attribute assignment ([#18347](https://github.com/astral-sh/ruff/pull/18347))
+
+### Server
+
+- Add definition and declaration providers (go-to-definition, go-to-declaration) ([#19371](https://github.com/astral-sh/ruff/pull/19371))
+- Add signature help provider (show signature and docstring when writing a call expression) ([#19194](https://github.com/astral-sh/ruff/pull/19194))
+- Add "kind" to completion suggestions ([#19216](https://github.com/astral-sh/ruff/pull/19216))
+- Add completions for submodules that aren't attributes of their parent ([#19266](https://github.com/astral-sh/ruff/pull/19266))
+- Filter out private type aliases from stub files when offering autocomplete suggestions ([#19282](https://github.com/astral-sh/ruff/pull/19282))
+- Handle configuration errors in the LSP more gracefully ([#19262](https://github.com/astral-sh/ruff/pull/19262))
+- Use Python version and path from VSCode Python extension ([#19012](https://github.com/astral-sh/ruff/pull/19012))
+- Publish errors in settings as LSP diagnostics ([#19335](https://github.com/astral-sh/ruff/pull/19335))
+
+### Typing semantics and features
+
+- Add support for `nonlocal` statements ([#19112](https://github.com/astral-sh/ruff/pull/19112))
+- Support empty function bodies in `if TYPE_CHECKING` blocks ([#19372](https://github.com/astral-sh/ruff/pull/19372))
+- Emit a diagnostic when attempting to modify a `typing.Final`-qualified symbol ([#19178](https://github.com/astral-sh/ruff/pull/19178))
+- Infer enum literal types when accessing enum members ([#19328](https://github.com/astral-sh/ruff/pull/19328))
+- Synthesize `__setattr__` for frozen dataclasses ([#19307](https://github.com/astral-sh/ruff/pull/19307))
+- Improve equivalence for module-literal types ([#19243](https://github.com/astral-sh/ruff/pull/19243))
+- Reduce false positives for `TypedDict` types ([#19354](https://github.com/astral-sh/ruff/pull/19354))
+- Emit an error for `global` uses if there is no explicit definition in the global scope ([#19344](https://github.com/astral-sh/ruff/pull/19344))
+- Sync vendored typeshed stubs ([typeshed diff](https://github.com/python/typeshed/compare/f64707592dd3c32f756ddeebd012acb2b072aa0d...84e41f2853d7af3d651d620f093031cba849bd1d))
+
+### CLI
+
+- Add a `-q`/`--quiet` mode, `-qq` for silent output mode ([#19233](https://github.com/astral-sh/ruff/pull/19233))
+
+### Contributors
+
+- [@AlexWaygood](https://github.com/AlexWaygood)
+- [@github-actions](https://github.com/github-actions)
+- [@dhruvmanila](https://github.com/dhruvmanila)
+- [@sharkdp](https://github.com/sharkdp)
+- [@renovate](https://github.com/renovate)
+- [@MatthewMckee4](https://github.com/MatthewMckee4)
+- [@UnboundVariable](https://github.com/UnboundVariable)
+- [@oconnor663](https://github.com/oconnor663)
+- [@zanieb](https://github.com/zanieb)
+- [@MichaReiser](https://github.com/MichaReiser)
+- [@charliermarsh](https://github.com/charliermarsh)
+- [@Gankra](https://github.com/Gankra)
+- [@thejchap](https://github.com/thejchap)
+- [@BurntSushi](https://github.com/BurntSushi)
+- [@mdqst](https://github.com/mdqst)
+
 ## 0.0.1-alpha.14
 
 ### Bug fixes
