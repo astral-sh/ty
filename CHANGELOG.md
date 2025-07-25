@@ -4,20 +4,20 @@
 
 ### Bug fixes
 
-- Fix server panics when encountering invalid syntax in `Callable` annotations ([#19517](https://github.com/astral-sh/ruff/pull/19517))
-- Fix narrowing and reachability of class patterns with arguments ([#19512](https://github.com/astral-sh/ruff/pull/19512))
-- Fix panic for illegal `Literal[…]` annotations with inner subscript expressions ([#19489](https://github.com/astral-sh/ruff/pull/19489))
+- Fix server panics when hovering over invalid syntax in `Callable` annotations ([#19517](https://github.com/astral-sh/ruff/pull/19517))
+- `match` statements: Fix narrowing and reachability of class patterns with arguments ([#19512](https://github.com/astral-sh/ruff/pull/19512))
+- Fix server panics when hovering over illegal `Literal[…]` annotations with inner subscript expressions ([#19489](https://github.com/astral-sh/ruff/pull/19489))
 - Pass down specialization to generic dataclass bases ([#19472](https://github.com/astral-sh/ruff/pull/19472))
 
 ### Server
 
 - Add support for "go to definition" for attribute accesses and keyword arguments ([#19417](https://github.com/astral-sh/ruff/pull/19417))
 - Add support for "go to definition" for import statements ([#19428](https://github.com/astral-sh/ruff/pull/19428))
-- Add support for "document highlights" language server feature ([#19515](https://github.com/astral-sh/ruff/pull/19515))
-- Add partial support for "find references" language server feature ([#19475](https://github.com/astral-sh/ruff/pull/19475))
-- Implement non-stdlib stub mapping for classes and functions ([#19471](https://github.com/astral-sh/ruff/pull/19471))
-- Add semantic token support for more identifiers ([#19473](https://github.com/astral-sh/ruff/pull/19473))
-- Avoid rechecking the entire project when changing open files ([#19463](https://github.com/astral-sh/ruff/pull/19463))
+- Add support for "document highlights" ([#19515](https://github.com/astral-sh/ruff/pull/19515))
+- Add partial support for "find references" ([#19475](https://github.com/astral-sh/ruff/pull/19475))
+- Prefer the runtime definition, not the stub definition, on a go-to-definition request for a class or function. Currently this is only implemented for definitions originating outside of the stdlib. ([#19471](https://github.com/astral-sh/ruff/pull/19471))
+- Add [semantic token](https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#textDocument_semanticTokens) support for more identifiers ([#19473](https://github.com/astral-sh/ruff/pull/19473))
+- Avoid rechecking the entire project when a file in the editor is opened or closed ([#19463](https://github.com/astral-sh/ruff/pull/19463))
 
 ### Typing semantics and features
 
@@ -29,18 +29,17 @@
 - Extend tuple `__len__` and `__bool__` special casing to also cover tuple subclasses ([#19289](https://github.com/astral-sh/ruff/pull/19289))
 - Add support for `dataclasses.field` ([#19553](https://github.com/astral-sh/ruff/pull/19553))
 - Add support for `dataclasses.InitVar` ([#19527](https://github.com/astral-sh/ruff/pull/19527))
-- Add support for `@warnings.deprecated` ([#19376](https://github.com/astral-sh/ruff/pull/19376))
+- Add support for `@warnings.deprecated` and `typing_extensions.deprecated` ([#19376](https://github.com/astral-sh/ruff/pull/19376))
 - Do not consider a type `T` to satisfy a method member on a protocol unless the method is available on the meta-type of `T` ([#19187](https://github.com/astral-sh/ruff/pull/19187))
 - Implement expansion of enums into unions of literals ([#19382](https://github.com/astral-sh/ruff/pull/19382))
 - Support iterating over enums ([#19486](https://github.com/astral-sh/ruff/pull/19486))
 - Detect enums if metaclass is a subtype of `EnumType` / `EnumMeta` ([#19481](https://github.com/astral-sh/ruff/pull/19481))
-- Infer single-valuedness for enums based on `int` or `str` ([#19510](https://github.com/astral-sh/ruff/pull/19510))
+- Infer single-valuedness for enums deriving from `int` or `str` ([#19510](https://github.com/astral-sh/ruff/pull/19510))
 - Detect illegal non-enum attribute accesses in `Literal` annotations ([#19477](https://github.com/astral-sh/ruff/pull/19477))
 - Disallow assignment to `Final` class attributes ([#19457](https://github.com/astral-sh/ruff/pull/19457))
 - Handle implicit instance attributes declared `Final` ([#19462](https://github.com/astral-sh/ruff/pull/19462))
 - Disallow `Final` in function parameter- and return-type annotations ([#19480](https://github.com/astral-sh/ruff/pull/19480))
 - Disallow illegal uses of `ClassVar` ([#19483](https://github.com/astral-sh/ruff/pull/19483))
-- Highlight relevant argument in type assertion diagnostics ([#19426](https://github.com/astral-sh/ruff/pull/19426))
 - Make `del x` force a local resolution of `x` in the current scope ([#19389](https://github.com/astral-sh/ruff/pull/19389))
 - Perform type narrowing for places marked `global` ([#19381](https://github.com/astral-sh/ruff/pull/19381))
 - Infer correct types for attribute accesses on intersections with negative parts ([#19524](https://github.com/astral-sh/ruff/pull/19524))
