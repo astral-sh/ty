@@ -36,8 +36,6 @@
 - Support `async`/`await`, `async with` and `yield from` ([#19595](https://github.com/astral-sh/ruff/pull/19595))
 - Add support for `async for` loops and async iterables ([#19634](https://github.com/astral-sh/ruff/pull/19634))
 - Don't include already-bound legacy typevars in function generic context ([#19558](https://github.com/astral-sh/ruff/pull/19558))
-- New `Type` variant for `TypedDict` ([#19733](https://github.com/astral-sh/ruff/pull/19733))
-- Fix attribute access on `TypedDict`s ([#19758](https://github.com/astral-sh/ruff/pull/19758))
 - Infer types for key-based access on `TypedDict`s ([#19763](https://github.com/astral-sh/ruff/pull/19763))
 - Improve `isinstance()` truthiness analysis for generic types ([#19668](https://github.com/astral-sh/ruff/pull/19668))
 - Infer `type[tuple[int, str]]` as the meta-type of `tuple[int, str]` ([#19741](https://github.com/astral-sh/ruff/pull/19741))
@@ -45,13 +43,13 @@
 - Remove special casing for string-literal-in-tuple `__contains__` ([#19642](https://github.com/astral-sh/ruff/pull/19642))
 - Remove special casing for tuple addition ([#19636](https://github.com/astral-sh/ruff/pull/19636))
 - Return `Option<TupleType>` from `infer_tuple_type_expression` ([#19735](https://github.com/astral-sh/ruff/pull/19735))
-- Support as-patterns in reachability analysis ([#19728](https://github.com/astral-sh/ruff/pull/19728))
+- Support `as`-patterns in reachability analysis ([#19728](https://github.com/astral-sh/ruff/pull/19728))
 - Support `__setitem__` and improve `__getitem__` related diagnostics ([#19578](https://github.com/astral-sh/ruff/pull/19578))
 - Synthesize precise `__getitem__` overloads for tuple subclasses ([#19493](https://github.com/astral-sh/ruff/pull/19493))
 - Track different uses of legacy typevars, including context when rendering typevars ([#19604](https://github.com/astral-sh/ruff/pull/19604))
 - Upcast heterogeneous and mixed tuples to homogeneous tuples where it's necessary to solve a `TypeVar` ([#19635](https://github.com/astral-sh/ruff/pull/19635))
 - Fix incorrect lazy scope narrowing ([#19744](https://github.com/astral-sh/ruff/pull/19744))
-- Synthesize `__replace__` for dataclasses (>=3.13) ([#19545](https://github.com/astral-sh/ruff/pull/19545))
+- Synthesize `__replace__` for dataclasses ([#19545](https://github.com/astral-sh/ruff/pull/19545))
 
 ### Diagnostics
 
@@ -60,15 +58,9 @@
 - Improve the `Display` for generic `type[]` types ([#19667](https://github.com/astral-sh/ruff/pull/19667))
 - Remap Jupyter notebook cell indices in `ruff_db` ([#19698](https://github.com/astral-sh/ruff/pull/19698))
 
-### Playground
-
-- Added support for document highlights in playground ([#19540](https://github.com/astral-sh/ruff/pull/19540))
-- Support stdlib files in playground ([#19557](https://github.com/astral-sh/ruff/pull/19557))
-
 ### Documentation
 
 - Add the `ty` badge ([#897](https://github.com/astral-sh/ty/pull/897))
-- Improve visibility of copy and line separator in dark mode ([#917](https://github.com/astral-sh/ty/pull/917))
 
 ### Contributors
 
