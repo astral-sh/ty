@@ -84,7 +84,7 @@
 - [@ngroman](https://github.com/ngroman)
 - [@leandrobbraga](https://github.com/leandrobbraga)
 - [@dcreager](https://github.com/dcreager)
-- [@ntBre](https://github.com/ntBre)
+- [@ntbre](https://github.com/ntBre)
 - [@MatthewMckee4](https://github.com/MatthewMckee4)
 
 ## 0.0.1-alpha.16
