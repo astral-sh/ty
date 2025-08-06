@@ -4,6 +4,10 @@ The editor settings supported by ty's language server, as well as the settings s
 
 ## `python.ty.disableLanguageServices`
 
+!!! warning "Deprecated"
+
+    This option has been deprecated. Use [`ty.disableLanguageServices`](#disablelanguageservices) instead.
+
 Whether to disable the language services for the ty language server like code completion, hover,
 go to definition, etc.
 
@@ -22,6 +26,69 @@ server for features like code completion, hover, go to definition, etc.
 }
 ```
 
+______________________________________________________________________
+
+## `disableLanguageServices`
+
+Whether to disable the language services for the ty language server like code completion, hover,
+go to definition, etc.
+
+This is useful if you want to use ty exclusively for type checking and want to use another language
+server for features like code completion, hover, go to definition, etc.
+
+**Default value**: `false`
+
+**Type**: `boolean`
+
+**Example usage**:
+
+=== "VS Code"
+
+    ```json
+    {
+      "ty.disableLanguageServices": true
+    }
+    ```
+
+=== "Neovim"
+
+    ```lua
+    require('lspconfig').ty.setup({
+      settings = {
+        ty = {
+          disableLanguageServices = true,
+        },
+      },
+    })
+
+    -- For Neovim 0.11.0 and later:
+    vim.lsp.config('ty', {
+      settings = {
+        ty = {
+          disableLanguageServices = true,
+        },
+      },
+    })
+    ```
+
+=== "Zed"
+
+    ```json
+    {
+      "lsp": {
+        "ty": {
+          "settings": {
+            "ty": {
+              "disableLanguageServices": true
+            }
+          }
+        }
+      }
+    }
+    ```
+
+______________________________________________________________________
+
 ## `diagnosticMode`
 
 Determines the scope of the diagnostics reported by the language server.
@@ -35,11 +102,52 @@ Determines the scope of the diagnostics reported by the language server.
 
 **Example usage**:
 
-```json
-{
-  "ty.diagnosticMode": "workspace"
-}
-```
+=== "VS Code"
+
+    ```json
+    {
+      "ty.diagnosticMode": "workspace"
+    }
+    ```
+
+=== "Neovim"
+
+    ```lua
+    require('lspconfig').ty.setup({
+      settings = {
+        ty = {
+          diagnosticMode = 'workspace',
+        },
+      },
+    })
+
+    -- For Neovim 0.11.0 and later:
+    vim.lsp.config('ty', {
+      settings = {
+        ty = {
+          diagnosticMode = 'workspace',
+        },
+      },
+    })
+    ```
+
+=== "Zed"
+
+    ```json
+    {
+      "lsp": {
+        "ty": {
+          "settings": {
+            "ty": {
+              "diagnosticMode": "workspace"
+            }
+          }
+        }
+      }
+    }
+    ```
+
+______________________________________________________________________
 
 ## `logFile`
 
@@ -51,11 +159,46 @@ Path to the file to which the language server writes its log messages. By defaul
 
 **Example usage**:
 
-```json
-{
-  "ty.logFile": "~/path/to/ty.log"
-}
-```
+=== "VS Code"
+
+    ```json
+    {
+      "ty.logFile": "/path/to/ty.log"
+    }
+    ```
+
+=== "Neovim"
+
+    ```lua
+    require('lspconfig').ty.setup({
+      init_options = {
+        logFile = '/path/to/ty.log',
+      },
+    })
+
+    -- For Neovim 0.11.0 and later:
+    vim.lsp.config('ty', {
+      init_options = {
+        logFile = '/path/to/ty.log',
+      },
+    })
+    ```
+
+=== "Zed"
+
+    ```json
+    {
+      "lsp": {
+        "ty": {
+          "initialization_options": {
+            "logFile": "/path/to/ty.log"
+          }
+        }
+      }
+    }
+    ```
+
+______________________________________________________________________
 
 ## `logLevel`
 
@@ -67,29 +210,46 @@ The log level to use for the language server.
 
 **Example usage**:
 
-```json
-{
-  "ty.logLevel": "debug"
-}
-```
+=== "VS Code"
 
-## `trace.server`
+    ```json
+    {
+      "ty.logLevel": "debug"
+    }
+    ```
 
-The detail level at which messages between the language server and the editor (client) are logged. Refer to the [LSP
-specification](https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#traceValue)
-for more information.
+=== "Neovim"
 
-**Default value**: `"off"`
+    ```lua
+    require('lspconfig').ty.setup({
+      init_options = {
+        logLevel = 'debug',
+      },
+    })
 
-**Type**: `"off" | "messages" | "verbose"`
+    -- For Neovim 0.11.0 and later:
+    vim.lsp.config('ty', {
+      init_options = {
+        logLevel = 'debug',
+      },
+    })
+    ```
 
-**Example usage**:
+=== "Zed"
 
-```json
-{
-  "ty.trace.server": "messages"
-}
-```
+    ```json
+    {
+      "lsp": {
+        "ty": {
+          "initialization_options": {
+            "logLevel": "debug"
+          }
+        }
+      }
+    }
+    ```
+
+______________________________________________________________________
 
 ## VS Code specific
 
@@ -114,6 +274,8 @@ Strategy for loading the `ty` executable.
 }
 ```
 
+______________________________________________________________________
+
 ### `interpreter`
 
 A list of paths to Python interpreters. Even though this is a list, only the first interpreter is
@@ -134,6 +296,8 @@ The interpreter path is used to find the `ty` executable when
 }
 ```
 
+______________________________________________________________________
+
 ### `path`
 
 A list of path to `ty` executables.
@@ -150,5 +314,25 @@ The extension uses the first executable that exists. This setting takes preceden
 ```json
 {
   "ty.path": ["/home/user/.local/bin/ty"]
+}
+```
+
+______________________________________________________________________
+
+### `trace.server`
+
+The detail level at which messages between the language server and the editor (client) are logged. Refer to the [LSP
+specification](https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#traceValue)
+for more information.
+
+**Default value**: `"off"`
+
+**Type**: `"off" | "messages" | "verbose"`
+
+**Example usage**:
+
+```json
+{
+  "ty.trace.server": "messages"
 }
 ```
