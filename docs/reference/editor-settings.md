@@ -1,34 +1,14 @@
 # Editor settings
 
-The editor settings supported by ty's language server, as well as the settings specific to [ty's VS Code extension](https://github.com/astral-sh/ty-vscode/).
+The editor settings supported by ty's language server, as well as the settings specific to [ty's VS
+Code extension][ty-vscode].
 
-## `python.ty.disableLanguageServices`
+## Runtime settings
 
-!!! warning "Deprecated"
+These settings define the behavior of the language server while it is running. They can be changed
+dynamically without needing to restart the server.
 
-    This option has been deprecated. Use [`ty.disableLanguageServices`](#disablelanguageservices) instead.
-
-Whether to disable the language services for the ty language server like code completion, hover,
-go to definition, etc.
-
-This is useful if you want to use ty exclusively for type checking and want to use another language
-server for features like code completion, hover, go to definition, etc.
-
-**Default value**: `false`
-
-**Type**: `boolean`
-
-**Example usage**:
-
-```json
-{
-  "python.ty.disableLanguageServices": true
-}
-```
-
-______________________________________________________________________
-
-## `disableLanguageServices`
+### `disableLanguageServices`
 
 Whether to disable the language services for the ty language server like code completion, hover,
 go to definition, etc.
@@ -89,7 +69,33 @@ server for features like code completion, hover, go to definition, etc.
 
 ______________________________________________________________________
 
-## `diagnosticMode`
+### `python.ty.disableLanguageServices`
+
+!!! warning "Deprecated"
+
+    This option has been deprecated. Use [`ty.disableLanguageServices`](#disablelanguageservices) instead.
+
+Whether to disable the language services for the ty language server like code completion, hover,
+go to definition, etc.
+
+This is useful if you want to use ty exclusively for type checking and want to use another language
+server for features like code completion, hover, go to definition, etc.
+
+**Default value**: `false`
+
+**Type**: `boolean`
+
+**Example usage**:
+
+```json
+{
+  "python.ty.disableLanguageServices": true
+}
+```
+
+______________________________________________________________________
+
+### `diagnosticMode`
 
 Determines the scope of the diagnostics reported by the language server.
 
@@ -149,7 +155,13 @@ Determines the scope of the diagnostics reported by the language server.
 
 ______________________________________________________________________
 
-## `logFile`
+## Initialization options
+
+The following settings are the initialization options that can be provided to the language server
+during startup. These settings are static and cannot be changed while the server is running. Any
+change to these settings requires a server restart to take effect.
+
+### `logFile`
 
 Path to the file to which the language server writes its log messages. By default, ty writes log messages to stderr.
 
@@ -200,7 +212,7 @@ Path to the file to which the language server writes its log messages. By defaul
 
 ______________________________________________________________________
 
-## `logLevel`
+### `logLevel`
 
 The log level to use for the language server.
 
@@ -253,7 +265,7 @@ ______________________________________________________________________
 
 ## VS Code specific
 
-The following settings are specific to ty's VS Code extension.
+The following settings are specific to [ty's VS Code extension][ty-vscode].
 
 ### `importStrategy`
 
@@ -336,3 +348,5 @@ for more information.
   "ty.trace.server": "messages"
 }
 ```
+
+[ty-vscode]: https://github.com/astral-sh/ty-vscode/

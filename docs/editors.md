@@ -16,8 +16,8 @@ For Neovim 0.10 or earlier (with [`nvim-lspconfig`](https://github.com/neovim/nv
 
 ```lua
 require('lspconfig').ty.setup({
-  init_options = {
-    settings = {
+  settings = {
+    ty = {
       -- ty language server settings go here
     }
   }
@@ -29,8 +29,8 @@ For Neovim 0.11+ (with [`vim.lsp.config`](<https://neovim.io/doc/user/lsp.html#v
 ```lua
 -- Optional: Only required if you need to update the language server settings
 vim.lsp.config('ty', {
-  init_options = {
-    settings = {
+  settings = {
+    ty = {
       -- ty language server settings go here
     }
   }
