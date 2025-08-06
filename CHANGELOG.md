@@ -1,5 +1,92 @@
 # Changelog
 
+## 0.0.1-alpha.17
+
+### Bug fixes
+
+- Always refresh diagnostics after a watched files change ([#19697](https://github.com/astral-sh/ruff/pull/19697))
+- Correctly instantiate generic class that inherits `__init__` from generic base class ([#19693](https://github.com/astral-sh/ruff/pull/19693))
+- Don't panic with argument that doesn't actually implement Iterable ([#19602](https://github.com/astral-sh/ruff/pull/19602))
+- Fix "peek definition" in playground ([#19592](https://github.com/astral-sh/ruff/pull/19592))
+- Fix empty spans following a line terminator and unprintable character spans in diagnostics ([#19535](https://github.com/astral-sh/ruff/pull/19535))
+- Fix incorrect diagnostic when calling `__setitem__` ([#19645](https://github.com/astral-sh/ruff/pull/19645))
+- Fix lookup order of class variables before they are defined ([#19743](https://github.com/astral-sh/ruff/pull/19743))
+- Fix more false positives related to `Generic` or `Protocol` being subscripted with a `ParamSpec` or `TypeVarTuple` ([#19764](https://github.com/astral-sh/ruff/pull/19764))
+- Keep track of type qualifiers in stub declarations without right-hand side ([#19756](https://github.com/astral-sh/ruff/pull/19756))
+
+### Server
+
+- Add progress reporting to workspace diagnostics ([#19616](https://github.com/astral-sh/ruff/pull/19616))
+- Add stub mapping support to signature help ([#19570](https://github.com/astral-sh/ruff/pull/19570))
+- Added support for "document symbols" and "workspace symbols" ([#19521](https://github.com/astral-sh/ruff/pull/19521))
+- Fix server panic in workspace diagnostics request handler when typing ([#19631](https://github.com/astral-sh/ruff/pull/19631))
+- Implement caching for workspace and document diagnostics ([#19605](https://github.com/astral-sh/ruff/pull/19605))
+- Implement long-polling for workspace diagnostics ([#19670](https://github.com/astral-sh/ruff/pull/19670))
+- Implement streaming for workspace diagnostics ([#19657](https://github.com/astral-sh/ruff/pull/19657))
+- Implemented support for "selection range" language server feature ([#19567](https://github.com/astral-sh/ruff/pull/19567))
+
+### CLI
+
+- Add progress bar to `--watch` mode ([#19729](https://github.com/astral-sh/ruff/pull/19729))
+- Clear the terminal screen in `--watch` mode ([#19712](https://github.com/astral-sh/ruff/pull/19712))
+- Resolve file symlinks in src walk ([#19674](https://github.com/astral-sh/ruff/pull/19674))
+
+### Typing semantics and features
+
+- Support `async`/`await`, `async with` and `yield from` ([#19595](https://github.com/astral-sh/ruff/pull/19595))
+- Add support for `async for` loops and async iterables ([#19634](https://github.com/astral-sh/ruff/pull/19634))
+- Don't include already-bound legacy typevars in function generic context ([#19558](https://github.com/astral-sh/ruff/pull/19558))
+- New `Type` variant for `TypedDict` ([#19733](https://github.com/astral-sh/ruff/pull/19733))
+- Fix attribute access on `TypedDict`s ([#19758](https://github.com/astral-sh/ruff/pull/19758))
+- Infer types for key-based access on `TypedDict`s ([#19763](https://github.com/astral-sh/ruff/pull/19763))
+- Improve `isinstance()` truthiness analysis for generic types ([#19668](https://github.com/astral-sh/ruff/pull/19668))
+- Infer `type[tuple[int, str]]` as the meta-type of `tuple[int, str]` ([#19741](https://github.com/astral-sh/ruff/pull/19741))
+- Remove false positives when subscripting `Generic` or `Protocol` with a `ParamSpec` or `TypeVarTuple` ([#19749](https://github.com/astral-sh/ruff/pull/19749))
+- Remove special casing for string-literal-in-tuple `__contains__` ([#19642](https://github.com/astral-sh/ruff/pull/19642))
+- Remove special casing for tuple addition ([#19636](https://github.com/astral-sh/ruff/pull/19636))
+- Return `Option<TupleType>` from `infer_tuple_type_expression` ([#19735](https://github.com/astral-sh/ruff/pull/19735))
+- Support as-patterns in reachability analysis ([#19728](https://github.com/astral-sh/ruff/pull/19728))
+- Support `__setitem__` and improve `__getitem__` related diagnostics ([#19578](https://github.com/astral-sh/ruff/pull/19578))
+- Synthesize precise `__getitem__` overloads for tuple subclasses ([#19493](https://github.com/astral-sh/ruff/pull/19493))
+- Track different uses of legacy typevars, including context when rendering typevars ([#19604](https://github.com/astral-sh/ruff/pull/19604))
+- Upcast heterogeneous and mixed tuples to homogeneous tuples where it's necessary to solve a `TypeVar` ([#19635](https://github.com/astral-sh/ruff/pull/19635))
+- Fix incorrect lazy scope narrowing ([#19744](https://github.com/astral-sh/ruff/pull/19744))
+- Synthesize `__replace__` for dataclasses (>=3.13) ([#19545](https://github.com/astral-sh/ruff/pull/19545))
+
+### Diagnostics
+
+- Add diagnostics for async context managers ([#19704](https://github.com/astral-sh/ruff/pull/19704))
+- Display generic function signature properly ([#19544](https://github.com/astral-sh/ruff/pull/19544))
+- Improve the `Display` for generic `type[]` types ([#19667](https://github.com/astral-sh/ruff/pull/19667))
+- Remap Jupyter notebook cell indices in `ruff_db` ([#19698](https://github.com/astral-sh/ruff/pull/19698))
+
+### Playground
+
+- Added support for document highlights in playground ([#19540](https://github.com/astral-sh/ruff/pull/19540))
+- Support stdlib files in playground ([#19557](https://github.com/astral-sh/ruff/pull/19557))
+
+### Documentation
+
+- Add the `ty` badge ([#897](https://github.com/astral-sh/ty/pull/897))
+- Improve visibility of copy and line separator in dark mode ([#917](https://github.com/astral-sh/ty/pull/917))
+
+### Contributors
+
+- [@mtshiba](https://github.com/mtshiba)
+- [@MichaReiser](https://github.com/MichaReiser)
+- [@sharkdp](https://github.com/sharkdp)
+- [@github-actions](https://github.com/github-actions)
+- [@UnboundVariable](https://github.com/UnboundVariable)
+- [@jorenham](https://github.com/jorenham)
+- [@silamon](https://github.com/silamon)
+- [@AlexWaygood](https://github.com/AlexWaygood)
+- [@thejchap](https://github.com/thejchap)
+- [@ngroman](https://github.com/ngroman)
+- [@leandrobbraga](https://github.com/leandrobbraga)
+- [@dcreager](https://github.com/dcreager)
+- [@ntBre](https://github.com/ntBre)
+- [@MatthewMckee4](https://github.com/MatthewMckee4)
+
 ## 0.0.1-alpha.16
 
 ### Bug fixes
@@ -127,18 +214,18 @@
 
 - Add cycle detection to ty's implementation of disjointness between types, fixing a possible source of stack overflows when analysing recursive types ([#19139](https://github.com/astral-sh/ruff/pull/19139))
 - Don't allow first-party code to shadow the stdlib `types` module ([#19128](https://github.com/astral-sh/ruff/pull/19128)).
-    This fixes another possible source of stack overflows.
+This fixes another possible source of stack overflows.
 - Fix descriptor lookups for most types that overlap with `None` ([#19120](https://github.com/astral-sh/ruff/pull/19120)).
-    This means that e.g. `object().__str__()` now correctly binds the `self` argument of the `__str__`
-    method, as the `object` type overlaps with `None`.
+This means that e.g. `object().__str__()` now correctly binds the `self` argument of the `__str__`
+method, as the `object` type overlaps with `None`.
 
 ### Server
 
 - Filter a symbol from a stub file in autocomplete suggestions if it is an implementation detail of the stub ([#19121](https://github.com/astral-sh/ruff/pull/19121))
 - Add initial support for [semantic tokens](https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#textDocument_semanticTokens) ([#19108](https://github.com/astral-sh/ruff/pull/19108)).
-    This feature allows editors to apply more advanced syntax highlighting. Currently, the supported tokens are: `Namespace`, `Class`, `Parameter`, `SelfParameter`,`ClsParameter`, `Variable`, `Property`, `Function`, `Method`, `Keyword`, `String`, `Number`, `Decorator`, `BuiltinConstant` and `TypeParameter`.
+This feature allows editors to apply more advanced syntax highlighting. Currently, the supported tokens are: `Namespace`, `Class`, `Parameter`, `SelfParameter`,`ClsParameter`, `Variable`, `Property`, `Function`, `Method`, `Keyword`, `String`, `Number`, `Decorator`, `BuiltinConstant` and `TypeParameter`.
 - Initial support for [workspace diagnostics](https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#workspace_diagnostic) ([#18939](https://github.com/astral-sh/ruff/pull/18939)).
-    Enable this feature by setting the `ty.diagnosticMode` configuration setting to `"workspace"`.
+Enable this feature by setting the `ty.diagnosticMode` configuration setting to `"workspace"`.
 - Use Python syntax highlighting in on-hover content ([#19082](https://github.com/astral-sh/ruff/pull/19082))
 
 ### Typing semantics and features
@@ -328,7 +415,7 @@
 ### Bug fixes
 
 - Delay computation of 'unbound' visibility for implicit instance attributes ([#18669](https://github.com/astral-sh/ruff/pull/18669)).
-    This fixes a significant performance regression in version 0.0.1-alpha.9.
+This fixes a significant performance regression in version 0.0.1-alpha.9.
 
 ### Typing semantics and features
 
