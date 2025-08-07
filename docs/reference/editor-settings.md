@@ -3,11 +3,6 @@
 The editor settings supported by ty's language server, as well as the settings specific to [ty's VS
 Code extension][ty-vscode].
 
-## Runtime settings
-
-These settings define the behavior of the language server while it is running. They can be changed
-dynamically without needing to restart the server.
-
 ### `disableLanguageServices`
 
 Whether to disable the language services for the ty language server like code completion, hover,
@@ -75,11 +70,11 @@ ______________________________________________________________________
 
     This option has been deprecated. Use [`ty.disableLanguageServices`](#disablelanguageservices) instead.
 
-Whether to disable the language services for the ty language server like code completion, hover,
-go to definition, etc.
+Whether to disable the language services that ty provides like code completion, hover, go to
+definition, etc.
 
-This is useful if you want to use ty exclusively for type checking and want to use another language
-server for features like code completion, hover, go to definition, etc.
+This is useful if you want to use ty exclusively for type checking in combination with another
+language server for features like code completion, hover, go to definition, etc.
 
 **Default value**: `false`
 
@@ -155,11 +150,105 @@ Determines the scope of the diagnostics reported by the language server.
 
 ______________________________________________________________________
 
+## VS Code specific
+
+The following settings are specific to [ty's VS Code extension][ty-vscode].
+
+### `importStrategy`
+
+Strategy for loading the `ty` executable.
+
+- `fromEnvironment` finds ty in the environment, falling back to the bundled version
+- `useBundled` uses the version bundled with the extension
+
+**Default value**: `"fromEnvironment"`
+
+**Type**: `"fromEnvironment" | "useBundled"`
+
+**Example usage**:
+
+```json
+{
+  "ty.importStrategy": "useBundled"
+}
+```
+
+______________________________________________________________________
+
+### `interpreter`
+
+A list of paths to Python interpreters. Even though this is a list, only the first interpreter is
+used.
+
+The interpreter path is used to find the `ty` executable when
+[`ty.importStrategy`](#importstrategy) is set to `fromEnvironment`.
+
+**Default value**: `[]`
+
+**Type**: `string[]`
+
+**Example usage**:
+
+```json
+{
+  "ty.interpreter": ["/home/user/.local/bin/python"]
+}
+```
+
+______________________________________________________________________
+
+### `path`
+
+A list of path to `ty` executables.
+
+The extension uses the first executable that exists. This setting takes precedence over the
+[`ty.importStrategy`](#importstrategy) setting.
+
+**Default value**: `[]`
+
+**Type**: `string[]`
+
+**Example usage**:
+
+```json
+{
+  "ty.path": ["/home/user/.local/bin/ty"]
+}
+```
+
+______________________________________________________________________
+
+### `trace.server`
+
+The detail level at which messages between the language server and the editor (client) are logged.
+
+This setting is useful for debugging issues with the language server. Refer to the [troubleshooting
+guide](https://github.com/astral-sh/ty-vscode/blob/6cf16b4e87342a49f2bec1310a730cde8229e1d9/TROUBLESHOOTING.md)
+in [ty's VS Code extension][ty-vscode] for more information.
+
+**Default value**: `"off"`
+
+**Type**: `"off" | "messages" | "verbose"`
+
+**Example usage**:
+
+```json
+{
+  "ty.trace.server": "messages"
+}
+```
+
+______________________________________________________________________
+
 ## Initialization options
 
-The following settings are the initialization options that can be provided to the language server
-during startup. These settings are static and cannot be changed while the server is running. Any
-change to these settings requires a server restart to take effect.
+The following settings are required when ty is initialized in an editor. These settings are
+static so changing them requires restarting the editor to take effect.
+
+For VS Code users, these settings are defined in the `ty.*` namespace as usual, but for other
+editors, they would need to be provided in a separate field of the configuration that corresponds to
+the initialization options. Refer to the examples below for how to set these options in different
+editors.
 
 ### `logFile`
 
@@ -261,92 +350,4 @@ The log level to use for the language server.
     }
     ```
 
-______________________________________________________________________
-
-## VS Code specific
-
-The following settings are specific to [ty's VS Code extension][ty-vscode].
-
-### `importStrategy`
-
-Strategy for loading the `ty` executable.
-
-- `fromEnvironment` finds ty in the environment, falling back to the bundled version
-- `useBundled` uses the version bundled with the extension
-
-**Default value**: `"fromEnvironment"`
-
-**Type**: `"fromEnvironment" | "useBundled"`
-
-**Example usage**:
-
-```json
-{
-  "ty.importStrategy": "useBundled"
-}
-```
-
-______________________________________________________________________
-
-### `interpreter`
-
-A list of paths to Python interpreters. Even though this is a list, only the first interpreter is
-used.
-
-The interpreter path is used to find the `ty` executable when
-[`ty.importStrategy`](#importstrategy) is set to `fromEnvironment`.
-
-**Default value**: `[]`
-
-**Type**: `string[]`
-
-**Example usage**:
-
-```json
-{
-  "ty.interpreter": ["/home/user/.local/bin/python"]
-}
-```
-
-______________________________________________________________________
-
-### `path`
-
-A list of path to `ty` executables.
-
-The extension uses the first executable that exists. This setting takes precedence over the
-[`ty.importStrategy`](#importstrategy) setting.
-
-**Default value**: `[]`
-
-**Type**: `string[]`
-
-**Example usage**:
-
-```json
-{
-  "ty.path": ["/home/user/.local/bin/ty"]
-}
-```
-
-______________________________________________________________________
-
-### `trace.server`
-
-The detail level at which messages between the language server and the editor (client) are logged. Refer to the [LSP
-specification](https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#traceValue)
-for more information.
-
-**Default value**: `"off"`
-
-**Type**: `"off" | "messages" | "verbose"`
-
-**Example usage**:
-
-```json
-{
-  "ty.trace.server": "messages"
-}
-```
-
-[ty-vscode]: https://github.com/astral-sh/ty-vscode/
+[ty-vscode]: https://marketplace.visualstudio.com/items?itemName=astral-sh.ty
