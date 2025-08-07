@@ -147,6 +147,138 @@ Determines the scope of the diagnostics reported by the language server.
       }
     }
     ```
+______________________________________________________________________
+
+## `inlayHints`
+
+These settings control the inline hints that ty provides in an editor.
+
+### `variableTypes`
+
+Whether to show the types of variables as inline hints.
+
+**Default value**: `true`
+
+**Type**: `boolean`
+
+**Example usage**:
+
+=== "VS Code"
+
+    ```json
+    {
+      "ty.inlayHints.variableTypes": false
+    }
+    ```
+
+=== "Neovim"
+
+    ```lua
+    require('lspconfig').ty.setup({
+      settings = {
+        ty = {
+          inlayHints = {
+            variableTypes = false,
+          },
+        },
+      },
+    })
+
+    -- For Neovim 0.11.0 and later:
+    vim.lsp.config('ty', {
+      settings = {
+        ty = {
+          inlayHints = {
+            variableTypes = false,
+          },
+        },
+      },
+    })
+    ```
+
+=== "Zed"
+
+    ```json
+    {
+      "lsp": {
+        "ty": {
+          "settings": {
+            "ty": {
+              "inlayHints": {
+                "variableTypes": false
+              }
+            }
+          }
+        }
+      }
+    }
+    ```
+______________________________________________________________________
+
+## `experimental`
+
+These settings control the experimental language features that ty provides in an editor.
+
+### `rename`
+
+Whether to enable the experimental support for renaming symbols in the editor.
+
+**Default value**: `false`
+
+**Type**: `boolean`
+
+**Example usage**:
+
+=== "VS Code"
+
+    ```json
+    {
+      "ty.experimental.rename": true
+    }
+    ```
+
+=== "Neovim"
+
+    ```lua
+    require('lspconfig').ty.setup({
+      settings = {
+        ty = {
+          experimental = {
+            rename = true,
+          },
+        },
+      },
+    })
+
+    -- For Neovim 0.11.0 and later:
+    vim.lsp.config('ty', {
+      settings = {
+        ty = {
+          experimental = {
+            rename = true,
+          },
+        },
+      },
+    })
+    ```
+
+=== "Zed"
+
+    ```json
+    {
+      "lsp": {
+        "ty": {
+          "settings": {
+            "ty": {
+              "experimental": {
+                "rename": true
+              }
+            }
+          }
+        }
+      }
+    }
+    ```
 
 ______________________________________________________________________
 
