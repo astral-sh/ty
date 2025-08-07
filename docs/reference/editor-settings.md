@@ -1,8 +1,9 @@
 # Editor settings
 
-The editor settings supported by ty's language server, as well as the settings specific to [ty's VS Code extension](https://github.com/astral-sh/ty-vscode/).
+The editor settings supported by ty's language server, as well as the settings specific to [ty's VS
+Code extension][ty-vscode].
 
-## `python.ty.disableLanguageServices`
+## `disableLanguageServices`
 
 Whether to disable the language services for the ty language server like code completion, hover,
 go to definition, etc.
@@ -16,11 +17,78 @@ server for features like code completion, hover, go to definition, etc.
 
 **Example usage**:
 
+=== "VS Code"
+
+    ```json
+    {
+      "ty.disableLanguageServices": true
+    }
+    ```
+
+=== "Neovim"
+
+    ```lua
+    require('lspconfig').ty.setup({
+      settings = {
+        ty = {
+          disableLanguageServices = true,
+        },
+      },
+    })
+
+    -- For Neovim 0.11.0 and later:
+    vim.lsp.config('ty', {
+      settings = {
+        ty = {
+          disableLanguageServices = true,
+        },
+      },
+    })
+    ```
+
+=== "Zed"
+
+    ```json
+    {
+      "lsp": {
+        "ty": {
+          "settings": {
+            "ty": {
+              "disableLanguageServices": true
+            }
+          }
+        }
+      }
+    }
+    ```
+
+______________________________________________________________________
+
+## `python.ty.disableLanguageServices`
+
+!!! warning "Deprecated"
+
+    This option has been deprecated. Use [`ty.disableLanguageServices`](#disablelanguageservices) instead.
+
+Whether to disable the language services that ty provides like code completion, hover, go to
+definition, etc.
+
+This is useful if you want to use ty exclusively for type checking in combination with another
+language server for features like code completion, hover, go to definition, etc.
+
+**Default value**: `false`
+
+**Type**: `boolean`
+
+**Example usage**:
+
 ```json
 {
   "python.ty.disableLanguageServices": true
 }
 ```
+
+______________________________________________________________________
 
 ## `diagnosticMode`
 
@@ -35,65 +103,56 @@ Determines the scope of the diagnostics reported by the language server.
 
 **Example usage**:
 
-```json
-{
-  "ty.diagnosticMode": "workspace"
-}
-```
+=== "VS Code"
 
-## `logFile`
+    ```json
+    {
+      "ty.diagnosticMode": "workspace"
+    }
+    ```
 
-Path to the file to which the language server writes its log messages. By default, ty writes log messages to stderr.
+=== "Neovim"
 
-**Default value**: `null`
+    ```lua
+    require('lspconfig').ty.setup({
+      settings = {
+        ty = {
+          diagnosticMode = 'workspace',
+        },
+      },
+    })
 
-**Type**: `string`
+    -- For Neovim 0.11.0 and later:
+    vim.lsp.config('ty', {
+      settings = {
+        ty = {
+          diagnosticMode = 'workspace',
+        },
+      },
+    })
+    ```
 
-**Example usage**:
+=== "Zed"
 
-```json
-{
-  "ty.logFile": "~/path/to/ty.log"
-}
-```
+    ```json
+    {
+      "lsp": {
+        "ty": {
+          "settings": {
+            "ty": {
+              "diagnosticMode": "workspace"
+            }
+          }
+        }
+      }
+    }
+    ```
 
-## `logLevel`
-
-The log level to use for the language server.
-
-**Default value**: `"info"`
-
-**Type**: `"trace" | "debug" | "info" | "warn" | "error"`
-
-**Example usage**:
-
-```json
-{
-  "ty.logLevel": "debug"
-}
-```
-
-## `trace.server`
-
-The detail level at which messages between the language server and the editor (client) are logged. Refer to the [LSP
-specification](https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#traceValue)
-for more information.
-
-**Default value**: `"off"`
-
-**Type**: `"off" | "messages" | "verbose"`
-
-**Example usage**:
-
-```json
-{
-  "ty.trace.server": "messages"
-}
-```
+______________________________________________________________________
 
 ## VS Code specific
 
-The following settings are specific to ty's VS Code extension.
+The following settings are specific to [ty's VS Code extension][ty-vscode].
 
 ### `importStrategy`
 
@@ -113,6 +172,8 @@ Strategy for loading the `ty` executable.
   "ty.importStrategy": "useBundled"
 }
 ```
+
+______________________________________________________________________
 
 ### `interpreter`
 
@@ -134,6 +195,8 @@ The interpreter path is used to find the `ty` executable when
 }
 ```
 
+______________________________________________________________________
+
 ### `path`
 
 A list of path to `ty` executables.
@@ -152,3 +215,139 @@ The extension uses the first executable that exists. This setting takes preceden
   "ty.path": ["/home/user/.local/bin/ty"]
 }
 ```
+
+______________________________________________________________________
+
+### `trace.server`
+
+The detail level at which messages between the language server and the editor (client) are logged.
+
+This setting is useful for debugging issues with the language server. Refer to the [troubleshooting
+guide](https://github.com/astral-sh/ty-vscode/blob/6cf16b4e87342a49f2bec1310a730cde8229e1d9/TROUBLESHOOTING.md)
+in [ty's VS Code extension][ty-vscode] for more information.
+
+**Default value**: `"off"`
+
+**Type**: `"off" | "messages" | "verbose"`
+
+**Example usage**:
+
+```json
+{
+  "ty.trace.server": "messages"
+}
+```
+
+______________________________________________________________________
+
+## Initialization options
+
+The following settings are required when ty is initialized in an editor. These settings are
+static so changing them requires restarting the editor to take effect.
+
+For VS Code users, these settings are defined in the `ty.*` namespace as usual, but for other
+editors, they would need to be provided in a separate field of the configuration that corresponds to
+the initialization options. Refer to the examples below for how to set these options in different
+editors.
+
+### `logFile`
+
+Path to the file to which the language server writes its log messages. By default, ty writes log messages to stderr.
+
+**Default value**: `null`
+
+**Type**: `string`
+
+**Example usage**:
+
+=== "VS Code"
+
+    ```json
+    {
+      "ty.logFile": "/path/to/ty.log"
+    }
+    ```
+
+=== "Neovim"
+
+    ```lua
+    require('lspconfig').ty.setup({
+      init_options = {
+        logFile = '/path/to/ty.log',
+      },
+    })
+
+    -- For Neovim 0.11.0 and later:
+    vim.lsp.config('ty', {
+      init_options = {
+        logFile = '/path/to/ty.log',
+      },
+    })
+    ```
+
+=== "Zed"
+
+    ```json
+    {
+      "lsp": {
+        "ty": {
+          "initialization_options": {
+            "logFile": "/path/to/ty.log"
+          }
+        }
+      }
+    }
+    ```
+
+______________________________________________________________________
+
+### `logLevel`
+
+The log level to use for the language server.
+
+**Default value**: `"info"`
+
+**Type**: `"trace" | "debug" | "info" | "warn" | "error"`
+
+**Example usage**:
+
+=== "VS Code"
+
+    ```json
+    {
+      "ty.logLevel": "debug"
+    }
+    ```
+
+=== "Neovim"
+
+    ```lua
+    require('lspconfig').ty.setup({
+      init_options = {
+        logLevel = 'debug',
+      },
+    })
+
+    -- For Neovim 0.11.0 and later:
+    vim.lsp.config('ty', {
+      init_options = {
+        logLevel = 'debug',
+      },
+    })
+    ```
+
+=== "Zed"
+
+    ```json
+    {
+      "lsp": {
+        "ty": {
+          "initialization_options": {
+            "logLevel": "debug"
+          }
+        }
+      }
+    }
+    ```
+
+[ty-vscode]: https://marketplace.visualstudio.com/items?itemName=astral-sh.ty
