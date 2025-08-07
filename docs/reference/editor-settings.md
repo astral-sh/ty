@@ -3,7 +3,7 @@
 The editor settings supported by ty's language server, as well as the settings specific to [ty's VS
 Code extension][ty-vscode].
 
-### `disableLanguageServices`
+## `disableLanguageServices`
 
 Whether to disable the language services for the ty language server like code completion, hover,
 go to definition, etc.
@@ -64,7 +64,7 @@ server for features like code completion, hover, go to definition, etc.
 
 ______________________________________________________________________
 
-### `python.ty.disableLanguageServices`
+## `python.ty.disableLanguageServices`
 
 !!! warning "Deprecated"
 
@@ -90,7 +90,7 @@ language server for features like code completion, hover, go to definition, etc.
 
 ______________________________________________________________________
 
-### `diagnosticMode`
+## `diagnosticMode`
 
 Determines the scope of the diagnostics reported by the language server.
 
