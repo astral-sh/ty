@@ -147,6 +147,7 @@ Determines the scope of the diagnostics reported by the language server.
       }
     }
     ```
+
 ______________________________________________________________________
 
 ## `inlayHints`
@@ -213,6 +214,7 @@ Whether to show the types of variables as inline hints.
       }
     }
     ```
+
 ______________________________________________________________________
 
 ## `experimental`
