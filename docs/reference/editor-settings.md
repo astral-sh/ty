@@ -215,6 +215,67 @@ Whether to show the types of variables as inline hints.
     }
     ```
 
+### `callArgumentNames`
+
+Whether to show argument names in call expressions as inline hints.
+
+**Default value**: `true`
+
+**Type**: `boolean`
+
+**Example usage**:
+
+=== "VS Code"
+
+    ```json
+    {
+      "ty.inlayHints.callArgumentNames": false
+    }
+    ```
+
+=== "Neovim"
+
+    ```lua
+    require('lspconfig').ty.setup({
+      settings = {
+        ty = {
+          inlayHints = {
+            callArgumentNames = false,
+          },
+        },
+      },
+    })
+
+    -- For Neovim 0.11.0 and later:
+    vim.lsp.config('ty', {
+      settings = {
+        ty = {
+          inlayHints = {
+            callArgumentNames = false,
+          },
+        },
+      },
+    })
+    ```
+
+=== "Zed"
+
+    ```json
+    {
+      "lsp": {
+        "ty": {
+          "settings": {
+            "ty": {
+              "inlayHints": {
+                "callArgumentNames": false
+              }
+            }
+          }
+        }
+      }
+    }
+    ```
+
 ______________________________________________________________________
 
 ## `experimental`
