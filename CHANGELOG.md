@@ -1,5 +1,68 @@
 # Changelog
 
+## 0.0.1-alpha.18
+
+### Bug fixes
+
+- fix goto-definition on imports ([#19834](https://github.com/astral-sh/ruff/pull/19834))
+- support recursive type aliases ([#19805](https://github.com/astral-sh/ruff/pull/19805))
+
+### Server
+
+- Add `ty.experimental.rename` server setting ([#19800](https://github.com/astral-sh/ruff/pull/19800))
+- Add `ty.inlayHints.variableTypes` server option ([#19780](https://github.com/astral-sh/ruff/pull/19780))
+- Add inlay hints for call arguments ([#19269](https://github.com/astral-sh/ruff/pull/19269))
+- Implement stdlib stub mapping ([#19529](https://github.com/astral-sh/ruff/pull/19529))
+- Implemented support for "rename" language server feature ([#19551](https://github.com/astral-sh/ruff/pull/19551))
+- Support LSP client settings ([#19614](https://github.com/astral-sh/ruff/pull/19614))
+- Update goto range for attribute access to only target the attribute ([#19848](https://github.com/astral-sh/ruff/pull/19848))
+- Warn users if server received unknown options ([#19779](https://github.com/astral-sh/ruff/pull/19779))
+- render docstrings in hover ([#19882](https://github.com/astral-sh/ruff/pull/19882))
+- resolve docstrings for modules ([#19898](https://github.com/astral-sh/ruff/pull/19898))
+
+### Documentation
+
+- Add `ty.experimental.rename`, `ty.inlayHints.variableTypes` ([#951](https://github.com/astral-sh/ty/pull/951))
+- Update editor settings reference with new format ([#944](https://github.com/astral-sh/ty/pull/944))
+
+### Other changes
+
+- Add Salsa caching to `TupleType::to_class_type` ([#19840](https://github.com/astral-sh/ruff/pull/19840))
+- Add precise inference for indexing, slicing and unpacking `NamedTuple` instances ([#19560](https://github.com/astral-sh/ruff/pull/19560))
+- Disallow `typing.TypedDict` in type expressions ([#19777](https://github.com/astral-sh/ruff/pull/19777))
+- Fix a few more diagnostic differences from Ruff ([#19806](https://github.com/astral-sh/ruff/pull/19806))
+- Handle cycles when finding implicit attributes ([#19833](https://github.com/astral-sh/ruff/pull/19833))
+- Implement module-level `__getattr__` support ([#19791](https://github.com/astral-sh/ruff/pull/19791))
+- Improve ability to solve TypeVars when they appear in unions ([#19829](https://github.com/astral-sh/ruff/pull/19829))
+- Improve performance of subtyping and assignability checks for protocols ([#19824](https://github.com/astral-sh/ruff/pull/19824))
+- Improve subscript narrowing for "safe mutable classes" ([#19781](https://github.com/astral-sh/ruff/pull/19781))
+- Reduce memory usage of `TupleSpec` and `TupleType` ([#19872](https://github.com/astral-sh/ruff/pull/19872))
+- Reduce size of member table ([#19572](https://github.com/astral-sh/ruff/pull/19572))
+- Remove `Type::Tuple` ([#19669](https://github.com/astral-sh/ruff/pull/19669))
+- Repurpose `FunctionType.into_bound_method_type` to return `BoundMethodType` ([#19793](https://github.com/astral-sh/ruff/pull/19793))
+- Short circuit `ReachabilityConstraints::analyze_single` for dynamic types ([#19867](https://github.com/astral-sh/ruff/pull/19867))
+- Use separate Rust types for bound and unbound type variables ([#19796](https://github.com/astral-sh/ruff/pull/19796))
+- Validate writes to `TypedDict` keys ([#19782](https://github.com/astral-sh/ruff/pull/19782))
+- `typing.Self` is bound by the method, not the class ([#19784](https://github.com/astral-sh/ruff/pull/19784))
+- fix deferred name loading in PEP695 generic classes/functions ([#19888](https://github.com/astral-sh/ruff/pull/19888))
+- more cases for the class body global fallback ([#19795](https://github.com/astral-sh/ruff/pull/19795))
+- simplify return type of place_from_declarations ([#19884](https://github.com/astral-sh/ruff/pull/19884))
+
+### Contributors
+
+- [@AlexWaygood](https://github.com/AlexWaygood)
+- [@Gankra](https://github.com/Gankra)
+- [@ntBre](https://github.com/ntBre)
+- [@MichaReiser](https://github.com/MichaReiser)
+- [@PrettyWood](https://github.com/PrettyWood)
+- [@dhruvmanila](https://github.com/dhruvmanila)
+- [@carljm](https://github.com/carljm)
+- [@dcreager](https://github.com/dcreager)
+- [@UnboundVariable](https://github.com/UnboundVariable)
+- [@sharkdp](https://github.com/sharkdp)
+- [@oconnor663](https://github.com/oconnor663)
+- [@MatthewMckee4](https://github.com/MatthewMckee4)
+
 ## 0.0.1-alpha.17
 
 ### Bug fixes
@@ -206,18 +269,18 @@
 
 - Add cycle detection to ty's implementation of disjointness between types, fixing a possible source of stack overflows when analysing recursive types ([#19139](https://github.com/astral-sh/ruff/pull/19139))
 - Don't allow first-party code to shadow the stdlib `types` module ([#19128](https://github.com/astral-sh/ruff/pull/19128)).
-    This fixes another possible source of stack overflows.
+This fixes another possible source of stack overflows.
 - Fix descriptor lookups for most types that overlap with `None` ([#19120](https://github.com/astral-sh/ruff/pull/19120)).
-    This means that e.g. `object().__str__()` now correctly binds the `self` argument of the `__str__`
-    method, as the `object` type overlaps with `None`.
+This means that e.g. `object().__str__()` now correctly binds the `self` argument of the `__str__`
+method, as the `object` type overlaps with `None`.
 
 ### Server
 
 - Filter a symbol from a stub file in autocomplete suggestions if it is an implementation detail of the stub ([#19121](https://github.com/astral-sh/ruff/pull/19121))
 - Add initial support for [semantic tokens](https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#textDocument_semanticTokens) ([#19108](https://github.com/astral-sh/ruff/pull/19108)).
-    This feature allows editors to apply more advanced syntax highlighting. Currently, the supported tokens are: `Namespace`, `Class`, `Parameter`, `SelfParameter`,`ClsParameter`, `Variable`, `Property`, `Function`, `Method`, `Keyword`, `String`, `Number`, `Decorator`, `BuiltinConstant` and `TypeParameter`.
+This feature allows editors to apply more advanced syntax highlighting. Currently, the supported tokens are: `Namespace`, `Class`, `Parameter`, `SelfParameter`,`ClsParameter`, `Variable`, `Property`, `Function`, `Method`, `Keyword`, `String`, `Number`, `Decorator`, `BuiltinConstant` and `TypeParameter`.
 - Initial support for [workspace diagnostics](https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#workspace_diagnostic) ([#18939](https://github.com/astral-sh/ruff/pull/18939)).
-    Enable this feature by setting the `ty.diagnosticMode` configuration setting to `"workspace"`.
+Enable this feature by setting the `ty.diagnosticMode` configuration setting to `"workspace"`.
 - Use Python syntax highlighting in on-hover content ([#19082](https://github.com/astral-sh/ruff/pull/19082))
 
 ### Typing semantics and features
@@ -407,7 +470,7 @@
 ### Bug fixes
 
 - Delay computation of 'unbound' visibility for implicit instance attributes ([#18669](https://github.com/astral-sh/ruff/pull/18669)).
-    This fixes a significant performance regression in version 0.0.1-alpha.9.
+This fixes a significant performance regression in version 0.0.1-alpha.9.
 
 ### Typing semantics and features
 
