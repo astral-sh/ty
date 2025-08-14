@@ -4,49 +4,58 @@
 
 ### Bug fixes
 
-- fix goto-definition on imports ([#19834](https://github.com/astral-sh/ruff/pull/19834))
-- support recursive type aliases ([#19805](https://github.com/astral-sh/ruff/pull/19805))
+- Fix goto definition on imports ([#19834](https://github.com/astral-sh/ruff/pull/19834))
+- Support recursive type aliases ([#19805](https://github.com/astral-sh/ruff/pull/19805))
+- Handle cycles when finding implicit attributes ([#19833](https://github.com/astral-sh/ruff/pull/19833))
 
 ### Server
 
+- Implement support for "rename" language server feature ([#19551](https://github.com/astral-sh/ruff/pull/19551))
 - Add `ty.experimental.rename` server setting ([#19800](https://github.com/astral-sh/ruff/pull/19800))
-- Add `ty.inlayHints.variableTypes` server option ([#19780](https://github.com/astral-sh/ruff/pull/19780))
-- Add inlay hints for call arguments ([#19269](https://github.com/astral-sh/ruff/pull/19269))
+- Add `ty.inlayHints.variableTypes` server setting ([#19780](https://github.com/astral-sh/ruff/pull/19780))
+- Add inlay hints for call arguments (configured by `ty.inlayHints.callArgumentNames` server setting) ([#19269](https://github.com/astral-sh/ruff/pull/19269))
 - Implement stdlib stub mapping ([#19529](https://github.com/astral-sh/ruff/pull/19529))
-- Implemented support for "rename" language server feature ([#19551](https://github.com/astral-sh/ruff/pull/19551))
 - Support LSP client settings ([#19614](https://github.com/astral-sh/ruff/pull/19614))
 - Update goto range for attribute access to only target the attribute ([#19848](https://github.com/astral-sh/ruff/pull/19848))
 - Warn users if server received unknown options ([#19779](https://github.com/astral-sh/ruff/pull/19779))
-- render docstrings in hover ([#19882](https://github.com/astral-sh/ruff/pull/19882))
-- resolve docstrings for modules ([#19898](https://github.com/astral-sh/ruff/pull/19898))
+- Render docstrings in hover ([#19882](https://github.com/astral-sh/ruff/pull/19882))
+- Resolve docstrings for modules ([#19898](https://github.com/astral-sh/ruff/pull/19898))
 
-### Documentation
+### Typing semantics and features
 
-- Add `ty.experimental.rename`, `ty.inlayHints.variableTypes` ([#951](https://github.com/astral-sh/ty/pull/951))
-- Update editor settings reference with new format ([#944](https://github.com/astral-sh/ty/pull/944))
-
-### Other changes
-
-- Add Salsa caching to `TupleType::to_class_type` ([#19840](https://github.com/astral-sh/ruff/pull/19840))
 - Add precise inference for indexing, slicing and unpacking `NamedTuple` instances ([#19560](https://github.com/astral-sh/ruff/pull/19560))
 - Disallow `typing.TypedDict` in type expressions ([#19777](https://github.com/astral-sh/ruff/pull/19777))
-- Fix a few more diagnostic differences from Ruff ([#19806](https://github.com/astral-sh/ruff/pull/19806))
-- Handle cycles when finding implicit attributes ([#19833](https://github.com/astral-sh/ruff/pull/19833))
 - Implement module-level `__getattr__` support ([#19791](https://github.com/astral-sh/ruff/pull/19791))
 - Improve ability to solve TypeVars when they appear in unions ([#19829](https://github.com/astral-sh/ruff/pull/19829))
-- Improve performance of subtyping and assignability checks for protocols ([#19824](https://github.com/astral-sh/ruff/pull/19824))
 - Improve subscript narrowing for "safe mutable classes" ([#19781](https://github.com/astral-sh/ruff/pull/19781))
-- Reduce memory usage of `TupleSpec` and `TupleType` ([#19872](https://github.com/astral-sh/ruff/pull/19872))
-- Reduce size of member table ([#19572](https://github.com/astral-sh/ruff/pull/19572))
 - Remove `Type::Tuple` ([#19669](https://github.com/astral-sh/ruff/pull/19669))
 - Repurpose `FunctionType.into_bound_method_type` to return `BoundMethodType` ([#19793](https://github.com/astral-sh/ruff/pull/19793))
 - Short circuit `ReachabilityConstraints::analyze_single` for dynamic types ([#19867](https://github.com/astral-sh/ruff/pull/19867))
 - Use separate Rust types for bound and unbound type variables ([#19796](https://github.com/astral-sh/ruff/pull/19796))
 - Validate writes to `TypedDict` keys ([#19782](https://github.com/astral-sh/ruff/pull/19782))
 - `typing.Self` is bound by the method, not the class ([#19784](https://github.com/astral-sh/ruff/pull/19784))
-- fix deferred name loading in PEP695 generic classes/functions ([#19888](https://github.com/astral-sh/ruff/pull/19888))
-- more cases for the class body global fallback ([#19795](https://github.com/astral-sh/ruff/pull/19795))
-- simplify return type of place_from_declarations ([#19884](https://github.com/astral-sh/ruff/pull/19884))
+- Fix deferred name loading in PEP695 generic classes/functions ([#19888](https://github.com/astral-sh/ruff/pull/19888))
+- Add more cases for the class body global fallback ([#19795](https://github.com/astral-sh/ruff/pull/19795))
+
+### Diagnostics
+
+- Fix a few more diagnostic differences from Ruff ([#19806](https://github.com/astral-sh/ruff/pull/19806))
+
+### Performance
+
+- Add Salsa caching to `TupleType::to_class_type` ([#19840](https://github.com/astral-sh/ruff/pull/19840))
+- Improve performance of subtyping and assignability checks for protocols ([#19824](https://github.com/astral-sh/ruff/pull/19824))
+
+### Memory usage optimizations
+
+- Reduce memory usage of `TupleSpec` and `TupleType` ([#19872](https://github.com/astral-sh/ruff/pull/19872))
+- Reduce size of member table ([#19572](https://github.com/astral-sh/ruff/pull/19572))
+
+### Documentation
+
+- Add `ty.experimental.rename`, `ty.inlayHints.variableTypes` ([#951](https://github.com/astral-sh/ty/pull/951))
+- Add `ty.inlayHints.callArgumentNames` ([#981](https://github.com/astral-sh/ty/pull/981))
+- Update editor settings reference with new format ([#944](https://github.com/astral-sh/ty/pull/944))
 
 ### Contributors
 
