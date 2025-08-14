@@ -1,5 +1,66 @@
 # Changelog
 
+## 0.0.1-alpha.18
+
+### Bug fixes
+
+- Fix goto definition on imports ([#19834](https://github.com/astral-sh/ruff/pull/19834))
+- Support non-generic recursive type aliases that use [the `type` statement](https://docs.python.org/3/reference/simple_stmts.html#grammar-token-python-grammar-type_stmt) ([#19805](https://github.com/astral-sh/ruff/pull/19805))
+- Handle cycles when finding implicit attributes ([#19833](https://github.com/astral-sh/ruff/pull/19833))
+
+### Server
+
+- Implement support for "rename" language server feature ([#19551](https://github.com/astral-sh/ruff/pull/19551))
+- Add `ty.experimental.rename` server setting ([#19800](https://github.com/astral-sh/ruff/pull/19800))
+- Add `ty.inlayHints.variableTypes` server setting ([#19780](https://github.com/astral-sh/ruff/pull/19780))
+- Add inlay hints for call arguments (configured by `ty.inlayHints.callArgumentNames` server setting) ([#19269](https://github.com/astral-sh/ruff/pull/19269))
+- Enable goto definition to jump to the runtime definition in the standard library for stdlib symbols (rather than the type definition in typeshed's stubs) ([#19529](https://github.com/astral-sh/ruff/pull/19529))
+- Support LSP client settings ([#19614](https://github.com/astral-sh/ruff/pull/19614))
+- Update goto range for attribute access to only target the attribute ([#19848](https://github.com/astral-sh/ruff/pull/19848))
+- Warn users if the server received unknown options ([#19779](https://github.com/astral-sh/ruff/pull/19779))
+- Render docstrings in hover ([#19882](https://github.com/astral-sh/ruff/pull/19882))
+- Resolve docstrings for modules ([#19898](https://github.com/astral-sh/ruff/pull/19898))
+
+### Typing semantics and features
+
+- Add precise inference for indexing, slicing and unpacking `NamedTuple` instances ([#19560](https://github.com/astral-sh/ruff/pull/19560))
+- Disallow `typing.TypedDict` in type expressions ([#19777](https://github.com/astral-sh/ruff/pull/19777))
+- Implement module-level `__getattr__` support ([#19791](https://github.com/astral-sh/ruff/pull/19791))
+- Improve ability to solve TypeVars when they appear in unions ([#19829](https://github.com/astral-sh/ruff/pull/19829))
+- Improve subscript narrowing for `collections.ChainMap`, `collections.Counter`, `collections.deque` and `collections.OrderedDict` ([#19781](https://github.com/astral-sh/ruff/pull/19781))
+- Extend all tuple special casing to tuple subclasses ([#19669](https://github.com/astral-sh/ruff/pull/19669))
+- Use separate Rust types for bound and unbound type variables ([#19796](https://github.com/astral-sh/ruff/pull/19796))
+- Validate writes to `TypedDict` keys ([#19782](https://github.com/astral-sh/ruff/pull/19782))
+- `typing.Self` is bound by the method, not the class ([#19784](https://github.com/astral-sh/ruff/pull/19784))
+- Fix deferred name loading in PEP695 generic classes/functions ([#19888](https://github.com/astral-sh/ruff/pull/19888))
+- Improve handling of symbol-lookup edge cases involving class scopes ([#19795](https://github.com/astral-sh/ruff/pull/19795))
+
+### Performance
+
+- Improve performance around tuple types ([#19840](https://github.com/astral-sh/ruff/pull/19840))
+- Improve performance of subtyping and assignability checks for protocols ([#19824](https://github.com/astral-sh/ruff/pull/19824))
+- Improve multithreaded performance for large codebases ([#19867](https://github.com/astral-sh/ruff/pull/19867))
+
+### Memory usage optimizations
+
+- Reduce memory usage of `TupleSpec` and `TupleType` ([#19872](https://github.com/astral-sh/ruff/pull/19872))
+- Reduce size of member table ([#19572](https://github.com/astral-sh/ruff/pull/19572))
+
+### Contributors
+
+- [@AlexWaygood](https://github.com/AlexWaygood)
+- [@Gankra](https://github.com/Gankra)
+- [@ntbre](https://github.com/ntBre)
+- [@MichaReiser](https://github.com/MichaReiser)
+- [@PrettyWood](https://github.com/PrettyWood)
+- [@dhruvmanila](https://github.com/dhruvmanila)
+- [@carljm](https://github.com/carljm)
+- [@dcreager](https://github.com/dcreager)
+- [@UnboundVariable](https://github.com/UnboundVariable)
+- [@sharkdp](https://github.com/sharkdp)
+- [@oconnor663](https://github.com/oconnor663)
+- [@MatthewMckee4](https://github.com/MatthewMckee4)
+
 ## 0.0.1-alpha.17
 
 ### Bug fixes
