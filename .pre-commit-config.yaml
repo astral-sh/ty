@@ -9,7 +9,7 @@ exclude: |
 
 repos:
   - repo: https://github.com/astral-sh/uv-pre-commit
-    rev: 0.8.8
+    rev: 0.8.11
     hooks:
       - id: uv-lock
   - repo: https://github.com/pre-commit/pre-commit-hooks
@@ -18,7 +18,7 @@ repos:
       - id: check-merge-conflict
 
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.12.8
+    rev: v0.12.9
     hooks:
       - id: ruff-format
       - id: ruff
@@ -45,7 +45,7 @@ repos:
       - id: markdownlint-fix
 
   - repo: https://github.com/crate-ci/typos
-    rev: v1.35.3
+    rev: v1.35.4
     hooks:
       - id: typos
 
@@ -59,12 +59,12 @@ repos:
   # zizmor detects security vulnerabilities in GitHub Actions workflows.
   # Additional configuration for the tool is found in `.github/zizmor.yml`
   - repo: https://github.com/woodruffw/zizmor-pre-commit
-    rev: v1.11.0
+    rev: v1.12.1
     hooks:
       - id: zizmor
 
   - repo: https://github.com/python-jsonschema/check-jsonschema
-    rev: 0.33.2
+    rev: 0.33.3
     hooks:
       - id: check-github-workflows
 
