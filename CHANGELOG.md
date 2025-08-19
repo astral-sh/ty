@@ -26,9 +26,9 @@
 - Look for `site-packages` directories in `<sys.prefix>/lib64/` as well as `<sys.prefix>/lib/` on non-Windows systems ([#19978](https://github.com/astral-sh/ruff/pull/19978)). This change fixes a number of `unresolved-import` false-positive diagnostics reported by Poetry users.
 - Add diagnostics for invalid `await` expressions ([#19711](https://github.com/astral-sh/ruff/pull/19711))
 - Add `else`-branch narrowing for `if type(a) is A` when `A` is `@final` ([#19925](https://github.com/astral-sh/ruff/pull/19925))
-- Sync vendored typeshed stubs ([#19923](https://github.com/astral-sh/ruff/pull/19923))
 - Improve solving of typevars with defaults, and `typing.Self` ([#19786](https://github.com/astral-sh/ruff/pull/19786))
 - Support `kw_only=True` for `dataclass()` and `field()` ([#19677](https://github.com/astral-sh/ruff/pull/19677))
+- Sync vendored typeshed stubs ([#19923](https://github.com/astral-sh/ruff/pull/19923)). [Typeshed diff](https://github.com/python/typeshed/compare/3f08a4ed10b321c378107c236a06a33584869a9b...893b9a760deb3be64d13c748318e95a752230961).
 
 ### Server
 
