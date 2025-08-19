@@ -1,5 +1,61 @@
 # Changelog
 
+## 0.0.1-alpha.19
+
+### Bug fixes
+
+- Fix false-positive diagnostics if a function parameter is annotated with `type[P]` where `P` is a protocol class ([#19947](https://github.com/astral-sh/ruff/pull/19947))
+- Fix ANSI escape codes in terminal output on Windows ([#19984](https://github.com/astral-sh/ruff/pull/19984))
+- Fix protocol interface inference for protocols in stub files with `ClassVar` members and "subprotocols" that extend other protocols ([#19950](https://github.com/astral-sh/ruff/pull/19950))
+- Fix inference of equality comparisons between enum members ([#19666](https://github.com/astral-sh/ruff/pull/19666))
+- Remove incorrect type narrowing for `if type(x) is C[int]` ([#19926](https://github.com/astral-sh/ruff/pull/19926))
+- Improve detection of `TypeError`s resulting from protocol classes illegally inheriting from non-protocol classes ([#19941](https://github.com/astral-sh/ruff/pull/19941)). We previously detected this error, but only when the protocol class illegally inherited from a non-generic class or an unspecialized generic class. We now also detect it when the protocol class inherits from a specialized generic class.
+- Fix incorrectly precise type inference in some situations involving nested scopes ([#19908](https://github.com/astral-sh/ruff/pull/19908))
+- Fix unpacking a type alias with a precise tuple spec ([#19981](https://github.com/astral-sh/ruff/pull/19981))
+
+### `NamedTuple` improvements
+
+- Synthesize read-only properties for all declared members on `NamedTuple` classes ([#19899](https://github.com/astral-sh/ruff/pull/19899))
+- Allow any instance of a `NamedTuple` class to be passed to a function parameter annotated with `typing.NamedTuple` ([#19915](https://github.com/astral-sh/ruff/pull/19915))
+- Detect `NamedTuple` classes where fields without default values illegally follow fields with default values ([#19945](https://github.com/astral-sh/ruff/pull/19945)). This causes `TypeError` to be raised at runtime.
+- Detect illegal multiple inheritance with `NamedTuple` ([#19943](https://github.com/astral-sh/ruff/pull/19943)). This causes `TypeError` to be raised at runtime.
+
+### Other semantics improvements
+
+- Add support for stubs packages with `partial` in their `py.typed` files ([#19931](https://github.com/astral-sh/ruff/pull/19931))
+- Look for `site-packages` directories in `<sys.prefix>/lib64/` as well as `<sys.prefix>/lib/` on non-Windows systems ([#19978](https://github.com/astral-sh/ruff/pull/19978)). This change fixes a number of `unresolved-import` false-positive diagnostics reported by Poetry users.
+- Add diagnostics for invalid `await` expressions ([#19711](https://github.com/astral-sh/ruff/pull/19711))
+- Add `else`-branch narrowing for `if type(a) is A` when `A` is `@final` ([#19925](https://github.com/astral-sh/ruff/pull/19925))
+- Sync vendored typeshed stubs ([#19923](https://github.com/astral-sh/ruff/pull/19923))
+- Improve solving of typevars with defaults, and `typing.Self` ([#19786](https://github.com/astral-sh/ruff/pull/19786))
+- Support `kw_only=True` for `dataclass()` and `field()` ([#19677](https://github.com/astral-sh/ruff/pull/19677))
+
+### Server
+
+- Log server version at info level ([#19961](https://github.com/astral-sh/ruff/pull/19961))
+- Improve goto/hover for definitions ([#19976](https://github.com/astral-sh/ruff/pull/19976))
+
+### Performance improvements
+
+- Short-circuit a server inlayhints request if it's disabled in settings ([#19963](https://github.com/astral-sh/ruff/pull/19963))
+- Speedup server tracing checks ([#19965](https://github.com/astral-sh/ruff/pull/19965))
+- Add caching to logic for inferring whether a class is a `NamedTuple`, a dataclass or a `TypedDict` ([#19912](https://github.com/astral-sh/ruff/pull/19912))
+- Speedup project file discovery ([#19913](https://github.com/astral-sh/ruff/pull/19913))
+
+### Contributors
+
+- [@dcreager](https://github.com/dcreager)
+- [@MichaReiser](https://github.com/MichaReiser)
+- [@sharkdp](https://github.com/sharkdp)
+- [@github-actions](https://github.com/github-actions)
+- [@mtshiba](https://github.com/mtshiba)
+- [@theammir](https://github.com/theammir)
+- [@AlexWaygood](https://github.com/AlexWaygood)
+- [@thejchap](https://github.com/thejchap)
+- [@Gankra](https://github.com/Gankra)
+- [@MatthewMckee4](https://github.com/MatthewMckee4)
+- [@carljm](https://github.com/carljm)
+
 ## 0.0.1-alpha.18
 
 ### Bug fixes
@@ -267,18 +323,18 @@
 
 - Add cycle detection to ty's implementation of disjointness between types, fixing a possible source of stack overflows when analysing recursive types ([#19139](https://github.com/astral-sh/ruff/pull/19139))
 - Don't allow first-party code to shadow the stdlib `types` module ([#19128](https://github.com/astral-sh/ruff/pull/19128)).
-    This fixes another possible source of stack overflows.
+This fixes another possible source of stack overflows.
 - Fix descriptor lookups for most types that overlap with `None` ([#19120](https://github.com/astral-sh/ruff/pull/19120)).
-    This means that e.g. `object().__str__()` now correctly binds the `self` argument of the `__str__`
-    method, as the `object` type overlaps with `None`.
+This means that e.g. `object().__str__()` now correctly binds the `self` argument of the `__str__`
+method, as the `object` type overlaps with `None`.
 
 ### Server
 
 - Filter a symbol from a stub file in autocomplete suggestions if it is an implementation detail of the stub ([#19121](https://github.com/astral-sh/ruff/pull/19121))
 - Add initial support for [semantic tokens](https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#textDocument_semanticTokens) ([#19108](https://github.com/astral-sh/ruff/pull/19108)).
-    This feature allows editors to apply more advanced syntax highlighting. Currently, the supported tokens are: `Namespace`, `Class`, `Parameter`, `SelfParameter`,`ClsParameter`, `Variable`, `Property`, `Function`, `Method`, `Keyword`, `String`, `Number`, `Decorator`, `BuiltinConstant` and `TypeParameter`.
+This feature allows editors to apply more advanced syntax highlighting. Currently, the supported tokens are: `Namespace`, `Class`, `Parameter`, `SelfParameter`,`ClsParameter`, `Variable`, `Property`, `Function`, `Method`, `Keyword`, `String`, `Number`, `Decorator`, `BuiltinConstant` and `TypeParameter`.
 - Initial support for [workspace diagnostics](https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#workspace_diagnostic) ([#18939](https://github.com/astral-sh/ruff/pull/18939)).
-    Enable this feature by setting the `ty.diagnosticMode` configuration setting to `"workspace"`.
+Enable this feature by setting the `ty.diagnosticMode` configuration setting to `"workspace"`.
 - Use Python syntax highlighting in on-hover content ([#19082](https://github.com/astral-sh/ruff/pull/19082))
 
 ### Typing semantics and features
@@ -468,7 +524,7 @@
 ### Bug fixes
 
 - Delay computation of 'unbound' visibility for implicit instance attributes ([#18669](https://github.com/astral-sh/ruff/pull/18669)).
-    This fixes a significant performance regression in version 0.0.1-alpha.9.
+This fixes a significant performance regression in version 0.0.1-alpha.9.
 
 ### Typing semantics and features
 
