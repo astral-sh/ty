@@ -13,14 +13,14 @@
 - Fix incorrectly precise type inference in some situations involving nested scopes ([#19908](https://github.com/astral-sh/ruff/pull/19908))
 - Fix unpacking a type alias with a precise tuple spec ([#19981](https://github.com/astral-sh/ruff/pull/19981))
 
-### `NamedTuple` improvements
+### `NamedTuple` semantics improvements
 
 - Synthesize read-only properties for all declared members on `NamedTuple` classes ([#19899](https://github.com/astral-sh/ruff/pull/19899))
 - Allow any instance of a `NamedTuple` class to be passed to a function parameter annotated with `typing.NamedTuple` ([#19915](https://github.com/astral-sh/ruff/pull/19915))
 - Detect `NamedTuple` classes where fields without default values illegally follow fields with default values ([#19945](https://github.com/astral-sh/ruff/pull/19945)). This causes `TypeError` to be raised at runtime.
 - Detect illegal multiple inheritance with `NamedTuple` ([#19943](https://github.com/astral-sh/ruff/pull/19943)). This causes `TypeError` to be raised at runtime.
 
-### Other semantics improvements
+### Other typing and semantics improvements
 
 - Add support for stubs packages with `partial` in their `py.typed` files ([#19931](https://github.com/astral-sh/ruff/pull/19931))
 - Look for `site-packages` directories in `<sys.prefix>/lib64/` as well as `<sys.prefix>/lib/` on non-Windows systems ([#19978](https://github.com/astral-sh/ruff/pull/19978)). This change fixes a number of `unresolved-import` false-positive diagnostics reported by Poetry users.
@@ -30,13 +30,13 @@
 - Support the `kw_only` parameter for `dataclasses.dataclass()` and `dataclasses.field()` ([#19677](https://github.com/astral-sh/ruff/pull/19677))
 - Sync vendored typeshed stubs ([#19923](https://github.com/astral-sh/ruff/pull/19923)). [Typeshed diff](https://github.com/python/typeshed/compare/3f08a4ed10b321c378107c236a06a33584869a9b...893b9a760deb3be64d13c748318e95a752230961).
 
-### Server
+### Server improvements
 
 - Improve goto/hover for definitions ([#19976](https://github.com/astral-sh/ruff/pull/19976))
 
 ### Performance improvements
 
-- Short-circuit a server inlay hints request if it's disabled in settings ([#19963](https://github.com/astral-sh/ruff/pull/19963))
+- Short-circuit a server [inlay hints request](https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#textDocument_inlayHint) if all settings under `ty.inlayHints` are disabled ([#19963](https://github.com/astral-sh/ruff/pull/19963))
 - Speedup server tracing checks ([#19965](https://github.com/astral-sh/ruff/pull/19965))
 - Add caching to logic for inferring whether a class is a `NamedTuple`, a dataclass or a `TypedDict` ([#19912](https://github.com/astral-sh/ruff/pull/19912))
 - Speedup project file discovery ([#19913](https://github.com/astral-sh/ruff/pull/19913))
