@@ -5,7 +5,7 @@
 ### Bug fixes
 
 - Fix false-positive diagnostics if a function parameter is annotated with `type[P]` where `P` is a protocol class ([#19947](https://github.com/astral-sh/ruff/pull/19947))
-- Fix ANSI escape codes in terminal output on Windows ([#19984](https://github.com/astral-sh/ruff/pull/19984))
+- Fix ANSI colors in terminal output on old Windows terminals ([#19984](https://github.com/astral-sh/ruff/pull/19984))
 - Fix protocol interface inference for protocols in stub files with `ClassVar` members and "subprotocols" that extend other protocols ([#19950](https://github.com/astral-sh/ruff/pull/19950))
 - Fix inference of equality comparisons between enum members ([#19666](https://github.com/astral-sh/ruff/pull/19666))
 - Remove incorrect type narrowing for `if type(x) is C[int]` ([#19926](https://github.com/astral-sh/ruff/pull/19926))
@@ -27,17 +27,16 @@
 - Add diagnostics for invalid `await` expressions ([#19711](https://github.com/astral-sh/ruff/pull/19711))
 - Add `else`-branch narrowing for `if type(a) is A` when `A` is `@final` ([#19925](https://github.com/astral-sh/ruff/pull/19925))
 - Improve solving of typevars with defaults, and `typing.Self` ([#19786](https://github.com/astral-sh/ruff/pull/19786))
-- Support `kw_only=True` for `dataclass()` and `field()` ([#19677](https://github.com/astral-sh/ruff/pull/19677))
+- Support the `kw_only` parameter for `dataclasses.dataclass()` and `dataclasses.field()` ([#19677](https://github.com/astral-sh/ruff/pull/19677))
 - Sync vendored typeshed stubs ([#19923](https://github.com/astral-sh/ruff/pull/19923)). [Typeshed diff](https://github.com/python/typeshed/compare/3f08a4ed10b321c378107c236a06a33584869a9b...893b9a760deb3be64d13c748318e95a752230961).
 
 ### Server
 
-- Log server version at info level ([#19961](https://github.com/astral-sh/ruff/pull/19961))
 - Improve goto/hover for definitions ([#19976](https://github.com/astral-sh/ruff/pull/19976))
 
 ### Performance improvements
 
-- Short-circuit a server inlayhints request if it's disabled in settings ([#19963](https://github.com/astral-sh/ruff/pull/19963))
+- Short-circuit a server inlay hints request if it's disabled in settings ([#19963](https://github.com/astral-sh/ruff/pull/19963))
 - Speedup server tracing checks ([#19965](https://github.com/astral-sh/ruff/pull/19965))
 - Add caching to logic for inferring whether a class is a `NamedTuple`, a dataclass or a `TypedDict` ([#19912](https://github.com/astral-sh/ruff/pull/19912))
 - Speedup project file discovery ([#19913](https://github.com/astral-sh/ruff/pull/19913))
