@@ -1,5 +1,60 @@
 # Changelog
 
+## 0.0.1-alpha.19
+
+### Bug fixes
+
+- Fix false-positive diagnostics if a function parameter is annotated with `type[P]` where `P` is a protocol class ([#19947](https://github.com/astral-sh/ruff/pull/19947))
+- Fix ANSI colors in terminal output on old Windows terminals ([#19984](https://github.com/astral-sh/ruff/pull/19984))
+- Fix protocol interface inference for protocols in stub files with `ClassVar` members and "subprotocols" that extend other protocols ([#19950](https://github.com/astral-sh/ruff/pull/19950))
+- Fix inference of equality comparisons between enum members ([#19666](https://github.com/astral-sh/ruff/pull/19666))
+- Remove incorrect type narrowing for `if type(x) is C[int]` ([#19926](https://github.com/astral-sh/ruff/pull/19926))
+- Improve detection of `TypeError`s resulting from protocol classes illegally inheriting from non-protocol classes ([#19941](https://github.com/astral-sh/ruff/pull/19941)). We previously detected this error, but only when the protocol class illegally inherited from a non-generic class or an unspecialized generic class. We now also detect it when the protocol class inherits from a specialized generic class.
+- Fix incorrectly precise type inference in some situations involving nested scopes ([#19908](https://github.com/astral-sh/ruff/pull/19908))
+- Fix unpacking a type alias with a precise tuple spec ([#19981](https://github.com/astral-sh/ruff/pull/19981))
+
+### `NamedTuple` semantics improvements
+
+- Synthesize read-only properties for all declared members on `NamedTuple` classes ([#19899](https://github.com/astral-sh/ruff/pull/19899))
+- Allow any instance of a `NamedTuple` class to be passed to a function parameter annotated with `typing.NamedTuple` ([#19915](https://github.com/astral-sh/ruff/pull/19915))
+- Detect `NamedTuple` classes where fields without default values illegally follow fields with default values ([#19945](https://github.com/astral-sh/ruff/pull/19945)). This causes `TypeError` to be raised at runtime.
+- Detect illegal multiple inheritance with `NamedTuple` ([#19943](https://github.com/astral-sh/ruff/pull/19943)). This causes `TypeError` to be raised at runtime.
+
+### Other typing and semantics improvements
+
+- Add support for stubs packages with `partial` in their `py.typed` files ([#19931](https://github.com/astral-sh/ruff/pull/19931))
+- Look for `site-packages` directories in `<sys.prefix>/lib64/` as well as `<sys.prefix>/lib/` on non-Windows systems ([#19978](https://github.com/astral-sh/ruff/pull/19978)). This change fixes a number of `unresolved-import` false-positive diagnostics reported by Poetry users.
+- Add diagnostics for invalid `await` expressions ([#19711](https://github.com/astral-sh/ruff/pull/19711))
+- Add `else`-branch narrowing for `if type(a) is A` when `A` is `@final` ([#19925](https://github.com/astral-sh/ruff/pull/19925))
+- Improve solving of typevars with defaults, and `typing.Self` ([#19786](https://github.com/astral-sh/ruff/pull/19786))
+- Support the `kw_only` parameter for `dataclasses.dataclass()` and `dataclasses.field()` ([#19677](https://github.com/astral-sh/ruff/pull/19677))
+- Sync vendored typeshed stubs ([#19923](https://github.com/astral-sh/ruff/pull/19923)). [Typeshed diff](https://github.com/python/typeshed/compare/3f08a4ed10b321c378107c236a06a33584869a9b...893b9a760deb3be64d13c748318e95a752230961).
+
+### Server improvements
+
+- Improve goto/hover for definitions ([#19976](https://github.com/astral-sh/ruff/pull/19976))
+
+### Performance improvements
+
+- Short-circuit a server [inlay hints request](https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#textDocument_inlayHint) if all settings under `ty.inlayHints` are disabled ([#19963](https://github.com/astral-sh/ruff/pull/19963))
+- Speedup server tracing checks ([#19965](https://github.com/astral-sh/ruff/pull/19965))
+- Add caching to logic for inferring whether a class is a `NamedTuple`, a dataclass or a `TypedDict` ([#19912](https://github.com/astral-sh/ruff/pull/19912))
+- Speedup project file discovery ([#19913](https://github.com/astral-sh/ruff/pull/19913))
+
+### Contributors
+
+- [@dcreager](https://github.com/dcreager)
+- [@MichaReiser](https://github.com/MichaReiser)
+- [@sharkdp](https://github.com/sharkdp)
+- [@github-actions](https://github.com/github-actions)
+- [@mtshiba](https://github.com/mtshiba)
+- [@theammir](https://github.com/theammir)
+- [@AlexWaygood](https://github.com/AlexWaygood)
+- [@thejchap](https://github.com/thejchap)
+- [@Gankra](https://github.com/Gankra)
+- [@MatthewMckee4](https://github.com/MatthewMckee4)
+- [@carljm](https://github.com/carljm)
+
 ## 0.0.1-alpha.18
 
 ### Bug fixes
