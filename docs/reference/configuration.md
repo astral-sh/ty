@@ -47,6 +47,22 @@ or pyright's `stubPath` configuration setting.
 extra-paths = ["./shared/my-search-path"]
 ```
 
+### `read-python-path`
+
+Boolean to indicate if ty should read paths found in the `PYTHONPATH` environment variable.
+This may be needed by tools which setup python library paths on a per-shell basis.
+
+**Default value**: `false`
+
+**Type**: `bool`
+
+**Example usage** (`pyproject.toml`):
+
+```toml
+[tool.ty.environment]
+read-python-path = true
+```
+
 ---
 
 ### `python`

@@ -56,3 +56,11 @@ The Python environment may be explicitly configured using the
 [`--python`](./reference/cli.md#ty-check--python) flag.
 
 When setting the environment explicitly, non-virtual environments can be provided.
+
+## PYTHONPATH
+
+Python supports setting the `PYTHONPATH` environment variable to control module lookup
+per-environment.
+
+If ty should read this environment variable for lookup paths
+[`environment.read-python-path`](./reference/configuration.md#read-python-path) should be set to true.
