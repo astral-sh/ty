@@ -343,6 +343,68 @@ Whether to enable the experimental support for renaming symbols in the editor.
     }
     ```
 
+### `autoImport`
+
+Whether to enable the experimental support for auto-import code completions. Note that this feature
+is currently under active development and may not work correctly or be gratuitously slow.
+
+**Default value**: `false`
+
+**Type**: `boolean`
+
+**Example usage**:
+
+=== "VS Code"
+
+    ```json
+    {
+      "ty.experimental.autoImport": true
+    }
+    ```
+
+=== "Neovim"
+
+    ```lua
+    require('lspconfig').ty.setup({
+      settings = {
+        ty = {
+          experimental = {
+            autoImport = true,
+          },
+        },
+      },
+    })
+
+    -- For Neovim 0.11.0 and later:
+    vim.lsp.config('ty', {
+      settings = {
+        ty = {
+          experimental = {
+            autoImport = true,
+          },
+        },
+      },
+    })
+    ```
+
+=== "Zed"
+
+    ```json
+    {
+      "lsp": {
+        "ty": {
+          "settings": {
+            "ty": {
+              "experimental": {
+                "autoImport": true
+              }
+            }
+          }
+        }
+      }
+    }
+    ```
+
 ______________________________________________________________________
 
 ## VS Code specific
