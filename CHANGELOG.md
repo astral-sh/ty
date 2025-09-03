@@ -41,7 +41,6 @@
 - Infer slightly more precise types for comprehensions ([#20111](https://github.com/astral-sh/ruff/pull/20111))
 - Disable boundness analysis for implicit instance attributes ([#20128](https://github.com/astral-sh/ruff/pull/20128))
 - Add `Top[]` and `Bottom[]` special forms ([#20054](https://github.com/astral-sh/ruff/pull/20054))
-- Optimize TDD atom ordering ([#20098](https://github.com/astral-sh/ruff/pull/20098))
 - Preserve qualifiers when accessing attributes on unions/intersections ([#20114](https://github.com/astral-sh/ruff/pull/20114))
 - Strict validation of protocol members ([#17750](https://github.com/astral-sh/ruff/pull/17750))
 - Support `__init_subclass__` ([#20190](https://github.com/astral-sh/ruff/pull/20190))
@@ -73,6 +72,7 @@
 
 - Avoid unnecessary argument type expansion ([#19999](https://github.com/astral-sh/ruff/pull/19999))
 - Limit argument expansion size for overload call evaluation ([#20041](https://github.com/astral-sh/ruff/pull/20041))
+- Optimize TDD atom ordering ([#20098](https://github.com/astral-sh/ruff/pull/20098))
 
 ### Contributors
 
