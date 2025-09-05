@@ -27,6 +27,10 @@ then set [`environment.root`](./reference/configuration.md#root) in your `pyproj
 root = ["./app"]
 ```
 
+Note that `python` and `tests` folders are automatically added to the project `root` if they exist,
+and if they are not packages themselves (i.e. they do not contain an `__init__.py` file or an
+`__init__.pyi` file).
+
 ## Third-party modules
 
 Third-party modules are Python packages that are not part of your project or the standard library.
