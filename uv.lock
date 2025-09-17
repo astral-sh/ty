@@ -1,5 +1,5 @@
 version = 1
-revision = 2
+revision = 3
 requires-python = ">=3.8"
 resolution-markers = [
     "python_full_version >= '3.10'",
@@ -714,7 +714,7 @@ wheels = [
 [[package]]
 name = "rooster-blue"
 version = "0.0.0"
-source = { git = "https://github.com/zanieb/rooster?rev=cf27242#cf27242c62fba2cf2ad6d48d58d8f49a2dcb7704" }
+source = { git = "https://github.com/zanieb/rooster?rev=c24ea11bf3cfea89d6f8c782462cac4313e5e0d6#c24ea11bf3cfea89d6f8c782462cac4313e5e0d6" }
 dependencies = [
     { name = "hishel", version = "0.0.33", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.9'" },
     { name = "hishel", version = "0.1.2", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.9'" },
@@ -773,7 +773,7 @@ release = [
 [package.metadata]
 
 [package.metadata.requires-dev]
-release = [{ name = "rooster-blue", git = "https://github.com/zanieb/rooster?rev=cf27242" }]
+release = [{ name = "rooster-blue", git = "https://github.com/zanieb/rooster?rev=c24ea11bf3cfea89d6f8c782462cac4313e5e0d6" }]
 
 [[package]]
 name = "typer"
