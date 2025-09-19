@@ -6,6 +6,11 @@
 
 - Fix inference of constructor calls to generic classes that have explicitly annotated `self` parameters in their `__init__` methods ([#20325](https://github.com/astral-sh/ruff/pull/20325))
 - Fix a stack overflow when computing completions for recursive types ([#20354](https://github.com/astral-sh/ruff/pull/20354))
+- Fix panic in `BoundMethodType::into_callable_type()` ([#20369](https://github.com/astral-sh/ruff/pull/20369))
+- Fix stack overflows in binary comparison inference ([#20446](https://github.com/astral-sh/ruff/pull/20446))
+- Fix many "too many cycle iterations" panics concerning recursive type aliases and/or recursive generics ([#20359](https://github.com/astral-sh/ruff/pull/20359))
+- Fix stack overflow involving subtype checks for recursive type aliases ([#20259](https://github.com/astral-sh/ruff/pull/20259))
+- Fix panic when inferring the type of an infinitely-nested-tuple implicit instance attribute ([#20333](https://github.com/astral-sh/ruff/pull/20333))
 
 ### Server
 
@@ -20,7 +25,6 @@
 
 - Add GitHub output format ([#20358](https://github.com/astral-sh/ruff/pull/20358))
 - Add GitLab output format ([#20155](https://github.com/astral-sh/ruff/pull/20155))
-
 
 ### Typing semantics and features
 
@@ -48,16 +52,11 @@
 - `TypedDict`: Add support for `typing.ReadOnly` ([#20241](https://github.com/astral-sh/ruff/pull/20241))
 - Detect syntax errors stemming from `yield from` expressions inside async functions ([#20051](https://github.com/astral-sh/ruff/pull/20051))
 - `"foo".startswith` is not an instance of `types.MethodWrapperType` ([#20317](https://github.com/astral-sh/ruff/pull/20317))
-- Fix panic in `BoundMethodType::into_callable_type()` ([#20369](https://github.com/astral-sh/ruff/pull/20369))
-- Fix stack overflows in binary comparison inference ([#20446](https://github.com/astral-sh/ruff/pull/20446))
 - Eliminate definitely-impossible types from union in equality narrowing ([#20164](https://github.com/astral-sh/ruff/pull/20164))
 - Infer more precise types for the `name` and `value` properties on enum members ([#20311](https://github.com/astral-sh/ruff/pull/20311))
 - Initial support for `slots=True` in dataclasses ([#20278](https://github.com/astral-sh/ruff/pull/20278))
 - Improve type narrowing in situations involving nested functions ([#19932](https://github.com/astral-sh/ruff/pull/19932))
-- Fix many "too many cycle iterations" panics concerning recursive type aliases and/or recursive generics ([#20359](https://github.com/astral-sh/ruff/pull/20359))
-- Fix stack overflow involving subtype checks for recursive type aliases ([#20259](https://github.com/astral-sh/ruff/pull/20259))
 - Support type aliases in binary comparison inference ([#20445](https://github.com/astral-sh/ruff/pull/20445))
-- Fix panic when inferring the type of an infinitely-nested-tuple implicit instance attribute ([#20333](https://github.com/astral-sh/ruff/pull/20333))
 - Sync vendored typeshed stubs ([#20394](https://github.com/astral-sh/ruff/pull/20394)). [Typeshed diff](https://github.com/python/typeshed/compare/2480d7e7c74493a024eaf254c5d2c6f452c80ee2...47dbbd6c914a5190d54bc5bd498d1e6633d97db2)
 
 ### Diagnostics
