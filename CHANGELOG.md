@@ -4,36 +4,31 @@
 
 ### Bug fixes
 
-- Use 'unknown' specialization for upper bound on Self ([#20325](https://github.com/astral-sh/ruff/pull/20325))
+- Fix inference of constructor calls to generic classes that have explicitly annotated `self` parameters in their `__init__` methods ([#20325](https://github.com/astral-sh/ruff/pull/20325))
 - Fix a stack overflow when computing completions for recursive types ([#20354](https://github.com/astral-sh/ruff/pull/20354))
 
 ### Server
 
-- Add imports when an unimported completion is selected ([#20439](https://github.com/astral-sh/ruff/pull/20439))
-- Add completions for unimported symbols ([#20207](https://github.com/astral-sh/ruff/pull/20207))
-- \[`ty`\] Include `NamedTupleFallback` members in `NamedTuple` instance completions ([#20356](https://github.com/astral-sh/ruff/pull/20356))
+- Add autocomplete suggestions for unimported symbols ([#20207](https://github.com/astral-sh/ruff/pull/20207), [#20439](https://github.com/astral-sh/ruff/pull/20439))
+- Include generated `NamedTuple` methods such as `_make`, `_asdict` and `_replace` in autocomplete suggestions ([#20356](https://github.com/astral-sh/ruff/pull/20356))
 
 ### Configuration
 
-- Include `python` folder in `environment.root` if it exists ([#20263](https://github.com/astral-sh/ruff/pull/20263))
+- Automatically add `python/` to `environment.root` if a `python/` folder exists in the root of a repository ([#20263](https://github.com/astral-sh/ruff/pull/20263))
 
 ### CLI
 
 - Add GitHub output format ([#20358](https://github.com/astral-sh/ruff/pull/20358))
 - Add GitLab output format ([#20155](https://github.com/astral-sh/ruff/pull/20155))
 
-### Documentation
-
-- Update first-party `environment.root` docs ([#1133](https://github.com/astral-sh/ty/pull/1133))
-- Add documentation for the experimental `autoImport` setting ([#1122](https://github.com/astral-sh/ty/pull/1122))
 
 ### Typing semantics and features
 
-- Add support for generic PEP695 type aliases ([#20219](https://github.com/astral-sh/ruff/pull/20219))
+- Add support for generic [PEP-695 type aliases](https://peps.python.org/pep-0695/#generic-type-alias) ([#20219](https://github.com/astral-sh/ruff/pull/20219))
 - Allow annotation expressions to be `ast::Attribute` nodes ([#20413](https://github.com/astral-sh/ruff/pull/20413))
 - Allow protocols to participate in nominal subtyping as well as structural subtyping ([#20314](https://github.com/astral-sh/ruff/pull/20314))
 - Attribute access on top/bottom materializations ([#20221](https://github.com/astral-sh/ruff/pull/20221))
-- Bind Self typevar to method context ([#20366](https://github.com/astral-sh/ruff/pull/20366))
+- Bind `Self` type variables to the method, not the class ([#20366](https://github.com/astral-sh/ruff/pull/20366))
 - Ensure various special-cased bound methods are understood as assignable to `Callable` ([#20330](https://github.com/astral-sh/ruff/pull/20330))
 - Ensure various special-cased builtin functions are understood as assignable to `Callable` ([#20331](https://github.com/astral-sh/ruff/pull/20331))
 - Fall back to `object` for attribute access on synthesized protocols ([#20286](https://github.com/astral-sh/ruff/pull/20286))
@@ -41,31 +36,29 @@
 - Fix subtyping/assignability of function- and class-literal types to callback protocols ([#20363](https://github.com/astral-sh/ruff/pull/20363))
 - Implement the legacy PEP-484 convention for indicating positional-only parameters ([#20248](https://github.com/astral-sh/ruff/pull/20248))
 - Infer more precise types for collection literals ([#20360](https://github.com/astral-sh/ruff/pull/20360))
-- Make TypeIs invariant in its type argument ([#20428](https://github.com/astral-sh/ruff/pull/20428))
-- Narrow specialized generics using isinstance() ([#20256](https://github.com/astral-sh/ruff/pull/20256))
-- Patch `Self` for fallback-methods on `NamedTuple`s and `TypedDict`s ([#20328](https://github.com/astral-sh/ruff/pull/20328))
+- Make `TypeIs` invariant in its type argument ([#20428](https://github.com/astral-sh/ruff/pull/20428))
+- Narrow specialized generics using `isinstance()` ([#20256](https://github.com/astral-sh/ruff/pull/20256))
 - Proper assignability/subtyping checks for protocols with method members ([#20165](https://github.com/astral-sh/ruff/pull/20165))
 - Reduce false positives for `ParamSpec`s and `TypeVarTuple`s ([#20239](https://github.com/astral-sh/ruff/pull/20239))
-- Remove `Self` from generic context when binding `Self` ([#20364](https://github.com/astral-sh/ruff/pull/20364))
-- Retry parameter matching for argument type expansion ([#20153](https://github.com/astral-sh/ruff/pull/20153))
+- Overload evaluation: retry parameter matching for argument type expansion ([#20153](https://github.com/astral-sh/ruff/pull/20153))
 - Simplify unions of enum literals and subtypes thereof ([#20324](https://github.com/astral-sh/ruff/pull/20324))
-- Support "legacy" `typing.Self` in combination with PEP 695 generic contexts ([#20304](https://github.com/astral-sh/ruff/pull/20304))
+- Support "legacy" `typing.Self` in combination with [PEP-695](https://peps.python.org/pep-0695) generic contexts ([#20304](https://github.com/astral-sh/ruff/pull/20304))
 - Treat `Hashable`, and similar protocols, equivalently to `object` for subtyping/assignability ([#20284](https://github.com/astral-sh/ruff/pull/20284))
 - Treat `__new__` as a static method ([#20212](https://github.com/astral-sh/ruff/pull/20212))
-- TypedDict: Add support for `typing.ReadOnly` ([#20241](https://github.com/astral-sh/ruff/pull/20241))
-- Detect `yield from` inside async function ([#20051](https://github.com/astral-sh/ruff/pull/20051))
+- `TypedDict`: Add support for `typing.ReadOnly` ([#20241](https://github.com/astral-sh/ruff/pull/20241))
+- Detect syntax errors stemming from `yield from` expressions inside async functions ([#20051](https://github.com/astral-sh/ruff/pull/20051))
 - `"foo".startswith` is not an instance of `types.MethodWrapperType` ([#20317](https://github.com/astral-sh/ruff/pull/20317))
 - Fix panic in `BoundMethodType::into_callable_type()` ([#20369](https://github.com/astral-sh/ruff/pull/20369))
 - Fix stack overflows in binary comparison inference ([#20446](https://github.com/astral-sh/ruff/pull/20446))
 - Eliminate definitely-impossible types from union in equality narrowing ([#20164](https://github.com/astral-sh/ruff/pull/20164))
-- Infer `name` and `value` for enum members ([#20311](https://github.com/astral-sh/ruff/pull/20311))
+- Infer more precise types for the `name` and `value` properties on enum members ([#20311](https://github.com/astral-sh/ruff/pull/20311))
 - Initial support for `slots=True` in dataclasses ([#20278](https://github.com/astral-sh/ruff/pull/20278))
-- Improved type narrowing ([#19932](https://github.com/astral-sh/ruff/pull/19932))
-- Fix panic in type expressions ([#20359](https://github.com/astral-sh/ruff/pull/20359))
-- Fix stack overflow in type inference ([#20259](https://github.com/astral-sh/ruff/pull/20259))
-- Support type aliases in binary compares ([#20445](https://github.com/astral-sh/ruff/pull/20445))
-- Fix panic in infinitely-nested-tuple implicit attribute ([#20333](https://github.com/astral-sh/ruff/pull/20333))
-- Sync vendored typeshed stubs ([#20394](https://github.com/astral-sh/ruff/pull/20394))
+- Improve type narrowing in situations involving nested functions ([#19932](https://github.com/astral-sh/ruff/pull/19932))
+- Fix many "too many cycle iterations" panics concerning recursive type aliases and/or recursive generics ([#20359](https://github.com/astral-sh/ruff/pull/20359))
+- Fix stack overflow involving subtype checks for recursive type aliases ([#20259](https://github.com/astral-sh/ruff/pull/20259))
+- Support type aliases in binary comparison inference ([#20445](https://github.com/astral-sh/ruff/pull/20445))
+- Fix panic when inferring the type of an infinitely-nested-tuple implicit instance attribute ([#20333](https://github.com/astral-sh/ruff/pull/20333))
+- Sync vendored typeshed stubs ([#20394](https://github.com/astral-sh/ruff/pull/20394)). [Typeshed diff](https://github.com/python/typeshed/compare/2480d7e7c74493a024eaf254c5d2c6f452c80ee2...47dbbd6c914a5190d54bc5bd498d1e6633d97db2)
 
 ### Diagnostics
 
