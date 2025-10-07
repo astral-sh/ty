@@ -53,9 +53,7 @@ server for features like code completion, hover, go to definition, etc.
       "lsp": {
         "ty": {
           "settings": {
-            "ty": {
-              "disableLanguageServices": true
-            }
+            "disableLanguageServices": true
           }
         }
       }
@@ -139,9 +137,7 @@ Determines the scope of the diagnostics reported by the language server.
       "lsp": {
         "ty": {
           "settings": {
-            "ty": {
-              "diagnosticMode": "workspace"
-            }
+            "diagnosticMode": "workspace"
           }
         }
       }
@@ -204,10 +200,8 @@ Whether to show the types of variables as inline hints.
       "lsp": {
         "ty": {
           "settings": {
-            "ty": {
-              "inlayHints": {
-                "variableTypes": false
-              }
+            "inlayHints": {
+              "variableTypes": false
             }
           }
         }
@@ -265,10 +259,8 @@ Whether to show argument names in call expressions as inline hints.
       "lsp": {
         "ty": {
           "settings": {
-            "ty": {
-              "inlayHints": {
-                "callArgumentNames": false
-              }
+            "inlayHints": {
+              "callArgumentNames": false
             }
           }
         }
@@ -332,10 +324,8 @@ Whether to enable the experimental support for renaming symbols in the editor.
       "lsp": {
         "ty": {
           "settings": {
-            "ty": {
-              "experimental": {
-                "rename": true
-              }
+            "experimental": {
+              "rename": true
             }
           }
         }
@@ -394,10 +384,8 @@ is currently under active development and may not work correctly or be gratuitou
       "lsp": {
         "ty": {
           "settings": {
-            "ty": {
-              "experimental": {
-                "autoImport": true
-              }
+            "experimental": {
+              "autoImport": true
             }
           }
         }
