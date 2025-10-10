@@ -68,7 +68,7 @@ Released on 2025-10-10.
 - Support single-starred argument for overload call ([#20223](https://github.com/astral-sh/ruff/pull/20223))
 - Filter overloads using variadic parameters ([#20547](https://github.com/astral-sh/ruff/pull/20547))
 
-### Other changes
+### Other typing semantics and features
 
 - Do not union the inferred type of a module-global symbol with `Unknown` for the symbol's type when accessed from external scopes ([#20664](https://github.com/astral-sh/ruff/pull/20664))
 - Ensure that class objects are understood as callable even if they do not override `object.__new__` or `object.__init__` ([#20521](https://github.com/astral-sh/ruff/pull/20521))
