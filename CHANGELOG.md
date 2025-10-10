@@ -25,7 +25,7 @@ Released on 2025-10-10.
 
 ### Improvements to `TypeVar` solving and inference of generic types
 
-- Infer better specializations of unions with `None` (etc) ([#20749](https://github.com/astral-sh/ruff/pull/20749))
+- Improve solving of a type variable `T` if it appears in a union with non-`TypeVar`s (`T | None`, `T | str | None`, etc.) ([#20749](https://github.com/astral-sh/ruff/pull/20749))
 - More precise type inference for dictionary literals ([#20523](https://github.com/astral-sh/ruff/pull/20523))
 - When solving type variables, use type context to inform whether `Literal` types should be promoted to instance types ([#20776](https://github.com/astral-sh/ruff/pull/20776))
 - Use annotated parameters as type context when solving type variables ([#20635](https://github.com/astral-sh/ruff/pull/20635))
