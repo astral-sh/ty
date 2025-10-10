@@ -6,24 +6,24 @@ Released on 2025-10-10.
 
 ### Bug fixes
 
-- Enforce that `typing_extensions` must come from a stdlib search path. This fixes a crash that could occur with a confusing backtrace if the `extra-paths` setting was incorrectly used to point to a virtual environment ([#20715](https://github.com/astral-sh/ruff/pull/20715))
-- Fix panic when opening a project located at `/` in the file system ([#20684](https://github.com/astral-sh/ruff/pull/20684))
+- Enforce that `typing_extensions` must come from a stdlib search path. This fixes a panic that could occur with a confusing backtrace if the `extra-paths` setting was incorrectly used to point to a virtual environment ([#20715](https://github.com/astral-sh/ruff/pull/20715))
+- Fix server panic when opening a project located at `/` in the file system ([#20684](https://github.com/astral-sh/ruff/pull/20684))
 - Fix panics when using `--output-format=gitlab` in CI environments ([#20550](https://github.com/astral-sh/ruff/pull/20550))
-- Fix false negatives when iterables with the wrong type are unpacked into a function with a `*args` variadic parameter ([#20511](https://github.com/astral-sh/ruff/pull/20511))
-- Fix situations where a panic during resolution of query cycles would manifest in a hang ([#20577](https://github.com/astral-sh/ruff/pull/20577))
-- When analyzing a .py file, do not error if there's also a .pyi for that module ([#20461](https://github.com/astral-sh/ruff/pull/20461))
 - Fix stack overflows that could occur when attempting to determine if a recursive `NamedTuple` type was disjoint from another type ([#20538](https://github.com/astral-sh/ruff/pull/20538))
-- Recognise that the runtime object `typing.Protocol` is an instance of `_ProtocolMeta` ([#20488](https://github.com/astral-sh/ruff/pull/20488))
+- Fix panics in type inference when legacy TypeVars had bounds, constraints, or defaults that cyclically referred back to the TypeVar definition (directly or indirectly) ([#20598](https://github.com/astral-sh/ruff/pull/20598))
+- Fix situations where a panic during resolution of type-checker query cycles would manifest in a hang ([#20577](https://github.com/astral-sh/ruff/pull/20577))
 - Fix playground crashes when accessing vendored files with leading slashes ([#20661](https://github.com/astral-sh/ruff/pull/20661))
-- Fix panics when legacy TypeVars had bounds, constraints, or defaults that cyclically referred back to the TypeVar definition (directly or indirectly) ([#20598](https://github.com/astral-sh/ruff/pull/20598))
+- When analyzing a .py file, do not error if there's also a .pyi for that module ([#20461](https://github.com/astral-sh/ruff/pull/20461))
+- Recognise that the runtime object `typing.Protocol` is an instance of `_ProtocolMeta` ([#20488](https://github.com/astral-sh/ruff/pull/20488))
 - Fix logic that attempted to determine whether a user had explicitly activated a Conda environment, which has implications for the search paths ty uses for module resolution ([#20675](https://github.com/astral-sh/ruff/pull/20675))
+- Fix false negatives when iterables with the wrong type are unpacked into a function with a `*args` variadic parameter ([#20511](https://github.com/astral-sh/ruff/pull/20511))
 
 ### Support for Python 3.14
 
-- Fix false positives when accessing `__annotate__` (Py3.14+) or `__warningregistry__` as a module global ([#20154](https://github.com/astral-sh/ruff/pull/20154))
-- Annotations are deferred by default for 3.14+ ([#20799](https://github.com/astral-sh/ruff/pull/20799))
 - Use 3.14 as the default version ([#20759](https://github.com/astral-sh/ruff/pull/20759))
 - Use 3.14 in the ty playground ([#20760](https://github.com/astral-sh/ruff/pull/20760))
+- Annotations are deferred by default for 3.14+ ([#20799](https://github.com/astral-sh/ruff/pull/20799))
+- Fix false positives when accessing `__annotate__` (Py3.14+) or `__warningregistry__` as a module global ([#20154](https://github.com/astral-sh/ruff/pull/20154))
 
 ### Improvements to `TypeVar` solving and inference of generic types
 
