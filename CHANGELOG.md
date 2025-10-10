@@ -1,5 +1,114 @@
 # Changelog
 
+## 0.0.1-alpha.22
+
+Released on 2025-10-10.
+
+### Bug fixes
+
+- Enforce that `typing_extensions` must come from a stdlib search path ([#20715](https://github.com/astral-sh/ruff/pull/20715))
+- Enums: allow multiple aliases to point to the same member ([#20669](https://github.com/astral-sh/ruff/pull/20669))
+- Fix file root matching for `/` ([#20684](https://github.com/astral-sh/ruff/pull/20684))
+- Fix subtyping of invariant generics specialized with `Any` ([#20650](https://github.com/astral-sh/ruff/pull/20650))
+- Make `FileResolver::path` return a full path ([#20550](https://github.com/astral-sh/ruff/pull/20550))
+- Match variadic argument to variadic parameter ([#20511](https://github.com/astral-sh/ruff/pull/20511))
+- Update salsa to fix hang when cycle head panics ([#20577](https://github.com/astral-sh/ruff/pull/20577))
+- \[`pyflakes`\] [ty] Fix false positives for `__annotate__` (Py3.14+) and `__warningregistry__` (`F821`) ([#20154](https://github.com/astral-sh/ruff/pull/20154))
+- implement `auto()` for `StrEnum` ([#20524](https://github.com/astral-sh/ruff/pull/20524))
+- when analyzing a .py file, do not error if there's also a .pyi for that module ([#20461](https://github.com/astral-sh/ruff/pull/20461))
+
+### Server
+
+- Add LSP debug information command ([#20379](https://github.com/astral-sh/ruff/pull/20379))
+- Add support for inlay hints on attribute assignment ([#20485](https://github.com/astral-sh/ruff/pull/20485))
+- Make auto-import work in the playground ([#20484](https://github.com/astral-sh/ruff/pull/20484))
+
+### CLI
+
+- Add `--venv` as an alias to `--python` ([#20718](https://github.com/astral-sh/ruff/pull/20718))
+
+### Configuration
+
+- Search PYTHONPATH to find modules ([#20441](https://github.com/astral-sh/ruff/pull/20441))
+
+### Documentation
+
+- Improve documentation for `extra-paths` and `python` config settings ([#20717](https://github.com/astral-sh/ruff/pull/20717))
+- Update Zed settings structure ([#1318](https://github.com/astral-sh/ty/pull/1318))
+
+### Other changes
+
+- Add PYTHONPATH to EnvVars and fix on Windows ([#20490](https://github.com/astral-sh/ruff/pull/20490))
+- Add positional-only-parameter-as-kwarg error ([#20495](https://github.com/astral-sh/ruff/pull/20495))
+- Add support for `**kwargs` ([#20430](https://github.com/astral-sh/ruff/pull/20430))
+- Annotations are deferred by default for 3.14+ ([#20799](https://github.com/astral-sh/ruff/pull/20799))
+- Better implementation of assignability for intersections with negated gradual elements ([#20773](https://github.com/astral-sh/ruff/pull/20773))
+- Disambiguate classes that live in different modules but have the same fully qualified names ([#20756](https://github.com/astral-sh/ruff/pull/20756))
+- Enable auto-import for completions in WASM builds by default ([#20480](https://github.com/astral-sh/ruff/pull/20480))
+- Ensure first-party search paths always appear in a sensible order ([#20629](https://github.com/astral-sh/ruff/pull/20629))
+- Filter overloads using variadic parameters ([#20547](https://github.com/astral-sh/ruff/pull/20547))
+- Fix class literal subtyping with object fallback ([#20521](https://github.com/astral-sh/ruff/pull/20521))
+- Fix subtyping for dynamic specializations ([#20592](https://github.com/astral-sh/ruff/pull/20592))
+- Improve assignability/subtyping between two protocol types ([#20368](https://github.com/astral-sh/ruff/pull/20368))
+- Improve diagnostics for bad `@overload` definitions ([#20745](https://github.com/astral-sh/ruff/pull/20745))
+- Improve disambiguation of class names in diagnostics ([#20603](https://github.com/astral-sh/ruff/pull/20603))
+- Infer better specializations of unions with `None` (etc) ([#20749](https://github.com/astral-sh/ruff/pull/20749))
+- Introduce `TypeRelation::Redundancy` ([#20602](https://github.com/astral-sh/ruff/pull/20602))
+- Literal promotion refactor ([#20646](https://github.com/astral-sh/ruff/pull/20646))
+- More precise type inference for dictionary literals ([#20523](https://github.com/astral-sh/ruff/pull/20523))
+- No union with `Unknown` for module-global symbols ([#20664](https://github.com/astral-sh/ruff/pull/20664))
+- Remove hack in protocol satisfiability check ([#20568](https://github.com/astral-sh/ruff/pull/20568))
+- Rename "possibly unbound" diagnostics to "possibly missing" ([#20492](https://github.com/astral-sh/ruff/pull/20492))
+- Respect `dataclass_transform` parameters for metaclass-based models ([#20780](https://github.com/astral-sh/ruff/pull/20780))
+- Simplify `Any | (Any & T)` to `Any` ([#20593](https://github.com/astral-sh/ruff/pull/20593))
+- Simplify and fix `CallableTypeOf[..]` implementation ([#20797](https://github.com/astral-sh/ruff/pull/20797))
+- Support single-starred argument for overload call ([#20223](https://github.com/astral-sh/ruff/pull/20223))
+- Sync vendored typeshed stubs ([#20658](https://github.com/astral-sh/ruff/pull/20658))
+- The runtime object `typing.Protocol` is an instance of `_ProtocolMeta` ([#20488](https://github.com/astral-sh/ruff/pull/20488))
+- Todo-types for `os.fdopen`, `NamedTemporaryFile`, and `Path.open` ([#20549](https://github.com/astral-sh/ruff/pull/20549))
+- Truncate type display for long unions in some situations ([#20730](https://github.com/astral-sh/ruff/pull/20730))
+- Type-context aware literal promotion ([#20776](https://github.com/astral-sh/ruff/pull/20776))
+- Use 3.14 as the default version ([#20759](https://github.com/astral-sh/ruff/pull/20759))
+- Use 3.14 in the ty playground ([#20760](https://github.com/astral-sh/ruff/pull/20760))
+- Use `C[T]` instead of `C[Unknown]` for the upper bound of `Self` ([#20479](https://github.com/astral-sh/ruff/pull/20479))
+- Use `Top` materializations for `TypeIs` special form ([#20591](https://github.com/astral-sh/ruff/pull/20591))
+- Use `typing.Self` for the first parameter of instance methods ([#20517](https://github.com/astral-sh/ruff/pull/20517))
+- Use annotated parameters as type context ([#20635](https://github.com/astral-sh/ruff/pull/20635))
+- Use type context for inference of generic function calls ([#20476](https://github.com/astral-sh/ruff/pull/20476))
+- \[`ty`\] Fix playground crashes when accessing vendored files with leading slashes ([#20661](https://github.com/astral-sh/ruff/pull/20661))
+- `dataclass_transform`: Support `frozen_default` and `kw_only_default` ([#20761](https://github.com/astral-sh/ruff/pull/20761))
+- `~T` should never be assignable to `T` ([#20606](https://github.com/astral-sh/ruff/pull/20606))
+- allow any string `Literal` type expression as a key when constructing a `TypedDict` ([#20792](https://github.com/astral-sh/ruff/pull/20792))
+- defer inference of legacy TypeVar bound/constraints/defaults ([#20598](https://github.com/astral-sh/ruff/pull/20598))
+- fix implicit Self on generic class with typevar default ([#20754](https://github.com/astral-sh/ruff/pull/20754))
+- fix stack overflow when comparing recursive `NamedTuple` types with `is_disjoint_from` ([#20538](https://github.com/astral-sh/ruff/pull/20538))
+- improve base conda distinction from child conda ([#20675](https://github.com/astral-sh/ruff/pull/20675))
+
+### Contributors
+
+- [@thejchap](https://github.com/thejchap)
+- [@mtshiba](https://github.com/mtshiba)
+- [@Danielkonge](https://github.com/Danielkonge)
+- [@dcreager](https://github.com/dcreager)
+- [@MatthewMckee4](https://github.com/MatthewMckee4)
+- [@Gankra](https://github.com/Gankra)
+- [@BurntSushi](https://github.com/BurntSushi)
+- [@carljm](https://github.com/carljm)
+- [@dhruvmanila](https://github.com/dhruvmanila)
+- [@sharkdp](https://github.com/sharkdp)
+- [@mmlb](https://github.com/mmlb)
+- [@fgiacome](https://github.com/fgiacome)
+- [@Guillaume-Fgt](https://github.com/Guillaume-Fgt)
+- [@AlexWaygood](https://github.com/AlexWaygood)
+- [@Renkai](https://github.com/Renkai)
+- [@InvalidPathException](https://github.com/InvalidPathException)
+- [@ibraheemdev](https://github.com/ibraheemdev)
+- [@fatelei](https://github.com/fatelei)
+- [@github-actions](https://github.com/github-actions)
+- [@MichaReiser](https://github.com/MichaReiser)
+- [@ntBre](https://github.com/ntBre)
+- [@danparizher](https://github.com/danparizher)
+
 ## 0.0.1-alpha.21
 
 ### Bug fixes
