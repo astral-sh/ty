@@ -12,7 +12,6 @@ Released on 2025-10-10.
 - Fix stack overflows that could occur when attempting to determine if a recursive `NamedTuple` type was disjoint from another type ([#20538](https://github.com/astral-sh/ruff/pull/20538))
 - Fix panics in type inference when legacy TypeVars had bounds, constraints, or defaults that cyclically referred back to the TypeVar definition (directly or indirectly) ([#20598](https://github.com/astral-sh/ruff/pull/20598))
 - Fix situations where a panic during resolution of type-checker query cycles would manifest in a hang ([#20577](https://github.com/astral-sh/ruff/pull/20577))
-- Fix playground crashes when accessing vendored files with leading slashes ([#20661](https://github.com/astral-sh/ruff/pull/20661))
 - When analyzing a .py file, do not error if there's also a .pyi for that module ([#20461](https://github.com/astral-sh/ruff/pull/20461))
 - Recognise that the runtime object `typing.Protocol` is an instance of `_ProtocolMeta` ([#20488](https://github.com/astral-sh/ruff/pull/20488))
 - Fix logic that attempted to determine whether a user had explicitly activated a Conda environment, which has implications for the search paths ty uses for module resolution ([#20675](https://github.com/astral-sh/ruff/pull/20675))
@@ -49,7 +48,6 @@ Released on 2025-10-10.
 
 - Add LSP debug information command ([#20379](https://github.com/astral-sh/ruff/pull/20379))
 - Add support for inlay hints on attribute assignment ([#20485](https://github.com/astral-sh/ruff/pull/20485))
-- Make auto-import work in the playground ([#20484](https://github.com/astral-sh/ruff/pull/20484))
 - Enable auto-import for completions in WASM builds by default ([#20480](https://github.com/astral-sh/ruff/pull/20480))
 
 ### Improvements to diagnostics
