@@ -48,7 +48,6 @@ Released on 2025-10-10.
 
 - Add LSP debug information command ([#20379](https://github.com/astral-sh/ruff/pull/20379))
 - Add support for inlay hints on attribute assignment ([#20485](https://github.com/astral-sh/ruff/pull/20485))
-- Enable auto-import for completions in WASM builds by default ([#20480](https://github.com/astral-sh/ruff/pull/20480))
 
 ### Improvements to diagnostics
 
