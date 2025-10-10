@@ -40,7 +40,7 @@ Released on 2025-10-10.
 - Ensure that `~T` is never considered to be assignable to `T` where `T` is a type variable ([#20606](https://github.com/astral-sh/ruff/pull/20606))
 - Improve assignability/subtyping between two protocol types ([#20368](https://github.com/astral-sh/ruff/pull/20368))
 - Simplify `Any | (Any & T)` to `Any` ([#20593](https://github.com/astral-sh/ruff/pull/20593))
-- Optimise and generalise union/intersection simplification by introducing a new "redundancy" type relation ([#20602](https://github.com/astral-sh/ruff/pull/20602))
+- Optimise and generalise union/intersection simplification ([#20602](https://github.com/astral-sh/ruff/pull/20602))
 - Make protocol satisfiability checks more principled when a protocol has a method member that is generic over type variables scoped to the function ([#20568](https://github.com/astral-sh/ruff/pull/20568))
 - Fix subtyping of invariant generics specialized with `Any`, ensuring that (for example) `list[Any]` is not considered a subtype of `list[Any]` ([#20650](https://github.com/astral-sh/ruff/pull/20650))
 
