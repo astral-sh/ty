@@ -20,8 +20,7 @@ Released on 2025-10-10.
 
 ### Support for Python 3.14
 
-- Use 3.14 as the default version ([#20759](https://github.com/astral-sh/ruff/pull/20759))
-- Use 3.14 in the ty playground ([#20760](https://github.com/astral-sh/ruff/pull/20760))
+- Use 3.14 as the default version ([#20725](https://github.com/astral-sh/ruff/pull/20725), [#20759](https://github.com/astral-sh/ruff/pull/20759), [#20760](https://github.com/astral-sh/ruff/pull/20760))
 - Annotations are deferred by default for 3.14+ ([#20799](https://github.com/astral-sh/ruff/pull/20799))
 - Fix false positives when accessing `__annotate__` (Py3.14+) or `__warningregistry__` as a module global ([#20154](https://github.com/astral-sh/ruff/pull/20154))
 
