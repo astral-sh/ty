@@ -24,8 +24,8 @@ You can configure the level for each rule on the command line using the `--warn`
 ty check \
   --warn unused-ignore-comment \        # Make `unused-ignore-comment` a warning
   --ignore redundant-cast \             # Disable `redundant-cast`
-  --error possibly-unbound-attribute \  # Error on `possibly-unbound-attribute`
-  --error possibly-unbound-import       # Error on `possibly-unbound-import`
+  --error possibly-missing-attribute \  # Error on `possibly-missing-attribute`
+  --error possibly-missing-import       # Error on `possibly-missing-import`
 ```
 
 The options can be repeated. Subsequent options override earlier options.
@@ -39,6 +39,6 @@ For example, the following is equivalent to the command above:
 [tool.ty.rules]
 unused-ignore-comment = "warn"
 redundant-cast = "ignore"
-possibly-unbound-attribute = "error"
-possibly-unbound-import = "error"
+possibly-missing-attribute = "error"
+possibly-missing-import = "error"
 ```
