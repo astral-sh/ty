@@ -106,7 +106,7 @@ version-files = [
 ]
 submodules = ["ruff"]
 require-labels = [{ submodule = "ruff", labels = ["ty"] }]
-ignore-labels = ["internal", "testing", "ci"]
+ignore-labels = ["internal", "testing", "ci", "playground", "documentation"]
 major-labels = []  # We do not use the major version number yet
 minor-labels = []  # We do not use the minor version number yet
 version-format = "cargo"
@@ -117,7 +117,6 @@ trim-title-prefixes = ["[ty]"]
 "Breaking changes" = ["breaking"]
 "Preview features" = ["preview"]
 "Bug fixes" = ["bug"]
-"Server" = ["server"]
+"LSP server" = ["server"]
 "CLI" = ["cli"]
 "Configuration" = ["configuration"]
-"Documentation" = ["documentation"]
