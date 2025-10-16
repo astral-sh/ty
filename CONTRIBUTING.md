@@ -170,7 +170,7 @@ Preparation for the release is automated.
     **Do not include a leading `v`**.
 
     When running the release workflow for pre-release versions, use the Cargo version format (not PEP
-    440), e.g. `0.0.0-alpha.5` (not `0.0.0a5`). For stable releases, these formats are identical.
+    440), e.g. `0.0.1-alpha.5` (not `0.0.1a5`). For stable releases, these formats are identical.
 
     The release will automatically be created on GitHub after the distributions are published.
 
