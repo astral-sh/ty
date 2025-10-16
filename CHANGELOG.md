@@ -43,7 +43,6 @@ Released on 2025-10-16.
 
 - [@mtshiba](https://github.com/mtshiba)
 - [@AlexWaygood](https://github.com/AlexWaygood)
-- [@github-actions](https://github.com/github-actions)
 - [@ericmarkmartin](https://github.com/ericmarkmartin)
 - [@carljm](https://github.com/carljm)
 - [@ntBre](https://github.com/ntBre)
