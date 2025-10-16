@@ -6,23 +6,22 @@ Released on 2025-10-16.
 
 ### Bug fixes
 
-- Fix handling of dataclass `field()`s without a default value ([#20914](https://github.com/astral-sh/ruff/pull/20914))
-- Fix false-positive diagnostics on `super()` calls ([#20814](https://github.com/astral-sh/ruff/pull/20814))
-- Fix issues in `super()` inference logic ([#20843](https://github.com/astral-sh/ruff/pull/20843))
+- Fix handling of dataclass `field()`s without default values ([#20914](https://github.com/astral-sh/ruff/pull/20914))
+- Fix false-positive diagnostics on `super()` calls ([#20814](https://github.com/astral-sh/ruff/pull/20814), [#20843](https://github.com/astral-sh/ruff/pull/20843))
 - Fix `match` pattern value narrowing to use equality semantics ([#20882](https://github.com/astral-sh/ruff/pull/20882))
 - Fix "missing root" panic when handling completion requests ([#20917](https://github.com/astral-sh/ruff/pull/20917))
 - Fix overwriting of declared base class attributes through undeclared subclass members ([#20764](https://github.com/astral-sh/ruff/pull/20764))
-- Fix run-away execution time for mutually referential instance attributes ([#20645](https://github.com/astral-sh/ruff/pull/20645))
-- Fix lookup of Python version in which a module was introduced for diagnostic messages ([#20908](https://github.com/astral-sh/ruff/pull/20908))
+- Fix runaway execution time for mutually referential instance attributes ([#20645](https://github.com/astral-sh/ruff/pull/20645))
 
 ### CLI
 
-- Limit shown import paths to at most five, unless in verbose mode ([#20912](https://github.com/astral-sh/ruff/pull/20912))
+- For `unresolved-import` diagnostics, limit the shown import paths to at most five, unless in verbose mode ([#20912](https://github.com/astral-sh/ruff/pull/20912))
 - Write files that are slow to type check to log output ([#20836](https://github.com/astral-sh/ruff/pull/20836))
+- Remove "pre-release software" warning ([#20817](https://github.com/astral-sh/ruff/pull/20817))
 
 ### LSP server
 
-- Add completion ranking improvements ([#20807](https://github.com/astral-sh/ruff/pull/20807))
+- Improve ranking of autocomplete suggestions ([#20807](https://github.com/astral-sh/ruff/pull/20807))
 
 ### Type inference and diagnostics
 
@@ -35,6 +34,10 @@ Released on 2025-10-16.
 - Treat `Callable`s as bound-method descriptors in special cases ([#20802](https://github.com/astral-sh/ruff/pull/20802))
 - Treat `Callable` dunder members as bound method descriptors ([#20860](https://github.com/astral-sh/ruff/pull/20860))
 - Sync vendored typeshed stubs ([#20876](https://github.com/astral-sh/ruff/pull/20876)). [Typeshed diff](https://github.com/python/typeshed/compare/91055c730ffcda6311654cf32d663858ece69bad...d6f4a0f7102b1400a21742cf9b7ea93614e2b6ec)
+
+### Performance improvements
+
+- Improve performance by caching union simplification type relations ([#20477](https://github.com/astral-sh/ruff/pull/20477))
 
 ### Contributors
 
