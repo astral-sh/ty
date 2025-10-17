@@ -118,11 +118,11 @@ def update_schemastore(
         commit_url = f"{TY_REPO}/commit/{current_sha}"
         commit_body = f"This updates ty's JSON schema to [{current_sha}]({commit_url})"
         # https://stackoverflow.com/a/22909204/3549270
+        check_call(["git", "add", (src / TY_JSON).as_posix()], cwd=schemastore_path)
         check_call(
             [
                 "git",
                 "commit",
-                "-a",
                 "-m",
                 "Update ty's JSON schema",
                 "-m",
