@@ -12,6 +12,7 @@ repos:
     rev: 0.9.2
     hooks:
       - id: uv-lock
+
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v6.0.0
     hooks:
@@ -35,6 +36,7 @@ repos:
     rev: 0.7.22
     hooks:
       - id: mdformat
+        language: python # means renovate will also update `additional_dependencies`
         additional_dependencies:
           - mdformat-mkdocs==4.0.0
           - mdformat-footnote==0.1.1
