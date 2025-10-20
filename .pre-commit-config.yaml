@@ -9,7 +9,7 @@ exclude: |
 
 repos:
   - repo: https://github.com/astral-sh/uv-pre-commit
-    rev: 0.9.2
+    rev: 0.9.4
     hooks:
       - id: uv-lock
   - repo: https://github.com/pre-commit/pre-commit-hooks
@@ -18,7 +18,7 @@ repos:
       - id: check-merge-conflict
 
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.14.0
+    rev: v0.14.1
     hooks:
       - id: ruff-format
       - id: ruff
@@ -32,7 +32,7 @@ repos:
       - id: validate-pyproject
 
   - repo: https://github.com/executablebooks/mdformat
-    rev: 0.7.22
+    rev: 1.0.0
     hooks:
       - id: mdformat
         additional_dependencies:
@@ -59,12 +59,12 @@ repos:
   # zizmor detects security vulnerabilities in GitHub Actions workflows.
   # Additional configuration for the tool is found in `.github/zizmor.yml`
   - repo: https://github.com/woodruffw/zizmor-pre-commit
-    rev: v1.14.2
+    rev: v1.15.2
     hooks:
       - id: zizmor
 
   - repo: https://github.com/python-jsonschema/check-jsonschema
-    rev: 0.34.0
+    rev: 0.34.1
     hooks:
       - id: check-github-workflows
 
