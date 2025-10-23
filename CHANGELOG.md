@@ -1,5 +1,64 @@
 # Changelog
 
+## 0.0.1-alpha.24
+
+Released on 2025-10-23.
+
+### Breaking changes
+
+- Rename `unknown-rule` lint to `ignore-comment-unknown-rule` ([#20948](https://github.com/astral-sh/ruff/pull/20948))
+
+### Type inference and diagnostics
+
+- Infer a type of `Self` for unannotated `self` parameters in methods ([#20922](https://github.com/astral-sh/ruff/pull/20922))
+- Prefer the declared type over the inferred type for invariant collection literals ([#20927](https://github.com/astral-sh/ruff/pull/20927))
+- Use declared variable types as bidirectional type context for solving type variables ([#20796](https://github.com/astral-sh/ruff/pull/20796))
+- Support `dataclass_transform` for base class models ([#20783](https://github.com/astral-sh/ruff/pull/20783))
+- Support dataclass-transform `field_specifiers` ([#20888](https://github.com/astral-sh/ruff/pull/20888))
+- `dataclass_transform` support for fields with an `alias` ([#20961](https://github.com/astral-sh/ruff/pull/20961))
+- Add support for legacy namespace packages ([#20897](https://github.com/astral-sh/ruff/pull/20897))
+- Add suggestion to "unknown rule" diagnostics ([#20948](https://github.com/astral-sh/ruff/pull/20948))
+- Improve error messages for "unresolved attribute" diagnostics ([#20963](https://github.com/astral-sh/ruff/pull/20963))
+- Avoid unnecessarily widening generic specializations ([#20875](https://github.com/astral-sh/ruff/pull/20875))
+- Truncate `Literal` type display in some situations ([#20928](https://github.com/astral-sh/ruff/pull/20928))
+
+### Bug fixes
+
+- Fix panic involving cyclic `TypeVar` default ([#20967](https://github.com/astral-sh/ruff/pull/20967))
+- Fix panic involving ever-growing default types ([#20991](https://github.com/astral-sh/ruff/pull/20991))
+- Fix panic involving infinitely expanding implicit attribute types ([#20988](https://github.com/astral-sh/ruff/pull/20988))
+- Fix autocomplete suggestions when the cursor is at the end of a file ([#20993](https://github.com/astral-sh/ruff/pull/20993))
+- Fix inconsistent highlighting of self ([#20986](https://github.com/astral-sh/ruff/pull/20986))
+- Fix out-of-order semantic token for function with regular argument after kwargs ([#21013](https://github.com/astral-sh/ruff/pull/21013))
+- Fix panic on recursive class definitions in a stub that use constrained type variables ([#20955](https://github.com/astral-sh/ruff/pull/20955))
+- Fix panic when attempting to validate the members of a protocol that inherits from a protocol in another module ([#20956](https://github.com/astral-sh/ruff/pull/20956))
+- Fix rare hang relating to multithreading ([#21038](https://github.com/astral-sh/ruff/pull/21038))
+- Fix non-deterministic overload function inference ([#20966](https://github.com/astral-sh/ruff/pull/20966))
+- Fix auto-import edits made by autocompletions for files with an existing `from __future__` import ([#20987](https://github.com/astral-sh/ruff/pull/20987))
+
+### LSP server
+
+- Support goto-definition for binary and unary operators ([#21001](https://github.com/astral-sh/ruff/pull/21001))
+- Support goto-definition on vendored typeshed stubs ([#21020](https://github.com/astral-sh/ruff/pull/21020))
+- Provide completions on `TypeVar`s ([#20943](https://github.com/astral-sh/ruff/pull/20943))
+- Display variance when hovering over type variables ([#20900](https://github.com/astral-sh/ruff/pull/20900))
+- Avoid sending an unnecessary "clear diagnostics" message for clients supporting [pull diagnostics](https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#textDocument_pullDiagnostics). ([#20989](https://github.com/astral-sh/ruff/pull/20989))
+
+### Other changes
+
+- Report `continue` and `break` statements outside loops as syntax errors ([#20944](https://github.com/astral-sh/ruff/pull/20944))
+
+### Contributors
+
+- [@TaKO8Ki](https://github.com/TaKO8Ki)
+- [@sharkdp](https://github.com/sharkdp)
+- [@InvalidPathException](https://github.com/InvalidPathException)
+- [@AlexWaygood](https://github.com/AlexWaygood)
+- [@mtshiba](https://github.com/mtshiba)
+- [@ibraheemdev](https://github.com/ibraheemdev)
+- [@Gankra](https://github.com/Gankra)
+- [@MichaReiser](https://github.com/MichaReiser)
+
 ## 0.0.1-alpha.23
 
 Released on 2025-10-16.
