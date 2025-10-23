@@ -42,7 +42,7 @@ Released on 2025-10-23.
 - Support goto-definition on vendored typeshed stubs ([#21020](https://github.com/astral-sh/ruff/pull/21020))
 - Provide completions on `TypeVar`s ([#20943](https://github.com/astral-sh/ruff/pull/20943))
 - Display variance when hovering over type variables ([#20900](https://github.com/astral-sh/ruff/pull/20900))
-- Avoid sending unnecessary clear diagnostics message for clients supporting pull diagnostics. ([#20989](https://github.com/astral-sh/ruff/pull/20989))
+- Avoid sending an unnecessary "clear diagnostics" message for clients supporting [pull diagnostics](https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#textDocument_pullDiagnostics). ([#20989](https://github.com/astral-sh/ruff/pull/20989))
 
 ### Other changes
 
