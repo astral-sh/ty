@@ -20,6 +20,7 @@ Released on 2025-10-23.
 - Add suggestion to "unknown rule" diagnostics ([#20948](https://github.com/astral-sh/ruff/pull/20948))
 - Improve error messages for "unresolved attribute" diagnostics ([#20963](https://github.com/astral-sh/ruff/pull/20963))
 - Avoid unnecessarily widening generic specializations ([#20875](https://github.com/astral-sh/ruff/pull/20875))
+- Truncate `Literal` type display in some situations ([#20928](https://github.com/astral-sh/ruff/pull/20928))
 
 ### Bug fixes
 
@@ -41,11 +42,10 @@ Released on 2025-10-23.
 - Support goto-definition on vendored typeshed stubs ([#21020](https://github.com/astral-sh/ruff/pull/21020))
 - Provide completions on `TypeVar`s ([#20943](https://github.com/astral-sh/ruff/pull/20943))
 - Display variance when hovering over type variables ([#20900](https://github.com/astral-sh/ruff/pull/20900))
-- Add capabilities check for `clear_diagnostics` ([#20989](https://github.com/astral-sh/ruff/pull/20989))
+- Avoid sending unnecessary clear diagnostics message for clients supporting pull diagnostics. ([#20989](https://github.com/astral-sh/ruff/pull/20989))
 
 ### Other changes
 
-- Truncate Literal type display in some situations ([#20928](https://github.com/astral-sh/ruff/pull/20928))
 - Report `continue` and `break` statements outside loops as syntax errors ([#20944](https://github.com/astral-sh/ruff/pull/20944))
 
 ### Contributors
