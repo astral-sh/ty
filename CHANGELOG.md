@@ -11,14 +11,14 @@ Released on 2025-10-23.
 ### Type inference and diagnostics
 
 - Infer a type of `Self` for unannotated `self` parameters in methods ([#20922](https://github.com/astral-sh/ruff/pull/20922))
-- Prefer declared type for invariant collection literals ([#20927](https://github.com/astral-sh/ruff/pull/20927))
-- Use declared variable types as bidirectional type context ([#20796](https://github.com/astral-sh/ruff/pull/20796))
+- Prefer the declared type over the inferred type for invariant collection literals ([#20927](https://github.com/astral-sh/ruff/pull/20927))
+- Use declared variable types as bidirectional type context for solving type variables ([#20796](https://github.com/astral-sh/ruff/pull/20796))
 - Support `dataclass_transform` for base class models ([#20783](https://github.com/astral-sh/ruff/pull/20783))
 - Support dataclass-transform `field_specifiers` ([#20888](https://github.com/astral-sh/ruff/pull/20888))
 - `dataclass_transform` support for fields with an `alias` ([#20961](https://github.com/astral-sh/ruff/pull/20961))
-- Add legacy namespace package support ([#20897](https://github.com/astral-sh/ruff/pull/20897))
-- Add suggestion to unknown rule diagnostics ([#20948](https://github.com/astral-sh/ruff/pull/20948))
-- Improve error messages for unresolved attribute diagnostics ([#20963](https://github.com/astral-sh/ruff/pull/20963))
+- Add support for legacy namespace packages ([#20897](https://github.com/astral-sh/ruff/pull/20897))
+- Add suggestion to "unknown rule" diagnostics ([#20948](https://github.com/astral-sh/ruff/pull/20948))
+- Improve error messages for "unresolved attribute" diagnostics ([#20963](https://github.com/astral-sh/ruff/pull/20963))
 - Avoid unnecessarily widening generic specializations ([#20875](https://github.com/astral-sh/ruff/pull/20875))
 
 ### Bug fixes
@@ -26,21 +26,21 @@ Released on 2025-10-23.
 - Fix panic involving cyclic `TypeVar` default ([#20967](https://github.com/astral-sh/ruff/pull/20967))
 - Fix panic involving ever-growing default types ([#20991](https://github.com/astral-sh/ruff/pull/20991))
 - Fix panic involving infinitely expanding implicit attribute types ([#20988](https://github.com/astral-sh/ruff/pull/20988))
-- Fix completions at end of file ([#20993](https://github.com/astral-sh/ruff/pull/20993))
+- Fix autocomplete suggestions when the cursor is at the end of a file ([#20993](https://github.com/astral-sh/ruff/pull/20993))
 - Fix inconsistent highlighting of self ([#20986](https://github.com/astral-sh/ruff/pull/20986))
 - Fix out-of-order semantic token for function with regular argument after kwargs ([#21013](https://github.com/astral-sh/ruff/pull/21013))
 - Fix panic on recursive class definitions in a stub that use constrained type variables ([#20955](https://github.com/astral-sh/ruff/pull/20955))
 - Fix panic when attempting to validate the members of a protocol that inherits from a protocol in another module ([#20956](https://github.com/astral-sh/ruff/pull/20956))
-- Fix rare multithreaded related hang ([#21038](https://github.com/astral-sh/ruff/pull/21038))
+- Fix rare hang relating to multithreading ([#21038](https://github.com/astral-sh/ruff/pull/21038))
 - Fix non-deterministic overload function inference ([#20966](https://github.com/astral-sh/ruff/pull/20966))
-- Fix suggested auto-import for files with an existing `from __future__` import ([#20987](https://github.com/astral-sh/ruff/pull/20987))
+- Fix auto-import edits made by autocompletions for files with an existing `from __future__` import ([#20987](https://github.com/astral-sh/ruff/pull/20987))
 
 ### LSP server
 
 - Support goto-definition for binary and unary operators ([#21001](https://github.com/astral-sh/ruff/pull/21001))
 - Support goto-definition on vendored typeshed stubs ([#21020](https://github.com/astral-sh/ruff/pull/21020))
 - Provide completions on `TypeVar`s ([#20943](https://github.com/astral-sh/ruff/pull/20943))
-- Display variance when hovering type variables ([#20900](https://github.com/astral-sh/ruff/pull/20900))
+- Display variance when hovering over type variables ([#20900](https://github.com/astral-sh/ruff/pull/20900))
 - Add capabilities check for `clear_diagnostics` ([#20989](https://github.com/astral-sh/ruff/pull/20989))
 
 ### Other changes
