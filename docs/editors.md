@@ -40,6 +40,30 @@ vim.lsp.config('ty', {
 vim.lsp.enable('ty')
 ```
 
+## Zed
+
+ty is included with Zed out of the box (no extension required), although the default primary LSP for Python is basedpyright.
+
+You can enable ty and disable basedpyright by adding this to your `settings.json` file:
+
+```json
+{
+  "languages": {
+    "Python": {
+      "language_servers": [
+        // Disable basedpyright and enable Ty, and otherwise
+        // use the default configuration.
+        "ty",
+        "!basedpyright",
+        "..."
+      ]
+    }
+  }
+}
+```
+
+More information in [Zed's documentation](https://zed.dev/docs/languages/python#configure-python-language-servers-in-zed).
+
 ## Other editors
 
 ty can be used with any editor that supports the [language server
