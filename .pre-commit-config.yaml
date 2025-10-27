@@ -9,7 +9,7 @@ exclude: |
 
 repos:
   - repo: https://github.com/astral-sh/uv-pre-commit
-    rev: 0.9.4
+    rev: 0.9.5
     hooks:
       - id: uv-lock
 
@@ -19,7 +19,7 @@ repos:
       - id: check-merge-conflict
 
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.14.1
+    rev: v0.14.2
     hooks:
       - id: ruff-format
       - id: ruff
@@ -33,13 +33,13 @@ repos:
       - id: validate-pyproject
 
   - repo: https://github.com/executablebooks/mdformat
-    rev: 0.7.22
+    rev: 1.0.0
     hooks:
       - id: mdformat
         language: python # means renovate will also update `additional_dependencies`
         additional_dependencies:
-          - mdformat-mkdocs==4.0.0
-          - mdformat-footnote==0.1.1
+          - mdformat-mkdocs==4.4.2
+          - mdformat-footnote==0.1.2
 
   - repo: https://github.com/igorshubovych/markdownlint-cli
     rev: v0.45.0
@@ -60,8 +60,8 @@ repos:
 
   # zizmor detects security vulnerabilities in GitHub Actions workflows.
   # Additional configuration for the tool is found in `.github/zizmor.yml`
-  - repo: https://github.com/woodruffw/zizmor-pre-commit
-    rev: v1.15.2
+  - repo: https://github.com/zizmorcore/zizmor-pre-commit
+    rev: v1.16.0
     hooks:
       - id: zizmor
 
