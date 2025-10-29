@@ -1,5 +1,46 @@
 # Changelog
 
+## 0.0.1-alpha.25
+
+Released on 2025-10-29.
+
+### Bug fixes
+
+- Fix bug where ty would think all types had an `__mro__` attribute ([#20995](https://github.com/astral-sh/ruff/pull/20995))
+- Fix rare panic with highly cyclic `TypeVar` definitions ([#21059](https://github.com/astral-sh/ruff/pull/21059))
+- Fix infinite recursion with generic type aliases ([#20969](https://github.com/astral-sh/ruff/pull/20969))
+- Add missing newline before first diagnostic in CLI output ([#21058](https://github.com/astral-sh/ruff/pull/21058))
+- Make the ty server's auto-import feature skip symbols in the current module ([#21100](https://github.com/astral-sh/ruff/pull/21100))
+- Don't provide goto-definition for definitions which are not reexported in builtins ([#21127](https://github.com/astral-sh/ruff/pull/21127))
+- Avoid duplicate diagnostics during multi-inference of standalone expressions ([#21056](https://github.com/astral-sh/ruff/pull/21056))
+
+### Type inference and diagnostics
+
+- Use constructor parameter types as context to inform solving type variables ([#21054](https://github.com/astral-sh/ruff/pull/21054))
+- Consider `__len__` when determining the truthiness of an instance of a tuple class or a `@final` class ([#21049](https://github.com/astral-sh/ruff/pull/21049))
+- Delegate truthiness inference of an enum `Literal` type to its enum-instance supertype ([#21060](https://github.com/astral-sh/ruff/pull/21060))
+- Improve `invalid-argument-type` diagnostics where a union type was provided ([#21044](https://github.com/astral-sh/ruff/pull/21044))
+
+### LSP server
+
+- Suggest `type_check_only` items last in completions ([#20910](https://github.com/astral-sh/ruff/pull/20910))
+- Render `import <...>` in completions when "label details" isn't supported ([#21109](https://github.com/astral-sh/ruff/pull/21109))
+- Update workspace diagnostic progress every 50ms ([#21019](https://github.com/astral-sh/ruff/pull/21019))
+
+### CLI
+
+- Add `--no-progress` option to suppress the rendering of a progress bar ([#21063](https://github.com/astral-sh/ruff/pull/21063))
+
+### Contributors
+
+- [@ibraheemdev](https://github.com/ibraheemdev)
+- [@MatthewMckee4](https://github.com/MatthewMckee4)
+- [@BurntSushi](https://github.com/BurntSushi)
+- [@mtshiba](https://github.com/mtshiba)
+- [@AlexWaygood](https://github.com/AlexWaygood)
+- [@MichaReiser](https://github.com/MichaReiser)
+- [@decorator-factory](https://github.com/decorator-factory)
+
 ## 0.0.1-alpha.24
 
 Released on 2025-10-23.
