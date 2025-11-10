@@ -23,7 +23,7 @@ Released on 2025-11-10.
 - Add narrowing for `isinstance()` and `issubclass()` checks that use PEP-604 unions ([#21334](https://github.com/astral-sh/ruff/pull/21334))
 - Do not promote `Literal` types when solving type variables in contravariant positions ([#21164](https://github.com/astral-sh/ruff/pull/21164), <https://github.com/astral-sh/ruff/pull/21171>))
 - Fix lookup of `__new__` methods on instances ([#21147](https://github.com/astral-sh/ruff/pull/21147))
-- Use the top materialization of classes for narrowing in class patterns for `match` statements ([#21150](https://github.com/astral-sh/ruff/pull/21150))
+- Fix narrowing of generic classes in class patterns for `match` statements ([#21150](https://github.com/astral-sh/ruff/pull/21150))
 - Improve understanding of disjointness for `@final` classes ([#21167](https://github.com/astral-sh/ruff/pull/21167))
 - Fix the inferred signature of the synthesized `__init__` method of a non-dataclass inheriting from a generic dataclass ([#21159](https://github.com/astral-sh/ruff/pull/21159))
 - Improve exhaustiveness analysis for type variables with bounds or constraints ([#21172](https://github.com/astral-sh/ruff/pull/21172))
