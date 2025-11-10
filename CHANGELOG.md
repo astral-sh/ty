@@ -6,54 +6,53 @@ Released on 2025-11-10.
 
 ### Bug fixes
 
-- Do not promote literals in contravariant position ([#21164](https://github.com/astral-sh/ruff/pull/21164))
-- Do not promote literals in contravariant positions of generic specializations ([#21171](https://github.com/astral-sh/ruff/pull/21171))
-- Don't provide completions when in class or function definition ([#21146](https://github.com/astral-sh/ruff/pull/21146))
-- Fix lookup of `__new__` on instances ([#21147](https://github.com/astral-sh/ruff/pull/21147))
+- Fix range filtering for tokens starting at the end of the requested range ([#21193](https://github.com/astral-sh/ruff/pull/21193))
 - Fix panic due to simplifying `Divergent` types out of intersections types ([#21253](https://github.com/astral-sh/ruff/pull/21253))
+- Fix `--exclude` and `src.exclude` merging ([#21341](https://github.com/astral-sh/ruff/pull/21341))
+
+### Type inference
+
+- Infer type of `self` for decorated methods and properties ([#21123](https://github.com/astral-sh/ruff/pull/21123))
+- Add support for properties that return `Self` ([#21335](https://github.com/astral-sh/ruff/pull/21335))
+- Understand legacy and PEP 695 `ParamSpec` ([#21139](https://github.com/astral-sh/ruff/pull/21139))
+- Type inference for comprehensions ([#20962](https://github.com/astral-sh/ruff/pull/20962))
+- Reachability and narrowing for enum methods ([#21130](https://github.com/astral-sh/ruff/pull/21130))
+- Implicit type aliases: Support for PEP 604 unions, `Literal`s, `Optional`, and `Annotated` ([#21195](https://github.com/astral-sh/ruff/pull/21195), [#21296](https://github.com/astral-sh/ruff/pull/21296), [#21321](https://github.com/astral-sh/ruff/pull/21321))
+- `dict` is not assignable to `TypedDict` ([#21238](https://github.com/astral-sh/ruff/pull/21238))
+- Allow values of type `None` in type expressions ([#21263](https://github.com/astral-sh/ruff/pull/21263))
+- Add narrowing for `isinstance()` and `issubclass()` checks that use PEP-604 unions ([#21334](https://github.com/astral-sh/ruff/pull/21334))
+- Do not promote literals in contravariant positions ([#21164](https://github.com/astral-sh/ruff/pull/21164), <https://github.com/astral-sh/ruff/pull/21171>))
+- Fix lookup of `__new__` on instances ([#21147](https://github.com/astral-sh/ruff/pull/21147))
 - Use the top materialization of classes for narrowing in class-patterns for `match` statements ([#21150](https://github.com/astral-sh/ruff/pull/21150))
+- Fix `is_disjoint_from` with `@final` classes ([#21167](https://github.com/astral-sh/ruff/pull/21167))
+- Fix generic inference for non-dataclass inheriting from generic dataclass ([#21159](https://github.com/astral-sh/ruff/pull/21159))
+- Improve exhaustiveness analysis for type variables with bounds or constraints ([#21172](https://github.com/astral-sh/ruff/pull/21172))
+- Prefer exact matches when solving constrained type variables ([#21165](https://github.com/astral-sh/ruff/pull/21165))
+- Simplify unions containing multiple type variables during inference ([#21275](https://github.com/astral-sh/ruff/pull/21275))
+- Use declared attribute type when inferring union attribute assignments ([#21170](https://github.com/astral-sh/ruff/pull/21170))
+- Sync vendored typeshed stubs ([#21178](https://github.com/astral-sh/ruff/pull/21178))
+- Use declared attribute types as type context ([#21143](https://github.com/astral-sh/ruff/pull/21143))
+- Don't union in default type for annotated parameters ([#21208](https://github.com/astral-sh/ruff/pull/21208))
+- Support subscripting typing.Literal with a type alias ([#21207](https://github.com/astral-sh/ruff/pull/21207))
 
 ### LSP server
 
+- Don't provide completions when in class or function definition ([#21146](https://github.com/astral-sh/ruff/pull/21146))
 - Favor in scope completions ([#21194](https://github.com/astral-sh/ruff/pull/21194))
 - Favour imported symbols over builtin symbols ([#21285](https://github.com/astral-sh/ruff/pull/21285))
-- Fix range filtering for tokens starting at the end of the requested range ([#21193](https://github.com/astral-sh/ruff/pull/21193))
 
-### CLI
+### Diagnostics
 
-- Fix `--exclude` and `src.exclude` merging ([#21341](https://github.com/astral-sh/ruff/pull/21341))
+- Add diagnostics for `isinstance()` and `issubclass()` calls that use invalid PEP-604 unions for their second argument ([#21343](https://github.com/astral-sh/ruff/pull/21343))
+- don't assume in diagnostic messages that a TypedDict key error is about subscript access ([#21166](https://github.com/astral-sh/ruff/pull/21166))
 
 ### Other changes
 
-- Add diagnostics for `isinstance()` and `issubclass()` calls that use invalid PEP-604 unions for their second argument ([#21343](https://github.com/astral-sh/ruff/pull/21343))
-- Add narrowing for `isinstance()` and `issubclass()` checks that use PEP-604 unions ([#21334](https://github.com/astral-sh/ruff/pull/21334))
-- Add support for `Literal`s in implicit type aliases ([#21296](https://github.com/astral-sh/ruff/pull/21296))
-- Add support for `Optional` and `Annotated` in implicit type aliases ([#21321](https://github.com/astral-sh/ruff/pull/21321))
-- Add support for properties that return `Self` ([#21335](https://github.com/astral-sh/ruff/pull/21335))
-- Allow values of type `None` in type expressions ([#21263](https://github.com/astral-sh/ruff/pull/21263))
 - Consistently wrap tokens in parser diagnostics in `backticks` instead of 'quotes' ([#21163](https://github.com/astral-sh/ruff/pull/21163))
 - Discover site-packages from the environment that ty is installed in ([#21286](https://github.com/astral-sh/ruff/pull/21286))
-- Fix `is_disjoint_from` with `@final` classes ([#21167](https://github.com/astral-sh/ruff/pull/21167))
-- Fix generic inference for non-dataclass inheriting from generic dataclass ([#21159](https://github.com/astral-sh/ruff/pull/21159))
-- Implicit type aliases: Support for PEP 604 unions ([#21195](https://github.com/astral-sh/ruff/pull/21195))
-- Improve exhaustiveness analysis for type variables with bounds or constraints ([#21172](https://github.com/astral-sh/ruff/pull/21172))
-- Infer type of `self` for decorated methods and properties ([#21123](https://github.com/astral-sh/ruff/pull/21123))
-- Make special cases for `UnionType` slightly narrower ([#21276](https://github.com/astral-sh/ruff/pull/21276))
-- Prefer exact matches when solving constrained type variables ([#21165](https://github.com/astral-sh/ruff/pull/21165))
-- Reachability and narrowing for enum methods ([#21130](https://github.com/astral-sh/ruff/pull/21130))
-- Simplify unions containing multiple type variables during inference ([#21275](https://github.com/astral-sh/ruff/pull/21275))
 - Support implicit imports of submodules in `__init__.pyi` ([#20855](https://github.com/astral-sh/ruff/pull/20855))
-- Support type context of union attribute assignments ([#21170](https://github.com/astral-sh/ruff/pull/21170))
-- Sync vendored typeshed stubs ([#21178](https://github.com/astral-sh/ruff/pull/21178))
-- Type inference for comprehensions ([#20962](https://github.com/astral-sh/ruff/pull/20962))
-- Understand legacy and PEP 695 `ParamSpec` ([#21139](https://github.com/astral-sh/ruff/pull/21139))
 - Use "cannot" consistently over "can not" ([#21255](https://github.com/astral-sh/ruff/pull/21255))
-- Use declared attribute types as type context ([#21143](https://github.com/astral-sh/ruff/pull/21143))
-- `dict` is not assignable to `TypedDict` ([#21238](https://github.com/astral-sh/ruff/pull/21238))
-- don't assume in diagnostic messages that a TypedDict key error is about subscript access ([#21166](https://github.com/astral-sh/ruff/pull/21166))
-- don't union in default type for annotated parameters ([#21208](https://github.com/astral-sh/ruff/pull/21208))
 - prefer submodule over module **getattr** in from-imports ([#21260](https://github.com/astral-sh/ruff/pull/21260))
-- support subscripting typing.Literal with a type alias ([#21207](https://github.com/astral-sh/ruff/pull/21207))
 
 ### Contributors
 
@@ -826,18 +825,18 @@ Released on 2025-10-10.
 
 - Add cycle detection to ty's implementation of disjointness between types, fixing a possible source of stack overflows when analysing recursive types ([#19139](https://github.com/astral-sh/ruff/pull/19139))
 - Don't allow first-party code to shadow the stdlib `types` module ([#19128](https://github.com/astral-sh/ruff/pull/19128)).
-This fixes another possible source of stack overflows.
+    This fixes another possible source of stack overflows.
 - Fix descriptor lookups for most types that overlap with `None` ([#19120](https://github.com/astral-sh/ruff/pull/19120)).
-This means that e.g. `object().__str__()` now correctly binds the `self` argument of the `__str__`
-method, as the `object` type overlaps with `None`.
+    This means that e.g. `object().__str__()` now correctly binds the `self` argument of the `__str__`
+    method, as the `object` type overlaps with `None`.
 
 ### Server
 
 - Filter a symbol from a stub file in autocomplete suggestions if it is an implementation detail of the stub ([#19121](https://github.com/astral-sh/ruff/pull/19121))
 - Add initial support for [semantic tokens](https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#textDocument_semanticTokens) ([#19108](https://github.com/astral-sh/ruff/pull/19108)).
-This feature allows editors to apply more advanced syntax highlighting. Currently, the supported tokens are: `Namespace`, `Class`, `Parameter`, `SelfParameter`,`ClsParameter`, `Variable`, `Property`, `Function`, `Method`, `Keyword`, `String`, `Number`, `Decorator`, `BuiltinConstant` and `TypeParameter`.
+    This feature allows editors to apply more advanced syntax highlighting. Currently, the supported tokens are: `Namespace`, `Class`, `Parameter`, `SelfParameter`,`ClsParameter`, `Variable`, `Property`, `Function`, `Method`, `Keyword`, `String`, `Number`, `Decorator`, `BuiltinConstant` and `TypeParameter`.
 - Initial support for [workspace diagnostics](https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#workspace_diagnostic) ([#18939](https://github.com/astral-sh/ruff/pull/18939)).
-Enable this feature by setting the `ty.diagnosticMode` configuration setting to `"workspace"`.
+    Enable this feature by setting the `ty.diagnosticMode` configuration setting to `"workspace"`.
 - Use Python syntax highlighting in on-hover content ([#19082](https://github.com/astral-sh/ruff/pull/19082))
 
 ### Typing semantics and features
@@ -1027,7 +1026,7 @@ Enable this feature by setting the `ty.diagnosticMode` configuration setting to 
 ### Bug fixes
 
 - Delay computation of 'unbound' visibility for implicit instance attributes ([#18669](https://github.com/astral-sh/ruff/pull/18669)).
-This fixes a significant performance regression in version 0.0.1-alpha.9.
+    This fixes a significant performance regression in version 0.0.1-alpha.9.
 
 ### Typing semantics and features
 
