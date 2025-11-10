@@ -38,6 +38,9 @@ Discord = "https://discord.gg/astral-sh"
 requires = ["maturin>=1.0,<2.0"]
 build-backend = "maturin"
 
+[dependency-groups]
+release = ["rooster"]
+
 [tool.uv]
 cache-keys = [
     { file = "pyproject.toml" },
@@ -46,6 +49,9 @@ cache-keys = [
     { file = "ruff/Cargo.lock" },
     { file = "**/*.rs" },
 ]
+
+[tool.uv.dependency-groups]
+release = {requires-python = ">=3.12"}
 
 [tool.ruff]
 extend-exclude = ["ruff"]

@@ -43,8 +43,8 @@ echo "Running rooster..."
 cd "$project_root"
 
 # Generate the changelog and bump versions
-uvx --python 3.12 --isolated -- \
-    rooster@0.1.1 release "$@"
+uv run --isolated --only-group release \
+    rooster release "$@"
 
 "${script_root}/autogenerate_files.sh"
 git add ./docs/reference
