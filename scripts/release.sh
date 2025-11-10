@@ -43,7 +43,7 @@ echo "Running rooster..."
 cd "$project_root"
 
 # Generate the changelog and bump versions
-uv run --only-group release \
+uv run --isolated --only-group release \
     rooster release "$@"
 
 "${script_root}/autogenerate_files.sh"
