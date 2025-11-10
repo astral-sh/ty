@@ -6,9 +6,9 @@ Released on 2025-11-10.
 
 ### Bug fixes
 
-- Fix range filtering for tokens starting at the end of the requested range ([#21193](https://github.com/astral-sh/ruff/pull/21193))
+- Language server: For [semantic tokens](https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#textDocument_semanticTokens), fix range filtering for tokens starting at the end of the requested range ([#21193](https://github.com/astral-sh/ruff/pull/21193))
 - Fix panic due to simplifying `Divergent` types out of intersections types ([#21253](https://github.com/astral-sh/ruff/pull/21253))
-- Fix `--exclude` and `src.exclude` merging ([#21341](https://github.com/astral-sh/ruff/pull/21341))
+- Fix merging of `--exclude` CLI flag and `src.exclude` config-file setting ([#21341](https://github.com/astral-sh/ruff/pull/21341))
 
 ### Type inference
 
@@ -21,38 +21,37 @@ Released on 2025-11-10.
 - `dict` is not assignable to `TypedDict` ([#21238](https://github.com/astral-sh/ruff/pull/21238))
 - Allow values of type `None` in type expressions ([#21263](https://github.com/astral-sh/ruff/pull/21263))
 - Add narrowing for `isinstance()` and `issubclass()` checks that use PEP-604 unions ([#21334](https://github.com/astral-sh/ruff/pull/21334))
-- Do not promote literals in contravariant positions ([#21164](https://github.com/astral-sh/ruff/pull/21164), <https://github.com/astral-sh/ruff/pull/21171>))
-- Fix lookup of `__new__` on instances ([#21147](https://github.com/astral-sh/ruff/pull/21147))
-- Use the top materialization of classes for narrowing in class-patterns for `match` statements ([#21150](https://github.com/astral-sh/ruff/pull/21150))
-- Fix `is_disjoint_from` with `@final` classes ([#21167](https://github.com/astral-sh/ruff/pull/21167))
-- Fix generic inference for non-dataclass inheriting from generic dataclass ([#21159](https://github.com/astral-sh/ruff/pull/21159))
+- Do not promote `Literal` types when solving type variables in contravariant positions ([#21164](https://github.com/astral-sh/ruff/pull/21164), <https://github.com/astral-sh/ruff/pull/21171>))
+- Fix lookup of `__new__` methods on instances ([#21147](https://github.com/astral-sh/ruff/pull/21147))
+- Use the top materialization of classes for narrowing in class patterns for `match` statements ([#21150](https://github.com/astral-sh/ruff/pull/21150))
+- Improve understanding of disjointness for `@final` classes ([#21167](https://github.com/astral-sh/ruff/pull/21167))
+- Fix the inferred signature of the synthesized `__init__` method of a non-dataclass inheriting from a generic dataclass ([#21159](https://github.com/astral-sh/ruff/pull/21159))
 - Improve exhaustiveness analysis for type variables with bounds or constraints ([#21172](https://github.com/astral-sh/ruff/pull/21172))
 - Prefer exact matches when solving constrained type variables ([#21165](https://github.com/astral-sh/ruff/pull/21165))
 - Simplify unions containing multiple type variables during inference ([#21275](https://github.com/astral-sh/ruff/pull/21275))
-- Use declared attribute type when inferring union attribute assignments ([#21170](https://github.com/astral-sh/ruff/pull/21170))
+- Use the declared attribute type when inferring union attribute assignments ([#21170](https://github.com/astral-sh/ruff/pull/21170))
 - Sync vendored typeshed stubs ([#21178](https://github.com/astral-sh/ruff/pull/21178))
-- Use declared attribute types as type context ([#21143](https://github.com/astral-sh/ruff/pull/21143))
-- Don't union in default type for annotated parameters ([#21208](https://github.com/astral-sh/ruff/pull/21208))
+- Use declared attribute types as type context when solving type variables ([#21143](https://github.com/astral-sh/ruff/pull/21143))
+- Don't union in the inferred type of a parameter's default value when inferring the type of an annotated parameter ([#21208](https://github.com/astral-sh/ruff/pull/21208))
 - Support subscripting typing.Literal with a type alias ([#21207](https://github.com/astral-sh/ruff/pull/21207))
 
 ### LSP server
 
-- Don't provide completions when in class or function definition ([#21146](https://github.com/astral-sh/ruff/pull/21146))
-- Favor in scope completions ([#21194](https://github.com/astral-sh/ruff/pull/21194))
-- Favour imported symbols over builtin symbols ([#21285](https://github.com/astral-sh/ruff/pull/21285))
+- Don't provide completions when in a class or function definition ([#21146](https://github.com/astral-sh/ruff/pull/21146))
+- Favor symbols defined in the current file over imported symbols ([#21194](https://github.com/astral-sh/ruff/pull/21194)) and builtin symbols ([#21285](https://github.com/astral-sh/ruff/pull/21285))
 
 ### Diagnostics
 
 - Add diagnostics for `isinstance()` and `issubclass()` calls that use invalid PEP-604 unions for their second argument ([#21343](https://github.com/astral-sh/ruff/pull/21343))
-- don't assume in diagnostic messages that a TypedDict key error is about subscript access ([#21166](https://github.com/astral-sh/ruff/pull/21166))
+- Don't assume in diagnostic messages that a `TypedDict` key error is about subscript access ([#21166](https://github.com/astral-sh/ruff/pull/21166))
 
 ### Other changes
 
 - Consistently wrap tokens in parser diagnostics in `backticks` instead of 'quotes' ([#21163](https://github.com/astral-sh/ruff/pull/21163))
-- Discover site-packages from the environment that ty is installed in ([#21286](https://github.com/astral-sh/ruff/pull/21286))
+- Discover the `site-packages` directory from the environment that ty is installed in ([#21286](https://github.com/astral-sh/ruff/pull/21286)), improving the ergonomics of `uvx ty check`
 - Support implicit imports of submodules in `__init__.pyi` ([#20855](https://github.com/astral-sh/ruff/pull/20855))
-- Use "cannot" consistently over "can not" ([#21255](https://github.com/astral-sh/ruff/pull/21255))
-- prefer submodule over module **getattr** in from-imports ([#21260](https://github.com/astral-sh/ruff/pull/21260))
+- Use "cannot" consistently over "can not" in diagnostics ([#21255](https://github.com/astral-sh/ruff/pull/21255))
+- Resolve `from foo import bar` to the `foo.bar` submodule rather than using the `__getattr__` function in `foo/__init__.py` (in situations where they both exist)([#21260](https://github.com/astral-sh/ruff/pull/21260))
 
 ### Contributors
 
