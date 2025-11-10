@@ -395,7 +395,7 @@ is currently under active development and may not work correctly or be gratuitou
 
 ______________________________________________________________________
 
-### `path`
+## `path`
 
 A list of path to `ty` executables.
 
@@ -406,9 +406,9 @@ The extension uses the first executable that exists. This setting takes preceden
 
 **Example usage**:
 
-
-
 === "VS Code"
+
+    **Type**: `string[]`
 
     ```json
     {
@@ -418,13 +418,14 @@ The extension uses the first executable that exists. This setting takes preceden
 
 === "Zed"
 
+    **Type**: `string`
+
     ```json
     {
       "lsp": {
         "ty": {
           "binary": {
             "path": "/home/user/.local/bin/ty",
-            "arguments": ["server"]
           },
         }
       }
