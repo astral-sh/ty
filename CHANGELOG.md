@@ -30,7 +30,7 @@ Released on 2025-11-10.
 - Prefer exact matches when solving constrained type variables ([#21165](https://github.com/astral-sh/ruff/pull/21165))
 - Simplify unions containing multiple type variables during inference ([#21275](https://github.com/astral-sh/ruff/pull/21275))
 - Use the declared attribute type when inferring union attribute assignments ([#21170](https://github.com/astral-sh/ruff/pull/21170))
-- Sync vendored typeshed stubs ([#21178](https://github.com/astral-sh/ruff/pull/21178))
+- Sync vendored typeshed stubs ([#21178](https://github.com/astral-sh/ruff/pull/21178)). [Typeshed diff](https://github.com/python/typeshed/compare/d6f4a0f7102b1400a21742cf9b7ea93614e2b6ec...bf7214784877c52638844c065360d4814fae4c65)
 - Use declared attribute types as type context when solving type variables ([#21143](https://github.com/astral-sh/ruff/pull/21143))
 - Don't union in the inferred type of a parameter's default value when inferring the type of an annotated parameter ([#21208](https://github.com/astral-sh/ruff/pull/21208))
 - Support subscripting typing.Literal with a type alias ([#21207](https://github.com/astral-sh/ruff/pull/21207))
