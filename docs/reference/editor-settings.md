@@ -397,16 +397,16 @@ ______________________________________________________________________
 
 ## `path`
 
-A list of path to `ty` executables.
-
-The extension uses the first executable that exists. This setting takes precedence over the
-[`ty.importStrategy`](#importstrategy) setting.
+A path or paths to `ty` executable.
 
 **Default value**: `[]`
 
 **Example usage**:
 
 === "VS Code"
+
+    The extension uses the first executable that exists. This setting takes precedence over the
+    [`ty.importStrategy`](#importstrategy) setting.
 
     **Type**: `string[]`
 
