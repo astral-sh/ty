@@ -1,6 +1,6 @@
 [project]
 name = "ty"
-version = "0.0.1a25"
+version = "0.0.1a26"
 requires-python = ">=3.8"
 dependencies = []
 description = "An extremely fast Python type checker, written in Rust."
@@ -37,9 +37,6 @@ Discord = "https://discord.gg/astral-sh"
 [build-system]
 requires = ["maturin>=1.0,<2.0"]
 build-backend = "maturin"
-
-[dependency-groups]
-release = ["rooster-blue"]
 
 [tool.uv]
 cache-keys = [
@@ -81,10 +78,6 @@ ignore = [
 
 [tool.ruff.lint.isort]
 required-imports = ["from __future__ import annotations"]
-
-
-[tool.uv.sources]
-rooster-blue = { git = "https://github.com/zanieb/rooster", rev = "c24ea11bf3cfea89d6f8c782462cac4313e5e0d6" }
 
 [tool.maturin]
 bindings = "bin"
