@@ -395,7 +395,7 @@ is currently under active development and may not work correctly or be gratuitou
 
 ______________________________________________________________________
 
-## `path`
+## Specifying the `ty` binary
 
 A path or paths to `ty` executable.
 
