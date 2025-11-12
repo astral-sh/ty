@@ -426,6 +426,7 @@ A path or paths to `ty` executable.
         "ty": {
           "binary": {
             "path": "/home/user/.local/bin/ty",
+            "arguments": ["server"]
           },
         }
       }
