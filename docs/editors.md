@@ -81,7 +81,7 @@ More information in [Zed's documentation](https://zed.dev/docs/languages/python#
 
 ## PyCharm
 
-PyCharm users can enable native ty support in the settings:
+Starting with version 2025.3, PyCharm users can enable native ty support in the settings:
 
 1. Go to **Python | Tools | ty** in the Settings dialog.
 
