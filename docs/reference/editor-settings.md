@@ -395,46 +395,6 @@ is currently under active development and may not work correctly or be gratuitou
 
 ______________________________________________________________________
 
-## Specifying the `ty` binary
-
-A path or paths to `ty` executable.
-
-**Default value**: `[]`
-
-**Example usage**:
-
-=== "VS Code"
-
-    The extension uses the first executable that exists. This setting takes precedence over the
-    [`ty.importStrategy`](#importstrategy) setting.
-
-    **Type**: `string[]`
-
-    ```json
-    {
-      "ty.path": ["/home/user/.local/bin/ty"]
-    }
-    ```
-
-=== "Zed"
-
-    **Type**: `string`
-
-    ```json
-    {
-      "lsp": {
-        "ty": {
-          "binary": {
-            "path": "/home/user/.local/bin/ty",
-            "arguments": ["server"]
-          },
-        }
-      }
-    }
-    ```
-
-______________________________________________________________________
-
 ## VS Code specific
 
 The following settings are specific to [ty's VS Code extension][ty-vscode].
@@ -477,6 +437,27 @@ The interpreter path is used to find the `ty` executable when
 ```json
 {
   "ty.interpreter": ["/home/user/.local/bin/python"]
+}
+```
+
+______________________________________________________________________
+
+### `path`
+
+A list of path to `ty` executables.
+
+The extension uses the first executable that exists. This setting takes precedence over the
+[`ty.importStrategy`](#importstrategy) setting.
+
+**Default value**: `[]`
+
+**Type**: `string[]`
+
+**Example usage**:
+
+```json
+{
+  "ty.path": ["/home/user/.local/bin/ty"]
 }
 ```
 
