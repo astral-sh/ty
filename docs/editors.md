@@ -84,13 +84,16 @@ More information in [Zed's documentation](https://zed.dev/docs/languages/python#
 PyCharm users can enable native ty support in the settings:
 
 1. Go to **Python | Tools | ty** in the Settings dialog.
-2. Select the **Enable** checkbox.
-3. In the Execution mode setting, select how PyCharm should search for the executable:
 
-   **Interpreter** mode: PyCharm searches for an executable installed in your interpreter. To install the ty package for the selected interpreter, click _Install ty_.
+1. Select the **Enable** checkbox.
 
-   **Path** mode: PyCharm searches for an executable in `$PATH`. If the executable is not found, you can specify the path by clicking the Browse... icon.
-4. Select which options should be enabled.
+1. In the Execution mode setting, select how PyCharm should search for the executable:
+
+    **Interpreter** mode: PyCharm searches for an executable installed in your interpreter. To install the ty package for the selected interpreter, click _Install ty_.
+
+    **Path** mode: PyCharm searches for an executable in `$PATH`. If the executable is not found, you can specify the path by clicking the Browse... icon.
+
+1. Select which options should be enabled.
 
 For more information, refer to [PyCharm documentation](https://www.jetbrains.com/help/pycharm/2025.3/lsp-tools.html#ty).
 
