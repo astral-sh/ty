@@ -62,7 +62,7 @@ You can enable ty and disable basedpyright by adding this to your `settings.json
 }
 ```
 
-You can override the `ty` executable Zed uses by setting`lsp.ty.binary` :
+You can override the `ty` executable Zed uses by setting `lsp.ty.binary`:
 
 ```json
 {
