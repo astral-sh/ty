@@ -62,6 +62,21 @@ You can enable ty and disable basedpyright by adding this to your `settings.json
 }
 ```
 
+You can override the `ty` executable Zed uses by setting`lsp.ty.binary` :
+
+```json
+{
+  "lsp": {
+    "ty": {
+      "binary": {
+        "path": "/home/user/.local/bin/ty",
+        "arguments": ["server"]
+      }
+    }
+  }
+}
+```
+
 More information in [Zed's documentation](https://zed.dev/docs/languages/python#configure-python-language-servers-in-zed).
 
 ## Other editors
