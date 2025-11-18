@@ -19,7 +19,7 @@ Released on 2025-11-18.
 - Support `typing.NewType` ([#21157](https://github.com/astral-sh/ruff/pull/21157))
 - Support `Callable` in implicit type aliases ([#21496](https://github.com/astral-sh/ruff/pull/21496))
 - Support `typing.Union` in implicit type aliases ([#21363](https://github.com/astral-sh/ruff/pull/21363))
-- Support generator expressions ([#21437](https://github.com/astral-sh/ruff/pull/21437))
+- Precise inference for generator expressions ([#21437](https://github.com/astral-sh/ruff/pull/21437))
 - Support storing attributes in comprehension scopes ([#20856](https://github.com/astral-sh/ruff/pull/20856))
 - Support `isinstance()` and `issubclass()` narrowing when the second argument is a `typing.py` stdlib alias ([#21391](https://github.com/astral-sh/ruff/pull/21391))
 - Support `type[…]` and `Type[…]` in implicit type aliases ([#21421](https://github.com/astral-sh/ruff/pull/21421))
@@ -42,7 +42,9 @@ Released on 2025-11-18.
 - Consider `from thispackage import y` a re-export of `y` in `__init__.pyi` ([#21387](https://github.com/astral-sh/ruff/pull/21387))
 - Allow PEP-604 unions in stubs and `TYPE_CHECKING` blocks prior to 3.10 ([#21379](https://github.com/astral-sh/ruff/pull/21379))
 - Ensure annotation/type expressions in stub files are always deferred ([#21401](https://github.com/astral-sh/ruff/pull/21401), [#21456](https://github.com/astral-sh/ruff/pull/21456))
-- Sync vendored typeshed stubs ([#21466](https://github.com/astral-sh/ruff/pull/21466)). Typeshed diff](https://github.com/python/typeshed/compare/bf7214784877c52638844c065360d4814fae4c65...f8cdc0bd526301e873cd952eb0d457bdf2554e57)
+- Silence false-positive diagnostics when using `typing.Dict` or `typing.Callable` as the second argument to `isinstance()` ([#21386](https://github.com/astral-sh/ruff/pull/21386))
+- Sync vendored typeshed stubs ([#21466](https://github.com/astral-sh/ruff/pull/21466)). [Typeshed diff](https://github.com/python/typeshed/compare/bf7214784877c52638844c065360d4814fae4c65...f8cdc0bd526301e873cd952eb0d457bdf2554e57)
+
 
 ### LSP server
 
@@ -63,16 +65,10 @@ Released on 2025-11-18.
 ### Diagnostics
 
 - Better invalid-assignment diagnostics ([#21476](https://github.com/astral-sh/ruff/pull/21476))
-- Better invalid-assignment diagnostics follow-up ([#21452](https://github.com/astral-sh/ruff/pull/21452))
 - Better concise diagnostic messages ([#21498](https://github.com/astral-sh/ruff/pull/21498))
-- Improve subscript assignment diagnostics ([#21411](https://github.com/astral-sh/ruff/pull/21411))
+- Improve subscript assignment diagnostics ([#21411](https://github.com/astral-sh/ruff/pull/21411), [#21452](https://github.com/astral-sh/ruff/pull/21452))
 - Improve diagnostic range for `non-subscriptable` diagnostics ([#21461](https://github.com/astral-sh/ruff/pull/21461))
 - Improve diagnostics for invalid exceptions ([#21475](https://github.com/astral-sh/ruff/pull/21475))
-- Silence false-positive diagnostics when using `typing.Dict` or `typing.Callable` as the second argument to `isinstance()` ([#21386](https://github.com/astral-sh/ruff/pull/21386))
-
-### Documentation
-
-- Add PyCharm setup instructions to editors documentation ([#1533](https://github.com/astral-sh/ty/pull/1533))
 - Add hyperlinks to rule codes in CLI ([#21502](https://github.com/astral-sh/ruff/pull/21502))
 
 ### Performance improvements
