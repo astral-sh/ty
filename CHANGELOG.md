@@ -9,8 +9,8 @@ Released on 2025-11-18.
 - Fix panic for cyclic star imports ([#21428](https://github.com/astral-sh/ruff/pull/21428))
 - Fix crashes when using a homebrew Python install ([#21405](https://github.com/astral-sh/ruff/pull/21405))
 - Fix incorrect inference of `enum.auto()` for enums with non-`int` mixins, and imprecise inference of `enum.auto()` for single-member enums ([#20541](https://github.com/astral-sh/ruff/pull/20541))
-- Fix global symbol lookup from eager scopes ([#21317](https://github.com/astral-sh/ruff/pull/21317))
-- Fix false positive for Final attribute assignment in **init** ([#21158](https://github.com/astral-sh/ruff/pull/21158))
+- Fix global symbol lookup from eagerly executed scopes such as comprehensions and classes ([#21317](https://github.com/astral-sh/ruff/pull/21317))
+- Fix false positive for instance attributes that are declared as `Final` in the class body but have their value assigned in the class's `__init__` method ([#21158](https://github.com/astral-sh/ruff/pull/21158))
 - Use the return type of `__get__` for descriptor lookups even when `__get__` is called with incorrect arguments ([#21424](https://github.com/astral-sh/ruff/pull/21424))
 - Consider parameters being declared `global` a syntax error ([#21312](https://github.com/astral-sh/ruff/pull/21312))
 
@@ -30,37 +30,35 @@ Released on 2025-11-18.
 - Support all parameters of dataclass transforms ([#21474](https://github.com/astral-sh/ruff/pull/21474))
 - Support `__hash__` semantics and `unsafe_hash` for dataclasses ([#21470](https://github.com/astral-sh/ruff/pull/21470))
 - Improve handling of version-specific features of dataclasses ([#21453](https://github.com/astral-sh/ruff/pull/21453))
-- Support annotated `self` parameter in constructor of non-invariant generic classes ([#21325](https://github.com/astral-sh/ruff/pull/21325))
-- Improve generic constructor inference ([#20933](https://github.com/astral-sh/ruff/pull/20933))
-- Improve generic call expression inference ([#21210](https://github.com/astral-sh/ruff/pull/21210))
-- Improve generic class constructor inference ([#21442](https://github.com/astral-sh/ruff/pull/21442))
-- Improve literal promotion heuristics ([#21439](https://github.com/astral-sh/ruff/pull/21439))
-- Improve conditional expression inference ([#21443](https://github.com/astral-sh/ruff/pull/21443))
+- Correctly infer the specialization of a non-invariant PEP-695 generic class that has an annotated `self` parameter in its `__init__` method ([#21325](https://github.com/astral-sh/ruff/pull/21325))
+- Improve use of type context when inferring the result of a generic constructor call ([#20933](https://github.com/astral-sh/ruff/pull/20933), [#21442](https://github.com/astral-sh/ruff/pull/21442))
+- Improve use of type context when inferring the result of a generic call expression ([#21210](https://github.com/astral-sh/ruff/pull/21210))
+- Improve heuristics used to decide when it is appropriate to "promote" a `Literal` type such as `Literal[42]` to its instance supertype (in this case, `int`) when solving type variables ([#21439](https://github.com/astral-sh/ruff/pull/21439))
+- Improve use of type context to infer conditional expressions ([#21443](https://github.com/astral-sh/ruff/pull/21443))
 - Make `__getattr__` available for `ModuleType` instances ([#21450](https://github.com/astral-sh/ruff/pull/21450))
 - Introduce implicit local variables for `from` imports of submodules in `__init__.py(i)` ([#21173](https://github.com/astral-sh/ruff/pull/21173))
 - Make implicit submodule locals only occur in global scope of an `__init__.py(i)` ([#21370](https://github.com/astral-sh/ruff/pull/21370))
 - Make implicit submodule locals also occur for absolute `from` imports in `__init__.py(i)` files ([#21372](https://github.com/astral-sh/ruff/pull/21372))
 - Consider `from thispackage import y` a re-export of `y` in `__init__.pyi` ([#21387](https://github.com/astral-sh/ruff/pull/21387))
 - Allow PEP-604 unions in stubs and `TYPE_CHECKING` blocks prior to 3.10 ([#21379](https://github.com/astral-sh/ruff/pull/21379))
-- Ensure annotation/type expressions in stub files are always deferred ([#21401](https://github.com/astral-sh/ruff/pull/21401))
-- Further improve details around which expressions should be deferred in stub files ([#21456](https://github.com/astral-sh/ruff/pull/21456))
-- Sync vendored typeshed stubs ([#21466](https://github.com/astral-sh/ruff/pull/21466))
+- Ensure annotation/type expressions in stub files are always deferred ([#21401](https://github.com/astral-sh/ruff/pull/21401), [#21456](https://github.com/astral-sh/ruff/pull/21456))
+- Sync vendored typeshed stubs ([#21466](https://github.com/astral-sh/ruff/pull/21466)). Typeshed diff](https://github.com/python/typeshed/compare/bf7214784877c52638844c065360d4814fae4c65...f8cdc0bd526301e873cd952eb0d457bdf2554e57)
 
 ### LSP server
 
 - Support for notebooks in VS Code ([#21175](https://github.com/astral-sh/ruff/pull/21175))
-- Fix goto for `float` and `complex` in type annotation positions ([#21388](https://github.com/astral-sh/ruff/pull/21388))
+- Fix goto-definition for `float` and `complex` in type annotation positions ([#21388](https://github.com/astral-sh/ruff/pull/21388))
 - Support goto-definition on call argument inlay hints ([#20349](https://github.com/astral-sh/ruff/pull/20349))
 - Add more keywords to scope-based completions ([#21383](https://github.com/astral-sh/ruff/pull/21383))
 - Add synthetic members to completions on dataclasses ([#21446](https://github.com/astral-sh/ruff/pull/21446))
-- Provide `import` completion when in `from <name> <name>` statement ([#21291](https://github.com/astral-sh/ruff/pull/21291))
-- Suppress completions when introducing names with `as` ([#21460](https://github.com/astral-sh/ruff/pull/21460))
-- Suppress invalid suggestions in import statements ([#21484](https://github.com/astral-sh/ruff/pull/21484))
+- Only suggest the `import` keyword in autocompletions for `from <name> <CURSOR>` statements ([#21291](https://github.com/astral-sh/ruff/pull/21291))
+- Suppress completion suggestions following `as` tokens ([#21460](https://github.com/astral-sh/ruff/pull/21460))
+- Suppress invalid suggestions in `import` statements ([#21484](https://github.com/astral-sh/ruff/pull/21484))
 - Suppress redundant inlay hints for function args ([#21365](https://github.com/astral-sh/ruff/pull/21365))
 - Suppress some trivial expression inlay hints ([#21367](https://github.com/astral-sh/ruff/pull/21367))
 - Suppress inlay hints for `+1` and `-1` ([#21368](https://github.com/astral-sh/ruff/pull/21368))
-- Improve semantic token classification for names ([#21399](https://github.com/astral-sh/ruff/pull/21399))
-- Set `definition` modifier for parameter declarations when computing semantic tokens ([#21420](https://github.com/astral-sh/ruff/pull/21420))
+- Improve [semantic token](https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#textDocument_semanticTokens) classification for names ([#21399](https://github.com/astral-sh/ruff/pull/21399))
+- Classify parameter declarations as definitions when computing semantic tokens ([#21420](https://github.com/astral-sh/ruff/pull/21420))
 
 ### Diagnostics
 
@@ -79,9 +77,9 @@ Released on 2025-11-18.
 
 ### Performance improvements
 
-- Add caching to `ClassLiteral::fields` ([#21512](https://github.com/astral-sh/ruff/pull/21512))
+- Cache computation of dataclass/NamedTuple/TypedDict fields ([#21512](https://github.com/astral-sh/ruff/pull/21512))
 - Faster subscript assignment checks for (unions of) `TypedDict`s ([#21378](https://github.com/astral-sh/ruff/pull/21378))
-- Use `CompactStr` for `StringLiteralType` ([#21497](https://github.com/astral-sh/ruff/pull/21497))
+- Reduce memory allocations for string-literal types ([#21497](https://github.com/astral-sh/ruff/pull/21497))
 
 ### Contributors
 
