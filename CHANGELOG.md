@@ -1,5 +1,108 @@
 # Changelog
 
+## 0.0.1-alpha.27
+
+Released on 2025-11-18.
+
+### Bug fixes
+
+- Fix panic for cyclic star imports ([#21428](https://github.com/astral-sh/ruff/pull/21428))
+- Fix crashes when using a homebrew Python install ([#21405](https://github.com/astral-sh/ruff/pull/21405))
+- Fix incorrect inference of `enum.auto()` for enums with non-`int` mixins, and imprecise inference of `enum.auto()` for single-member enums ([#20541](https://github.com/astral-sh/ruff/pull/20541))
+- Fix global symbol lookup from eager scopes ([#21317](https://github.com/astral-sh/ruff/pull/21317))
+- Fix false positive for Final attribute assignment in **init** ([#21158](https://github.com/astral-sh/ruff/pull/21158))
+- Use the return type of `__get__` for descriptor lookups even when `__get__` is called with incorrect arguments ([#21424](https://github.com/astral-sh/ruff/pull/21424))
+- Consider parameters being declared `global` a syntax error ([#21312](https://github.com/astral-sh/ruff/pull/21312))
+
+### Type inference
+
+- Support `typing.NewType` as `Type::NewTypeInstance` ([#21157](https://github.com/astral-sh/ruff/pull/21157))
+- Support `Callable` in implicit type aliases ([#21496](https://github.com/astral-sh/ruff/pull/21496))
+- Support `typing.Union` in implicit type aliases ([#21363](https://github.com/astral-sh/ruff/pull/21363))
+- Support genererator expressions ([#21437](https://github.com/astral-sh/ruff/pull/21437))
+- Support storing attributes in comprehension scopes ([#20856](https://github.com/astral-sh/ruff/pull/20856))
+- Support `isinstance()` and `issubclass()` narrowing when the second argument is a `typing.py` stdlib alias ([#21391](https://github.com/astral-sh/ruff/pull/21391))
+- Support `type[…]` and `Type[…]` in implicit type aliases ([#21421](https://github.com/astral-sh/ruff/pull/21421))
+- Support attribute-expression `TYPE_CHECKING` conditionals ([#21449](https://github.com/astral-sh/ruff/pull/21449))
+- Support class-arguments for dataclass transformers ([#21457](https://github.com/astral-sh/ruff/pull/21457))
+- Support legacy `typing` special forms in implicit type aliases ([#21433](https://github.com/astral-sh/ruff/pull/21433))
+- Support stringified annotations in value-position `Annotated` instances ([#21447](https://github.com/astral-sh/ruff/pull/21447))
+- Support all parameters of dataclass transforms ([#21474](https://github.com/astral-sh/ruff/pull/21474))
+- Support `__hash__` semantics and `unsafe_hash` for dataclasses ([#21470](https://github.com/astral-sh/ruff/pull/21470))
+- Improve handling of version-specific features of dataclasses ([#21453](https://github.com/astral-sh/ruff/pull/21453))
+- Support annotated `self` parameter in constructor of non-invariant generic classes ([#21325](https://github.com/astral-sh/ruff/pull/21325))
+- Improve generic constructor inference ([#20933](https://github.com/astral-sh/ruff/pull/20933))
+- Improve generic call expression inference ([#21210](https://github.com/astral-sh/ruff/pull/21210))
+- Improve generic class constructor inference ([#21442](https://github.com/astral-sh/ruff/pull/21442))
+- Improve literal promotion heuristics ([#21439](https://github.com/astral-sh/ruff/pull/21439))
+- Improve conditional expression inference ([#21443](https://github.com/astral-sh/ruff/pull/21443))
+- Make `__getattr__` available for `ModuleType` instances ([#21450](https://github.com/astral-sh/ruff/pull/21450))
+- Introduce implicit local variables for `from` imports of submodules in `__init__.py(i)` ([#21173](https://github.com/astral-sh/ruff/pull/21173))
+- Make implicit submodule locals only occur in global scope of an `__init__.py(i)` ([#21370](https://github.com/astral-sh/ruff/pull/21370))
+- Make implicit submodule locals also occur for absolute `from` imports in `__init__.py(i)` files ([#21372](https://github.com/astral-sh/ruff/pull/21372))
+- Consider `from thispackage import y` a re-export of `y` in `__init__.pyi` ([#21387](https://github.com/astral-sh/ruff/pull/21387))
+- Allow PEP-604 unions in stubs and `TYPE_CHECKING` blocks prior to 3.10 ([#21379](https://github.com/astral-sh/ruff/pull/21379))
+- Ensure annotation/type expressions in stub files are always deferred ([#21401](https://github.com/astral-sh/ruff/pull/21401))
+- Further improve details around which expressions should be deferred in stub files ([#21456](https://github.com/astral-sh/ruff/pull/21456))
+- Sync vendored typeshed stubs ([#21466](https://github.com/astral-sh/ruff/pull/21466))
+
+### LSP server
+
+- Support for notebooks in VS Code ([#21175](https://github.com/astral-sh/ruff/pull/21175))
+- Fix goto for `float` and `complex` in type annotation positions ([#21388](https://github.com/astral-sh/ruff/pull/21388))
+- Add more keywords to scope-based completions ([#21383](https://github.com/astral-sh/ruff/pull/21383))
+- Add synthetic members to completions on dataclasses ([#21446](https://github.com/astral-sh/ruff/pull/21446))
+- Provide `import` completion when in `from <name> <name>` statement ([#21291](https://github.com/astral-sh/ruff/pull/21291))
+- Suppress completions when introducing names with `as` ([#21460](https://github.com/astral-sh/ruff/pull/21460))
+- Suppress invalid suggestions in import statements ([#21484](https://github.com/astral-sh/ruff/pull/21484))
+- Improve semantic token classification for names ([#21399](https://github.com/astral-sh/ruff/pull/21399))
+- Set `definition` modifier for parameter declarations when computing semantic tokens ([#21420](https://github.com/astral-sh/ruff/pull/21420))
+- Inlay hint call argument location ([#20349](https://github.com/astral-sh/ruff/pull/20349))
+- Elide redundant inlay hints for function args ([#21365](https://github.com/astral-sh/ruff/pull/21365))
+- Supress some trivial expr inlay hints ([#21367](https://github.com/astral-sh/ruff/pull/21367))
+- Supress inlay hints for `+1` and `-1` ([#21368](https://github.com/astral-sh/ruff/pull/21368))
+
+### Diagnostics
+
+- Better invalid-assignment diagnostics ([#21476](https://github.com/astral-sh/ruff/pull/21476))
+- Better invalid-assignment diagnostics follow-up ([#21452](https://github.com/astral-sh/ruff/pull/21452))
+- Better concise diagnostic messages ([#21498](https://github.com/astral-sh/ruff/pull/21498))
+- Improve subscript assignment diagnostics ([#21411](https://github.com/astral-sh/ruff/pull/21411))
+- Improve diagnostic range for `non-subscriptable` diagnostics ([#21461](https://github.com/astral-sh/ruff/pull/21461))
+- Improve diagnostics for invalid exceptions ([#21475](https://github.com/astral-sh/ruff/pull/21475))
+- Silence false-positive diagnostics when using `typing.Dict` or `typing.Callable` as the second argument to `isinstance()` ([#21386](https://github.com/astral-sh/ruff/pull/21386))
+
+### Documentation
+
+- Add PyCharm setup instructions to editors documentation ([#1533](https://github.com/astral-sh/ty/pull/1533))
+- Add hyperlinks to rule codes in CLI ([#21502](https://github.com/astral-sh/ruff/pull/21502))
+
+### Performance improvements
+
+- Add caching to `ClassLiteral::fields` ([#21512](https://github.com/astral-sh/ruff/pull/21512))
+- Faster subscript assignment checks for (unions of) `TypedDict`s ([#21378](https://github.com/astral-sh/ruff/pull/21378))
+- Use `CompactStr` for `StringLiteralType` ([#21497](https://github.com/astral-sh/ruff/pull/21497))
+
+### Contributors
+
+- [@thejchap](https://github.com/thejchap)
+- [@mtshiba](https://github.com/mtshiba)
+- [@ibraheemdev](https://github.com/ibraheemdev)
+- [@Gankra](https://github.com/Gankra)
+- [@charliecloudberry](https://github.com/charliecloudberry)
+- [@lucach](https://github.com/lucach)
+- [@AlexWaygood](https://github.com/AlexWaygood)
+- [@MichaReiser](https://github.com/MichaReiser)
+- [@Glyphack](https://github.com/Glyphack)
+- [@dcreager](https://github.com/dcreager)
+- [@saada](https://github.com/saada)
+- [@11happy](https://github.com/11happy)
+- [@oconnor663](https://github.com/oconnor663)
+- [@MatthewMckee4](https://github.com/MatthewMckee4)
+- [@BurntSushi](https://github.com/BurntSushi)
+- [@RasmusNygren](https://github.com/RasmusNygren)
+- [@sharkdp](https://github.com/sharkdp)
+
 ## 0.0.1-alpha.26
 
 Released on 2025-11-10.
