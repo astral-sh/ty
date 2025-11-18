@@ -19,7 +19,7 @@ Released on 2025-11-18.
 - Support `typing.NewType` as `Type::NewTypeInstance` ([#21157](https://github.com/astral-sh/ruff/pull/21157))
 - Support `Callable` in implicit type aliases ([#21496](https://github.com/astral-sh/ruff/pull/21496))
 - Support `typing.Union` in implicit type aliases ([#21363](https://github.com/astral-sh/ruff/pull/21363))
-- Support genererator expressions ([#21437](https://github.com/astral-sh/ruff/pull/21437))
+- Support generator expressions ([#21437](https://github.com/astral-sh/ruff/pull/21437))
 - Support storing attributes in comprehension scopes ([#20856](https://github.com/astral-sh/ruff/pull/20856))
 - Support `isinstance()` and `issubclass()` narrowing when the second argument is a `typing.py` stdlib alias ([#21391](https://github.com/astral-sh/ruff/pull/21391))
 - Support `type[…]` and `Type[…]` in implicit type aliases ([#21421](https://github.com/astral-sh/ruff/pull/21421))
@@ -50,17 +50,17 @@ Released on 2025-11-18.
 
 - Support for notebooks in VS Code ([#21175](https://github.com/astral-sh/ruff/pull/21175))
 - Fix goto for `float` and `complex` in type annotation positions ([#21388](https://github.com/astral-sh/ruff/pull/21388))
+- Support goto-definition on call argument inlay hints ([#20349](https://github.com/astral-sh/ruff/pull/20349))
 - Add more keywords to scope-based completions ([#21383](https://github.com/astral-sh/ruff/pull/21383))
 - Add synthetic members to completions on dataclasses ([#21446](https://github.com/astral-sh/ruff/pull/21446))
 - Provide `import` completion when in `from <name> <name>` statement ([#21291](https://github.com/astral-sh/ruff/pull/21291))
 - Suppress completions when introducing names with `as` ([#21460](https://github.com/astral-sh/ruff/pull/21460))
 - Suppress invalid suggestions in import statements ([#21484](https://github.com/astral-sh/ruff/pull/21484))
+- Suppress redundant inlay hints for function args ([#21365](https://github.com/astral-sh/ruff/pull/21365))
+- Suppress some trivial expr inlay hints ([#21367](https://github.com/astral-sh/ruff/pull/21367))
+- Suppress inlay hints for `+1` and `-1` ([#21368](https://github.com/astral-sh/ruff/pull/21368))
 - Improve semantic token classification for names ([#21399](https://github.com/astral-sh/ruff/pull/21399))
 - Set `definition` modifier for parameter declarations when computing semantic tokens ([#21420](https://github.com/astral-sh/ruff/pull/21420))
-- Inlay hint call argument location ([#20349](https://github.com/astral-sh/ruff/pull/20349))
-- Elide redundant inlay hints for function args ([#21365](https://github.com/astral-sh/ruff/pull/21365))
-- Supress some trivial expr inlay hints ([#21367](https://github.com/astral-sh/ruff/pull/21367))
-- Supress inlay hints for `+1` and `-1` ([#21368](https://github.com/astral-sh/ruff/pull/21368))
 
 ### Diagnostics
 
