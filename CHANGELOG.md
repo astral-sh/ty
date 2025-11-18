@@ -16,7 +16,7 @@ Released on 2025-11-18.
 
 ### Type inference
 
-- Support `typing.NewType` as `Type::NewTypeInstance` ([#21157](https://github.com/astral-sh/ruff/pull/21157))
+- Support `typing.NewType` ([#21157](https://github.com/astral-sh/ruff/pull/21157))
 - Support `Callable` in implicit type aliases ([#21496](https://github.com/astral-sh/ruff/pull/21496))
 - Support `typing.Union` in implicit type aliases ([#21363](https://github.com/astral-sh/ruff/pull/21363))
 - Support generator expressions ([#21437](https://github.com/astral-sh/ruff/pull/21437))
@@ -57,7 +57,7 @@ Released on 2025-11-18.
 - Suppress completions when introducing names with `as` ([#21460](https://github.com/astral-sh/ruff/pull/21460))
 - Suppress invalid suggestions in import statements ([#21484](https://github.com/astral-sh/ruff/pull/21484))
 - Suppress redundant inlay hints for function args ([#21365](https://github.com/astral-sh/ruff/pull/21365))
-- Suppress some trivial expr inlay hints ([#21367](https://github.com/astral-sh/ruff/pull/21367))
+- Suppress some trivial expression inlay hints ([#21367](https://github.com/astral-sh/ruff/pull/21367))
 - Suppress inlay hints for `+1` and `-1` ([#21368](https://github.com/astral-sh/ruff/pull/21368))
 - Improve semantic token classification for names ([#21399](https://github.com/astral-sh/ruff/pull/21399))
 - Set `definition` modifier for parameter declarations when computing semantic tokens ([#21420](https://github.com/astral-sh/ruff/pull/21420))
