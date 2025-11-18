@@ -45,7 +45,6 @@ Released on 2025-11-18.
 - Silence false-positive diagnostics when using `typing.Dict` or `typing.Callable` as the second argument to `isinstance()` ([#21386](https://github.com/astral-sh/ruff/pull/21386))
 - Sync vendored typeshed stubs ([#21466](https://github.com/astral-sh/ruff/pull/21466)). [Typeshed diff](https://github.com/python/typeshed/compare/bf7214784877c52638844c065360d4814fae4c65...f8cdc0bd526301e873cd952eb0d457bdf2554e57)
 
-
 ### LSP server
 
 - Support for notebooks in VS Code ([#21175](https://github.com/astral-sh/ruff/pull/21175))
