@@ -6,7 +6,7 @@ The ty command line interface uses the following exit codes:
 | :-------- | :------------------------------------------------------- |
 | `0`       | no violations with severity `error` or higher were found |
 | `1`       | violations with severity `error` or higher were found    |
-| `2`       | invalid CLI options                                      |
+| `2`       | invalid CLI options, invalid configuration, or IO errors |
 | `101`     | internal error                                           |
 
 ty supports two command line arguments that change how exit codes work:
