@@ -6,13 +6,6 @@
 
 An extremely fast Python type checker and language server, written in Rust.
 
-> [!WARNING]
->
-> ty is in preview and is not ready for production use.
->
-> We're working hard to make ty stable and feature-complete, but until then, expect to encounter bugs,
-> missing features, and fatal errors.
-
 ## Getting started
 
 Try out the [online playground](https://play.ty.dev), or run ty with

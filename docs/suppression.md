@@ -60,6 +60,20 @@ even when `type: ignore[code]` is used.
 add_three("one", 5)  # type: ignore
 ```
 
+## Multiple suppressions comments
+
+To suppress a typing error on a line that already has a suppression comment from another tool,
+add the `# ty: ignore` comment to the same line.
+
+For example, to suppress a type error and disable formatting for a specific line:
+
+```python
+result = calculate()  # ty: ignore[invalid-argument-type]  # fmt: skip
+
+# or
+result = calculate()  # fmt: off  # ty: ignore[invalid-argument-type]
+```
+
 ## Unused suppression comments
 
 If the [`unused-ignore-comment`](./reference/rules.md#unused-ignore-comment) rule is enabled, ty
