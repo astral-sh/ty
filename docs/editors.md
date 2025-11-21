@@ -8,7 +8,14 @@ The Astral team maintains an official VS Code extension.
 
 Install the [ty extension](https://marketplace.visualstudio.com/items?itemName=astral-sh.ty) from the VS Code Marketplace.
 
-See the extension's [README](https://github.com/astral-sh/ty-vscode) for more details on usage.
+Then disable the language server from the [Python extension](https://marketplace.visualstudio.com/items?itemName=ms-python.python) by adding the
+following [setting](https://code.visualstudio.com/docs/python/settings-reference#_intellisense-engine-settings) to your `settings.json` to avoid running two language servers:
+
+```json
+{
+  "python.languageServer": "None"
+}
+```
 
 ## Neovim
 
@@ -109,6 +116,8 @@ ty server
 ```
 
 Refer to your editor's documentation to learn how to connect to an LSP server.
+
+## Customize your experience
 
 See the [editor settings](./reference/editor-settings.md) for more details on configuring the language
 server.
