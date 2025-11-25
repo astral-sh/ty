@@ -12,7 +12,7 @@ Released on 2025-11-25.
 ### LSP server
 
 - Add "remove unused ignore comment" code action ([#21582](https://github.com/astral-sh/ruff/pull/21582))
-- Add goto for `Unknown` when it appears in an inlay hint ([#21545](https://github.com/astral-sh/ruff/pull/21545))
+- Add go-to-definition for `Unknown` when it appears in an inlay hint ([#21545](https://github.com/astral-sh/ruff/pull/21545))
 - Add more random TypeDetails and tests ([#21546](https://github.com/astral-sh/ruff/pull/21546))
 - Add type definitions for `Type::SpecialForm`s ([#21544](https://github.com/astral-sh/ruff/pull/21544))
 - Don't suggest things that aren't subclasses of `BaseException` after `raise` ([#21571](https://github.com/astral-sh/ruff/pull/21571))
