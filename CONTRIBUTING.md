@@ -138,6 +138,8 @@ Releases can only be performed by Astral team members.
 
 Preparation for the release is automated.
 
+1. Install the pre-commit hooks as described above, if you haven't already.
+
 1. Checkout the `main` branch and run `git pull origin main --recurse-submodules --tags`.
 
 1. Create and checkout a new branch for the release.
