@@ -7,25 +7,25 @@ Released on 2025-11-25.
 ### Bug fixes
 
 - Fix panic for unclosed string literal in type annotation position ([#21592](https://github.com/astral-sh/ruff/pull/21592))
-- Fix subtraction overflow bug ([#21570](https://github.com/astral-sh/ruff/pull/21570))
 
 ### LSP server
 
+- Improve go-to-definition and add go-to-definition for inlay hints
+    ([#21545](https://github.com/astral-sh/ruff/pull/21545),
+    [#21546](https://github.com/astral-sh/ruff/pull/21546),
+    [#21544](https://github.com/astral-sh/ruff/pull/21544),
+    [#21616](https://github.com/astral-sh/ruff/pull/21616),
+    [#21548](https://github.com/astral-sh/ruff/pull/21548))
+- Implement go-to-type for inlay type hints ([#21533](https://github.com/astral-sh/ruff/pull/21533))
 - Add "remove unused ignore comment" code action ([#21582](https://github.com/astral-sh/ruff/pull/21582))
-- Add go-to-definition for `Unknown` when it appears in an inlay hint ([#21545](https://github.com/astral-sh/ruff/pull/21545))
-- Add go-to-definition support for more types ([#21546](https://github.com/astral-sh/ruff/pull/21546))
-- Add go-to-definition support for typing special forms ([#21544](https://github.com/astral-sh/ruff/pull/21544))
 - Don't suggest completions that aren't subclasses of `BaseException` after `raise` ([#21571](https://github.com/astral-sh/ruff/pull/21571))
 - Implement double click to insert inlay hint ([#21600](https://github.com/astral-sh/ruff/pull/21600))
 - Fix edge cases for autocomplete suppressions in variable bindings ([#21576](https://github.com/astral-sh/ruff/pull/21576))
 - Implement docstring rendering to markdown ([#21550](https://github.com/astral-sh/ruff/pull/21550))
-- Implement goto-definition and find-references for `global`/`nonlocal` statements ([#21616](https://github.com/astral-sh/ruff/pull/21616))
-- Implement goto-type for inlay type hints ([#21533](https://github.com/astral-sh/ruff/pull/21533))
 - Support string annotations ([#21577](https://github.com/astral-sh/ruff/pull/21577))
 - Improve import detection for completions and support `from ...<CURSOR>` completions ([#21547](https://github.com/astral-sh/ruff/pull/21547))
 - Improve handling of hover/goto on imports ([#21572](https://github.com/astral-sh/ruff/pull/21572))
 - Don't allow edits of some more invalid syntax types in inlay hints ([#21621](https://github.com/astral-sh/ruff/pull/21621))
-- Improve inlay hint goto-definition ([#21548](https://github.com/astral-sh/ruff/pull/21548))
 - Resolve applicable overloads for hover on an overloaded function call ([#21417](https://github.com/astral-sh/ruff/pull/21417))
 - Consistently add the `DEFINITION` modifier when computing semantic tokens ([#21521](https://github.com/astral-sh/ruff/pull/21521))
 - Suppress autocomplete suggestions during variable binding ([#21549](https://github.com/astral-sh/ruff/pull/21549))
