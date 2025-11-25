@@ -1,5 +1,79 @@
 # Changelog
 
+## 0.0.1-alpha.28
+
+Released on 2025-11-25.
+
+### Bug fixes
+
+- Fix panic for unclosed string literal in type annotation position ([#21592](https://github.com/astral-sh/ruff/pull/21592))
+- Fix subtraction overflow bug ([#21570](https://github.com/astral-sh/ruff/pull/21570))
+
+### LSP server
+
+- Add 'remove unused ignore comment' code action ([#21582](https://github.com/astral-sh/ruff/pull/21582))
+- Add goto for `Unknown` when it appears in an inlay hint ([#21545](https://github.com/astral-sh/ruff/pull/21545))
+- Add more random TypeDetails and tests ([#21546](https://github.com/astral-sh/ruff/pull/21546))
+- Add type definitions for `Type::SpecialForm`s ([#21544](https://github.com/astral-sh/ruff/pull/21544))
+- Don't suggest things that aren't subclasses of `BaseException` after `raise` ([#21571](https://github.com/astral-sh/ruff/pull/21571))
+- Double click to insert inlay hint ([#21600](https://github.com/astral-sh/ruff/pull/21600))
+- Fix edge cases for autocomplete suppressions in variable bindings ([#21576](https://github.com/astral-sh/ruff/pull/21576))
+- Implement docstring rendering to markdown ([#21550](https://github.com/astral-sh/ruff/pull/21550))
+- Implement goto-definition and find-references for global/nonlocal statements ([#21616](https://github.com/astral-sh/ruff/pull/21616))
+- Implement goto-type for inlay type hints ([#21533](https://github.com/astral-sh/ruff/pull/21533))
+- Implement lsp support for string annotations ([#21577](https://github.com/astral-sh/ruff/pull/21577))
+- Improve import detection for completions and support `from ...<CURSOR>` completions ([#21547](https://github.com/astral-sh/ruff/pull/21547))
+- Improve lsp handling of hover/goto on imports ([#21572](https://github.com/astral-sh/ruff/pull/21572))
+- Inlay Hint edit follow up ([#21621](https://github.com/astral-sh/ruff/pull/21621))
+- More low-hanging fruit for inlay hint goto-definition ([#21548](https://github.com/astral-sh/ruff/pull/21548))
+- Resolve overloads for hovers ([#21417](https://github.com/astral-sh/ruff/pull/21417))
+- Semantic tokens: consistently add the `DEFINITION` modifier ([#21521](https://github.com/astral-sh/ruff/pull/21521))
+- suppress autocomplete suggestions during variable binding ([#21549](https://github.com/astral-sh/ruff/pull/21549))
+
+### CLI
+
+- Exit with `2` if there's any IO error ([#21508](https://github.com/astral-sh/ruff/pull/21508))
+
+### Other changes
+
+- Add hint about resolved Python version when a user attempts to import a member added on a newer version ([#21615](https://github.com/astral-sh/ruff/pull/21615))
+- Attach subdiagnostics to `unresolved-import` errors for relative imports as well as absolute imports ([#21554](https://github.com/astral-sh/ruff/pull/21554))
+- Avoid expression reinference for diagnostics ([#21267](https://github.com/astral-sh/ruff/pull/21267))
+- Check method definitions on subclasses for Liskov violations ([#21436](https://github.com/astral-sh/ruff/pull/21436))
+- Eagerly evaluate `types.UnionType` elements as type expressions ([#21531](https://github.com/astral-sh/ruff/pull/21531))
+- Extend Liskov checks to also cover classmethods and staticmethods ([#21598](https://github.com/astral-sh/ruff/pull/21598))
+- Fix rendering of unused suppression diagnostic ([#21580](https://github.com/astral-sh/ruff/pull/21580))
+- Implement `typing.override` ([#21627](https://github.com/astral-sh/ruff/pull/21627))
+- Improve concise diagnostics for invalid exceptions when a user catches a tuple of objects ([#21578](https://github.com/astral-sh/ruff/pull/21578))
+- Improve debug messages when imports fail ([#21555](https://github.com/astral-sh/ruff/pull/21555))
+- Improve diagnostics when `NotImplemented` is called ([#21523](https://github.com/astral-sh/ruff/pull/21523))
+- Improve diagnostics when a submodule is not available as an attribute on a module-literal type ([#21561](https://github.com/astral-sh/ruff/pull/21561))
+- Improve several "Did you mean?" suggestions ([#21597](https://github.com/astral-sh/ruff/pull/21597))
+- Narrow type context during literal promotion in generic class constructors ([#21574](https://github.com/astral-sh/ruff/pull/21574))
+- Retain the function-like-ness of `Callable` types when binding `self` ([#21614](https://github.com/astral-sh/ruff/pull/21614))
+- Substitute for `typing.Self` when checking protocol members ([#21569](https://github.com/astral-sh/ruff/pull/21569))
+- Switch the error code from `unresolved-attribute` to `possibly-missing-attribute` for submodules that may not be available ([#21618](https://github.com/astral-sh/ruff/pull/21618))
+- implement `TypedDict` structural assignment ([#21467](https://github.com/astral-sh/ruff/pull/21467))
+- make implicit submodule imports re-exported ([#21573](https://github.com/astral-sh/ruff/pull/21573))
+- support PEP 613 type aliases ([#21394](https://github.com/astral-sh/ruff/pull/21394))
+- support generic aliases in `type[...]`, like `type[C[int]]` ([#21552](https://github.com/astral-sh/ruff/pull/21552))
+- tighten up handling of subscripts in type expressions ([#21503](https://github.com/astral-sh/ruff/pull/21503))
+
+### Contributors
+
+- [@Gankra](https://github.com/Gankra)
+- [@MatthewMckee4](https://github.com/MatthewMckee4)
+- [@AlexWaygood](https://github.com/AlexWaygood)
+- [@RasmusNygren](https://github.com/RasmusNygren)
+- [@dcreager](https://github.com/dcreager)
+- [@BurntSushi](https://github.com/BurntSushi)
+- [@carljm](https://github.com/carljm)
+- [@MichaReiser](https://github.com/MichaReiser)
+- [@sharkdp](https://github.com/sharkdp)
+- [@oconnor663](https://github.com/oconnor663)
+- [@lucach](https://github.com/lucach)
+- [@ibraheemdev](https://github.com/ibraheemdev)
+
 ## 0.0.1-alpha.27
 
 Released on 2025-11-18.
@@ -920,18 +994,18 @@ Released on 2025-10-10.
 
 - Add cycle detection to ty's implementation of disjointness between types, fixing a possible source of stack overflows when analysing recursive types ([#19139](https://github.com/astral-sh/ruff/pull/19139))
 - Don't allow first-party code to shadow the stdlib `types` module ([#19128](https://github.com/astral-sh/ruff/pull/19128)).
-    This fixes another possible source of stack overflows.
+This fixes another possible source of stack overflows.
 - Fix descriptor lookups for most types that overlap with `None` ([#19120](https://github.com/astral-sh/ruff/pull/19120)).
-    This means that e.g. `object().__str__()` now correctly binds the `self` argument of the `__str__`
-    method, as the `object` type overlaps with `None`.
+This means that e.g. `object().__str__()` now correctly binds the `self` argument of the `__str__`
+method, as the `object` type overlaps with `None`.
 
 ### Server
 
 - Filter a symbol from a stub file in autocomplete suggestions if it is an implementation detail of the stub ([#19121](https://github.com/astral-sh/ruff/pull/19121))
 - Add initial support for [semantic tokens](https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#textDocument_semanticTokens) ([#19108](https://github.com/astral-sh/ruff/pull/19108)).
-    This feature allows editors to apply more advanced syntax highlighting. Currently, the supported tokens are: `Namespace`, `Class`, `Parameter`, `SelfParameter`,`ClsParameter`, `Variable`, `Property`, `Function`, `Method`, `Keyword`, `String`, `Number`, `Decorator`, `BuiltinConstant` and `TypeParameter`.
+This feature allows editors to apply more advanced syntax highlighting. Currently, the supported tokens are: `Namespace`, `Class`, `Parameter`, `SelfParameter`,`ClsParameter`, `Variable`, `Property`, `Function`, `Method`, `Keyword`, `String`, `Number`, `Decorator`, `BuiltinConstant` and `TypeParameter`.
 - Initial support for [workspace diagnostics](https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#workspace_diagnostic) ([#18939](https://github.com/astral-sh/ruff/pull/18939)).
-    Enable this feature by setting the `ty.diagnosticMode` configuration setting to `"workspace"`.
+Enable this feature by setting the `ty.diagnosticMode` configuration setting to `"workspace"`.
 - Use Python syntax highlighting in on-hover content ([#19082](https://github.com/astral-sh/ruff/pull/19082))
 
 ### Typing semantics and features
@@ -1121,7 +1195,7 @@ Released on 2025-10-10.
 ### Bug fixes
 
 - Delay computation of 'unbound' visibility for implicit instance attributes ([#18669](https://github.com/astral-sh/ruff/pull/18669)).
-    This fixes a significant performance regression in version 0.0.1-alpha.9.
+This fixes a significant performance regression in version 0.0.1-alpha.9.
 
 ### Typing semantics and features
 
