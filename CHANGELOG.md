@@ -38,7 +38,7 @@ Released on 2025-11-25.
 
 - Add hint about resolved Python version when a user attempts to import a member added on a newer version ([#21615](https://github.com/astral-sh/ruff/pull/21615))
 - Attach subdiagnostics to `unresolved-import` errors for relative imports as well as absolute imports ([#21554](https://github.com/astral-sh/ruff/pull/21554))
-- Avoid expression reinference for diagnostics ([#21267](https://github.com/astral-sh/ruff/pull/21267))
+- Avoid expression re-inference for diagnostics ([#21267](https://github.com/astral-sh/ruff/pull/21267))
 - Check method definitions on subclasses for Liskov violations ([#21436](https://github.com/astral-sh/ruff/pull/21436))
 - Eagerly evaluate `types.UnionType` elements as type expressions ([#21531](https://github.com/astral-sh/ruff/pull/21531))
 - Extend Liskov checks to also cover classmethods and staticmethods ([#21598](https://github.com/astral-sh/ruff/pull/21598))
