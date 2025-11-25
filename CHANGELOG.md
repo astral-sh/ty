@@ -26,7 +26,7 @@ Released on 2025-11-25.
 - Improve handling of hover/goto on imports ([#21572](https://github.com/astral-sh/ruff/pull/21572))
 - Don't allow edits of some more invalid syntax types in inlay hints ([#21621](https://github.com/astral-sh/ruff/pull/21621))
 - Improve inlay hint goto-definition ([#21548](https://github.com/astral-sh/ruff/pull/21548))
-- Resolve overloads for hovers ([#21417](https://github.com/astral-sh/ruff/pull/21417))
+- Resolve applicable overloads for hover on an overloaded function call ([#21417](https://github.com/astral-sh/ruff/pull/21417))
 - Consistently add the `DEFINITION` modifier when computing semantic tokens ([#21521](https://github.com/astral-sh/ruff/pull/21521))
 - Suppress autocomplete suggestions during variable binding ([#21549](https://github.com/astral-sh/ruff/pull/21549))
 
