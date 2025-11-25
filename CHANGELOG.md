@@ -11,24 +11,24 @@ Released on 2025-11-25.
 
 ### LSP server
 
-- Add 'remove unused ignore comment' code action ([#21582](https://github.com/astral-sh/ruff/pull/21582))
+- Add "remove unused ignore comment" code action ([#21582](https://github.com/astral-sh/ruff/pull/21582))
 - Add goto for `Unknown` when it appears in an inlay hint ([#21545](https://github.com/astral-sh/ruff/pull/21545))
 - Add more random TypeDetails and tests ([#21546](https://github.com/astral-sh/ruff/pull/21546))
 - Add type definitions for `Type::SpecialForm`s ([#21544](https://github.com/astral-sh/ruff/pull/21544))
 - Don't suggest things that aren't subclasses of `BaseException` after `raise` ([#21571](https://github.com/astral-sh/ruff/pull/21571))
-- Double click to insert inlay hint ([#21600](https://github.com/astral-sh/ruff/pull/21600))
+- Implement double click to insert inlay hint ([#21600](https://github.com/astral-sh/ruff/pull/21600))
 - Fix edge cases for autocomplete suppressions in variable bindings ([#21576](https://github.com/astral-sh/ruff/pull/21576))
 - Implement docstring rendering to markdown ([#21550](https://github.com/astral-sh/ruff/pull/21550))
-- Implement goto-definition and find-references for global/nonlocal statements ([#21616](https://github.com/astral-sh/ruff/pull/21616))
+- Implement goto-definition and find-references for `global`/`nonlocal` statements ([#21616](https://github.com/astral-sh/ruff/pull/21616))
 - Implement goto-type for inlay type hints ([#21533](https://github.com/astral-sh/ruff/pull/21533))
-- Implement lsp support for string annotations ([#21577](https://github.com/astral-sh/ruff/pull/21577))
+- Support string annotations ([#21577](https://github.com/astral-sh/ruff/pull/21577))
 - Improve import detection for completions and support `from ...<CURSOR>` completions ([#21547](https://github.com/astral-sh/ruff/pull/21547))
-- Improve lsp handling of hover/goto on imports ([#21572](https://github.com/astral-sh/ruff/pull/21572))
-- Inlay Hint edit follow up ([#21621](https://github.com/astral-sh/ruff/pull/21621))
-- More low-hanging fruit for inlay hint goto-definition ([#21548](https://github.com/astral-sh/ruff/pull/21548))
+- Improve handling of hover/goto on imports ([#21572](https://github.com/astral-sh/ruff/pull/21572))
+- Don't allow edits of some more invalid syntax types in inlay hints ([#21621](https://github.com/astral-sh/ruff/pull/21621))
+- Improve inlay hint goto-definition ([#21548](https://github.com/astral-sh/ruff/pull/21548))
 - Resolve overloads for hovers ([#21417](https://github.com/astral-sh/ruff/pull/21417))
-- Semantic tokens: consistently add the `DEFINITION` modifier ([#21521](https://github.com/astral-sh/ruff/pull/21521))
-- suppress autocomplete suggestions during variable binding ([#21549](https://github.com/astral-sh/ruff/pull/21549))
+- Consistently add the `DEFINITION` modifier when computing semantic tokens ([#21521](https://github.com/astral-sh/ruff/pull/21521))
+- Suppress autocomplete suggestions during variable binding ([#21549](https://github.com/astral-sh/ruff/pull/21549))
 
 ### CLI
 
@@ -53,11 +53,11 @@ Released on 2025-11-25.
 - Retain the function-like-ness of `Callable` types when binding `self` ([#21614](https://github.com/astral-sh/ruff/pull/21614))
 - Substitute for `typing.Self` when checking protocol members ([#21569](https://github.com/astral-sh/ruff/pull/21569))
 - Switch the error code from `unresolved-attribute` to `possibly-missing-attribute` for submodules that may not be available ([#21618](https://github.com/astral-sh/ruff/pull/21618))
-- implement `TypedDict` structural assignment ([#21467](https://github.com/astral-sh/ruff/pull/21467))
-- make implicit submodule imports re-exported ([#21573](https://github.com/astral-sh/ruff/pull/21573))
-- support PEP 613 type aliases ([#21394](https://github.com/astral-sh/ruff/pull/21394))
-- support generic aliases in `type[...]`, like `type[C[int]]` ([#21552](https://github.com/astral-sh/ruff/pull/21552))
-- tighten up handling of subscripts in type expressions ([#21503](https://github.com/astral-sh/ruff/pull/21503))
+- Implement `TypedDict` structural assignment ([#21467](https://github.com/astral-sh/ruff/pull/21467))
+- Make implicit submodule imports re-exported ([#21573](https://github.com/astral-sh/ruff/pull/21573))
+- Support PEP 613 type aliases ([#21394](https://github.com/astral-sh/ruff/pull/21394))
+- Support generic aliases in `type[...]`, like `type[C[int]]` ([#21552](https://github.com/astral-sh/ruff/pull/21552))
+- Tighten up handling of subscripts in type expressions ([#21503](https://github.com/astral-sh/ruff/pull/21503))
 
 ### Contributors
 
