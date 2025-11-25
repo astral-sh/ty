@@ -55,7 +55,7 @@ Released on 2025-11-25.
 - Switch the error code from `unresolved-attribute` to `possibly-missing-attribute` for submodules that may not be available ([#21618](https://github.com/astral-sh/ruff/pull/21618))
 - Implement `TypedDict` structural assignment ([#21467](https://github.com/astral-sh/ruff/pull/21467))
 - Make implicit submodule imports re-exported ([#21573](https://github.com/astral-sh/ruff/pull/21573))
-- Support PEP 613 type aliases ([#21394](https://github.com/astral-sh/ruff/pull/21394))
+- Support PEP 613 `typing.TypeAlias` type aliases ([#21394](https://github.com/astral-sh/ruff/pull/21394))
 - Support generic aliases in `type[...]`, like `type[C[int]]` ([#21552](https://github.com/astral-sh/ruff/pull/21552))
 - Tighten up handling of subscripts in type expressions ([#21503](https://github.com/astral-sh/ruff/pull/21503))
 
