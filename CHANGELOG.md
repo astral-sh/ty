@@ -32,7 +32,7 @@ Released on 2025-11-25.
 
 ### CLI
 
-- Exit with `2` if there's any IO error ([#21508](https://github.com/astral-sh/ruff/pull/21508))
+- Exit with code `2` if there's any IO error ([#21508](https://github.com/astral-sh/ruff/pull/21508))
 
 ### Other changes
 
