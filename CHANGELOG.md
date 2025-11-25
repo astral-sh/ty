@@ -14,7 +14,7 @@ Released on 2025-11-25.
 - Add "remove unused ignore comment" code action ([#21582](https://github.com/astral-sh/ruff/pull/21582))
 - Add go-to-definition for `Unknown` when it appears in an inlay hint ([#21545](https://github.com/astral-sh/ruff/pull/21545))
 - Add go-to-definition support for more types ([#21546](https://github.com/astral-sh/ruff/pull/21546))
-- Add go-to-definition support  for typing special forms ([#21544](https://github.com/astral-sh/ruff/pull/21544))
+- Add go-to-definition support for typing special forms ([#21544](https://github.com/astral-sh/ruff/pull/21544))
 - Don't suggest completions that aren't subclasses of `BaseException` after `raise` ([#21571](https://github.com/astral-sh/ruff/pull/21571))
 - Implement double click to insert inlay hint ([#21600](https://github.com/astral-sh/ruff/pull/21600))
 - Fix edge cases for autocomplete suppressions in variable bindings ([#21576](https://github.com/astral-sh/ruff/pull/21576))
