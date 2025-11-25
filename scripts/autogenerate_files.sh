@@ -20,7 +20,7 @@ echo "Copying reference documentation from Ruff..."
 copy_docs() {
     src="$1"
     dest="$2"
-    [[ -d "$dest" ]] && dest="$dest/$(basename "$src")"
+    [ -d "$dest" ] && dest="$dest/$(basename "$src")"
     old_url="/github.com/astral-sh/ruff/blob/main/"
     new_url="/github.com/astral-sh/ruff/blob/$ruff_commit/"
     sed "s|$old_url|$new_url|g" "$src" > "$dest"
