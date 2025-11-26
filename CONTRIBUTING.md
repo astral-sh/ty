@@ -185,14 +185,7 @@ Preparation for the release is automated.
 
     The script is a no-op if there are no schema changes.
 
-1. If necessary, update and release [`ty-vscode`](https://github.com/astral-sh/ty-vscode).
+1. Update and release `ty-vscode`.
 
-    The instructions are in the `ty-vscode` repository.
-
-    Updating the extension bumps the bundled ty version, which is used if ty is not installed.
-
-    Updating the extension is required for:
-
-    - Minor releases
-    - Patch releases, if a critical bug in `ty server` is fixed
-    - When releasing new `ty server` features that require changes in `ty-vscode`
+    The instructions are [in the `ty-vscode`
+    repository](https://github.com/astral-sh/ty-vscode/blob/main/CONTRIBUTING.md#release).
