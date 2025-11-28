@@ -10,12 +10,12 @@ Released on 2025-11-28.
 
 ### Type inference
 
-- Support `type[T]` with type variables ([#21650](https://github.com/astral-sh/ruff/pull/21650))
-- more precise inference for a failed specialization ([#21651](https://github.com/astral-sh/ruff/pull/21651))
+- Support `type[T]` where `T` is a type variable ([#21650](https://github.com/astral-sh/ruff/pull/21650))
+- More precise inference for a failed specialization of a generic type ([#21651](https://github.com/astral-sh/ruff/pull/21651))
 
 ### LSP server
 
-- Add "import ..." code-action for unresolved references ([#21629](https://github.com/astral-sh/ruff/pull/21629))
+- Add `import ...` code action for unresolved references ([#21629](https://github.com/astral-sh/ruff/pull/21629))
 - Include all members on `type` in autocompletion suggestions for `type[]` types ([#21670](https://github.com/astral-sh/ruff/pull/21670))
 - Mark comprehension targets as definitions in semantic highlighting ([#21636](https://github.com/astral-sh/ruff/pull/21636))
 - Add IDE autofixes for two "Did you mean...?" suggestions ([#21667](https://github.com/astral-sh/ruff/pull/21667))
@@ -23,6 +23,7 @@ Released on 2025-11-28.
 ### Diagnostics
 
 - Add subdiagnostic hint if a variable with type `Never` is used in a type expression ([#21660](https://github.com/astral-sh/ruff/pull/21660))
+- Improve diagnostic messages for invalid type arguments during explicit specialization ([#21635](https://github.com/astral-sh/ruff/pull/21635))
 
 ### Contributors
 
