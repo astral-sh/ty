@@ -12,6 +12,8 @@ Released on 2025-11-28.
 
 - Support `type[T]` where `T` is a type variable ([#21650](https://github.com/astral-sh/ruff/pull/21650))
 - More precise inference for a failed specialization of a generic type ([#21651](https://github.com/astral-sh/ruff/pull/21651))
+- Detect invalid overrides of methods that are marked as `typing.final` ([#21646](https://github.com/astral-sh/ruff/pull/21646))
+- Fix subtyping of `type[Any]` / `type[T]` and protocols ([#21678](https://github.com/astral-sh/ruff/pull/21678))
 
 ### LSP server
 
@@ -19,6 +21,8 @@ Released on 2025-11-28.
 - Include all members on `type` in autocompletion suggestions for `type[]` types ([#21670](https://github.com/astral-sh/ruff/pull/21670))
 - Mark comprehension targets as definitions in semantic highlighting ([#21636](https://github.com/astral-sh/ruff/pull/21636))
 - Add IDE autofixes for two "Did you mean...?" suggestions ([#21667](https://github.com/astral-sh/ruff/pull/21667))
+- Prettier rendering of `code:: lang` in docstrings ([#21665](https://github.com/astral-sh/ruff/pull/21665))
+- Support go-to for patterns and typevars ([#21671](https://github.com/astral-sh/ruff/pull/21671))
 
 ### Diagnostics
 
@@ -34,6 +38,7 @@ Released on 2025-11-28.
 - [@AlexWaygood](https://github.com/AlexWaygood)
 - [@mtshiba](https://github.com/mtshiba)
 - [@oconnor663](https://github.com/oconnor663)
+- [@sharkdp](https://github.com/sharkdp)
 
 ## 0.0.1-alpha.28
 
