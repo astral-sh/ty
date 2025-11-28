@@ -14,6 +14,7 @@ Released on 2025-11-28.
 - More precise inference for a failed specialization of a generic type ([#21651](https://github.com/astral-sh/ruff/pull/21651))
 - Detect invalid overrides of methods that are marked as `typing.final` ([#21646](https://github.com/astral-sh/ruff/pull/21646))
 - Fix subtyping of `type[Any]` / `type[T]` and protocols ([#21678](https://github.com/astral-sh/ruff/pull/21678))
+- Added generics support for implicit and explicit (`typing.TypeAlias`) type aliases ([#21553](https://github.com/astral-sh/ruff/pull/21553))
 
 ### LSP server
 
