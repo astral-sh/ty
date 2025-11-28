@@ -1,5 +1,46 @@
 # Changelog
 
+## 0.0.1-alpha.29
+
+Released on 2025-11-28.
+
+### Bug Fix
+
+- Fix multiple panics due to recursive type definitions ([#20566](https://github.com/astral-sh/ruff/pull/20566))
+
+### Type inference
+
+- Support `type[T]` where `T` is a type variable ([#21650](https://github.com/astral-sh/ruff/pull/21650))
+- More precise inference for a failed specialization of a generic type ([#21651](https://github.com/astral-sh/ruff/pull/21651))
+- Detect invalid overrides of methods that are marked as `typing.final` ([#21646](https://github.com/astral-sh/ruff/pull/21646))
+- Fix subtyping of `type[Any]` / `type[T]` and protocols ([#21678](https://github.com/astral-sh/ruff/pull/21678))
+- Added generics support for implicit and explicit (`typing.TypeAlias`) type aliases ([#21553](https://github.com/astral-sh/ruff/pull/21553))
+
+### LSP server
+
+- Add `import ...` code action for unresolved references ([#21629](https://github.com/astral-sh/ruff/pull/21629))
+- Include all members on `type` in autocompletion suggestions for `type[]` types ([#21670](https://github.com/astral-sh/ruff/pull/21670))
+- Mark comprehension targets as definitions in semantic highlighting ([#21636](https://github.com/astral-sh/ruff/pull/21636))
+- Add IDE autofixes for two "Did you mean...?" suggestions ([#21667](https://github.com/astral-sh/ruff/pull/21667))
+- Prettier rendering of `code:: lang` in docstrings ([#21665](https://github.com/astral-sh/ruff/pull/21665))
+- Support go-to for patterns and typevars ([#21671](https://github.com/astral-sh/ruff/pull/21671))
+
+### Diagnostics
+
+- Add subdiagnostic hint if a variable with type `Never` is used in a type expression ([#21660](https://github.com/astral-sh/ruff/pull/21660))
+- Improve diagnostic messages for invalid type arguments during explicit specialization ([#21635](https://github.com/astral-sh/ruff/pull/21635))
+
+### Contributors
+
+- [@lucach](https://github.com/lucach)
+- [@carljm](https://github.com/carljm)
+- [@ibraheemdev](https://github.com/ibraheemdev)
+- [@Gankra](https://github.com/Gankra)
+- [@AlexWaygood](https://github.com/AlexWaygood)
+- [@mtshiba](https://github.com/mtshiba)
+- [@oconnor663](https://github.com/oconnor663)
+- [@sharkdp](https://github.com/sharkdp)
+
 ## 0.0.1-alpha.28
 
 Released on 2025-11-25.
@@ -7,6 +48,21 @@ Released on 2025-11-25.
 ### Bug fixes
 
 - Fix panic for unclosed string literal in type annotation position ([#21592](https://github.com/astral-sh/ruff/pull/21592))
+
+### Type inference
+
+- Check method definitions on subclasses for Liskov violations ([#21436](https://github.com/astral-sh/ruff/pull/21436))
+- Eagerly evaluate `types.UnionType` elements as type expressions ([#21531](https://github.com/astral-sh/ruff/pull/21531))
+- Extend Liskov checks to also cover classmethods and staticmethods ([#21598](https://github.com/astral-sh/ruff/pull/21598))
+- Implement `typing.override` ([#21627](https://github.com/astral-sh/ruff/pull/21627))
+- Narrow type context during literal promotion in generic class constructors ([#21574](https://github.com/astral-sh/ruff/pull/21574))
+- Retain the function-like-ness of `Callable` types when binding `self` ([#21614](https://github.com/astral-sh/ruff/pull/21614))
+- Substitute for `typing.Self` when checking protocol members ([#21569](https://github.com/astral-sh/ruff/pull/21569))
+- Implement `TypedDict` structural assignment ([#21467](https://github.com/astral-sh/ruff/pull/21467))
+- Make implicit submodule imports re-exported ([#21573](https://github.com/astral-sh/ruff/pull/21573))
+- Support PEP 613 `typing.TypeAlias` type aliases ([#21394](https://github.com/astral-sh/ruff/pull/21394))
+- Support generic aliases in `type[...]`, like `type[C[int]]` ([#21552](https://github.com/astral-sh/ruff/pull/21552))
+- Tighten up handling of subscripts in type expressions ([#21503](https://github.com/astral-sh/ruff/pull/21503))
 
 ### LSP server
 
@@ -34,30 +90,21 @@ Released on 2025-11-25.
 
 - Exit with code `2` if there's any IO error ([#21508](https://github.com/astral-sh/ruff/pull/21508))
 
-### Other changes
+### Diagnostics
 
 - Add hint about resolved Python version when a user attempts to import a member added on a newer version ([#21615](https://github.com/astral-sh/ruff/pull/21615))
 - Attach subdiagnostics to `unresolved-import` errors for relative imports as well as absolute imports ([#21554](https://github.com/astral-sh/ruff/pull/21554))
 - Avoid expression re-inference for diagnostics ([#21267](https://github.com/astral-sh/ruff/pull/21267))
-- Check method definitions on subclasses for Liskov violations ([#21436](https://github.com/astral-sh/ruff/pull/21436))
-- Eagerly evaluate `types.UnionType` elements as type expressions ([#21531](https://github.com/astral-sh/ruff/pull/21531))
-- Extend Liskov checks to also cover classmethods and staticmethods ([#21598](https://github.com/astral-sh/ruff/pull/21598))
-- Fix rendering of unused suppression diagnostic ([#21580](https://github.com/astral-sh/ruff/pull/21580))
-- Implement `typing.override` ([#21627](https://github.com/astral-sh/ruff/pull/21627))
+- Improve message rendering of unused suppression diagnostic ([#21580](https://github.com/astral-sh/ruff/pull/21580))
 - Improve concise diagnostics for invalid exceptions when a user catches a tuple of objects ([#21578](https://github.com/astral-sh/ruff/pull/21578))
-- Improve debug messages when imports fail ([#21555](https://github.com/astral-sh/ruff/pull/21555))
 - Improve diagnostics when `NotImplemented` is called ([#21523](https://github.com/astral-sh/ruff/pull/21523))
 - Improve diagnostics when a submodule is not available as an attribute on a module-literal type ([#21561](https://github.com/astral-sh/ruff/pull/21561))
 - Improve several "Did you mean?" suggestions ([#21597](https://github.com/astral-sh/ruff/pull/21597))
-- Narrow type context during literal promotion in generic class constructors ([#21574](https://github.com/astral-sh/ruff/pull/21574))
-- Retain the function-like-ness of `Callable` types when binding `self` ([#21614](https://github.com/astral-sh/ruff/pull/21614))
-- Substitute for `typing.Self` when checking protocol members ([#21569](https://github.com/astral-sh/ruff/pull/21569))
 - Switch the error code from `unresolved-attribute` to `possibly-missing-attribute` for submodules that may not be available ([#21618](https://github.com/astral-sh/ruff/pull/21618))
-- Implement `TypedDict` structural assignment ([#21467](https://github.com/astral-sh/ruff/pull/21467))
-- Make implicit submodule imports re-exported ([#21573](https://github.com/astral-sh/ruff/pull/21573))
-- Support PEP 613 `typing.TypeAlias` type aliases ([#21394](https://github.com/astral-sh/ruff/pull/21394))
-- Support generic aliases in `type[...]`, like `type[C[int]]` ([#21552](https://github.com/astral-sh/ruff/pull/21552))
-- Tighten up handling of subscripts in type expressions ([#21503](https://github.com/astral-sh/ruff/pull/21503))
+
+### Other
+
+- Improve debug messages when imports fail ([#21555](https://github.com/astral-sh/ruff/pull/21555))
 
 ### Contributors
 
