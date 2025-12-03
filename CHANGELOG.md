@@ -6,7 +6,7 @@ Released on 2025-12-03.
 
 ### Bug fixes
 
-- Fix exhaustiveness checking for `match` statements over unions generic classes ([#21726](https://github.com/astral-sh/ruff/pull/21726))
+- Fix exhaustiveness checking for `match` statements over unions of generic instance types ([#21726](https://github.com/astral-sh/ruff/pull/21726))
 - Don't introduce invalid syntax when autofixing `override-of-final-method` ([#21699](https://github.com/astral-sh/ruff/pull/21699))
 - Suppress false positives when `dataclasses.dataclass(...)(cls)` is called imperatively ([#21729](https://github.com/astral-sh/ruff/pull/21729))
 - Fix false positives for `class F(Generic[*Ts]): ...` ([#21723](https://github.com/astral-sh/ruff/pull/21723))
