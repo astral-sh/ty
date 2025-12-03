@@ -44,7 +44,6 @@ Released on 2025-12-03.
 ### Other changes
 
 - Reduce memory usage (especially when ty is used as an LSP server) by enabling LRU cache eviction for module ASTs ([#21749](https://github.com/astral-sh/ruff/pull/21749))
-- Remove `GenericAlias`-related todo type ([#21728](https://github.com/astral-sh/ruff/pull/21728))
 
 ### Contributors
 
