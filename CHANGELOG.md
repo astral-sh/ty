@@ -37,7 +37,7 @@ Released on 2025-12-03.
 ### Improvements to existing diagnostics
 
 - Improve diagnostics for unsupported comparison operations ([#21737](https://github.com/astral-sh/ruff/pull/21737))
-- Show the user where the type variable was defined in `invalid-type-arguments` diagnostics ([#21727](https://github.com/astral-sh/ruff/pull/21727))
+- For `invalid-type-arguments` diagnostics, show the user where the type variable was defined ([#21727](https://github.com/astral-sh/ruff/pull/21727))
 - Extend `invalid-explicit-override` to also cover properties decorated with `@override` that do not override anything ([#21756](https://github.com/astral-sh/ruff/pull/21756))
 - Improve `@override`, `@final` and Liskov checks in cases where there are multiple reachable definitions ([#21767](https://github.com/astral-sh/ruff/pull/21767))
 
