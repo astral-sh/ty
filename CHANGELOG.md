@@ -1,5 +1,62 @@
 # Changelog
 
+## 0.0.1-alpha.30
+
+Released on 2025-12-03.
+
+### Bug fixes
+
+- Fix exhaustiveness checking for `match` statements over unions of generic instance types ([#21726](https://github.com/astral-sh/ruff/pull/21726))
+- Don't introduce invalid syntax when autofixing `override-of-final-method` ([#21699](https://github.com/astral-sh/ruff/pull/21699))
+- Suppress false positives when `dataclasses.dataclass(...)(cls)` is called imperatively ([#21729](https://github.com/astral-sh/ruff/pull/21729))
+- Fix false positives for `class F(Generic[*Ts]): ...` ([#21723](https://github.com/astral-sh/ruff/pull/21723))
+- Don't confuse multiple occurrences of `typing.Self` when binding bound methods ([#21754](https://github.com/astral-sh/ruff/pull/21754))
+- Fix subtyping between `type[T]` and a union type, where `T` is a type variable in scope ([#21740](https://github.com/astral-sh/ruff/pull/21740))
+- Fix subtyping between `type[T]` and `U`, where `T` is a type variable in scope and `U` is a type variable not in scope ([#21766](https://github.com/astral-sh/ruff/pull/21766))
+- Fix false positives for `type[tuple[...]]` ([#21652](https://github.com/astral-sh/ruff/pull/21652))
+
+### Memory usage improvements
+
+- Significantly reduce memory usage (especially when ty is used as an LSP server) by enabling least-recently-used ([LRU](https://en.wikipedia.org/wiki/Page_replacement_algorithm#Least_recently_used)) cache eviction for module ASTs ([#21749](https://github.com/astral-sh/ruff/pull/21749))
+
+### LSP server
+
+- Add code action to ignore diagnostic on the current line ([#21595](https://github.com/astral-sh/ruff/pull/21595))
+- Exclude `typing_extensions` from autocomplete suggestions unless it's really available ([#21731](https://github.com/astral-sh/ruff/pull/21731))
+- Fix auto-import code action to handle pre-existing imports ([#21733](https://github.com/astral-sh/ruff/pull/21733))
+- Fix "find all references" for types defined in stub files ([#21732](https://github.com/astral-sh/ruff/pull/21732))
+- Fix "find all references" for symbols defined via aliased imports ([#21736](https://github.com/astral-sh/ruff/pull/21736))
+
+### Improvements to handling of type aliases
+
+- Default-specialize generic type aliases when they appear unspecialized in type expressions ([#21765](https://github.com/astral-sh/ruff/pull/21765))
+- Infer a type alias as being a generic type alias if it includes a type variable in its definition, even in cases where the value subscripted with the type variable is inferred as having a dynamic type such as `Any` or `Unknown` ([#21730](https://github.com/astral-sh/ruff/pull/21730))
+
+### New `NamedTuple` diagnostics
+
+- Detect `NamedTuple` classes that have field names starting with underscores, which is banned at runtime ([#21697](https://github.com/astral-sh/ruff/pull/21697))
+- Add a diagnostic detecting overrides of prohibited `NamedTuple` attributes ([#21717](https://github.com/astral-sh/ruff/pull/21717))
+- Detect illegal uses of `super()` in methods of `NamedTuple` classes ([#21700](https://github.com/astral-sh/ruff/pull/21700))
+
+### Improvements to existing diagnostics
+
+- Improve diagnostics for unsupported comparison operations ([#21737](https://github.com/astral-sh/ruff/pull/21737))
+- For `invalid-type-arguments` diagnostics, show the user where the type variable was defined ([#21727](https://github.com/astral-sh/ruff/pull/21727))
+- Extend `invalid-explicit-override` to also cover properties decorated with `@override` that do not override anything ([#21756](https://github.com/astral-sh/ruff/pull/21756))
+- Improve `@override`, `@final` and Liskov checks in cases where there are multiple reachable definitions ([#21767](https://github.com/astral-sh/ruff/pull/21767))
+
+### Contributors
+
+- [@MichaReiser](https://github.com/MichaReiser)
+- [@charliermarsh](https://github.com/charliermarsh)
+- [@dcreager](https://github.com/dcreager)
+- [@carljm](https://github.com/carljm)
+- [@AlexWaygood](https://github.com/AlexWaygood)
+- [@BurntSushi](https://github.com/BurntSushi)
+- [@ibraheemdev](https://github.com/ibraheemdev)
+- [@woodruffw](https://github.com/woodruffw)
+- [@sharkdp](https://github.com/sharkdp)
+
 ## 0.0.1-alpha.29
 
 Released on 2025-11-28.
