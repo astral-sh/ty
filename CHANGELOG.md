@@ -15,6 +15,10 @@ Released on 2025-12-03.
 - Fix subtyping between `type[T]` and `U`, where `T` is a type variable in scope and `U` is a type variable not in scope ([#21766](https://github.com/astral-sh/ruff/pull/21766))
 - Fix false positives for `type[tuple[...]]` ([#21652](https://github.com/astral-sh/ruff/pull/21652))
 
+### Memory usage improvements
+
+- Significantly reduce memory usage (especially when ty is used as an LSP server) by enabling least-recently-used ([LRU](https://en.wikipedia.org/wiki/Page_replacement_algorithm#Least_recently_used)) cache eviction for module ASTs ([#21749](https://github.com/astral-sh/ruff/pull/21749))
+
 ### LSP server
 
 - Add code action to ignore diagnostic on the current line ([#21595](https://github.com/astral-sh/ruff/pull/21595))
@@ -40,10 +44,6 @@ Released on 2025-12-03.
 - For `invalid-type-arguments` diagnostics, show the user where the type variable was defined ([#21727](https://github.com/astral-sh/ruff/pull/21727))
 - Extend `invalid-explicit-override` to also cover properties decorated with `@override` that do not override anything ([#21756](https://github.com/astral-sh/ruff/pull/21756))
 - Improve `@override`, `@final` and Liskov checks in cases where there are multiple reachable definitions ([#21767](https://github.com/astral-sh/ruff/pull/21767))
-
-### Other changes
-
-- Reduce memory usage (especially when ty is used as an LSP server) by enabling LRU cache eviction for module ASTs ([#21749](https://github.com/astral-sh/ruff/pull/21749))
 
 ### Contributors
 
