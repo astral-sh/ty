@@ -1,5 +1,36 @@
 # Changelog
 
+## 0.0.1-alpha.31
+
+Released on 2025-12-04.
+
+### Bug fixes
+
+- Fix incorrect `possibly-missing-attribute` diagnostics for `asyncio` imports on Python 3.14 ([#21776](https://github.com/astral-sh/ruff/pull/21776))
+- Fix panic for recursive type aliases ([#21778](https://github.com/astral-sh/ruff/pull/21778))
+
+### Core type checking
+
+- Try ancestor `pyproject.toml` directories as search-paths if module resolution fails ([#21745](https://github.com/astral-sh/ruff/pull/21745))
+- Sync vendored typeshed stubs ([#21715](https://github.com/astral-sh/ruff/pull/21715)) [Typeshed diff](https://github.com/python/typeshed/compare/f8cdc0bd526301e873cd952eb0d457bdf2554e57...ef2b90c67e5c668b91b3ae121baf00ee5165c30b)
+
+### LSP server
+
+- Don't send publish diagnostics for clients supporting pull diagnostics ([#21772](https://github.com/astral-sh/ruff/pull/21772))
+- Fix crash when hovering over string annotations with unknown symbols ([#21782](https://github.com/astral-sh/ruff/pull/21782))
+
+### Diagnostics
+
+- Add subdiagnostic hint if the user wrote `X = Any` rather than `X: Any` ([#21777](https://github.com/astral-sh/ruff/pull/21777))
+- Improve the display of various special-form types ([#21775](https://github.com/astral-sh/ruff/pull/21775))
+
+### Contributors
+
+- [@sharkdp](https://github.com/sharkdp)
+- [@AlexWaygood](https://github.com/AlexWaygood)
+- [@MichaReiser](https://github.com/MichaReiser)
+- [@Gankra](https://github.com/Gankra)
+
 ## 0.0.1-alpha.30
 
 Released on 2025-12-03.
