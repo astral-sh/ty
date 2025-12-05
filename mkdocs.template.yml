@@ -92,6 +92,9 @@ nav:
       - Rules: rules.md
       - Suppression: suppression.md
       - Editors: editors.md
+  - Features:
+      - Quick fixes: features/quick-fixes.md
+      # - Auto imports: features/auto-imports.md
   - Reference:
       - Configuration: reference/configuration.md
       - Rules: reference/rules.md
