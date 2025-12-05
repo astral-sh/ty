@@ -1,5 +1,39 @@
 # Changelog
 
+## 0.0.1-alpha.32
+
+Released on 2025-12-05.
+
+### LSP server
+
+- Provide auto-import completion suggestions for modules in more situations ([#21799](https://github.com/astral-sh/ruff/pull/21799))
+- Always register the ty server as a [rename provider](https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#textDocument_rename) if the LSP client doesn't support dynamic registration ([#21789](https://github.com/astral-sh/ruff/pull/21789))
+- Support auto-import of re-exported symbols in completion suggestions ([#21779](https://github.com/astral-sh/ruff/pull/21779))
+- Support renaming import aliases ([#21792](https://github.com/astral-sh/ruff/pull/21792))
+
+### Core type checking
+
+- Support `ParamSpec` ([#21445](https://github.com/astral-sh/ruff/pull/21445))
+- Improve the accuracy of the inferred `Callable` supertype of generic classes ([#21798](https://github.com/astral-sh/ruff/pull/21798))
+- Increase the limit on the number of elements in a non-recursively defined literal union ([#21683](https://github.com/astral-sh/ruff/pull/21683))
+- Fix panics on mutually recursive generic protocols by normalizing the bounds/constraints of cyclic type variables ([#21800](https://github.com/astral-sh/ruff/pull/21800))
+
+### Other changes
+
+- Minor improvements to `assert_type` diagnostics ([#21811](https://github.com/astral-sh/ruff/pull/21811))
+- Fix a panic in recursive + generic type aliases ([#21718](https://github.com/astral-sh/ruff/pull/21718))
+- Fix a panic when instantiating a type variable with invalid constraints ([#21663](https://github.com/astral-sh/ruff/pull/21663))
+
+### Contributors
+
+- [@BurntSushi](https://github.com/BurntSushi)
+- [@dhruvmanila](https://github.com/dhruvmanila)
+- [@MichaReiser](https://github.com/MichaReiser)
+- [@mtshiba](https://github.com/mtshiba)
+- [@dcreager](https://github.com/dcreager)
+- [@carljm](https://github.com/carljm)
+- [@AlexWaygood](https://github.com/AlexWaygood)
+
 ## 0.0.1-alpha.31
 
 Released on 2025-12-04.
