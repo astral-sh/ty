@@ -11,15 +11,18 @@ Released on 2025-12-05.
 - Support re-exports in auto-import ([#21779](https://github.com/astral-sh/ruff/pull/21779))
 - Support renaming import aliases ([#21792](https://github.com/astral-sh/ruff/pull/21792))
 
+### Core type checking
+
+- Complete support for `ParamSpec` ([#21445](https://github.com/astral-sh/ruff/pull/21445))
+- Carry generic context through when converting a class into `Callable` ([#21798](https://github.com/astral-sh/ruff/pull/21798))
+- Increase the limit on the number of elements in a non-recursively defined literal union ([#21683](https://github.com/astral-sh/ruff/pull/21683))
+- Normalize typevar bounds/constraints in cycles ([#21800](https://github.com/astral-sh/ruff/pull/21800))
+
 ### Other changes
 
-- Carry generic context through when converting class into `Callable` ([#21798](https://github.com/astral-sh/ruff/pull/21798))
-- Complete support for `ParamSpec` ([#21445](https://github.com/astral-sh/ruff/pull/21445))
 - Minor improvements to `assert_type` diagnostics ([#21811](https://github.com/astral-sh/ruff/pull/21811))
-- do nothing with `store_expression_type` if `inner_expression_inference_state` is `Get` ([#21718](https://github.com/astral-sh/ruff/pull/21718))
-- fix panic when instantiating a type variable with invalid constraints ([#21663](https://github.com/astral-sh/ruff/pull/21663))
-- increase the limit on the number of elements in a non-recursively defined literal union ([#21683](https://github.com/astral-sh/ruff/pull/21683))
-- normalize typevar bounds/constraints in cycles ([#21800](https://github.com/astral-sh/ruff/pull/21800))
+- Fix a panic in recursive + generic type aliases ([#21718](https://github.com/astral-sh/ruff/pull/21718))
+- Fix a panic when instantiating a type variable with invalid constraints ([#21663](https://github.com/astral-sh/ruff/pull/21663))
 
 ### Contributors
 
