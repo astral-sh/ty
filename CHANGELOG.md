@@ -16,7 +16,7 @@ Released on 2025-12-05.
 - Support `ParamSpec` ([#21445](https://github.com/astral-sh/ruff/pull/21445))
 - Improve the accuracy of the inferred `Callable` supertype of generic classes ([#21798](https://github.com/astral-sh/ruff/pull/21798))
 - Increase the limit on the number of elements in a non-recursively defined literal union ([#21683](https://github.com/astral-sh/ruff/pull/21683))
-- Normalize typevar bounds/constraints in cycles ([#21800](https://github.com/astral-sh/ruff/pull/21800))
+- Fix panics on mutually recursive generic protocols by normalizing the bounds/constraints of cyclic type variables ([#21800](https://github.com/astral-sh/ruff/pull/21800))
 
 ### Other changes
 
