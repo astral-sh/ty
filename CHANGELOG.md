@@ -6,7 +6,7 @@ Released on 2025-12-05.
 
 ### LSP server
 
-- Add modules to auto-import completions ([#21799](https://github.com/astral-sh/ruff/pull/21799))
+- Provide auto-import completion suggestions for modules in more situations ([#21799](https://github.com/astral-sh/ruff/pull/21799))
 - Always register rename provider if client doesn't support dynamic registration ([#21789](https://github.com/astral-sh/ruff/pull/21789))
 - Support re-exports in auto-import ([#21779](https://github.com/astral-sh/ruff/pull/21779))
 - Support renaming import aliases ([#21792](https://github.com/astral-sh/ruff/pull/21792))
