@@ -13,7 +13,7 @@ Released on 2025-12-05.
 
 ### Core type checking
 
-- Complete support for `ParamSpec` ([#21445](https://github.com/astral-sh/ruff/pull/21445))
+- Support `ParamSpec` ([#21445](https://github.com/astral-sh/ruff/pull/21445))
 - Carry generic context through when converting a class into `Callable` ([#21798](https://github.com/astral-sh/ruff/pull/21798))
 - Increase the limit on the number of elements in a non-recursively defined literal union ([#21683](https://github.com/astral-sh/ruff/pull/21683))
 - Normalize typevar bounds/constraints in cycles ([#21800](https://github.com/astral-sh/ruff/pull/21800))
