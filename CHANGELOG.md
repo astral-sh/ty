@@ -1,5 +1,36 @@
 # Changelog
 
+## 0.0.1-alpha.32
+
+Released on 2025-12-05.
+
+### LSP server
+
+- Add modules to auto-import completions ([#21799](https://github.com/astral-sh/ruff/pull/21799))
+- Always register rename provider if client doesn't support dynamic registration ([#21789](https://github.com/astral-sh/ruff/pull/21789))
+- Support re-exports in auto-import ([#21779](https://github.com/astral-sh/ruff/pull/21779))
+- Support renaming import aliases ([#21792](https://github.com/astral-sh/ruff/pull/21792))
+
+### Other changes
+
+- Carry generic context through when converting class into `Callable` ([#21798](https://github.com/astral-sh/ruff/pull/21798))
+- Complete support for `ParamSpec` ([#21445](https://github.com/astral-sh/ruff/pull/21445))
+- Minor improvements to `assert_type` diagnostics ([#21811](https://github.com/astral-sh/ruff/pull/21811))
+- do nothing with `store_expression_type` if `inner_expression_inference_state` is `Get` ([#21718](https://github.com/astral-sh/ruff/pull/21718))
+- fix panic when instantiating a type variable with invalid constraints ([#21663](https://github.com/astral-sh/ruff/pull/21663))
+- increase the limit on the number of elements in a non-recursively defined literal union ([#21683](https://github.com/astral-sh/ruff/pull/21683))
+- normalize typevar bounds/constraints in cycles ([#21800](https://github.com/astral-sh/ruff/pull/21800))
+
+### Contributors
+
+- [@BurntSushi](https://github.com/BurntSushi)
+- [@dhruvmanila](https://github.com/dhruvmanila)
+- [@MichaReiser](https://github.com/MichaReiser)
+- [@mtshiba](https://github.com/mtshiba)
+- [@dcreager](https://github.com/dcreager)
+- [@carljm](https://github.com/carljm)
+- [@AlexWaygood](https://github.com/AlexWaygood)
+
 ## 0.0.1-alpha.31
 
 Released on 2025-12-04.
