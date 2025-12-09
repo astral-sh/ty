@@ -1,5 +1,46 @@
 # Changelog
 
+## 0.0.1-alpha.33
+
+Released on 2025-12-09.
+
+### Bug fixes
+
+- Fix assignability problem between `tuple[Any, ...]` and `tuple[int, *tuple[int, ...]]` ([#21803](https://github.com/astral-sh/ruff/pull/21803))
+- Avoid diagnostic when `typing_extensions.ParamSpec` uses a `default` parameter ([#21839](https://github.com/astral-sh/ruff/pull/21839))
+- Avoid crash for invalid `Annotated` subscript ([#21837](https://github.com/astral-sh/ruff/pull/21837))
+- Avoid crash for invalid `Final` subscript ([#21828](https://github.com/astral-sh/ruff/pull/21828))
+- Fix overload filtering to prefer more precise match when `*args: Any` is involved ([#21859](https://github.com/astral-sh/ruff/pull/21859))
+- Handle various invalid explicit specializations for `ParamSpec` ([#21821](https://github.com/astral-sh/ruff/pull/21821))
+- Fix stack overflow with recursive generic protocols (depth limit) ([#21858](https://github.com/astral-sh/ruff/pull/21858))
+
+### LSP server
+
+- Add autocomplete suggestions for parameters in function calls ([#21796](https://github.com/astral-sh/ruff/pull/21796))
+- Don't create a related diagnostic for the primary annotation of sub-diagnostics ([#21845](https://github.com/astral-sh/ruff/pull/21845))
+- Stabilize auto-import ([#21851](https://github.com/astral-sh/ruff/pull/21851))
+- Suppress inlay hints when assigning a trivial initializer call ([#21848](https://github.com/astral-sh/ruff/pull/21848))
+- Use concise message for LSP clients not supporting related diagnostic information ([#21850](https://github.com/astral-sh/ruff/pull/21850))
+- Fix add-import action for `reveal_type` ([#21668](https://github.com/astral-sh/ruff/pull/21668))
+
+### Core type checking
+
+- Infer type variables within generic unions ([#21862](https://github.com/astral-sh/ruff/pull/21862))
+- Type inference for `@asynccontextmanager` ([#21876](https://github.com/astral-sh/ruff/pull/21876))
+- Make Python-version subdiagnostics less verbose ([#21849](https://github.com/astral-sh/ruff/pull/21849))
+
+### Contributors
+
+- [@BurntSushi](https://github.com/BurntSushi)
+- [@dhruvmanila](https://github.com/dhruvmanila)
+- [@AlexWaygood](https://github.com/AlexWaygood)
+- [@carljm](https://github.com/carljm)
+- [@Gankra](https://github.com/Gankra)
+- [@charliermarsh](https://github.com/charliermarsh)
+- [@RasmusNygren](https://github.com/RasmusNygren)
+- [@sharkdp](https://github.com/sharkdp)
+- [@MichaReiser](https://github.com/MichaReiser)
+
 ## 0.0.1-alpha.32
 
 Released on 2025-12-05.
