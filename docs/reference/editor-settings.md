@@ -270,6 +270,72 @@ Whether to show argument names in call expressions as inline hints.
 
 ______________________________________________________________________
 
+## `completions`
+
+These settings control how code completions offered by ty work.
+
+### `autoImport`
+
+Whether to include auto-import suggestions in code completions. That is, code completions will
+include symbols not currently in scope but available in your environment.
+
+**Default value**: `true`
+
+**Type**: `boolean`
+
+**Example usage**:
+
+=== "VS Code"
+
+    ```json
+    {
+      "ty.completions.autoImport": true
+    }
+    ```
+
+=== "Neovim"
+
+    ```lua
+    require('lspconfig').ty.setup({
+      settings = {
+        ty = {
+          completions = {
+            autoImport = true,
+          },
+        },
+      },
+    })
+
+    -- For Neovim 0.11.0 and later:
+    vim.lsp.config('ty', {
+      settings = {
+        ty = {
+          completions = {
+            autoImport = true,
+          },
+        },
+      },
+    })
+    ```
+
+=== "Zed"
+
+    ```json
+    {
+      "lsp": {
+        "ty": {
+          "settings": {
+            "completions": {
+              "autoImport": true
+            }
+          }
+        }
+      }
+    }
+    ```
+
+______________________________________________________________________
+
 ## `experimental`
 
 These settings control the experimental language features that ty provides in an editor.
@@ -326,66 +392,6 @@ Whether to enable the experimental support for renaming symbols in the editor.
           "settings": {
             "experimental": {
               "rename": true
-            }
-          }
-        }
-      }
-    }
-    ```
-
-### `autoImport`
-
-Whether to enable the experimental support for auto-import code completions. Note that this feature
-is currently under active development and may not work correctly or be gratuitously slow.
-
-**Default value**: `false`
-
-**Type**: `boolean`
-
-**Example usage**:
-
-=== "VS Code"
-
-    ```json
-    {
-      "ty.experimental.autoImport": true
-    }
-    ```
-
-=== "Neovim"
-
-    ```lua
-    require('lspconfig').ty.setup({
-      settings = {
-        ty = {
-          experimental = {
-            autoImport = true,
-          },
-        },
-      },
-    })
-
-    -- For Neovim 0.11.0 and later:
-    vim.lsp.config('ty', {
-      settings = {
-        ty = {
-          experimental = {
-            autoImport = true,
-          },
-        },
-      },
-    })
-    ```
-
-=== "Zed"
-
-    ```json
-    {
-      "lsp": {
-        "ty": {
-          "settings": {
-            "experimental": {
-              "autoImport": true
             }
           }
         }
