@@ -1,5 +1,56 @@
 # Changelog
 
+## 0.0.1-alpha.34
+
+Released on 2025-12-12.
+
+### Bug fixes
+
+- Improve solving of a type variable with an upper bound when that type variable appears as one element in a union type ([#21893](https://github.com/astral-sh/ruff/pull/21893))
+- Accurately emulate runtime semantics for `kw_only=True` dataclasses such that only fields declared in the immediate class body are understood as being keyword-only ([#21820](https://github.com/astral-sh/ruff/pull/21820))
+- Avoid inferring types for invalid binary expressions in string annotations ([#21911](https://github.com/astral-sh/ruff/pull/21911))
+- Fix logic used to determine whether two `@final` instance types are disjoint ([#21769](https://github.com/astral-sh/ruff/pull/21769))
+- Fix logic used to determine whether two `@final` `type[]` types are disjoint ([#21770](https://github.com/astral-sh/ruff/pull/21770))
+- Fix false-positive diagnostics that could arise when analysing cyclic types ([#21910](https://github.com/astral-sh/ruff/pull/21910)), ([#21909](https://github.com/astral-sh/ruff/pull/21909))
+
+### LSP server
+
+- Fix outdated version in publish diagnostics after `didChange` ([#21943](https://github.com/astral-sh/ruff/pull/21943))
+- Fix workspace symbols to return members too ([#21926](https://github.com/astral-sh/ruff/pull/21926))
+- Adjust scope completions to use all reachable symbols ([#21872](https://github.com/astral-sh/ruff/pull/21872))
+- Classify `cls` as class parameter for semantic highlighting ([#21944](https://github.com/astral-sh/ruff/pull/21944))
+- Don't show on-hover tooltips for expressions with no inferred type ([#21924](https://github.com/astral-sh/ruff/pull/21924))
+- Ignore `__all__` for document and workspace symbol requests ([#21928](https://github.com/astral-sh/ruff/pull/21928))
+- Recognize `__all__ += submodule.__all__` in auto-import ([#21918](https://github.com/astral-sh/ruff/pull/21918))
+- Stabilize rename ([#21940](https://github.com/astral-sh/ruff/pull/21940))
+
+### Other changes
+
+- Support checking files without extensions ([#21867](https://github.com/astral-sh/ruff/pull/21867))
+- Improve performance and semantics by deferring inference of all parameter and return-type annotations ([#21906](https://github.com/astral-sh/ruff/pull/21906))
+- Improve resolution of absolute imports in tests ([#21817](https://github.com/astral-sh/ruff/pull/21817))
+- Infer the implicit type of the `cls` parameter in `@classmethod` method bodies ([#21685](https://github.com/astral-sh/ruff/pull/21685))
+- Support the implicit type of the `cls` parameter in signatures of `@classmethod` methods ([#21771](https://github.com/astral-sh/ruff/pull/21771))
+- Uniformly use "not supported" in diagnostics ([#21916](https://github.com/astral-sh/ruff/pull/21916))
+- Implement the [equivalence relation](https://typing.python.org/en/latest/spec/glossary.html#term-equivalent) for `TypedDict`s ([#21784](https://github.com/astral-sh/ruff/pull/21784))
+- Ensure that the type of the class object `C` is always considered assignable to `type[C[Unknown]]` if `C` is a generic class ([#21883](https://github.com/astral-sh/ruff/pull/21883))
+- Improve bad specialization results and error messages ([#21840](https://github.com/astral-sh/ruff/pull/21840))
+- Support `NewType`s of `float` and `complex` ([#21886](https://github.com/astral-sh/ruff/pull/21886))
+
+### Contributors
+
+- [@charliermarsh](https://github.com/charliermarsh)
+- [@oconnor663](https://github.com/oconnor663)
+- [@MichaReiser](https://github.com/MichaReiser)
+- [@BurntSushi](https://github.com/BurntSushi)
+- [@lucach](https://github.com/lucach)
+- [@ibraheemdev](https://github.com/ibraheemdev)
+- [@mtshiba](https://github.com/mtshiba)
+- [@dcreager](https://github.com/dcreager)
+- [@sharkdp](https://github.com/sharkdp)
+- [@carljm](https://github.com/carljm)
+- [@Gankra](https://github.com/Gankra)
+
 ## 0.0.1-alpha.33
 
 Released on 2025-12-09.
