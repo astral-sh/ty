@@ -101,8 +101,6 @@ jobs:
     timeout-minutes: 10
     name: "mkdocs"
     runs-on: ubuntu-latest
-    env:
-      MKDOCS_INSIDERS_SSH_KEY_EXISTS: ${{ secrets.MKDOCS_INSIDERS_SSH_KEY != '' }}
     steps:
       - uses: actions/checkout@1af3b93b6815bc44a9784bd300feb67ff0d1eeb3 # v6.0.0
         with:
@@ -110,15 +108,6 @@ jobs:
           persist-credentials: false
       - uses: astral-sh/setup-uv@1e862dfacbd1d6d858c55d9b792c756523627244 # v7.1.4
       - uses: actions/setup-python@83679a892e2d95755f2dac6acb0bfd1e9ac5d548 # v6.1.0
-      - name: "Add SSH key"
-        if: ${{ env.MKDOCS_INSIDERS_SSH_KEY_EXISTS == 'true' }}
-        uses: webfactory/ssh-agent@a6f90b1f127823b31d4d4a8d96047790581349bd # v0.9.1
-        with:
-          ssh-private-key: ${{ secrets.MKDOCS_INSIDERS_SSH_KEY }}
 
-      - name: "Build docs (public)"
-        run: uvx --with-requirements docs/requirements.txt mkdocs build --strict -f mkdocs.public.yml
-
-      - name: "Build docs (insiders)"
-        if: ${{ env.MKDOCS_INSIDERS_SSH_KEY_EXISTS == 'true' }}
-        run: uvx --with-requirements docs/requirements-insiders.txt mkdocs build --strict -f mkdocs.insiders.yml
+      - name: "Build docs"
+        run: uvx --with-requirements docs/requirements.txt mkdocs build --strict -f mkdocs.yml
