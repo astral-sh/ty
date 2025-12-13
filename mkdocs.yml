@@ -42,6 +42,8 @@ site_dir: site/ty
 site_description: ty is an extremely fast Python type checker.
 markdown_extensions:
   - admonition
+  - nl2br
+  - admonition
   - pymdownx.details
   - pymdownx.snippets:
   - pymdownx.magiclink:
@@ -62,6 +64,7 @@ markdown_extensions:
       alternate_style: true
 plugins:
   - search
+  - callouts
   - git-revision-date-localized:
       timezone: UTC # It can only be in UTC unless the ISO time can include timezone.
 extra_css:
