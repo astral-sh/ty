@@ -37,3 +37,49 @@ This page summarizes the support for various type system features in ty.
 | `frozen_default` parameter                                                               | ⚠️ metaclass override not working                       |
 | `field_specifiers` (`init`, `default`, `default_factory`, `factory`, `kw_only`, `alias`) | ✅                                                      |
 | `field_specifiers` (`converter`)                                                         | ❌ [#1327](https://github.com/astral-sh/ty/issues/1327) |
+
+## `NamedTuple`
+
+[Official documentation](https://typing.python.org/en/latest/spec/namedtuples.html)
+
+| Feature                                                      | Status                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------- |
+| Class syntax (`class Foo(NamedTuple): ...`)                  | ✅                                                      |
+| Field access by name and index, slicing, unpacking           | ✅                                                      |
+| Default values, diagnostic for non-default after default     | ✅                                                      |
+| Read-only fields (assignment rejected)                       | ✅                                                      |
+| Inheritance, generic `NamedTuple`s                           | ✅                                                      |
+| Multiple inheritance restriction                             | ✅                                                      |
+| Underscore field name restriction                            | ✅                                                      |
+| Prohibited attribute override check (`_asdict`, `_make`, …)  | ✅                                                      |
+| `_fields`, `_field_defaults`, `_make`, `_asdict`, `_replace` | ✅                                                      |
+| Subtype of `tuple[...]`                                      | ✅                                                      |
+| `super()` restriction in `NamedTuple` methods                | ✅                                                      |
+| `NamedTuple` in type expressions                             | ✅                                                      |
+| Functional syntax (`NamedTuple("Foo", [...])`)               | ❌ [#1049](https://github.com/astral-sh/ty/issues/1049) |
+| `collections.namedtuple`                                     | ⚠️ not tested                                           |
+| Subclass field conflicting with base class field             | ⚠️ not tested                                           |
+| `type[NamedTuple]` in type expressions                       | ⚠️ not fully supported                                  |
+
+## `TypedDict`
+
+[Official documentation](https://typing.python.org/en/latest/spec/typeddict.html)
+
+| Feature                                                        | Status                                                  |
+| -------------------------------------------------------------- | ------------------------------------------------------- |
+| Class syntax (`class Foo(TypedDict): ...`)                     | ✅                                                      |
+| Key access by literal string, `Final` constants                | ✅                                                      |
+| Constructor validation (missing keys, invalid types)           | ✅                                                      |
+| `total` parameter                                              | ✅                                                      |
+| `Required[…]`, `NotRequired[…]`                                | ✅                                                      |
+| `ReadOnly[…]`                                                  | ✅                                                      |
+| Inheritance, generic `TypedDict`s                              | ✅                                                      |
+| Recursive `TypedDict`                                          | ✅                                                      |
+| Structural assignability and equivalence                       | ✅                                                      |
+| Methods (`get`, `pop`, `setdefault`, `keys`, `values`, `copy`) | ✅                                                      |
+| `__total__`, `__required_keys__`, `__optional_keys__`          | ✅                                                      |
+| Functional syntax (`TypedDict("Foo", {...})`)                  | ❌ [#154](https://github.com/astral-sh/ty/issues/154)   |
+| `closed`, `extra_items` (PEP 728)                              | ❌ [#154](https://github.com/astral-sh/ty/issues/154)   |
+| `Unpack` for `**kwargs` typing                                 | ❌ [#1746](https://github.com/astral-sh/ty/issues/1746) |
+| Tagged union narrowing                                         | ❌ [#1479](https://github.com/astral-sh/ty/issues/1479) |
+| Diagnostic: Invalid `isinstance()` check on `TypedDict`        | ⚠️ not tested                                           |
