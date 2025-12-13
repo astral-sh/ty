@@ -98,6 +98,7 @@ nav:
       - Exit codes: reference/exit-codes.md
       - Environment variables: reference/environment.md
       - Editor settings: reference/editor-settings.md
+      - Type system features: reference/type-system-features.md
 validation:
   omitted_files: warn
   absolute_links: warn
