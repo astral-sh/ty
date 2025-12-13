@@ -27,7 +27,7 @@ then set [`environment.root`](./reference/configuration.md#root) in your `pyproj
 root = ["./app"]
 ```
 
-Note a `./python` folder is automatically added to the project `root` if it exists,
+Note that a `./python` folder is automatically added to the project `root` if it exists,
 and is not itself a package (i.e. does not contain an `__init__.py` file or an
 `__init__.pyi` file).
 
