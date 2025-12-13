@@ -83,3 +83,27 @@ This page summarizes the support for various type system features in ty.
 | `Unpack` for `**kwargs` typing                                 | ❌ [#1746](https://github.com/astral-sh/ty/issues/1746) |
 | Tagged union narrowing                                         | ❌ [#1479](https://github.com/astral-sh/ty/issues/1479) |
 | Diagnostic: Invalid `isinstance()` check on `TypedDict`        | ⚠️ not tested                                           |
+
+## Generics
+
+[Official documentation](https://typing.python.org/en/latest/spec/generics.html)
+
+| Feature                                           | Status                                                                   |
+| ------------------------------------------------- | ------------------------------------------------------------------------ |
+| `TypeVar` (legacy syntax)                         | ✅                                                                       |
+| `TypeVar` (PEP 695 syntax: `def f[T]()`)          | ✅                                                                       |
+| `TypeVar` upper bound (`bound=`)                  | ✅                                                                       |
+| `TypeVar` constraints                             | ✅                                                                       |
+| `TypeVar` defaults (PEP 696)                      | ✅                                                                       |
+| `TypeVar` variance (`covariant`, `contravariant`) | ✅                                                                       |
+| `TypeVar` variance inference (`infer_variance`)   | ✅                                                                       |
+| Generic classes (legacy and PEP 695 syntax)       | ✅                                                                       |
+| Generic functions (legacy and PEP 695 syntax)     | ✅                                                                       |
+| Generic type aliases (PEP 695)                    | ⚠️ some limitations [#1851](https://github.com/astral-sh/ty/issues/1851) |
+| `ParamSpec` (legacy and PEP 695 syntax)           | ✅                                                                       |
+| `ParamSpec.args`, `ParamSpec.kwargs`              | ✅                                                                       |
+| `Concatenate`                                     | ✅                                                                       |
+| `ParamSpec` defaults                              | ✅                                                                       |
+| `TypeVarTuple`                                    | ❌ [#156](https://github.com/astral-sh/ty/issues/156)                    |
+| `Unpack` for `*args` typing                       | ❌ [#156](https://github.com/astral-sh/ty/issues/156)                    |
+| `Self`                                            | ✅                                                                       |
