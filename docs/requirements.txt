@@ -87,9 +87,12 @@ mergedeep==1.3.4
 mkdocs==1.6.0
     # via
     #   -r docs/requirements.in
+    #   mkdocs-callouts
     #   mkdocs-git-revision-date-localized-plugin
     #   mkdocs-material
     #   mkdocs-redirects
+mkdocs-callouts==1.16.0
+    # via -r docs/requirements.in
 mkdocs-get-deps==0.2.0
     # via mkdocs
 mkdocs-git-revision-date-localized-plugin==1.3.0
