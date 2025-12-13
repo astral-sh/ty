@@ -82,7 +82,13 @@ def greet(being: Person | Animal | None):
         print("Hello there!")
 ```
 
-(Full example in the [playground](https://play.ty.dev/117008af-e21b-4d25-ab4c-c6dcbbfa1310))
+(Full example in the [playground](https://play.ty.dev/31f2c718-516a-4a85-80e0-2a4682b818f1))
+
+!!! info
+
+    If you run into a situation like this and would like `Animal` to be excluded from the narrowed
+    type as well, you can make `Animal` a `@final` class. This also allows ty to infer a more precise
+    type for `being.name` (`str` instead of `object`).
 
 If you only use ty as a type checker, you can also make direct use of intersection types in
 annotations by importing `Intersection` from the special `ty_extensions` module that is (currently)
