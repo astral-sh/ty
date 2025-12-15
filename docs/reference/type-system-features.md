@@ -1,6 +1,6 @@
 # Type system features
 
-This issue summarizes the support for various type system features in ty. Sections are organized to follow the structure of the [Python typing specification](https://typing.python.org/en/latest/spec/), with some additional sections at the end.
+This issue summarizes the support for various type system features in ty. Sections are organized to follow the structure of the [Python typing specification](https://typing.python.org/en/latest/spec/), with some additional sections at the end. If a top-level item is marked completed without any sub-items, you can generally expect that feature to be fully implemented (and we value any bug reports in case you find issues). If a top-level item is marked completed with open sub-items, the feature is generally working, but there might be some open issues — including but not limited to the ones listed (in this case, we also value any bug reports, but please search the issue tracker before doing so). If a top-level item is not checked, the feature is not implemented yet (it's probably not helpful to report bugs, but feel free to upvote the tracking issue or comment if you have useful information).
 
 ## Special types and type qualifiers
 
@@ -54,10 +54,13 @@ This issue summarizes the support for various type system features in ty. Sectio
 - [x] `ParamSpec` defaults
 - [x] `Self`
     - [ ] `Self` in attribute annotations #1124
-- [ ] `TypeVarTuple` #156
-- [ ] `Callable`s in typevar solving
-- [ ] Generic protocols in typevar solving #1714
-- [ ] Generic bounds/constraints on type variables #1839
+- [ ] Solve type variables in all cases #623
+    - [x] Generic classes
+    - [x] Unions
+    - [ ] `Callable`s
+    - [ ] Generic protocols #1714
+    - [ ] Generic bounds/constraints on type variables #1839
+- [ ] Support `TypeVarTuple` #156
 
 ## Protocols
 
