@@ -220,4 +220,4 @@ reveal_type(LoopingCounter().value)
 (Full example in the [playground](https://play.ty.dev/64400d96-ee1b-48f3-8361-b583dddddf82))
 
 [materializations]: https://typing.python.org/en/latest/spec/concepts.html#materialization
-[python typing documentation]: https://typing.python.org/
+[python typing documentation]: https://typing.python.org/en/latest/spec/index.html
