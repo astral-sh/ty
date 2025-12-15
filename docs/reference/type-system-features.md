@@ -53,7 +53,7 @@ This page summarizes the support for various type system features in ty. Section
 - [x] `ParamSpec` defaults
 - [ ] `TypeVarTuple` #156
 - [x] `Self`
-- [ ] `Self` in attribute annotations #1124
+    - [ ] `Self` in attribute annotations #1124
 - [ ] Generic bounds/constraints on type variables #1839
 - [ ] `Callable`s in typevar solving
 - [ ] Generic protocols in typevar solving #1714
@@ -288,12 +288,20 @@ This page summarizes the support for various type system features in ty. Section
 
 **tests:** [`dataclass_transform.md`](https://github.com/astral-sh/ruff/blob/main/crates/ty_python_semantic/resources/mdtest/dataclasses/dataclass_transform.md)
 
-- [x] Function-based, metaclass-based, base-class-based transformers
-- [x] `eq_default`, `order_default`, `kw_only_default` parameters
+- [x] Function-based transformers (decorator functions)
+- [x] Metaclass-based transformers
+- [x] Base-class-based transformers (`__init_subclass__`)
+- [x] `eq_default` parameter
+- [x] `order_default` parameter
+- [x] `kw_only_default` parameter
 - [x] `frozen_default` parameter
     - [ ] Metaclass override not working
 - [x] `field_specifiers` (`init`, `default`, `default_factory`, `factory`, `kw_only`, `alias`)
-- [ ] `field_specifiers` (`converter`) #1327
+    - [ ] `converter` parameter #1327
+- [x] Other dataclass parameters (`slots`, etc.)
+- [x] Overloaded dataclass-like decorators
+- [x] Nested dataclass-transformers
+- [x] Combining with `@dataclass` (Home Assistant pattern)
 
 ## Constructors
 
@@ -337,16 +345,17 @@ This page summarizes the support for various type system features in ty. Section
 **tests:** [`directives/`](https://github.com/astral-sh/ruff/blob/main/crates/ty_python_semantic/resources/mdtest/directives/)
 
 - [x] `cast(T, value)`
+- [x] Redundant `cast` diagnostic
 - [x] `assert_type(value, T)`
 - [x] `assert_never(value)`
 - [x] `reveal_type(value)`
 - [x] `TYPE_CHECKING` constant
-- [x] `no_type_check` decorator
+- [x] `@no_type_check` decorator
 - [x] `type: ignore` comments
+- [x] `ty: ignore` comments
 - [x] `@deprecated` decorator
 - [x] `@override` decorator
-- [ ] Diagnostic: override without `@override` decorator #155
-- [x] Redundant `cast` diagnostic
+    - [ ] Diagnostic: override without `@override` decorator #155
 
 ## Module resolution
 
