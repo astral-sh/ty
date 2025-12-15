@@ -23,13 +23,13 @@ This issue summarizes the support for various type system features in ty. Sectio
 - [x] `@disjoint_base` decorator
 - [x] `ClassVar`, `ClassVar[T]`
     - [ ] Diagnostic: `ClassVar` with type variable #518
-- [ ] `type()` functional syntax #740
 - [x] `InitVar[T]` (see Dataclasses)
 - [x] `Annotated[T, ...]`
 - [x] `Required[T]`, `NotRequired[T]` (see TypedDict)
 - [x] `ReadOnly[T]` (see TypedDict)
 - [x] `Union[X, Y]`, `X | Y`
 - [x] `Optional[X]`
+- [ ] `type()` functional syntax #740
 
 ## Generics
 
@@ -52,12 +52,12 @@ This issue summarizes the support for various type system features in ty. Sectio
     - [ ] `ParamSpec` usage validation #1861
 - [x] `ParamSpec.args`, `ParamSpec.kwargs`
 - [x] `ParamSpec` defaults
-- [ ] `TypeVarTuple` #156
 - [x] `Self`
     - [ ] `Self` in attribute annotations #1124
-- [ ] Generic bounds/constraints on type variables #1839
+- [ ] `TypeVarTuple` #156
 - [ ] `Callable`s in typevar solving
 - [ ] Generic protocols in typevar solving #1714
+- [ ] Generic bounds/constraints on type variables #1839
 
 ## Protocols
 
@@ -142,11 +142,11 @@ This issue summarizes the support for various type system features in ty. Sectio
 - [x] Subtype of `tuple[...]`
 - [x] `super()` restriction in `NamedTuple` methods
 - [x] `NamedTuple` in type expressions
+- [x] `type[NamedTuple]` in type expressions
+    - [ ] Not fully supported
 - [ ] Functional syntax (`NamedTuple("Foo", [...])`) #1049
 - [ ] `collections.namedtuple`: not tested
 - [ ] Subclass field conflicting with base class field: not tested
-- [x] `type[NamedTuple]` in type expressions
-    - [ ] Not fully supported
 
 ## `TypedDict`
 
@@ -273,14 +273,14 @@ This issue summarizes the support for various type system features in ty. Sectio
     - [ ] `replace()` returns `Unknown`
 - [x] `asdict()`
     - [ ] Incorrectly accepts class objects
-- [ ] `astuple()`: not tested
-- [ ] `make_dataclass()`, `is_dataclass()`: not tested
 - [x] Diagnostic: frozen/non-frozen dataclass inheritance
 - [ ] Diagnostic: non-default field after default field #111
 - [ ] Diagnostic: `order=True` with custom comparison methods #111
 - [ ] Diagnostic: `frozen=True` with `__setattr__`/`__delattr__` #111
 - [ ] `__post_init__` signature validation #111
 - [ ] Diagnostic: unsound subclassing of `order=True` dataclasses #1681
+- [ ] `astuple()`: not tested
+- [ ] `make_dataclass()`, `is_dataclass()`: not tested
 
 ## `dataclass_transform`
 
@@ -335,8 +335,8 @@ This issue summarizes the support for various type system features in ty. Sectio
     - [ ] Limitations #1851
 - [x] Generic implicit/PEP 613 aliases
     - [ ] Partial support #1739
-- [ ] Self-referential generic aliases #1738
 - [x] `TypeAliasType` introspection (`__name__`, `__value__`)
+- [ ] Self-referential generic aliases #1738
 
 ## Type checker directives
 
@@ -357,7 +357,7 @@ This issue summarizes the support for various type system features in ty. Sectio
 - [x] `@override` decorator
     - [ ] Diagnostic: override without `@override` decorator #155
 
-## Module resolution
+## Module resolution, imports, packages
 
 [Official documentation](https://typing.python.org/en/latest/spec/distributing.html)
 
@@ -380,6 +380,9 @@ This issue summarizes the support for various type system features in ty. Sectio
 - [x] `py.typed` marker files
 - [x] `conftest.py` resolution (pytest)
 - [x] conda/pixi environment support
+- [ ] PEP 723 inline script metadata #691
+- [ ] Custom builtins (`__builtins__.pyi`) #374
+- [ ] Mono-repository support #819
 - [ ] Compiled extensions (`.so` files) #487
 - [ ] Per-library import suppression #1354
 
@@ -400,13 +403,14 @@ This issue summarizes the support for various type system features in ty. Sectio
 - [x] `sys.version_info` comparisons
 - [x] `sys.platform` checks
 - [x] Statically known branches
+- [ ] Return type inference #128
 - [ ] Walrus operator in boolean expressions #626
 - [ ] Cyclic control flow (loop back edges) #232
 - [ ] Gray out unreachable code #784
 
 ## Invalid overrides
 
-(Liskov Substitution Principle)
+(Liskov Substitution Principle checks)
 
 **tests:** [`liskov.md`](https://github.com/astral-sh/ruff/blob/main/crates/ty_python_semantic/resources/mdtest/liskov.md), [`override.md`](https://github.com/astral-sh/ruff/blob/main/crates/ty_python_semantic/resources/mdtest/override.md)
 
@@ -443,8 +447,16 @@ This issue summarizes the support for various type system features in ty. Sectio
 - [ ] `__dict__`/`__weakref__` presence validation #1268
 - [ ] Diagnostic: non-empty `__slots__` on builtin subclasses #1268
 
-## Standard library
+## Special library features
+
+Standard library:
 
 - [ ] `@cached_property` #1446
 - [ ] `functools.partial` #1536
 - [ ] `functools.total_ordering` #1202
+
+Third-party library support (currently not decided how far we want to go here):
+
+- [ ] Pydantic #291
+- [ ] Django #291
+- [ ] `attrs` #291
