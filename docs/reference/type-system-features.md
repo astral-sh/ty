@@ -23,6 +23,7 @@ with some additional sections at the end.
 | Diagnostic: subclass overrides `Final` attribute  | ❌ [#871](https://github.com/astral-sh/ty/issues/871) |
 | Diagnostic: `Final` without binding               | ❌ [#872](https://github.com/astral-sh/ty/issues/872) |
 | `@final` decorator                                | ✅                                                    |
+| `@disjoint_base` decorator                        | ✅                                                    |
 | `ClassVar`, `ClassVar[T]`                         | ✅                                                    |
 | Diagnostic: `ClassVar` with type variable         | ❌ [#518](https://github.com/astral-sh/ty/issues/518) |
 | `type()` functional syntax                        | ❌ [#740](https://github.com/astral-sh/ty/issues/740) |
@@ -54,6 +55,7 @@ with some additional sections at the end.
 | `ParamSpec` defaults                              | ✅                                                                       |
 | `TypeVarTuple`                                    | ❌ [#156](https://github.com/astral-sh/ty/issues/156)                    |
 | `Self`                                            | ✅                                                                       |
+| `Self` in attribute annotations                   | ❌ [#1124](https://github.com/astral-sh/ty/issues/1124)                  |
 | Generic bounds/constraints on type variables      | ❌ [#1839](https://github.com/astral-sh/ty/issues/1839)                  |
 | `ParamSpec` usage validation                      | ❌ [#1861](https://github.com/astral-sh/ty/issues/1861)                  |
 
@@ -103,22 +105,23 @@ with some additional sections at the end.
 
 [Official documentation](https://typing.python.org/en/latest/spec/tuples.html)
 
-| Feature                                   | Status                                                |
-| ----------------------------------------- | ----------------------------------------------------- |
-| `tuple[X, Y, Z]` heterogeneous tuples     | ✅                                                    |
-| `tuple[X, ...]` homogeneous tuples        | ✅                                                    |
-| `tuple[()]` empty tuple                   | ✅                                                    |
-| Mixed tuples (`tuple[X, *tuple[Y, ...]]`) | ✅                                                    |
-| Indexing with literal integers            | ✅                                                    |
-| Diagnostic: index out of bounds           | ✅                                                    |
-| Slicing tuples                            | ✅                                                    |
-| Tuple subclasses                          | ✅                                                    |
-| `typing.Tuple` (deprecated alias)         | ✅                                                    |
-| Covariant element types                   | ✅                                                    |
-| Tuple inheritance                         | ✅                                                    |
-| Unpacking in assignments                  | ✅                                                    |
-| `*args` unpacking in calls                | ⚠️ [#891](https://github.com/astral-sh/ty/issues/891) |
-| `TypeVarTuple` / `Unpack`                 | ❌ [#156](https://github.com/astral-sh/ty/issues/156) |
+| Feature                                                     | Status                                                  |
+| ----------------------------------------------------------- | ------------------------------------------------------- |
+| `tuple[X, Y, Z]` heterogeneous tuples                       | ✅                                                      |
+| `tuple[X, ...]` homogeneous tuples                          | ✅                                                      |
+| `tuple[()]` empty tuple                                     | ✅                                                      |
+| Mixed tuples (`tuple[X, *tuple[Y, ...]]`)                   | ✅                                                      |
+| Indexing with literal integers                              | ✅                                                      |
+| Diagnostic: index out of bounds                             | ✅                                                      |
+| Slicing tuples                                              | ✅                                                      |
+| Tuple subclasses                                            | ✅                                                      |
+| `typing.Tuple` (deprecated alias)                           | ✅                                                      |
+| Covariant element types                                     | ✅                                                      |
+| Tuple inheritance                                           | ✅                                                      |
+| Unpacking in assignments                                    | ✅                                                      |
+| `*args` unpacking in calls                                  | ⚠️ [#891](https://github.com/astral-sh/ty/issues/891)   |
+| Diagnostic: invalid comparisons for non-fixed-length tuples | ❌ [#1741](https://github.com/astral-sh/ty/issues/1741) |
+| `TypeVarTuple` / `Unpack`                                   | ❌ [#156](https://github.com/astral-sh/ty/issues/156)   |
 
 ## `NamedTuple`
 
@@ -262,7 +265,7 @@ with some additional sections at the end.
 | `asdict()`                                                                                                                        | ⚠️ incorrectly accepts class objects                    |
 | `astuple()`                                                                                                                       | ⚠️ not tested                                           |
 | `make_dataclass()`, `is_dataclass()`                                                                                              | ⚠️ not tested                                           |
-| Diagnostic: frozen dataclass inheriting from non-frozen                                                                           | ⚠️ not tested                                           |
+| Diagnostic: frozen/non-frozen dataclass inheritance                                                                               | ✅                                                      |
 | Diagnostic: non-default field after default field                                                                                 | ❌ [#111](https://github.com/astral-sh/ty/issues/111)   |
 | Diagnostic: `order=True` with custom comparison methods                                                                           | ❌ [#111](https://github.com/astral-sh/ty/issues/111)   |
 | Diagnostic: `frozen=True` with `__setattr__`/`__delattr__`                                                                        | ❌ [#111](https://github.com/astral-sh/ty/issues/111)   |
@@ -351,7 +354,7 @@ with some additional sections at the end.
 | Conditional re-exports in stub files              | ✅                                                      |
 | Reachability constraints in imports               | ✅                                                      |
 | Cyclic imports                                    | ✅                                                      |
-| `py.typed` marker files                           | ⚠️ ignored for type checking                            |
+| `py.typed` marker files                           | ✅                                                      |
 | `conftest.py` resolution (pytest)                 | ⚠️ [#414](https://github.com/astral-sh/ty/issues/414)   |
 | Compiled extensions (`.so` files)                 | ❌ [#715](https://github.com/astral-sh/ty/issues/715)   |
 | conda/pixi environment support                    | ❌ [#265](https://github.com/astral-sh/ty/issues/265)   |
@@ -397,19 +400,19 @@ with some additional sections at the end.
 
 ## Abstract base classes
 
-| Feature                                            | Status |
-| -------------------------------------------------- | ------ |
-| `@abstractmethod` decorator                        | ✅     |
-| Empty body allowed for abstract methods            | ✅     |
-| `@abstractmethod` with `@overload` validation      | ✅     |
-| Diagnostic: instantiating abstract class           | ❌     |
-| Diagnostic: missing abstract method implementation | ❌     |
+| Feature                                       | Status                                                  |
+| --------------------------------------------- | ------------------------------------------------------- |
+| `@abstractmethod` decorator                   | ✅                                                      |
+| Empty body allowed for abstract methods       | ✅                                                      |
+| `@abstractmethod` with `@overload` validation | ✅                                                      |
+| Diagnostic: instantiating abstract class      | ❌ [#1877](https://github.com/astral-sh/ty/issues/1877) |
 
 ## `__slots__`
 
 | Feature                                                 | Status                                                  |
 | ------------------------------------------------------- | ------------------------------------------------------- |
-| Basic `__slots__` recognition                           | ✅                                                      |
+| `__slots__` (string or tuple of strings)                | ✅                                                      |
+| `__slots__` (list, dict, set literals)                  | ❌                                                      |
 | Attribute resolution from `__slots__`                   | ❌ [#1268](https://github.com/astral-sh/ty/issues/1268) |
 | Diagnostic: access outside `__slots__`                  | ❌ [#1268](https://github.com/astral-sh/ty/issues/1268) |
 | Diagnostic: class variable shadowing `__slots__` name   | ❌ [#1268](https://github.com/astral-sh/ty/issues/1268) |
