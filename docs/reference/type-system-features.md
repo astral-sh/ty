@@ -192,6 +192,28 @@ This page summarizes the support for various type system features in ty.
 | Functional syntax (`Enum("Name", [...])`)  | ❌                                                      |
 | Narrowing with custom `__eq__` in `match`  | ❌ [#1454](https://github.com/astral-sh/ty/issues/1454) |
 
+## Literals
+
+[Official documentation](https://typing.python.org/en/latest/spec/literal.html)
+
+| Feature                                 | Status |
+| --------------------------------------- | ------ |
+| `Literal[0]` (integer literals)         | ✅     |
+| `Literal["a"]` (string literals)        | ✅     |
+| `Literal[b"a"]` (bytes literals)        | ✅     |
+| `Literal[True]` (boolean literals)      | ✅     |
+| `Literal[Color.RED]` (enum literals)    | ✅     |
+| `Literal[None]`                         | ✅     |
+| Nested `Literal` flattening             | ✅     |
+| Union of literals simplification        | ✅     |
+| `Literal` with type aliases             | ✅     |
+| Invalid form diagnostics                | ✅     |
+| `LiteralString`                         | ✅     |
+| `LiteralString` assignability           | ✅     |
+| `LiteralString` narrowing               | ✅     |
+| `LiteralString` cannot be parameterized | ✅     |
+| `LiteralString` cannot be subclassed    | ✅     |
+
 ## Type narrowing
 
 [Official documentation](https://typing.python.org/en/latest/spec/narrowing.html)
