@@ -6,7 +6,7 @@ specific pattern and can be turned on or off depending on your project’s needs
 
 !!! tip
 
-    See [rules](./reference/rules.md) for an enumeration of all supported rules.
+    See the [rules reference](./reference/rules.md) for an enumeration of all supported rules.
 
 ## Rule levels
 
