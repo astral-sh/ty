@@ -2,42 +2,100 @@
 
 # Type system features
 
-This page summarizes the support for various type system features in ty.
+This page summarizes the support for various type system features in ty. Sections are organized to
+follow the structure of the [Python typing specification](https://typing.python.org/en/latest/spec/),
+with some additional sections at the end.
 
-## Dataclasses
+## Special types and type qualifiers
 
-[Official documentation](https://typing.python.org/en/latest/spec/dataclasses.html)
+[Official documentation](https://typing.python.org/en/latest/spec/special-types.html)
 
-| Feature                                                                                                                           | Status                                                  |
-| :-------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------ |
-| `@dataclass` decorator (`init`, `repr`, `eq`, `order`, `frozen`, `match_args`, `kw_only`, `slots`, `weakref_slot`, `unsafe_hash`) | ✅                                                      |
-| `field()` (`default`, `default_factory`, `init`, `kw_only`, `doc`, `repr`, `hash`, `compare`)                                     | ✅                                                      |
-| `InitVar[…]`, `ClassVar[…]` exclusion, `KW_ONLY` sentinel                                                                         | ✅                                                      |
-| `fields()`, `__dataclass_fields__`                                                                                                | ✅                                                      |
-| `Final` fields                                                                                                                    | ✅                                                      |
-| Inheritance, generic dataclasses, descriptor-typed fields                                                                         | ✅                                                      |
-| `replace()`, `__replace__`                                                                                                        | ⚠️ `__replace__` works, `replace()` returns `Unknown`   |
-| `asdict()`                                                                                                                        | ⚠️ incorrectly accepts class objects                    |
-| `astuple()`                                                                                                                       | ⚠️ not tested                                           |
-| `make_dataclass()`, `is_dataclass()`                                                                                              | ⚠️ not tested                                           |
-| Diagnostic: frozen dataclass inheriting from non-frozen                                                                           | ⚠️ not tested                                           |
-| Diagnostic: non-default field after default field                                                                                 | ❌ [#111](https://github.com/astral-sh/ty/issues/111)   |
-| Diagnostic: `order=True` with custom comparison methods                                                                           | ❌ [#111](https://github.com/astral-sh/ty/issues/111)   |
-| Diagnostic: `frozen=True` with `__setattr__`/`__delattr__`                                                                        | ❌ [#111](https://github.com/astral-sh/ty/issues/111)   |
-| `__post_init__` signature validation                                                                                              | ❌ [#111](https://github.com/astral-sh/ty/issues/111)   |
-| Diagnostic: unsound subclassing of `order=True` dataclasses                                                                       | ❌ [#1681](https://github.com/astral-sh/ty/issues/1681) |
+| Feature                                           | Status                                                                              |
+| ------------------------------------------------- | ----------------------------------------------------------------------------------- |
+| `Any`                                             | ✅                                                                                  |
+| `None`                                            | ✅                                                                                  |
+| `NoReturn`, `Never`                               | ✅                                                                                  |
+| `object`                                          | ✅                                                                                  |
+| `Literal[...]` (strings, ints, bools, enum, None) | ✅                                                                                  |
+| `LiteralString`                                   | ✅                                                                                  |
+| `type[C]`                                         | ✅                                                                                  |
+| `Final`, `Final[T]`                               | ⚠️ no error on subclass override [#871](https://github.com/astral-sh/ty/issues/871) |
+| Diagnostic: `Final` without binding               | ❌ [#872](https://github.com/astral-sh/ty/issues/872)                               |
+| `@final` decorator                                | ✅                                                                                  |
+| `ClassVar`, `ClassVar[T]`                         | ⚠️ allows type variables [#518](https://github.com/astral-sh/ty/issues/518)         |
+| `type()` functional syntax                        | ❌ [#740](https://github.com/astral-sh/ty/issues/740)                               |
+| `InitVar[T]` (see Dataclasses)                    | ✅                                                                                  |
+| `Annotated[T, ...]`                               | ✅                                                                                  |
+| `Required[T]`, `NotRequired[T]` (see TypedDict)   | ✅                                                                                  |
+| `ReadOnly[T]` (see TypedDict)                     | ✅                                                                                  |
+| `Union[X, Y]`, `X \| Y`                           | ✅                                                                                  |
+| `Optional[X]`                                     | ✅                                                                                  |
 
-## `dataclass_transform`
+## Generics
 
-[Official documentation](https://typing.python.org/en/latest/spec/dataclasses.html#dataclass-transform)
+[Official documentation](https://typing.python.org/en/latest/spec/generics.html)
 
-| Feature                                                                                  | Status                                                  |
-| ---------------------------------------------------------------------------------------- | ------------------------------------------------------- |
-| Function-based, metaclass-based, base-class-based transformers                           | ✅                                                      |
-| `eq_default`, `order_default`, `kw_only_default` parameters                              | ✅                                                      |
-| `frozen_default` parameter                                                               | ⚠️ metaclass override not working                       |
-| `field_specifiers` (`init`, `default`, `default_factory`, `factory`, `kw_only`, `alias`) | ✅                                                      |
-| `field_specifiers` (`converter`)                                                         | ❌ [#1327](https://github.com/astral-sh/ty/issues/1327) |
+| Feature                                           | Status                                                                   |
+| ------------------------------------------------- | ------------------------------------------------------------------------ |
+| `TypeVar` (legacy syntax)                         | ✅                                                                       |
+| `TypeVar` (PEP 695 syntax: `def f[T]()`)          | ✅                                                                       |
+| `TypeVar` upper bound (`bound=`)                  | ✅                                                                       |
+| `TypeVar` constraints                             | ✅                                                                       |
+| `TypeVar` defaults (PEP 696)                      | ✅                                                                       |
+| `TypeVar` variance (`covariant`, `contravariant`) | ✅                                                                       |
+| `TypeVar` variance inference (`infer_variance`)   | ✅                                                                       |
+| Generic classes (legacy and PEP 695 syntax)       | ✅                                                                       |
+| Generic functions (legacy and PEP 695 syntax)     | ✅                                                                       |
+| Generic type aliases (PEP 695)                    | ⚠️ some limitations [#1851](https://github.com/astral-sh/ty/issues/1851) |
+| `ParamSpec` (legacy and PEP 695 syntax)           | ✅                                                                       |
+| `ParamSpec.args`, `ParamSpec.kwargs`              | ✅                                                                       |
+| `ParamSpec` defaults                              | ✅                                                                       |
+| `TypeVarTuple`                                    | ❌ [#156](https://github.com/astral-sh/ty/issues/156)                    |
+| `Self`                                            | ✅                                                                       |
+| Generic bounds/constraints on type variables      | ❌ [#1839](https://github.com/astral-sh/ty/issues/1839)                  |
+| `ParamSpec` usage validation                      | ❌ [#1861](https://github.com/astral-sh/ty/issues/1861)                  |
+
+## Protocols
+
+[Official documentation](https://typing.python.org/en/latest/spec/protocol.html)
+
+| Feature                                       | Status                                                          |
+| --------------------------------------------- | --------------------------------------------------------------- |
+| `Protocol` class definition                   | ✅                                                              |
+| Generic protocols (legacy and PEP 695 syntax) | ✅                                                              |
+| Structural subtyping / assignability          | ✅                                                              |
+| Protocol inheritance                          | ✅                                                              |
+| `is_protocol()`, `get_protocol_members()`     | ✅                                                              |
+| `@runtime_checkable` decorator                | ✅                                                              |
+| Protocol instantiation restriction            | ✅                                                              |
+| Non-protocol class inheritance restriction    | ✅                                                              |
+| `@property` members                           | ⚠️ partial [#1379](https://github.com/astral-sh/ty/issues/1379) |
+| Modules as protocol implementations           | ⚠️ [#931](https://github.com/astral-sh/ty/issues/931)           |
+| `@classmethod` and `@staticmethod` members    | ❌ [#1381](https://github.com/astral-sh/ty/issues/1381)         |
+| `ClassVar` members                            | ❌ [#1380](https://github.com/astral-sh/ty/issues/1380)         |
+| `type[SomeProtocol]`                          | ❌ [#903](https://github.com/astral-sh/ty/issues/903)           |
+| `issubclass()` on protocols with non-methods  | ❌ [#1878](https://github.com/astral-sh/ty/issues/1878)         |
+
+## Type narrowing
+
+[Official documentation](https://typing.python.org/en/latest/spec/narrowing.html)
+
+| Feature                                   | Status                                                  |
+| ----------------------------------------- | ------------------------------------------------------- |
+| `isinstance()` / `issubclass()` narrowing | ✅                                                      |
+| `is None` / `is not None` narrowing       | ✅                                                      |
+| `is` / `is not` identity narrowing        | ✅                                                      |
+| Truthiness narrowing                      | ✅                                                      |
+| `assert` narrowing                        | ✅                                                      |
+| `match` statement narrowing               | ✅                                                      |
+| `hasattr()` narrowing                     | ✅                                                      |
+| `callable()` narrowing                    | ✅                                                      |
+| Assignment narrowing                      | ✅                                                      |
+| `TypeIs[…]` user-defined type guards      | ✅                                                      |
+| `TypeGuard[…]` user-defined type guards   | ❌ [#117](https://github.com/astral-sh/ty/issues/117)   |
+| `TypeIs`/`TypeGuard` as method            | ❌ [#1569](https://github.com/astral-sh/ty/issues/1569) |
+| Tuple length checks                       | ❌ [#560](https://github.com/astral-sh/ty/issues/560)   |
+| Tuple match case narrowing                | ❌ [#561](https://github.com/astral-sh/ty/issues/561)   |
 
 ## Tuples
 
@@ -106,72 +164,6 @@ This page summarizes the support for various type system features in ty.
 | Tagged union narrowing                                         | ❌ [#1479](https://github.com/astral-sh/ty/issues/1479) |
 | Diagnostic: Invalid `isinstance()` check on `TypedDict`        | ⚠️ not tested                                           |
 
-## Generics
-
-[Official documentation](https://typing.python.org/en/latest/spec/generics.html)
-
-| Feature                                           | Status                                                                   |
-| ------------------------------------------------- | ------------------------------------------------------------------------ |
-| `TypeVar` (legacy syntax)                         | ✅                                                                       |
-| `TypeVar` (PEP 695 syntax: `def f[T]()`)          | ✅                                                                       |
-| `TypeVar` upper bound (`bound=`)                  | ✅                                                                       |
-| `TypeVar` constraints                             | ✅                                                                       |
-| `TypeVar` defaults (PEP 696)                      | ✅                                                                       |
-| `TypeVar` variance (`covariant`, `contravariant`) | ✅                                                                       |
-| `TypeVar` variance inference (`infer_variance`)   | ✅                                                                       |
-| Generic classes (legacy and PEP 695 syntax)       | ✅                                                                       |
-| Generic functions (legacy and PEP 695 syntax)     | ✅                                                                       |
-| Generic type aliases (PEP 695)                    | ⚠️ some limitations [#1851](https://github.com/astral-sh/ty/issues/1851) |
-| `ParamSpec` (legacy and PEP 695 syntax)           | ✅                                                                       |
-| `ParamSpec.args`, `ParamSpec.kwargs`              | ✅                                                                       |
-| `ParamSpec` defaults                              | ✅                                                                       |
-| `TypeVarTuple`                                    | ❌ [#156](https://github.com/astral-sh/ty/issues/156)                    |
-| `Self`                                            | ✅                                                                       |
-| Generic bounds/constraints on type variables      | ❌ [#1839](https://github.com/astral-sh/ty/issues/1839)                  |
-| `ParamSpec` usage validation                      | ❌ [#1861](https://github.com/astral-sh/ty/issues/1861)                  |
-
-## Protocols
-
-[Official documentation](https://typing.python.org/en/latest/spec/protocol.html)
-
-| Feature                                       | Status                                                          |
-| --------------------------------------------- | --------------------------------------------------------------- |
-| `Protocol` class definition                   | ✅                                                              |
-| Generic protocols (legacy and PEP 695 syntax) | ✅                                                              |
-| Structural subtyping / assignability          | ✅                                                              |
-| Protocol inheritance                          | ✅                                                              |
-| `is_protocol()`, `get_protocol_members()`     | ✅                                                              |
-| `@runtime_checkable` decorator                | ✅                                                              |
-| Protocol instantiation restriction            | ✅                                                              |
-| Non-protocol class inheritance restriction    | ✅                                                              |
-| `@property` members                           | ⚠️ partial [#1379](https://github.com/astral-sh/ty/issues/1379) |
-| Modules as protocol implementations           | ⚠️ [#931](https://github.com/astral-sh/ty/issues/931)           |
-| `@classmethod` and `@staticmethod` members    | ❌ [#1381](https://github.com/astral-sh/ty/issues/1381)         |
-| `ClassVar` members                            | ❌ [#1380](https://github.com/astral-sh/ty/issues/1380)         |
-| `type[SomeProtocol]`                          | ❌ [#903](https://github.com/astral-sh/ty/issues/903)           |
-| `issubclass()` on protocols with non-methods  | ❌ [#1878](https://github.com/astral-sh/ty/issues/1878)         |
-
-## Overloads
-
-[Official documentation](https://typing.python.org/en/latest/spec/overload.html)
-
-| Feature                                                | Status                                                             |
-| ------------------------------------------------------ | ------------------------------------------------------------------ |
-| `@overload` decorator                                  | ✅                                                                 |
-| Overload resolution                                    | ✅                                                                 |
-| Generic overloads                                      | ✅                                                                 |
-| Methods, constructors, `@staticmethod`, `@classmethod` | ✅                                                                 |
-| Version-specific overloads                             | ✅                                                                 |
-| Diagnostic: at least two overloads required            | ✅                                                                 |
-| Diagnostic: missing implementation (non-stub)          | ✅                                                                 |
-| Diagnostic: inconsistent decorators                    | ✅                                                                 |
-| Diagnostic: `@final`/`@override` placement             | ✅                                                                 |
-| Variadic parameters with generics                      | ⚠️ [#1825](https://github.com/astral-sh/ty/issues/1825)            |
-| Unannotated implementation validation                  | ⚠️ not tested [#1232](https://github.com/astral-sh/ty/issues/1232) |
-| Diagnostic: overlapping overloads                      | ❌ [#103](https://github.com/astral-sh/ty/issues/103)              |
-| Implementation consistency check                       | ❌ [#109](https://github.com/astral-sh/ty/issues/109)              |
-| `@overload` with other decorators                      | ⚠️ [#1675](https://github.com/astral-sh/ty/issues/1675)            |
-
 ## Enums
 
 [Official documentation](https://typing.python.org/en/latest/spec/enums.html)
@@ -214,46 +206,78 @@ This page summarizes the support for various type system features in ty.
 | `LiteralString` cannot be parameterized | ✅     |
 | `LiteralString` cannot be subclassed    | ✅     |
 
-## Type narrowing
+## Callables
 
-[Official documentation](https://typing.python.org/en/latest/spec/narrowing.html)
+[Official documentation](https://typing.python.org/en/latest/spec/callables.html)
 
-| Feature                                   | Status                                                  |
-| ----------------------------------------- | ------------------------------------------------------- |
-| `isinstance()` / `issubclass()` narrowing | ✅                                                      |
-| `is None` / `is not None` narrowing       | ✅                                                      |
-| `is` / `is not` identity narrowing        | ✅                                                      |
-| Truthiness narrowing                      | ✅                                                      |
-| `assert` narrowing                        | ✅                                                      |
-| `match` statement narrowing               | ✅                                                      |
-| `hasattr()` narrowing                     | ✅                                                      |
-| `callable()` narrowing                    | ✅                                                      |
-| Assignment narrowing                      | ✅                                                      |
-| `TypeIs[…]` user-defined type guards      | ✅                                                      |
-| `TypeGuard[…]` user-defined type guards   | ❌ [#117](https://github.com/astral-sh/ty/issues/117)   |
-| `TypeIs`/`TypeGuard` as method            | ❌ [#1569](https://github.com/astral-sh/ty/issues/1569) |
-| Tuple length checks                       | ❌ [#560](https://github.com/astral-sh/ty/issues/560)   |
-| Tuple match case narrowing                | ❌ [#561](https://github.com/astral-sh/ty/issues/561)   |
+| Feature                                    | Status                                                  |
+| ------------------------------------------ | ------------------------------------------------------- |
+| `Callable[[X, Y], R]` syntax               | ✅                                                      |
+| `Callable[..., R]` gradual form            | ✅                                                      |
+| `Callable` with `ParamSpec`                | ✅                                                      |
+| Callback protocols (`__call__` method)     | ✅                                                      |
+| Callable assignability (contra/covariance) | ✅                                                      |
+| Nested `Callable` types                    | ✅                                                      |
+| `Callable` in unions/intersections         | ✅                                                      |
+| Invalid form diagnostics                   | ✅                                                      |
+| `Concatenate`                              | ❌ [#1535](https://github.com/astral-sh/ty/issues/1535) |
+| `Unpack` for `**kwargs` typing             | ❌ [#1746](https://github.com/astral-sh/ty/issues/1746) |
 
-## Control flow analysis
+## Overloads
 
-| Feature                                      | Status                                                                      |
-| -------------------------------------------- | --------------------------------------------------------------------------- |
-| Terminal statements (`return`, `raise`)      | ✅                                                                          |
-| Loop control flow (`break`, `continue`)      | ✅                                                                          |
-| `for`/`while` loop analysis                  | ✅                                                                          |
-| `try`/`except`/`else`/`finally` control flow | ⚠️ `finally` limitations [#233](https://github.com/astral-sh/ty/issues/233) |
-| `Never`/`NoReturn` function propagation      | ✅                                                                          |
-| Exhaustiveness checking (`if`/`elif`/`else`) | ✅                                                                          |
-| Exhaustiveness checking (`match`)            | ✅                                                                          |
-| Advanced `match` pattern inference           | ❌ [#887](https://github.com/astral-sh/ty/issues/887)                       |
-| `assert_never()`                             | ✅                                                                          |
-| `sys.version_info` comparisons               | ✅                                                                          |
-| `sys.platform` checks                        | ✅                                                                          |
-| Statically known branches                    | ✅                                                                          |
-| Walrus operator in boolean expressions       | ❌ [#626](https://github.com/astral-sh/ty/issues/626)                       |
-| Cyclic control flow (loop back edges)        | ❌ [#232](https://github.com/astral-sh/ty/issues/232)                       |
-| Gray out unreachable code                    | ❌ [#784](https://github.com/astral-sh/ty/issues/784)                       |
+[Official documentation](https://typing.python.org/en/latest/spec/overload.html)
+
+| Feature                                                | Status                                                             |
+| ------------------------------------------------------ | ------------------------------------------------------------------ |
+| `@overload` decorator                                  | ✅                                                                 |
+| Overload resolution                                    | ✅                                                                 |
+| Generic overloads                                      | ✅                                                                 |
+| Methods, constructors, `@staticmethod`, `@classmethod` | ✅                                                                 |
+| Version-specific overloads                             | ✅                                                                 |
+| Diagnostic: at least two overloads required            | ✅                                                                 |
+| Diagnostic: missing implementation (non-stub)          | ✅                                                                 |
+| Diagnostic: inconsistent decorators                    | ✅                                                                 |
+| Diagnostic: `@final`/`@override` placement             | ✅                                                                 |
+| Variadic parameters with generics                      | ⚠️ [#1825](https://github.com/astral-sh/ty/issues/1825)            |
+| Unannotated implementation validation                  | ⚠️ not tested [#1232](https://github.com/astral-sh/ty/issues/1232) |
+| Diagnostic: overlapping overloads                      | ❌ [#103](https://github.com/astral-sh/ty/issues/103)              |
+| Implementation consistency check                       | ❌ [#109](https://github.com/astral-sh/ty/issues/109)              |
+| `@overload` with other decorators                      | ⚠️ [#1675](https://github.com/astral-sh/ty/issues/1675)            |
+
+## Dataclasses
+
+[Official documentation](https://typing.python.org/en/latest/spec/dataclasses.html)
+
+| Feature                                                                                                                           | Status                                                  |
+| :-------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------ |
+| `@dataclass` decorator (`init`, `repr`, `eq`, `order`, `frozen`, `match_args`, `kw_only`, `slots`, `weakref_slot`, `unsafe_hash`) | ✅                                                      |
+| `field()` (`default`, `default_factory`, `init`, `kw_only`, `doc`, `repr`, `hash`, `compare`)                                     | ✅                                                      |
+| `InitVar[…]`, `ClassVar[…]` exclusion, `KW_ONLY` sentinel                                                                         | ✅                                                      |
+| `fields()`, `__dataclass_fields__`                                                                                                | ✅                                                      |
+| `Final` fields                                                                                                                    | ✅                                                      |
+| Inheritance, generic dataclasses, descriptor-typed fields                                                                         | ✅                                                      |
+| `replace()`, `__replace__`                                                                                                        | ⚠️ `__replace__` works, `replace()` returns `Unknown`   |
+| `asdict()`                                                                                                                        | ⚠️ incorrectly accepts class objects                    |
+| `astuple()`                                                                                                                       | ⚠️ not tested                                           |
+| `make_dataclass()`, `is_dataclass()`                                                                                              | ⚠️ not tested                                           |
+| Diagnostic: frozen dataclass inheriting from non-frozen                                                                           | ⚠️ not tested                                           |
+| Diagnostic: non-default field after default field                                                                                 | ❌ [#111](https://github.com/astral-sh/ty/issues/111)   |
+| Diagnostic: `order=True` with custom comparison methods                                                                           | ❌ [#111](https://github.com/astral-sh/ty/issues/111)   |
+| Diagnostic: `frozen=True` with `__setattr__`/`__delattr__`                                                                        | ❌ [#111](https://github.com/astral-sh/ty/issues/111)   |
+| `__post_init__` signature validation                                                                                              | ❌ [#111](https://github.com/astral-sh/ty/issues/111)   |
+| Diagnostic: unsound subclassing of `order=True` dataclasses                                                                       | ❌ [#1681](https://github.com/astral-sh/ty/issues/1681) |
+
+## `dataclass_transform`
+
+[Official documentation](https://typing.python.org/en/latest/spec/dataclasses.html#dataclass-transform)
+
+| Feature                                                                                  | Status                                                  |
+| ---------------------------------------------------------------------------------------- | ------------------------------------------------------- |
+| Function-based, metaclass-based, base-class-based transformers                           | ✅                                                      |
+| `eq_default`, `order_default`, `kw_only_default` parameters                              | ✅                                                      |
+| `frozen_default` parameter                                                               | ⚠️ metaclass override not working                       |
+| `field_specifiers` (`init`, `default`, `default_factory`, `factory`, `kw_only`, `alias`) | ✅                                                      |
+| `field_specifiers` (`converter`)                                                         | ❌ [#1327](https://github.com/astral-sh/ty/issues/1327) |
 
 ## Constructors
 
@@ -272,48 +296,6 @@ This page summarizes the support for various type system features in ty.
 | Custom metaclass `__call__`                   | ❌                                                      |
 | `__new__`/`__init__` consistency validation   | ❌                                                      |
 | Diagnostic: explicit `__init__` on instance   | ❌ [#1016](https://github.com/astral-sh/ty/issues/1016) |
-
-## Callables
-
-[Official documentation](https://typing.python.org/en/latest/spec/callables.html)
-
-| Feature                                    | Status                                                  |
-| ------------------------------------------ | ------------------------------------------------------- |
-| `Callable[[X, Y], R]` syntax               | ✅                                                      |
-| `Callable[..., R]` gradual form            | ✅                                                      |
-| `Callable` with `ParamSpec`                | ✅                                                      |
-| Callback protocols (`__call__` method)     | ✅                                                      |
-| Callable assignability (contra/covariance) | ✅                                                      |
-| Nested `Callable` types                    | ✅                                                      |
-| `Callable` in unions/intersections         | ✅                                                      |
-| Invalid form diagnostics                   | ✅                                                      |
-| `Concatenate`                              | ❌ [#1535](https://github.com/astral-sh/ty/issues/1535) |
-| `Unpack` for `**kwargs` typing             | ❌ [#1746](https://github.com/astral-sh/ty/issues/1746) |
-
-## Special types and type qualifiers
-
-[Official documentation](https://typing.python.org/en/latest/spec/special-types.html)
-
-| Feature                                           | Status                                                                              |
-| ------------------------------------------------- | ----------------------------------------------------------------------------------- |
-| `Any`                                             | ✅                                                                                  |
-| `None`                                            | ✅                                                                                  |
-| `NoReturn`, `Never`                               | ✅                                                                                  |
-| `object`                                          | ✅                                                                                  |
-| `Literal[...]` (strings, ints, bools, enum, None) | ✅                                                                                  |
-| `LiteralString`                                   | ✅                                                                                  |
-| `type[C]`                                         | ✅                                                                                  |
-| `Final`, `Final[T]`                               | ⚠️ no error on subclass override [#871](https://github.com/astral-sh/ty/issues/871) |
-| Diagnostic: `Final` without binding               | ❌ [#872](https://github.com/astral-sh/ty/issues/872)                               |
-| `@final` decorator                                | ✅                                                                                  |
-| `ClassVar`, `ClassVar[T]`                         | ⚠️ allows type variables [#518](https://github.com/astral-sh/ty/issues/518)         |
-| `type()` functional syntax                        | ❌ [#740](https://github.com/astral-sh/ty/issues/740)                               |
-| `InitVar[T]` (see Dataclasses)                    | ✅                                                                                  |
-| `Annotated[T, ...]`                               | ✅                                                                                  |
-| `Required[T]`, `NotRequired[T]` (see TypedDict)   | ✅                                                                                  |
-| `ReadOnly[T]` (see TypedDict)                     | ✅                                                                                  |
-| `Union[X, Y]`, `X \| Y`                           | ✅                                                                                  |
-| `Optional[X]`                                     | ✅                                                                                  |
 
 ## Type aliases
 
@@ -345,6 +327,52 @@ This page summarizes the support for various type system features in ty.
 | `@deprecated` decorator     | ✅                           |
 | `@override` decorator       | ⚠️ strict mode not supported |
 | Redundant `cast` diagnostic | ✅                           |
+
+## Module resolution
+
+[Official documentation](https://typing.python.org/en/latest/spec/distributing.html)
+
+| Feature                                           | Status                                                  |
+| ------------------------------------------------- | ------------------------------------------------------- |
+| Stub files (`.pyi`)                               | ✅                                                      |
+| Stub packages (`<package>-stubs`)                 | ✅                                                      |
+| Partial stub packages (`py.typed` with `partial`) | ✅                                                      |
+| Namespace packages (PEP 420)                      | ✅                                                      |
+| Relative imports                                  | ✅                                                      |
+| `__all__` declarations                            | ✅                                                      |
+| `__all__` mutations (`.append`, `.extend`, `+=`)  | ✅                                                      |
+| `__all__` with submodule `__all__`                | ✅                                                      |
+| Wildcard (`*`) imports                            | ✅                                                      |
+| Wildcard imports in stubs re-export               | ✅                                                      |
+| Re-export conventions (`import X as X`)           | ✅                                                      |
+| Conditional re-exports in stub files              | ✅                                                      |
+| Reachability constraints in imports               | ✅                                                      |
+| Cyclic imports                                    | ✅                                                      |
+| `py.typed` marker files                           | ⚠️ ignored for type checking                            |
+| `conftest.py` resolution (pytest)                 | ⚠️ [#414](https://github.com/astral-sh/ty/issues/414)   |
+| Compiled extensions (`.so` files)                 | ❌ [#715](https://github.com/astral-sh/ty/issues/715)   |
+| conda/pixi environment support                    | ❌ [#265](https://github.com/astral-sh/ty/issues/265)   |
+| Per-library import suppression                    | ❌ [#1354](https://github.com/astral-sh/ty/issues/1354) |
+
+## Control flow analysis
+
+| Feature                                      | Status                                                                      |
+| -------------------------------------------- | --------------------------------------------------------------------------- |
+| Terminal statements (`return`, `raise`)      | ✅                                                                          |
+| Loop control flow (`break`, `continue`)      | ✅                                                                          |
+| `for`/`while` loop analysis                  | ✅                                                                          |
+| `try`/`except`/`else`/`finally` control flow | ⚠️ `finally` limitations [#233](https://github.com/astral-sh/ty/issues/233) |
+| `Never`/`NoReturn` function propagation      | ✅                                                                          |
+| Exhaustiveness checking (`if`/`elif`/`else`) | ✅                                                                          |
+| Exhaustiveness checking (`match`)            | ✅                                                                          |
+| Advanced `match` pattern inference           | ❌ [#887](https://github.com/astral-sh/ty/issues/887)                       |
+| `assert_never()`                             | ✅                                                                          |
+| `sys.version_info` comparisons               | ✅                                                                          |
+| `sys.platform` checks                        | ✅                                                                          |
+| Statically known branches                    | ✅                                                                          |
+| Walrus operator in boolean expressions       | ❌ [#626](https://github.com/astral-sh/ty/issues/626)                       |
+| Cyclic control flow (loop back edges)        | ❌ [#232](https://github.com/astral-sh/ty/issues/232)                       |
+| Gray out unreachable code                    | ❌ [#784](https://github.com/astral-sh/ty/issues/784)                       |
 
 ## Invalid overrides
 
@@ -384,32 +412,6 @@ This page summarizes the support for various type system features in ty.
 | Diagnostic: class variable shadowing `__slots__` name   | ❌ [#1268](https://github.com/astral-sh/ty/issues/1268) |
 | `__dict__`/`__weakref__` presence validation            | ❌ [#1268](https://github.com/astral-sh/ty/issues/1268) |
 | Diagnostic: non-empty `__slots__` on builtin subclasses | ❌ [#1268](https://github.com/astral-sh/ty/issues/1268) |
-
-## Module resolution
-
-[Official documentation](https://typing.python.org/en/latest/spec/distributing.html)
-
-| Feature                                           | Status                                                  |
-| ------------------------------------------------- | ------------------------------------------------------- |
-| Stub files (`.pyi`)                               | ✅                                                      |
-| Stub packages (`<package>-stubs`)                 | ✅                                                      |
-| Partial stub packages (`py.typed` with `partial`) | ✅                                                      |
-| Namespace packages (PEP 420)                      | ✅                                                      |
-| Relative imports                                  | ✅                                                      |
-| `__all__` declarations                            | ✅                                                      |
-| `__all__` mutations (`.append`, `.extend`, `+=`)  | ✅                                                      |
-| `__all__` with submodule `__all__`                | ✅                                                      |
-| Wildcard (`*`) imports                            | ✅                                                      |
-| Wildcard imports in stubs re-export               | ✅                                                      |
-| Re-export conventions (`import X as X`)           | ✅                                                      |
-| Conditional re-exports in stub files              | ✅                                                      |
-| Reachability constraints in imports               | ✅                                                      |
-| Cyclic imports                                    | ✅                                                      |
-| `py.typed` marker files                           | ⚠️ ignored for type checking                            |
-| `conftest.py` resolution (pytest)                 | ⚠️ [#414](https://github.com/astral-sh/ty/issues/414)   |
-| Compiled extensions (`.so` files)                 | ❌ [#715](https://github.com/astral-sh/ty/issues/715)   |
-| conda/pixi environment support                    | ❌ [#265](https://github.com/astral-sh/ty/issues/265)   |
-| Per-library import suppression                    | ❌ [#1354](https://github.com/astral-sh/ty/issues/1354) |
 
 ## Standard library
 
