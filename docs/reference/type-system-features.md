@@ -235,6 +235,26 @@ This page summarizes the support for various type system features in ty.
 | Tuple length checks                       | ❌ [#560](https://github.com/astral-sh/ty/issues/560)   |
 | Tuple match case narrowing                | ❌ [#561](https://github.com/astral-sh/ty/issues/561)   |
 
+## Control flow analysis
+
+| Feature                                      | Status                                                                      |
+| -------------------------------------------- | --------------------------------------------------------------------------- |
+| Terminal statements (`return`, `raise`)      | ✅                                                                          |
+| Loop control flow (`break`, `continue`)      | ✅                                                                          |
+| `for`/`while` loop analysis                  | ✅                                                                          |
+| `try`/`except`/`else`/`finally` control flow | ⚠️ `finally` limitations [#233](https://github.com/astral-sh/ty/issues/233) |
+| `Never`/`NoReturn` function propagation      | ✅                                                                          |
+| Exhaustiveness checking (`if`/`elif`/`else`) | ✅                                                                          |
+| Exhaustiveness checking (`match`)            | ✅                                                                          |
+| Advanced `match` pattern inference           | ❌ [#887](https://github.com/astral-sh/ty/issues/887)                       |
+| `assert_never()`                             | ✅                                                                          |
+| `sys.version_info` comparisons               | ✅                                                                          |
+| `sys.platform` checks                        | ✅                                                                          |
+| Statically known branches                    | ✅                                                                          |
+| Walrus operator in boolean expressions       | ❌ [#626](https://github.com/astral-sh/ty/issues/626)                       |
+| Cyclic control flow (loop back edges)        | ❌ [#232](https://github.com/astral-sh/ty/issues/232)                       |
+| Gray out unreachable code                    | ❌ [#784](https://github.com/astral-sh/ty/issues/784)                       |
+
 ## Constructors
 
 [Official documentation](https://typing.python.org/en/latest/spec/constructors.html)
