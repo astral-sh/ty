@@ -8,9 +8,7 @@ Specifically, ty will search for a `pyproject.toml` or `ty.toml` file in the cur
 
 If a `pyproject.toml` file is found, ty will read configuration from the `[tool.ty]` table. For example, to ignore the `index-out-of-bounds` rule, add the following to a `pyproject.toml`:
 
-**`pyproject.toml`**:
-
-```toml
+```toml title="pyproject.toml"
 [tool.ty.rules]
 index-out-of-bounds = "ignore"
 ```
@@ -19,9 +17,7 @@ index-out-of-bounds = "ignore"
 
 ty will also search for `ty.toml` files, which follow an identical structure, but omit the `[tool.ty]` prefix. For example:
 
-**`ty.toml`**:
-
-```toml
+```toml title="ty.toml"
 [rules]
 index-out-of-bounds = "ignore"
 ```

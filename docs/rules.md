@@ -35,7 +35,7 @@ Rule levels can also be changed in the [`rules`](./reference/configuration.md#ru
 
 For example, the following is equivalent to the command above:
 
-```toml
+```toml title="pyproject.toml"
 [tool.ty.rules]
 unused-ignore-comment = "warn"
 redundant-cast = "ignore"
