@@ -4,7 +4,7 @@ ty automatically discovers all Python files in your project. You can customize w
 
 For example, with the following configuration, ty checks all Python files in the `src` and `tests` directories except those in the `src/generated` directory:
 
-```toml
+```toml title="pyproject.toml"
 [tool.ty.src]
 include = ["src", "tests"]
 exclude = ["src/generated"]
@@ -12,7 +12,7 @@ exclude = ["src/generated"]
 
 By default, ty excludes a [variety of commonly ignored directories](./reference/configuration.md#exclude). If you want to include one of these directories, you can do so by adding a negative `exclude`:
 
-```toml
+```toml title="pyproject.toml"
 [tool.ty.src]
 # Remove `build` from the excluded directories.
 exclude = ["!**/build/"]
