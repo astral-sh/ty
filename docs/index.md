@@ -40,7 +40,7 @@ uvx ty check example.py
 
 To install ty, see the [installation](./installation.md) documentation.
 
-To add ty language server to your editor, see the [editors](./editors.md) documentation.
+To add the ty language server to your editor, see the [editors](./editors.md) documentation.
 
 ## Playground
 
