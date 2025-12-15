@@ -39,6 +39,27 @@ This page summarizes the support for various type system features in ty.
 | `field_specifiers` (`init`, `default`, `default_factory`, `factory`, `kw_only`, `alias`) | ✅                                                      |
 | `field_specifiers` (`converter`)                                                         | ❌ [#1327](https://github.com/astral-sh/ty/issues/1327) |
 
+## Tuples
+
+[Official documentation](https://typing.python.org/en/latest/spec/tuples.html)
+
+| Feature                                   | Status                                                |
+| ----------------------------------------- | ----------------------------------------------------- |
+| `tuple[X, Y, Z]` heterogeneous tuples     | ✅                                                    |
+| `tuple[X, ...]` homogeneous tuples        | ✅                                                    |
+| `tuple[()]` empty tuple                   | ✅                                                    |
+| Mixed tuples (`tuple[X, *tuple[Y, ...]]`) | ✅                                                    |
+| Indexing with literal integers            | ✅                                                    |
+| Diagnostic: index out of bounds           | ✅                                                    |
+| Slicing tuples                            | ✅                                                    |
+| Tuple subclasses                          | ✅                                                    |
+| `typing.Tuple` (deprecated alias)         | ✅                                                    |
+| Covariant element types                   | ✅                                                    |
+| Tuple inheritance                         | ✅                                                    |
+| Unpacking in assignments                  | ✅                                                    |
+| `*args` unpacking in calls                | ⚠️ [#891](https://github.com/astral-sh/ty/issues/891) |
+| `TypeVarTuple` / `Unpack`                 | ❌ [#156](https://github.com/astral-sh/ty/issues/156) |
+
 ## `NamedTuple`
 
 [Official documentation](https://typing.python.org/en/latest/spec/namedtuples.html)
