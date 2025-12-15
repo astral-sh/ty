@@ -6,6 +6,8 @@ This page summarizes the support for various type system features in ty. Section
 
 [Official documentation](https://typing.python.org/en/latest/spec/special-types.html)
 
+**tests:** [`any.md`](https://github.com/astral-sh/ruff/blob/main/crates/ty_python_semantic/resources/mdtest/annotations/any.md), [`never.md`](https://github.com/astral-sh/ruff/blob/main/crates/ty_python_semantic/resources/mdtest/annotations/never.md), [`int_float_complex.md`](https://github.com/astral-sh/ruff/blob/main/crates/ty_python_semantic/resources/mdtest/annotations/int_float_complex.md), [`final.md`](https://github.com/astral-sh/ruff/blob/main/crates/ty_python_semantic/resources/mdtest/type_qualifiers/final.md), [`classvar.md`](https://github.com/astral-sh/ruff/blob/main/crates/ty_python_semantic/resources/mdtest/type_qualifiers/classvar.md), [`annotated.md`](https://github.com/astral-sh/ruff/blob/main/crates/ty_python_semantic/resources/mdtest/annotations/annotated.md), [`union.md`](https://github.com/astral-sh/ruff/blob/main/crates/ty_python_semantic/resources/mdtest/annotations/union.md), [`instance_layout_conflict.md`](https://github.com/astral-sh/ruff/blob/main/crates/ty_python_semantic/resources/mdtest/instance_layout_conflict.md)
+
 - [x] `Any`
 - [x] `None`
 - [x] `NoReturn`, `Never`
@@ -29,19 +31,11 @@ This page summarizes the support for various type system features in ty. Section
 - [x] `Union[X, Y]`, `X | Y`
 - [x] `Optional[X]`
 
-**mdtest references:**
-[any.md](https://github.com/astral-sh/ruff/blob/main/crates/ty_python_semantic/resources/mdtest/annotations/any.md),
-[never.md](https://github.com/astral-sh/ruff/blob/main/crates/ty_python_semantic/resources/mdtest/annotations/never.md),
-[int_float_complex.md](https://github.com/astral-sh/ruff/blob/main/crates/ty_python_semantic/resources/mdtest/annotations/int_float_complex.md),
-[final.md](https://github.com/astral-sh/ruff/blob/main/crates/ty_python_semantic/resources/mdtest/type_qualifiers/final.md),
-[classvar.md](https://github.com/astral-sh/ruff/blob/main/crates/ty_python_semantic/resources/mdtest/type_qualifiers/classvar.md),
-[annotated.md](https://github.com/astral-sh/ruff/blob/main/crates/ty_python_semantic/resources/mdtest/annotations/annotated.md),
-[union.md](https://github.com/astral-sh/ruff/blob/main/crates/ty_python_semantic/resources/mdtest/annotations/union.md),
-[instance_layout_conflict.md](https://github.com/astral-sh/ruff/blob/main/crates/ty_python_semantic/resources/mdtest/instance_layout_conflict.md)
-
 ## Generics
 
 [Official documentation](https://typing.python.org/en/latest/spec/generics.html)
+
+**tests:** [`pep695/`](https://github.com/astral-sh/ruff/blob/main/crates/ty_python_semantic/resources/mdtest/generics/pep695/), [`legacy/`](https://github.com/astral-sh/ruff/blob/main/crates/ty_python_semantic/resources/mdtest/generics/legacy/), [`self.md`](https://github.com/astral-sh/ruff/blob/main/crates/ty_python_semantic/resources/mdtest/annotations/self.md), [`scoping.md`](https://github.com/astral-sh/ruff/blob/main/crates/ty_python_semantic/resources/mdtest/generics/scoping.md)
 
 - [x] `TypeVar` (legacy syntax)
 - [x] `TypeVar` (PEP 695 syntax: `def f[T]()`)
@@ -62,15 +56,11 @@ This page summarizes the support for various type system features in ty. Section
 - [ ] Generic bounds/constraints on type variables #1839
 - [ ] `ParamSpec` usage validation #1861
 
-**mdtest references:**
-[generics/pep695/](https://github.com/astral-sh/ruff/blob/main/crates/ty_python_semantic/resources/mdtest/generics/pep695/),
-[generics/legacy/](https://github.com/astral-sh/ruff/blob/main/crates/ty_python_semantic/resources/mdtest/generics/legacy/),
-[self.md](https://github.com/astral-sh/ruff/blob/main/crates/ty_python_semantic/resources/mdtest/annotations/self.md),
-[scoping.md](https://github.com/astral-sh/ruff/blob/main/crates/ty_python_semantic/resources/mdtest/generics/scoping.md)
-
 ## Protocols
 
 [Official documentation](https://typing.python.org/en/latest/spec/protocol.html)
+
+**tests:** [`protocols.md`](https://github.com/astral-sh/ruff/blob/main/crates/ty_python_semantic/resources/mdtest/protocols.md)
 
 - [x] `Protocol` class definition
 - [x] Generic protocols (legacy and PEP 695 syntax)
@@ -87,12 +77,11 @@ This page summarizes the support for various type system features in ty. Section
 - [ ] `type[SomeProtocol]` #903
 - [ ] `issubclass()` on protocols with non-methods #1878
 
-**mdtest references:**
-[protocols.md](https://github.com/astral-sh/ruff/blob/main/crates/ty_python_semantic/resources/mdtest/protocols.md)
-
 ## Type narrowing
 
 [Official documentation](https://typing.python.org/en/latest/spec/narrowing.html)
+
+**tests:** [`narrow/`](https://github.com/astral-sh/ruff/blob/main/crates/ty_python_semantic/resources/mdtest/narrow/), [`type_guards.md`](https://github.com/astral-sh/ruff/blob/main/crates/ty_python_semantic/resources/mdtest/narrow/type_guards.md)
 
 - [x] `isinstance()` / `issubclass()` narrowing
 - [x] `is None` / `is not None` narrowing
@@ -109,13 +98,11 @@ This page summarizes the support for various type system features in ty. Section
 - [ ] Tuple length checks #560
 - [ ] Tuple match case narrowing #561
 
-**mdtest references:**
-[narrow/](https://github.com/astral-sh/ruff/blob/main/crates/ty_python_semantic/resources/mdtest/narrow/),
-[type_guards.md](https://github.com/astral-sh/ruff/blob/main/crates/ty_python_semantic/resources/mdtest/narrow/type_guards.md)
-
 ## Tuples
 
 [Official documentation](https://typing.python.org/en/latest/spec/tuples.html)
+
+**tests:** [`subscript/tuple.md`](https://github.com/astral-sh/ruff/blob/main/crates/ty_python_semantic/resources/mdtest/subscript/tuple.md), [`comparison/tuples.md`](https://github.com/astral-sh/ruff/blob/main/crates/ty_python_semantic/resources/mdtest/comparison/tuples.md), [`binary/tuples.md`](https://github.com/astral-sh/ruff/blob/main/crates/ty_python_semantic/resources/mdtest/binary/tuples.md)
 
 - [x] `tuple[X, Y, Z]` heterogeneous tuples
 - [x] `tuple[X, ...]` homogeneous tuples
@@ -133,14 +120,11 @@ This page summarizes the support for various type system features in ty. Section
 - [ ] Diagnostic: invalid comparisons for non-fixed-length tuples #1741
 - [ ] `TypeVarTuple` / `Unpack` #156
 
-**mdtest references:**
-[subscript/tuple.md](https://github.com/astral-sh/ruff/blob/main/crates/ty_python_semantic/resources/mdtest/subscript/tuple.md),
-[comparison/tuples.md](https://github.com/astral-sh/ruff/blob/main/crates/ty_python_semantic/resources/mdtest/comparison/tuples.md),
-[binary/tuples.md](https://github.com/astral-sh/ruff/blob/main/crates/ty_python_semantic/resources/mdtest/binary/tuples.md)
-
 ## `NamedTuple`
 
 [Official documentation](https://typing.python.org/en/latest/spec/namedtuples.html)
+
+**tests:** [`named_tuple.md`](https://github.com/astral-sh/ruff/blob/main/crates/ty_python_semantic/resources/mdtest/named_tuple.md)
 
 - [x] Class syntax (`class Foo(NamedTuple): ...`)
 - [x] Field access by name and index, slicing, unpacking
@@ -159,12 +143,11 @@ This page summarizes the support for various type system features in ty. Section
 - [ ] Subclass field conflicting with base class field: not tested
 - [ ] `type[NamedTuple]` in type expressions: not fully supported
 
-**mdtest references:**
-[named_tuple.md](https://github.com/astral-sh/ruff/blob/main/crates/ty_python_semantic/resources/mdtest/named_tuple.md)
-
 ## `TypedDict`
 
 [Official documentation](https://typing.python.org/en/latest/spec/typeddict.html)
+
+**tests:** [`typed_dict.md`](https://github.com/astral-sh/ruff/blob/main/crates/ty_python_semantic/resources/mdtest/typed_dict.md)
 
 - [x] Class syntax (`class Foo(TypedDict): ...`)
 - [x] Key access by literal string, `Final` constants
@@ -183,12 +166,11 @@ This page summarizes the support for various type system features in ty. Section
 - [ ] Tagged union narrowing #1479
 - [ ] Diagnostic: Invalid `isinstance()` check on `TypedDict`: not tested
 
-**mdtest references:**
-[typed_dict.md](https://github.com/astral-sh/ruff/blob/main/crates/ty_python_semantic/resources/mdtest/typed_dict.md)
-
 ## Enums
 
 [Official documentation](https://typing.python.org/en/latest/spec/enums.html)
+
+**tests:** [`enums.md`](https://github.com/astral-sh/ruff/blob/main/crates/ty_python_semantic/resources/mdtest/enums.md), [`comparison/enums.md`](https://github.com/astral-sh/ruff/blob/main/crates/ty_python_semantic/resources/mdtest/comparison/enums.md)
 
 - [x] `Enum`, `IntEnum`, `StrEnum`
 - [x] `Literal[EnumMember]` types
@@ -204,13 +186,11 @@ This page summarizes the support for various type system features in ty. Section
 - [ ] Functional syntax (`Enum("Name", [...])`)
 - [ ] Narrowing with custom `__eq__` in `match` #1454
 
-**mdtest references:**
-[enums.md](https://github.com/astral-sh/ruff/blob/main/crates/ty_python_semantic/resources/mdtest/enums.md),
-[comparison/enums.md](https://github.com/astral-sh/ruff/blob/main/crates/ty_python_semantic/resources/mdtest/comparison/enums.md)
-
 ## Literals
 
 [Official documentation](https://typing.python.org/en/latest/spec/literal.html)
+
+**tests:** [`literal.md`](https://github.com/astral-sh/ruff/blob/main/crates/ty_python_semantic/resources/mdtest/annotations/literal.md), [`literal_string.md`](https://github.com/astral-sh/ruff/blob/main/crates/ty_python_semantic/resources/mdtest/annotations/literal_string.md)
 
 - [x] `Literal[0]` (integer literals)
 - [x] `Literal["a"]` (string literals)
@@ -228,13 +208,11 @@ This page summarizes the support for various type system features in ty. Section
 - [x] `LiteralString` cannot be parameterized
 - [x] `LiteralString` cannot be subclassed
 
-**mdtest references:**
-[annotations/literal.md](https://github.com/astral-sh/ruff/blob/main/crates/ty_python_semantic/resources/mdtest/annotations/literal.md),
-[annotations/literal_string.md](https://github.com/astral-sh/ruff/blob/main/crates/ty_python_semantic/resources/mdtest/annotations/literal_string.md)
-
 ## Callables
 
 [Official documentation](https://typing.python.org/en/latest/spec/callables.html)
+
+**tests:** [`callable.md`](https://github.com/astral-sh/ruff/blob/main/crates/ty_python_semantic/resources/mdtest/annotations/callable.md), [`callable_instance.md`](https://github.com/astral-sh/ruff/blob/main/crates/ty_python_semantic/resources/mdtest/call/callable_instance.md)
 
 - [x] `Callable[[X, Y], R]` syntax
 - [x] `Callable[..., R]` gradual form
@@ -247,13 +225,11 @@ This page summarizes the support for various type system features in ty. Section
 - [ ] `Concatenate` #1535
 - [ ] `Unpack` for `**kwargs` typing #1746
 
-**mdtest references:**
-[annotations/callable.md](https://github.com/astral-sh/ruff/blob/main/crates/ty_python_semantic/resources/mdtest/annotations/callable.md),
-[call/callable_instance.md](https://github.com/astral-sh/ruff/blob/main/crates/ty_python_semantic/resources/mdtest/call/callable_instance.md)
-
 ## Overloads
 
 [Official documentation](https://typing.python.org/en/latest/spec/overload.html)
+
+**tests:** [`overloads.md`](https://github.com/astral-sh/ruff/blob/main/crates/ty_python_semantic/resources/mdtest/overloads.md), [`call/overloads.md`](https://github.com/astral-sh/ruff/blob/main/crates/ty_python_semantic/resources/mdtest/call/overloads.md)
 
 - [x] `@overload` decorator
 - [x] Overload resolution
@@ -270,13 +246,11 @@ This page summarizes the support for various type system features in ty. Section
 - [ ] Implementation consistency check #109
 - [ ] `@overload` with other decorators #1675
 
-**mdtest references:**
-[overloads.md](https://github.com/astral-sh/ruff/blob/main/crates/ty_python_semantic/resources/mdtest/overloads.md),
-[call/overloads.md](https://github.com/astral-sh/ruff/blob/main/crates/ty_python_semantic/resources/mdtest/call/overloads.md)
-
 ## Dataclasses
 
 [Official documentation](https://typing.python.org/en/latest/spec/dataclasses.html)
+
+**tests:** [`dataclasses.md`](https://github.com/astral-sh/ruff/blob/main/crates/ty_python_semantic/resources/mdtest/dataclasses/dataclasses.md), [`fields.md`](https://github.com/astral-sh/ruff/blob/main/crates/ty_python_semantic/resources/mdtest/dataclasses/fields.md)
 
 - [x] `@dataclass` decorator (`init`, `repr`, `eq`, `order`, `frozen`, `match_args`, `kw_only`, `slots`, `weakref_slot`, `unsafe_hash`)
 - [x] `field()` (`default`, `default_factory`, `init`, `kw_only`, `doc`, `repr`, `hash`, `compare`)
@@ -295,13 +269,11 @@ This page summarizes the support for various type system features in ty. Section
 - [ ] `__post_init__` signature validation #111
 - [ ] Diagnostic: unsound subclassing of `order=True` dataclasses #1681
 
-**mdtest references:**
-[dataclasses/dataclasses.md](https://github.com/astral-sh/ruff/blob/main/crates/ty_python_semantic/resources/mdtest/dataclasses/dataclasses.md),
-[dataclasses/fields.md](https://github.com/astral-sh/ruff/blob/main/crates/ty_python_semantic/resources/mdtest/dataclasses/fields.md)
-
 ## `dataclass_transform`
 
 [Official documentation](https://typing.python.org/en/latest/spec/dataclasses.html#dataclass-transform)
+
+**tests:** [`dataclass_transform.md`](https://github.com/astral-sh/ruff/blob/main/crates/ty_python_semantic/resources/mdtest/dataclasses/dataclass_transform.md)
 
 - [x] Function-based, metaclass-based, base-class-based transformers
 - [x] `eq_default`, `order_default`, `kw_only_default` parameters
@@ -309,12 +281,11 @@ This page summarizes the support for various type system features in ty. Section
 - [x] `field_specifiers` (`init`, `default`, `default_factory`, `factory`, `kw_only`, `alias`)
 - [ ] `field_specifiers` (`converter`) #1327
 
-**mdtest references:**
-[dataclasses/dataclass_transform.md](https://github.com/astral-sh/ruff/blob/main/crates/ty_python_semantic/resources/mdtest/dataclasses/dataclass_transform.md)
-
 ## Constructors
 
 [Official documentation](https://typing.python.org/en/latest/spec/constructors.html)
+
+**tests:** [`constructor.md`](https://github.com/astral-sh/ruff/blob/main/crates/ty_python_semantic/resources/mdtest/call/constructor.md)
 
 - [x] `__init__` signature inference
 - [x] `__new__` signature inference
@@ -328,12 +299,11 @@ This page summarizes the support for various type system features in ty. Section
 - [ ] `__new__`/`__init__` consistency validation
 - [ ] Diagnostic: explicit `__init__` on instance #1016
 
-**mdtest references:**
-[call/constructor.md](https://github.com/astral-sh/ruff/blob/main/crates/ty_python_semantic/resources/mdtest/call/constructor.md)
-
 ## Type aliases
 
 [Official documentation](https://typing.python.org/en/latest/spec/aliases.html)
+
+**tests:** [`pep695_type_aliases.md`](https://github.com/astral-sh/ruff/blob/main/crates/ty_python_semantic/resources/mdtest/pep695_type_aliases.md), [`pep613_type_aliases.md`](https://github.com/astral-sh/ruff/blob/main/crates/ty_python_semantic/resources/mdtest/pep613_type_aliases.md), [`implicit_type_aliases.md`](https://github.com/astral-sh/ruff/blob/main/crates/ty_python_semantic/resources/mdtest/implicit_type_aliases.md)
 
 - [x] Implicit type aliases (`Alias = int`)
 - [ ] PEP 613 `TypeAlias` annotation: fully stringified RHS not supported
@@ -343,14 +313,11 @@ This page summarizes the support for various type system features in ty. Section
 - [ ] Self-referential generic aliases #1738
 - [x] `TypeAliasType` introspection (`__name__`, `__value__`)
 
-**mdtest references:**
-[pep695_type_aliases.md](https://github.com/astral-sh/ruff/blob/main/crates/ty_python_semantic/resources/mdtest/pep695_type_aliases.md),
-[pep613_type_aliases.md](https://github.com/astral-sh/ruff/blob/main/crates/ty_python_semantic/resources/mdtest/pep613_type_aliases.md),
-[implicit_type_aliases.md](https://github.com/astral-sh/ruff/blob/main/crates/ty_python_semantic/resources/mdtest/implicit_type_aliases.md)
-
 ## Type checker directives
 
 [Official documentation](https://typing.python.org/en/latest/spec/directives.html)
+
+**tests:** [`directives/`](https://github.com/astral-sh/ruff/blob/main/crates/ty_python_semantic/resources/mdtest/directives/)
 
 - [x] `cast(T, value)`
 - [x] `assert_type(value, T)`
@@ -364,12 +331,11 @@ This page summarizes the support for various type system features in ty. Section
 - [ ] Diagnostic: override without `@override` decorator #155
 - [x] Redundant `cast` diagnostic
 
-**mdtest references:**
-[directives/](https://github.com/astral-sh/ruff/blob/main/crates/ty_python_semantic/resources/mdtest/directives/)
-
 ## Module resolution
 
 [Official documentation](https://typing.python.org/en/latest/spec/distributing.html)
+
+**tests:** [`import/`](https://github.com/astral-sh/ruff/blob/main/crates/ty_python_semantic/resources/mdtest/import/)
 
 - [x] Stub files (`.pyi`)
 - [x] Stub packages (`<package>-stubs`)
@@ -391,10 +357,9 @@ This page summarizes the support for various type system features in ty. Section
 - [ ] conda/pixi environment support #265
 - [ ] Per-library import suppression #1354
 
-**mdtest references:**
-[import/](https://github.com/astral-sh/ruff/blob/main/crates/ty_python_semantic/resources/mdtest/import/)
-
 ## Control flow analysis
+
+**tests:** [`terminal_statements.md`](https://github.com/astral-sh/ruff/blob/main/crates/ty_python_semantic/resources/mdtest/terminal_statements.md), [`exhaustiveness_checking.md`](https://github.com/astral-sh/ruff/blob/main/crates/ty_python_semantic/resources/mdtest/exhaustiveness_checking.md), [`unreachable.md`](https://github.com/astral-sh/ruff/blob/main/crates/ty_python_semantic/resources/mdtest/unreachable.md), [`exception/control_flow.md`](https://github.com/astral-sh/ruff/blob/main/crates/ty_python_semantic/resources/mdtest/exception/control_flow.md)
 
 - [x] Terminal statements (`return`, `raise`)
 - [x] Loop control flow (`break`, `continue`)
@@ -412,15 +377,11 @@ This page summarizes the support for various type system features in ty. Section
 - [ ] Cyclic control flow (loop back edges) #232
 - [ ] Gray out unreachable code #784
 
-**mdtest references:**
-[terminal_statements.md](https://github.com/astral-sh/ruff/blob/main/crates/ty_python_semantic/resources/mdtest/terminal_statements.md),
-[exhaustiveness_checking.md](https://github.com/astral-sh/ruff/blob/main/crates/ty_python_semantic/resources/mdtest/exhaustiveness_checking.md),
-[unreachable.md](https://github.com/astral-sh/ruff/blob/main/crates/ty_python_semantic/resources/mdtest/unreachable.md),
-[exception/control_flow.md](https://github.com/astral-sh/ruff/blob/main/crates/ty_python_semantic/resources/mdtest/exception/control_flow.md)
-
 ## Invalid overrides
 
 (Liskov Substitution Principle)
+
+**tests:** [`liskov.md`](https://github.com/astral-sh/ruff/blob/main/crates/ty_python_semantic/resources/mdtest/liskov.md), [`override.md`](https://github.com/astral-sh/ruff/blob/main/crates/ty_python_semantic/resources/mdtest/override.md)
 
 - [x] Covariant return types
 - [x] Contravariant parameter types
@@ -434,21 +395,18 @@ This page summarizes the support for various type system features in ty. Section
 - [ ] Method overridden by non-method
 - [ ] Non-method overridden by non-method
 
-**mdtest references:**
-[override.md](https://github.com/astral-sh/ruff/blob/main/crates/ty_python_semantic/resources/mdtest/override.md)
-
 ## Abstract base classes
+
+**tests:** [`return_type.md`](https://github.com/astral-sh/ruff/blob/main/crates/ty_python_semantic/resources/mdtest/function/return_type.md), [`overloads.md`](https://github.com/astral-sh/ruff/blob/main/crates/ty_python_semantic/resources/mdtest/overloads.md)
 
 - [x] `@abstractmethod` decorator
 - [x] Empty body allowed for abstract methods
 - [x] `@abstractmethod` with `@overload` validation
 - [ ] Diagnostic: instantiating abstract class #1877
 
-**mdtest references:**
-[function/return_type.md](https://github.com/astral-sh/ruff/blob/main/crates/ty_python_semantic/resources/mdtest/function/return_type.md),
-[overloads.md](https://github.com/astral-sh/ruff/blob/main/crates/ty_python_semantic/resources/mdtest/overloads.md)
-
 ## `__slots__`
+
+**tests:** [`instance_layout_conflict.md`](https://github.com/astral-sh/ruff/blob/main/crates/ty_python_semantic/resources/mdtest/instance_layout_conflict.md)
 
 - [x] `__slots__` (string or tuple of strings)
 - [ ] `__slots__` (list, dict, set literals)
@@ -457,9 +415,6 @@ This page summarizes the support for various type system features in ty. Section
 - [ ] Diagnostic: class variable shadowing `__slots__` name #1268
 - [ ] `__dict__`/`__weakref__` presence validation #1268
 - [ ] Diagnostic: non-empty `__slots__` on builtin subclasses #1268
-
-**mdtest references:**
-[instance_layout_conflict.md](https://github.com/astral-sh/ruff/blob/main/crates/ty_python_semantic/resources/mdtest/instance_layout_conflict.md)
 
 ## Standard library
 
