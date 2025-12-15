@@ -103,10 +103,8 @@ This page summarizes the support for various type system features in ty.
 | Generic type aliases (PEP 695)                    | ⚠️ some limitations [#1851](https://github.com/astral-sh/ty/issues/1851) |
 | `ParamSpec` (legacy and PEP 695 syntax)           | ✅                                                                       |
 | `ParamSpec.args`, `ParamSpec.kwargs`              | ✅                                                                       |
-| `Concatenate`                                     | ❌ [#1535](https://github.com/astral-sh/ty/issues/1535)                  |
 | `ParamSpec` defaults                              | ✅                                                                       |
 | `TypeVarTuple`                                    | ❌ [#156](https://github.com/astral-sh/ty/issues/156)                    |
-| `Unpack` for `*args` typing                       | ❌ [#156](https://github.com/astral-sh/ty/issues/156)                    |
 | `Self`                                            | ✅                                                                       |
 | Generic bounds/constraints on type variables      | ❌ [#1839](https://github.com/astral-sh/ty/issues/1839)                  |
 | `ParamSpec` usage validation                      | ❌ [#1861](https://github.com/astral-sh/ty/issues/1861)                  |
@@ -194,6 +192,41 @@ This page summarizes the support for various type system features in ty.
 | Tuple length checks                       | ❌ [#560](https://github.com/astral-sh/ty/issues/560)   |
 | Tuple match case narrowing                | ❌ [#561](https://github.com/astral-sh/ty/issues/561)   |
 
+## Constructors
+
+[Official documentation](https://typing.python.org/en/latest/spec/constructors.html)
+
+| Feature                                       | Status                                                  |
+| --------------------------------------------- | ------------------------------------------------------- |
+| `__init__` signature inference                | ✅                                                      |
+| `__new__` signature inference                 | ✅                                                      |
+| Constructor inheritance from superclass       | ✅                                                      |
+| Both `__new__` and `__init__` present         | ✅                                                      |
+| Descriptor-based `__new__`/`__init__`         | ✅                                                      |
+| Generic class constructor inference           | ✅                                                      |
+| Type variable solving from constructor params | ✅                                                      |
+| Custom `__new__` return type                  | ❌ [#281](https://github.com/astral-sh/ty/issues/281)   |
+| Custom metaclass `__call__`                   | ❌                                                      |
+| `__new__`/`__init__` consistency validation   | ❌                                                      |
+| Diagnostic: explicit `__init__` on instance   | ❌ [#1016](https://github.com/astral-sh/ty/issues/1016) |
+
+## Callables
+
+[Official documentation](https://typing.python.org/en/latest/spec/callables.html)
+
+| Feature                                    | Status                                                  |
+| ------------------------------------------ | ------------------------------------------------------- |
+| `Callable[[X, Y], R]` syntax               | ✅                                                      |
+| `Callable[..., R]` gradual form            | ✅                                                      |
+| `Callable` with `ParamSpec`                | ✅                                                      |
+| Callback protocols (`__call__` method)     | ✅                                                      |
+| Callable assignability (contra/covariance) | ✅                                                      |
+| Nested `Callable` types                    | ✅                                                      |
+| `Callable` in unions/intersections         | ✅                                                      |
+| Invalid form diagnostics                   | ✅                                                      |
+| `Concatenate`                              | ❌ [#1535](https://github.com/astral-sh/ty/issues/1535) |
+| `Unpack` for `**kwargs` typing             | ❌ [#1746](https://github.com/astral-sh/ty/issues/1746) |
+
 ## Special types and type qualifiers
 
 [Official documentation](https://typing.python.org/en/latest/spec/special-types.html)
@@ -206,9 +239,6 @@ This page summarizes the support for various type system features in ty.
 | `object`                                          | ✅                                                                                  |
 | `Literal[...]` (strings, ints, bools, enum, None) | ✅                                                                                  |
 | `LiteralString`                                   | ✅                                                                                  |
-| `Callable[[...], R]`                              | ✅                                                                                  |
-| `Callable[..., R]` (arbitrary arguments)          | ✅                                                                                  |
-| `Callable` with `ParamSpec`                       | ✅                                                                                  |
 | `type[C]`                                         | ✅                                                                                  |
 | `Final`, `Final[T]`                               | ⚠️ no error on subclass override [#871](https://github.com/astral-sh/ty/issues/871) |
 | Diagnostic: `Final` without binding               | ❌ [#872](https://github.com/astral-sh/ty/issues/872)                               |
