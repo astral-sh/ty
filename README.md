@@ -6,6 +6,11 @@
 
 An extremely fast Python type checker and language server, written in Rust.
 
+<picture>
+  <img src="./assets/example-unresolved-import-dark.png" alt="An example `unresolved-import`
+  diagnostic for tomllib" />
+</picture>
+
 ## Getting started
 
 Run ty with [uvx](https://docs.astral.sh/uv/guides/tools/#running-tools) to get started quickly:
