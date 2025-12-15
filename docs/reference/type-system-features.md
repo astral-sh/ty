@@ -10,26 +10,28 @@ with some additional sections at the end.
 
 [Official documentation](https://typing.python.org/en/latest/spec/special-types.html)
 
-| Feature                                           | Status                                                                              |
-| ------------------------------------------------- | ----------------------------------------------------------------------------------- |
-| `Any`                                             | ✅                                                                                  |
-| `None`                                            | ✅                                                                                  |
-| `NoReturn`, `Never`                               | ✅                                                                                  |
-| `object`                                          | ✅                                                                                  |
-| `Literal[...]` (strings, ints, bools, enum, None) | ✅                                                                                  |
-| `LiteralString`                                   | ✅                                                                                  |
-| `type[C]`                                         | ✅                                                                                  |
-| `Final`, `Final[T]`                               | ⚠️ no error on subclass override [#871](https://github.com/astral-sh/ty/issues/871) |
-| Diagnostic: `Final` without binding               | ❌ [#872](https://github.com/astral-sh/ty/issues/872)                               |
-| `@final` decorator                                | ✅                                                                                  |
-| `ClassVar`, `ClassVar[T]`                         | ⚠️ allows type variables [#518](https://github.com/astral-sh/ty/issues/518)         |
-| `type()` functional syntax                        | ❌ [#740](https://github.com/astral-sh/ty/issues/740)                               |
-| `InitVar[T]` (see Dataclasses)                    | ✅                                                                                  |
-| `Annotated[T, ...]`                               | ✅                                                                                  |
-| `Required[T]`, `NotRequired[T]` (see TypedDict)   | ✅                                                                                  |
-| `ReadOnly[T]` (see TypedDict)                     | ✅                                                                                  |
-| `Union[X, Y]`, `X \| Y`                           | ✅                                                                                  |
-| `Optional[X]`                                     | ✅                                                                                  |
+| Feature                                           | Status                                                |
+| ------------------------------------------------- | ----------------------------------------------------- |
+| `Any`                                             | ✅                                                    |
+| `None`                                            | ✅                                                    |
+| `NoReturn`, `Never`                               | ✅                                                    |
+| `object`                                          | ✅                                                    |
+| `Literal[...]` (strings, ints, bools, enum, None) | ✅                                                    |
+| `LiteralString`                                   | ✅                                                    |
+| `type[C]`                                         | ✅                                                    |
+| `Final`, `Final[T]`                               | ✅                                                    |
+| Diagnostic: subclass overrides `Final` attribute  | ❌ [#871](https://github.com/astral-sh/ty/issues/871) |
+| Diagnostic: `Final` without binding               | ❌ [#872](https://github.com/astral-sh/ty/issues/872) |
+| `@final` decorator                                | ✅                                                    |
+| `ClassVar`, `ClassVar[T]`                         | ✅                                                    |
+| Diagnostic: `ClassVar` with type variable         | ❌ [#518](https://github.com/astral-sh/ty/issues/518) |
+| `type()` functional syntax                        | ❌ [#740](https://github.com/astral-sh/ty/issues/740) |
+| `InitVar[T]` (see Dataclasses)                    | ✅                                                    |
+| `Annotated[T, ...]`                               | ✅                                                    |
+| `Required[T]`, `NotRequired[T]` (see TypedDict)   | ✅                                                    |
+| `ReadOnly[T]` (see TypedDict)                     | ✅                                                    |
+| `Union[X, Y]`, `X \| Y`                           | ✅                                                    |
+| `Optional[X]`                                     | ✅                                                    |
 
 ## Generics
 
@@ -315,18 +317,19 @@ with some additional sections at the end.
 
 [Official documentation](https://typing.python.org/en/latest/spec/directives.html)
 
-| Feature                     | Status                       |
-| --------------------------- | ---------------------------- |
-| `cast(T, value)`            | ✅                           |
-| `assert_type(value, T)`     | ✅                           |
-| `assert_never(value)`       | ✅                           |
-| `reveal_type(value)`        | ✅                           |
-| `TYPE_CHECKING` constant    | ✅                           |
-| `no_type_check` decorator   | ✅                           |
-| `type: ignore` comments     | ✅                           |
-| `@deprecated` decorator     | ✅                           |
-| `@override` decorator       | ⚠️ strict mode not supported |
-| Redundant `cast` diagnostic | ✅                           |
+| Feature                                            | Status                                                |
+| -------------------------------------------------- | ----------------------------------------------------- |
+| `cast(T, value)`                                   | ✅                                                    |
+| `assert_type(value, T)`                            | ✅                                                    |
+| `assert_never(value)`                              | ✅                                                    |
+| `reveal_type(value)`                               | ✅                                                    |
+| `TYPE_CHECKING` constant                           | ✅                                                    |
+| `no_type_check` decorator                          | ✅                                                    |
+| `type: ignore` comments                            | ✅                                                    |
+| `@deprecated` decorator                            | ✅                                                    |
+| `@override` decorator                              | ✅                                                    |
+| Diagnostic: override without `@override` decorator | ❌ [#155](https://github.com/astral-sh/ty/issues/155) |
+| Redundant `cast` diagnostic                        | ✅                                                    |
 
 ## Module resolution
 
