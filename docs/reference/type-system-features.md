@@ -17,12 +17,12 @@ This page summarizes the support for various type system features in ty. Section
 - [x] `type[C]`
 - [x] `float`/`complex` special cases (`float` means `int | float`)
 - [x] `Final`, `Final[T]`
-- [ ] Diagnostic: subclass overrides `Final` attribute #871
-- [ ] Diagnostic: `Final` without binding #872
+    - [ ] Diagnostic: subclass overrides `Final` attribute #871
+    - [ ] Diagnostic: `Final` without binding #872
 - [x] `@final` decorator
 - [x] `@disjoint_base` decorator
 - [x] `ClassVar`, `ClassVar[T]`
-- [ ] Diagnostic: `ClassVar` with type variable #518
+    - [ ] Diagnostic: `ClassVar` with type variable #518
 - [ ] `type()` functional syntax #740
 - [x] `InitVar[T]` (see Dataclasses)
 - [x] `Annotated[T, ...]`
@@ -46,7 +46,8 @@ This page summarizes the support for various type system features in ty. Section
 - [x] `TypeVar` variance inference (`infer_variance`)
 - [x] Generic classes (legacy and PEP 695 syntax)
 - [x] Generic functions (legacy and PEP 695 syntax)
-- [ ] Generic type aliases (PEP 695): some limitations #1851
+- [x] Generic type aliases (PEP 695)
+    - [ ] Some limitations #1851
 - [x] `ParamSpec` (legacy and PEP 695 syntax)
 - [x] `ParamSpec.args`, `ParamSpec.kwargs`
 - [x] `ParamSpec` defaults
@@ -54,6 +55,8 @@ This page summarizes the support for various type system features in ty. Section
 - [x] `Self`
 - [ ] `Self` in attribute annotations #1124
 - [ ] Generic bounds/constraints on type variables #1839
+- [ ] `Callable`s in typevar solving
+- [ ] Generic protocols in typevar solving #1714
 - [ ] `ParamSpec` usage validation #1861
 
 ## Protocols
@@ -70,7 +73,8 @@ This page summarizes the support for various type system features in ty. Section
 - [x] `@runtime_checkable` decorator
 - [x] Protocol instantiation restriction
 - [x] Non-protocol class inheritance restriction
-- [ ] `@property` members: partial #1379
+- [x] `@property` members
+    - [ ] Partial support #1379
 - [ ] Modules as protocol implementations #931
 - [ ] `@classmethod` and `@staticmethod` members #1381
 - [ ] `ClassVar` members #1380
@@ -116,7 +120,7 @@ This page summarizes the support for various type system features in ty. Section
 - [x] Covariant element types
 - [x] Tuple inheritance
 - [x] Unpacking in assignments
-- [ ] `*args` unpacking in calls #891
+- [x] `*args` unpacking in calls
 - [ ] Diagnostic: invalid comparisons for non-fixed-length tuples #1741
 - [ ] `TypeVarTuple` / `Unpack` #156
 
@@ -141,7 +145,8 @@ This page summarizes the support for various type system features in ty. Section
 - [ ] Functional syntax (`NamedTuple("Foo", [...])`) #1049
 - [ ] `collections.namedtuple`: not tested
 - [ ] Subclass field conflicting with base class field: not tested
-- [ ] `type[NamedTuple]` in type expressions: not fully supported
+- [x] `type[NamedTuple]` in type expressions
+    - [ ] Not fully supported
 
 ## `TypedDict`
 
@@ -178,12 +183,18 @@ This page summarizes the support for various type system features in ty. Section
 - [x] `auto()` value inference
 - [x] `member()`, `nonmember()`
 - [x] Enum aliases
-- [ ] `_ignore_` attribute: list form not fully supported
+- [x] `_ignore_` attribute
+    - [ ] List form not fully supported
 - [x] Implicitly final (subclassing restriction)
 - [x] Exhaustiveness checking (`if`/`match`)
 - [x] Custom `__eq__`/`__ne__` methods
-- [ ] Iteration over enum members: `list(Enum)` returns `list[Unknown]`
-- [ ] Functional syntax (`Enum("Name", [...])`)
+- [x] Iteration over enum members
+    - [ ] `list(Enum)` returns `list[Unknown]`
+- [ ] Functional syntax (`Enum("Name", [...])`) #876
+- [ ] `enum.Flag` expansion handling #876
+- [ ] Custom `__new__` or `__init__` methods #876
+- [ ] `_generate_next_value_` support #876
+- [ ] Value-based member retrieval (`Color("red")`) #876
 - [ ] Narrowing with custom `__eq__` in `match` #1454
 
 ## Literals
@@ -258,8 +269,10 @@ This page summarizes the support for various type system features in ty. Section
 - [x] `fields()`, `__dataclass_fields__`
 - [x] `Final` fields
 - [x] Inheritance, generic dataclasses, descriptor-typed fields
-- [ ] `replace()`, `__replace__`: `__replace__` works, `replace()` returns `Unknown`
-- [ ] `asdict()`: incorrectly accepts class objects
+- [x] `replace()`, `__replace__`
+    - [ ] `replace()` returns `Unknown`
+- [x] `asdict()`
+    - [ ] Incorrectly accepts class objects
 - [ ] `astuple()`: not tested
 - [ ] `make_dataclass()`, `is_dataclass()`: not tested
 - [x] Diagnostic: frozen/non-frozen dataclass inheritance
@@ -277,7 +290,8 @@ This page summarizes the support for various type system features in ty. Section
 
 - [x] Function-based, metaclass-based, base-class-based transformers
 - [x] `eq_default`, `order_default`, `kw_only_default` parameters
-- [ ] `frozen_default` parameter: metaclass override not working
+- [x] `frozen_default` parameter
+    - [ ] Metaclass override not working
 - [x] `field_specifiers` (`init`, `default`, `default_factory`, `factory`, `kw_only`, `alias`)
 - [ ] `field_specifiers` (`converter`) #1327
 
@@ -306,10 +320,13 @@ This page summarizes the support for various type system features in ty. Section
 **tests:** [`pep695_type_aliases.md`](https://github.com/astral-sh/ruff/blob/main/crates/ty_python_semantic/resources/mdtest/pep695_type_aliases.md), [`pep613_type_aliases.md`](https://github.com/astral-sh/ruff/blob/main/crates/ty_python_semantic/resources/mdtest/pep613_type_aliases.md), [`implicit_type_aliases.md`](https://github.com/astral-sh/ruff/blob/main/crates/ty_python_semantic/resources/mdtest/implicit_type_aliases.md)
 
 - [x] Implicit type aliases (`Alias = int`)
-- [ ] PEP 613 `TypeAlias` annotation: fully stringified RHS not supported
+- [x] PEP 613 `TypeAlias` annotation
+    - [ ] Fully stringified RHS not supported
 - [x] PEP 695 `type` statement
-- [ ] Generic type aliases (PEP 695): limitations #1851
-- [ ] Generic implicit/PEP 613 aliases: partial #1739
+- [x] Generic type aliases (PEP 695)
+    - [ ] Limitations #1851
+- [x] Generic implicit/PEP 613 aliases
+    - [ ] Partial support #1739
 - [ ] Self-referential generic aliases #1738
 - [x] `TypeAliasType` introspection (`__name__`, `__value__`)
 
@@ -364,7 +381,8 @@ This page summarizes the support for various type system features in ty. Section
 - [x] Terminal statements (`return`, `raise`)
 - [x] Loop control flow (`break`, `continue`)
 - [x] `for`/`while` loop analysis
-- [ ] `try`/`except`/`else`/`finally` control flow: `finally` limitations #233
+- [x] `try`/`except`/`else`/`finally` control flow
+    - [ ] `finally` limitations #233
 - [x] `Never`/`NoReturn` function propagation
 - [x] Exhaustiveness checking (`if`/`elif`/`else`)
 - [x] Exhaustiveness checking (`match`)
