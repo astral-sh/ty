@@ -14,7 +14,7 @@ Run ty with [uvx](https://docs.astral.sh/uv/guides/tools/#running-tools) to get 
 uvx ty check
 ```
 
-Or, check out the [online ty playground](https://play.ty.dev) to try it out on a snippet.
+Or, check out the [ty playground](https://play.ty.dev) to try it out in your browser.
 
 To learn more about using ty, see the [documentation](https://docs.astral.sh/ty/).
 
