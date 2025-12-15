@@ -49,3 +49,18 @@ All patterns are anchored: The pattern `src` only includes `<project_root>/src` 
     A prefix include pattern like `**/src` can notably slow down the Python file discovery.
 
 All fields accepting patterns use the reduced portable glob syntax from [PEP 639](https://peps.python.org/pep-0639/#add-license-FILES-key), with the addition that characters can be escaped with a backslash.
+
+## Excluding files from virtual environments
+
+In Python 3.13+, the `venv` module will add a `.gitignore` file to the virtual environment root and
+ty will not emit diagnostics for the contained files. However, when using an older version of
+Python, ty may include diagnostics for files in the virtual environment.
+
+You can resolve this by adding a `.gitignore` to the environment, e.g., for a virtual environment
+named `.venv`:
+
+```shell
+echo "*" > .venv/.gitignore
+```
+
+Or by adding your virtual environment to your `.gitignore` or `.ignore` file.
