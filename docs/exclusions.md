@@ -10,6 +10,8 @@ include = ["src", "tests"]
 exclude = ["src/generated"]
 ```
 
+## Default exclusions
+
 By default, ty excludes a [variety of commonly ignored directories](./reference/configuration.md#exclude). If you want to include one of these directories, you can do so by adding a negative `exclude`:
 
 ```toml
@@ -20,7 +22,9 @@ exclude = ["!**/build/"]
 
 By default, ty ignores files listed in an `.ignore` or `.gitignore` file. To disable this functionality, set [`respect-ignore-files`](./reference/configuration.md#respect-ignore-files) to `false`.
 
-You may also explicitly pass the paths that ty should check, e.g.:
+## Explicit targets
+
+You may explicitly pass the paths that ty should check, e.g.:
 
 ```shell
 ty check src scripts/benchmark.py
