@@ -1,6 +1,6 @@
 # Type system features
 
-This page summarizes the support for various type system features in ty. Sections are organized to follow the structure of the [Python typing specification](https://typing.python.org/en/latest/spec/), with some additional sections at the end.
+This issue summarizes the support for various type system features in ty. Sections are organized to follow the structure of the [Python typing specification](https://typing.python.org/en/latest/spec/), with some additional sections at the end.
 
 ## Special types and type qualifiers
 
@@ -49,6 +49,7 @@ This page summarizes the support for various type system features in ty. Section
 - [x] Generic type aliases (PEP 695)
     - [ ] Some limitations #1851
 - [x] `ParamSpec` (legacy and PEP 695 syntax)
+    - [ ] `ParamSpec` usage validation #1861
 - [x] `ParamSpec.args`, `ParamSpec.kwargs`
 - [x] `ParamSpec` defaults
 - [ ] `TypeVarTuple` #156
@@ -57,7 +58,6 @@ This page summarizes the support for various type system features in ty. Section
 - [ ] Generic bounds/constraints on type variables #1839
 - [ ] `Callable`s in typevar solving
 - [ ] Generic protocols in typevar solving #1714
-- [ ] `ParamSpec` usage validation #1861
 
 ## Protocols
 
@@ -378,9 +378,9 @@ This page summarizes the support for various type system features in ty. Section
 - [x] Reachability constraints in imports
 - [x] Cyclic imports
 - [x] `py.typed` marker files
-- [ ] `conftest.py` resolution (pytest) #414
-- [ ] Compiled extensions (`.so` files) #715
-- [ ] conda/pixi environment support #265
+- [x] `conftest.py` resolution (pytest)
+- [x] conda/pixi environment support
+- [ ] Compiled extensions (`.so` files) #487
 - [ ] Per-library import suppression #1354
 
 ## Control flow analysis
