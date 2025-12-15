@@ -8,23 +8,24 @@ This page summarizes the support for various type system features in ty.
 
 [Official documentation](https://typing.python.org/en/latest/spec/dataclasses.html)
 
-| Feature                                                                                                                           | Status                                                |
-| :-------------------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------- |
-| `@dataclass` decorator (`init`, `repr`, `eq`, `order`, `frozen`, `match_args`, `kw_only`, `slots`, `weakref_slot`, `unsafe_hash`) | ✅                                                    |
-| `field()` (`default`, `default_factory`, `init`, `kw_only`, `doc`, `repr`, `hash`, `compare`)                                     | ✅                                                    |
-| `InitVar[…]`, `ClassVar[…]` exclusion, `KW_ONLY` sentinel                                                                         | ✅                                                    |
-| `fields()`, `__dataclass_fields__`                                                                                                | ✅                                                    |
-| `Final` fields                                                                                                                    | ✅                                                    |
-| Inheritance, generic dataclasses, descriptor-typed fields                                                                         | ✅                                                    |
-| `replace()`, `__replace__`                                                                                                        | ⚠️ `__replace__` works, `replace()` returns `Unknown` |
-| `asdict()`                                                                                                                        | ⚠️ incorrectly accepts class objects                  |
-| `astuple()`                                                                                                                       | ⚠️ not tested                                         |
-| `make_dataclass()`, `is_dataclass()`                                                                                              | ⚠️ not tested                                         |
-| Diagnostic: frozen dataclass inheriting from non-frozen                                                                           | ⚠️ not tested                                         |
-| Diagnostic: non-default field after default field                                                                                 | ❌ [#111](https://github.com/astral-sh/ty/issues/111) |
-| Diagnostic: `order=True` with custom comparison methods                                                                           | ❌ [#111](https://github.com/astral-sh/ty/issues/111) |
-| Diagnostic: `frozen=True` with `__setattr__`/`__delattr__`                                                                        | ❌ [#111](https://github.com/astral-sh/ty/issues/111) |
-| `__post_init__` signature validation                                                                                              | ❌ [#111](https://github.com/astral-sh/ty/issues/111) |
+| Feature                                                                                                                           | Status                                                  |
+| :-------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------ |
+| `@dataclass` decorator (`init`, `repr`, `eq`, `order`, `frozen`, `match_args`, `kw_only`, `slots`, `weakref_slot`, `unsafe_hash`) | ✅                                                      |
+| `field()` (`default`, `default_factory`, `init`, `kw_only`, `doc`, `repr`, `hash`, `compare`)                                     | ✅                                                      |
+| `InitVar[…]`, `ClassVar[…]` exclusion, `KW_ONLY` sentinel                                                                         | ✅                                                      |
+| `fields()`, `__dataclass_fields__`                                                                                                | ✅                                                      |
+| `Final` fields                                                                                                                    | ✅                                                      |
+| Inheritance, generic dataclasses, descriptor-typed fields                                                                         | ✅                                                      |
+| `replace()`, `__replace__`                                                                                                        | ⚠️ `__replace__` works, `replace()` returns `Unknown`   |
+| `asdict()`                                                                                                                        | ⚠️ incorrectly accepts class objects                    |
+| `astuple()`                                                                                                                       | ⚠️ not tested                                           |
+| `make_dataclass()`, `is_dataclass()`                                                                                              | ⚠️ not tested                                           |
+| Diagnostic: frozen dataclass inheriting from non-frozen                                                                           | ⚠️ not tested                                           |
+| Diagnostic: non-default field after default field                                                                                 | ❌ [#111](https://github.com/astral-sh/ty/issues/111)   |
+| Diagnostic: `order=True` with custom comparison methods                                                                           | ❌ [#111](https://github.com/astral-sh/ty/issues/111)   |
+| Diagnostic: `frozen=True` with `__setattr__`/`__delattr__`                                                                        | ❌ [#111](https://github.com/astral-sh/ty/issues/111)   |
+| `__post_init__` signature validation                                                                                              | ❌ [#111](https://github.com/astral-sh/ty/issues/111)   |
+| Diagnostic: unsound subclassing of `order=True` dataclasses                                                                       | ❌ [#1681](https://github.com/astral-sh/ty/issues/1681) |
 
 ## `dataclass_transform`
 
@@ -107,6 +108,8 @@ This page summarizes the support for various type system features in ty.
 | `TypeVarTuple`                                    | ❌ [#156](https://github.com/astral-sh/ty/issues/156)                    |
 | `Unpack` for `*args` typing                       | ❌ [#156](https://github.com/astral-sh/ty/issues/156)                    |
 | `Self`                                            | ✅                                                                       |
+| Generic bounds/constraints on type variables      | ❌ [#1839](https://github.com/astral-sh/ty/issues/1839)                  |
+| `ParamSpec` usage validation                      | ❌ [#1861](https://github.com/astral-sh/ty/issues/1861)                  |
 
 ## Protocols
 
@@ -127,6 +130,7 @@ This page summarizes the support for various type system features in ty.
 | `@classmethod` and `@staticmethod` members    | ❌ [#1381](https://github.com/astral-sh/ty/issues/1381)         |
 | `ClassVar` members                            | ❌ [#1380](https://github.com/astral-sh/ty/issues/1380)         |
 | `type[SomeProtocol]`                          | ❌ [#903](https://github.com/astral-sh/ty/issues/903)           |
+| `issubclass()` on protocols with non-methods  | ❌ [#1878](https://github.com/astral-sh/ty/issues/1878)         |
 
 ## Overloads
 
@@ -145,6 +149,9 @@ This page summarizes the support for various type system features in ty.
 | Diagnostic: `@final`/`@override` placement             | ✅                                                                 |
 | Variadic parameters with generics                      | ⚠️ [#1825](https://github.com/astral-sh/ty/issues/1825)            |
 | Unannotated implementation validation                  | ⚠️ not tested [#1232](https://github.com/astral-sh/ty/issues/1232) |
+| Diagnostic: overlapping overloads                      | ❌ [#103](https://github.com/astral-sh/ty/issues/103)              |
+| Implementation consistency check                       | ❌ [#109](https://github.com/astral-sh/ty/issues/109)              |
+| `@overload` with other decorators                      | ⚠️ [#1675](https://github.com/astral-sh/ty/issues/1675)            |
 
 ## Enums
 
@@ -182,8 +189,10 @@ This page summarizes the support for various type system features in ty.
 | `callable()` narrowing                    | ✅                                                      |
 | Assignment narrowing                      | ✅                                                      |
 | `TypeIs[…]` user-defined type guards      | ✅                                                      |
-| `TypeGuard[…]` user-defined type guards   | ❌ (no narrowing applied yet)                           |
+| `TypeGuard[…]` user-defined type guards   | ❌ [#117](https://github.com/astral-sh/ty/issues/117)   |
 | `TypeIs`/`TypeGuard` as method            | ❌ [#1569](https://github.com/astral-sh/ty/issues/1569) |
+| Tuple length checks                       | ❌ [#560](https://github.com/astral-sh/ty/issues/560)   |
+| Tuple match case narrowing                | ❌ [#561](https://github.com/astral-sh/ty/issues/561)   |
 
 ## Special types and type qualifiers
 
@@ -202,8 +211,10 @@ This page summarizes the support for various type system features in ty.
 | `Callable` with `ParamSpec`                       | ✅                                                                                  |
 | `type[C]`                                         | ✅                                                                                  |
 | `Final`, `Final[T]`                               | ⚠️ no error on subclass override [#871](https://github.com/astral-sh/ty/issues/871) |
+| Diagnostic: `Final` without binding               | ❌ [#872](https://github.com/astral-sh/ty/issues/872)                               |
 | `@final` decorator                                | ✅                                                                                  |
-| `ClassVar`, `ClassVar[T]`                         | ✅                                                                                  |
+| `ClassVar`, `ClassVar[T]`                         | ⚠️ allows type variables [#518](https://github.com/astral-sh/ty/issues/518)         |
+| `type()` functional syntax                        | ❌ [#740](https://github.com/astral-sh/ty/issues/740)                               |
 | `InitVar[T]` (see Dataclasses)                    | ✅                                                                                  |
 | `Annotated[T, ...]`                               | ✅                                                                                  |
 | `Required[T]`, `NotRequired[T]` (see TypedDict)   | ✅                                                                                  |
@@ -259,3 +270,32 @@ This page summarizes the support for various type system features in ty.
 | Synthesized method overrides (dataclasses)   | ✅     |
 | Method overridden by non-method              | ❌     |
 | Non-method overridden by non-method          | ❌     |
+
+## Abstract base classes
+
+| Feature                                            | Status |
+| -------------------------------------------------- | ------ |
+| `@abstractmethod` decorator                        | ✅     |
+| Empty body allowed for abstract methods            | ✅     |
+| `@abstractmethod` with `@overload` validation      | ✅     |
+| Diagnostic: instantiating abstract class           | ❌     |
+| Diagnostic: missing abstract method implementation | ❌     |
+
+## `__slots__`
+
+| Feature                                                 | Status                                                  |
+| ------------------------------------------------------- | ------------------------------------------------------- |
+| Basic `__slots__` recognition                           | ✅                                                      |
+| Attribute resolution from `__slots__`                   | ❌ [#1268](https://github.com/astral-sh/ty/issues/1268) |
+| Diagnostic: access outside `__slots__`                  | ❌ [#1268](https://github.com/astral-sh/ty/issues/1268) |
+| Diagnostic: class variable shadowing `__slots__` name   | ❌ [#1268](https://github.com/astral-sh/ty/issues/1268) |
+| `__dict__`/`__weakref__` presence validation            | ❌ [#1268](https://github.com/astral-sh/ty/issues/1268) |
+| Diagnostic: non-empty `__slots__` on builtin subclasses | ❌ [#1268](https://github.com/astral-sh/ty/issues/1268) |
+
+## Standard library
+
+| Feature                    | Status                                                  |
+| -------------------------- | ------------------------------------------------------- |
+| `@cached_property`         | ❌ [#1446](https://github.com/astral-sh/ty/issues/1446) |
+| `functools.partial`        | ❌ [#1536](https://github.com/astral-sh/ty/issues/1536) |
+| `functools.total_ordering` | ❌ [#1202](https://github.com/astral-sh/ty/issues/1202) |
