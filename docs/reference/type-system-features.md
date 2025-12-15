@@ -385,6 +385,32 @@ This page summarizes the support for various type system features in ty.
 | `__dict__`/`__weakref__` presence validation            | ❌ [#1268](https://github.com/astral-sh/ty/issues/1268) |
 | Diagnostic: non-empty `__slots__` on builtin subclasses | ❌ [#1268](https://github.com/astral-sh/ty/issues/1268) |
 
+## Module resolution
+
+[Official documentation](https://typing.python.org/en/latest/spec/distributing.html)
+
+| Feature                                           | Status                                                  |
+| ------------------------------------------------- | ------------------------------------------------------- |
+| Stub files (`.pyi`)                               | ✅                                                      |
+| Stub packages (`<package>-stubs`)                 | ✅                                                      |
+| Partial stub packages (`py.typed` with `partial`) | ✅                                                      |
+| Namespace packages (PEP 420)                      | ✅                                                      |
+| Relative imports                                  | ✅                                                      |
+| `__all__` declarations                            | ✅                                                      |
+| `__all__` mutations (`.append`, `.extend`, `+=`)  | ✅                                                      |
+| `__all__` with submodule `__all__`                | ✅                                                      |
+| Wildcard (`*`) imports                            | ✅                                                      |
+| Wildcard imports in stubs re-export               | ✅                                                      |
+| Re-export conventions (`import X as X`)           | ✅                                                      |
+| Conditional re-exports in stub files              | ✅                                                      |
+| Reachability constraints in imports               | ✅                                                      |
+| Cyclic imports                                    | ✅                                                      |
+| `py.typed` marker files                           | ⚠️ ignored for type checking                            |
+| `conftest.py` resolution (pytest)                 | ⚠️ [#414](https://github.com/astral-sh/ty/issues/414)   |
+| Compiled extensions (`.so` files)                 | ❌ [#715](https://github.com/astral-sh/ty/issues/715)   |
+| conda/pixi environment support                    | ❌ [#265](https://github.com/astral-sh/ty/issues/265)   |
+| Per-library import suppression                    | ❌ [#1354](https://github.com/astral-sh/ty/issues/1354) |
+
 ## Standard library
 
 | Feature                    | Status                                                  |
