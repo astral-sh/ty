@@ -1,8 +1,9 @@
 # Type checking
 
 You can generally expect ty to support all typing features that are described and specified in the
-[Python typing documentation]. This page highlights some of the unique features that ty's type
-system provides.
+[Python typing documentation] (for a detailed overview, please refer to the
+[type system features tracking issue](https://github.com/astral-sh/ty/issues/1889)). This page
+highlights some of the unique features that ty's type system provides.
 
 ## Redeclarations
 
@@ -90,7 +91,7 @@ def greet(being: Person | Animal | None):
     type as well, you can make `Animal` a `@final` class. This also allows ty to infer a more precise
     type for `being.name` (`str` instead of `object`).
 
-If you only use ty as a type checker, you can also make direct use of intersection types in
+If ty is the only type checker you use, you can also make direct use of intersection types in
 annotations by importing `Intersection` from the special `ty_extensions` module that is (currently)
 only available at type-checking time:
 
