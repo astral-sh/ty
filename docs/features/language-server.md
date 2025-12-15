@@ -1,7 +1,7 @@
-# IDE / Editor
+# Language server
 
 You can generally expect ty to be a fully-featured [language server] for Python.
-This page describes some of the key features provided by ty's language server and includes
+This page describes some of the key features provided by ty's IDE integration and includes
 a reference table of supported LSP features at the end.
 See the [editor integration](../editors.md) documentation for instructions on how to set up ty
 with your editor.
@@ -20,7 +20,7 @@ see diagnostics for the current file only or for your entire workspace.
 
 !!! info
 
-    ty supports both the pull and push diagnostic models. Most modern editors will use the pull model
+    ty supports both the "pull" and "push" diagnostic models. Most modern editors will use the "pull" model
     for better performance, where diagnostics are fetched on demand rather than pushed after every
     change.
 
@@ -79,7 +79,8 @@ ty surfaces useful contextual information as you code:
     useful information like the variance of type parameters.
 - **Inlay hints**: Display inline type hints for variables and parameters without explicit
     annotations, as well as parameter names at call sites. These hints can also be double-clicked
-    to persist the type annotations in your source code.
+    to persist the type annotations in your source code. You can also click on parts of the inlay
+    hints for go-to-definition navigation.
 - **Signature help**: When calling a function, ty displays the function's parameters and their
     types. This appears automatically when you type `(` and updates as you navigate between arguments.
 - **Document highlight**: When the cursor is on a symbol, ty highlights all occurrences of that
