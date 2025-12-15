@@ -94,6 +94,7 @@ nav:
   - Features:
       - Type checking: features/type-checking.md
       - Diagnostics: features/diagnostics.md
+      - Language server: features/language-server.md
   - Reference:
       - Configuration: reference/configuration.md
       - Rules: reference/rules.md
