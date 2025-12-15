@@ -8,48 +8,30 @@ An extremely fast Python type checker and language server, written in Rust.
 
 ## Getting started
 
-Try out the [online playground](https://play.ty.dev), or run ty with
-[uvx](https://docs.astral.sh/uv/guides/tools/#running-tools) to get started quickly:
-
-```shell
-uvx ty
-```
-
-For other ways to install ty, see the [installation](https://docs.astral.sh/ty/installation/) documentation.
-
-If you do not provide a subcommand, ty will list available commands — for detailed information about
-command-line options, see the [CLI reference](https://docs.astral.sh/ty/reference/cli/).
-
-Use the `check` command to run the type checker:
+Run ty with [uvx](https://docs.astral.sh/uv/guides/tools/#running-tools) to get started quickly:
 
 ```shell
 uvx ty check
 ```
 
-ty will run on all Python files in the working directory and or subdirectories. If used from a
-project, ty will run on all Python files in the project (starting in the directory with the
-`pyproject.toml`)
-
-You can also provide specific paths to check:
-
-```shell
-uvx ty check example.py
-```
-
-When type checking, ty will find installed packages in the active virtual environment (via
-`VIRTUAL_ENV`) or discover a virtual environment named `.venv` in the project root or working
-directory. It will not find packages in non-virtual environments without specifying the target path
-with `--python`. See the [module discovery](https://docs.astral.sh/ty/modules/) documentation for
-details.
-
-## Learning more
+Or, check out the [online ty playground](https://play.ty.dev) to try it out on a snippet.
 
 To learn more about using ty, see the [documentation](https://docs.astral.sh/ty/).
 
-## Getting involved
+## Installation
+
+To install ty, see the [installation](./installation.md) documentation.
+
+To add ty language server to your editor, see the [editors](./editors.md) documentation.
+
+## Getting help
 
 If you have questions or want to report a bug, please open an
 [issue](https://github.com/astral-sh/ty/issues) in this repository.
+
+You may also join our [Discord server](https://discord.com/invite/astral-sh).
+
+## Contributing
 
 Development of this project takes place in the [Ruff](https://github.com/astral-sh/ruff) repository
 at this time. Please [open pull requests](https://github.com/astral-sh/ruff/pulls) there for changes
