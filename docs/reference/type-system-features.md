@@ -102,7 +102,7 @@ This page summarizes the support for various type system features in ty.
 | Generic type aliases (PEP 695)                    | ⚠️ some limitations [#1851](https://github.com/astral-sh/ty/issues/1851) |
 | `ParamSpec` (legacy and PEP 695 syntax)           | ✅                                                                       |
 | `ParamSpec.args`, `ParamSpec.kwargs`              | ✅                                                                       |
-| `Concatenate`                                     | ✅                                                                       |
+| `Concatenate`                                     | ❌ [#1535](https://github.com/astral-sh/ty/issues/1535)                  |
 | `ParamSpec` defaults                              | ✅                                                                       |
 | `TypeVarTuple`                                    | ❌ [#156](https://github.com/astral-sh/ty/issues/156)                    |
 | `Unpack` for `*args` typing                       | ❌ [#156](https://github.com/astral-sh/ty/issues/156)                    |
@@ -123,10 +123,10 @@ This page summarizes the support for various type system features in ty.
 | Protocol instantiation restriction            | ✅                                                              |
 | Non-protocol class inheritance restriction    | ✅                                                              |
 | `@property` members                           | ⚠️ partial [#1379](https://github.com/astral-sh/ty/issues/1379) |
+| Modules as protocol implementations           | ⚠️ [#931](https://github.com/astral-sh/ty/issues/931)           |
 | `@classmethod` and `@staticmethod` members    | ❌ [#1381](https://github.com/astral-sh/ty/issues/1381)         |
 | `ClassVar` members                            | ❌ [#1380](https://github.com/astral-sh/ty/issues/1380)         |
 | `type[SomeProtocol]`                          | ❌ [#903](https://github.com/astral-sh/ty/issues/903)           |
-| Modules as protocol implementations           | ❌ [#931](https://github.com/astral-sh/ty/issues/931)           |
 
 ## Overloads
 
@@ -143,6 +143,7 @@ This page summarizes the support for various type system features in ty.
 | Diagnostic: missing implementation (non-stub)          | ✅                                                                 |
 | Diagnostic: inconsistent decorators                    | ✅                                                                 |
 | Diagnostic: `@final`/`@override` placement             | ✅                                                                 |
+| Variadic parameters with generics                      | ⚠️ [#1825](https://github.com/astral-sh/ty/issues/1825)            |
 | Unannotated implementation validation                  | ⚠️ not tested [#1232](https://github.com/astral-sh/ty/issues/1232) |
 
 ## Enums
@@ -181,34 +182,34 @@ This page summarizes the support for various type system features in ty.
 | `callable()` narrowing                    | ✅                                                      |
 | Assignment narrowing                      | ✅                                                      |
 | `TypeIs[…]` user-defined type guards      | ✅                                                      |
-| `TypeGuard[…]` user-defined type guards   | ⚠️ partial (no narrowing applied yet)                   |
+| `TypeGuard[…]` user-defined type guards   | ❌ (no narrowing applied yet)                           |
 | `TypeIs`/`TypeGuard` as method            | ❌ [#1569](https://github.com/astral-sh/ty/issues/1569) |
 
 ## Special types and type qualifiers
 
 [Official documentation](https://typing.python.org/en/latest/spec/special-types.html)
 
-| Feature                                           | Status |
-| ------------------------------------------------- | ------ |
-| `Any`                                             | ✅     |
-| `None`                                            | ✅     |
-| `NoReturn`, `Never`                               | ✅     |
-| `object`                                          | ✅     |
-| `Literal[...]` (strings, ints, bools, enum, None) | ✅     |
-| `LiteralString`                                   | ✅     |
-| `Callable[[...], R]`                              | ✅     |
-| `Callable[..., R]` (arbitrary arguments)          | ✅     |
-| `Callable` with `ParamSpec`                       | ✅     |
-| `type[C]`                                         | ✅     |
-| `Final`, `Final[T]`                               | ✅     |
-| `@final` decorator                                | ✅     |
-| `ClassVar`, `ClassVar[T]`                         | ✅     |
-| `InitVar[T]` (see Dataclasses)                    | ✅     |
-| `Annotated[T, ...]`                               | ✅     |
-| `Required[T]`, `NotRequired[T]` (see TypedDict)   | ✅     |
-| `ReadOnly[T]` (see TypedDict)                     | ✅     |
-| `Union[X, Y]`, \`X                                | Y\`    |
-| `Optional[X]`                                     | ✅     |
+| Feature                                           | Status                                                                              |
+| ------------------------------------------------- | ----------------------------------------------------------------------------------- |
+| `Any`                                             | ✅                                                                                  |
+| `None`                                            | ✅                                                                                  |
+| `NoReturn`, `Never`                               | ✅                                                                                  |
+| `object`                                          | ✅                                                                                  |
+| `Literal[...]` (strings, ints, bools, enum, None) | ✅                                                                                  |
+| `LiteralString`                                   | ✅                                                                                  |
+| `Callable[[...], R]`                              | ✅                                                                                  |
+| `Callable[..., R]` (arbitrary arguments)          | ✅                                                                                  |
+| `Callable` with `ParamSpec`                       | ✅                                                                                  |
+| `type[C]`                                         | ✅                                                                                  |
+| `Final`, `Final[T]`                               | ⚠️ no error on subclass override [#871](https://github.com/astral-sh/ty/issues/871) |
+| `@final` decorator                                | ✅                                                                                  |
+| `ClassVar`, `ClassVar[T]`                         | ✅                                                                                  |
+| `InitVar[T]` (see Dataclasses)                    | ✅                                                                                  |
+| `Annotated[T, ...]`                               | ✅                                                                                  |
+| `Required[T]`, `NotRequired[T]` (see TypedDict)   | ✅                                                                                  |
+| `ReadOnly[T]` (see TypedDict)                     | ✅                                                                                  |
+| `Union[X, Y]`, `X \| Y`                           | ✅                                                                                  |
+| `Optional[X]`                                     | ✅                                                                                  |
 
 ## Type aliases
 
@@ -217,7 +218,7 @@ This page summarizes the support for various type system features in ty.
 | Feature                                                 | Status                                                              |
 | ------------------------------------------------------- | ------------------------------------------------------------------- |
 | Implicit type aliases (`Alias = int`)                   | ✅                                                                  |
-| PEP 613 `TypeAlias` annotation                          | ✅                                                                  |
+| PEP 613 `TypeAlias` annotation                          | ⚠️ fully stringified RHS not supported                              |
 | PEP 695 `type` statement                                | ✅                                                                  |
 | Generic type aliases (PEP 695)                          | ⚠️ limitations [#1851](https://github.com/astral-sh/ty/issues/1851) |
 | Generic implicit/PEP 613 aliases                        | ⚠️ partial [#1739](https://github.com/astral-sh/ty/issues/1739)     |
@@ -228,18 +229,18 @@ This page summarizes the support for various type system features in ty.
 
 [Official documentation](https://typing.python.org/en/latest/spec/directives.html)
 
-| Feature                     | Status |
-| --------------------------- | ------ |
-| `cast(T, value)`            | ✅     |
-| `assert_type(value, T)`     | ✅     |
-| `assert_never(value)`       | ✅     |
-| `reveal_type(value)`        | ✅     |
-| `TYPE_CHECKING` constant    | ✅     |
-| `no_type_check` decorator   | ✅     |
-| `type: ignore` comments     | ✅     |
-| `@deprecated` decorator     | ✅     |
-| `@override` decorator       | ✅     |
-| Redundant `cast` diagnostic | ✅     |
+| Feature                     | Status                       |
+| --------------------------- | ---------------------------- |
+| `cast(T, value)`            | ✅                           |
+| `assert_type(value, T)`     | ✅                           |
+| `assert_never(value)`       | ✅                           |
+| `reveal_type(value)`        | ✅                           |
+| `TYPE_CHECKING` constant    | ✅                           |
+| `no_type_check` decorator   | ✅                           |
+| `type: ignore` comments     | ✅                           |
+| `@deprecated` decorator     | ✅                           |
+| `@override` decorator       | ⚠️ strict mode not supported |
+| Redundant `cast` diagnostic | ✅                           |
 
 ## Invalid overrides
 
@@ -256,3 +257,5 @@ This page summarizes the support for various type system features in ty.
 | `*args`/`**kwargs` compatibility             | ✅     |
 | `@staticmethod` and `@classmethod` overrides | ✅     |
 | Synthesized method overrides (dataclasses)   | ✅     |
+| Method overridden by non-method              | ❌     |
+| Non-method overridden by non-method          | ❌     |
