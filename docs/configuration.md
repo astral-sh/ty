@@ -15,7 +15,10 @@ If a `pyproject.toml` file is found, ty will read configuration from the `[tool.
 index-out-of-bounds = "ignore"
 ```
 
-(If there is no `tool.ty` table, the `pyproject.toml` file will be ignored, and ty will continue searching in the directory hierarchy.)
+!!! note
+
+    If there is no `tool.ty` table, the `pyproject.toml` file will be ignored, and ty will continue
+    searching in the directory hierarchy.
 
 ty will also search for `ty.toml` files, which follow an identical structure, but omit the `[tool.ty]` prefix. For example:
 
@@ -26,7 +29,7 @@ ty will also search for `ty.toml` files, which follow an identical structure, bu
 index-out-of-bounds = "ignore"
 ```
 
-!!! note
+!!! important
 
     `ty.toml` files take precedence over `pyproject.toml` files, so if both `ty.toml` and `pyproject.toml` files are present in a directory, configuration will be read from `ty.toml`, and the `[tool.ty]` section in the accompanying `pyproject.toml` will be ignored.
 
