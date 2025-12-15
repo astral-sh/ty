@@ -39,3 +39,7 @@ Install ty into your current Python environment with pip:
 ```shell
 pip install ty
 ```
+
+## Adding ty¸to your editor
+
+See the [editors](./editors.md) page to add ty to your editor.
