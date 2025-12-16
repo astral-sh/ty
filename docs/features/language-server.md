@@ -1,3 +1,6 @@
+<!-- Note for maintainers: the screenshots referenced in this document were taken using
+     the "Atom One Light" theme in VS Code. -->
+
 # Language server
 
 You can generally expect ty to be a fully-featured [language server] for Python.
@@ -70,7 +73,7 @@ ty offers quick fixes and other code actions to help you resolve issues:
 
 <figure markdown="span">
   ![Inlay hints](screenshots/inlay-hints.png)
-  <figcaption>Gray inlay hints and hover information</figcaption>
+  <figcaption>Gray inlay hints and on-hover information (signature, docstring)</figcaption>
 </figure>
 
 ty surfaces useful contextual information as you code:
