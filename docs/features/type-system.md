@@ -1,4 +1,4 @@
-# Type checking
+# Type system
 
 You can generally expect ty to support all typing features that are described and specified in the
 [Python typing documentation] (for a detailed overview, please refer to the
