@@ -71,7 +71,7 @@ ty includes a standalone installer.
     Request a specific version by including it in the URL:
 
     ```console
-    $ curl -LsSf https://astral.sh/ty/0.0.1-alpha.35/install.sh | sh
+    $ curl -LsSf https://astral.sh/ty/0.0.2/install.sh | sh
     ```
 
 === "Windows"
@@ -87,7 +87,7 @@ ty includes a standalone installer.
     Request a specific version by including it in the URL:
 
     ```pwsh-session
-    PS> powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/ty/0.0.1-alpha.35/install.ps1 | iex"
+    PS> powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/ty/0.0.2/install.ps1 | iex"
     ```
 
 !!! tip
