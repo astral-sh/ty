@@ -8,14 +8,14 @@ ty is backed by [Astral](https://astral.sh), the creators of
 ## Highlights
 
 - 10x - 100x faster than mypy and Pyright
-- Comprehensive and helpful diagnostics
-- Configurable rule levels, per-file overrides, suppression comments, and first-class project support
-- Designed for adoption, with support for redeclarations and partially typed code
-- Language server with code navigation, completions, code actions, auto-import, inlay hints, on-hover help, etc.
+- Comprehensive and helpful [diagnostics](./features/diagnostics.md)
+- Configurable [rule levels](./rules.md), [per-file overrides](./reference/configuration.md#overrides), [suppression comments](./suppression.md), and first-class project support
+- Designed for adoption, with support for [redeclarations](./features/type-system.md#redeclarations) and [partially typed code](./features/type-system.md#gradual-guarantee)
+- [Language server](./features/language-server.md) with code navigation, completions, code actions, auto-import, inlay hints, on-hover help, etc.
 - Fine-grained incremental analysis designed for fast updates when editing files in an IDE
-- Editor integrations for VS Code, PyCharm, and more
-- Advanced typing features like first-class intersection types, advanced type narrowing, and
-    type-driven reachability analysis
+- Editor integrations for [VS Code](./editors.md#vs-code), [PyCharm](./editors.md#pycharm), [Neovim](./editors.md#neovim) and more
+- Advanced typing features like first-class [intersection types](./features/type-system.md#intersection-types), advanced [type narrowing](./features/type-system.md#top-and-bottom-materializations), and
+    [type-driven reachability analysis](./features/type-system.md#reachability-based-on-types)
 
 ## Getting started
 
