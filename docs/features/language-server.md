@@ -24,7 +24,7 @@ see diagnostics for the current file only or for your entire workspace.
     for better performance, where diagnostics are fetched on demand rather than pushed after every
     change.
 
-## Code Navigation
+## Code navigation
 
 <figure markdown="span">
   ![](screenshots/find-references.png)
@@ -40,7 +40,7 @@ ty powers several language server features that allow you to navigate a Python c
 - **Go to Type Definition**: Navigate to the type of a symbol. For example, this takes you to the class `Person`
     when invoked on a variable `user: Person`.
 - **Find all references**: Find every usage of a function, class, or variable across your entire workspace.
-- **Document and workspace symbols**: See an outline of or search through symbols in the current file, or across your entire workspace.
+- **Document and workspace symbols**: See an outline of symbols in the current file, or search through symbols across your entire workspace.
 
 ## Code completions
 
@@ -79,7 +79,7 @@ ty surfaces useful contextual information as you code:
     useful information like the variance of type parameters.
 - **Inlay hints**: Display inline type hints for variables and parameters without explicit
     annotations, as well as parameter names at call sites. These hints can also be double-clicked
-    to persist the type annotations in your source code. You can also click on parts of the inlay
+    to insert the type annotations into your source code. You can also click on parts of the inlay
     hints for go-to-definition navigation.
 - **Signature help**: When calling a function, ty displays the function's parameters and their
     types. This appears automatically when you type `(` and updates as you navigate between arguments.
@@ -96,38 +96,38 @@ analyzed in context, with diagnostics, completions, and other features working a
 
 <!-- markdownlint-disable MD060 -->
 
-| Feature                                               | Status           | Notes                     |
-| ----------------------------------------------------- | ---------------- | ------------------------- |
-| [`callHierarchy/*`][callhierarchy]                    | ❌ Not supported |                           |
-| [`notebookDocument/*`][notebookdocument]              | ✅ Supported     |                           |
-| [`textDocument/codeAction`][codeaction]               | ✅ Supported     | Quick fixes               |
-| [`textDocument/codeLens`][codelens]                   | ❌ Not supported |                           |
-| [`textDocument/completion`][completion]               | ✅ Supported     |                           |
-| [`textDocument/declaration`][declaration]             | ✅ Supported     |                           |
-| [`textDocument/definition`][definition]               | ✅ Supported     |                           |
-| [`textDocument/diagnostic`][diagnostic]               | ✅ Supported     |                           |
-| [`textDocument/documentColor`][documentcolor]         | ❌ Not supported |                           |
-| [`textDocument/documentHighlight`][documenthighlight] | ✅ Supported     |                           |
-| [`textDocument/documentLink`][documentlink]           | ❌ Not supported |                           |
-| [`textDocument/documentSymbol`][documentsymbol]       | ✅ Supported     |                           |
-| [`textDocument/foldingRange`][foldingrange]           | ❌ Not supported |                           |
-| [`textDocument/formatting`][formatting]               | —                | Use [Ruff] for formatting |
-| [`textDocument/hover`][hover]                         | ✅ Supported     |                           |
-| [`textDocument/implementation`][implementation]       | ❌ Not supported |                           |
-| [`textDocument/inlayHint`][inlayhint]                 | ✅ Supported     |                           |
-| [`textDocument/onTypeFormatting`][ontypeformatting]   | ❌ Not supported |                           |
-| [`textDocument/prepareRename`][preparerename]         | ✅ Supported     |                           |
-| [`textDocument/rangeFormatting`][rangeformatting]     | —                | Use [Ruff] for formatting |
-| [`textDocument/references`][references]               | ✅ Supported     |                           |
-| [`textDocument/rename`][rename]                       | ✅ Supported     |                           |
-| [`textDocument/selectionRange`][selectionrange]       | ✅ Supported     |                           |
-| [`textDocument/semanticTokens`][semantictokens]       | ✅ Supported     |                           |
-| [`textDocument/signatureHelp`][signaturehelp]         | ✅ Supported     |                           |
-| [`textDocument/typeDefinition`][typedefinition]       | ✅ Supported     |                           |
-| [`typeHierarchy/*`][typehierarchy]                    | ❌ Not supported | [#534]                    |
-| [`workspace/diagnostic`][workspacediagnostic]         | ✅ Supported     |                           |
-| [`workspace/symbol`][workspacesymbol]                 | ✅ Supported     |                           |
-| [`workspace/willRenameFiles`][willrenamefiles]        | ❌ Not supported | [#1560]                   |
+| Feature                                               | Status           | Notes                                                         |
+| ----------------------------------------------------- | ---------------- | ------------------------------------------------------------- |
+| [`callHierarchy/*`][callhierarchy]                    | ❌ Not supported |                                                               |
+| [`notebookDocument/*`][notebookdocument]              | ✅ Supported     |                                                               |
+| [`textDocument/codeAction`][codeaction]               | ✅ Supported     | Quick fixes                                                   |
+| [`textDocument/codeLens`][codelens]                   | ❌ Not supported |                                                               |
+| [`textDocument/completion`][completion]               | ✅ Supported     |                                                               |
+| [`textDocument/declaration`][declaration]             | ✅ Supported     |                                                               |
+| [`textDocument/definition`][definition]               | ✅ Supported     |                                                               |
+| [`textDocument/diagnostic`][diagnostic]               | ✅ Supported     |                                                               |
+| [`textDocument/documentColor`][documentcolor]         | ❌ Not supported |                                                               |
+| [`textDocument/documentHighlight`][documenthighlight] | ✅ Supported     |                                                               |
+| [`textDocument/documentLink`][documentlink]           | ❌ Not supported |                                                               |
+| [`textDocument/documentSymbol`][documentsymbol]       | ✅ Supported     |                                                               |
+| [`textDocument/foldingRange`][foldingrange]           | ❌ Not supported |                                                               |
+| [`textDocument/formatting`][formatting]               | —                | Use [Ruff] for formatting                                     |
+| [`textDocument/hover`][hover]                         | ✅ Supported     |                                                               |
+| [`textDocument/implementation`][implementation]       | ❌ Not supported |                                                               |
+| [`textDocument/inlayHint`][inlayhint]                 | ✅ Supported     |                                                               |
+| [`textDocument/onTypeFormatting`][ontypeformatting]   | —                | [Ruff #16829](https://github.com/astral-sh/ruff/issues/16829) |
+| [`textDocument/prepareRename`][preparerename]         | ✅ Supported     |                                                               |
+| [`textDocument/rangeFormatting`][rangeformatting]     | —                | Use [Ruff] for formatting                                     |
+| [`textDocument/references`][references]               | ✅ Supported     |                                                               |
+| [`textDocument/rename`][rename]                       | ✅ Supported     |                                                               |
+| [`textDocument/selectionRange`][selectionrange]       | ✅ Supported     |                                                               |
+| [`textDocument/semanticTokens`][semantictokens]       | ✅ Supported     |                                                               |
+| [`textDocument/signatureHelp`][signaturehelp]         | ✅ Supported     |                                                               |
+| [`textDocument/typeDefinition`][typedefinition]       | ✅ Supported     |                                                               |
+| [`typeHierarchy/*`][typehierarchy]                    | ❌ Not supported | [#534]                                                        |
+| [`workspace/diagnostic`][workspacediagnostic]         | ✅ Supported     |                                                               |
+| [`workspace/symbol`][workspacesymbol]                 | ✅ Supported     |                                                               |
+| [`workspace/willRenameFiles`][willrenamefiles]        | ❌ Not supported | [#1560]                                                       |
 
 [#1560]: https://github.com/astral-sh/ty/issues/1560
 [#534]: https://github.com/astral-sh/ty/issues/534
