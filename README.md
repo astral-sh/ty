@@ -12,7 +12,7 @@ An extremely fast Python type checker and language server, written in Rust.
 - 📎 Comprehensive and helpful diagnostics, inspired by the Rust compiler
 - ⚙️ Configurable rule levels, per-file overrides, suppression comments, and first-class project support
 - ↗️ Designed for adoption, with support for redeclarations and partially typed code
-- ⌨️ Language server with code navigation, completions, code actions, auto import, inlay hints, on-hover help, etc.
+- ⌨️ Language server with code navigation, completions, code actions, auto-import, inlay hints, on-hover help, etc.
 - 🗂 Fine-grained incremental analysis designed for fast updates when editing files in an IDE
 - 🖥 Editor integrations for VS Code, PyCharm, and more
 - 🔩 Advanced typing features like first-class intersection types, advanced type narrowing, and
