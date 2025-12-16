@@ -19,18 +19,18 @@ Rule violations spanning multiple lines can be suppressed by adding the comment 
 violation's first or last line:
 
 ```py
-def add_three(a: int, b: int, c: int): ...
+def sum_three_numbers(a: int, b: int, c: int) -> int: ...
 
 # on the first line
 
-add_three(  # ty: ignore[missing-argument]
+sum_three_numbers(  # ty: ignore[missing-argument]
     3,
     2
 )
 
 # or, on the last line
 
-add_three(
+sum_three_numbers(
     3,
     2
 )  # ty: ignore[missing-argument]
@@ -39,7 +39,7 @@ add_three(
 To suppress multiple violations on a single line, enumerate each rule separated by a comma:
 
 ```python
-add_three("one", 5)  # ty: ignore[missing-argument, invalid-argument-type]
+sum_three_numbers("one", 5)  # ty: ignore[missing-argument, invalid-argument-type]
 ```
 
 !!! note
@@ -49,7 +49,7 @@ add_three("one", 5)  # ty: ignore[missing-argument, invalid-argument-type]
 
 ## Standard suppression comments
 
-ty supports the standard [`type:ignore`](https://typing.python.org/en/latest/spec/directives.html#type-ignore-comments) comment
+ty supports the standard [`type: ignore`](https://typing.python.org/en/latest/spec/directives.html#type-ignore-comments) comment
 format introduced by PEP 484.
 
 ty handles these similarly to `ty: ignore` comments, but suppresses all violations on that line,
@@ -57,7 +57,7 @@ even when `type: ignore[code]` is used.
 
 ```python
 # Ignore all typing errors on the next line
-add_three("one", 5)  # type: ignore
+sum_three_numbers("one", 5)  # type: ignore
 ```
 
 ## Multiple suppressions comments
@@ -91,12 +91,12 @@ to suppress all violations inside a function.
 ```python
 from typing import no_type_check
 
-def add_three(a: int, b: int, c: int):
-    a + b + c
+def sum_three_numbers(a: int, b: int, c: int) -> int:
+    return a + b + c
 
 @no_type_check
 def main():
-    add_three(3, 4)
+    sum_three_numbers(1, 2)  # no error for the missing argument
 ```
 
 Decorating a class with `@no_type_check` isn't supported.
