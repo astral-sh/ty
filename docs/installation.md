@@ -50,6 +50,72 @@ To update ty, use `uv tool upgrade`:
 uv tool upgrade ty
 ```
 
+### Installing with the standalone installer
+
+ty includes a standalone installer.
+
+=== "macOS and Linux"
+
+    Use `curl` to download the script and execute it with `sh`:
+
+    ```console
+    $ curl -LsSf https://astral.sh/ty/install.sh | sh
+    ```
+
+    If your system doesn't have `curl`, you can use `wget`:
+
+    ```console
+    $ wget -qO- https://astral.sh/ty/install.sh | sh
+    ```
+
+    Request a specific version by including it in the URL:
+
+    ```console
+    $ curl -LsSf https://astral.sh/ty/0.0.1-alpha.35/install.sh | sh
+    ```
+
+=== "Windows"
+
+    Use `irm` to download the script and execute it with `iex`:
+
+    ```pwsh-session
+    PS> powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/ty/install.ps1 | iex"
+    ```
+
+    Changing the [execution policy](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-7.4#powershell-execution-policies) allows running a script from the internet.
+
+    Request a specific version by including it in the URL:
+
+    ```pwsh-session
+    PS> powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/ty/0.0.1-alpha.35/install.ps1 | iex"
+    ```
+
+!!! tip
+
+    The installation script may be inspected before use:
+
+    === "macOS and Linux"
+
+        ```console
+        $ curl -LsSf https://astral.sh/ty/install.sh | less
+        ```
+
+    === "Windows"
+
+        ```pwsh-session
+        PS> powershell -c "irm https://astral.sh/ty/install.ps1 | more"
+        ```
+
+    Alternatively, the installer or binaries can be downloaded directly from [GitHub](#installing-from-github-releases).
+
+### Installing from GitHub Releases
+
+ty release artifacts can be downloaded directly from
+[GitHub Releases](https://github.com/astral-sh/ty/releases).
+
+Each release page includes binaries for all supported platforms as well as instructions for using
+the standalone installer via `github.com` instead of `astral.sh`.
+
 ### Installing globally with pipx
 
 Install ty globally with pipx:
