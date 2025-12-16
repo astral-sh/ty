@@ -62,32 +62,6 @@ server for features like code completion, hover, go to definition, etc.
 
 ______________________________________________________________________
 
-## `python.ty.disableLanguageServices`
-
-!!! warning "Deprecated"
-
-    This option has been deprecated. Use [`ty.disableLanguageServices`](#disablelanguageservices) instead.
-
-Whether to disable the language services that ty provides like code completion, hover, go to
-definition, etc.
-
-This is useful if you want to use ty exclusively for type checking in combination with another
-language server for features like code completion, hover, go to definition, etc.
-
-**Default value**: `false`
-
-**Type**: `boolean`
-
-**Example usage**:
-
-```json
-{
-  "python.ty.disableLanguageServices": true
-}
-```
-
-______________________________________________________________________
-
 ## `diagnosticMode`
 
 Determines the scope of the diagnostics reported by the language server.
