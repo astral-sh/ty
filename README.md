@@ -6,6 +6,9 @@
 
 An extremely fast Python type checker and language server, written in Rust.
 
+ty is backed by [Astral](https://astral.sh), the creators of
+[uv](https://github.com/astral-sh/uv) and [Ruff](https://github.com/astral-sh/ruff).
+
 ## Getting started
 
 Run ty with [uvx](https://docs.astral.sh/uv/guides/tools/#running-tools) to get started quickly:
