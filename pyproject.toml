@@ -102,6 +102,7 @@ include = [
 version-files = [
     "pyproject.toml",
     { path = "dist-workspace.toml", field = "workspace.version", format = "cargo" },
+    "docs/installation.md",
 ]
 submodules = ["ruff"]
 require-labels = [{ submodule = "ruff", labels = ["ty"] }]
