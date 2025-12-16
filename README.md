@@ -10,7 +10,7 @@ An extremely fast Python type checker and language server, written in Rust.
 
 <p align="center">
   <picture align="center">
-    <source media="(prefers-color-scheme: dark)" srcset="./docs//assets/ty-benchmark-cli.svg">
+    <source media="(prefers-color-scheme: dark)" srcset="./docs//assets/ty-benchmark-cli-dark.svg">
     <source media="(prefers-color-scheme: light)" srcset="./docs/assets/ty-benchmark-cli.svg">
     <img alt="Shows a bar chart with benchmark results." width="500px" src="./docs/assets/ty-benchmark-cli.svg">
   </picture>
