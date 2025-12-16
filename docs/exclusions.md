@@ -12,7 +12,7 @@ exclude = ["src/generated"]
 
 ## Default exclusions
 
-By default, ty excludes a [variety of commonly ignored directories](./reference/configuration.md#exclude_1). If you want to include one of these directories, you can do so by adding a negative `exclude`:
+By default, ty excludes a [variety of commonly ignored directories](./reference/configuration.md#exclude_1). If you want to include one of these directories, you can do so by adding a negative `exclude` using a leading `!`:
 
 ```toml title="pyproject.toml"
 [tool.ty.src]
