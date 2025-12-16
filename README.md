@@ -43,8 +43,11 @@ to anything in the `ruff` submodule (which includes all of the Rust source code)
 See the
 [contributing guide](./CONTRIBUTING.md) for more details.
 
-
 ## FAQ
+
+<!-- We intentionally use smaller headings for the FAQ items -->
+
+<!-- markdownlint-disable MD001 -->
 
 #### How do you pronounce ty?
 
@@ -53,6 +56,8 @@ It's pronounced as "tee - why" ([`/tiː waɪ/`](https://en.wikipedia.org/wiki/He
 #### How should I stylize ty?
 
 Just "ty", please.
+
+<!-- markdownlint-enable MD001 -->
 
 ## License
 
