@@ -8,7 +8,7 @@ ty is backed by [Astral](https://astral.sh), the creators of
 ## Highlights
 
 - 10x - 100x faster than mypy and Pyright
-- Comprehensive and helpful diagnostics, inspired by the Rust compiler
+- Comprehensive and helpful diagnostics
 - Configurable rule levels, per-file overrides, suppression comments, and first-class project support
 - Designed for adoption, with support for redeclarations and partially typed code
 - Language server with code navigation, completions, code actions, auto-import, inlay hints, on-hover help, etc.
