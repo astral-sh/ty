@@ -2,6 +2,9 @@
 
 ty can be integrated with various editors to provide a seamless development experience.
 
+Learn more about ty's editor features in the [language server](./features/language-server.md)
+documentation.
+
 ## VS Code
 
 The Astral team maintains an official VS Code extension.
@@ -117,7 +120,7 @@ ty server
 
 Refer to your editor's documentation to learn how to connect to an LSP server.
 
-## Customize your experience
+## Settings
 
-See the [editor settings](./reference/editor-settings.md) for more details on configuring the language
+See the [editor settings reference](./reference/editor-settings.md) for more details on configuring the language
 server.
