@@ -31,7 +31,7 @@ with the `pyproject.toml`).
 You can also provide specific paths to check:
 
 ```shell
-uvx ty check example.py
+ty check example.py
 ```
 
 You can also persistently configure [included and excluded files](./exclusions.md).
