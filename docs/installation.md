@@ -2,15 +2,17 @@
 
 ## Adding ty to your project
 
+!!! tip
+
+    Adding ty as a dependency ensures that all developers on the project are using the same version
+    of ty.
+
 Use [uv](https://github.com/astral-sh/uv) (or your project manager of choice) to add ty as a
 development dependency:
 
 ```shell
 uv add --dev ty
 ```
-
-Adding ty as a dependency ensures that all developers on the project are using the same version of
-ty.
 
 Then, use `uv run` to invoke ty:
 
