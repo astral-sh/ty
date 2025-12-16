@@ -19,7 +19,7 @@ Rule violations spanning multiple lines can be suppressed by adding the comment 
 violation's first or last line:
 
 ```py
-def sum_three_numbers(a: int, b: int, c: int): ...
+def sum_three_numbers(a: int, b: int, c: int) -> int: ...
 
 # on the first line
 
