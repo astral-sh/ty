@@ -13,7 +13,7 @@ Released on 2025-12-16.
 
 ### Core type checking
 
-- Infer precise types for `isinstance(…)` calls involving typevars ([#21999](https://github.com/astral-sh/ruff/pull/21999))
+- Infer precise types for `isinstance(…)` calls involving type variables ([#21999](https://github.com/astral-sh/ruff/pull/21999))
 - Infer typevar specializations for `Callable` types ([#21551](https://github.com/astral-sh/ruff/pull/21551))
 - Propagate `classmethod`-ness through decorators returning `Callable`s ([#21958](https://github.com/astral-sh/ruff/pull/21958))
 
