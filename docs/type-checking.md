@@ -1,8 +1,10 @@
 # Type checking
 
+After [installing ty](./installation.md), it's time to type check some code!
+
 ## Running the type checker
 
-To run the type checker, use the `check` subcommand:
+To run the type checker, use the `check` command:
 
 ```shell
 ty check
