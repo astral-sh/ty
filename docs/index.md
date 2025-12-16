@@ -8,7 +8,7 @@ ty is backed by [Astral](https://astral.sh), the creators of
 ## Highlights
 
 - 10x - 100x faster than mypy and Pyright
-- Comprehensive and helpful [diagnostics](./features/diagnostics.md)
+- Comprehensive [diagnostics](./features/diagnostics.md) with rich contextual information
 - Configurable [rule levels](./rules.md), [per-file overrides](./reference/configuration.md#overrides), [suppression comments](./suppression.md), and first-class project support
 - Designed for adoption, with support for [redeclarations](./features/type-system.md#redeclarations) and [partially typed code](./features/type-system.md#gradual-guarantee)
 - [Language server](./features/language-server.md) with code navigation, completions, code actions, auto-import, inlay hints, on-hover help, etc.
