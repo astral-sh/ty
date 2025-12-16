@@ -4,8 +4,8 @@
 
 Released on 2025-12-16.
 
-This is the first Beta release of ty, which we're now ready to recommend for production-use to
-motivated users. See our [blog post](https://astral.sh/blog/ty) for more details.
+This is the first Beta release of ty, which we're now ready to recommend to motivated users for
+production use. See our [blog post](https://astral.sh/blog/ty) for more details.
 
 ### LSP server
 
