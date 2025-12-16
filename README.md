@@ -47,9 +47,9 @@ To learn more about using ty, see the [documentation](https://docs.astral.sh/ty/
 
 ## Installation
 
-To install ty, see the [installation](./installation.md) documentation.
+To install ty, see the [installation](https://docs.astral.sh/ty/installation/) documentation.
 
-To add the ty language server to your editor, see the [editor integration](./editors.md) guide.
+To add the ty language server to your editor, see the [editor integration](https://docs.astral.sh/ty/editors/) guide.
 
 ## Getting help
 
