@@ -72,6 +72,21 @@ Install ty into your current Python environment with pip:
 pip install ty
 ```
 
+### Installing in Docker
+
+Install ty in Docker by copying the binary from the official image:
+
+```dockerfile title="Dockerfile"
+COPY --from=ghcr.io/astral-sh/ty:latest /ty /bin/
+```
+
+The following tags are available:
+
+- `ghcr.io/astral-sh/ty:latest`
+- `ghcr.io/astral-sh/ty:{major}.{minor}.{patch}`, e.g., `ghcr.io/astral-sh/ty:0.0.2`
+- `ghcr.io/astral-sh/ty:{major}.{minor}`, e.g., `ghcr.io/astral-sh/ty:0.0` (the latest patch
+    version)
+
 ## Adding ty to your editor
 
 See the [editor integration](./editors.md) guide to add ty to your editor.
