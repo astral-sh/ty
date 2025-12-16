@@ -44,4 +44,4 @@ pip install ty
 
 ## Adding ty to your editor
 
-See the [editors](./editors.md) page to add ty to your editor.
+See the [editor integration](./editors.md) guide to add ty to your editor.
