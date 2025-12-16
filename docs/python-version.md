@@ -35,7 +35,7 @@ configured or detected, ty will try to infer the Python version being used from 
 environment's metadata.
 
 If no virtual environment is present or inferring the Python version from the metadata fails,
-ty will fall back to the latest stable Python version supported by ty (currently 3.13).
+ty will fall back to the latest stable Python version supported by ty (currently 3.14).
 
 The Python version may also be explicitly specified using the
 [`python-version`](./reference/configuration.md#python-version) setting or the

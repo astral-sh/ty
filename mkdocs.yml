@@ -84,6 +84,7 @@ nav:
   - Introduction: index.md
   - Concepts:
       - Installation: installation.md
+      - Type checking: type-checking.md
       - Configuration: configuration.md
       - Module discovery: modules.md
       - Python version: python-version.md
@@ -92,8 +93,9 @@ nav:
       - Suppression: suppression.md
       - Editors: editors.md
   - Features:
-      - Type checking: features/type-checking.md
+      - Type system: features/type-system.md
       - Diagnostics: features/diagnostics.md
+      - Language server: features/language-server.md
   - Reference:
       - Configuration: reference/configuration.md
       - Rules: reference/rules.md
