@@ -25,6 +25,13 @@ def main() -> None:
 
     content = Path("README.md").read_text(encoding="utf8")
 
+    # Replace relative src="./..." attributes with absolute GitHub raw URLs.
+    def replace_src(match: re.Match) -> str:
+        path = match.group(1).lstrip("./")
+        return f'src="https://raw.githubusercontent.com/astral-sh/ty/{version}/{path}"'
+
+    content = re.sub(r'src="(\./[^"]+)"', replace_src, content)
+
     # Replace any relative URLs (e.g., `[CONTRIBUTING.md`) with absolute URLs.
     def replace(match: re.Match) -> str:
         url = match.group(1)
