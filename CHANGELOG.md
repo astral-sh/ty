@@ -13,7 +13,6 @@ Released on 2025-12-16.
 
 ### Core type checking
 
-- Cache `KnownClass::to_class_literal` ([#22000](https://github.com/astral-sh/ruff/pull/22000))
 - Infer precise types for `isinstance(…)` calls involving typevars ([#21999](https://github.com/astral-sh/ruff/pull/21999))
 - Infer typevar specializations for `Callable` types ([#21551](https://github.com/astral-sh/ruff/pull/21551))
 - Propagate `classmethod`-ness through decorators returning `Callable`s ([#21958](https://github.com/astral-sh/ruff/pull/21958))
@@ -21,6 +20,10 @@ Released on 2025-12-16.
 ### Bug fixes
 
 - Don't use implicit superclass annotation when converting a class constructor into a `Callable` ([#22011](https://github.com/astral-sh/ruff/pull/22011))
+
+### Other
+
+- Type checking performance improvement ([#22000](https://github.com/astral-sh/ruff/pull/22000))
 
 ### Contributors
 
