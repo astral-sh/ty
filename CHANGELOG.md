@@ -8,7 +8,7 @@ Released on 2025-12-16.
 
 - Improve display of completions to show actual insertion text ([#21988](https://github.com/astral-sh/ruff/pull/21988))
 - Improve highlighting of special type syntax in hovers ([#22005](https://github.com/astral-sh/ruff/pull/22005))
-- Improve syntax-highlighting of constants ([#22006](https://github.com/astral-sh/ruff/pull/22006))
+- Improve syntax highlighting of constants ([#22006](https://github.com/astral-sh/ruff/pull/22006))
 - Improve rendering of default values for function args ([#22010](https://github.com/astral-sh/ruff/pull/22010))
 
 ### Core type checking
