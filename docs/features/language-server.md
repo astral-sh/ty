@@ -16,7 +16,7 @@ with your editor.
 ty reports type errors and other [diagnostics](./diagnostics.md) directly in your editor. Diagnostics
 are updated as you type. You can use the
 [`diagnosticMode`](../reference/editor-settings.md#diagnosticmode) setting to control if you want to
-see diagnostics for the current file only or for your entire workspace.
+see diagnostics for open files only, or for your entire workspace.
 
 !!! info
 
