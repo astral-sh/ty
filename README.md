@@ -43,6 +43,17 @@ to anything in the `ruff` submodule (which includes all of the Rust source code)
 See the
 [contributing guide](./CONTRIBUTING.md) for more details.
 
+
+## FAQ
+
+#### How do you pronounce ty?
+
+It's pronounced as "tee - why" ([`/tiː waɪ/`](https://en.wikipedia.org/wiki/Help:IPA/English#Key))
+
+#### How should I stylize ty?
+
+Just "ty", please.
+
 ## License
 
 ty is licensed under the MIT license ([LICENSE](LICENSE) or
