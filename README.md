@@ -6,6 +6,22 @@
 
 An extremely fast Python type checker and language server, written in Rust.
 
+<br />
+
+<p align="center">
+  <picture align="center">
+    <source media="(prefers-color-scheme: dark)" srcset="./docs//assets/ty-benchmark-cli.svg">
+    <source media="(prefers-color-scheme: light)" srcset="./docs/assets/ty-benchmark-cli.svg">
+    <img alt="Shows a bar chart with benchmark results." width="500px" src="./docs/assets/ty-benchmark-cli.svg">
+  </picture>
+</p>
+
+<p align="center">
+  <i>Type checking <a href="https://github.com/pandas-dev/pandas-stubs">pandas-stubs</a> without caching.</i>
+</p>
+
+<br />
+
 ty is backed by [Astral](https://astral.sh), the creators of
 [uv](https://github.com/astral-sh/uv) and [Ruff](https://github.com/astral-sh/ruff).
 
