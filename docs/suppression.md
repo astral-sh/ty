@@ -49,7 +49,7 @@ add_three("one", 5)  # ty: ignore[missing-argument, invalid-argument-type]
 
 ## Standard suppression comments
 
-ty supports the standard [`type:ignore`](https://typing.python.org/en/latest/spec/directives.html#type-ignore-comments) comment
+ty supports the standard [`type: ignore`](https://typing.python.org/en/latest/spec/directives.html#type-ignore-comments) comment
 format introduced by PEP 484.
 
 ty handles these similarly to `ty: ignore` comments, but suppresses all violations on that line,
@@ -91,12 +91,12 @@ to suppress all violations inside a function.
 ```python
 from typing import no_type_check
 
-def add_three(a: int, b: int, c: int):
-    a + b + c
+def add_three(a: int, b: int, c: int) -> int:
+    return a + b + c
 
 @no_type_check
 def main():
-    add_three(3, 4)
+    add_three(1, 2)  # no error for the missing argument
 ```
 
 Decorating a class with `@no_type_check` isn't supported.

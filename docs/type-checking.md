@@ -24,7 +24,7 @@ See the [module discovery](./modules.md) documentation for details.
 
 ## File selection
 
-ty will run on all Python files in the working directory and or subdirectories. If used from a
+ty will run on all Python files in the working directory and its subdirectories. If used from a
 project, ty will run on all Python files in the project (starting in the directory with the
 `pyproject.toml`).
 
