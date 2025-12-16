@@ -9,6 +9,7 @@ Released on 2025-12-16.
 - Improve display of completions to show actual insertion text ([#21988](https://github.com/astral-sh/ruff/pull/21988))
 - Improve highlighting of special type syntax in hovers ([#22005](https://github.com/astral-sh/ruff/pull/22005))
 - Improve syntax-highlighting of constants ([#22006](https://github.com/astral-sh/ruff/pull/22006))
+- Improve rendering of default values for function args ([#22010](https://github.com/astral-sh/ruff/pull/22010))
 
 ### Core type checking
 
@@ -16,6 +17,10 @@ Released on 2025-12-16.
 - Infer precise types for `isinstance(…)` calls involving typevars ([#21999](https://github.com/astral-sh/ruff/pull/21999))
 - Infer typevar specializations for `Callable` types ([#21551](https://github.com/astral-sh/ruff/pull/21551))
 - Propagate `classmethod`-ness through decorators returning `Callable`s ([#21958](https://github.com/astral-sh/ruff/pull/21958))
+
+### Bug fixes
+
+- Don't use implicit superclass annotation when converting a class constructor into a `Callable` ([#22011](https://github.com/astral-sh/ruff/pull/22011))
 
 ### Contributors
 
