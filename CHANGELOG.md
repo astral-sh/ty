@@ -4,6 +4,9 @@
 
 Released on 2025-12-16.
 
+This is the first Beta release of ty, which we're now ready to recommend for production-use to
+motivated users. See our [blog post](https://astral.sh/blog/ty) for more details.
+
 ### LSP server
 
 - Improve display of completions to show actual insertion text ([#21988](https://github.com/astral-sh/ruff/pull/21988))
