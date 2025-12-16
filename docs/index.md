@@ -27,7 +27,7 @@ ty is backed by [Astral](https://astral.sh), the creators of
 - Fine-grained [incremental analysis](./features/language-server.md#fine-grained-incrementality) designed for fast updates when editing files in an IDE
 - Editor integrations for [VS Code](./editors.md#vs-code), [PyCharm](./editors.md#pycharm), [Neovim](./editors.md#neovim) and more
 - Advanced typing features like first-class [intersection types](./features/type-system.md#intersection-types), advanced [type narrowing](./features/type-system.md#top-and-bottom-materializations), and
-    [type-driven reachability analysis](./features/type-system.md#reachability-based-on-types)
+    [sophisticated reachability analysis](./features/type-system.md#reachability-based-on-types)
 
 ## Getting started
 
