@@ -49,6 +49,18 @@ documentation for details.
 
 You can also suppress specific violations of rules using [suppression comments](./suppression.md).
 
+## Watch mode
+
+ty can be run in an incremental watch mode:
+
+```shell
+ty check --watch
+```
+
+ty will watch files for changes and recheck any affected files — including files that depend on the
+changed file. ty uses [fine-grained incrementality](./features/language-server.md#fine-grained-incrementality)
+to perform subsequent checks much faster than running `ty check` repeatedly.
+
 ## The type system
 
 To learn more about what makes type checking in ty unique, read about the
