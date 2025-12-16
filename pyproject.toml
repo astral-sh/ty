@@ -8,7 +8,7 @@ readme = "README.md"
 authors = [{ name = "Astral Software Inc.", email = "hey@astral.sh" }]
 keywords = ["ty", "typing", "analysis", "check"]
 classifiers = [
-    "Development Status :: 3 - Alpha",
+    "Development Status :: 4 - Beta",
     "Environment :: Console",
     "Intended Audience :: Developers",
     "Operating System :: OS Independent",
