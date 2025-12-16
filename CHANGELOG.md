@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.0.1
+## 0.0.2
 
 Released on 2025-12-16.
 

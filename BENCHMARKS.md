@@ -5,7 +5,7 @@ All benchmarks were computed on macOS (Apple M4 Pro 14, 48 GB) with the followin
 - [Pyrefly](https://pypi.org/project/pyrefly/) 0.45.2
 - [Pyright](https://www.npmjs.com/package/pyright) 1.1.407
 - [mypy](https://pypi.org/project/mypy/) \<=1.19.0
-- [ty](https://pypi.org/project/ty/) 0.0.1
+- [ty](https://pypi.org/project/ty/) 0.0.2
 
 Benchmark performance may vary across operating systems, and from project to project. This document
 includes benchmarks from a variety of projects to provide a representative example of real-world
