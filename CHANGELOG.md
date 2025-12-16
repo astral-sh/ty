@@ -16,9 +16,6 @@ Released on 2025-12-16.
 - Infer `TypeVar` specializations for `Callable` types ([#21551](https://github.com/astral-sh/ruff/pull/21551))
 - Propagate `classmethod`-ness through decorators returning `Callable`s ([#21958](https://github.com/astral-sh/ruff/pull/21958))
 - Improve rendering of default values for function args ([#22010](https://github.com/astral-sh/ruff/pull/22010))
-
-### Bug fixes
-
 - Don't use implicit superclass annotation when converting a class constructor into a `Callable` ([#22011](https://github.com/astral-sh/ruff/pull/22011))
 
 ### Other
