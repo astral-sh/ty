@@ -16,25 +16,9 @@ Run ty with [uvx](https://docs.astral.sh/uv/guides/tools/#running-tools) to get 
 uvx ty check
 ```
 
-!!! note
+ty will check all Python files in the working directory or project by default.
 
-    ty will run on all Python files in the working directory and or subdirectories. If used from a
-    project, ty will run on all Python files in the project (starting in the directory with the
-    `pyproject.toml`).
-
-You can also provide specific paths to check:
-
-```shell
-uvx ty check example.py
-```
-
-!!! note
-
-    When type checking, ty will find installed packages in the active virtual environment (via
-    `VIRTUAL_ENV`) or discover a virtual environment named `.venv` in the project root or working
-    directory. It will not find packages in non-virtual environments without specifying the target
-    path with `--python`. See the [module discovery](./modules.md) documentation for
-    details.
+See the [type checking](./type-checking.md) documentation for more details.
 
 ## Installation
 
