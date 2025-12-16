@@ -6,9 +6,9 @@ Released on 2025-12-16.
 
 ### Bug fixes
 
-- Fix panic for stringified set comprehension in type expression ([#21967](https://github.com/astral-sh/ruff/pull/21967))
+- Fix panic for stringified comprehensions and boolean expressions in type expression ([#21967](https://github.com/astral-sh/ruff/pull/21967))
 - Avoid stack overflow when determining inferable typevars ([#21971](https://github.com/astral-sh/ruff/pull/21971))
-- Fix false invalid-override diagnostic on method that uses `Callable` with a `ParamSpec` ([#21934](https://github.com/astral-sh/ruff/pull/21934))
+- Fix false `invalid-override` diagnostic on method that uses `Callable` with a `ParamSpec` ([#21934](https://github.com/astral-sh/ruff/pull/21934))
 - Disallow explicit specialization of type variables themselves ([#21938](https://github.com/astral-sh/ruff/pull/21938))
 - Fix hover type on named expression target ([#21952](https://github.com/astral-sh/ruff/pull/21952))
 
