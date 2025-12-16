@@ -1,5 +1,31 @@
 # Changelog
 
+## 0.0.1
+
+Released on 2025-12-16.
+
+### LSP server
+
+- Improve display of completions to show actual insertion text ([#21988](https://github.com/astral-sh/ruff/pull/21988))
+- Improve highlighting of special type syntax in hovers ([#22005](https://github.com/astral-sh/ruff/pull/22005))
+- Improve syntax-highlighting of constants ([#22006](https://github.com/astral-sh/ruff/pull/22006))
+
+### Core type checking
+
+- Cache `KnownClass::to_class_literal` ([#22000](https://github.com/astral-sh/ruff/pull/22000))
+- Infer precise types for `isinstance(…)` calls involving typevars ([#21999](https://github.com/astral-sh/ruff/pull/21999))
+- Infer typevar specializations for `Callable` types ([#21551](https://github.com/astral-sh/ruff/pull/21551))
+- Propagate `classmethod`-ness through decorators returning `Callable`s ([#21958](https://github.com/astral-sh/ruff/pull/21958))
+
+### Contributors
+
+- [@sharkdp](https://github.com/sharkdp)
+- [@carljm](https://github.com/carljm)
+- [@Gankra](https://github.com/Gankra)
+- [@BurntSushi](https://github.com/BurntSushi)
+- [@dcreager](https://github.com/dcreager)
+- [@MichaReiser](https://github.com/MichaReiser)
+
 ## 0.0.1-alpha.35
 
 Released on 2025-12-16.
