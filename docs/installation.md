@@ -83,7 +83,7 @@ COPY --from=ghcr.io/astral-sh/ty:latest /ty /bin/
 The following tags are available:
 
 - `ghcr.io/astral-sh/ty:latest`
-- `ghcr.io/astral-sh/ty:{major}.{minor}.{patch}`, e.g., `ghcr.io/astral-sh/ty:0.0.1`
+- `ghcr.io/astral-sh/ty:{major}.{minor}.{patch}`, e.g., `ghcr.io/astral-sh/ty:0.0.2`
 - `ghcr.io/astral-sh/ty:{major}.{minor}`, e.g., `ghcr.io/astral-sh/ty:0.0` (the latest patch
     version)
 
