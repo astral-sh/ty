@@ -1,5 +1,50 @@
 # Changelog
 
+## 0.0.1-alpha.35
+
+Released on 2025-12-16.
+
+### Bug fixes
+
+- Fix panic for stringified set comprehension in type expression ([#21967](https://github.com/astral-sh/ruff/pull/21967))
+- Avoid stack overflow when determining inferable typevars ([#21971](https://github.com/astral-sh/ruff/pull/21971))
+- Fix false invalid-override diagnostic on method that uses `Callable` with a `ParamSpec` ([#21934](https://github.com/astral-sh/ruff/pull/21934))
+- Disallow explicit specialization of type variables themselves ([#21938](https://github.com/astral-sh/ruff/pull/21938))
+- Fix hover type on named expression target ([#21952](https://github.com/astral-sh/ruff/pull/21952))
+
+### LSP server
+
+- Add *"qualify ..."* code fix for undefined references ([#21968](https://github.com/astral-sh/ruff/pull/21968))
+- Add new goto-definition targets on inlay hints ([#21950](https://github.com/astral-sh/ruff/pull/21950))
+- Remove invalid statement-keyword completions in `for`-statements ([#21979](https://github.com/astral-sh/ruff/pull/21979))
+
+### Core type checking
+
+- Add support for `__qualname__` and other implicit class attributes ([#21966](https://github.com/astral-sh/ruff/pull/21966))
+- Emit a diagnostic when a frozen dataclass inherits a non-frozen dataclass and vice versa ([#21962](https://github.com/astral-sh/ruff/pull/21962))
+- Emit a diagnostic when a type variable with a default is followed by one without a default ([#21787](https://github.com/astral-sh/ruff/pull/21787))
+- Improve diagnostics for unsupported binary operations and unsupported augmented assignments ([#21947](https://github.com/astral-sh/ruff/pull/21947))
+- Improve check enforcing that an overloaded function must have an implementation ([#21978](https://github.com/astral-sh/ruff/pull/21978))
+- Use unqualified names for displays of `TypeAliasType`s and unbound `ParamSpec`s/`TypeVar`s ([#21960](https://github.com/astral-sh/ruff/pull/21960))
+
+### Performance
+
+- Speed up ty on Linux by using jemalloc ([#21975](https://github.com/astral-sh/ruff/pull/21975))
+
+### Contributors
+
+- [@11happy](https://github.com/11happy)
+- [@dhruvmanila](https://github.com/dhruvmanila)
+- [@AlexWaygood](https://github.com/AlexWaygood)
+- [@mtshiba](https://github.com/mtshiba)
+- [@MichaReiser](https://github.com/MichaReiser)
+- [@Gankra](https://github.com/Gankra)
+- [@silamon](https://github.com/silamon)
+- [@dcreager](https://github.com/dcreager)
+- [@charliermarsh](https://github.com/charliermarsh)
+- [@RasmusNygren](https://github.com/RasmusNygren)
+- [@carljm](https://github.com/carljm)
+
 ## 0.0.1-alpha.34
 
 Released on 2025-12-12.
