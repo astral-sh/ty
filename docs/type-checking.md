@@ -1,5 +1,7 @@
 # Type checking
 
+## Running the type checker
+
 To run the type checker, use the `check` subcommand:
 
 ```shell
