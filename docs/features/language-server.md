@@ -3,7 +3,7 @@
 You can generally expect ty to be a fully-featured [language server] for Python.
 This page describes some of the key features provided by ty's IDE integration and includes
 a reference table of supported LSP features at the end.
-See the [editor integration](../editors.md) documentation for instructions on how to set up ty
+See the [editor integration](../editors.md) guide for instructions on how to set up ty
 with your editor.
 
 ## Diagnostics
