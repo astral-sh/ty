@@ -82,16 +82,17 @@ extra:
       link: https://x.com/astral_sh
 nav:
   - Introduction: index.md
-  - Concepts:
+  - Guides:
       - Installation: installation.md
       - Type checking: type-checking.md
+      - Editor integration: editors.md
+  - Concepts:
       - Configuration: configuration.md
       - Module discovery: modules.md
       - Python version: python-version.md
       - File exclusions: exclusions.md
       - Rules: rules.md
       - Suppression: suppression.md
-      - Editors: editors.md
   - Features:
       - Type system: features/type-system.md
       - Diagnostics: features/diagnostics.md
