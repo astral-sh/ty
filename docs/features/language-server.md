@@ -97,8 +97,8 @@ analyzed in context, with diagnostics, completions, and other features working a
 ty's architecture is designed for low-latency updates of diagnostics and other language server features.
 When you make a change in your editor, ty incrementally updates only the affected parts of the
 codebase, rather than re-analyzing everything from scratch. This happens at a fine-grained level,
-down to individual definitions. All of this is to ensure that you get instant feedback as you type (within
-a few milliseconds, even on large projects).
+down to individual definitions. This incrementality means that you get instant feedback as you type, i.e.,
+within a few milliseconds, even on large projects.
 
 !!! info
 
