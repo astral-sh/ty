@@ -2,11 +2,20 @@
 
 An extremely fast Python type checker and language server, written in Rust.
 
-<!-- TODO
+ty is backed by [Astral](https://astral.sh), the creators of
+[uv](https://github.com/astral-sh/uv) and [Ruff](https://github.com/astral-sh/ruff).
+
 ## Highlights
 
-- ...
--->
+- 10x - 100x faster than mypy and Pyright
+- Comprehensive and helpful diagnostics, inspired by the Rust compiler
+- Configurable rule levels, per-file overrides, suppression comments, and first-class project support
+- Designed for adoption, with support for redeclarations and partially typed code
+- Language server with code navigation, completions, code actions, auto-import, inlay hints, on-hover help, etc.
+- Fine-grained incremental analysis designed for fast updates when editing files in an IDE
+- Editor integrations for VS Code, PyCharm, and more
+- Advanced typing features like first-class intersection types, advanced type narrowing, and
+    type-driven reachability analysis
 
 ## Getting started
 
