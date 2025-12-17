@@ -73,6 +73,10 @@ See the
 
 <!-- markdownlint-disable MD001 -->
 
+#### Why is ty doing \_\_\_\_\_?
+
+See our [typing FAQ](https://docs.astral.sh/ty/reference/typing-faq).
+
 #### How do you pronounce ty?
 
 It's pronounced as "tee - why" ([`/tiː waɪ/`](https://en.wikipedia.org/wiki/Help:IPA/English#Key))
