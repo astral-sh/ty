@@ -116,7 +116,8 @@ ty reports *"Cannot resolve imported module …"*, check the following:
 
 1. **Compiled extensions**: ty requires `.py` or `.pyi` files for type information. If a package
     contains only compiled extensions (`.so` or `.pyd` files), you'll need stub files (`.pyi`) for ty
-    to understand the types.
+    to understand the types. See also [this issue](https://github.com/astral-sh/ty/issues/487) which
+    tracks improvements in this area.
 
 ## Does ty support monorepos?
 
