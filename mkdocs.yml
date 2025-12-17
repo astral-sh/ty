@@ -99,6 +99,7 @@ nav:
       - Language server: features/language-server.md
   - Reference:
       - Configuration: reference/configuration.md
+      - Typing FAQ: reference/typing-faq.md
       - Rules: reference/rules.md
       - CLI: reference/cli.md
       - Exit codes: reference/exit-codes.md
