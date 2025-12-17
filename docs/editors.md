@@ -105,7 +105,7 @@ Starting with version 2025.3, PyCharm users can enable native ty support in the 
 
 1. Select which options should be enabled.
 
-For more information, refer to [PyCharm documentation](https://www.jetbrains.com/help/pycharm/2025.3/lsp-tools.html#ty).
+For more information, refer to [PyCharm documentation](https://www.jetbrains.com/help/pycharm/lsp-tools.html#ty).
 
 ## Other editors
 
