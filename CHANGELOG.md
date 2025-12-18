@@ -1,5 +1,32 @@
 # Changelog
 
+## 0.0.4
+
+Released on 2025-12-18.
+
+### LSP server
+
+- Add support for attribute docstrings ([#22036](https://github.com/astral-sh/ruff/pull/22036))
+- Correctly encode multiline tokens for clients not supporting multiline tokens ([#22033](https://github.com/astral-sh/ruff/pull/22033))
+- Don't suggest keyword statements when only expressions are valid ([#22002](https://github.com/astral-sh/ruff/pull/22002))
+- Fix goto-declaration on the right-hand side of `from module import submodule` ([#22042](https://github.com/astral-sh/ruff/pull/22042))
+- Fix some configuration panics in the LSP ([#22040](https://github.com/astral-sh/ruff/pull/22040))
+- Gracefully handle client requests that can't be deserialized ([#22051](https://github.com/astral-sh/ruff/pull/22051))
+
+### Other changes
+
+- Improve performance for large match statements ([#22045](https://github.com/astral-sh/ruff/pull/22045))
+- Disable possibly-missing-imports by default ([#22041](https://github.com/astral-sh/ruff/pull/22041))
+- Implement disjointness for TypedDicts ([#22044](https://github.com/astral-sh/ruff/pull/22044))
+
+### Contributors
+
+- [@oconnor663](https://github.com/oconnor663)
+- [@MichaReiser](https://github.com/MichaReiser)
+- [@Gankra](https://github.com/Gankra)
+- [@RasmusNygren](https://github.com/RasmusNygren)
+- [@charliermarsh](https://github.com/charliermarsh)
+
 ## 0.0.3
 
 Released on 2025-12-17.
