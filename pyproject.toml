@@ -118,7 +118,6 @@ changelog-ignore-authors = ["github-actions"]
 major-labels = [] # We do not use the major version number yet
 minor-labels = [] # We do not use the minor version number yet
 version-format = "cargo"
-default-bump-type = "pre"
 trim-title-prefixes = ["[ty]"]
 
 [tool.rooster.section-labels]
