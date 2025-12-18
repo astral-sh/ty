@@ -8,7 +8,7 @@ Released on 2025-12-18.
 
 - Add support for attribute docstrings ([#22036](https://github.com/astral-sh/ruff/pull/22036))
 - Correctly encode multiline tokens for clients not supporting multiline tokens ([#22033](https://github.com/astral-sh/ruff/pull/22033))
-- Don't suggest keyword statements when only expressions are valid ([#22002](https://github.com/astral-sh/ruff/pull/22002))
+- Autocompletions: Don't suggest keyword statements when only expressions are valid ([#22002](https://github.com/astral-sh/ruff/pull/22002))
 - Fix goto-declaration on the right-hand side of `from module import submodule` ([#22042](https://github.com/astral-sh/ruff/pull/22042))
 - Fix some configuration panics in the LSP ([#22040](https://github.com/astral-sh/ruff/pull/22040))
 - Gracefully handle client requests that can't be deserialized ([#22051](https://github.com/astral-sh/ruff/pull/22051))
