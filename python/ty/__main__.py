@@ -75,12 +75,51 @@ def find_ty_bin() -> str:
     raise FileNotFoundError(scripts_path)
 
 
-if __name__ == "__main__":
-    ty = os.fsdecode(find_ty_bin())
-    if sys.platform == "win32":
-        import subprocess
+def main() -> None:
+    """Main entry point that forwards arguments to the ty executable."""
+    try:
+        ty = os.fsdecode(find_ty_bin())
+        # Validate that the ty binary exists and is executable
+        if not os.path.isfile(ty) or not os.access(ty, os.X_OK):
+            sys.stderr.write("Error: ty executable not found or not executable\n")
+            sys.exit(1)
+        
+        # Use -- separator to safely separate wrapper args from ty command args
+        # This prevents argument injection by treating everything after -- as literal arguments
+        wrapper_args = []
+        ty_args = []
+        separator_found = False
+        
+        for arg in sys.argv[1:]:
+            if arg == "--" and not separator_found:
+                separator_found = True
+            elif separator_found:
+ty_args.append(arg)
+            else:
+                wrapper_args.append(arg)
+        
+        # If no separator found, treat all args as ty arguments (backward compatibility)
+        if not separator_found:
+            ty_args = wrapper_args
+            wrapper_args = []
+        
+        # Build final argument list for execution
+        args = [ty, *ty_args]
+        
+        if sys.platform == "win32":
+            import subprocess
 
-        completed_process = subprocess.run([ty, *sys.argv[1:]])
-        sys.exit(completed_process.returncode)
-    else:
-        os.execvp(ty, [ty, *sys.argv[1:]])
+            completed_process = subprocess.run(args)
+            sys.exit(completed_process.returncode)
+        else:
+            os.execvp(ty, args)
+    except FileNotFoundError:
+        sys.stderr.write("Error: ty executable not found\n")
+        sys.exit(1)
+    except Exception as e:
+        sys.stderr.write(f"Error: {type(e).__name__}\n")
+        sys.exit(1)
+
+
+if __name__ == "__main__":
+    main()
