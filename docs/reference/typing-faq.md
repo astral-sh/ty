@@ -87,6 +87,82 @@ A similar rule applies to `complex`, which is treated as `int | float | complex`
 
     If you need this for `complex`, you can use `ty_extensions.JustComplex` in a similar way.
 
+## Why does ty say `Callable` has no attribute `__name__`?
+
+When you access `__name__`, `__qualname__`, `__module__`, or `__doc__` on a value typed as `Callable`,
+ty reports an `unresolved-attribute` error. This is because not all callables have these attributes.
+Functions do (including lambdas), but other callable objects do not. The `FileUpload` class below, for
+example, is callable, but instances of `FileUpload` do not have a `__name__` attribute. Passing a
+`FileUpload` instance to `retry` would lead to an `AttributeError` at runtime.
+
+```py
+from typing import Callable
+
+def retry(times: int, operation: Callable[[], bool]) -> bool:
+    for i in range(times):
+        # WRONG: `operation` does not necessarily have a `__name__` attribute
+        print(f"Calling {operation.__name__}, attempt {i + 1} of {times}")
+        if operation():
+            return True
+    return False
+
+class FileUpload:
+    def __init__(self, name: str) -> None:
+        # …
+
+    def __call__(self) -> bool:
+        # …
+
+retry(3, FileUpload("image.png"))
+```
+
+To fix this, you could use `getattr` with a fall back to a default name when the
+attribute is not present (or use a `hasattr(…, "__name__")` check if you access
+it multiple times):
+
+```py
+name = getattr(operation, "__name__", "operation")
+```
+
+Alternatively, you could use an `isinstance(…, types.FunctionType)` check to narrow the type of
+`operation` to something that definitely has a `__name__` attribute:
+
+```py
+if isinstance(operation, FunctionType):
+    print(f"Calling {operation.__name__}, attempt {i + 1} of {times}")
+else:
+    print(f"Calling operation, attempt {i + 1} of {times}")
+```
+
+You can try various approaches in [this playground example](https://play.ty.dev/f6f7f35a-47c3-423d-be8d-33d03c61d40c).
+See also [this discussion](https://github.com/astral-sh/ty/issues/1495) for some plans to improve
+the developer experience around this in the future.
+
+!!! info
+
+    ty has first-class support for intersection types. If you only want to accept function-like
+    callables, you could define `FunctionLikeCallable` as an intersection of `Callable` and
+    `types.FunctionType`:
+
+    ```py
+    from typing import Callable, TYPE_CHECKING
+    from types import FunctionType
+
+    if TYPE_CHECKING:
+        from ty_extensions import Intersection
+
+        type FunctionLikeCallable[**P, R] = Intersection[Callable[P, R], FunctionType]
+    else:
+        FunctionLikeCallable = Callable
+
+
+    def retry(times: int, operation: FunctionLikeCallable[[], bool]) -> bool:
+        ...
+    ```
+
+    You can check out the full example [here](https://play.ty.dev/7a1ea4ab-04e1-4271-adf5-ddc3a5d2fcfd),
+    which demonstrates that `FileUpload` instances are no longer accepted by `retry`.
+
 ## Does ty have a strict mode?
 
 Not yet. A stricter inference mode is tracked in
