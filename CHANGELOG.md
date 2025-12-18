@@ -17,7 +17,7 @@ Released on 2025-12-18.
 
 - Improve performance for large match statements ([#22045](https://github.com/astral-sh/ruff/pull/22045))
 - Disable possibly-missing-imports by default ([#22041](https://github.com/astral-sh/ruff/pull/22041))
-- Implement disjointness for TypedDicts ([#22044](https://github.com/astral-sh/ruff/pull/22044))
+- Implement disjointness for TypedDicts, significantly speeding up checking of code that uses pydantic ([#22044](https://github.com/astral-sh/ruff/pull/22044))
 
 ### Contributors
 
