@@ -1,5 +1,31 @@
 # Changelog
 
+## 0.0.3
+
+Released on 2025-12-17.
+
+### LSP server
+
+- Improve rendering of signatures in hovers ([#22007](https://github.com/astral-sh/ruff/pull/22007))
+
+### Core type checking
+
+- Apply narrowing to `len` calls based on argument size ([#22026](https://github.com/astral-sh/ruff/pull/22026))
+- Don't add identical lower/upper bounds multiple times when inferring specializations ([#22030](https://github.com/astral-sh/ruff/pull/22030))
+- Improve `unsupported-base` and `invalid-super-argument` diagnostics to avoid extremely long lines when encountering verbose types ([#22022](https://github.com/astral-sh/ruff/pull/22022))
+- Improve disambiguation of types in many cases ([#22019](https://github.com/astral-sh/ruff/pull/22019))
+- Respect deferred values in keyword arguments etc. for `.pyi` files ([#22029](https://github.com/astral-sh/ruff/pull/22029))
+- Handle field specifier functions that accept `**kwargs` and recognize metaclass-based transformers as instances of `DataclassInstance` ([#22018](https://github.com/astral-sh/ruff/pull/22018))
+
+### Contributors
+
+- [@charliermarsh](https://github.com/charliermarsh)
+- [@sharkdp](https://github.com/sharkdp)
+- [@Gankra](https://github.com/Gankra)
+- [@zanieb](https://github.com/zanieb)
+- [@AlexWaygood](https://github.com/AlexWaygood)
+- [@dcreager](https://github.com/dcreager)
+
 ## 0.0.2
 
 Released on 2025-12-16.
