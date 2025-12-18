@@ -91,9 +91,9 @@ A similar rule applies to `complex`, which is treated as `int | float | complex`
 
 When you access `__name__`, `__qualname__`, `__module__`, or `__doc__` on a value typed as `Callable`,
 ty reports an `unresolved-attribute` error. This is because not all callables have these attributes.
-Functions and lambdas do, but other callable objects do not. The `FileUpload` class below, for example,
-is callable, but does not have a `__name__` attribute. Passing an instance of `FileUpload` to `retry`
-would lead to an `AttributeError` at runtime.
+Functions do (including lambdas), but other callable objects do not. The `FileUpload` class below, for
+example, is callable, but instances of `FileUpload` do not have a `__name__` attribute. Passing a
+`FileUpload` instance to `retry` would lead to an `AttributeError` at runtime.
 
 ```py
 from typing import Callable
@@ -108,19 +108,20 @@ def retry(times: int, operation: Callable[[], bool]) -> bool:
 
 class FileUpload:
     def __init__(self, name: str) -> None:
-        raise NotImplementedError
+        # …
 
     def __call__(self) -> bool:
-        raise NotImplementedError
+        # …
 
 retry(3, FileUpload("image.png"))
 ```
 
-To fix this, you could use a `hasattr(…, "__name__")` check to fall back to a default name when the
-attribute is not present:
+To fix this, you could use `getattr` with a fall back to a default name when the
+attribute is not present (or use a `hasattr(…, "__name__")` check if you access
+it multiple times):
 
 ```py
-name = operation.__name__ if hasattr(operation, "__name__") else "operation"
+name = getattr(operation, "__name__", "operation")
 ```
 
 Alternatively, you could use an `isinstance(…, types.FunctionType)` check to narrow the type of
