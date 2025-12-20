@@ -2,6 +2,11 @@
 
 This page answers some commonly asked questions about ty and Python's type system.
 
+## Why does ty report an error on my code?
+
+Check the [documentation](https://docs.astral.sh/ty/reference/rules/) for the specific error code
+you are seeing; it may explain the problem.
+
 ## What is the `Unknown` type and when does it appear?
 
 `Unknown` is ty's way of representing a type that could not be fully inferred. It behaves the same
@@ -251,3 +256,17 @@ No. ty does not have a plugin system and there is currently no plan to add one.
 We prefer extending the type system with well-specified features rather than relying on
 type-checker-specific plugins. That said, we are considering adding support for popular third-party
 libraries like pydantic, SQLAlchemy, attrs, or django directly into ty.
+
+## What is `Top[list[Unknown]]`, and why does it appear?
+
+This type represents "all possible lists of any element type" (as opposed to `list[Unknown]`, which
+represents "a list of some unknown element type"). It usually arises from a check such as
+`if isinstance(x, list):`. If `x` was previously of type `Item | list[Item]`, you might expect this
+check to narrow the type to `list[Item]`, but ty respects the possibility that there could be a
+common subclass of both `Item` and `list` (which may not be a list of `Item`!), and so the narrowed
+type is instead `(Item & Top[list[Unknown]]) | list[Item]`. This code can be made more robust by
+instead checking `if instance(x, Item)`, or by declaring the `Item` type as `@typing.final`.
+
+See also the [discussion
+here](https://docs.astral.sh/ty/features/type-system/#top-and-bottom-materializations) and [in this
+issue](https://github.com/astral-sh/ty/issues/1578).
