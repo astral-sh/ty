@@ -2,6 +2,11 @@
 
 This page answers some commonly asked questions about ty and Python's type system.
 
+## Why does ty report an error on my code?
+
+Check the [documentation](https://docs.astral.sh/ty/reference/rules/) for the specific error code
+you are seeing; it may explain the problem.
+
 ## What is the `Unknown` type and when does it appear?
 
 `Unknown` is ty's way of representing a type that could not be fully inferred. It behaves the same
@@ -252,52 +257,16 @@ We prefer extending the type system with well-specified features rather than rel
 type-checker-specific plugins. That said, we are considering adding support for popular third-party
 libraries like pydantic, SQLAlchemy, attrs, or django directly into ty.
 
-## Why does ty say I have an invalid method override?
-
-We plan to [improve the detail](https://github.com/astral-sh/ty/issues/1644) provided by this
-diagnostic, so it's easier to identify the root cause.
-
-One common cause of this error (especially for mypy users) is that a subclass overrides a base class
-method and changes the name of a parameter which is not positional-only. For example:
-
-```py
-class Base:
-    def process(self, data: str) -> None:
-        ...
-
-class Derived(Base):
-    def process(self, info: str) -> None:  # error: invalid-method-override
-        ...
-
-def use_base(b: Base) -> None:
-    b.process(data="hello")  # Oops
-```
-
-The last line here will be accepted by a type checker, but if an instance of `Derived` is passed to
-`use_base` (which is valid, since `Derived` is a subclass of `Base`), the call will raise an error
-at runtime, since `Derived.process` does not have a `data` parameter.
-
-We may [split this case into a separate diagnostic
-code](https://github.com/astral-sh/ty/issues/2073), so that users who want mypy-compatible behavior
-can suppress it specifically.
-
-For safety, ty checks methods for compatibility with all inherited classes, not just the immediate
-parent class. This can put you in a situation where you can't avoid this error, because you are
-inheriting a library class that already overrides its own base class method incompatibly, and no
-matter how you define your override, it will be incompatible with one of the base class methods. We
-are considering [trying to avoid the error in this
-case](https://github.com/astral-sh/ty/issues/2000).
-
 ## What is `Top[list[Unknown]]`, and why does it appear?
 
 This type represents "all possible lists of any element type" (as opposed to `list[Unknown]`, which
 represents "a list of some unknown element type"). It usually arises from a check such as
-`if isinstance(x, list):`. If `x` was previously of type `Item | list[Item]`, you may expect this check
-to narrow the type to `list[Item]`, but ty respects the possibility that there could be a common
-subclass of both `Item` and `list` (which may not be a list of `Item`!), and so the narrowed type is
-instead `(Item & Top[list[Unknown]]) | list[Item]`. This code can be made more robust by instead
-checking `if instance(x, Item)`, or by declaring the `Item` type as `@typing.final`.
+`if isinstance(x, list):`. If `x` was previously of type `Item | list[Item]`, you might expect this
+check to narrow the type to `list[Item]`, but ty respects the possibility that there could be a
+common subclass of both `Item` and `list` (which may not be a list of `Item`!), and so the narrowed
+type is instead `(Item & Top[list[Unknown]]) | list[Item]`. This code can be made more robust by
+instead checking `if instance(x, Item)`, or by declaring the `Item` type as `@typing.final`.
 
-See also [discussion
+See also the [discussion
 here](https://docs.astral.sh/ty/features/type-system/#top-and-bottom-materializations) and [in this
 issue](https://github.com/astral-sh/ty/issues/1578).
