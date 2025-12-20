@@ -20,7 +20,7 @@ Released on 2025-12-20.
 ### Other changes
 
 - Add support for `dict(...)` calls in `TypedDict` contexts ([#22113](https://github.com/astral-sh/ruff/pull/22113))
-- Avoid narrowing on non-generic calls ([#22102](https://github.com/astral-sh/ruff/pull/22102))
+- Speedup bidirectional type-checking involving large unions by avoiding narrowing on non-generic calls ([#22102](https://github.com/astral-sh/ruff/pull/22102))
 - Avoid storing invalid multi-inference attempts ([#22062](https://github.com/astral-sh/ruff/pull/22062))
 - Avoid temporarily storing invalid multi-inference attempts ([#22103](https://github.com/astral-sh/ruff/pull/22103))
 - Improve union builder performance ([#22048](https://github.com/astral-sh/ruff/pull/22048))
