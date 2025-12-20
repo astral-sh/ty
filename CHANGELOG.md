@@ -6,7 +6,7 @@ Released on 2025-12-20.
 
 ### Bug fixes
 
-- Visit class arguments in source order for semantic tokens ([#22063](https://github.com/astral-sh/ruff/pull/22063))
+- Fix debug-mode server panic when a user typed a class definition by ensuring class arguments are visited in source order for semantic tokens ([#22063](https://github.com/astral-sh/ruff/pull/22063))
 
 ### LSP server
 
