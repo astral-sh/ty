@@ -27,7 +27,7 @@ Released on 2025-12-20.
 - Only prefer declared types in non-covariant positions ([#22068](https://github.com/astral-sh/ruff/pull/22068))
 - Respect intersections in iterations ([#21965](https://github.com/astral-sh/ruff/pull/21965))
 - Sync vendored typeshed stubs ([#22091](https://github.com/astral-sh/ruff/pull/22091)). [Typeshed diff](https://github.com/python/typeshed/compare/ef2b90c67e5c668b91b3ae121baf00ee5165c30b...3c2dbb1fde8e8d1d59b10161c8bf5fd06c0011cd)
-- Unwrap `enum.nonmember` values ([#22025](https://github.com/astral-sh/ruff/pull/22025))
+- Understand that the type of `X` on an enum class will be `int` if `X` is defined using `enum.nonmember` in the class definition ([#22025](https://github.com/astral-sh/ruff/pull/22025))
 
 ### Contributors
 
