@@ -28,7 +28,6 @@ Released on 2025-12-20.
 - Respect intersections in iterations ([#21965](https://github.com/astral-sh/ruff/pull/21965))
 - Sync vendored typeshed stubs ([#22091](https://github.com/astral-sh/ruff/pull/22091))
 - Unwrap `enum.nonmember` values ([#22025](https://github.com/astral-sh/ruff/pull/22025))
-- Add additional typing FAQ entries to the documentation ([#2126](https://github.com/astral-sh/ty/pull/2126))
 
 ### Contributors
 
