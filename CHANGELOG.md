@@ -1,5 +1,43 @@
 # Changelog
 
+## 0.0.5
+
+Released on 2025-12-20.
+
+### Bug fixes
+
+- Fix debug-mode server panic when a user typed a class definition by ensuring class arguments are visited in source order for semantic tokens ([#22063](https://github.com/astral-sh/ruff/pull/22063))
+
+### LSP server
+
+- Classify docstrings in semantic tokens during syntax highlighting ([#22031](https://github.com/astral-sh/ruff/pull/22031))
+
+### CLI
+
+- Add `--force-exclude` option ([#22076](https://github.com/astral-sh/ruff/pull/22076))
+- Only clear output between two successful checks ([#22078](https://github.com/astral-sh/ruff/pull/22078))
+
+### Other changes
+
+- Add support for `dict(...)` calls in `TypedDict` contexts ([#22113](https://github.com/astral-sh/ruff/pull/22113))
+- Speedup bidirectional type-checking involving large unions by avoiding narrowing on non-generic calls ([#22102](https://github.com/astral-sh/ruff/pull/22102))
+- Simplify inferred types by avoiding storing multi-inference attempts ([#22062](https://github.com/astral-sh/ruff/pull/22062), [#22103](https://github.com/astral-sh/ruff/pull/22103))
+- Improve union builder performance ([#22048](https://github.com/astral-sh/ruff/pull/22048))
+- Only prefer declared types in non-covariant positions ([#22068](https://github.com/astral-sh/ruff/pull/22068))
+- Respect intersections in iterations ([#21965](https://github.com/astral-sh/ruff/pull/21965))
+- Sync vendored typeshed stubs ([#22091](https://github.com/astral-sh/ruff/pull/22091)). [Typeshed diff](https://github.com/python/typeshed/compare/ef2b90c67e5c668b91b3ae121baf00ee5165c30b...3c2dbb1fde8e8d1d59b10161c8bf5fd06c0011cd)
+- Understand that the type of `X` on an enum class will be `int` if `X` is defined using `enum.nonmember` in the class definition ([#22025](https://github.com/astral-sh/ruff/pull/22025))
+
+### Contributors
+
+- [@charliermarsh](https://github.com/charliermarsh)
+- [@ibraheemdev](https://github.com/ibraheemdev)
+- [@RasmusNygren](https://github.com/RasmusNygren)
+- [@Hugo-Polloli](https://github.com/Hugo-Polloli)
+- [@carljm](https://github.com/carljm)
+- [@Gankra](https://github.com/Gankra)
+- [@MichaReiser](https://github.com/MichaReiser)
+
 ## 0.0.4
 
 Released on 2025-12-18.
