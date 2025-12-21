@@ -194,114 +194,6 @@ typeshed = "/path/to/custom/typeshed"
 
 ---
 
-## `overrides`
-
-Configuration override that applies to specific files based on glob patterns.
-
-An override allows you to apply different rule configurations to specific
-files or directories. Multiple overrides can match the same file, with
-later overrides take precedence. Override rules take precedence over global
-rules for matching files.
-
-For example, to relax enforcement of rules in test files:
-
-```toml
-[[tool.ty.overrides]]
-include = ["tests/**", "**/test_*.py"]
-
-[tool.ty.overrides.rules]
-possibly-unresolved-reference = "warn"
-```
-
-Or, to ignore a rule in generated files but retain enforcement in an important file:
-
-```toml
-[[tool.ty.overrides]]
-include = ["generated/**"]
-exclude = ["generated/important.py"]
-
-[tool.ty.overrides.rules]
-possibly-unresolved-reference = "ignore"
-```
-
-
-### `exclude`
-
-A list of file and directory patterns to exclude from this override.
-
-Patterns follow a syntax similar to `.gitignore`.
-Exclude patterns take precedence over include patterns within the same override.
-
-If not specified, defaults to `[]` (excludes no files).
-
-**Default value**: `null`
-
-**Type**: `list[str]`
-
-**Example usage**:
-
-```toml title="pyproject.toml"
-[[tool.ty.overrides]]
-exclude = [
-    "generated",
-    "*.proto",
-    "tests/fixtures/**",
-    "!tests/fixtures/important.py"  # Include this one file
-]
-```
-
----
-
-### `include`
-
-A list of file and directory patterns to include for this override.
-
-The `include` option follows a similar syntax to `.gitignore` but reversed:
-Including a file or directory will make it so that it (and its contents)
-are affected by this override.
-
-If not specified, defaults to `["**"]` (matches all files).
-
-**Default value**: `null`
-
-**Type**: `list[str]`
-
-**Example usage**:
-
-```toml title="pyproject.toml"
-[[tool.ty.overrides]]
-include = [
-    "src",
-    "tests",
-]
-```
-
----
-
-### `rules`
-
-Rule overrides for files matching the include/exclude patterns.
-
-These rules will be merged with the global rules, with override rules
-taking precedence for matching files. You can set rules to different
-severity levels or disable them entirely.
-
-**Default value**: `{...}`
-
-**Type**: `dict[RuleName, "ignore" | "warn" | "error"]`
-
-**Example usage**:
-
-```toml title="pyproject.toml"
-[[tool.ty.overrides]]
-include = ["src"]
-
-[tool.ty.overrides.rules]
-possibly-unresolved-reference = "ignore"
-```
-
----
-
 ## `src`
 
 ### `exclude`
@@ -453,6 +345,114 @@ it will also be included in the first party search path.
 ```toml title="pyproject.toml"
 [tool.ty.src]
 root = "./app"
+```
+
+---
+
+## `overrides`
+
+Configuration override that applies to specific files based on glob patterns.
+
+An override allows you to apply different rule configurations to specific
+files or directories. Multiple overrides can match the same file, with
+later overrides take precedence. Override rules take precedence over global
+rules for matching files.
+
+For example, to relax enforcement of rules in test files:
+
+```toml
+[[tool.ty.overrides]]
+include = ["tests/**", "**/test_*.py"]
+
+[tool.ty.overrides.rules]
+possibly-unresolved-reference = "warn"
+```
+
+Or, to ignore a rule in generated files but retain enforcement in an important file:
+
+```toml
+[[tool.ty.overrides]]
+include = ["generated/**"]
+exclude = ["generated/important.py"]
+
+[tool.ty.overrides.rules]
+possibly-unresolved-reference = "ignore"
+```
+
+
+### `exclude`
+
+A list of file and directory patterns to exclude from this override.
+
+Patterns follow a syntax similar to `.gitignore`.
+Exclude patterns take precedence over include patterns within the same override.
+
+If not specified, defaults to `[]` (excludes no files).
+
+**Default value**: `null`
+
+**Type**: `list[str]`
+
+**Example usage**:
+
+```toml title="pyproject.toml"
+[[tool.ty.overrides]]
+exclude = [
+    "generated",
+    "*.proto",
+    "tests/fixtures/**",
+    "!tests/fixtures/important.py"  # Include this one file
+]
+```
+
+---
+
+### `include`
+
+A list of file and directory patterns to include for this override.
+
+The `include` option follows a similar syntax to `.gitignore` but reversed:
+Including a file or directory will make it so that it (and its contents)
+are affected by this override.
+
+If not specified, defaults to `["**"]` (matches all files).
+
+**Default value**: `null`
+
+**Type**: `list[str]`
+
+**Example usage**:
+
+```toml title="pyproject.toml"
+[[tool.ty.overrides]]
+include = [
+    "src",
+    "tests",
+]
+```
+
+---
+
+### `rules`
+
+Rule overrides for files matching the include/exclude patterns.
+
+These rules will be merged with the global rules, with override rules
+taking precedence for matching files. You can set rules to different
+severity levels or disable them entirely.
+
+**Default value**: `{...}`
+
+**Type**: `dict[RuleName, "ignore" | "warn" | "error"]`
+
+**Example usage**:
+
+```toml title="pyproject.toml"
+[[tool.ty.overrides]]
+include = ["src"]
+
+[tool.ty.overrides.rules]
+possibly-unresolved-reference = "ignore"
 ```
 
 ---
