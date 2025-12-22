@@ -66,12 +66,16 @@ ______________________________________________________________________
 
 Determines the scope of the diagnostics reported by the language server.
 
+Setting this to `off` is useful if you want to use ty exclusively for the language server features
+like code completion, hover, go to definition, etc.
+
+- `off`: Diagnostics are disabled.
 - `openFilesOnly`: Diagnostics are reported only for files that are currently open in the editor.
 - `workspace`: Diagnostics are reported for all files in the workspace.
 
 **Default value**: `"openFilesOnly"`
 
-**Type**: `"workspace" | "openFilesOnly"`
+**Type**: `"off" | "workspace" | "openFilesOnly"`
 
 **Example usage**:
 
