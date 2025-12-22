@@ -124,6 +124,8 @@ ______________________________________________________________________
 
 Path to a `ty.toml` file, similar to `--config-file` on the CLI.
 
+See the [configuration](./configuration.md) reference for an enumeration of the available settings.
+
 **Default value**: `null`
 
 **Type**: `string`
