@@ -3,6 +3,136 @@
 The editor settings supported by ty's language server, as well as the settings specific to [ty's VS
 Code extension][ty-vscode].
 
+## `configuration`
+
+In-editor configuration of ty's settings. The inline settings always take precedence over the settings from configuration files.
+See [configuration](../configuration/) for the supported configuration options.
+
+**Default value**: `null`
+
+**Type**: `object`
+
+**Example usage**:
+
+=== "VS Code"
+
+    ```json
+    {
+      "ty.configuration": {
+        "rules": {
+          "unresolved-reference": "warn"
+        }
+      }
+    }
+    ```
+
+=== "Neovim"
+
+    ```lua
+    require('lspconfig').ty.setup({
+      settings = {
+        ty = {
+          configuration = {
+            rules = {
+              ["unresolved-reference"] = "warn"
+            }
+          }
+        },
+      },
+    })
+
+    -- For Neovim 0.11.0 and later:
+    vim.lsp.config('ty', {
+      settings = {
+        ty = {
+          configuration = {
+            rules = {
+              ["unresolved-reference"] = "warn"
+            }
+          }
+        },
+      },
+    })
+    ```
+
+=== "Zed"
+
+    ```json
+    {
+      "lsp": {
+        "ty": {
+          "settings": {
+            "configuration": {
+               "rules": {
+                "unresolved-reference": "warn"
+              }
+            }
+          }
+        }
+      }
+    }
+    ```
+
+## `configurationFile`
+
+The path to a `ty.toml` configuration file. ty will use the specified configuration over any automatically discovered configuration.
+ty will expand a tilde `~` at the start of a string to the user's home directory, as well as variables like `$A` or `${A}`.
+
+!!! info
+
+While ty configuration can be included in a `pyproject.toml` file, it is not allowed in this context.
+
+**Default value**: `null`
+
+**Type**: `string`
+
+**Example usage**:
+
+=== "VS Code"
+
+    ```json
+    {
+      "ty.configurationFile": "./.config/ty.toml"
+    }
+    ```
+
+=== "Neovim"
+
+    ```lua
+    require('lspconfig').ty.setup({
+      settings = {
+        ty = {
+          configurationFile = "./.config/ty.toml"
+        },
+      },
+    })
+
+    -- For Neovim 0.11.0 and later:
+    vim.lsp.config('ty', {
+      settings = {
+        ty = {
+          configurationFile = "./.config/ty.toml"
+        },
+      },
+    })
+    ```
+
+=== "Zed"
+
+    ```json
+    {
+      "lsp": {
+        "ty": {
+          "settings": {
+            "configurationFile": "./.config/ty.toml"
+          }
+        }
+      }
+    }
+    ```
+
+______________________________________________________________________
+
 ## `disableLanguageServices`
 
 Whether to disable the language services for the ty language server like code completion, hover,
