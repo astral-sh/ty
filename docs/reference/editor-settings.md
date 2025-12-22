@@ -120,6 +120,61 @@ Determines the scope of the diagnostics reported by the language server.
 
 ______________________________________________________________________
 
+## `configurationFile`
+
+Path to a `ty.toml` file, similar to `--config-file` on the CLI.
+
+**Default value**: `null`
+
+**Type**: `string`
+
+**Example usage**:
+
+=== "VS Code"
+
+    ```json
+    {
+      "ty.configurationFile": "path/to/ty.toml"
+    }
+    ```
+
+=== "Neovim"
+
+    ```lua
+    require('lspconfig').ty.setup({
+      settings = {
+        ty = {
+          configurationFile = 'path/to/ty.toml',
+        },
+      },
+    })
+
+    -- For Neovim 0.11.0 and later:
+    vim.lsp.config('ty', {
+      settings = {
+        ty = {
+          configurationFile = 'path/to/ty.toml',
+        },
+      },
+    })
+    ```
+
+=== "Zed"
+
+    ```json
+    {
+      "lsp": {
+        "ty": {
+          "settings": {
+            "configurationFile": "path/to/ty.toml"
+          }
+        }
+      }
+    }
+    ```
+
+______________________________________________________________________
+
 ## `inlayHints`
 
 These settings control the inline hints that ty provides in an editor.
