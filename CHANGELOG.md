@@ -34,7 +34,7 @@ Released on 2025-12-23.
 - Support type inference between protocol instances ([#22120](https://github.com/astral-sh/ruff/pull/22120))
 - Synthesize a `_fields` attribute for NamedTuples ([#22163](https://github.com/astral-sh/ruff/pull/22163))
 - Synthesize a `_replace` method for NamedTuples ([#22153](https://github.com/astral-sh/ruff/pull/22153))
-- Narrow tagged unions of `TypedDict` ([#22104](https://github.com/astral-sh/ruff/pull/22104))
+- Narrow "tagged unions" of `TypedDict`s ([#22104](https://github.com/astral-sh/ruff/pull/22104))
 
 ### Contributors
 
