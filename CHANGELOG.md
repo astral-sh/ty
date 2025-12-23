@@ -6,22 +6,22 @@ Released on 2025-12-23.
 
 ### Bug fixes
 
-- Avoid expanding type aliases in implicit tuple aliases ([#22015](https://github.com/astral-sh/ruff/pull/22015))
-- Distribute `type[]` over unions ([#22115](https://github.com/astral-sh/ruff/pull/22115))
-- Exclude parameterized tuple types from narrowing when disjoint from comparison values ([#22129](https://github.com/astral-sh/ruff/pull/22129))
+- FIx panic from unexpanded type aliases in implicit tuple aliases ([#22015](https://github.com/astral-sh/ruff/pull/22015))
+- Support `type[T]` where `T` is a type alias to a union of types ([#22115](https://github.com/astral-sh/ruff/pull/22115))
+- Support `==` narrowing for tuples in unions with disjoint types ([#22129](https://github.com/astral-sh/ruff/pull/22129))
 - Respect debug text interpolation in f-strings ([#22151](https://github.com/astral-sh/ruff/pull/22151))
-- Stabilize union-type ordering in fixed-point iteration ([#22070](https://github.com/astral-sh/ruff/pull/22070))
+- Fix panic from unstable union-type ordering in fixed-point iteration ([#22070](https://github.com/astral-sh/ruff/pull/22070))
 
 ### LSP server
 
 - Add `ty.configuration` and `ty.configurationFile` options ([#22053](https://github.com/astral-sh/ruff/pull/22053))
 - Add `diagnosticMode: off` to disable diagnostics while retaining Go To Definition, etc. ([#22073](https://github.com/astral-sh/ruff/pull/22073))
 - Set flag to avoid `type[T@f]` being inserted when you double-click on the inlay ([#22139](https://github.com/astral-sh/ruff/pull/22139))
-- Use Markdown for completions documentation ([#21752](https://github.com/astral-sh/ruff/pull/21752))
+- Use Markdown for completions documentation if the LSP client supports it ([#21752](https://github.com/astral-sh/ruff/pull/21752))
 
 ### CLI
 
-- Abort printing diagnostics when pressing Ctrl+C ([#22083](https://github.com/astral-sh/ruff/pull/22083))
+- Abort printing diagnostics when pressing `Ctrl+C` ([#22083](https://github.com/astral-sh/ruff/pull/22083))
 
 ### Configuration
 
@@ -32,8 +32,8 @@ Released on 2025-12-23.
 
 - Bind self with instance in `__get__` ([#22155](https://github.com/astral-sh/ruff/pull/22155))
 - Support type inference between protocol instances ([#22120](https://github.com/astral-sh/ruff/pull/22120))
-- Synthesize a `_fields` attribute for NamedTuples ([#22163](https://github.com/astral-sh/ruff/pull/22163))
-- Synthesize a `_replace` method for NamedTuples ([#22153](https://github.com/astral-sh/ruff/pull/22153))
+- Synthesize a precise `_fields` attribute for NamedTuples ([#22163](https://github.com/astral-sh/ruff/pull/22163))
+- Synthesize a precise `_replace` method for NamedTuples ([#22153](https://github.com/astral-sh/ruff/pull/22153))
 - Narrow "tagged unions" of `TypedDict`s ([#22104](https://github.com/astral-sh/ruff/pull/22104))
 
 ### Contributors
