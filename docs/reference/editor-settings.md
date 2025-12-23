@@ -5,7 +5,9 @@ Code extension][ty-vscode].
 
 ## `configuration`
 
-In-editor configuration of ty's settings. The inline settings always take precedence over the settings from configuration files.
+In-editor configuration of ty's settings. The inline settings always take precedence over the settings from configuration files,
+including the configuration specified with [`configurationFile`](#configurationfile).
+
 See [configuration](../configuration.md) for the supported configuration options.
 
 **Default value**: `null`
@@ -80,7 +82,7 @@ ty will expand a tilde `~` at the start of a string to the user's home directory
 
 !!! info
 
-While ty configuration can be included in a `pyproject.toml` file, it is not allowed in this context.
+    While ty configuration can be included in a `pyproject.toml` file, it is not allowed in this context.
 
 **Default value**: `null`
 
