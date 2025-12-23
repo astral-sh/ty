@@ -8,7 +8,7 @@ Code extension][ty-vscode].
 In-editor configuration of ty's settings. The inline settings always take precedence over the settings from configuration files,
 including the configuration specified with [`configurationFile`](#configurationfile).
 
-See [configuration](../configuration.md) for the supported configuration options.
+Consult [the configuration reference](../configuration.md) for a list of all supported configuration options.
 
 **Default value**: `null`
 
