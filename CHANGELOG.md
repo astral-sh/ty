@@ -1,5 +1,34 @@
 # Changelog
 
+## 0.0.7
+
+Released on 2025-12-24.
+
+### Bug fixes
+
+- Fix classification of modules in `import x as y` for semantic syntax highlighting ([#22175](https://github.com/astral-sh/ruff/pull/22175))
+- Fix module resolution on network drives ([#22173](https://github.com/astral-sh/ruff/pull/22173))
+- Render the entire diagnostic message in all output formats ([#22164](https://github.com/astral-sh/ruff/pull/22164))
+
+### Other changes
+
+- Add a dedicated diagnostic for TypedDict deletions ([#22123](https://github.com/astral-sh/ruff/pull/22123))
+- Check `__delitem__` instead of `__getitem__` for `del x[k]` ([#22121](https://github.com/astral-sh/ruff/pull/22121))
+- Fix `@staticmethod` combined with other decorators incorrectly binding `self` ([#22128](https://github.com/astral-sh/ruff/pull/22128))
+- Fix implementation of `Top[Callable[..., object]]` ([#22145](https://github.com/astral-sh/ruff/pull/22145))
+- Improve diagnostic when `callable` is used in a type expression instead of `collections.abc.Callable` or `typing.Callable` ([#22180](https://github.com/astral-sh/ruff/pull/22180))
+- Improve diagnostic when a user tries to access a function attribute on a `Callable` type ([#22182](https://github.com/astral-sh/ruff/pull/22182))
+- Include the specialization of a generic `TypedDict` as part of its display ([#22174](https://github.com/astral-sh/ruff/pull/22174))
+- Support tuple narrowing based on member checks ([#22167](https://github.com/astral-sh/ruff/pull/22167))
+- Synthesize `__delitem__` for TypedDict to allow deleting non-required keys ([#22122](https://github.com/astral-sh/ruff/pull/22122))
+
+### Contributors
+
+- [@MichaReiser](https://github.com/MichaReiser)
+- [@ntBre](https://github.com/ntBre)
+- [@AlexWaygood](https://github.com/AlexWaygood)
+- [@charliermarsh](https://github.com/charliermarsh)
+
 ## 0.0.6
 
 Released on 2025-12-23.
