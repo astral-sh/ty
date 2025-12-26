@@ -165,7 +165,7 @@ def main() -> None:
 
     if expected_ruff_revision != actual_ruff_revision:
         print(
-            f"The ruff submodule is at {expected_ruff_revision} but main expects {actual_ruff_revision}"
+            f"The ruff submodule is at {actual_ruff_revision} but main expects {expected_ruff_revision}"
         )
         match input(
             "How do you want to proceed (u=reset submodule, n=abort, y=continue)? "
