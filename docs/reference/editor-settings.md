@@ -253,6 +253,7 @@ like code completion, hover, go to definition, etc.
       }
     }
     ```
+
 ______________________________________________________________________
 
 ## `showSyntaxErrors`
