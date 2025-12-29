@@ -50,18 +50,6 @@ To update ty, use `uv tool upgrade`:
 uv tool upgrade ty
 ```
 
-### Installing globally with mise
-
-Install ty globally with with [mise](https://github.com/jdx/mise):
-
-```shell
-# Install the latest version
-mise install ty
-
-# Set it globally
-mise use --global ty
-```
-
 ### Installing with the standalone installer
 
 ty includes a standalone installer.
@@ -140,6 +128,18 @@ To update ty, use `pipx upgrade`:
 
 ```shell
 pipx upgrade ty
+```
+
+### Installing globally with mise
+
+Install ty globally with with [mise](https://github.com/jdx/mise):
+
+```shell
+# Install the latest version
+mise install ty
+
+# Set it globally
+mise use --global ty
 ```
 
 ### Installing with pip
