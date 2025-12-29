@@ -304,10 +304,8 @@ from only one source.
     {
       "lsp": {
         "ty": {
-          "initialization_options": {
-            "settings": {
-              "showSyntaxErrors": false
-            }
+          "settings": {
+            "showSyntaxErrors": false
           }
         }
       }
