@@ -143,10 +143,12 @@ pip install ty
 Install ty globally with with [mise](https://github.com/jdx/mise):
 
 ```shell
-# Install the latest version
 mise install ty
+```
 
-# Set it globally
+To set it globally:
+
+```shell
 mise use --global ty
 ```
 
