@@ -50,19 +50,16 @@ To update ty, use `uv tool upgrade`:
 uv tool upgrade ty
 ```
 
-### Using mise
+### Installing globally with mise
 
-For dependency management with [mise](https://github.com/jdx/mise):
+Install ty globally with with [mise](https://github.com/jdx/mise):
 
 ```shell
-# List available versions
-mise ls-remote ty
-
 # Install the latest version
 mise install ty
 
-# Use a specific version for the project
-mise use ty@0.0.7
+# Set it globally
+mise use --global ty
 ```
 
 ### Installing with the standalone installer
