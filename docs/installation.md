@@ -50,6 +50,21 @@ To update ty, use `uv tool upgrade`:
 uv tool upgrade ty
 ```
 
+### Using mise
+
+For dependency management with [mise](https://github.com/jdx/mise):
+
+```shell
+# List available versions
+mise ls-remote ty
+
+# Install the latest version
+mise install ty
+
+# Use a specific version for the project
+mise use ty@0.0.7
+```
+
 ### Installing with the standalone installer
 
 ty includes a standalone installer.
