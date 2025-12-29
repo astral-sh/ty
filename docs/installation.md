@@ -130,6 +130,14 @@ To update ty, use `pipx upgrade`:
 pipx upgrade ty
 ```
 
+### Installing with pip
+
+Install ty into your current Python environment with pip:
+
+```shell
+pip install ty
+```
+
 ### Installing globally with mise
 
 Install ty globally with with [mise](https://github.com/jdx/mise):
@@ -140,14 +148,6 @@ mise install ty
 
 # Set it globally
 mise use --global ty
-```
-
-### Installing with pip
-
-Install ty into your current Python environment with pip:
-
-```shell
-pip install ty
 ```
 
 ### Installing in Docker
