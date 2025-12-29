@@ -1,5 +1,44 @@
 # Changelog
 
+## 0.0.8
+
+Released on 2025-12-29.
+
+### Breaking changes
+
+- Rename `non-subscriptable` rule to `not-subscriptable` ([#22193](https://github.com/astral-sh/ruff/pull/22193))
+
+### Core type checking
+
+- Promote float and complex when promoting literals ([#22215](https://github.com/astral-sh/ruff/pull/22215))
+- Callable type of a type object is not function-like ([#22226](https://github.com/astral-sh/ruff/pull/22226))
+- Fix and simplify callable type materializations ([#22213](https://github.com/astral-sh/ruff/pull/22213))
+
+### LSP server
+
+- Add option to disable syntax errors ([#22217](https://github.com/astral-sh/ruff/pull/22217))
+- Fix completion in decorators with missing declaration ([#22177](https://github.com/astral-sh/ruff/pull/22177))
+- Better completions context detection when typing in decorator positions ([#22224](https://github.com/astral-sh/ruff/pull/22224))
+- Limit the returned completions to reduce lag ([#22240](https://github.com/astral-sh/ruff/pull/22240))
+
+### Diagnostics
+
+- Improve wording of `unsupported-base` sub-diagnostic ([#22194](https://github.com/astral-sh/ruff/pull/22194))
+- Preserve the invalid assignment diagnostic message when implicitly shadowing a definition ([#22219](https://github.com/astral-sh/ruff/pull/22219))
+
+### Other changes
+
+- Update docker image to use alpine 3.23 and trixie ([#2217](https://github.com/astral-sh/ty/pull/2217))
+
+### Contributors
+
+- [@RasmusNygren](https://github.com/RasmusNygren)
+- [@samypr100](https://github.com/samypr100)
+- [@silamon](https://github.com/silamon)
+- [@carljm](https://github.com/carljm)
+- [@MichaReiser](https://github.com/MichaReiser)
+- [@MatthewMckee4](https://github.com/MatthewMckee4)
+
 ## 0.0.7
 
 Released on 2025-12-24.
