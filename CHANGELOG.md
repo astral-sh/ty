@@ -1,5 +1,45 @@
 # Changelog
 
+## 0.0.9
+
+Released on 2026-01-05.
+
+### Bug fixes
+
+- Emit a diagnostic if a class decorator is not a callable accepting a type ([#22375](https://github.com/astral-sh/ruff/pull/22375))
+- Fix exhaustiveness inference for unions that include enums ([#22290](https://github.com/astral-sh/ruff/pull/22290))
+
+### Core type checking
+
+- Support `typing.TypeGuard` ([#20974](https://github.com/astral-sh/ruff/pull/20974))
+- Treat `__setattr__` as fallback-only ([#22014](https://github.com/astral-sh/ruff/pull/22014))
+- Don't expand type aliases via type mappings unless necessary. This means that the displayed signature of a bound methods will no longer eagerly expand type aliases into their aliased types ([#22241](https://github.com/astral-sh/ruff/pull/22241))
+- Narrow `TypedDict` unions with `not in` ([#22349](https://github.com/astral-sh/ruff/pull/22349))
+- Don't including `property` in subclasses properties ([#22088](https://github.com/astral-sh/ruff/pull/22088))
+- Narrow tagged unions of `TypedDict`s in `match` statements ([#22299](https://github.com/astral-sh/ruff/pull/22299))
+- Teach bidirectional inference about subtyping. This allows `x` to be inferred as `list[int]` for `x: Iterable[int] = [42]` ([#21930](https://github.com/astral-sh/ruff/pull/21930))
+- Support narrowing for tagged unions of tuples where one element of the tuple is a `Literal` type ([#22303](https://github.com/astral-sh/ruff/pull/22303))
+
+### LSP server
+
+- Add autocomplete suggestions for keyword arguments in `class` statements ([#22110](https://github.com/astral-sh/ruff/pull/22110))
+- Avoid showing misleading inlay hint for unpacked tuple arguments ([#22286](https://github.com/astral-sh/ruff/pull/22286))
+
+### Other changes
+
+- Sync vendored typeshed stubs ([#22302](https://github.com/astral-sh/ruff/pull/22302), [#22321](https://github.com/astral-sh/ruff/pull/22321), [#22324](https://github.com/astral-sh/ruff/pull/22324)). [Typeshed diff](https://github.com/python/typeshed/compare/3c2dbb1fde8e8d1d59b10161c8bf5fd06c0011cd...d1d5fe58664b30a0c2dde3cd5c3dc8091f0f16ae)
+
+### Contributors
+
+- [@RasmusNygren](https://github.com/RasmusNygren)
+- [@ericmarkmartin](https://github.com/ericmarkmartin)
+- [@AlexWaygood](https://github.com/AlexWaygood)
+- [@ibraheemdev](https://github.com/ibraheemdev)
+- [@charliermarsh](https://github.com/charliermarsh)
+- [@felixscherz](https://github.com/felixscherz)
+- [@MatthewMckee4](https://github.com/MatthewMckee4)
+- [@mtshiba](https://github.com/mtshiba)
+
 ## 0.0.8
 
 Released on 2025-12-29.
