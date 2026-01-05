@@ -6,24 +6,24 @@ Released on 2026-01-05.
 
 ### Bug fixes
 
-- Validate class decorators via `try_call()` ([#22375](https://github.com/astral-sh/ruff/pull/22375))
-- Fix match exhaustiveness for `<enum> | None` unions ([#22290](https://github.com/astral-sh/ruff/pull/22290))
+- Emit a diagnostic if a class decorator is not a callable accepting a type ([#22375](https://github.com/astral-sh/ruff/pull/22375))
+- Fix exhaustiveness inference for unions that include enums ([#22290](https://github.com/astral-sh/ruff/pull/22290))
 
 ### Core type checking
 
 - Support `typing.TypeGuard` ([#20974](https://github.com/astral-sh/ruff/pull/20974))
 - Treat `__setattr__` as fallback-only ([#22014](https://github.com/astral-sh/ruff/pull/22014))
-- Don't expand type aliases via type mappings unless necessary ([#22241](https://github.com/astral-sh/ruff/pull/22241))
+- Don't expand type aliases via type mappings unless necessary. This means that the displayed signature of a bound methods will no longer eagerly expand type aliases into their aliased types ([#22241](https://github.com/astral-sh/ruff/pull/22241))
 - Narrow `TypedDict` unions with `not in` ([#22349](https://github.com/astral-sh/ruff/pull/22349))
 - Don't including `property` in subclasses properties ([#22088](https://github.com/astral-sh/ruff/pull/22088))
-- Narrow `TypedDict` literal access in `match` statements ([#22299](https://github.com/astral-sh/ruff/pull/22299))
-- Subtyping for bidirectional inference ([#21930](https://github.com/astral-sh/ruff/pull/21930))
-- Support narrowing for tuple matches with literal elements ([#22303](https://github.com/astral-sh/ruff/pull/22303))
+- Narrow tagged unions of `TypedDict`s in `match` statements ([#22299](https://github.com/astral-sh/ruff/pull/22299))
+- Teach bidirectional inference about subtyping. This allows `x` to be inferred as `list[int]` for `x: Iterable[int] = [42]` ([#21930](https://github.com/astral-sh/ruff/pull/21930))
+- Support narrowing for tagged unions of tuples where one element of the tuple is a `Literal` type ([#22303](https://github.com/astral-sh/ruff/pull/22303))
 
 ### LSP server
 
-- Add autocomplete suggestions for class arguments ([#22110](https://github.com/astral-sh/ruff/pull/22110))
-- Avoid showing misleading hint for unpacked tuple arguments ([#22286](https://github.com/astral-sh/ruff/pull/22286))
+- Add autocomplete suggestions for keyword arguments in `class` statements ([#22110](https://github.com/astral-sh/ruff/pull/22110))
+- Avoid showing misleading inlay hint for unpacked tuple arguments ([#22286](https://github.com/astral-sh/ruff/pull/22286))
 
 ### Other changes
 
