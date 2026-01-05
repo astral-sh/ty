@@ -7,7 +7,7 @@ Released on 2026-01-05.
 ### Bug fixes
 
 - Validate class decorators via `try_call()` ([#22375](https://github.com/astral-sh/ruff/pull/22375))
-- Fix match exhaustiveness for enum | None unions ([#22290](https://github.com/astral-sh/ruff/pull/22290))
+- Fix match exhaustiveness for `<enum> | None` unions ([#22290](https://github.com/astral-sh/ruff/pull/22290))
 
 ### Core type checking
 
