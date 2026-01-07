@@ -40,7 +40,7 @@ Released on 2026-01-07.
 - Optimize intersections with a single negated element ([#22344](https://github.com/astral-sh/ruff/pull/22344))
 - Optimize negated types ([#22402](https://github.com/astral-sh/ruff/pull/22402))
 
-### Other changes
+### Documentation
 
 - Link to `Callable` `__name__` FAQ directly from `unresolved-attribute` diagnostic ([#22437](https://github.com/astral-sh/ruff/pull/22437))
 
