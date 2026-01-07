@@ -33,7 +33,7 @@ Released on 2026-01-07.
 
 ### Configuration
 
-- `include = ["myscript"]` will now check `myscript` even though it doesn't have a python extension ([#22243](https://github.com/astral-sh/ruff/pull/22243))
+- `include = ["myscript"]` will now check `myscript` even though it doesn't have a Python extension ([#22243](https://github.com/astral-sh/ruff/pull/22243))
 
 ### Performance
 
