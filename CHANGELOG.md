@@ -1,5 +1,140 @@
 # Changelog
 
+## 0.0.10
+
+Released on 2026-01-07.
+
+### Bug fixes
+
+- Fix stack overflow due to too small stack size ([#22433](https://github.com/astral-sh/ruff/pull/22433))
+- Fix stale semantic tokens after opening the same document with new content ([#22414](https://github.com/astral-sh/ruff/pull/22414))
+- Fix handling of `ParamSpec` in overloaded functions ([#22416](https://github.com/astral-sh/ruff/pull/22416))
+- Fix comparisons and arithmetic with `NewType`s of `float` ([#22105](https://github.com/astral-sh/ruff/pull/22105))
+- Fix several issues with unannotated function return types ([#22425](https://github.com/astral-sh/ruff/pull/22425))
+- Fix handling of subclasses in Callables ([#22411](https://github.com/astral-sh/ruff/pull/22411))
+
+### LSP server
+
+- Add support for explicit markdown code fences in docstring rendering ([#22373](https://github.com/astral-sh/ruff/pull/22373), [#22408](https://github.com/astral-sh/ruff/pull/22408))
+- Offer completions for `T` when a value has type `Unknown | T` ([#22436](https://github.com/astral-sh/ruff/pull/22436))
+- Sort keyword argument completions higher ([#22297](https://github.com/astral-sh/ruff/pull/22297))
+
+### Core type checking
+
+- Add support for `@total_ordering` ([#22181](https://github.com/astral-sh/ruff/pull/22181), [#22183](https://github.com/astral-sh/ruff/pull/22183))
+- Better simplification of intersections of tuples ([#22094](https://github.com/astral-sh/ruff/pull/22094))
+- Support comparisons between variable-length tuples ([#21824](https://github.com/astral-sh/ruff/pull/21824))
+- Emit diagnostics for method definitions and other invalid statements in `TypedDict` class bodies ([#22351](https://github.com/astral-sh/ruff/pull/22351))
+- Improve type-narrowing in calls to `len()` ([#22330](https://github.com/astral-sh/ruff/pull/22330))
+
+### CLI
+
+- Add `--add-ignore` CLI option ([#21696](https://github.com/astral-sh/ruff/pull/21696))
+
+### Configuration
+
+- `include = ["myscript"]` will now check `myscript` even though it doesn't have a Python extension ([#22243](https://github.com/astral-sh/ruff/pull/22243))
+
+### Performance
+
+- Optimize intersections with a single negated element ([#22344](https://github.com/astral-sh/ruff/pull/22344))
+- Optimize negated types ([#22402](https://github.com/astral-sh/ruff/pull/22402))
+
+### Documentation
+
+- Link to `Callable` `__name__` FAQ directly from `unresolved-attribute` diagnostic ([#22437](https://github.com/astral-sh/ruff/pull/22437))
+
+### Contributors
+
+- [@dhruvmanila](https://github.com/dhruvmanila)
+- [@charliermarsh](https://github.com/charliermarsh)
+- [@oconnor663](https://github.com/oconnor663)
+- [@BurntSushi](https://github.com/BurntSushi)
+- [@RasmusNygren](https://github.com/RasmusNygren)
+- [@carljm](https://github.com/carljm)
+- [@Gankra](https://github.com/Gankra)
+- [@MichaReiser](https://github.com/MichaReiser)
+- [@AlexWaygood](https://github.com/AlexWaygood)
+
+## 0.0.9
+
+Released on 2026-01-05.
+
+### Bug fixes
+
+- Emit a diagnostic if a class decorator is not a callable accepting a type ([#22375](https://github.com/astral-sh/ruff/pull/22375))
+- Fix exhaustiveness inference for unions that include enums ([#22290](https://github.com/astral-sh/ruff/pull/22290))
+
+### Core type checking
+
+- Support `typing.TypeGuard` ([#20974](https://github.com/astral-sh/ruff/pull/20974))
+- Treat `__setattr__` as fallback-only ([#22014](https://github.com/astral-sh/ruff/pull/22014))
+- Don't expand type aliases via type mappings unless necessary. This means that the displayed signature of a bound methods will no longer eagerly expand type aliases into their aliased types ([#22241](https://github.com/astral-sh/ruff/pull/22241))
+- Narrow `TypedDict` unions with `not in` ([#22349](https://github.com/astral-sh/ruff/pull/22349))
+- Don't including `property` in subclasses properties ([#22088](https://github.com/astral-sh/ruff/pull/22088))
+- Narrow tagged unions of `TypedDict`s in `match` statements ([#22299](https://github.com/astral-sh/ruff/pull/22299))
+- Teach bidirectional inference about subtyping. This allows `x` to be inferred as `list[int]` for `x: Iterable[int] = [42]` ([#21930](https://github.com/astral-sh/ruff/pull/21930))
+- Support narrowing for tagged unions of tuples where one element of the tuple is a `Literal` type ([#22303](https://github.com/astral-sh/ruff/pull/22303))
+
+### LSP server
+
+- Add autocomplete suggestions for keyword arguments in `class` statements ([#22110](https://github.com/astral-sh/ruff/pull/22110))
+- Avoid showing misleading inlay hint for unpacked tuple arguments ([#22286](https://github.com/astral-sh/ruff/pull/22286))
+
+### Other changes
+
+- Sync vendored typeshed stubs ([#22302](https://github.com/astral-sh/ruff/pull/22302), [#22321](https://github.com/astral-sh/ruff/pull/22321), [#22324](https://github.com/astral-sh/ruff/pull/22324)). [Typeshed diff](https://github.com/python/typeshed/compare/3c2dbb1fde8e8d1d59b10161c8bf5fd06c0011cd...d1d5fe58664b30a0c2dde3cd5c3dc8091f0f16ae)
+
+### Contributors
+
+- [@RasmusNygren](https://github.com/RasmusNygren)
+- [@ericmarkmartin](https://github.com/ericmarkmartin)
+- [@AlexWaygood](https://github.com/AlexWaygood)
+- [@ibraheemdev](https://github.com/ibraheemdev)
+- [@charliermarsh](https://github.com/charliermarsh)
+- [@felixscherz](https://github.com/felixscherz)
+- [@MatthewMckee4](https://github.com/MatthewMckee4)
+- [@mtshiba](https://github.com/mtshiba)
+
+## 0.0.8
+
+Released on 2025-12-29.
+
+### Breaking changes
+
+- Rename `non-subscriptable` rule to `not-subscriptable` ([#22193](https://github.com/astral-sh/ruff/pull/22193))
+
+### Core type checking
+
+- Promote float and complex when promoting literals ([#22215](https://github.com/astral-sh/ruff/pull/22215))
+- Callable type of a type object is not function-like ([#22226](https://github.com/astral-sh/ruff/pull/22226))
+- Fix and simplify callable type materializations ([#22213](https://github.com/astral-sh/ruff/pull/22213))
+
+### LSP server
+
+- Add option to disable syntax errors ([#22217](https://github.com/astral-sh/ruff/pull/22217))
+- Fix completion in decorators with missing declaration ([#22177](https://github.com/astral-sh/ruff/pull/22177))
+- Better completions context detection when typing in decorator positions ([#22224](https://github.com/astral-sh/ruff/pull/22224))
+- Limit the returned completions to reduce lag ([#22240](https://github.com/astral-sh/ruff/pull/22240))
+
+### Diagnostics
+
+- Improve wording of `unsupported-base` sub-diagnostic ([#22194](https://github.com/astral-sh/ruff/pull/22194))
+- Preserve the invalid assignment diagnostic message when implicitly shadowing a definition ([#22219](https://github.com/astral-sh/ruff/pull/22219))
+
+### Other changes
+
+- Update docker image to use alpine 3.23 and trixie ([#2217](https://github.com/astral-sh/ty/pull/2217))
+
+### Contributors
+
+- [@RasmusNygren](https://github.com/RasmusNygren)
+- [@samypr100](https://github.com/samypr100)
+- [@silamon](https://github.com/silamon)
+- [@carljm](https://github.com/carljm)
+- [@MichaReiser](https://github.com/MichaReiser)
+- [@MatthewMckee4](https://github.com/MatthewMckee4)
+
 ## 0.0.7
 
 Released on 2025-12-24.

@@ -256,6 +256,64 @@ like code completion, hover, go to definition, etc.
 
 ______________________________________________________________________
 
+## `showSyntaxErrors`
+
+Whether to show syntax error diagnostics.
+
+This is useful when using ty with other language servers, allowing the user to refer to syntax errors
+from only one source.
+
+**Default value**: `true`
+
+**Type**: `bool`
+
+**Example usage**:
+
+=== "VS Code"
+
+    ```json
+    {
+        "ty.showSyntaxErrors": false
+    }
+    ```
+
+=== "Neovim"
+
+    ```lua
+    require('lspconfig').ty.setup({
+      settings = {
+        ty = {
+          showSyntaxErrors = false,
+        },
+      },
+    })
+
+    -- For Neovim 0.11.0 and later:
+    vim.lsp.config('ty', {
+      settings = {
+        ty = {
+          showSyntaxErrors = false,
+        },
+      },
+    })
+    ```
+
+=== "Zed"
+
+    ```json
+    {
+      "lsp": {
+        "ty": {
+          "settings": {
+            "showSyntaxErrors": false
+          }
+        }
+      }
+    }
+    ```
+
+______________________________________________________________________
+
 ## `inlayHints`
 
 These settings control the inline hints that ty provides in an editor.

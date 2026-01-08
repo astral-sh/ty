@@ -9,7 +9,7 @@ exclude: |
 
 repos:
   - repo: https://github.com/astral-sh/uv-pre-commit
-    rev: 0.9.13
+    rev: 0.9.18
     hooks:
       - id: uv-lock
 
@@ -19,7 +19,7 @@ repos:
       - id: check-merge-conflict
 
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.14.7
+    rev: v0.14.10
     hooks:
       - id: ruff-format
       - id: ruff
@@ -42,7 +42,7 @@ repos:
           - mdformat-footnote==0.1.2
 
   - repo: https://github.com/igorshubovych/markdownlint-cli
-    rev: v0.46.0
+    rev: v0.47.0
     hooks:
       - id: markdownlint-fix
 
@@ -53,7 +53,7 @@ repos:
 
   # Prettier
   - repo: https://github.com/rbubley/mirrors-prettier
-    rev: v3.7.3
+    rev: v3.7.4
     hooks:
       - id: prettier
         types: [yaml]
@@ -61,12 +61,12 @@ repos:
   # zizmor detects security vulnerabilities in GitHub Actions workflows.
   # Additional configuration for the tool is found in `.github/zizmor.yml`
   - repo: https://github.com/zizmorcore/zizmor-pre-commit
-    rev: v1.18.0
+    rev: v1.19.0
     hooks:
       - id: zizmor
 
   - repo: https://github.com/python-jsonschema/check-jsonschema
-    rev: 0.35.0
+    rev: 0.36.0
     hooks:
       - id: check-github-workflows
 
@@ -88,4 +88,4 @@ repos:
           # actionlint has a shellcheck integration which extracts shell scripts in `run:` steps from GitHub Actions
           # and checks these with shellcheck. This is arguably its most useful feature,
           # but the integration only works if shellcheck is installed
-          - "github.com/wasilibs/go-shellcheck/cmd/shellcheck@v0.10.0"
+          - "github.com/wasilibs/go-shellcheck/cmd/shellcheck@v0.11.1"
