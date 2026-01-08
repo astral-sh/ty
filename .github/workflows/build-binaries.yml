@@ -241,7 +241,7 @@ jobs:
         with:
           maturin-version: v1.9.6
           target: ${{ matrix.target }}
-          manylinux: auto
+          manylinux: 2_17
           args: --release --locked --out dist
       - name: "Test wheel"
         if: ${{ startsWith(matrix.target, 'x86_64') }}
@@ -284,22 +284,28 @@ jobs:
         platform:
           - target: aarch64-unknown-linux-gnu
             arch: aarch64
+            manylinux: 2_17
             # see https://github.com/astral-sh/ruff/issues/3791
             # and https://github.com/gnzlbg/jemallocator/issues/170#issuecomment-1503228963
             maturin_docker_options: -e JEMALLOC_SYS_WITH_LG_PAGE=16
           - target: armv7-unknown-linux-gnueabihf
             arch: armv7
+            manylinux: 2_17
           - target: s390x-unknown-linux-gnu
             arch: s390x
+            manylinux: 2_17
           - target: powerpc64le-unknown-linux-gnu
             arch: ppc64le
+            manylinux: 2_17
             # see https://github.com/astral-sh/ruff/issues/10073
             maturin_docker_options: -e JEMALLOC_SYS_WITH_LG_PAGE=16
           - target: powerpc64-unknown-linux-gnu
             arch: ppc64
+            manylinux: 2_17
             # see https://github.com/astral-sh/ruff/issues/10073
             maturin_docker_options: -e JEMALLOC_SYS_WITH_LG_PAGE=16
           - target: arm-unknown-linux-musleabihf
+            manylinux: musllinux_1_2
             arch: arm
 
     steps:
@@ -317,7 +323,7 @@ jobs:
         with:
           maturin-version: v1.9.6
           target: ${{ matrix.platform.target }}
-          manylinux: auto
+          manylinux: ${{ matrix.platform.manylinux }}
           docker-options: ${{ matrix.platform.maturin_docker_options }}
           args: --release --locked --out dist
       - uses: uraimo/run-on-arch-action@d94c13912ea685de38fccc1109385b83fd79427d # v3.0.1
