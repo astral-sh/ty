@@ -297,7 +297,7 @@ jobs:
           - target: arm-unknown-linux-musleabihf
             arch: arm
             # This target produces a `linux_armv6l` wheel which PyPI accepts,
-            # but maturin's `--compatibility pypi` flag doesn't recognize it.
+            # but maturin's `--compatibility pypi` flag rejects.
             skip_pypi_validation: true
 
     steps:
