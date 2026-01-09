@@ -305,7 +305,8 @@ jobs:
             # see https://github.com/astral-sh/ruff/issues/10073
             maturin_docker_options: -e JEMALLOC_SYS_WITH_LG_PAGE=16
           - target: arm-unknown-linux-musleabihf
-            manylinux: musllinux_1_2
+            # Use the cross container, but tag as `linux_armv6l`
+            manylinux: auto
             arch: arm
 
     steps:
