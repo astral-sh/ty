@@ -11,6 +11,28 @@ import tomllib
 import urllib.parse
 from pathlib import Path
 
+URL = "https://raw.githubusercontent.com/astral-sh/ty/main/docs/assets/{}.svg"
+URL_LIGHT = URL.format("ty-benchmark-cli-light")
+URL_DARK = URL.format("ty-benchmark-cli-dark")
+
+# https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax#specifying-the-theme-an-image-is-shown-to
+GITHUB_BENCHMARK = f"""
+<p align="center">
+  <picture align="center">
+    <source media="(prefers-color-scheme: dark)" srcset="{URL_DARK}">
+    <source media="(prefers-color-scheme: light)" srcset="{URL_LIGHT}">
+    <img alt="Shows a bar chart with benchmark results." src="{URL_LIGHT}">
+  </picture>
+</p>
+"""
+
+# https://github.com/pypi/warehouse/issues/11251
+PYPI_BENCHMARK = f"""
+<p align="center">
+  <img alt="Shows a bar chart with benchmark results." src="{URL_LIGHT}">
+</p>
+"""
+
 
 def main() -> None:
     """Modify the README.md to support PyPI."""
@@ -24,6 +46,13 @@ def main() -> None:
             raise ValueError("Version not found in dist-workspace.toml")
 
     content = Path("README.md").read_text(encoding="utf8")
+
+    # Replace the benchmark image with a PyPI-compatible version.
+    # PyPI doesn't support the `<picture>` element for light/dark mode.
+    if GITHUB_BENCHMARK not in content:
+        msg = "README.md is not in the expected format (benchmark image not found)."
+        raise ValueError(msg)
+    content = content.replace(GITHUB_BENCHMARK, PYPI_BENCHMARK)
 
     # Replace relative src="./..." attributes with absolute GitHub raw URLs.
     def replace_src(match: re.Match) -> str:

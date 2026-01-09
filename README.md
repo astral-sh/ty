@@ -9,7 +9,11 @@ An extremely fast Python type checker and language server, written in Rust.
 <br />
 
 <p align="center">
-  <img alt="Shows a bar chart with benchmark results." width="500px" src="./docs/assets/ty-benchmark-cli.svg">
+  <picture align="center">
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/astral-sh/ty/main/docs/assets/ty-benchmark-cli-dark.svg">
+    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/astral-sh/ty/main/docs/assets/ty-benchmark-cli-light.svg">
+    <img alt="Shows a bar chart with benchmark results." src="https://raw.githubusercontent.com/astral-sh/ty/main/docs/assets/ty-benchmark-cli-light.svg">
+  </picture>
 </p>
 
 <p align="center">
