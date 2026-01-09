@@ -1,5 +1,44 @@
 # Changelog
 
+## 0.0.11
+
+Released on 2026-01-09.
+
+### Bug fixes
+
+- Fix `super()` with TypeVar-annotated `self` and `cls` parameter ([#22208](https://github.com/astral-sh/ruff/pull/22208))
+- Only consider fully static pivots when deriving transitive constraints ([#22444](https://github.com/astral-sh/ruff/pull/22444))
+
+### LSP server
+
+- Don't show diagnostics for excluded files ([#22455](https://github.com/astral-sh/ruff/pull/22455))
+- Fix goto definition for relative imports in third-party files ([#22457](https://github.com/astral-sh/ruff/pull/22457))
+- Improve completion ranking based on origin and exact match ([#22460](https://github.com/astral-sh/ruff/pull/22460))
+- Rank top-level module symbols above most other symbols ([#22465](https://github.com/astral-sh/ruff/pull/22465))
+
+### Configuration
+
+- Enable `unused-type-ignore-comment` by default ([#22474](https://github.com/astral-sh/ruff/pull/22474))
+
+### Performance
+
+- Improve `UnionBuilder` performance by changing `Type::is_subtype_of` calls to `Type::is_redundant_with` ([#22337](https://github.com/astral-sh/ruff/pull/22337))
+- Optimize union building for unions with many enum-literal members ([#22363](https://github.com/astral-sh/ruff/pull/22363))-
+
+### Other changes
+
+- Declare support for Python 3.14 ([#2407](https://github.com/astral-sh/ty/pull/2407))
+- Remove dark-mode handling from PyPI-uploaded README ([#2422](https://github.com/astral-sh/ty/pull/2422))
+
+### Contributors
+
+- [@dhruvmanila](https://github.com/dhruvmanila)
+- [@AlexWaygood](https://github.com/AlexWaygood)
+- [@charliermarsh](https://github.com/charliermarsh)
+- [@BurntSushi](https://github.com/BurntSushi)
+- [@MichaReiser](https://github.com/MichaReiser)
+- [@dcreager](https://github.com/dcreager)
+
 ## 0.0.10
 
 Released on 2026-01-07.
