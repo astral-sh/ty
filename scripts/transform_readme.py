@@ -11,27 +11,11 @@ import tomllib
 import urllib.parse
 from pathlib import Path
 
-URL = "https://raw.githubusercontent.com/astral-sh/ty/main/docs/assets/{}.svg"
-URL_LIGHT = URL.format("ty-benchmark-cli-light")
-URL_DARK = URL.format("ty-benchmark-cli-dark")
-
-# https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax#specifying-the-theme-an-image-is-shown-to
-GITHUB_BENCHMARK = f"""
-<p align="center">
-  <picture align="center">
-    <source media="(prefers-color-scheme: dark)" srcset="{URL_DARK}">
-    <source media="(prefers-color-scheme: light)" srcset="{URL_LIGHT}">
-    <img alt="Shows a bar chart with benchmark results." src="{URL_LIGHT}">
-  </picture>
-</p>
-"""
-
-# https://github.com/pypi/warehouse/issues/11251
-PYPI_BENCHMARK = f"""
-<p align="center">
-  <img alt="Shows a bar chart with benchmark results." src="{URL_LIGHT}">
-</p>
-"""
+# The benchmark SVG includes a CSS media query that adapts to light/dark mode.
+# PyPI doesn't support this, so we replace it with a light-only version.
+# See: https://github.com/pypi/warehouse/issues/11251
+BENCHMARK_URL = "https://raw.githubusercontent.com/astral-sh/ty/main/docs/assets/ty-benchmark-cli.svg"
+BENCHMARK_URL_LIGHT = "https://raw.githubusercontent.com/astral-sh/ty/main/docs/assets/ty-benchmark-cli-light.svg"
 
 
 def main() -> None:
@@ -47,12 +31,11 @@ def main() -> None:
 
     content = Path("README.md").read_text(encoding="utf8")
 
-    # Replace the benchmark image with a PyPI-compatible version.
-    # PyPI doesn't support the `<picture>` element for light/dark mode.
-    if GITHUB_BENCHMARK not in content:
+    # Replace the benchmark image URL with the light-only version for PyPI.
+    if BENCHMARK_URL not in content:
         msg = "README.md is not in the expected format (benchmark image not found)."
         raise ValueError(msg)
-    content = content.replace(GITHUB_BENCHMARK, PYPI_BENCHMARK)
+    content = content.replace(BENCHMARK_URL, BENCHMARK_URL_LIGHT)
 
     # Replace relative src="./..." attributes with absolute GitHub raw URLs.
     def replace_src(match: re.Match) -> str:
