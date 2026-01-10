@@ -138,6 +138,20 @@ Install ty into your current Python environment with pip:
 pip install ty
 ```
 
+### Installing globally with mise
+
+Install ty globally with with [mise](https://github.com/jdx/mise):
+
+```shell
+mise install ty
+```
+
+To set it globally:
+
+```shell
+mise use --global ty
+```
+
 ### Installing in Docker
 
 Install ty in Docker by copying the binary from the official image:
