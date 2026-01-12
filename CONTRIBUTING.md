@@ -46,12 +46,12 @@ git submodule update --init --recursive
 You'll need [uv](https://docs.astral.sh/uv/getting-started/installation/) (or `pipx` and `pip`) to
 run Python utility commands.
 
-You can optionally install pre-commit hooks to automatically run the validation checks
+You can optionally install prek hooks to automatically run the validation checks
 when making a commit:
 
 ```shell
-uv tool install pre-commit
-pre-commit install
+uv tool install prek
+prek install
 ```
 
 ## Building the Python package
@@ -132,7 +132,7 @@ Releases can only be performed by Astral team members.
 
 Preparation for the release is automated.
 
-1. Install the pre-commit hooks as described above, if you haven't already.
+1. Install the prek hooks as described above, if you haven't already.
 
 1. Checkout the `main` branch and run `git pull origin main --recurse-submodules --tags`.
 
