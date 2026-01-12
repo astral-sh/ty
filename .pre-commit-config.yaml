@@ -2,35 +2,41 @@ fail_fast: false
 
 exclude: |
   (?x)^(
-    .github/workflows/release.yml
-    | ruff/.*
-    | docs/reference/(cli|configuration|rules|environment).md
+    .github/workflows/release.yml|
+    ruff/.*|
+    docs/reference/(cli|configuration|rules|environment).md
   )$
 
 repos:
+  # Priority 0: Read-only hooks; hooks that modify disjoint file types.
   - repo: https://github.com/astral-sh/uv-pre-commit
     rev: 0.9.21
     hooks:
       - id: uv-lock
+        priority: 0
 
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v6.0.0
     hooks:
       - id: check-merge-conflict
+        priority: 0
 
   - repo: https://github.com/astral-sh/ruff-pre-commit
     rev: v0.14.10
     hooks:
       - id: ruff-format
+        priority: 0
       - id: ruff
         args: [--fix, --exit-non-zero-on-fix]
         types_or: [python, pyi]
         require_serial: true
+        priority: 1
 
   - repo: https://github.com/abravalheri/validate-pyproject
     rev: v0.24.1
     hooks:
       - id: validate-pyproject
+        priority: 0
 
   - repo: https://github.com/executablebooks/mdformat
     rev: 1.0.0
@@ -40,16 +46,19 @@ repos:
         additional_dependencies:
           - mdformat-mkdocs==5.1.1
           - mdformat-footnote==0.1.2
+        priority: 0
 
   - repo: https://github.com/igorshubovych/markdownlint-cli
     rev: v0.47.0
     hooks:
       - id: markdownlint-fix
+        priority: 1
 
   - repo: https://github.com/crate-ci/typos
     rev: v1.41.0
     hooks:
       - id: typos
+        priority: 0
 
   # Prettier
   - repo: https://github.com/rbubley/mirrors-prettier
@@ -57,6 +66,7 @@ repos:
     hooks:
       - id: prettier
         types: [yaml]
+        priority: 0
 
   # zizmor detects security vulnerabilities in GitHub Actions workflows.
   # Additional configuration for the tool is found in `.github/zizmor.yml`
@@ -64,11 +74,13 @@ repos:
     rev: v1.19.0
     hooks:
       - id: zizmor
+        priority: 0
 
   - repo: https://github.com/python-jsonschema/check-jsonschema
     rev: 0.36.0
     hooks:
       - id: check-github-workflows
+        priority: 0
 
   # `actionlint` hook, for verifying correct syntax in GitHub Actions workflows.
   # Some additional configuration for `actionlint` can be found in `.github/actionlint.yaml`.
@@ -90,3 +102,4 @@ repos:
           # and checks these with shellcheck. This is arguably its most useful feature,
           # but the integration only works if shellcheck is installed
           - "github.com/wasilibs/go-shellcheck/cmd/shellcheck@v0.11.1"
+        priority: 0
