@@ -11,12 +11,21 @@ The Astral team maintains an official VS Code extension.
 
 Install the [ty extension](https://marketplace.visualstudio.com/items?itemName=astral-sh.ty) from the VS Code Marketplace.
 
-Then disable the language server from the [Python extension](https://marketplace.visualstudio.com/items?itemName=ms-python.python) by adding the
-following [setting](https://code.visualstudio.com/docs/python/settings-reference#_intellisense-engine-settings) to your `settings.json` to avoid running two language servers:
+The extension automatically disables the language server from the [Python
+extension](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
+to avoid running two Python language servers. This is done by setting
+[`python.languageServer`](https://code.visualstudio.com/docs/python/settings-reference#_intellisense-engine-settings)
+to `"None"` as a default configuration.
 
-```json
+If you prefer to use ty only for type checking and want to use another language
+server for capabilities like hover, auto-completions, etc., you can override
+this by explicitly setting `python.languageServer` in your
+[`settings.json`](https://code.visualstudio.com/docs/configure/settings#_settings-json-file):
+
+```jsonc
 {
-  "python.languageServer": "None"
+  "python.languageServer": "Pylance",
+  "ty.disableLanguageServices": true,
 }
 ```
 
