@@ -19,8 +19,9 @@ to `"None"` as a default configuration.
 
 If you prefer to use ty only for type checking and want to use another language
 server for capabilities like hover, auto-completions, etc., you can override
-this by explicitly setting `python.languageServer` in your
-[`settings.json`](https://code.visualstudio.com/docs/configure/settings#_settings-json-file):
+this by explicitly setting [`python.languageServer`](https://code.visualstudio.com/docs/python/settings-reference#_intellisense-engine-settings) and
+[`ty.disableLanguageServices`](./reference/editor-settings.md#disablelanguageservices)
+in your [`settings.json`](https://code.visualstudio.com/docs/configure/settings#_settings-json-file):
 
 ```jsonc
 {
