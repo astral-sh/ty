@@ -3,11 +3,11 @@
 An extremely fast Python type checker and language server, written in Rust.
 
 <p align="center">
-  <img alt="Shows a bar chart with benchmark results." width="500px" src="./assets/ty-benchmark-cli.svg#only-light">
+  <img alt="Shows a bar chart with benchmark results." width="500px" src="./assets/ty-benchmark-cli-light.svg#only-light">
 </p>
 
 <p align="center">
-  <img alt="Shows a bar chart with benchmark results." width="500px" src="./assets/ty-benchmark-cli-dark.svg#only-dark">
+  <img alt="Shows a bar chart with benchmark results." width="500px" src="./assets/ty-benchmark-cli.svg#only-dark">
 </p>
 
 <p align="center">
