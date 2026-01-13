@@ -18,7 +18,7 @@ Released on 2026-01-09.
 
 ### Configuration
 
-- Enable `unused-type-ignore-comment` by default ([#22474](https://github.com/astral-sh/ruff/pull/22474))
+- Enable `unused-ignore-comment` by default ([#22474](https://github.com/astral-sh/ruff/pull/22474))
 
 ### Performance
 
