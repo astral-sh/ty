@@ -71,7 +71,7 @@ ty includes a standalone installer.
     Request a specific version by including it in the URL:
 
     ```console
-    $ curl -LsSf https://astral.sh/ty/0.0.11/install.sh | sh
+    $ curl -LsSf https://astral.sh/ty/0.0.12/install.sh | sh
     ```
 
 === "Windows"
@@ -87,7 +87,7 @@ ty includes a standalone installer.
     Request a specific version by including it in the URL:
 
     ```pwsh-session
-    PS> powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/ty/0.0.11/install.ps1 | iex"
+    PS> powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/ty/0.0.12/install.ps1 | iex"
     ```
 
 !!! tip
@@ -163,7 +163,7 @@ COPY --from=ghcr.io/astral-sh/ty:latest /ty /bin/
 The following tags are available:
 
 - `ghcr.io/astral-sh/ty:latest`
-- `ghcr.io/astral-sh/ty:{major}.{minor}.{patch}`, e.g., `ghcr.io/astral-sh/ty:0.0.11`
+- `ghcr.io/astral-sh/ty:{major}.{minor}.{patch}`, e.g., `ghcr.io/astral-sh/ty:0.0.12`
 - `ghcr.io/astral-sh/ty:{major}.{minor}`, e.g., `ghcr.io/astral-sh/ty:0.0` (the latest patch
     version)
 

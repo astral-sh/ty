@@ -1,5 +1,63 @@
 # Changelog
 
+## 0.0.12
+
+Released on 2026-01-14.
+
+### Bug fixes
+
+- Avoid panic for comparison on synthesized variants ([#22509](https://github.com/astral-sh/ruff/pull/22509))
+- Fix incorrect narrowing for `if type(x) == y` ([#22531](https://github.com/astral-sh/ruff/pull/22531))
+- Fix stack overflow with recursive type aliases containing tuple … ([#22543](https://github.com/astral-sh/ruff/pull/22543))
+- Preserve argument signature in `@total_ordering` ([#22496](https://github.com/astral-sh/ruff/pull/22496))
+- Support `dataclass_transform` as a function call ([#22378](https://github.com/astral-sh/ruff/pull/22378))
+- Use the top materialization of classes for `if type(x) is y` narrowing ([#22553](https://github.com/astral-sh/ruff/pull/22553))
+- Avoid emitting Liskov repeated violations from grandparent to child ([#22484](https://github.com/astral-sh/ruff/pull/22484))
+- Fix interaction between classmethod, contextmanager, and Self ([#22407](https://github.com/astral-sh/ruff/pull/22407))
+- Fix contravariant type variable bound checking in specialization inference ([#22488](https://github.com/astral-sh/ruff/pull/22488))
+- Fix false positive for bounded type parameters with NewType ([#22542](https://github.com/astral-sh/ruff/pull/22542))
+
+### Type checking
+
+- Add support for dynamic `type()` classes ([#22291](https://github.com/astral-sh/ruff/pull/22291))
+- Add support for functional `namedtuple` creation ([#22327](https://github.com/astral-sh/ruff/pull/22327))
+- Add a diagnostic for non-decorator uses of `final` ([#22555](https://github.com/astral-sh/ruff/pull/22555))
+- Add diagnostic to catch generic enums ([#22482](https://github.com/astral-sh/ruff/pull/22482))
+- Add diagnostics for `__init_subclass__` argument mismatch ([#22185](https://github.com/astral-sh/ruff/pull/22185))
+- Add diagnostics to validate `TypeIs` and `TypeGuard` definitions ([#22300](https://github.com/astral-sh/ruff/pull/22300))
+- Apply narrowing to walrus targets ([#22369](https://github.com/astral-sh/ruff/pull/22369))
+- Detect invalid `@total_ordering` applications in non-decorator contexts ([#22486](https://github.com/astral-sh/ruff/pull/22486))
+- Emit diagnostics for invalid base classes in `type(...)` ([#22499](https://github.com/astral-sh/ruff/pull/22499))
+- Emit diagnostics for invalid dynamic namedtuple fields ([#22575](https://github.com/astral-sh/ruff/pull/22575))
+- Fix `@Todo` type for starred expressions ([#22503](https://github.com/astral-sh/ruff/pull/22503))
+- Improve disambiguation of types ([#22547](https://github.com/astral-sh/ruff/pull/22547))
+- Include type parameters in generic callable display ([#22435](https://github.com/astral-sh/ruff/pull/22435))
+- Infer `type[Unknown]` for calls to `type()` when overload evaluation is ambiguous ([#22569](https://github.com/astral-sh/ruff/pull/22569))
+- Show dynamic NamedTuple defaults in signature ([#22574](https://github.com/astral-sh/ruff/pull/22574))
+- Support 'dangling' `type(...)` constructors ([#22537](https://github.com/astral-sh/ruff/pull/22537))
+- Support assignment to unions of `TypedDict`s ([#22294](https://github.com/astral-sh/ruff/pull/22294))
+- Support own instance members for `type(...)` classes ([#22480](https://github.com/astral-sh/ruff/pull/22480))
+- Synthesize an empty `__slots__` for named tuples ([#22573](https://github.com/astral-sh/ruff/pull/22573))
+- Use key and value parameter types as type context for `__setitem__` dunder calls ([#22148](https://github.com/astral-sh/ruff/pull/22148))
+- Narrow the right-hand side of `==`, `!=`, `is` and `is not` conditions when the left-hand side is not narrowable ([#22511](https://github.com/astral-sh/ruff/pull/22511))
+
+### LSP server
+
+- Fix `__file__` type in completions to show `str` instead of `str | None` ([#22510](https://github.com/astral-sh/ruff/pull/22510))
+- Improve rendering of ReST directives in docstrings ([#22512](https://github.com/astral-sh/ruff/pull/22512))
+
+### Contributors
+
+- [@eclbg](https://github.com/eclbg)
+- [@RasmusNygren](https://github.com/RasmusNygren)
+- [@carljm](https://github.com/carljm)
+- [@drbh](https://github.com/drbh)
+- [@AryanBagade](https://github.com/AryanBagade)
+- [@bxff](https://github.com/bxff)
+- [@ibraheemdev](https://github.com/ibraheemdev)
+- [@charliermarsh](https://github.com/charliermarsh)
+- [@AlexWaygood](https://github.com/AlexWaygood)
+
 ## 0.0.11
 
 Released on 2026-01-09.
