@@ -19,25 +19,20 @@ Released on 2026-01-14.
 
 ### Type checking
 
-- Add support for dynamic `type()` classes ([#22291](https://github.com/astral-sh/ruff/pull/22291))
-- Add support for functional `namedtuple` creation ([#22327](https://github.com/astral-sh/ruff/pull/22327))
+- Add support for dynamic `type()` classes ([#22291](https://github.com/astral-sh/ruff/pull/22291), [#22499](https://github.com/astral-sh/ruff/pull/22499), [#22537](https://github.com/astral-sh/ruff/pull/22537), [#22480](https://github.com/astral-sh/ruff/pull/22480))
+- Add support for functional `namedtuple` creation ([#22327](https://github.com/astral-sh/ruff/pull/22327), [#22573](https://github.com/astral-sh/ruff/pull/22573), [#22575](https://github.com/astral-sh/ruff/pull/22575))
 - Add a diagnostic for non-decorator uses of `final` ([#22555](https://github.com/astral-sh/ruff/pull/22555))
 - Add diagnostic to catch generic enums ([#22482](https://github.com/astral-sh/ruff/pull/22482))
 - Add diagnostics for `__init_subclass__` argument mismatch ([#22185](https://github.com/astral-sh/ruff/pull/22185))
 - Add diagnostics to validate `TypeIs` and `TypeGuard` definitions ([#22300](https://github.com/astral-sh/ruff/pull/22300))
 - Apply type narrowing to walrus targets ([#22369](https://github.com/astral-sh/ruff/pull/22369))
 - Detect invalid `@total_ordering` applications in non-decorator contexts ([#22486](https://github.com/astral-sh/ruff/pull/22486))
-- Emit diagnostics for invalid base classes in `type(...)` ([#22499](https://github.com/astral-sh/ruff/pull/22499))
-- Emit diagnostics for invalid dynamic namedtuple fields ([#22575](https://github.com/astral-sh/ruff/pull/22575))
 - Fix `@Todo` type for starred expressions ([#22503](https://github.com/astral-sh/ruff/pull/22503))
 - Improve disambiguation of types in diagnostics ([#22547](https://github.com/astral-sh/ruff/pull/22547))
 - Include type parameters in the display for generic `Callable` types ([#22435](https://github.com/astral-sh/ruff/pull/22435))
 - Infer `type[Unknown]` for calls to `type()` when overload evaluation is ambiguous ([#22569](https://github.com/astral-sh/ruff/pull/22569))
 - Show dynamic NamedTuple defaults in signature ([#22574](https://github.com/astral-sh/ruff/pull/22574))
-- Support 'dangling' `type(...)` constructors ([#22537](https://github.com/astral-sh/ruff/pull/22537))
 - Support assignment to unions of `TypedDict`s ([#22294](https://github.com/astral-sh/ruff/pull/22294))
-- Support own instance members for `type(...)` classes ([#22480](https://github.com/astral-sh/ruff/pull/22480))
-- Synthesize an empty `__slots__` for named tuples ([#22573](https://github.com/astral-sh/ruff/pull/22573))
 - Use the key and value parameter types as type context for `__setitem__` dunder calls ([#22148](https://github.com/astral-sh/ruff/pull/22148))
 - Narrow the right-hand side of `==`, `!=`, `is` and `is not` conditions when the left-hand side is not narrowable ([#22511](https://github.com/astral-sh/ruff/pull/22511))
 
