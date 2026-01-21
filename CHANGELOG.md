@@ -10,13 +10,13 @@ Released on 2026-01-21.
 - Fix missing syntax highlighting for aliased import names ([#22675](https://github.com/astral-sh/ruff/pull/22675))
 - Highlight interpolated-parts in t-strings ([#22674](https://github.com/astral-sh/ruff/pull/22674))
 - Fix the inferred MRO of functional namedtuple classes ([#22722](https://github.com/astral-sh/ruff/pull/22722))
-- Make special cases for subscript inference exhaustive ([#22035](https://github.com/astral-sh/ruff/pull/22035))
+- Make special cases for subscript inference exhaustive, ensuring that the special casing for tuple subscripts is applied when a union of tuples or an alias to a tuple type is subscripted ([#22035](https://github.com/astral-sh/ruff/pull/22035))
 
 ### LSP server
 
-- Improve class definition completions ([#22571](https://github.com/astral-sh/ruff/pull/22571))
+- Improve completion suggestions inside class definitions ([#22571](https://github.com/astral-sh/ruff/pull/22571))
 - Improve performance of completions ([#22630](https://github.com/astral-sh/ruff/pull/22630))
-- Remove redundant re-exports that share the same top-most module ([#22581](https://github.com/astral-sh/ruff/pull/22581))
+- Remove completion suggestions for redundant re-exports that share the same top-most module ([#22581](https://github.com/astral-sh/ruff/pull/22581))
 
 ### Core type checking
 
@@ -27,25 +27,25 @@ Released on 2026-01-21.
 - Avoid reporting overload errors for successful union variants ([#22688](https://github.com/astral-sh/ruff/pull/22688))
 - Ban `NewType`s with generic bases ([#22653](https://github.com/astral-sh/ruff/pull/22653))
 - Fix PEP 695 type aliases not expanding in overload resolution ([#22589](https://github.com/astral-sh/ruff/pull/22589))
-- Correct return type for synthesized `NamedTuple.`**new** methods ([#22625](https://github.com/astral-sh/ruff/pull/22625))
-- Emit diagnostic for `NamedTuple` and `TypedDict` decorated with dataclass ([#22672](https://github.com/astral-sh/ruff/pull/22672))
-- Emit invalid type form for stringified annotations ([#22752](https://github.com/astral-sh/ruff/pull/22752))
-- Infer implicit type of `cls` in `__new__` methods ([#22584](https://github.com/astral-sh/ruff/pull/22584))
+- Fix the return type for synthesized `NamedTuple.__new__` methods ([#22625](https://github.com/astral-sh/ruff/pull/22625))
+- Emit diagnostics for `NamedTuple`, `TypedDict`, `Enum` or `Protocol` classes decorated with `@dataclass` ([#22672](https://github.com/astral-sh/ruff/pull/22672))
+- Emit `invalid-type-form` diagnostics for stringified annotations where the quoted expression is invalid ([#22752](https://github.com/astral-sh/ruff/pull/22752))
+- Infer the implicit type of `cls` in `__new__` methods ([#22584](https://github.com/astral-sh/ruff/pull/22584))
 - Make `ModuleType` and `object` attributes available on namespace packages ([#22606](https://github.com/astral-sh/ruff/pull/22606))
 - Make `NamedTuple(...)` and `namedtuple(...)` calls stricter ([#22601](https://github.com/astral-sh/ruff/pull/22601))
 - Narrow on bool and byte subscripts ([#22684](https://github.com/astral-sh/ruff/pull/22684))
 - Narrow on negative subscript indexing ([#22682](https://github.com/astral-sh/ruff/pull/22682))
 - Override `__file__` to `str` when applicable on imported modules ([#22333](https://github.com/astral-sh/ruff/pull/22333))
-- Add bi-directional inference for comprehensions ([#22564](https://github.com/astral-sh/ruff/pull/22564))
+- Add bidirectional inference for comprehensions ([#22564](https://github.com/astral-sh/ruff/pull/22564))
 - Recognize string-literal types as subtypes of `Sequence[Literal[chars]]` ([#22415](https://github.com/astral-sh/ruff/pull/22415))
-- Add right-hand side narrowing for `if Foo is type(x)` expressions ([#22608](https://github.com/astral-sh/ruff/pull/22608))
-- Add simple syntactic validation for PEP-613 type aliases ([#22652](https://github.com/astral-sh/ruff/pull/22652))
-- Add support for passing `typename` and `field_names` by keyword argument ([#22660](https://github.com/astral-sh/ruff/pull/22660))
+- Add right-hand-side narrowing for `if Foo is type(x)` expressions ([#22608](https://github.com/astral-sh/ruff/pull/22608))
+- Add simple syntactic validation for the right-hand side of PEP-613 type aliases ([#22652](https://github.com/astral-sh/ruff/pull/22652))
+- Add support for passing `typename` and `field_names` by keyword argument to `collections.namedtuple()` calls ([#22660](https://github.com/astral-sh/ruff/pull/22660))
 - Add support for starred unpacking in class bases ([#22591](https://github.com/astral-sh/ruff/pull/22591))
 - Validate constructor arguments when a class is used as a decorator ([#22377](https://github.com/astral-sh/ruff/pull/22377))
 - Validate field names for `typing.NamedTuple(...)` ([#22599](https://github.com/astral-sh/ruff/pull/22599))
 - Add diagnostic on overridden `__setattr__` and `__delattr__` in frozen dataclasses ([#21430](https://github.com/astral-sh/ruff/pull/21430))
-- Fix unary operators on `NewType`s of `float` and `complex` ([#22605](https://github.com/astral-sh/ruff/pull/22605))
+- Fix unary operators on `NewType`s of `float` or `complex` ([#22605](https://github.com/astral-sh/ruff/pull/22605))
 
 ### Configuration
 
@@ -55,7 +55,7 @@ Released on 2026-01-21.
 
 - Don't add a subdiagnostic pointing to the TypeVar definition if the TypeVar is `Self` ([#22646](https://github.com/astral-sh/ruff/pull/22646))
 - Show final search path instead of "and 1 more paths" ([#22776](https://github.com/astral-sh/ruff/pull/22776))
-- Group `type[]` types ([#22592](https://github.com/astral-sh/ruff/pull/22592))
+- Group `type[]` elements together when displaying union types ([#22592](https://github.com/astral-sh/ruff/pull/22592))
 
 ### Performance
 
