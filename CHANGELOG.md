@@ -1,5 +1,73 @@
 # Changelog
 
+## 0.0.14
+
+Released on 2026-01-26.
+
+### Bug fixes
+
+- Consider keyword arguments when unpacking a variadic argument ([#22796](https://github.com/astral-sh/ruff/pull/22796))
+- Fix binary operator false-positive for constrained TypeVars ([#22782](https://github.com/astral-sh/ruff/pull/22782))
+- Fix docstring rendering for literal blocks after doctests ([#22676](https://github.com/astral-sh/ruff/pull/22676))
+- Fix false-positive `unsupported-operator` for "symmetric" TypeVars ([#22756](https://github.com/astral-sh/ruff/pull/22756))
+- Fix panic when overriding final method using an assignment ([#22831](https://github.com/astral-sh/ruff/pull/22831))
+- Fix unary operator false-positive for constrained TypeVars ([#22783](https://github.com/astral-sh/ruff/pull/22783))
+- Pass the generic context through the decorator ([#22544](https://github.com/astral-sh/ruff/pull/22544))
+- Update salsa to fix out-of-order query validation ([#22498](https://github.com/astral-sh/ruff/pull/22498))
+
+### LSP server
+
+- Look up attributes on metaclasses for Go to Definition ([#22758](https://github.com/astral-sh/ruff/pull/22758))
+- Suppress type inlay hints for leading-underscore assignments ([#22855](https://github.com/astral-sh/ruff/pull/22855))
+
+### Configuration
+
+- Add `allowed-unresolved-imports` setting ([#22800](https://github.com/astral-sh/ruff/pull/22800))
+
+### Other changes
+
+- Add a new `assert-type-unspellable-subtype` diagnostic ([#22815](https://github.com/astral-sh/ruff/pull/22815))
+- Add a new `empty-body` return code for functions with stub bodies that have non-`None` return annotations ([#22846](https://github.com/astral-sh/ruff/pull/22846))
+- Add a test for TypedDict intersection access ([#22849](https://github.com/astral-sh/ruff/pull/22849))
+- Add diagnostic disambiguation for type aliases ([#22852](https://github.com/astral-sh/ruff/pull/22852))
+- Add support for dict literals and dict() calls as default values for parameters with TypedDict types ([#22161](https://github.com/astral-sh/ruff/pull/22161))
+- Add support for subscripts on intersections ([#22654](https://github.com/astral-sh/ruff/pull/22654))
+- Avoid duplicate syntax errors for `await` outside functions ([#22826](https://github.com/astral-sh/ruff/pull/22826))
+- Emit an error if the same type parameter appears more than once in a `Generic[]` subscript ([#22738](https://github.com/astral-sh/ruff/pull/22738))
+- Emit diagnostic for unimplemented abstract method on @final class ([#22753](https://github.com/astral-sh/ruff/pull/22753))
+- Fix GitLab Code Quality output format for empty diagnostics ([#22833](https://github.com/astral-sh/ruff/pull/22833))
+- Fix assignment in decorated method causing `Unknown` fallback ([#22778](https://github.com/astral-sh/ruff/pull/22778))
+- Fix false negative when using a non-runtime-checkable protocol in a `match` class pattern ([#22836](https://github.com/astral-sh/ruff/pull/22836))
+- Improve completion rankings for raise-from/except contexts ([#22775](https://github.com/astral-sh/ruff/pull/22775))
+- Improve invalid assignment diagnostics with type context ([#22643](https://github.com/astral-sh/ruff/pull/22643))
+- Improve support for kwarg splats in dictionary literals ([#22781](https://github.com/astral-sh/ruff/pull/22781))
+- Infer `TypedDict` types with >=1 required key as being always truthy ([#22808](https://github.com/astral-sh/ruff/pull/22808))
+- Point to an overload with an invalid `@final` decoator when emitting `invalid-overload` errors for invalid `@final` decorators ([#22812](https://github.com/astral-sh/ruff/pull/22812))
+- Require both `*args` and `**kwargs` when calling a `ParamSpec` callable ([#22820](https://github.com/astral-sh/ruff/pull/22820))
+- Stricter validation of `TypedDict` definitions ([#22811](https://github.com/astral-sh/ruff/pull/22811))
+- Support recursive and stringified annotations in functional `typing.NamedTuple`s ([#22718](https://github.com/astral-sh/ruff/pull/22718))
+- Support solving generics involving PEP 695 type aliases ([#22678](https://github.com/astral-sh/ruff/pull/22678))
+- Use a more lenient fallback type for failed `namedtuple()` and `NamedTuple` calls ([#22765](https://github.com/astral-sh/ruff/pull/22765))
+- Use type context from augmented assignment dunder calls ([#22540](https://github.com/astral-sh/ruff/pull/22540))
+- Check that starred arguments in function calls are iterable ([#22805](https://github.com/astral-sh/ruff/pull/22805))
+
+### Contributors
+
+- [@AlexWaygood](https://github.com/AlexWaygood)
+- [@maifeeulasad](https://github.com/maifeeulasad)
+- [@RasmusNygren](https://github.com/RasmusNygren)
+- [@ntBre](https://github.com/ntBre)
+- [@Imbuzi](https://github.com/Imbuzi)
+- [@dhruvmanila](https://github.com/dhruvmanila)
+- [@ibraheemdev](https://github.com/ibraheemdev)
+- [@carljm](https://github.com/carljm)
+- [@Hugo-Polloli](https://github.com/Hugo-Polloli)
+- [@charliermarsh](https://github.com/charliermarsh)
+- [@MichaReiser](https://github.com/MichaReiser)
+- [@bxff](https://github.com/bxff)
+- [@felixscherz](https://github.com/felixscherz)
+- [@denyszhak](https://github.com/denyszhak)
+
 ## 0.0.13
 
 Released on 2026-01-21.
