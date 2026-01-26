@@ -1,0 +1,8 @@
+- id: ty
+  name: ty type checker
+  description: An extremely fast Python type checker and language server, written in Rust.
+  entry: ty check
+  language: python
+  pass_filenames: true
+  types_or:
+    - python
