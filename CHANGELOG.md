@@ -13,7 +13,7 @@ Released on 2026-01-26.
 - Fix panic when overriding final method using an assignment ([#22831](https://github.com/astral-sh/ruff/pull/22831))
 - Fix unary operator false-positive for constrained TypeVars ([#22783](https://github.com/astral-sh/ruff/pull/22783))
 - Pass the generic context through the decorator ([#22544](https://github.com/astral-sh/ruff/pull/22544))
-- Update salsa to fix out-of-order query validation ([#22498](https://github.com/astral-sh/ruff/pull/22498))
+- Fix `memo.changed_at` assertion panics ([#22498](https://github.com/astral-sh/ruff/pull/22498))
 
 ### LSP server
 
