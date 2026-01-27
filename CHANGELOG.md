@@ -28,7 +28,7 @@ Released on 2026-01-26.
 
 - Add `assert-type-unspellable-subtype` diagnostic, for failed `assert_type()` where the actual type is a subtype of the named type that can't be spelled in a type expression ([#22815](https://github.com/astral-sh/ruff/pull/22815))
 - Add a new `empty-body` return code for functions with stub bodies that have non-`None` return annotations ([#22846](https://github.com/astral-sh/ruff/pull/22846))
-- Add diagnostic disambiguation for type aliases ([#22852](https://github.com/astral-sh/ruff/pull/22852))
+- Add diagnostic disambiguation for different type aliases with the same name ([#22852](https://github.com/astral-sh/ruff/pull/22852))
 - Add support for dict literals and dict() calls as default values for parameters with TypedDict types ([#22161](https://github.com/astral-sh/ruff/pull/22161))
 - Add support for subscripts on intersections ([#22654](https://github.com/astral-sh/ruff/pull/22654))
 - Avoid duplicate syntax errors for `await` outside functions ([#22826](https://github.com/astral-sh/ruff/pull/22826))
