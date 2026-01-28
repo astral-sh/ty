@@ -64,6 +64,41 @@ plugins:
   - search
   - git-revision-date-localized:
       timezone: UTC # It can only be in UTC unless the ISO time can include timezone.
+  - llmstxt:
+      markdown_description: |
+        ty is an extremely fast Python type checker and a language server written in Rust. 
+        It can type check large Python codebases in seconds, providing fast feedback
+        during development.
+
+        ty includes both a CLI (`ty check`) and a language server (`ty server`) for editor integration.
+
+        When fetching documentation, use explicit `index.md` paths for directories, e.g.,
+        `https://docs.astral.sh/ty/features/index.md`. This returns clean markdown instead
+        of rendered HTML with JS/CSS.
+      sections:
+        Guides:
+          - installation.md
+          - type-checking.md
+          - editors.md
+        Concepts:
+          - configuration.md
+          - modules.md
+          - python-version.md
+          - exclusions.md
+          - rules.md
+          - suppression.md
+        Features:
+          - features/type-system.md
+          - features/diagnostics.md
+          - features/language-server.md
+        Reference:
+          - reference/configuration.md
+          - reference/typing-faq.md
+          - reference/rules.md
+          - reference/cli.md
+          - reference/exit-codes.md
+          - reference/environment.md
+          - reference/editor-settings.md
 extra_css:
   - stylesheets/extra.css
 extra_javascript:
