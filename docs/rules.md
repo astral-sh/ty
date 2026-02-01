@@ -42,3 +42,13 @@ redundant-cast = "ignore"
 possibly-missing-attribute = "error"
 possibly-missing-import = "error"
 ```
+
+You can also configure the level for all rules at once in your configuration file.
+There is no equivalent option on the command line.
+
+For example, setting the level for all rules to `error`:
+
+```toml title="pyproject.toml"
+[tool.ty.rules]
+all = "error"
+```
