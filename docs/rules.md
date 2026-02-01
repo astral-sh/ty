@@ -45,14 +45,14 @@ possibly-missing-import = "error"
 
 You can also configure the level for all rules at once.
 
-On the command line we can use `--error all`, `--warn all`, or `--ignore all`. For example:
+On the command line you can use `--error all`, `--warn all`, or `--ignore all`. For example:
 
 ```shell
 
 ty check --error all
 ```
 
-We can also configure this setting in the [`rules`](./reference/configuration.md#rules) section of a
+You can also configure this setting in the [`rules`](./reference/configuration.md#rules) section of a
 [configuration file](./configuration.md).
 
 For example, the following is equivalent to the command above:
