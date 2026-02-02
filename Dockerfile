@@ -30,6 +30,7 @@ RUN rustup target add $(cat rust_target.txt)
 COPY ruff/crates crates
 COPY ruff/Cargo.toml Cargo.toml
 COPY ruff/Cargo.lock Cargo.lock
+COPY dist-workspace.toml ../dist-workspace.toml
 RUN cargo zigbuild --bin ty --target $(cat rust_target.txt) --release
 RUN cp target/$(cat rust_target.txt)/release/ty /ty
 # TODO: Optimize binary size, with a version that also works when cross compiling
