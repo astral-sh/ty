@@ -78,7 +78,6 @@ Released on 2026-02-04.
 - Support `type[None]` in type expressions ([#22892](https://github.com/astral-sh/ruff/pull/22892))
 - Reduce false positives involving heterogeneous dicts by tracking dictionary literal keys as individual places ([#22882](https://github.com/astral-sh/ruff/pull/22882))
 - Fix a bug where an overridden type in a dataclass subclass would not be respected if the dataclass subclass field had a default value but the superclass field did not ([#22965](https://github.com/astral-sh/ruff/pull/22965))
-- Use try-call-dunder pattern for `__class_getitem__` ([#23066](https://github.com/astral-sh/ruff/pull/23066))
 - Validate signatures of dataclass `__post_init__` methods ([#22730](https://github.com/astral-sh/ruff/pull/22730))
 
 ### Contributors
