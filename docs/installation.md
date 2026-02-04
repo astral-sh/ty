@@ -167,6 +167,29 @@ The following tags are available:
 - `ghcr.io/astral-sh/ty:{major}.{minor}`, e.g., `ghcr.io/astral-sh/ty:0.0` (the latest patch
     version)
 
+### Using ty with Bazel
+
+ty is available as a Bazel lint aspect via
+[`aspect_rules_lint`](https://registry.bazel.build/docs/aspect_rules_lint#lint-ty-bzl).
+To use it, add it as a dependency in your `MODULE.bazel` file:
+
+```starlark title="MODULE.bazel"
+bazel_dep(name = "aspect_rules_lint", version = "2.0.0")
+```
+
+Then configure how to run ty in a `.bzl` file using [`lint_ty_aspect`](https://registry.bazel.build/docs/aspect_rules_lint#function-lint_ty_aspect):
+
+```starlark title="tools/lint/linters.bzl"
+load("@aspect_rules_lint//lint:ty.bzl", "lint_ty_aspect")
+
+ty = lint_ty_aspect(
+    binary = Label("@aspect_rules_lint//lint:ty_bin"),
+    config = Label("//:pyproject.toml"),
+)
+```
+
+Finally, see the [`aspect_rules_lint` documentation](https://github.com/aspect-build/rules_lint/blob/main/docs/linting.md) for how to run linting (type checking) with Bazel.
+
 ## Adding ty to your editor
 
 See the [editor integration](./editors.md) guide to add ty to your editor.
