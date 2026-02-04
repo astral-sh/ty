@@ -63,7 +63,6 @@ Released on 2026-02-04.
 - Fallback to metaclass `__getattr__` or `__getattribute__` when looking up attributes on class objects ([#22985](https://github.com/astral-sh/ruff/pull/22985))
 - Improve detection of invalid `NewType`s with generic bases ([#22961](https://github.com/astral-sh/ruff/pull/22961))
 - Infer `ParamSpec` from class constructors for callable protocols ([#22853](https://github.com/astral-sh/ruff/pull/22853))
-- Make `TrackedConstraintSet` interned ([#22545](https://github.com/astral-sh/ruff/pull/22545))
 - Move the location of some `invalid-overload` diagnostics ([#22933](https://github.com/astral-sh/ruff/pull/22933))
 - Point to an overload with an invalid `@final` decorator when emitting `invalid-overload` errors for invalid `@final` decorators ([#22893](https://github.com/astral-sh/ruff/pull/22893))
 - Preserve pure negation types in descriptor protocol ([#22907](https://github.com/astral-sh/ruff/pull/22907))
