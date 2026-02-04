@@ -35,7 +35,7 @@ Released on 2026-02-04.
 ### Configuration
 
 - Add new `unused-type-ignore-comment` rule ([#22790](https://github.com/astral-sh/ruff/pull/22790))
-- Ignore/warn/select all rules (unless subsequently overridden) ([#22832](https://github.com/astral-sh/ruff/pull/22832))
+- Add a mechanism to ignore/warn/select all rules ([#22832](https://github.com/astral-sh/ruff/pull/22832))
 - Support multiple workspace folders in a single ty LSP server instance ([#22953](https://github.com/astral-sh/ruff/pull/22953))
 - Only add `./src` as a search path if `./src/__init__.py(i)` does not exist ([#22851](https://github.com/astral-sh/ruff/pull/22851))
 
