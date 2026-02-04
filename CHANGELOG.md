@@ -17,7 +17,6 @@ Released on 2026-02-04.
 - Fix bug in string annotations and clean up diagnostics ([#22913](https://github.com/astral-sh/ruff/pull/22913))
 - Understand functions as method descriptors even if they are decorated with a decorator annotated as returning a PEP-695 alias to a `Callable` type ([#22902](https://github.com/astral-sh/ruff/pull/22902))
 - Fix edge-case bugs when narrowing tagged unions in `match` statements ([#22870](https://github.com/astral-sh/ruff/pull/22870))
-- Fix empty body rule rendering ([#23039](https://github.com/astral-sh/ruff/pull/23039))
 - Fix false-positive diagnostics when iterating over an instance of an intersection that includes a TypeVar of which the upper bound is a union where the union includes a non-iterable type ([#22117](https://github.com/astral-sh/ruff/pull/22117))
 - Fix several type narrowing bugs involving PEP-695 type aliases ([#22894](https://github.com/astral-sh/ruff/pull/22894))
 - Fix narrowing of `nonlocal` variables with conditional assignments ([#22966](https://github.com/astral-sh/ruff/pull/22966))
