@@ -167,6 +167,11 @@ The following tags are available:
 - `ghcr.io/astral-sh/ty:{major}.{minor}`, e.g., `ghcr.io/astral-sh/ty:0.0` (the latest patch
     version)
 
+### Using ty with Bazel
+
+[`aspect_rules_lint`](https://registry.bazel.build/docs/aspect_rules_lint#function-lint_ty_aspect)
+provides a Bazel lint aspect that runs ty. See its documentation for setup instructions.
+
 ## Adding ty to your editor
 
 See the [editor integration](./editors.md) guide to add ty to your editor.
