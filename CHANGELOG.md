@@ -75,7 +75,7 @@ Released on 2026-02-04.
 - Remove special handling for `Any()` in `match` class patterns ([#23011](https://github.com/astral-sh/ruff/pull/23011))
 - Support `type[None]` in type expressions ([#22892](https://github.com/astral-sh/ruff/pull/22892))
 - Support legacy namespace packages declared using `pkg_resources.declare_namespace` ([#22987](https://github.com/astral-sh/ruff/pull/22987))
-- Sync vendored typeshed stubs ([#23006](https://github.com/astral-sh/ruff/pull/23006))
+- Sync vendored typeshed stubs ([#23006](https://github.com/astral-sh/ruff/pull/23006)), [Typeshed diff](https://github.com/python/typeshed/compare/cd8b26b0ceef26cd84ab614088140d48680ac7f7...fa659b1def704dea3dc8e25c7857b23eac69df4d)
 - Validate signatures of dataclass `__post_init__` methods ([#22730](https://github.com/astral-sh/ruff/pull/22730))
 
 ### Contributors
