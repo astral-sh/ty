@@ -175,6 +175,33 @@ Not yet. A stricter inference mode is tracked in
 [`flake8-annotations` rules](https://docs.astral.sh/ruff/rules/#flake8-annotations-ann) to enforce
 more explicit type annotations in your code.
 
+## Why doesn't ty warn about missing type annotations?
+
+ty does not report an error for unannotated function parameters, return types, or variables. When
+ty encounters an unannotated symbol, it infers the type as [`Unknown`](#what-is-the-unknown-type-and-when-does-it-appear)
+while still providing useful diagnostics where possible.
+
+If you are looking for the equivalent of mypy's
+[`disallow_untyped_defs`](https://mypy.readthedocs.io/en/stable/config_file.html#confval-disallow_untyped_defs)
+(error code: `no-untyped-def`), Ruff provides this as a set of opt-in lint rules via its
+[`flake8-annotations` (`ANN`)](https://docs.astral.sh/ruff/rules/#flake8-annotations-ann) rule
+group.
+
+Some rules you might find useful include:
+
+- [`ANN001`](https://docs.astral.sh/ruff/rules/missing-type-function-argument/): Missing type
+    annotation for function argument
+- [`ANN002`](https://docs.astral.sh/ruff/rules/missing-type-args/): Missing type annotation for
+    `*args`
+- [`ANN003`](https://docs.astral.sh/ruff/rules/missing-type-kwargs/): Missing type annotation for
+    `**kwargs`
+- [`ANN201`](https://docs.astral.sh/ruff/rules/missing-return-type-undocumented-public-function/):
+    Missing return type annotation for public function
+- [`ANN202`](https://docs.astral.sh/ruff/rules/missing-return-type-private-function/): Missing
+    return type annotation for private function
+- [`RUF045`](https://docs.astral.sh/ruff/rules/implicit-class-var-in-dataclass/): Implicit class
+    variable in dataclass
+
 ## Why can't ty resolve my imports?
 
 Import resolution issues are often caused by a missing or incorrect environment configuration. When
