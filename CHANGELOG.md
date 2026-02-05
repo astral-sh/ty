@@ -46,7 +46,7 @@ Released on 2026-02-04.
 - Add a hint to `invalid-argument-type` and `invalid-assignment` diagnostics if a variable is annotated with a type from the `numbers` module ([#22931](https://github.com/astral-sh/ruff/pull/22931), [#22938](https://github.com/astral-sh/ruff/pull/22938))
 - Add diagnostic hint on `unresolved-reference` to suggest using "list" instead of "List" ([#22827](https://github.com/astral-sh/ruff/pull/22827))
 - Add new diagnostic for invalid dataclass field orders ([#19825](https://github.com/astral-sh/ruff/pull/19825))
-- Allow positional-only params with defaults in method overrides ([#23037](https://github.com/astral-sh/ruff/pull/23037))
+- Allow a subclass method with a positional-only parameter to override a superclass method without that parameter if the parameter in the subclass method has a default value ([#23037](https://github.com/astral-sh/ruff/pull/23037))
 - Allow self-referential imports outside the global scope ([#22963](https://github.com/astral-sh/ruff/pull/22963))
 - Ban `...` in odd places inside tuple specializations ([#22889](https://github.com/astral-sh/ruff/pull/22889))
 - Ban `Required`, `NotRequired` and `ReadOnly` in parameter annotations ([#22888](https://github.com/astral-sh/ruff/pull/22888))
