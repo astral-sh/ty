@@ -67,7 +67,7 @@ Released on 2026-02-04.
 - Infer `ParamSpec` from class constructors for callable protocols ([#22853](https://github.com/astral-sh/ruff/pull/22853))
 - Move the location of some `invalid-overload` diagnostics ([#22933](https://github.com/astral-sh/ruff/pull/22933))
 - Point to an overload with an invalid `@final` decorator when emitting `invalid-overload` errors for invalid `@final` decorators ([#22893](https://github.com/astral-sh/ruff/pull/22893))
-- Preserve pure negation types in descriptor protocol to avoid false-positives in iteration ([#22907](https://github.com/astral-sh/ruff/pull/22907))
+- Avoid false positives when iterating over an instance of an intersection with only negated elements by preserving "pure negation" types in descriptor lookups ([#22907](https://github.com/astral-sh/ruff/pull/22907))
 - Promote `Literal` types when inferring elements for very large unannotated tuples, for improved performance ([#22841](https://github.com/astral-sh/ruff/pull/22841))
 - Recognize functions with stub bodies in `Protocol` classes as implicitly abstract ([#22838](https://github.com/astral-sh/ruff/pull/22838))
 - Reduce false positives involving heterogeneous dicts by tracking dictionary literal keys as individual places ([#22882](https://github.com/astral-sh/ruff/pull/22882))
