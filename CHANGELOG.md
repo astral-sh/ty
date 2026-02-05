@@ -8,7 +8,7 @@ Released on 2026-02-04.
 
 - Add support for resolving imports of packages installed into Debian/Ubuntu `dist-packages` directories ([#22466](https://github.com/astral-sh/ruff/pull/22466))
 - Avoid `not-iterable` false positives when iterating over an instance of an intersection type with only negated elements ([#22089](https://github.com/astral-sh/ruff/pull/22089))
-- Avoid pre-maturely exhausting string annotations in large files ([#22913](https://github.com/astral-sh/ruff/pull/22913))
+- Fix support for stringized annotations in very large files ([#22913](https://github.com/astral-sh/ruff/pull/22913))
 - Don't emit Liskov diagnostics for mangled names ([#23062](https://github.com/astral-sh/ruff/pull/23062))
 - Enforce that a `Final` symbol cannot be reassigned even after a conditional binding ([#22986](https://github.com/astral-sh/ruff/pull/22986))
 - Fix TypedDict construction from existing TypedDict values ([#22904](https://github.com/astral-sh/ruff/pull/22904))
