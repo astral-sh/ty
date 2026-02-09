@@ -49,6 +49,7 @@ For Neovim 0.11+ (with [`vim.lsp.config`](<https://neovim.io/doc/user/lsp.html#v
 ```lua
 -- Optional: Only required if you need to update the language server settings
 vim.lsp.config('ty', {
+  cmd = { "ty", "server" },
   settings = {
     ty = {
       -- ty language server settings go here
