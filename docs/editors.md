@@ -47,9 +47,10 @@ require('lspconfig').ty.setup({
 For Neovim 0.11+ (with [`vim.lsp.config`](<https://neovim.io/doc/user/lsp.html#vim.lsp.config()>)):
 
 ```lua
--- Optional: Only required if you need to update the language server settings
 vim.lsp.config('ty', {
+  -- Required: Start the ty LSP server
   cmd = { "ty", "server" },
+  -- Optional: Only required if you need to update the language server settings
   settings = {
     ty = {
       -- ty language server settings go here
