@@ -63,7 +63,7 @@ over all configuration files.</p>
 </dd><dt id="ty-check--no-progress"><a href="#ty-check--no-progress"><code>--no-progress</code></a></dt><dd><p>Hide all progress outputs.</p>
 <p>For example, spinners or progress bars.</p>
 </dd><dt id="ty-check--output-format"><a href="#ty-check--output-format"><code>--output-format</code></a> <i>output-format</i></dt><dd><p>The format to use for printing diagnostic messages</p>
-<p>Possible values:</p>
+<p>May also be set with the <code>TY_OUTPUT_FORMAT</code> environment variable.</p><p>Possible values:</p>
 <ul>
 <li><code>full</code>:  Print diagnostics verbosely, with context and helpful hints (default)</li>
 <li><code>concise</code>:  Print diagnostics concisely, one per line</li>
@@ -91,6 +91,7 @@ over all configuration files.</p>
 <li><code>3.12</code></li>
 <li><code>3.13</code></li>
 <li><code>3.14</code></li>
+<li><code>3.15</code></li>
 </ul></dd><dt id="ty-check--quiet"><a href="#ty-check--quiet"><code>--quiet</code></a>, <code>-q</code></dt><dd><p>Use quiet output (or <code>-qq</code> for silent output)</p>
 </dd><dt id="ty-check--respect-ignore-files"><a href="#ty-check--respect-ignore-files"><code>--respect-ignore-files</code></a></dt><dd><p>Respect file exclusions via <code>.gitignore</code> and other standard ignore files. Use <code>--no-respect-ignore-files</code> to disable</p>
 </dd><dt id="ty-check--typeshed"><a href="#ty-check--typeshed"><code>--typeshed</code></a>, <code>--custom-typeshed-dir</code> <i>path</i></dt><dd><p>Custom directory to use for stdlib typeshed stubs</p>
