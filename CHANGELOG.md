@@ -1,5 +1,72 @@
 # Changelog
 
+## 0.0.16
+
+Released on 2026-02-10.
+
+### Bug fixes
+
+- Allow stringified argument in PEP 613 alias to `Optional` ([#23200](https://github.com/astral-sh/ruff/pull/23200))
+- Fix panic on fuzzed slice expression in comprehension ([#23146](https://github.com/astral-sh/ruff/pull/23146))
+- Limit fixed-length tuple expansion in overload matching ([#23190](https://github.com/astral-sh/ruff/pull/23190))
+- Respect `@no_type_check` when combined with other decorators ([#23177](https://github.com/astral-sh/ruff/pull/23177))
+- Fix invalid diagnostic location for a sub-call to a specialized ParamSpec ([#23036](https://github.com/astral-sh/ruff/pull/23036))
+
+### LSP server
+
+- Assign lower completions ranking to deprecated functions and classes ([#23089](https://github.com/astral-sh/ruff/pull/23089))
+- Change goto-def for class constructors to always go to class definition ([#23071](https://github.com/astral-sh/ruff/pull/23071))
+- Configure check mode for all projects ([#23121](https://github.com/astral-sh/ruff/pull/23121))
+- Exclude enclosing class for base completions ([#23141](https://github.com/astral-sh/ruff/pull/23141))
+- Fix parameter references across files via keyword args ([#23012](https://github.com/astral-sh/ruff/pull/23012))
+- Fix wrong inlay hints for overloaded function arguments ([#23179](https://github.com/astral-sh/ruff/pull/23179))
+- Support diagnostics in newly created files inside neovim ([#23095](https://github.com/astral-sh/ruff/pull/23095))
+- Exclude already-included classes in base completions ([#23085](https://github.com/astral-sh/ruff/pull/23085))
+
+### CLI
+
+- Add support for `TY_OUTPUT_FORMAT` environment variable ([#23123](https://github.com/astral-sh/ruff/pull/23123))
+- Fall back to `python3` found in `$PATH` if no environment is found ([#22843](https://github.com/astral-sh/ruff/pull/22843))
+
+### Type checking
+
+- Add `inconsistent-mro` autofix to move `Generic[]` to the end of the bases list ([#22998](https://github.com/astral-sh/ruff/pull/22998))
+- Add return type inference for `struct.unpack` ([#22562](https://github.com/astral-sh/ruff/pull/22562))
+- Conservative narrowing places optimization ([#22734](https://github.com/astral-sh/ruff/pull/22734))
+- Disallow TypeVars within ClassVars ([#23184](https://github.com/astral-sh/ruff/pull/23184))
+- Emit diagnostic on unbound call to abstract `@classmethod` or `@staticmethod` ([#23182](https://github.com/astral-sh/ruff/pull/23182))
+- Evaluate class keyword arguments with `file_expression_type` instead of `expression_type` ([#23114](https://github.com/astral-sh/ruff/pull/23114))
+- Narrow both left- and right-hand operands ([#23084](https://github.com/astral-sh/ruff/pull/23084))
+- Narrow chained operators ([#23093](https://github.com/astral-sh/ruff/pull/23093))
+- Narrow equality subscripts on either operand ([#23104](https://github.com/astral-sh/ruff/pull/23104))
+- Recognize `__dataclass_transform__` to support SQLModel ([#23070](https://github.com/astral-sh/ruff/pull/23070))
+- Relax the attribute narrowing condition to support deeper-nested attribute type narrowing ([#22440](https://github.com/astral-sh/ruff/pull/22440))
+- Support complex format chars for `struct.unpack` ([#23130](https://github.com/astral-sh/ruff/pull/23130))
+- Support constrained TypeVar compatibility across function boundaries ([#23103](https://github.com/astral-sh/ruff/pull/23103))
+- Support literal types in comparison methods ([#23100](https://github.com/astral-sh/ruff/pull/23100))
+- Support partially specialized type context ([#22748](https://github.com/astral-sh/ruff/pull/22748))
+- Use type context when inferring constructor argument types ([#23139](https://github.com/astral-sh/ruff/pull/23139))
+- Validate `TypedDict` constructor calls for generic aliases and `type[...]` targets ([#23113](https://github.com/astral-sh/ruff/pull/23113))
+
+### Contributors
+
+- [@rbange](https://github.com/rbange)
+- [@rayzeller](https://github.com/rayzeller)
+- [@charliermarsh](https://github.com/charliermarsh)
+- [@11happy](https://github.com/11happy)
+- [@figsoda](https://github.com/figsoda)
+- [@mtshiba](https://github.com/mtshiba)
+- [@ibraheemdev](https://github.com/ibraheemdev)
+- [@ngnpope](https://github.com/ngnpope)
+- [@sakgoyal](https://github.com/sakgoyal)
+- [@oconnor663](https://github.com/oconnor663)
+- [@ericmarkmartin](https://github.com/ericmarkmartin)
+- [@Hugo-Polloli](https://github.com/Hugo-Polloli)
+- [@Glyphack](https://github.com/Glyphack)
+- [@sharkdp](https://github.com/sharkdp)
+- [@carljm](https://github.com/carljm)
+- [@BurntSushi](https://github.com/BurntSushi)
+
 ## 0.0.15
 
 Released on 2026-02-04.
