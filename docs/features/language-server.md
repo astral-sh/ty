@@ -37,7 +37,9 @@ see diagnostics for open files only, or for your entire workspace.
 ty powers several language server features that allow you to navigate a Python codebase:
 
 - **Go to Definition**: Jump to where a symbol is defined. ty resolves imports, function calls,
-    class references, and more.
+    class references, and more. For class constructors, goto definition on the name takes you to
+    the class definition while goto definition on the opening parenthesis takes you to the
+    constructor method.
 - **Go to Declaration**: Navigate to the declaration site of a symbol, which can differ from its
     definition (could be in a stub file).
 - **Go to Type Definition**: Navigate to the type of a symbol. For example, this takes you to the class `Person`
