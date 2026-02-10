@@ -16,7 +16,7 @@ Released on 2026-02-10.
 
 - Assign lower completions ranking to deprecated functions and classes ([#23089](https://github.com/astral-sh/ruff/pull/23089))
 - Change goto-def for class constructors to always go to class definition ([#23071](https://github.com/astral-sh/ruff/pull/23071))
-- Configure check mode for all projects ([#23121](https://github.com/astral-sh/ruff/pull/23121))
+- Ensure diagnostic mode is consistent across projects inside the LSP server ([#23121](https://github.com/astral-sh/ruff/pull/23121))
 - Don't include the class `Foo` in autocomplete suggestions when the user is typing out `Foo`'s bases ([#23141](https://github.com/astral-sh/ruff/pull/23141))
 - Fix parameter references across files via keyword args ([#23012](https://github.com/astral-sh/ruff/pull/23012))
 - Fix wrong inlay hints for overloaded function arguments ([#23179](https://github.com/astral-sh/ruff/pull/23179))
@@ -31,8 +31,7 @@ Released on 2026-02-10.
 ### Type checking
 
 - Add `inconsistent-mro` autofix to move `Generic[]` to the end of the bases list ([#22998](https://github.com/astral-sh/ruff/pull/22998))
-- Add precise return-type inference for `struct.unpack` ([#22562](https://github.com/astral-sh/ruff/pull/22562))
-- Conservative narrowing places optimization ([#22734](https://github.com/astral-sh/ruff/pull/22734))
+- Add precise return-type inference for `struct.unpack` ([#22562](https://github.com/astral-sh/ruff/pull/22562), [#23130](https://github.com/astral-sh/ruff/pull/23130))
 - Disallow TypeVars within ClassVars ([#23184](https://github.com/astral-sh/ruff/pull/23184))
 - Emit diagnostic on unbound call to abstract `@classmethod` or `@staticmethod` ([#23182](https://github.com/astral-sh/ruff/pull/23182))
 - Fix false-positive diagnostics when providing the `total=` keyword to `TypedDict` classes that had PEP-695 type parameters ([#23114](https://github.com/astral-sh/ruff/pull/23114))
@@ -41,12 +40,15 @@ Released on 2026-02-10.
 - Narrow equality subscripts on either operand ([#23104](https://github.com/astral-sh/ruff/pull/23104))
 - Recognize `__dataclass_transform__` to support SQLModel ([#23070](https://github.com/astral-sh/ruff/pull/23070))
 - Relax the attribute narrowing condition to support deeper-nested attribute type narrowing ([#22440](https://github.com/astral-sh/ruff/pull/22440))
-- Support complex format chars for `struct.unpack` ([#23130](https://github.com/astral-sh/ruff/pull/23130))
 - Support constrained TypeVar compatibility across function boundaries ([#23103](https://github.com/astral-sh/ruff/pull/23103))
 - Support comparison methods (`__gt__`, etc.) where a parameter is annotated with a `Literal` type ([#23100](https://github.com/astral-sh/ruff/pull/23100))
 - Support partially specialized type context ([#22748](https://github.com/astral-sh/ruff/pull/22748))
 - Use type context when inferring constructor argument types ([#23139](https://github.com/astral-sh/ruff/pull/23139))
 - Validate `TypedDict` constructor calls for generic aliases and `type[...]` targets ([#23113](https://github.com/astral-sh/ruff/pull/23113))
+
+### Performance
+
+- Conservative narrowing places optimization ([#22734](https://github.com/astral-sh/ruff/pull/22734))
 
 ### Contributors
 
