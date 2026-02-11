@@ -37,7 +37,7 @@ recommended way of using ty with Neovim (if you prefer not to install the extens
 you can copy [the ty configuration](https://github.com/neovim/nvim-lspconfig/blob/master/lsp/ty.lua)
 manually instead). After installing the nvim-lspconfig extension, you need to enable
 the language server (and can optionally configure additional settings). For Neovim >=0.11,
-you can use the following snippet:
+you can add the following snippet to your config file:
 
 ```lua
 -- Optional: Only required if you need to update the language server settings
@@ -54,7 +54,7 @@ vim.lsp.enable('ty')
 ```
 
 For Neovim <0.11, you would use the configuration below instead (note that [you might need
-to install an older version of nvim-lspconfig](https://github.com/neovim/nvim-lspconfig?tab=readme-ov-file#important-%EF%B8%8F):
+to install an older version of nvim-lspconfig](https://github.com/neovim/nvim-lspconfig?tab=readme-ov-file#important-%EF%B8%8F)):
 
 ```lua
 require('lspconfig').ty.setup({
