@@ -32,7 +32,7 @@ in your [`settings.json`](https://code.visualstudio.com/docs/configure/settings#
 
 ## Neovim
 
-The [`nvim-lspconfig`](https://github.com/neovim/nvim-lspconfig) extension is the
+The [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig) extension is the
 recommended way of using ty with Neovim (if you prefer not to install the extension,
 you can copy [the ty configuration](https://github.com/neovim/nvim-lspconfig/blob/master/lsp/ty.lua)
 manually instead). After installing the nvim-lspconfig extension, you need to enable
