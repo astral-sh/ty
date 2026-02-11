@@ -53,7 +53,7 @@ vim.lsp.config('ty', {
 vim.lsp.enable('ty')
 ```
 
-For Neovim <0.11, you would use the configuration below instead (note that [you might need
+For Neovim \<0.11, you would use the configuration below instead (note that [you might need
 to install an older version of nvim-lspconfig](https://github.com/neovim/nvim-lspconfig?tab=readme-ov-file#important-%EF%B8%8F)):
 
 ```lua
