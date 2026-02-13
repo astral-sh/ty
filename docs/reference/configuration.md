@@ -159,16 +159,20 @@ Path to your project's Python environment or interpreter.
 ty uses the `site-packages` directory of your project's Python environment
 to resolve third-party (and, in some cases, first-party) imports in your code.
 
-If you're using a project management tool such as uv, you should not generally need
-to specify this option, as commands such as `uv run` will set the `VIRTUAL_ENV`
-environment variable to point to your project's virtual environment. ty can also infer
-the location of your environment from an activated Conda environment, and will look for
-a `.venv` directory in the project root if none of the above apply.
+This can be a path to:
 
-Passing a path to a Python executable is supported, but passing a path to a dynamic executable
-(such as a shim) is not currently supported.
+- A Python interpreter, e.g. `.venv/bin/python3`
+- A virtual environment directory, e.g. `.venv`
+- A system Python [`sys.prefix`] directory, e.g. `/usr`
 
-This option can be used to point to virtual or system Python environments.
+If you're using a project management tool such as uv, you should not generally need to
+specify this option, as commands such as `uv run` will set the `VIRTUAL_ENV` environment
+variable to point to your project's virtual environment. ty can also infer the location of
+your environment from an activated Conda environment, and will look for a `.venv` directory
+in the project root if none of the above apply. Failing that, ty will look for a `python3`
+or `python` binary available in `PATH`.
+
+[`sys.prefix`]: https://docs.python.org/3/library/sys.html#sys.prefix
 
 **Default value**: `null`
 
@@ -800,7 +804,7 @@ Defaults to `full`.
 
 **Default value**: `full`
 
-**Type**: `full | concise`
+**Type**: `full | concise | github | gitlab | junit`
 
 **Example usage**:
 
