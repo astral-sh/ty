@@ -1,5 +1,67 @@
 # Changelog
 
+## 0.0.17
+
+Released on 2026-02-13.
+
+### Bug fixes
+
+- Avoid `Literal` promotion for constrained `TypeVar`s with `Literal` bounds ([#23209](https://github.com/astral-sh/ruff/pull/23209))
+- Fix false positives in `TypeVar` shadowing checks ([#23222](https://github.com/astral-sh/ruff/pull/23222))
+
+### Core type checking
+
+- Support generic protocols ([#21902](https://github.com/astral-sh/ruff/pull/21902))
+- Perform control-flow analysis in loops ([#22794](https://github.com/astral-sh/ruff/pull/22794))
+- Support `typing.Self` in attribute annotations ([#23108](https://github.com/astral-sh/ruff/pull/23108))
+- Support type narrowing in situations with calls to `NoReturn` functions ([#23109](https://github.com/astral-sh/ruff/pull/23109))
+- Support type narrowing and reachability analysis based on `os.name` checks ([#23230](https://github.com/astral-sh/ruff/pull/23230))
+- Detect overrides of `Final` class variables in subclasses ([#23180](https://github.com/astral-sh/ruff/pull/23180))
+- Fix bound method access on `None` ([#23246](https://github.com/astral-sh/ruff/pull/23246))
+- Fix method calls on subclasses of `Any` ([#23248](https://github.com/astral-sh/ruff/pull/23248))
+- Disallow type variables within PEP-695 type variable bounds and constraints ([#22982](https://github.com/astral-sh/ruff/pull/22982))
+- Emit error for attribute access on union where some elements lack the attribute ([#23042](https://github.com/astral-sh/ruff/pull/23042))
+- Emit error for invalid typevar defaults ([#23194](https://github.com/astral-sh/ruff/pull/23194))
+- Improve display of `ParamSpec`s in some situations ([#23211](https://github.com/astral-sh/ruff/pull/23211))
+
+### LSP server
+
+- Add hover and go-to-declaration support for subscript literals ([#22837](https://github.com/astral-sh/ruff/pull/22837))
+- Assign lower completion ranking to deprecated names in auto import ([#23188](https://github.com/astral-sh/ruff/pull/23188))
+- Improve spans of references to submodules imported in an `__init__.py` ([#21795](https://github.com/astral-sh/ruff/pull/21795))
+- Include conditional symbols (like `datetime.UTC`) in auto-import in more cases ([#23249](https://github.com/astral-sh/ruff/pull/23249))
+- Support auto-import for symbols in inlay hints ([#22111](https://github.com/astral-sh/ruff/pull/22111))
+- Include overload declarations in find-references ([#23215](https://github.com/astral-sh/ruff/pull/23215))
+
+### Performance
+
+- Avoid `UnionBuilder` overhead when creating a new union from the filtered elements of an existing union ([#22352](https://github.com/astral-sh/ruff/pull/22352))
+
+### Other changes
+
+- Allow discovering dependencies in system Python environments ([#22994](https://github.com/astral-sh/ruff/pull/22994))
+- Apply workspace settings to virtual files ([#23228](https://github.com/astral-sh/ruff/pull/23228))
+- Add support for `--output-format=junit` ([#22125](https://github.com/astral-sh/ruff/pull/22125))
+- Use a smaller diagnostic range for `inconsistent-mro` diagnostics ([#23213](https://github.com/astral-sh/ruff/pull/23213))
+
+### Contributors
+
+- [@carljm](https://github.com/carljm)
+- [@BurntSushi](https://github.com/BurntSushi)
+- [@charliermarsh](https://github.com/charliermarsh)
+- [@Glyphack](https://github.com/Glyphack)
+- [@cetanu](https://github.com/cetanu)
+- [@AlexWaygood](https://github.com/AlexWaygood)
+- [@joelostblom](https://github.com/joelostblom)
+- [@Gankra](https://github.com/Gankra)
+- [@mtshiba](https://github.com/mtshiba)
+- [@MatthewMckee4](https://github.com/MatthewMckee4)
+- [@Hugo-Polloli](https://github.com/Hugo-Polloli)
+- [@sharkdp](https://github.com/sharkdp)
+- [@alex](https://github.com/alex)
+- [@dcreager](https://github.com/dcreager)
+- [@oconnor663](https://github.com/oconnor663)
+
 ## 0.0.16
 
 Released on 2026-02-10.
