@@ -6,14 +6,14 @@ Released on 2026-02-13.
 
 ### Bug fixes
 
-- Avoid literal promotion for constrained `TypeVar`s with literal bounds ([#23209](https://github.com/astral-sh/ruff/pull/23209))
-- Fix typevar shadowing checks ([#23222](https://github.com/astral-sh/ruff/pull/23222))
+- Avoid `Literal` promotion for constrained `TypeVar`s with `Literal` bounds ([#23209](https://github.com/astral-sh/ruff/pull/23209))
+- Fix false positives in `TypeVar` shadowing checks ([#23222](https://github.com/astral-sh/ruff/pull/23222))
 
 ### Core type checking
 
 - Support generic protocols ([#21902](https://github.com/astral-sh/ruff/pull/21902))
 - Perform control-flow analysis in loops ([#22794](https://github.com/astral-sh/ruff/pull/22794))
-- Allow `typing.Self` in attribute annotations ([#23108](https://github.com/astral-sh/ruff/pull/23108))
+- Support `typing.Self` in attribute annotations ([#23108](https://github.com/astral-sh/ruff/pull/23108))
 - Support type narrowing in situations with calls to `NoReturn` functions ([#23109](https://github.com/astral-sh/ruff/pull/23109))
 - Support type narrowing and reachability analysis based on `os.name` checks ([#23230](https://github.com/astral-sh/ruff/pull/23230))
 - Detect overrides of `Final` class variables in subclasses ([#23180](https://github.com/astral-sh/ruff/pull/23180))
@@ -41,7 +41,7 @@ Released on 2026-02-13.
 
 - Allow discovering dependencies in system Python environments ([#22994](https://github.com/astral-sh/ruff/pull/22994))
 - Apply workspace settings to virtual files ([#23228](https://github.com/astral-sh/ruff/pull/23228))
-- JUnit output for `ty` lints ([#22125](https://github.com/astral-sh/ruff/pull/22125))
+- Add support for `--output-format=junit` ([#22125](https://github.com/astral-sh/ruff/pull/22125))
 - Use a smaller diagnostic range for `inconsistent-mro` diagnostics ([#23213](https://github.com/astral-sh/ruff/pull/23213))
 
 ### Contributors
