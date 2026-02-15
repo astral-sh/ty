@@ -31,7 +31,8 @@ Consult [the configuration reference](../configuration.md) for a list of all sup
 === "Neovim"
 
     ```lua
-    require('lspconfig').ty.setup({
+    -- Neovim >=0.11:
+    vim.lsp.config('ty', {
       settings = {
         ty = {
           configuration = {
@@ -43,8 +44,8 @@ Consult [the configuration reference](../configuration.md) for a list of all sup
       },
     })
 
-    -- For Neovim 0.11.0 and later:
-    vim.lsp.config('ty', {
+    -- Neovim <0.11:
+    require('lspconfig').ty.setup({
       settings = {
         ty = {
           configuration = {
@@ -101,7 +102,8 @@ ty will expand a tilde `~` at the start of a string to the user's home directory
 === "Neovim"
 
     ```lua
-    require('lspconfig').ty.setup({
+    -- Neovim >=0.11:
+    vim.lsp.config('ty', {
       settings = {
         ty = {
           configurationFile = "./.config/ty.toml"
@@ -109,8 +111,8 @@ ty will expand a tilde `~` at the start of a string to the user's home directory
       },
     })
 
-    -- For Neovim 0.11.0 and later:
-    vim.lsp.config('ty', {
+    -- Neovim <0.11:
+    require('lspconfig').ty.setup({
       settings = {
         ty = {
           configurationFile = "./.config/ty.toml"
@@ -160,7 +162,8 @@ server for features like code completion, hover, go to definition, etc.
 === "Neovim"
 
     ```lua
-    require('lspconfig').ty.setup({
+    -- Neovim >=0.11:
+    vim.lsp.config('ty', {
       settings = {
         ty = {
           disableLanguageServices = true,
@@ -168,8 +171,8 @@ server for features like code completion, hover, go to definition, etc.
       },
     })
 
-    -- For Neovim 0.11.0 and later:
-    vim.lsp.config('ty', {
+    -- Neovim <0.11:
+    require('lspconfig').ty.setup({
       settings = {
         ty = {
           disableLanguageServices = true,
@@ -222,7 +225,8 @@ like code completion, hover, go to definition, etc.
 === "Neovim"
 
     ```lua
-    require('lspconfig').ty.setup({
+    -- Neovim >=0.11:
+    vim.lsp.config('ty', {
       settings = {
         ty = {
           diagnosticMode = 'workspace',
@@ -230,8 +234,8 @@ like code completion, hover, go to definition, etc.
       },
     })
 
-    -- For Neovim 0.11.0 and later:
-    vim.lsp.config('ty', {
+    -- Neovim <0.11:
+    require('lspconfig').ty.setup({
       settings = {
         ty = {
           diagnosticMode = 'workspace',
@@ -280,7 +284,8 @@ from only one source.
 === "Neovim"
 
     ```lua
-    require('lspconfig').ty.setup({
+    -- Neovim >=0.11:
+    vim.lsp.config('ty', {
       settings = {
         ty = {
           showSyntaxErrors = false,
@@ -288,8 +293,8 @@ from only one source.
       },
     })
 
-    -- For Neovim 0.11.0 and later:
-    vim.lsp.config('ty', {
+    -- Neovim <0.11:
+    require('lspconfig').ty.setup({
       settings = {
         ty = {
           showSyntaxErrors = false,
@@ -339,7 +344,8 @@ Whether to show the types of variables as inline hints.
 === "Neovim"
 
     ```lua
-    require('lspconfig').ty.setup({
+    -- Neovim >=0.11:
+    vim.lsp.config('ty', {
       settings = {
         ty = {
           inlayHints = {
@@ -349,8 +355,8 @@ Whether to show the types of variables as inline hints.
       },
     })
 
-    -- For Neovim 0.11.0 and later:
-    vim.lsp.config('ty', {
+    -- Neovim <0.11:
+    require('lspconfig').ty.setup({
       settings = {
         ty = {
           inlayHints = {
@@ -398,7 +404,8 @@ Whether to show argument names in call expressions as inline hints.
 === "Neovim"
 
     ```lua
-    require('lspconfig').ty.setup({
+    -- Neovim >=0.11:
+    vim.lsp.config('ty', {
       settings = {
         ty = {
           inlayHints = {
@@ -408,8 +415,8 @@ Whether to show argument names in call expressions as inline hints.
       },
     })
 
-    -- For Neovim 0.11.0 and later:
-    vim.lsp.config('ty', {
+    -- Neovim <0.11:
+    require('lspconfig').ty.setup({
       settings = {
         ty = {
           inlayHints = {
@@ -464,7 +471,8 @@ include symbols not currently in scope but available in your environment.
 === "Neovim"
 
     ```lua
-    require('lspconfig').ty.setup({
+    -- Neovim >=0.11:
+    vim.lsp.config('ty', {
       settings = {
         ty = {
           completions = {
@@ -474,8 +482,8 @@ include symbols not currently in scope but available in your environment.
       },
     })
 
-    -- For Neovim 0.11.0 and later:
-    vim.lsp.config('ty', {
+    -- Neovim <0.11:
+    require('lspconfig').ty.setup({
       settings = {
         ty = {
           completions = {
@@ -625,14 +633,15 @@ Path to the file to which the language server writes its log messages. By defaul
 === "Neovim"
 
     ```lua
-    require('lspconfig').ty.setup({
+    -- Neovim >=0.11:
+    vim.lsp.config('ty', {
       init_options = {
         logFile = '/path/to/ty.log',
       },
     })
 
-    -- For Neovim 0.11.0 and later:
-    vim.lsp.config('ty', {
+    -- Neovim <0.11:
+    require('lspconfig').ty.setup({
       init_options = {
         logFile = '/path/to/ty.log',
       },
@@ -676,14 +685,15 @@ The log level to use for the language server.
 === "Neovim"
 
     ```lua
-    require('lspconfig').ty.setup({
+    -- Neovim >=0.11:
+    vim.lsp.config('ty', {
       init_options = {
         logLevel = 'debug',
       },
     })
 
-    -- For Neovim 0.11.0 and later:
-    vim.lsp.config('ty', {
+    -- Neovim <0.11:
+    require('lspconfig').ty.setup({
       init_options = {
         logLevel = 'debug',
       },
