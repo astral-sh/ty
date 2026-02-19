@@ -90,6 +90,11 @@ ty surfaces useful contextual information as you code:
     symbol in the current file.
 - **Semantic highlighting**: Syntax highlighting based on the underlying semantics and types.
 
+## Code folding
+
+ty provides Python specific code folding ranges to LSP clients upon request. This includes tagging
+docstrings as comments, which supports editor actions like "fold all comment blocks."
+
 ## Notebook support
 
 ty supports Jupyter notebooks (`.ipynb` files) with language server features. Each cell is
@@ -126,7 +131,7 @@ within a few milliseconds, even on large projects.
 | [`textDocument/documentHighlight`][documenthighlight] | ✅ Supported     |                                                               |
 | [`textDocument/documentLink`][documentlink]           | ❌ Not supported |                                                               |
 | [`textDocument/documentSymbol`][documentsymbol]       | ✅ Supported     |                                                               |
-| [`textDocument/foldingRange`][foldingrange]           | ❌ Not supported |                                                               |
+| [`textDocument/foldingRange`][foldingrange]           | ✅ Supported     |                                                               |
 | [`textDocument/formatting`][formatting]               | —                | Use [Ruff] for formatting                                     |
 | [`textDocument/hover`][hover]                         | ✅ Supported     |                                                               |
 | [`textDocument/implementation`][implementation]       | ❌ Not supported |                                                               |
