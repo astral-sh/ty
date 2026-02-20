@@ -58,7 +58,7 @@ Released on 2026-02-20.
 
 ### Typeshed
 
-- Sync vendored typeshed stubs ([#23279](https://github.com/astral-sh/ruff/pull/23279))
+- Sync vendored typeshed stubs ([#23279](https://github.com/astral-sh/ruff/pull/23279), [Typeshed diff](https://github.com/python/typeshed/compare/fa659b1def704dea3dc8e25c7857b23eac69df4d...1b3cec156330a93f6bb22b6636bca38c27f8f721))
 
 ### Contributors
 
