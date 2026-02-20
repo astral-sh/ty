@@ -17,7 +17,7 @@ Released on 2026-02-20.
 - Add warning message when running `ty server` interactively ([#23416](https://github.com/astral-sh/ruff/pull/23416))
 - Exclude test-related symbols from non-first-party packages in auto-import completions ([#23252](https://github.com/astral-sh/ruff/pull/23252))
 - Fix bug where diagnostics could disappear after opening an external file ([#23447](https://github.com/astral-sh/ruff/pull/23447))
-- Omit loop header definitions in Go-To Definition ([#23391](https://github.com/astral-sh/ruff/pull/23391))
+- Remove spurious destination for Go-To Definition on variables defined in a loop ([#23391](https://github.com/astral-sh/ruff/pull/23391))
 - Use the fully qualified name when "baking" an inlay hint into the source code if the scope already contains a variable with the same name as the unqualified name ([#23265](https://github.com/astral-sh/ruff/pull/23265))
 - Resolve TypeVars in `call_signature_details` parameter types ([#23149](https://github.com/astral-sh/ruff/pull/23149))
 
@@ -36,7 +36,6 @@ Released on 2026-02-20.
 - Allow `Self` in `ClassVar` type annotations ([#23362](https://github.com/astral-sh/ruff/pull/23362))
 - Consider synthesized methods and `ClassVar`-qualified declarations when determining whether an abstract method has been overridden in a subclass ([#23381](https://github.com/astral-sh/ruff/pull/23381))
 - Add a diagnostic when combining `Final` and `ClassVar` ([#23365](https://github.com/astral-sh/ruff/pull/23365))
-- Fix `invalid-match-pattern` false positives ([#23338](https://github.com/astral-sh/ruff/pull/23338))
 - Fix return type of `assert_never` ([#23389](https://github.com/astral-sh/ruff/pull/23389))
 - Fix `assert_type` diagnostic messages ([#23342](https://github.com/astral-sh/ruff/pull/23342))
 - Ban PEP-613 type alias values from containing type-qualifier special forms ([#23444](https://github.com/astral-sh/ruff/pull/23444))
