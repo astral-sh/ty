@@ -6,31 +6,36 @@ Released on 2026-02-26.
 
 ### Bug fixes
 
-- Fix panic for annotation pointing at leading whitespace ([#23458](https://github.com/astral-sh/ruff/pull/23458))
-- Fix panic where we would incorrectly consider overloads in another file as belonging to a function in the file being checked ([#21977](https://github.com/astral-sh/ruff/pull/21977))
+- Fix panic in diagnostic rendering when attempting to render a code frame pointing to leading whitespace ([#23458](https://github.com/astral-sh/ruff/pull/23458))
+- Fix panics and incorrect inference stemming from incorrectly considering overloads in another file as being associated with a function in the file being checked ([#21977](https://github.com/astral-sh/ruff/pull/21977))
+- Fix panic when attempting to narrow the type of a dictionary key that was assigned using a multi-target assignment, e.g. `x = y = {"a": 1}` ([#23523](https://github.com/astral-sh/ruff/pull/23523))
+- Fix infinite hang on mutually recursive `TypeAliasType` definitions ([#23397](https://github.com/astral-sh/ruff/pull/23397))
 
 ### LSP server
 
 - Fix inlay hints for starred unpacking targets ([#23454](https://github.com/astral-sh/ruff/pull/23454))
 
-### Other changes
+### Core type checking
 
-- \: special-case comparisons of `Generator` prior to Python 3.13 ([#23386](https://github.com/astral-sh/ruff/pull/23386))
-- Avoid dictionary key narrowing for multi-target assignments ([#23523](https://github.com/astral-sh/ruff/pull/23523))
-- Cache the union of two types as a tracked function ([#23565](https://github.com/astral-sh/ruff/pull/23565))
-- Detect terminal `await` calls to `async` functions ([#23479](https://github.com/astral-sh/ruff/pull/23479))
-- Fix infinite hang on mutually recursive TypeAliasType definitions ([#23397](https://github.com/astral-sh/ruff/pull/23397))
-- Fix upcasting `type[T]` types to `Callable` types ([#23472](https://github.com/astral-sh/ruff/pull/23472))
+- Fix assignability, subtyping and equivalence checks relating to `typing.Generator` prior to Python 3.13 ([#23386](https://github.com/astral-sh/ruff/pull/23386))
+- Understand that a scope's control flow terminates after `await foo()` if `foo` returns `typing.Awaitable[typing.Never]` or similar ([#23479](https://github.com/astral-sh/ruff/pull/23479))
+- Implement stricter handling of calls to instances of `type[T]` types ([#23472](https://github.com/astral-sh/ruff/pull/23472))
+- Narrow mapping patterns in `match` statements, applying the same semantics to them as we do for `isinstance(obj, typing.Mapping)` ([#23462](https://github.com/astral-sh/ruff/pull/23462))
+- Fix bugs that could manifest in incorrect overload evaluation, false-positive complaints regarding `assert_type` calls or false-positive `redundant-cast` diagnostics by reimplementing the equivalence type relation as mutual subtyping of top and bottom materializations ([#23428](https://github.com/astral-sh/ruff/pull/23428))
+- Fix equality and `__contains__` narrowing with PEP-695 type aliases ([#23545](https://github.com/astral-sh/ruff/pull/23545))
+- Support `_value_` annotations on enum classes ([#22228](https://github.com/astral-sh/ruff/pull/22228))
+
+## Improvements to diagnostics
+
 - Improve diagnostics for subscriptions of non-generic types ([#23516](https://github.com/astral-sh/ruff/pull/23516))
-- Isolate loop header reachability evaluation in tracked function ([#23520](https://github.com/astral-sh/ruff/pull/23520))
-- Narrow mapping patterns in `match` like `isinstance(Mapping)` ([#23462](https://github.com/astral-sh/ruff/pull/23462))
-- Reimplement equivalence as mutual redundancy ([#23428](https://github.com/astral-sh/ruff/pull/23428))
-- add benchmark for large `isinstance` narrowing chain ([#23559](https://github.com/astral-sh/ruff/pull/23559))
-- add benchmark for large union type narrowing ([#23546](https://github.com/astral-sh/ruff/pull/23546))
-- cache the intersection of two types as a tracked function ([#23547](https://github.com/astral-sh/ruff/pull/23547))
-- fix equality and contains narrowing with PEP 695 type aliases ([#23545](https://github.com/astral-sh/ruff/pull/23545))
-- lower `MAX_RECURSIVE_UNION_LITERALS` ([#23521](https://github.com/astral-sh/ruff/pull/23521))
-- support enum `_value_` annotation ([#22228](https://github.com/astral-sh/ruff/pull/22228))
+- Render subdiagnostics when `--output-format=github` is specified ([#23455](https://github.com/astral-sh/ruff/pull/23455))
+
+## Performance
+
+- Add a cached method for calculating the intersection of two types ([#23547](https://github.com/astral-sh/ruff/pull/23547))
+- Add a cached method for calculating the union of two types ([#23565](https://github.com/astral-sh/ruff/pull/23565))
+- Reduce the threshold above which `Literal` types in unions are upcasted to nominal-instance types in situations where the union type is recursively defined ([#23521](https://github.com/astral-sh/ruff/pull/23521))
+- Control flow: isolate the calculation of "loop header reachability" in a dedicated, cached function ([#23520](https://github.com/astral-sh/ruff/pull/23520))
 
 ### Contributors
 
