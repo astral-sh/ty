@@ -27,7 +27,7 @@ Released on 2026-02-26.
 
 ## Improvements to diagnostics
 
-- Improve diagnostics for subscriptions of non-generic types ([#23516](https://github.com/astral-sh/ruff/pull/23516))
+- Improve diagnostics when attempting to specialize non-generic types ([#23516](https://github.com/astral-sh/ruff/pull/23516))
 - Render subdiagnostics when `--output-format=github` is specified ([#23455](https://github.com/astral-sh/ruff/pull/23455))
 
 ## Performance
