@@ -1,5 +1,49 @@
 # Changelog
 
+## 0.0.19
+
+Released on 2026-02-26.
+
+### Bug fixes
+
+- Fix panic for annotation pointing at leading whitespace ([#23458](https://github.com/astral-sh/ruff/pull/23458))
+- Fix panic where we would incorrectly consider overloads in another file as belonging to a function in the file being checked ([#21977](https://github.com/astral-sh/ruff/pull/21977))
+
+### LSP server
+
+- Fix inlay hints for starred unpacking targets ([#23454](https://github.com/astral-sh/ruff/pull/23454))
+
+### Other changes
+
+- \: special-case comparisons of `Generator` prior to Python 3.13 ([#23386](https://github.com/astral-sh/ruff/pull/23386))
+- Avoid dictionary key narrowing for multi-target assignments ([#23523](https://github.com/astral-sh/ruff/pull/23523))
+- Cache the union of two types as a tracked function ([#23565](https://github.com/astral-sh/ruff/pull/23565))
+- Detect terminal `await` calls to `async` functions ([#23479](https://github.com/astral-sh/ruff/pull/23479))
+- Fix infinite hang on mutually recursive TypeAliasType definitions ([#23397](https://github.com/astral-sh/ruff/pull/23397))
+- Fix upcasting `type[T]` types to `Callable` types ([#23472](https://github.com/astral-sh/ruff/pull/23472))
+- Improve diagnostics for subscriptions of non-generic types ([#23516](https://github.com/astral-sh/ruff/pull/23516))
+- Isolate loop header reachability evaluation in tracked function ([#23520](https://github.com/astral-sh/ruff/pull/23520))
+- Narrow mapping patterns in `match` like `isinstance(Mapping)` ([#23462](https://github.com/astral-sh/ruff/pull/23462))
+- Reimplement equivalence as mutual redundancy ([#23428](https://github.com/astral-sh/ruff/pull/23428))
+- add benchmark for large `isinstance` narrowing chain ([#23559](https://github.com/astral-sh/ruff/pull/23559))
+- add benchmark for large union type narrowing ([#23546](https://github.com/astral-sh/ruff/pull/23546))
+- cache the intersection of two types as a tracked function ([#23547](https://github.com/astral-sh/ruff/pull/23547))
+- fix equality and contains narrowing with PEP 695 type aliases ([#23545](https://github.com/astral-sh/ruff/pull/23545))
+- lower `MAX_RECURSIVE_UNION_LITERALS` ([#23521](https://github.com/astral-sh/ruff/pull/23521))
+- support enum `_value_` annotation ([#22228](https://github.com/astral-sh/ruff/pull/22228))
+
+### Contributors
+
+- [@AlexWaygood](https://github.com/AlexWaygood)
+- [@silamon](https://github.com/silamon)
+- [@ibraheemdev](https://github.com/ibraheemdev)
+- [@Hugo-Polloli](https://github.com/Hugo-Polloli)
+- [@charliermarsh](https://github.com/charliermarsh)
+- [@knutwannheden](https://github.com/knutwannheden)
+- [@oconnor663](https://github.com/oconnor663)
+- [@carljm](https://github.com/carljm)
+- [@mtshiba](https://github.com/mtshiba)
+
 ## 0.0.18
 
 Released on 2026-02-20.
