@@ -25,12 +25,12 @@ Released on 2026-02-26.
 - Fix equality and `__contains__` narrowing with PEP-695 type aliases ([#23545](https://github.com/astral-sh/ruff/pull/23545))
 - Support `_value_` annotations on enum classes ([#22228](https://github.com/astral-sh/ruff/pull/22228))
 
-## Improvements to diagnostics
+### Improvements to diagnostics
 
 - Improve diagnostics when attempting to specialize non-generic types ([#23516](https://github.com/astral-sh/ruff/pull/23516))
 - Render subdiagnostics when `--output-format=github` is specified ([#23455](https://github.com/astral-sh/ruff/pull/23455))
 
-## Performance
+### Performance
 
 - Add a cached method for calculating the intersection of two types ([#23547](https://github.com/astral-sh/ruff/pull/23547))
 - Add a cached method for calculating the union of two types ([#23565](https://github.com/astral-sh/ruff/pull/23565))
