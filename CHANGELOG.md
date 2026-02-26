@@ -1,5 +1,54 @@
 # Changelog
 
+## 0.0.19
+
+Released on 2026-02-26.
+
+### Bug fixes
+
+- Fix panic in diagnostic rendering when attempting to render a code frame pointing to leading whitespace ([#23458](https://github.com/astral-sh/ruff/pull/23458))
+- Fix panics and incorrect inference stemming from incorrectly considering overloads in another file as being associated with a function in the file being checked ([#21977](https://github.com/astral-sh/ruff/pull/21977))
+- Fix panic when attempting to narrow the type of a dictionary key that was assigned using a multi-target assignment, e.g. `x = y = {"a": 1}` ([#23523](https://github.com/astral-sh/ruff/pull/23523))
+- Fix infinite hang on mutually recursive `TypeAliasType` definitions ([#23397](https://github.com/astral-sh/ruff/pull/23397))
+
+### LSP server
+
+- Fix inlay hints for starred unpacking targets ([#23454](https://github.com/astral-sh/ruff/pull/23454))
+
+### Core type checking
+
+- Fix assignability, subtyping and equivalence checks relating to `typing.Generator` prior to Python 3.13 ([#23386](https://github.com/astral-sh/ruff/pull/23386))
+- Understand that a scope's control flow terminates after `await foo()` if `foo` returns `typing.Awaitable[typing.Never]` or similar ([#23479](https://github.com/astral-sh/ruff/pull/23479))
+- Implement stricter handling of calls to instances of `type[T]` types ([#23472](https://github.com/astral-sh/ruff/pull/23472))
+- Support basic type narrowing for `case {...}:` patterns in `match` statements ([#23462](https://github.com/astral-sh/ruff/pull/23462))
+- Fix bugs that could manifest in incorrect overload evaluation, false-positive complaints regarding `assert_type` calls or false-positive `redundant-cast` diagnostics by reimplementing the equivalence type relation as mutual subtyping of top and bottom materializations ([#23428](https://github.com/astral-sh/ruff/pull/23428))
+- Fix equality and `__contains__` narrowing with PEP-695 type aliases ([#23545](https://github.com/astral-sh/ruff/pull/23545))
+- Support `_value_` annotations on enum classes ([#22228](https://github.com/astral-sh/ruff/pull/22228))
+
+## Improvements to diagnostics
+
+- Improve diagnostics when attempting to specialize non-generic types ([#23516](https://github.com/astral-sh/ruff/pull/23516))
+- Render subdiagnostics when `--output-format=github` is specified ([#23455](https://github.com/astral-sh/ruff/pull/23455))
+
+## Performance
+
+- Add a cached method for calculating the intersection of two types ([#23547](https://github.com/astral-sh/ruff/pull/23547))
+- Add a cached method for calculating the union of two types ([#23565](https://github.com/astral-sh/ruff/pull/23565))
+- Reduce the threshold above which `Literal` types in unions are upcasted to nominal-instance types in situations where the union type is recursively defined ([#23521](https://github.com/astral-sh/ruff/pull/23521))
+- Control flow: isolate the calculation of "loop header reachability" in a dedicated, cached function ([#23520](https://github.com/astral-sh/ruff/pull/23520))
+
+### Contributors
+
+- [@AlexWaygood](https://github.com/AlexWaygood)
+- [@silamon](https://github.com/silamon)
+- [@ibraheemdev](https://github.com/ibraheemdev)
+- [@Hugo-Polloli](https://github.com/Hugo-Polloli)
+- [@charliermarsh](https://github.com/charliermarsh)
+- [@knutwannheden](https://github.com/knutwannheden)
+- [@oconnor663](https://github.com/oconnor663)
+- [@carljm](https://github.com/carljm)
+- [@mtshiba](https://github.com/mtshiba)
+
 ## 0.0.18
 
 Released on 2026-02-20.
