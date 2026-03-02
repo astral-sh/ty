@@ -6,13 +6,13 @@ Released on 2026-03-02.
 
 ### Bug fixes
 
-- Disallow negative narrowing on `SubclassOf` types ([#23598](https://github.com/astral-sh/ruff/pull/23598))
-- Fix binary operations with `NewType` of `float` and `Unknown` ([#23620](https://github.com/astral-sh/ruff/pull/23620))
+- Disallow negative narrowing for `isinstance()` or `issubclass()` checks involving `type[]` types ([#23598](https://github.com/astral-sh/ruff/pull/23598))
+- Fix binary operations between an instance of a `NewType` of `float` and an instance of `Any`/`Unknown` ([#23620](https://github.com/astral-sh/ruff/pull/23620))
 - Fix bug where ty would think that a `Callable` with a variadic positional parameter could be a subtype of a `Callable` with a positional-or-keyword parameter ([#23610](https://github.com/astral-sh/ruff/pull/23610))
 - Fix inference of `t.__mro__` if `t` is an instance of `type[Any]` ([#23632](https://github.com/astral-sh/ruff/pull/23632))
 - Fix overloaded callable assignability for unary `Callable` targets ([#23277](https://github.com/astral-sh/ruff/pull/23277))
 - Limit recursion depth when displaying self-referential function types ([#23647](https://github.com/astral-sh/ruff/pull/23647))
-- Update the Python module (notably `find_ty_bin`) for parity with uv ([#2852](https://github.com/astral-sh/ty/pull/2852))
+- Ensure that `python -m ty` works even when ty was installed into an ephemeral virtual environment ([#2852](https://github.com/astral-sh/ty/pull/2852))
 
 ### LSP server
 
@@ -22,19 +22,19 @@ Released on 2026-03-02.
 
 - Add more ParamSpec validation for `P.args` and `P.kwargs` ([#23640](https://github.com/astral-sh/ruff/pull/23640))
 - Ban nested `Required`/`NotRequired`, and ban them both outside of `TypedDict` fields ([#23627](https://github.com/astral-sh/ruff/pull/23627))
-- Detect inconsistent generic base class specializations ([#23615](https://github.com/astral-sh/ruff/pull/23615))
+- Detect inconsistent generic base class specializations that appear in the same MRO ([#23615](https://github.com/astral-sh/ruff/pull/23615))
 - Detect invalid uses of `@final` on non-methods ([#23604](https://github.com/astral-sh/ruff/pull/23604))
-- Have `typing.Unpack[tuple[]]` behave more like `*tuple[]` ([#23651](https://github.com/astral-sh/ruff/pull/23651))
-- Recurse into tuples and nested tuples when applying special-cased validation of `isinstance()` and `issubclass()` ([#23607](https://github.com/astral-sh/ruff/pull/23607))
+- Add partial support and validation for `Unpack` when used with tuple types ([#23651](https://github.com/astral-sh/ruff/pull/23651))
+- Recurse into tuples and nested tuples when applying special-cased validation of arguments passed to `isinstance()` and `issubclass()` ([#23607](https://github.com/astral-sh/ruff/pull/23607))
 - Reject ellipsis literals in odd places in type/annotation expressions ([#23611](https://github.com/astral-sh/ruff/pull/23611))
 - Reject functions with PEP-695 type parameters that shadow type parameters from enclosing scopes ([#23619](https://github.com/astral-sh/ruff/pull/23619))
 - Reject generic metaclasses parameterized by type variables ([#23628](https://github.com/astral-sh/ruff/pull/23628))
 - Treat `dataclass_transform` dataclasses as neither frozen nor non-frozen ([#23366](https://github.com/astral-sh/ruff/pull/23366))
-- Validate type variable defaults don't reference later type parameters or type parameters out of scope ([#23623](https://github.com/astral-sh/ruff/pull/23623))
+- Validate that type variable defaults don't reference later type parameters or type parameters out of scope ([#23623](https://github.com/astral-sh/ruff/pull/23623))
 
 ### Typeshed
 
-- Sync vendored typeshed stubs ([#23642](https://github.com/astral-sh/ruff/pull/23642))
+- Sync vendored typeshed stubs ([#23642](https://github.com/astral-sh/ruff/pull/23642)). [Typeshed diff](https://github.com/python/typeshed/compare/1b3cec156330a93f6bb22b6636bca38c27f8f721...843c1fd5a148da85e523c1b4ee680226f89986aa)
 
 ### Contributors
 
