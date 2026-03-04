@@ -63,7 +63,9 @@ if [ -n "$old_typeshed_commit" ] && [ -f "$typeshed_commit_file" ]; then
         # Match lines like "- Sync vendored typeshed stubs ([#NNNN](...))".
         # The pattern anchors on the trailing "))$" so it won't match lines
         # that already have a typeshed diff link appended.
-        sed -i "s|\(- Sync vendored typeshed stubs (.*)\))$|\1). ${typeshed_diff_link}|" CHANGELOG.md
+        # Use a temp file instead of `sed -i` for macOS/Linux portability.
+        sed "s|\(- Sync vendored typeshed stubs (.*)\))$|\1). ${typeshed_diff_link}|" CHANGELOG.md > CHANGELOG.md.tmp
+        mv CHANGELOG.md.tmp CHANGELOG.md
     fi
 fi
 
