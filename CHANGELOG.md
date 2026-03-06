@@ -32,7 +32,6 @@ Released on 2026-03-05.
 - Apply narrowing to walrus values ([#23687](https://github.com/astral-sh/ruff/pull/23687))
 - Do not union `Unknown` into unannotated container types ([#23718](https://github.com/astral-sh/ruff/pull/23718))
 - Avoid inferring generics with negative intersections ([#23750](https://github.com/astral-sh/ruff/pull/23750))
-- Filter out pre-loop bindings from loop headers ([#23536](https://github.com/astral-sh/ruff/pull/23536))
 - More precise types for `name` and `value` of an enum ([#23683](https://github.com/astral-sh/ruff/pull/23683))
 - Better preserve user-provided union order in inferred specializations ([#23715](https://github.com/astral-sh/ruff/pull/23715))
 - Support narrowing in ternary expressions ([#23726](https://github.com/astral-sh/ruff/pull/23726))
