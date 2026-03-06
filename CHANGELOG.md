@@ -1,5 +1,56 @@
 # Changelog
 
+## 0.0.21
+
+Released on 2026-03-05.
+
+### Bug fixes
+
+- Avoid stack overflow with recursive typevar ([#23652](https://github.com/astral-sh/ruff/pull/23652))
+- Fix panic on incomplete except handlers ([#23708](https://github.com/astral-sh/ruff/pull/23708))
+- Allow unions of different-length iterables in `*args` unpacking into optional positional parameters ([#23124](https://github.com/astral-sh/ruff/pull/23124))
+- Don't replace `Any` attributes with `object` after `isinstance` narrowing ([#23725](https://github.com/astral-sh/ruff/pull/23725))
+
+### LSP server
+
+- Exclude decorators from class/def code folding ([#23543](https://github.com/astral-sh/ruff/pull/23543))
+- Fix handling of non-Python text documents ([#23704](https://github.com/astral-sh/ruff/pull/23704))
+
+### Configuration
+
+- Add `all` selector to `ty.json` schema ([#23721](https://github.com/astral-sh/ruff/pull/23721))
+- Fix precedence of `all` selector in TOML configurations ([#23723](https://github.com/astral-sh/ruff/pull/23723))
+- Make `all` selector case-sensitive ([#23713](https://github.com/astral-sh/ruff/pull/23713))
+
+### Type checking
+
+- Add `invalid-enum-member-annotation` lint rule ([#23648](https://github.com/astral-sh/ruff/pull/23648))
+- Add a diagnostic for an unused awaitable ([#23650](https://github.com/astral-sh/ruff/pull/23650))
+- Add a diagnostic if a `TypeVar` is used to specialize a `ParamSpec`, or vice versa ([#23738](https://github.com/astral-sh/ruff/pull/23738))
+- Add more type-variable default validation ([#23639](https://github.com/astral-sh/ruff/pull/23639))
+- Add unbound type variable detection in annotations ([#23641](https://github.com/astral-sh/ruff/pull/23641))
+- Apply narrowing to walrus values ([#23687](https://github.com/astral-sh/ruff/pull/23687))
+- Do not union `Unknown` into unannotated container types ([#23718](https://github.com/astral-sh/ruff/pull/23718))
+- Avoid inferring generics with negative intersections ([#23750](https://github.com/astral-sh/ruff/pull/23750))
+- More precise types for `name` and `value` of an enum ([#23683](https://github.com/astral-sh/ruff/pull/23683))
+- Better preserve user-provided union order in inferred specializations ([#23715](https://github.com/astral-sh/ruff/pull/23715))
+- Support narrowing in ternary expressions ([#23726](https://github.com/astral-sh/ruff/pull/23726))
+- Validate bare ParamSpec usage in type annotations, and support stringified ParamSpecs as the first argument to `Callable` ([#23625](https://github.com/astral-sh/ruff/pull/23625))
+
+### Contributors
+
+- [@charliermarsh](https://github.com/charliermarsh)
+- [@zsol](https://github.com/zsol)
+- [@Gankra](https://github.com/Gankra)
+- [@MichaReiser](https://github.com/MichaReiser)
+- [@AlexWaygood](https://github.com/AlexWaygood)
+- [@rizzip](https://github.com/rizzip)
+- [@iksuddle](https://github.com/iksuddle)
+- [@dcreager](https://github.com/dcreager)
+- [@BurntSushi](https://github.com/BurntSushi)
+- [@carljm](https://github.com/carljm)
+- [@oconnor663](https://github.com/oconnor663)
+
 ## 0.0.20
 
 Released on 2026-03-02.
