@@ -77,11 +77,9 @@ You can enable ty and disable basedpyright by adding this to your `settings.json
   "languages": {
     "Python": {
       "language_servers": [
-        // Disable basedpyright and enable ty, and otherwise
-        // use the default configuration.
+        // Disable basedpyright and enable ty
         "ty",
         "!basedpyright",
-        "..."
       ]
     }
   }
