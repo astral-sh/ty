@@ -1,5 +1,56 @@
 # Changelog
 
+## 0.0.22
+
+Released on 2026-03-12.
+
+### Bug fixes
+
+- Fix issue where variables could be inferred as `Divergent` if they were assigned using tuple unpacking in loops ([#23812](https://github.com/astral-sh/ruff/pull/23812))
+- Allow `error = "all"` in a root `pyproject.toml` file to be overridden using `tool.ty.overrides` in a subdirectory's `pyproject.toml` file ([#23712](https://github.com/astral-sh/ruff/pull/23712))
+- Only unsoundly upcast `type[]` types to their constructor `Callable` type during assignability checks, not during redundancy/subtyping checks ([#23834](https://github.com/astral-sh/ruff/pull/23834), [#23901](https://github.com/astral-sh/ruff/pull/23901))
+- Fix stack overflow that could occur with certain recursive protocols ([#23870](https://github.com/astral-sh/ruff/pull/23870))
+
+### LSP server
+
+- Improve syntax highlighting by fixing [semantic token](https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#textDocument_semanticTokens) classification for generic class members in annotations ([#23811](https://github.com/astral-sh/ruff/pull/23811))
+
+### CLI
+
+- Add `ty explain <RULE>` CLI command ([#23766](https://github.com/astral-sh/ruff/pull/23766))
+
+### Core type checking
+
+- Add validation for type parameters with defaults after `TypeVarTuple` parameters ([#23807](https://github.com/astral-sh/ruff/pull/23807))
+- Allow subtypes of `LiteralString` to be narrowed using equality checks ([#23794](https://github.com/astral-sh/ruff/pull/23794))
+- Detect invalid partially stringified PEP-604 unions ([#23285](https://github.com/astral-sh/ruff/pull/23285))
+- Disambiguate duplicate-looking overloaded callables in union display ([#23907](https://github.com/astral-sh/ruff/pull/23907))
+- Don't promote module-literal types to `types.ModuleType` ([#23786](https://github.com/astral-sh/ruff/pull/23786))
+- Improve type context support for `__setitem__` dunder calls ([#23800](https://github.com/astral-sh/ruff/pull/23800))
+- Infer `t | {"foo": int}` as `TD` if `t` is an instance of a TypedDict `td` with a `foo: int` key ([#23806](https://github.com/astral-sh/ruff/pull/23806))
+- Narrow `T` to `T & str` rather than `str` if `T` is a constrained TypeVar with `str` as one of its constraints ([#23850](https://github.com/astral-sh/ruff/pull/23850))
+- Promote `None` to `None | Unknown` in invariant contexts ([#23790](https://github.com/astral-sh/ruff/pull/23790))
+- Reject `type[Callable]` in type annotations ([#23753](https://github.com/astral-sh/ruff/pull/23753))
+- Support enum member access through enum instances and members ([#23772](https://github.com/astral-sh/ruff/pull/23772))
+- Eagerly narrow the type associated with keys of heterogeneous dict literals even when a dict literal appears as a subexpression inside a list or tuple literals ([#23569](https://github.com/astral-sh/ruff/pull/23569))
+- Ensure that `T & ~S` is always inferred as a subtype of `U` during generic inference if `T` is understood as a subtype of `U` ([#23728](https://github.com/astral-sh/ruff/pull/23728))
+- Optimize and improve cycle recovery by preventing "tainted" unions in cycle normalization ([#23563](https://github.com/astral-sh/ruff/pull/23563))
+
+### Installer
+
+- Prefer downloading releases from Astral's mirror over GitHub ([#2980](https://github.com/astral-sh/ty/pull/2980))
+
+### Contributors
+
+- [@charliermarsh](https://github.com/charliermarsh)
+- [@MichaReiser](https://github.com/MichaReiser)
+- [@mtshiba](https://github.com/mtshiba)
+- [@AlexWaygood](https://github.com/AlexWaygood)
+- [@ibraheemdev](https://github.com/ibraheemdev)
+- [@ntBre](https://github.com/ntBre)
+- [@oconnor663](https://github.com/oconnor663)
+- [@zsol](https://github.com/zsol)
+
 ## 0.0.21
 
 Released on 2026-03-05.
