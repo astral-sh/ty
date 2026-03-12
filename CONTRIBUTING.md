@@ -199,7 +199,7 @@ To update ty's conformance results upstream after a release:
 1. Run `uv sync --update-package=ty`
 1. Run `uv run python src/main.py`. This step may update generated fields in TOML files (see below) and/or the `results.html` file.
 1. Check to see if any manual changes are required and apply them as necessary (see below for details).
-1. If you had to make any manual changes as part of the previous step, run `uv run python src/main.py` again. This second run should not update any further TOML files, but is necessary for regenerating `results.html` again.
+1. If you had to make any manual changes as part of the previous step, run `uv run python src/main.py` again. This second run should not update any further TOML files, but is necessary for regenerating `results.html`.
 1. Make a PR to the upstream repo.
 
 ### Manual changes that may be required to `.toml` files
