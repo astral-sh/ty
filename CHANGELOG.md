@@ -1,5 +1,55 @@
 # Changelog
 
+## 0.0.22
+
+Released on 2026-03-12.
+
+### Bug fixes
+
+- Ensure a `type[]` type `T` is always considered assignable to a union that holds `T` and a protocol `P` ([#23901](https://github.com/astral-sh/ruff/pull/23901))
+- Fix divergent tuple unpacking when RHS sequence is the cycle head ([#23812](https://github.com/astral-sh/ruff/pull/23812))
+- Fix overriding `all` selector ([#23712](https://github.com/astral-sh/ruff/pull/23712))
+- Only unsoundly upcast `type[]` types to their constructor `Callable` type during assignability checks, not during redundancy/subtyping checks ([#23834](https://github.com/astral-sh/ruff/pull/23834))
+- Preserve cycle detection in unary overload aggregation ([#23870](https://github.com/astral-sh/ruff/pull/23870))
+
+### LSP server
+
+- Fix semantic token classification for generic class members in annotations ([#23811](https://github.com/astral-sh/ruff/pull/23811))
+
+### CLI
+
+- Add `explain rule` subcommand ([#23766](https://github.com/astral-sh/ruff/pull/23766))
+
+### Other changes
+
+- Add validation for type parameters with defaults after TypeVarTuple ([#23807](https://github.com/astral-sh/ruff/pull/23807))
+- Allow subtypes of `LiteralString` to be narrowed using equality checks ([#23794](https://github.com/astral-sh/ruff/pull/23794))
+- Detect invalid partially stringified PEP-604 unions ([#23285](https://github.com/astral-sh/ruff/pull/23285))
+- Disambiguate duplicate-looking overloaded callables in union display ([#23907](https://github.com/astral-sh/ruff/pull/23907))
+- Don't promote module-literal types ([#23786](https://github.com/astral-sh/ruff/pull/23786))
+- Fix release version for `duplicate-kw-only` ([#23769](https://github.com/astral-sh/ruff/pull/23769))
+- Improve type context support for `__setitem__` dunder calls ([#23800](https://github.com/astral-sh/ruff/pull/23800))
+- Preserve `TypedDicts` for compatible PEP 584 updates ([#23806](https://github.com/astral-sh/ruff/pull/23806))
+- Preserve constrained TypeVar identity in narrowing intersections ([#23850](https://github.com/astral-sh/ruff/pull/23850))
+- Promote `None` to `None | Unknown` in invariant contexts ([#23790](https://github.com/astral-sh/ruff/pull/23790))
+- Reject `type[Callable]` special form ([#23753](https://github.com/astral-sh/ruff/pull/23753))
+- Support enum member access through enum instances and members ([#23772](https://github.com/astral-sh/ruff/pull/23772))
+- Support place narrowing for dictionaries contained within list/tuple literals ([#23569](https://github.com/astral-sh/ruff/pull/23569))
+- add support for intersections on the "actual" side of generic inference ([#23728](https://github.com/astral-sh/ruff/pull/23728))
+- installers: Download releases from Astral's mirror first ([#2980](https://github.com/astral-sh/ty/pull/2980))
+- prevent "tainted" unions in cycle normalization ([#23563](https://github.com/astral-sh/ruff/pull/23563))
+
+### Contributors
+
+- [@charliermarsh](https://github.com/charliermarsh)
+- [@MichaReiser](https://github.com/MichaReiser)
+- [@mtshiba](https://github.com/mtshiba)
+- [@AlexWaygood](https://github.com/AlexWaygood)
+- [@ibraheemdev](https://github.com/ibraheemdev)
+- [@ntBre](https://github.com/ntBre)
+- [@oconnor663](https://github.com/oconnor663)
+- [@zsol](https://github.com/zsol)
+
 ## 0.0.21
 
 Released on 2026-03-05.
@@ -1360,11 +1410,11 @@ Released on 2025-11-25.
 ### LSP server
 
 - Improve go-to-definition and add go-to-definition for inlay hints
-    ([#21545](https://github.com/astral-sh/ruff/pull/21545),
-    [#21546](https://github.com/astral-sh/ruff/pull/21546),
-    [#21544](https://github.com/astral-sh/ruff/pull/21544),
-    [#21616](https://github.com/astral-sh/ruff/pull/21616),
-    [#21548](https://github.com/astral-sh/ruff/pull/21548))
+([#21545](https://github.com/astral-sh/ruff/pull/21545),
+[#21546](https://github.com/astral-sh/ruff/pull/21546),
+[#21544](https://github.com/astral-sh/ruff/pull/21544),
+[#21616](https://github.com/astral-sh/ruff/pull/21616),
+[#21548](https://github.com/astral-sh/ruff/pull/21548))
 - Implement go-to-type for inlay type hints ([#21533](https://github.com/astral-sh/ruff/pull/21533))
 - Add "remove unused ignore comment" code action ([#21582](https://github.com/astral-sh/ruff/pull/21582))
 - Don't suggest completions that aren't subclasses of `BaseException` after `raise` ([#21571](https://github.com/astral-sh/ruff/pull/21571))
@@ -2334,18 +2384,18 @@ Released on 2025-10-10.
 
 - Add cycle detection to ty's implementation of disjointness between types, fixing a possible source of stack overflows when analysing recursive types ([#19139](https://github.com/astral-sh/ruff/pull/19139))
 - Don't allow first-party code to shadow the stdlib `types` module ([#19128](https://github.com/astral-sh/ruff/pull/19128)).
-    This fixes another possible source of stack overflows.
+This fixes another possible source of stack overflows.
 - Fix descriptor lookups for most types that overlap with `None` ([#19120](https://github.com/astral-sh/ruff/pull/19120)).
-    This means that e.g. `object().__str__()` now correctly binds the `self` argument of the `__str__`
-    method, as the `object` type overlaps with `None`.
+This means that e.g. `object().__str__()` now correctly binds the `self` argument of the `__str__`
+method, as the `object` type overlaps with `None`.
 
 ### Server
 
 - Filter a symbol from a stub file in autocomplete suggestions if it is an implementation detail of the stub ([#19121](https://github.com/astral-sh/ruff/pull/19121))
 - Add initial support for [semantic tokens](https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#textDocument_semanticTokens) ([#19108](https://github.com/astral-sh/ruff/pull/19108)).
-    This feature allows editors to apply more advanced syntax highlighting. Currently, the supported tokens are: `Namespace`, `Class`, `Parameter`, `SelfParameter`,`ClsParameter`, `Variable`, `Property`, `Function`, `Method`, `Keyword`, `String`, `Number`, `Decorator`, `BuiltinConstant` and `TypeParameter`.
+This feature allows editors to apply more advanced syntax highlighting. Currently, the supported tokens are: `Namespace`, `Class`, `Parameter`, `SelfParameter`,`ClsParameter`, `Variable`, `Property`, `Function`, `Method`, `Keyword`, `String`, `Number`, `Decorator`, `BuiltinConstant` and `TypeParameter`.
 - Initial support for [workspace diagnostics](https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#workspace_diagnostic) ([#18939](https://github.com/astral-sh/ruff/pull/18939)).
-    Enable this feature by setting the `ty.diagnosticMode` configuration setting to `"workspace"`.
+Enable this feature by setting the `ty.diagnosticMode` configuration setting to `"workspace"`.
 - Use Python syntax highlighting in on-hover content ([#19082](https://github.com/astral-sh/ruff/pull/19082))
 
 ### Typing semantics and features
@@ -2535,7 +2585,7 @@ Released on 2025-10-10.
 ### Bug fixes
 
 - Delay computation of 'unbound' visibility for implicit instance attributes ([#18669](https://github.com/astral-sh/ruff/pull/18669)).
-    This fixes a significant performance regression in version 0.0.1-alpha.9.
+This fixes a significant performance regression in version 0.0.1-alpha.9.
 
 ### Typing semantics and features
 
