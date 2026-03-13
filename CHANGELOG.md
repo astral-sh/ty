@@ -1,5 +1,44 @@
 # Changelog
 
+## 0.0.23
+
+Released on 2026-03-13.
+
+### Bug fixes
+
+- Fix false-positive diagnostics for PEP-604 union annotations on attribute targets on Python 3.9 when `from __future__ import annotations` is active ([#23915](https://github.com/astral-sh/ruff/pull/23915))
+- `dataclass_transform`: Respect `kw_only` overwrites in dataclasses ([#23930](https://github.com/astral-sh/ruff/pull/23930))
+- Fix too-many-cycle panics when inferring loop variables with `Literal` types ([#23875](https://github.com/astral-sh/ruff/pull/23875))
+
+### Server
+
+- Fix [folding range](https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#textDocument_foldingRange) classification of lines starting with `#` ([#23831](https://github.com/astral-sh/ruff/pull/23831))
+- Fix [folding ranges](https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#textDocument_foldingRange) for notebooks ([#23830](https://github.com/astral-sh/ruff/pull/23830))
+
+### Core type checking
+
+- Split errors for possibly missing submodules into a new `possibly-missing-submodule` error code (enabled by default), and make `possibly-missing-attribute` ignored by default ([#23918](https://github.com/astral-sh/ruff/pull/23918))
+- Improve handling of bidirectional inference when ([#23844](https://github.com/astral-sh/ruff/pull/23844))
+- Fix inference of conditionally defined properties ([#23925](https://github.com/astral-sh/ruff/pull/23925))
+
+### Improvements to diagnostics
+
+- Clarify in diagnostics that `from __future__ import annotations` only stringifies type annotations ([#23928](https://github.com/astral-sh/ruff/pull/23928))
+
+### Performance improvements
+
+- Avoid duplicated work during multi-inference ([#23923](https://github.com/astral-sh/ruff/pull/23923))
+
+### Contributors
+
+- [@ibraheemdev](https://github.com/ibraheemdev)
+- [@sharkdp](https://github.com/sharkdp)
+- [@oconnor663](https://github.com/oconnor663)
+- [@mtshiba](https://github.com/mtshiba)
+- [@MichaReiser](https://github.com/MichaReiser)
+- [@carljm](https://github.com/carljm)
+- [@AlexWaygood](https://github.com/AlexWaygood)
+
 ## 0.0.22
 
 Released on 2026-03-12.
