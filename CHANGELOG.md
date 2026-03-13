@@ -7,18 +7,27 @@ Released on 2026-03-13.
 ### Bug fixes
 
 - Fix false-positive diagnostics for PEP-604 union annotations on attribute targets on Python 3.9 when `from __future__ import annotations` is active ([#23915](https://github.com/astral-sh/ruff/pull/23915))
-- Fix folding range classification of lines starting with `#` ([#23831](https://github.com/astral-sh/ruff/pull/23831))
-- Fix folding ranges for notebooks ([#23830](https://github.com/astral-sh/ruff/pull/23830))
-- Respect `kw_only` overwrites in dataclasses ([#23930](https://github.com/astral-sh/ruff/pull/23930))
+- `dataclass_transform`: Respect `kw_only` overwrites in dataclasses ([#23930](https://github.com/astral-sh/ruff/pull/23930))
+- Fix too-many-cycle panics when inferring loop variables with `Literal` types ([#23875](https://github.com/astral-sh/ruff/pull/23875))
 
-### Other changes
+### Server
 
-- : make `possibly-missing-attribute` ignored by default ([#23918](https://github.com/astral-sh/ruff/pull/23918))
-- Avoid duplicated work during multi-inference ([#23923](https://github.com/astral-sh/ruff/pull/23923))
+- Fix [folding range](https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#textDocument_foldingRange) classification of lines starting with `#` ([#23831](https://github.com/astral-sh/ruff/pull/23831))
+- Fix [folding ranges](https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#textDocument_foldingRange) for notebooks ([#23830](https://github.com/astral-sh/ruff/pull/23830))
+
+### Core type checking
+
+- Split errors for possibly missing submodules into a new `possibly-missing-submodule` error code (enabled by default), and make `possibly-missing-attribute` ignored by default ([#23918](https://github.com/astral-sh/ruff/pull/23918))
+- Improve handling of bidirectional inference when ([#23844](https://github.com/astral-sh/ruff/pull/23844))
+- Fix inference of conditionally defined properties ([#23925](https://github.com/astral-sh/ruff/pull/23925))
+
+### Improvements to diagnostics
+
 - Clarify in diagnostics that `from __future__ import annotations` only stringifies type annotations ([#23928](https://github.com/astral-sh/ruff/pull/23928))
-- Narrow type context during collection literal inference ([#23844](https://github.com/astral-sh/ruff/pull/23844))
-- fix too-many-cycle panics when inferring literal type loop variables ([#23875](https://github.com/astral-sh/ruff/pull/23875))
-- treat properties as full structural types ([#23925](https://github.com/astral-sh/ruff/pull/23925))
+
+### Performance improvements
+
+- Avoid duplicated work during multi-inference ([#23923](https://github.com/astral-sh/ruff/pull/23923))
 
 ### Contributors
 
@@ -1441,11 +1450,11 @@ Released on 2025-11-25.
 ### LSP server
 
 - Improve go-to-definition and add go-to-definition for inlay hints
-([#21545](https://github.com/astral-sh/ruff/pull/21545),
-[#21546](https://github.com/astral-sh/ruff/pull/21546),
-[#21544](https://github.com/astral-sh/ruff/pull/21544),
-[#21616](https://github.com/astral-sh/ruff/pull/21616),
-[#21548](https://github.com/astral-sh/ruff/pull/21548))
+    ([#21545](https://github.com/astral-sh/ruff/pull/21545),
+    [#21546](https://github.com/astral-sh/ruff/pull/21546),
+    [#21544](https://github.com/astral-sh/ruff/pull/21544),
+    [#21616](https://github.com/astral-sh/ruff/pull/21616),
+    [#21548](https://github.com/astral-sh/ruff/pull/21548))
 - Implement go-to-type for inlay type hints ([#21533](https://github.com/astral-sh/ruff/pull/21533))
 - Add "remove unused ignore comment" code action ([#21582](https://github.com/astral-sh/ruff/pull/21582))
 - Don't suggest completions that aren't subclasses of `BaseException` after `raise` ([#21571](https://github.com/astral-sh/ruff/pull/21571))
@@ -2415,18 +2424,18 @@ Released on 2025-10-10.
 
 - Add cycle detection to ty's implementation of disjointness between types, fixing a possible source of stack overflows when analysing recursive types ([#19139](https://github.com/astral-sh/ruff/pull/19139))
 - Don't allow first-party code to shadow the stdlib `types` module ([#19128](https://github.com/astral-sh/ruff/pull/19128)).
-This fixes another possible source of stack overflows.
+    This fixes another possible source of stack overflows.
 - Fix descriptor lookups for most types that overlap with `None` ([#19120](https://github.com/astral-sh/ruff/pull/19120)).
-This means that e.g. `object().__str__()` now correctly binds the `self` argument of the `__str__`
-method, as the `object` type overlaps with `None`.
+    This means that e.g. `object().__str__()` now correctly binds the `self` argument of the `__str__`
+    method, as the `object` type overlaps with `None`.
 
 ### Server
 
 - Filter a symbol from a stub file in autocomplete suggestions if it is an implementation detail of the stub ([#19121](https://github.com/astral-sh/ruff/pull/19121))
 - Add initial support for [semantic tokens](https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#textDocument_semanticTokens) ([#19108](https://github.com/astral-sh/ruff/pull/19108)).
-This feature allows editors to apply more advanced syntax highlighting. Currently, the supported tokens are: `Namespace`, `Class`, `Parameter`, `SelfParameter`,`ClsParameter`, `Variable`, `Property`, `Function`, `Method`, `Keyword`, `String`, `Number`, `Decorator`, `BuiltinConstant` and `TypeParameter`.
+    This feature allows editors to apply more advanced syntax highlighting. Currently, the supported tokens are: `Namespace`, `Class`, `Parameter`, `SelfParameter`,`ClsParameter`, `Variable`, `Property`, `Function`, `Method`, `Keyword`, `String`, `Number`, `Decorator`, `BuiltinConstant` and `TypeParameter`.
 - Initial support for [workspace diagnostics](https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#workspace_diagnostic) ([#18939](https://github.com/astral-sh/ruff/pull/18939)).
-Enable this feature by setting the `ty.diagnosticMode` configuration setting to `"workspace"`.
+    Enable this feature by setting the `ty.diagnosticMode` configuration setting to `"workspace"`.
 - Use Python syntax highlighting in on-hover content ([#19082](https://github.com/astral-sh/ruff/pull/19082))
 
 ### Typing semantics and features
@@ -2616,7 +2625,7 @@ Enable this feature by setting the `ty.diagnosticMode` configuration setting to 
 ### Bug fixes
 
 - Delay computation of 'unbound' visibility for implicit instance attributes ([#18669](https://github.com/astral-sh/ruff/pull/18669)).
-This fixes a significant performance regression in version 0.0.1-alpha.9.
+    This fixes a significant performance regression in version 0.0.1-alpha.9.
 
 ### Typing semantics and features
 
