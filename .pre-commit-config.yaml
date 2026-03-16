@@ -10,7 +10,7 @@ exclude: |
 repos:
   # Priority 0: Read-only hooks; hooks that modify disjoint file types.
   - repo: https://github.com/astral-sh/uv-pre-commit
-    rev: 0.10.7
+    rev: 0.10.9
     hooks:
       - id: uv-lock
         priority: 0
@@ -22,7 +22,7 @@ repos:
         priority: 0
 
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.15.4
+    rev: v0.15.5
     hooks:
       - id: ruff-format
         priority: 0
@@ -49,7 +49,7 @@ repos:
         priority: 0
 
   - repo: https://github.com/igorshubovych/markdownlint-cli
-    rev: v0.47.0
+    rev: v0.48.0
     hooks:
       - id: markdownlint-fix
         priority: 1
@@ -71,7 +71,7 @@ repos:
   # zizmor detects security vulnerabilities in GitHub Actions workflows.
   # Additional configuration for the tool is found in `.github/zizmor.yml`
   - repo: https://github.com/zizmorcore/zizmor-pre-commit
-    rev: v1.22.0
+    rev: v1.23.1
     hooks:
       - id: zizmor
         priority: 0
