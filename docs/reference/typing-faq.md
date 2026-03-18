@@ -122,12 +122,12 @@ for directory in directories:
 !!! info
 
     In type system terminology, we say `list` is *invariant*, which means that
-    a subtyping relationship between types `A` and `B` does not imply any
-    relationship between `list[A]` and `list[B]`. The same is true for other
-    collection types such as `set` or `dict`. In contrast, read-only collections
-    like `tuple` or `frozenset` are *covariant* in their type parameter. It
-    is safe to assign a `frozenset[bool]` to a `frozenset[int]` because the
-    contents can not be mutated.
+    just because `A` is a subtype of `B` does not mean that `list[A]` will be a
+    subtype of `list[B]`. The same is true for other builtin collections such as
+    `set` or `dict`. In contrast, read-only collections like `tuple` or
+    `frozenset` are *covariant* in their type parameter. It is safe to assign a
+    `frozenset[bool]` to a `frozenset[int]` because the contents cannot be
+    mutated.
 
 You might run into problems with invariance in situations where mutability isn't
 required:
