@@ -92,24 +92,32 @@ A similar rule applies to `complex`, which is treated as `int | float | complex`
 
     If you need this for `complex`, you can use `ty_extensions.JustComplex` in a similar way.
 
-## Why is this `list`/`set`/`dict` not assignable to this other collection type? What is invariance?
+## Why is my `list`/`set`/`dict` not assignable to this other collection type? What is invariance?
 
-In Python, `bool` is a subtype of `int`: you can use `True` and `False` in any
-context where an `int` is expected. You might therefore expect a `list[bool]` to
-be usable in any context where a `list[int]` is expected. However, this is not
+Let's say you have a class hierarchy with an `Entry` base class and a `Directory` subclass. Since
+a `Directory` *is* an `Entry`, you can use it everywhere an `Entry` is expected.
+You might therefore expect a `list[Directory]` to
+be usable in any context where a `list[Entry]` is expected, but this is not
 the case. The reason for this is (interior) mutability:
 
 ```py
-def modify(xs: list[int]):
-    xs.append(42)
+def modify(entries: list[Entry]):
+    entries.append(File("README.txt"))
 
-answers: list[bool] = [True, False]
-modify(answers)  # ty emits an error on this call
+directories: list[Directory] = [Directory("Downloads"), Directory("Documents")]
+modify(directories)  # ty emits an error on this call
 ```
 
-The `modify` call mutates the contents of the `answers` list. After this call,
-it contains the values `[True, False, 42]`, which violates the
-`answers: list[bool]` annotation.
+The `modify` call mutates the contents of the `directories` list. After this call,
+it contains two directories *and one `File`*, which clearly violates the
+`list[Directory]` type annotation. If this call *were* allowed, subsequent code
+that relies on the fact that `directories` only contains `Directory` instances might
+break at runtime:
+
+```py
+for directory in directories:
+    directory.children()  # runtime: 'File' object has no attribute 'children'
+```
 
 !!! info
 
@@ -125,26 +133,30 @@ You might run into problems with invariance in situations where mutability isn't
 required:
 
 ```py
-def show_list_and_sum(xs: list[int]):
-    print(", ".join(str(x) for x in xs) + f" (sum = {sum(xs)})")
+def total_size_bytes(entries: list[Entry]) -> int:
+    return sum(entry.size_bytes() for entry in entries)
 
-answers = [True, False, False, True]  # inferred as list[bool]
-show_list_and_sum(answers)  # should be fine because no mutation occurs
+# inferred as `list[Directory]`
+media_entries = [Directory("Pictures"), Directory("Videos")]
+
+# still a type-check error, but should be fine in principle (no mutation occurs)
+size = total_size_bytes(media_entries)
 ```
 
-To prevent this, you can adapt the signature of `show_list_and_sum` to take an
+To prevent this, you can adapt the signature of `total_size_bytes` to take an
 argument of type
-[`Sequence[int]`](https://docs.python.org/3/library/collections.abc.html#collections.abc.Sequence)
+[`Sequence[Entry]`](https://docs.python.org/3/library/collections.abc.html#collections.abc.Sequence)
 instead. This type describes read-only sequences (that contain values of type
-`int`). `Sequence` is therefore covariant in its type parameter.
+`Entry`). `Sequence` is therefore covariant in its type parameter.
 
 If you cannot adapt the signature of the function you are calling, you can also
-widen the type of the argument by annotating `answers` with `list[int]`.
+widen the type of the argument by annotating `media_entries` as `list[Entry]`.
+In some cases it's also a reasonable solution to create a copy of the list
+(`total_size_bytes(list(media_entries))`).
 
 !!! note
 
-    In a similar way, you can use [`Mapping[str, V]`](https://docs.python.org/3/library/collections.abc.html#collections.abc.Mapping)
-    as a covariant alternative to `dict[str, V]`.
+    If you are looking for a covariant alternative to `dict[str, V]`, you can use [`Mapping[str, V]`](https://docs.python.org/3/library/collections.abc.html#collections.abc.Mapping).
 
 ## Why does ty say `Callable` has no attribute `__name__`?
 
