@@ -92,6 +92,101 @@ A similar rule applies to `complex`, which is treated as `int | float | complex`
 
     If you need this for `complex`, you can use `ty_extensions.JustComplex` in a similar way.
 
+## Why can't I use `list[Subtype]` when a `list[Supertype]` is expected? { #invariant-generics }
+
+Let's say you have a class hierarchy with an `Entry` base class as well as `Directory` and `File` subclasses. Since
+a `Directory` *is* an `Entry`, you can use it everywhere an `Entry` is expected.
+You might therefore expect a `list[Directory]` to
+be usable in any context where a `list[Entry]` is expected, but this is not
+the case. The reason for this is mutability:
+
+```py
+# Setup of `Entry`, `Directory`, and `File` classes (1)
+
+def modify(entries: list[Entry]):
+    entries.append(File("README.txt")) # mutation
+
+directories: list[Directory] = [Directory("Downloads"), Directory("Documents")]
+modify(directories)  # ty emits an error on this call
+```
+
+1. The full example might look like this:
+
+    ```py
+    from dataclasses import dataclass
+
+    @dataclass
+    class Entry:
+         path: str
+         def size_bytes(self) -> int: ...
+
+    @dataclass
+    class Directory(Entry):
+        def children(self) -> list[Entry]: ...
+
+    @dataclass
+    class File(Entry):
+        def content(self) -> bytes: ...
+
+    def modify(entries: list[Entry]):
+        entries.append(File("README.txt")) # mutation
+
+    directories: list[Directory] = [Directory("Downloads"), Directory("Documents")]
+    modify(directories)  # ty emits an error on this call
+    ```
+
+    You can try it out in [this playground example](https://play.ty.dev/01013e73-da54-40c4-a9c5-2af269abda9d).
+
+The `modify` call mutates the contents of the `directories` list. After this call,
+it contains two directories *and one `File`*, which clearly violates the
+`list[Directory]` type annotation. If this call *were* allowed, subsequent code
+that relies on the fact that `directories` only contains `Directory` instances might
+break at runtime:
+
+```py
+for directory in directories:
+    directory.children()  # runtime: 'File' object has no attribute 'children'
+```
+
+!!! info
+
+    In type system terminology, we say `list` is *invariant*, which means that
+    just because `A` is a subtype of `B` does not mean that `list[A]` will be a
+    subtype of `list[B]`. The same is true for other builtin collections such as
+    `set` or `dict`. In contrast, read-only collections like `tuple` or
+    `frozenset` are *covariant* in their type parameter. It is safe to assign a
+    `frozenset[bool]` to a `frozenset[int]` because the contents cannot be
+    mutated.
+
+You might run into problems with invariance in situations where mutability isn't
+required:
+
+```py
+def total_size_bytes(entries: list[Entry]) -> int:
+    return sum(entry.size_bytes() for entry in entries)
+
+# inferred as `list[Directory]`
+media_entries = [Directory("Pictures"), Directory("Videos")]
+
+# still a type-check error, but should be fine in principle (no mutation occurs)
+size = total_size_bytes(media_entries)
+```
+
+To prevent this, you can adapt the signature of `total_size_bytes` to take an
+argument of type
+[`Sequence[Entry]`](https://docs.python.org/3/library/collections.abc.html#collections-abstract-base-classes)
+instead. This type describes read-only sequences (that contain values of type
+`Entry`). `Sequence` is therefore covariant in its type parameter.
+
+If you cannot adapt the signature of the function you are calling, you can also
+widen the type of the argument by annotating `media_entries` as `list[Entry]`.
+In some cases it's also a reasonable solution to create a copy of the list
+(`total_size_bytes(list(media_entries))`).
+
+!!! note
+
+    If you are looking for a covariant alternative to `dict[str, V]`, you can use [`Mapping[str, V]`](https://docs.python.org/3/library/collections.abc.html#collections.abc.Mapping).
+
 ## Why does ty say `Callable` has no attribute `__name__`?
 
 When you access `__name__`, `__qualname__`, `__module__`, or `__doc__` on a value typed as `Callable`,
