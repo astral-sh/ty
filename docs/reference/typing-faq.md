@@ -92,6 +92,60 @@ A similar rule applies to `complex`, which is treated as `int | float | complex`
 
     If you need this for `complex`, you can use `ty_extensions.JustComplex` in a similar way.
 
+## Why is this `list`/`set`/`dict` not assignable to this other collection type? What is invariance?
+
+In Python, `bool` is a subtype of `int`: you can use `True` and `False` in any
+context where an `int` is expected. You might therefore expect a `list[bool]` to
+be usable in any context where a `list[int]` is expected. However, this is not
+the case. The reason for this is (interior) mutability:
+
+```py
+def modify(xs: list[int]):
+    xs.append(42)
+
+answers: list[bool] = [True, False]
+modify(answers)  # ty emits an error on this call
+```
+
+The `modify` call mutates the contents of the `answers` list. After this call,
+it contains the values `[True, False, 42]`, which violates the
+`answers: list[bool]` annotation.
+
+!!! info
+
+    In type system terminology, we say `list` is *invariant*, which means that
+    a subtyping relationship between types `A` and `B` does not imply any
+    relationship between `list[A]` and `list[B]`. The same is true for other
+    collection types such as `set` or `dict`. In contrast, read-only collections
+    like `tuple` or `frozenset` are *covariant* in their type parameter. It
+    is safe to assign a `frozenset[bool]` to a `frozenset[int]` because the
+    contents can not be mutated.
+
+You might run into problems with invariance in situations where mutability isn't
+required:
+
+```py
+def show_list_and_sum(xs: list[int]):
+    print(", ".join(str(x) for x in xs) + f" (sum = {sum(xs)})")
+
+answers = [True, False, False, True]  # inferred as list[bool]
+show_list_and_sum(answers)  # should be fine because no mutation occurs
+```
+
+To prevent this, you can adapt the signature of `show_list_and_sum` to take an
+argument of type
+[`Sequence[int]`](https://docs.python.org/3/library/collections.abc.html#collections.abc.Sequence)
+instead. This type describes read-only sequences (that contain values of type
+`int`). `Sequence` is therefore covariant in its type parameter.
+
+If you cannot adapt the signature of the function you are calling, you can also
+widen the type of the argument by annotating `answers` with `list[int]`.
+
+!!! note
+
+    In a similar way, you can use [`Mapping[str, V]`](https://docs.python.org/3/library/collections.abc.html#collections.abc.Mapping)
+    as a covariant alternative to `dict[str, V]`.
+
 ## Why does ty say `Callable` has no attribute `__name__`?
 
 When you access `__name__`, `__qualname__`, `__module__`, or `__doc__` on a value typed as `Callable`,
