@@ -92,7 +92,7 @@ A similar rule applies to `complex`, which is treated as `int | float | complex`
 
     If you need this for `complex`, you can use `ty_extensions.JustComplex` in a similar way.
 
-## Why is my `list`/`set`/`dict` not assignable to this other collection type? What is invariance?
+## Why can't I use `list[Subtype]` when a `list[Supertype]` is expected?
 
 Let's say you have a class hierarchy with an `Entry` base class and a `Directory` subclass. Since
 a `Directory` *is* an `Entry`, you can use it everywhere an `Entry` is expected.
