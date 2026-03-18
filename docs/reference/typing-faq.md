@@ -145,7 +145,7 @@ size = total_size_bytes(media_entries)
 
 To prevent this, you can adapt the signature of `total_size_bytes` to take an
 argument of type
-[`Sequence[Entry]`](https://docs.python.org/3/library/collections.abc.html#collections.abc.Sequence)
+[`Sequence[Entry]`](https://docs.python.org/3/library/collections.abc.html#collections-abstract-base-classes)
 instead. This type describes read-only sequences (that contain values of type
 `Entry`). `Sequence` is therefore covariant in its type parameter.
 
