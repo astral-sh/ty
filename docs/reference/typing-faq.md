@@ -98,7 +98,7 @@ Let's say you have a class hierarchy with an `Entry` base class and a `Directory
 a `Directory` *is* an `Entry`, you can use it everywhere an `Entry` is expected.
 You might therefore expect a `list[Directory]` to
 be usable in any context where a `list[Entry]` is expected, but this is not
-the case. The reason for this is (interior) mutability:
+the case. The reason for this is mutability:
 
 ```py
 def modify(entries: list[Entry]):
