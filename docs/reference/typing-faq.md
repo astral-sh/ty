@@ -94,19 +94,48 @@ A similar rule applies to `complex`, which is treated as `int | float | complex`
 
 ## Why can't I use `list[Subtype]` when a `list[Supertype]` is expected? { #invariant-generics }
 
-Let's say you have a class hierarchy with an `Entry` base class and a `Directory` subclass. Since
+Let's say you have a class hierarchy with an `Entry` base class as well as `Directory` and `File` subclasses. Since
 a `Directory` *is* an `Entry`, you can use it everywhere an `Entry` is expected.
 You might therefore expect a `list[Directory]` to
 be usable in any context where a `list[Entry]` is expected, but this is not
 the case. The reason for this is mutability:
 
 ```py
+# Setup of `Entry`, `Directory`, and `File` classes (1)
+
 def modify(entries: list[Entry]):
-    entries.append(File("README.txt"))
+    entries.append(File("README.txt")) # mutation
 
 directories: list[Directory] = [Directory("Downloads"), Directory("Documents")]
 modify(directories)  # ty emits an error on this call
 ```
+
+1. The full example might look like this:
+
+    ```py
+    from dataclasses import dataclass
+
+    @dataclass
+    class Entry:
+         path: str
+         def size_bytes(self) -> int: ...
+
+    @dataclass
+    class Directory(Entry):
+        def children(self) -> list[Entry]: ...
+
+    @dataclass
+    class File(Entry):
+        def content(self) -> bytes: ...
+
+    def modify(entries: list[Entry]):
+        entries.append(File("README.txt")) # mutation
+
+    directories: list[Directory] = [Directory("Downloads"), Directory("Documents")]
+    modify(directories)  # ty emits an error on this call
+    ```
+
+    You can try it out in [this playground example](https://play.ty.dev/01013e73-da54-40c4-a9c5-2af269abda9d).
 
 The `modify` call mutates the contents of the `directories` list. After this call,
 it contains two directories *and one `File`*, which clearly violates the
