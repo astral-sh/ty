@@ -1,0 +1,5 @@
+rules:
+  secrets-outside-env:
+    ignore:
+      # TODO: move the ASTRAL_DOCS_PAT secret to the release environment
+      - publish-docs.yml
