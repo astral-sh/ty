@@ -1,5 +1,40 @@
 # Changelog
 
+## 0.0.24
+
+Released on 2026-03-19.
+
+### Bug fixes
+
+- Ensure `TypedDict` subscripts for unknown keys return `Unknown` ([#23926](https://github.com/astral-sh/ruff/pull/23926))
+- Fix overflow with recursive `TypeIs` ([#23784](https://github.com/astral-sh/ruff/pull/23784))
+- Fix variance of frozen dataclass-transform models ([#23931](https://github.com/astral-sh/ruff/pull/23931))
+
+### LSP server
+
+- Improve [semantic token](https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#textDocument_semanticTokens) classification for attribute access on union types ([#23841](https://github.com/astral-sh/ruff/pull/23841))
+
+### Core type checking
+
+- Improve performance and correctness by avoiding inferring intersection types for call arguments as a result of bidirectional inference ([#23933](https://github.com/astral-sh/ruff/pull/23933))
+- Narrow keyword arguments when unpacking dictionary instances ([#23436](https://github.com/astral-sh/ruff/pull/23436))
+- Discover `/usr/local/lib` dist-packages on Debian/Ubuntu ([#23797](https://github.com/astral-sh/ruff/pull/23797))
+- Sync vendored typeshed stubs ([#23963](https://github.com/astral-sh/ruff/pull/23963)). [Typeshed diff](https://github.com/python/typeshed/compare/fa659b1def704dea3dc8e25c7857b23eac69df4d...f8f0794d0fe249c06dc9f31a004d85be6cca6ced)
+
+## Performance
+
+- Introduce fast path for protocol non-assignability ([#23952](https://github.com/astral-sh/ruff/pull/23952))
+- Improved generic-solver performance in cases involving overload sets ([#23881](https://github.com/astral-sh/ruff/pull/23881))
+
+### Contributors
+
+- [@Geo5](https://github.com/Geo5)
+- [@ibraheemdev](https://github.com/ibraheemdev)
+- [@charliermarsh](https://github.com/charliermarsh)
+- [@dcreager](https://github.com/dcreager)
+- [@ollema](https://github.com/ollema)
+- [@sharkdp](https://github.com/sharkdp)
+
 ## 0.0.23
 
 Released on 2026-03-13.
