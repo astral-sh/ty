@@ -12,11 +12,11 @@ Released on 2026-03-19.
 
 ### LSP server
 
-- Improve semantic token classification for attribute access on union types ([#23841](https://github.com/astral-sh/ruff/pull/23841))
+- Improve [semantic token](https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#textDocument_semanticTokens) classification for attribute access on union types ([#23841](https://github.com/astral-sh/ruff/pull/23841))
 
 ### Core type checking
 
-- Avoid inferring intersection types for call arguments ([#23933](https://github.com/astral-sh/ruff/pull/23933))
+- Improve performance and correctness by avoiding inferring intersection types for call arguments as a result of bidirectional inference ([#23933](https://github.com/astral-sh/ruff/pull/23933))
 - Narrow keyword arguments when unpacking dictionary instances ([#23436](https://github.com/astral-sh/ruff/pull/23436))
 - Discover `/usr/local/lib` dist-packages on Debian/Ubuntu ([#23797](https://github.com/astral-sh/ruff/pull/23797))
 - Sync vendored typeshed stubs ([#23963](https://github.com/astral-sh/ruff/pull/23963)). [Typeshed diff](https://github.com/python/typeshed/compare/fa659b1def704dea3dc8e25c7857b23eac69df4d...f8f0794d0fe249c06dc9f31a004d85be6cca6ced)
