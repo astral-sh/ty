@@ -1,5 +1,54 @@
 # Changelog
 
+## 0.0.25
+
+Released on 2026-03-24.
+
+### Breaking changes
+
+- Support `type:ignore[ty:code]` suppressions ([#24096](https://github.com/astral-sh/ruff/pull/24096))
+
+### Bug fixes
+
+- Avoid eager TypedDict diagnostics in `TypedDict | dict` unions ([#24151](https://github.com/astral-sh/ruff/pull/24151))
+- Fix Salsa panic propagation ([#24141](https://github.com/astral-sh/ruff/pull/24141))
+- Fix folding ranges of comments separated by statements ([#24132](https://github.com/astral-sh/ruff/pull/24132))
+- Fix loop-header reachability cycles in conditional unpacking ([#24006](https://github.com/astral-sh/ruff/pull/24006))
+- Fix subtyping of intersections containing `NewType`s of unions vs. unions ([#24087](https://github.com/astral-sh/ruff/pull/24087))
+- Fix untracked reads in Salsa queries that can lead to backdating panics ([#24051](https://github.com/astral-sh/ruff/pull/24051))
+- Prevent tainted loop bindings in cycle normalization ([#24143](https://github.com/astral-sh/ruff/pull/24143))
+- Simplify an intersection of `N & ~T` to `Never` if `B & ~T` would simplify to `Never`, where `B` is the concrete base type of a `NewType` `N` ([#24086](https://github.com/astral-sh/ruff/pull/24086))
+
+### LSP
+
+- Preserve blank lines between comments and imports in add-import action ([#24066](https://github.com/astral-sh/ruff/pull/24066))
+
+### Type checking
+
+- Add diagnostic hint for invalid assignments involving invariant generics ([#24032](https://github.com/astral-sh/ruff/pull/24032))
+- Add precisely-typed overloads for `TypedDict` update ([#24101](https://github.com/astral-sh/ruff/pull/24101))
+- Disallow read-only fields in `TypedDict` updates ([#24128](https://github.com/astral-sh/ruff/pull/24128))
+- Expand bounded typevars to their upper bounds when evaluating truthiness comparisons between intersections and literal types ([#24082](https://github.com/astral-sh/ruff/pull/24082))
+- Ignore `reveal_type` diagnostics in unreachable code ([#24070](https://github.com/astral-sh/ruff/pull/24070))
+- Improve `isinstance()` reachability analysis ([#24077](https://github.com/astral-sh/ruff/pull/24077))
+- Improve keyword argument narrowing for nested dictionaries ([#24010](https://github.com/astral-sh/ruff/pull/24010))
+- Infer `yield` expression types ([#23796](https://github.com/astral-sh/ruff/pull/23796))
+- Reduce diagnostic range for `invalid-metaclass` ([#24145](https://github.com/astral-sh/ruff/pull/24145))
+- Revert "Update Artifact GitHub Actions dependencies" ([#3112](https://github.com/astral-sh/ty/pull/3112))
+- Support narrowing for extended walrus targets ([#24129](https://github.com/astral-sh/ruff/pull/24129))
+- Unions/intersections of gradual types should be assignable to `Never` ([#24056](https://github.com/astral-sh/ruff/pull/24056))
+
+### Contributors
+
+- [@MichaReiser](https://github.com/MichaReiser)
+- [@AlexWaygood](https://github.com/AlexWaygood)
+- [@Glyphack](https://github.com/Glyphack)
+- [@sharkdp](https://github.com/sharkdp)
+- [@ibraheemdev](https://github.com/ibraheemdev)
+- [@charliermarsh](https://github.com/charliermarsh)
+- [@mvanhorn](https://github.com/mvanhorn)
+- [@carljm](https://github.com/carljm)
+
 ## 0.0.24
 
 Released on 2026-03-19.
@@ -333,7 +382,7 @@ Released on 2026-02-20.
 
 ### Typeshed
 
-- Sync vendored typeshed stubs ([#23279](https://github.com/astral-sh/ruff/pull/23279), [Typeshed diff](https://github.com/python/typeshed/compare/fa659b1def704dea3dc8e25c7857b23eac69df4d...1b3cec156330a93f6bb22b6636bca38c27f8f721))
+- Sync vendored typeshed stubs ([#23279](https://github.com/astral-sh/ruff/pull/23279), [Typeshed diff](https://github.com/python/typeshed/compare/fa659b1def704dea3dc8e25c7857b23eac69df4d...1b3cec156330a93f6bb22b6636bca38c27f8f721)). [Typeshed diff](https://github.com/python/typeshed/compare/843c1fd5a148da85e523c1b4ee680226f89986aa...f8f0794d0fe249c06dc9f31a004d85be6cca6ced)
 
 ### Contributors
 
@@ -2375,7 +2424,7 @@ Released on 2025-10-10.
 - Make `del x` force a local resolution of `x` in the current scope ([#19389](https://github.com/astral-sh/ruff/pull/19389))
 - Perform type narrowing for places marked `global` ([#19381](https://github.com/astral-sh/ruff/pull/19381))
 - Infer correct types for attribute accesses on intersections with negative parts ([#19524](https://github.com/astral-sh/ruff/pull/19524))
-- Sync vendored typeshed stubs ([typeshed diff](https://github.com/python/typeshed/compare/84e41f2853d7af3d651d620f093031cba849bd1d...08225953c98cfd375d80bc88865e5aae77d2c07f))
+- Sync vendored typeshed stubs ([typeshed diff](https://github.com/python/typeshed/compare/84e41f2853d7af3d651d620f093031cba849bd1d...08225953c98cfd375d80bc88865e5aae77d2c07f)). [Typeshed diff](https://github.com/python/typeshed/compare/843c1fd5a148da85e523c1b4ee680226f89986aa...f8f0794d0fe249c06dc9f31a004d85be6cca6ced)
 
 ### Memory usage optimizations
 
@@ -2429,7 +2478,7 @@ Released on 2025-10-10.
 - Improve equivalence for module-literal types ([#19243](https://github.com/astral-sh/ruff/pull/19243))
 - Reduce false positives for `TypedDict` types ([#19354](https://github.com/astral-sh/ruff/pull/19354))
 - Emit an error for `global` uses if there is no explicit definition in the global scope ([#19344](https://github.com/astral-sh/ruff/pull/19344))
-- Sync vendored typeshed stubs ([typeshed diff](https://github.com/python/typeshed/compare/f64707592dd3c32f756ddeebd012acb2b072aa0d...84e41f2853d7af3d651d620f093031cba849bd1d))
+- Sync vendored typeshed stubs ([typeshed diff](https://github.com/python/typeshed/compare/f64707592dd3c32f756ddeebd012acb2b072aa0d...84e41f2853d7af3d651d620f093031cba849bd1d)). [Typeshed diff](https://github.com/python/typeshed/compare/843c1fd5a148da85e523c1b4ee680226f89986aa...f8f0794d0fe249c06dc9f31a004d85be6cca6ced)
 
 ### CLI
 
