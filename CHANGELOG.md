@@ -29,7 +29,7 @@ Released on 2026-03-24.
 - Add precisely-typed overloads for `TypedDict` update ([#24101](https://github.com/astral-sh/ruff/pull/24101))
 - Disallow read-only fields in `TypedDict` updates ([#24128](https://github.com/astral-sh/ruff/pull/24128))
 - Expand bounded typevars to their upper bounds when evaluating truthiness comparisons between intersections and literal types ([#24082](https://github.com/astral-sh/ruff/pull/24082))
-- Ignore `reveal_type` diagnostics in unreachable code ([#24070](https://github.com/astral-sh/ruff/pull/24070))
+- Emit `reveal_type` diagnostics in unreachable code ([#24070](https://github.com/astral-sh/ruff/pull/24070))
 - Improve `isinstance()` reachability analysis ([#24077](https://github.com/astral-sh/ruff/pull/24077))
 - Improve keyword argument narrowing for nested dictionaries ([#24010](https://github.com/astral-sh/ruff/pull/24010))
 - Infer `yield` expression types ([#23796](https://github.com/astral-sh/ruff/pull/23796))
