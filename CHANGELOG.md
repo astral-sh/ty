@@ -34,7 +34,6 @@ Released on 2026-03-24.
 - Improve keyword argument narrowing for nested dictionaries ([#24010](https://github.com/astral-sh/ruff/pull/24010))
 - Infer `yield` expression types ([#23796](https://github.com/astral-sh/ruff/pull/23796))
 - Reduce diagnostic range for `invalid-metaclass` ([#24145](https://github.com/astral-sh/ruff/pull/24145))
-- Revert "Update Artifact GitHub Actions dependencies" ([#3112](https://github.com/astral-sh/ty/pull/3112))
 - Support narrowing for extended walrus targets ([#24129](https://github.com/astral-sh/ruff/pull/24129))
 - Unions/intersections of gradual types should be assignable to `Never` ([#24056](https://github.com/astral-sh/ruff/pull/24056))
 
