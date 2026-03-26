@@ -22,10 +22,19 @@ example-pkg
 
 then set [`environment.root`](./reference/configuration.md#root) in your `pyproject.toml` to `["./app"]`:
 
-```toml title="pyproject.toml"
-[tool.ty.environment]
-root = ["./app"]
-```
+=== "pyproject.toml"
+
+    ```toml
+    [tool.ty.environment]
+    root = ["./app"]
+    ```
+
+=== "ty.toml"
+
+    ```toml
+    [environment]
+    root = ["./app"]
+    ```
 
 Note that a `./python` folder is automatically added to the project `root` if it exists,
 and is not itself a package (i.e. does not contain an `__init__.py` file or an
