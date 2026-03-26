@@ -31,6 +31,8 @@ Released on 2026-03-26.
 - [@charliermarsh](https://github.com/charliermarsh)
 - [@mtshiba](https://github.com/mtshiba)
 - [@dhruvmanila](https://github.com/dhruvmanila)
+- [@carljm](https://github.com/carljm)
+- [@choucavalier](https://github.com/choucavalier)
 
 ## 0.0.25
 
