@@ -35,13 +35,25 @@ Rule levels can also be changed in the [`rules`](./reference/configuration.md#ru
 
 For example, the following is equivalent to the command above:
 
-```toml title="pyproject.toml"
-[tool.ty.rules]
-unused-ignore-comment = "warn"
-redundant-cast = "ignore"
-possibly-missing-attribute = "error"
-possibly-missing-import = "error"
-```
+=== "pyproject.toml"
+
+    ```toml
+    [tool.ty.rules]
+    unused-ignore-comment = "warn"
+    redundant-cast = "ignore"
+    possibly-missing-attribute = "error"
+    possibly-missing-import = "error"
+    ```
+
+=== "ty.toml"
+
+    ```toml
+    [rules]
+    unused-ignore-comment = "warn"
+    redundant-cast = "ignore"
+    possibly-missing-attribute = "error"
+    possibly-missing-import = "error"
+    ```
 
 You can also configure the level for all rules at once.
 
@@ -57,7 +69,16 @@ You can also configure this setting in the [`rules`](./reference/configuration.m
 
 For example, the following is equivalent to the command above:
 
-```toml title="pyproject.toml"
-[tool.ty.rules]
-all = "error"
-```
+=== "pyproject.toml"
+
+    ```toml
+    [tool.ty.rules]
+    all = "error"
+    ```
+
+=== "ty.toml"
+
+    ```toml
+    [rules]
+    all = "error"
+    ```
