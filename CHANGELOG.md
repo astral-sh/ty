@@ -6,8 +6,8 @@ Released on 2026-03-26.
 
 ### Bug fixes
 
-- Prevent `too-many-cycle` panics in more situations ([#24061](https://github.com/astral-sh/ruff/pull/24061))
-- Fixed false positive errors when unpacking a union of tuples into a function with optional parameters ([#23298](https://github.com/astral-sh/ruff/pull/23298))
+- Prevent "too many cycle iteration" panics in more situations ([#24061](https://github.com/astral-sh/ruff/pull/24061))
+- Fix false positives and false negatives when unpacking a union of tuples into a function call ([#23298](https://github.com/astral-sh/ruff/pull/23298))
 
 ### Core type checking
 
