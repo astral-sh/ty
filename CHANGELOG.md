@@ -1,5 +1,39 @@
 # Changelog
 
+## 0.0.26
+
+Released on 2026-03-26.
+
+### Bug fixes
+
+- Prevent "too many cycle iteration" panics in more situations ([#24061](https://github.com/astral-sh/ruff/pull/24061))
+- Fix false positives and false negatives when unpacking a union of tuples into a function call ([#23298](https://github.com/astral-sh/ruff/pull/23298))
+
+### Core type checking
+
+- Add support for `typing.Concatenate` ([#23689](https://github.com/astral-sh/ruff/pull/23689))
+- Validate the return type of generator functions ([#24026](https://github.com/astral-sh/ruff/pull/24026))
+- Support dataclass field `converter`s ([#23088](https://github.com/astral-sh/ruff/pull/23088))
+- Disallow `Self` in metaclass and static methods ([#23231](https://github.com/astral-sh/ruff/pull/23231))
+- Improve call inference for keyword-only `dict()` ([#24103](https://github.com/astral-sh/ruff/pull/24103))
+- Respect non-explicitly defined `dataclass_transform` params ([#24170](https://github.com/astral-sh/ruff/pull/24170))
+- Unconditionally silence diagnostics in unreachable code ([#24179](https://github.com/astral-sh/ruff/pull/24179))
+- Respect terminal-function-call narrowing in global scope ([#23245](https://github.com/astral-sh/ruff/pull/23245))
+
+### Performance
+
+- Fix performance regression for narrowing on a larger `Literal` type([#24185](https://github.com/astral-sh/ruff/pull/24185))
+
+### Contributors
+
+- [@sharkdp](https://github.com/sharkdp)
+- [@Glyphack](https://github.com/Glyphack)
+- [@charliermarsh](https://github.com/charliermarsh)
+- [@mtshiba](https://github.com/mtshiba)
+- [@dhruvmanila](https://github.com/dhruvmanila)
+- [@carljm](https://github.com/carljm)
+- [@choucavalier](https://github.com/choucavalier)
+
 ## 0.0.25
 
 Released on 2026-03-24.
