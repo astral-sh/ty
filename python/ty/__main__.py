@@ -7,7 +7,11 @@ from ty import find_ty_bin
 
 
 def _run() -> None:
-    ty = find_ty_bin()
+    ty_bin_env = os.environ.get("TY_BIN")
+    if ty_bin_env:
+        ty = ty_bin_env
+    else:
+        ty = find_ty_bin()
 
     if sys.platform == "win32":
         import subprocess
