@@ -5,6 +5,7 @@ version = "0.0.26"
 
 # Config for 'dist'
 [dist]
+allow-dirty = ["ci"]
 # The preferred dist version to use in CI (Cargo.toml SemVer syntax)
 cargo-dist-version = "0.31.0"
 # Whether to consider the binaries in a package for distribution (defaults true)
