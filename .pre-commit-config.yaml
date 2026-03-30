@@ -10,7 +10,7 @@ exclude: |
 repos:
   # Priority 0: Read-only hooks; hooks that modify disjoint file types.
   - repo: https://github.com/astral-sh/uv-pre-commit
-    rev: 0.10.10
+    rev: 0.10.12
     hooks:
       - id: uv-lock
         priority: 0
@@ -22,7 +22,7 @@ repos:
         priority: 0
 
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.15.6
+    rev: v0.15.7
     hooks:
       - id: ruff-format
         priority: 0
