@@ -1,5 +1,52 @@
 # Changelog
 
+## 0.0.27
+
+Released on 2026-03-31.
+
+### Bug fixes
+
+- Autocomplete arguments if in arguments node ([#24167](https://github.com/astral-sh/ruff/pull/24167))
+- Fix instance-attribute lookup in methods of protocol classes ([#24213](https://github.com/astral-sh/ruff/pull/24213))
+- Fix nested global and nonlocal lookups through forwarding scopes ([#24279](https://github.com/astral-sh/ruff/pull/24279))
+- Fix panic on `list[Annotated[()]]` ([#24303](https://github.com/astral-sh/ruff/pull/24303))
+- Preserve `Divergent` when materializing recursive aliases ([#24245](https://github.com/astral-sh/ruff/pull/24245))
+- Use `_cls` as argument name for `collections.namedtuple` ([#24333](https://github.com/astral-sh/ruff/pull/24333))
+
+### LSP server
+
+- Fix semantic token classification for properties accessed on instances ([#24065](https://github.com/astral-sh/ruff/pull/24065))
+- Report unused bindings as unnecessary hint diagnostics ([#23305](https://github.com/astral-sh/ruff/pull/23305))
+
+### Core type checking
+
+- Add bidirectional type context for TypedDict `get()` defaults ([#24231](https://github.com/astral-sh/ruff/pull/24231))
+- Add bidirectional type context for TypedDict `pop()` defaults ([#24229](https://github.com/astral-sh/ruff/pull/24229))
+- Add materialization to `Divergent` type ([#24255](https://github.com/astral-sh/ruff/pull/24255))
+- Add support for functional TypedDict ([#24174](https://github.com/astral-sh/ruff/pull/24174))
+- Ban type qualifiers in PEP-695 type aliases ([#24242](https://github.com/astral-sh/ruff/pull/24242))
+- Emit diagnostic for functional TypedDict with non-literal name ([#24331](https://github.com/astral-sh/ruff/pull/24331))
+- Enforce `Final` attribute assignment rules for annotated and augmented writes ([#23880](https://github.com/astral-sh/ruff/pull/23880))
+- Improve support for `Callable` type context ([#23888](https://github.com/astral-sh/ruff/pull/23888))
+- Infer lambda expressions with `Callable` type context ([#22633](https://github.com/astral-sh/ruff/pull/22633))
+- Make `Type::BoundMethod` include instances of same-named methods bound to a subclass ([#24039](https://github.com/astral-sh/ruff/pull/24039))
+- Propagate type context through `await` expressions ([#24256](https://github.com/astral-sh/ruff/pull/24256))
+- Reject functional TypedDict with mismatched names ([#24295](https://github.com/astral-sh/ruff/pull/24295))
+- Resolve union-likes in emitting union attribute errors ([#24263](https://github.com/astral-sh/ruff/pull/24263))
+- Show `Final` source in final assignment diagnostic ([#24194](https://github.com/astral-sh/ruff/pull/24194))
+
+### Contributors
+
+- [@carljm](https://github.com/carljm)
+- [@mvanhorn](https://github.com/mvanhorn)
+- [@oconnor663](https://github.com/oconnor663)
+- [@ibraheemdev](https://github.com/ibraheemdev)
+- [@zanieb](https://github.com/zanieb)
+- [@denyszhak](https://github.com/denyszhak)
+- [@Glyphack](https://github.com/Glyphack)
+- [@charliermarsh](https://github.com/charliermarsh)
+- [@AlexWaygood](https://github.com/AlexWaygood)
+
 ## 0.0.26
 
 Released on 2026-03-26.
