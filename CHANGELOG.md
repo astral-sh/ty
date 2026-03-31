@@ -6,17 +6,17 @@ Released on 2026-03-31.
 
 ### Bug fixes
 
-- Autocomplete arguments if in arguments node ([#24167](https://github.com/astral-sh/ruff/pull/24167))
+- Fix panic on debug builds when attempting to provide autocomple suggestions for `list[int]<CURSOR>()` ([#24167](https://github.com/astral-sh/ruff/pull/24167))
 - Fix instance-attribute lookup in methods of protocol classes ([#24213](https://github.com/astral-sh/ruff/pull/24213))
 - Fix nested global and nonlocal lookups through forwarding scopes ([#24279](https://github.com/astral-sh/ruff/pull/24279))
 - Fix panic on `list[Annotated[()]]` ([#24303](https://github.com/astral-sh/ruff/pull/24303))
-- Preserve `Divergent` when materializing recursive aliases ([#24245](https://github.com/astral-sh/ruff/pull/24245))
-- Use `_cls` as argument name for `collections.namedtuple` ([#24333](https://github.com/astral-sh/ruff/pull/24333))
+- Fix stack overflow on `type A = TypeIs[Callable[[], A]]` ([#24245](https://github.com/astral-sh/ruff/pull/24245))
+- Use `_cls` as the name of the first argument for synthesized `collections.namedtuple` constructor methods ([#24333](https://github.com/astral-sh/ruff/pull/24333))
 
 ### LSP server
 
 - Fix semantic token classification for properties accessed on instances ([#24065](https://github.com/astral-sh/ruff/pull/24065))
-- Report unused bindings as unnecessary hint diagnostics ([#23305](https://github.com/astral-sh/ruff/pull/23305))
+- Grey out unused bindings in the editor ([#23305](https://github.com/astral-sh/ruff/pull/23305))
 
 ### Core type checking
 
@@ -29,11 +29,11 @@ Released on 2026-03-31.
 - Enforce `Final` attribute assignment rules for annotated and augmented writes ([#23880](https://github.com/astral-sh/ruff/pull/23880))
 - Improve support for `Callable` type context ([#23888](https://github.com/astral-sh/ruff/pull/23888))
 - Infer lambda expressions with `Callable` type context ([#22633](https://github.com/astral-sh/ruff/pull/22633))
-- Make `Type::BoundMethod` include instances of same-named methods bound to a subclass ([#24039](https://github.com/astral-sh/ruff/pull/24039))
+- Don't incorrectly infer the type of a method as being a singleton type when it's accessed off an instance ([#24039](https://github.com/astral-sh/ruff/pull/24039))
 - Propagate type context through `await` expressions ([#24256](https://github.com/astral-sh/ruff/pull/24256))
 - Reject functional TypedDict with mismatched names ([#24295](https://github.com/astral-sh/ruff/pull/24295))
 - Resolve union-likes in emitting union attribute errors ([#24263](https://github.com/astral-sh/ruff/pull/24263))
-- Show `Final` source in final assignment diagnostic ([#24194](https://github.com/astral-sh/ruff/pull/24194))
+- Show the user where the variable was declared as `Final` when emitting a diagnostic about a `Final` variable being reassigned ([#24194](https://github.com/astral-sh/ruff/pull/24194))
 
 ### Contributors
 
