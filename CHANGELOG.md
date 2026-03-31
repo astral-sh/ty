@@ -6,7 +6,7 @@ Released on 2026-03-31.
 
 ### Bug fixes
 
-- Fix panic on debug builds when attempting to provide autocomple suggestions for `list[int]<CURSOR>()` ([#24167](https://github.com/astral-sh/ruff/pull/24167))
+- Fix panic on debug builds when attempting to provide autocomplete suggestions for `list[int]<CURSOR>()` ([#24167](https://github.com/astral-sh/ruff/pull/24167))
 - Fix instance-attribute lookup in methods of protocol classes ([#24213](https://github.com/astral-sh/ruff/pull/24213))
 - Fix nested global and nonlocal lookups through forwarding scopes ([#24279](https://github.com/astral-sh/ruff/pull/24279))
 - Fix panic on `list[Annotated[()]]` ([#24303](https://github.com/astral-sh/ruff/pull/24303))
@@ -22,16 +22,13 @@ Released on 2026-03-31.
 
 - Add bidirectional type context for TypedDict `get()` defaults ([#24231](https://github.com/astral-sh/ruff/pull/24231))
 - Add bidirectional type context for TypedDict `pop()` defaults ([#24229](https://github.com/astral-sh/ruff/pull/24229))
-- Add materialization to `Divergent` type ([#24255](https://github.com/astral-sh/ruff/pull/24255))
-- Add support for functional TypedDict ([#24174](https://github.com/astral-sh/ruff/pull/24174))
+- Add support for functional TypedDict ([#24174](https://github.com/astral-sh/ruff/pull/24174), [#24331](https://github.com/astral-sh/ruff/pull/24331), [#24295](https://github.com/astral-sh/ruff/pull/24295))
 - Ban type qualifiers in PEP-695 type aliases ([#24242](https://github.com/astral-sh/ruff/pull/24242))
-- Emit diagnostic for functional TypedDict with non-literal name ([#24331](https://github.com/astral-sh/ruff/pull/24331))
 - Enforce `Final` attribute assignment rules for annotated and augmented writes ([#23880](https://github.com/astral-sh/ruff/pull/23880))
 - Improve support for `Callable` type context ([#23888](https://github.com/astral-sh/ruff/pull/23888))
 - Infer lambda expressions with `Callable` type context ([#22633](https://github.com/astral-sh/ruff/pull/22633))
 - Don't incorrectly infer the type of a method as being a singleton type when it's accessed off an instance ([#24039](https://github.com/astral-sh/ruff/pull/24039))
 - Propagate type context through `await` expressions ([#24256](https://github.com/astral-sh/ruff/pull/24256))
-- Reject functional TypedDict with mismatched names ([#24295](https://github.com/astral-sh/ruff/pull/24295))
 - Resolve union-likes in emitting union attribute errors ([#24263](https://github.com/astral-sh/ruff/pull/24263))
 - Show the user where the variable was declared as `Final` when emitting a diagnostic about a `Final` variable being reassigned ([#24194](https://github.com/astral-sh/ruff/pull/24194))
 
