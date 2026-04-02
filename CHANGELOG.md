@@ -6,11 +6,11 @@ Released on 2026-04-02.
 
 ### Bug fixes
 
-- Mark loop header assignments as used to avoid false positives in unused variable diagnostics ([#24336](https://github.com/astral-sh/ruff/pull/24336))
+- Mark loop header assignments as used to avoid false positives in "unused variable" diagnostics ([#24336](https://github.com/astral-sh/ruff/pull/24336))
 
 ### LSP server
 
-- Show constructor signature on hover ([#24257](https://github.com/astral-sh/ruff/pull/24257))
+- Show constructor signature of classes when hovering over them ([#24257](https://github.com/astral-sh/ruff/pull/24257))
 
 ### Core type checking
 
@@ -19,14 +19,14 @@ Released on 2026-04-02.
 - Improve consistency and quality of diagnostics relating to invalid type forms ([#24325](https://github.com/astral-sh/ruff/pull/24325))
 - Improve robustness of various type-qualifier-related checks ([#24251](https://github.com/astral-sh/ruff/pull/24251))
 - Infer the `extra_items` keyword argument to class-based TypedDicts as an annotation expression ([#24362](https://github.com/astral-sh/ruff/pull/24362))
-- Pass type context to sequence literals in binary operations ([#24197](https://github.com/astral-sh/ruff/pull/24197))
+- Use bidirectional inference to fix false positives on operations such as `x: list[int | None] = [None] * 2` ([#24197](https://github.com/astral-sh/ruff/pull/24197))
 - Sync vendored typeshed stubs ([#24340](https://github.com/astral-sh/ruff/pull/24340)). [Typeshed diff](https://github.com/python/typeshed/compare/f8f0794d0fe249c06dc9f31a004d85be6cca6ced...c5e47faeda2cf9d233f91bc1dc95814b0cc7ccba)
 - Tighten up validation of subscripts and attributes in type expressions ([#24329](https://github.com/astral-sh/ruff/pull/24329))
 - Use `infer_type_expression` for parsing parameter annotations and return-type annotations ([#24353](https://github.com/astral-sh/ruff/pull/24353))
 - Use `infer_type_expression` for validating PEP-613 type aliases ([#24370](https://github.com/astral-sh/ruff/pull/24370))
 - Validate TypedDict fields when subclassing ([#24338](https://github.com/astral-sh/ruff/pull/24338))
 - Validate type qualifiers in functional TypedDict fields and the `extra_items` keyword to functional TypedDicts ([#24360](https://github.com/astral-sh/ruff/pull/24360))
-- Various cleanups to functional `TypedDict` parsing logic ([#24345](https://github.com/astral-sh/ruff/pull/24345))
+- Improve diagnostics for invalid functional `TypedDict`s ([#24345](https://github.com/astral-sh/ruff/pull/24345))
 
 ### Contributors
 
