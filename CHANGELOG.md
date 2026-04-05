@@ -1,5 +1,27 @@
 # Changelog
 
+## 0.0.29
+
+Released on 2026-04-05.
+
+### Bug fixes
+
+- Avoid special-casing for `dataclasses.field` if it's not in `field_specifiers` ([#24397](https://github.com/astral-sh/ruff/pull/24397))
+- Reject unsupported `environment.python-version` values in configuration files ([#24402](https://github.com/astral-sh/ruff/pull/24402))
+- Respect supported lower bounds from `requires-python` ([#24401](https://github.com/astral-sh/ruff/pull/24401))
+
+### Core type checking
+
+- Add support for `types.new_class` ([#23144](https://github.com/astral-sh/ruff/pull/23144))
+- Fix PEP 695 type aliases in `with` statement ([#24395](https://github.com/astral-sh/ruff/pull/24395))
+- Respect `__new__` and metaclass `__call__` return types ([#24357](https://github.com/astral-sh/ruff/pull/24357))
+- Treat enum attributes with type annotations as members ([#23776](https://github.com/astral-sh/ruff/pull/23776))
+
+### Contributors
+
+- [@charliermarsh](https://github.com/charliermarsh)
+- [@carljm](https://github.com/carljm)
+
 ## 0.0.28
 
 Released on 2026-04-02.
