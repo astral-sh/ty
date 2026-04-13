@@ -263,6 +263,20 @@ the developer experience around this in the future.
     You can check out the full example [here](https://play.ty.dev/7a1ea4ab-04e1-4271-adf5-ddc3a5d2fcfd),
     which demonstrates that `FileUpload` instances are no longer accepted by `retry`.
 
+## What is `Top[list[Unknown]]`, and why does it appear?
+
+This type represents "all possible lists of any element type" (as opposed to `list[Unknown]`, which
+represents "a list of some unknown element type"). It usually arises from a check such as
+`if isinstance(x, list):`. If `x` was previously of type `Item | list[Item]`, you might expect this
+check to narrow the type to `list[Item]`, but ty respects the possibility that there could be a
+common subclass of both `Item` and `list` (which may not be a list of `Item`!), and so the narrowed
+type is instead `(Item & Top[list[Unknown]]) | list[Item]`. This code can be made more robust by
+instead checking `if instance(x, Item)`, or by declaring the `Item` type as `@typing.final`.
+
+See also the [discussion
+here](https://docs.astral.sh/ty/features/type-system/#top-and-bottom-materializations) and [in this
+issue](https://github.com/astral-sh/ty/issues/1578).
+
 ## Does ty have a strict mode?
 
 Not yet. A stricter inference mode is tracked in
@@ -378,17 +392,3 @@ No. ty does not have a plugin system and there is currently no plan to add one.
 We prefer extending the type system with well-specified features rather than relying on
 type-checker-specific plugins. That said, we are considering adding support for popular third-party
 libraries like pydantic, SQLAlchemy, attrs, or django directly into ty.
-
-## What is `Top[list[Unknown]]`, and why does it appear?
-
-This type represents "all possible lists of any element type" (as opposed to `list[Unknown]`, which
-represents "a list of some unknown element type"). It usually arises from a check such as
-`if isinstance(x, list):`. If `x` was previously of type `Item | list[Item]`, you might expect this
-check to narrow the type to `list[Item]`, but ty respects the possibility that there could be a
-common subclass of both `Item` and `list` (which may not be a list of `Item`!), and so the narrowed
-type is instead `(Item & Top[list[Unknown]]) | list[Item]`. This code can be made more robust by
-instead checking `if instance(x, Item)`, or by declaring the `Item` type as `@typing.final`.
-
-See also the [discussion
-here](https://docs.astral.sh/ty/features/type-system/#top-and-bottom-materializations) and [in this
-issue](https://github.com/astral-sh/ty/issues/1578).
