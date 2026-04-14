@@ -23,38 +23,38 @@ In previous versions, `reveal_type(Foo().value)` would have included `Unknown`, 
 - Ensure '/' parameter appears before '\*' when rendering `Callable` types ([#24497](https://github.com/astral-sh/ruff/pull/24497))
 - Ensure nested conditional blocks inherit `TYPE_CHECKING` state from outer blocks ([#24470](https://github.com/astral-sh/ruff/pull/24470))
 - Fix bad diagnostic range for incorrect implicit `__init_subclass__` calls ([#24541](https://github.com/astral-sh/ruff/pull/24541))
-- Fix signature help for `ParamSpec`-specialized class calls ([#24399](https://github.com/astral-sh/ruff/pull/24399))
+- Server: fix signature help for `ParamSpec`-specialized class calls ([#24399](https://github.com/astral-sh/ruff/pull/24399))
 - Fix stack overflows from recursive types ([#24413](https://github.com/astral-sh/ruff/pull/24413))
-- Fix wrong assignability of `type[T]` to a metaclass ([#24515](https://github.com/astral-sh/ruff/pull/24515))
-- Use field type context for `TypedDict` constructor values ([#24422](https://github.com/astral-sh/ruff/pull/24422))
+- Fix incorrect assignability of `type[T]` to a metaclass ([#24515](https://github.com/astral-sh/ruff/pull/24515))
+- Use `TypedDict` field types as type context to inform the inference of arguments passed to `TypedDict` constructors ([#24422](https://github.com/astral-sh/ruff/pull/24422))
 
 ### LSP server
 
-- Determine value vs. type syntax highlighting based on call arguments ([#23949](https://github.com/astral-sh/ruff/pull/23949))
+- Use the context of the kind of object a parameter is expected to receive to inform syntax highlighting of arguments passed to call expressions ([#23949](https://github.com/astral-sh/ruff/pull/23949))
 - Ignore unsupported editor-selected Python versions ([#24498](https://github.com/astral-sh/ruff/pull/24498))
-- Omit invalid keyword arguments from `TypedDict` signature ([#24522](https://github.com/astral-sh/ruff/pull/24522))
-- Return all attribute definitions for goto definition ([#24332](https://github.com/astral-sh/ruff/pull/24332))
-- Show info hints in LSP diagnostic messages ([#24328](https://github.com/astral-sh/ruff/pull/24328))
-- Symbols from `typing` and `collections` rank higher than third party re-exports ([#23643](https://github.com/astral-sh/ruff/pull/23643))
+- Omit invalid keyword arguments from the constructor signature shown on hover for a `TypedDict` class ([#24522](https://github.com/astral-sh/ruff/pull/24522))
+- Return all attribute definitions for goto definition, rather than just the last definition in the given scope ([#24332](https://github.com/astral-sh/ruff/pull/24332))
+- Show `info` subdiagnostics in LSP diagnostic messages ([#24328](https://github.com/astral-sh/ruff/pull/24328))
+- Completions: rank symbols from `typing` and `collections` higher than third party re-exports ([#23643](https://github.com/astral-sh/ruff/pull/23643))
 - Synthesize `__init__` for `TypedDict` ([#24476](https://github.com/astral-sh/ruff/pull/24476))
-- Treat type alias values as type-form contexts in semantic tokens ([#24478](https://github.com/astral-sh/ruff/pull/24478))
+- Adjust semantic tokens implementation to ensure that type alias values have "type form" syntax highlighting in IDEs ([#24478](https://github.com/astral-sh/ruff/pull/24478))
 
 ### Diagnostics
 
-- Hide "Rule xyz is enabled"-style hints by default ([#24469](https://github.com/astral-sh/ruff/pull/24469))
+- Hide "Rule xyz is enabled"-style hints unless verbose mode was specified ([#24469](https://github.com/astral-sh/ruff/pull/24469))
 - Improve consistency of pedantic lints complaining about badly named types ([#24575](https://github.com/astral-sh/ruff/pull/24575))
-- Use reachable first declaration in declaration-based diagnostics ([#24564](https://github.com/astral-sh/ruff/pull/24564))
+- Point to the first *reachable* declaration, rather than the first declaration, in declaration-based diagnostics ([#24564](https://github.com/astral-sh/ruff/pull/24564))
 
 ### Core type checking
 
 - Add support for functional `Enum(...)` syntax ([#23602](https://github.com/astral-sh/ruff/pull/23602))
 - Allow `Final` variable assignments in `__post_init__` ([#24529](https://github.com/astral-sh/ruff/pull/24529))
 - Allow empty names in functional `Enum(...)` semantics ([#24570](https://github.com/astral-sh/ruff/pull/24570))
-- Allow partially stringified `type[...]` annotations ([#24518](https://github.com/astral-sh/ruff/pull/24518))
+- Allow partially stringified `type[...]` annotations, e.g. `type["MyClass"]` ([#24518](https://github.com/astral-sh/ruff/pull/24518))
 - Emit a diagnostic when attempting to inherit from a class with `__init_subclass__ = None` ([#24543](https://github.com/astral-sh/ruff/pull/24543))
 - Fix `TypeGuard` and `TypeIs` narrowing for unbound method calls ([#24612](https://github.com/astral-sh/ruff/pull/24612))
 - Fix assignability of intersections with bounded TypeVars ([#24502](https://github.com/astral-sh/ruff/pull/24502))
-- Fix excess subscript argument inference for non-generic types ([#24354](https://github.com/astral-sh/ruff/pull/24354))
+- Fix excess subscript argument inference for non-generic types so that `list[int][0]` leads to 1 diagnostic, rather than 2 ([#24354](https://github.com/astral-sh/ruff/pull/24354))
 - Improve `type=` mixin support for functional `Enum(...)` ([#24571](https://github.com/astral-sh/ruff/pull/24571))
 - Inherit `dataclass_transform` metadata from metaclass bases ([#24615](https://github.com/astral-sh/ruff/pull/24615))
 - Lazily evaluate declaration reachability in field and enum filters ([#24451](https://github.com/astral-sh/ruff/pull/24451))
