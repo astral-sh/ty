@@ -4,9 +4,23 @@
 
 Released on 2026-04-13.
 
+As of v0.0.30, ty no longer unions `Unknown` into most inferred types of unannotated attributes. For example:
+
+```python
+class Foo:
+    def __init__(self) -> None:
+        self.value = 1
+
+reveal_type(Foo().value)  # revealed: int
+Foo().value = "x"  # error: [invalid-assignment]
+```
+
+In previous versions, `reveal_type(Foo().value)` would have included `Unknown`, so the assignment to `"x"` would not have been flagged. Since this can affect inferred attribute types throughout a codebase, upgrading may lead to both new and resolved diagnostics. Initializers of `None` and other non-literal singleton types remain exceptions. See [#24531](https://github.com/astral-sh/ruff/pull/24531) for details.
+
 ### Bug fixes
 
 - Disallow bare `ParamSpec` in `Concatenate` prefixes ([#24474](https://github.com/astral-sh/ruff/pull/24474))
+- Ensure '/' parameter appears before '\*' when rendering `Callable` types ([#24497](https://github.com/astral-sh/ruff/pull/24497))
 - Ensure nested conditional blocks inherit `TYPE_CHECKING` state from outer blocks ([#24470](https://github.com/astral-sh/ruff/pull/24470))
 - Fix bad diagnostic range for incorrect implicit `__init_subclass__` calls ([#24541](https://github.com/astral-sh/ruff/pull/24541))
 - Fix signature help for `ParamSpec`-specialized class calls ([#24399](https://github.com/astral-sh/ruff/pull/24399))
@@ -25,6 +39,12 @@ Released on 2026-04-13.
 - Synthesize `__init__` for `TypedDict` ([#24476](https://github.com/astral-sh/ruff/pull/24476))
 - Treat type alias values as type-form contexts in semantic tokens ([#24478](https://github.com/astral-sh/ruff/pull/24478))
 
+### Diagnostics
+
+- Hide "Rule xyz is enabled"-style hints by default ([#24469](https://github.com/astral-sh/ruff/pull/24469))
+- Improve consistency of pedantic lints complaining about badly named types ([#24575](https://github.com/astral-sh/ruff/pull/24575))
+- Use reachable first declaration in declaration-based diagnostics ([#24564](https://github.com/astral-sh/ruff/pull/24564))
+
 ### Core type checking
 
 - Add support for functional `Enum(...)` syntax ([#23602](https://github.com/astral-sh/ruff/pull/23602))
@@ -32,13 +52,10 @@ Released on 2026-04-13.
 - Allow empty names in functional `Enum(...)` semantics ([#24570](https://github.com/astral-sh/ruff/pull/24570))
 - Allow partially stringified `type[...]` annotations ([#24518](https://github.com/astral-sh/ruff/pull/24518))
 - Emit a diagnostic when attempting to inherit from a class with `__init_subclass__ = None` ([#24543](https://github.com/astral-sh/ruff/pull/24543))
-- Ensure '/' parameter appears before '\*' when rendering `Callable` types ([#24497](https://github.com/astral-sh/ruff/pull/24497))
 - Fix `TypeGuard` and `TypeIs` narrowing for unbound method calls ([#24612](https://github.com/astral-sh/ruff/pull/24612))
 - Fix assignability of intersections with bounded TypeVars ([#24502](https://github.com/astral-sh/ruff/pull/24502))
 - Fix excess subscript argument inference for non-generic types ([#24354](https://github.com/astral-sh/ruff/pull/24354))
-- Hide "Rule xyz is enabled"-style hints by default ([#24469](https://github.com/astral-sh/ruff/pull/24469))
 - Improve `type=` mixin support for functional `Enum(...)` ([#24571](https://github.com/astral-sh/ruff/pull/24571))
-- Improve consistency of pedantic lints complaining about badly named types ([#24575](https://github.com/astral-sh/ruff/pull/24575))
 - Inherit `dataclass_transform` metadata from metaclass bases ([#24615](https://github.com/astral-sh/ruff/pull/24615))
 - Lazily evaluate declaration reachability in field and enum filters ([#24451](https://github.com/astral-sh/ruff/pull/24451))
 - Normalize explicit `None` accessors in manual property construction ([#24492](https://github.com/astral-sh/ruff/pull/24492))
@@ -51,7 +68,6 @@ Released on 2026-04-13.
 - Tighten up a few edge cases in `Concatenate` type-expression parsing ([#24172](https://github.com/astral-sh/ruff/pull/24172))
 - Use `map`, not `__map`, as the name of the mapping parameter in `TypedDict` `__init__` methods ([#24535](https://github.com/astral-sh/ruff/pull/24535))
 - Use basic blocks for determining if a node is in an `if TYPE_CHECKING` block ([#24394](https://github.com/astral-sh/ruff/pull/24394))
-- Use reachable first declaration in declaration-based diagnostics ([#24564](https://github.com/astral-sh/ruff/pull/24564))
 
 ### Contributors
 
