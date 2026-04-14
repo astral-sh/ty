@@ -1,5 +1,70 @@
 # Changelog
 
+## 0.0.30
+
+Released on 2026-04-13.
+
+### Bug fixes
+
+- Disallow bare `ParamSpec` in `Concatenate` prefixes ([#24474](https://github.com/astral-sh/ruff/pull/24474))
+- Ensure nested conditional blocks inherit `TYPE_CHECKING` state from outer blocks ([#24470](https://github.com/astral-sh/ruff/pull/24470))
+- Fix bad diagnostic range for incorrect implicit `__init_subclass__` calls ([#24541](https://github.com/astral-sh/ruff/pull/24541))
+- Fix signature help for `ParamSpec`-specialized class calls ([#24399](https://github.com/astral-sh/ruff/pull/24399))
+- Fix stack overflows from recursive types ([#24413](https://github.com/astral-sh/ruff/pull/24413))
+- Fix wrong assignability of `type[T]` to a metaclass ([#24515](https://github.com/astral-sh/ruff/pull/24515))
+- Use field type context for `TypedDict` constructor values ([#24422](https://github.com/astral-sh/ruff/pull/24422))
+
+### LSP server
+
+- Determine value vs. type syntax highlighting based on call arguments ([#23949](https://github.com/astral-sh/ruff/pull/23949))
+- Ignore unsupported editor-selected Python versions ([#24498](https://github.com/astral-sh/ruff/pull/24498))
+- Omit invalid keyword arguments from `TypedDict` signature ([#24522](https://github.com/astral-sh/ruff/pull/24522))
+- Return all attribute definitions for goto definition ([#24332](https://github.com/astral-sh/ruff/pull/24332))
+- Show info hints in LSP diagnostic messages ([#24328](https://github.com/astral-sh/ruff/pull/24328))
+- Symbols from `typing` and `collections` rank higher than third party re-exports ([#23643](https://github.com/astral-sh/ruff/pull/23643))
+- Synthesize `__init__` for `TypedDict` ([#24476](https://github.com/astral-sh/ruff/pull/24476))
+- Treat type alias values as type-form contexts in semantic tokens ([#24478](https://github.com/astral-sh/ruff/pull/24478))
+
+### Core type checking
+
+- Add support for functional `Enum(...)` syntax ([#23602](https://github.com/astral-sh/ruff/pull/23602))
+- Allow `Final` variable assignments in `__post_init__` ([#24529](https://github.com/astral-sh/ruff/pull/24529))
+- Allow empty names in functional `Enum(...)` semantics ([#24570](https://github.com/astral-sh/ruff/pull/24570))
+- Allow partially stringified `type[...]` annotations ([#24518](https://github.com/astral-sh/ruff/pull/24518))
+- Emit a diagnostic when attempting to inherit from a class with `__init_subclass__ = None` ([#24543](https://github.com/astral-sh/ruff/pull/24543))
+- Ensure '/' parameter appears before '\*' when rendering `Callable` types ([#24497](https://github.com/astral-sh/ruff/pull/24497))
+- Fix `TypeGuard` and `TypeIs` narrowing for unbound method calls ([#24612](https://github.com/astral-sh/ruff/pull/24612))
+- Fix assignability of intersections with bounded TypeVars ([#24502](https://github.com/astral-sh/ruff/pull/24502))
+- Fix excess subscript argument inference for non-generic types ([#24354](https://github.com/astral-sh/ruff/pull/24354))
+- Hide "Rule xyz is enabled"-style hints by default ([#24469](https://github.com/astral-sh/ruff/pull/24469))
+- Improve `type=` mixin support for functional `Enum(...)` ([#24571](https://github.com/astral-sh/ruff/pull/24571))
+- Improve consistency of pedantic lints complaining about badly named types ([#24575](https://github.com/astral-sh/ruff/pull/24575))
+- Inherit `dataclass_transform` metadata from metaclass bases ([#24615](https://github.com/astral-sh/ruff/pull/24615))
+- Lazily evaluate declaration reachability in field and enum filters ([#24451](https://github.com/astral-sh/ruff/pull/24451))
+- Normalize explicit `None` accessors in manual property construction ([#24492](https://github.com/astral-sh/ruff/pull/24492))
+- Reject deleting `Final` attributes ([#24508](https://github.com/astral-sh/ruff/pull/24508))
+- Respect non-required keys in `TypedDict` unpacking ([#24446](https://github.com/astral-sh/ruff/pull/24446))
+- Respect property deleters in attribute deletion checks ([#24500](https://github.com/astral-sh/ruff/pull/24500))
+- Stop special-casing `str` constructor ([#24514](https://github.com/astral-sh/ruff/pull/24514))
+- Stop unioning `Unknown` into types of un-annotated attributes ([#24531](https://github.com/astral-sh/ruff/pull/24531))
+- Support `super()` in metaclass methods ([#24483](https://github.com/astral-sh/ruff/pull/24483))
+- Tighten up a few edge cases in `Concatenate` type-expression parsing ([#24172](https://github.com/astral-sh/ruff/pull/24172))
+- Use `map`, not `__map`, as the name of the mapping parameter in `TypedDict` `__init__` methods ([#24535](https://github.com/astral-sh/ruff/pull/24535))
+- Use basic blocks for determining if a node is in an `if TYPE_CHECKING` block ([#24394](https://github.com/astral-sh/ruff/pull/24394))
+- Use reachable first declaration in declaration-based diagnostics ([#24564](https://github.com/astral-sh/ruff/pull/24564))
+
+### Contributors
+
+- [@charliermarsh](https://github.com/charliermarsh)
+- [@Glyphack](https://github.com/Glyphack)
+- [@MichaReiser](https://github.com/MichaReiser)
+- [@sharkdp](https://github.com/sharkdp)
+- [@carljm](https://github.com/carljm)
+- [@YilunAllenChen](https://github.com/YilunAllenChen)
+- [@zanieb](https://github.com/zanieb)
+- [@AlexWaygood](https://github.com/AlexWaygood)
+- [@thejchap](https://github.com/thejchap)
+
 ## 0.0.29
 
 Released on 2026-04-05.
