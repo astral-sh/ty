@@ -1,5 +1,40 @@
 # Changelog
 
+## 0.0.31
+
+Released on 2026-04-15.
+
+### Bug fixes
+
+- Avoid double inference for `namedtuple(typename=T, field_names=x, **{})` ([#24641](https://github.com/astral-sh/ruff/pull/24641))
+- Avoid panic from double inference with missing functional `Enum(...)` names ([#24638](https://github.com/astral-sh/ruff/pull/24638))
+- Avoid panic from functional `Enum(value=...)` ([#24639](https://github.com/astral-sh/ruff/pull/24639))
+- Fix cases where `invalid-key` fix doesn't converge, and `override-of-final-method` produces invalid syntax ([#24649](https://github.com/astral-sh/ruff/pull/24649))
+- Fix unnecessary `ty:ignore` comments inserted by `--add-ignore` for diagnostics starting on the same line ([#24651](https://github.com/astral-sh/ruff/pull/24651))
+
+### CLI
+
+- Add `--fix` mode to enable auto-fix for diagnostics ([#24097](https://github.com/astral-sh/ruff/pull/24097))
+
+### Performance
+
+- Avoid excessive memory usage for dataclasses with many fields ([#24620](https://github.com/astral-sh/ruff/pull/24620))
+
+### Core type checking
+
+- Check inherited `NamedTuple` field conflicts ([#24542](https://github.com/astral-sh/ruff/pull/24542))
+- Error when duplicate keywords are provided to TypedDict constructors ([#24449](https://github.com/astral-sh/ruff/pull/24449))
+- Respect mixed positional and keyword arguments in TypedDict constructor ([#24448](https://github.com/astral-sh/ruff/pull/24448))
+- Respect subclass shadowing for inherited NamedTuple fields ([#24640](https://github.com/astral-sh/ruff/pull/24640))
+- Skip `EnumMeta.__call__` for enum constructor signatures ([#24513](https://github.com/astral-sh/ruff/pull/24513))
+
+### Contributors
+
+- [@sharkdp](https://github.com/sharkdp)
+- [@Glyphack](https://github.com/Glyphack)
+- [@MichaReiser](https://github.com/MichaReiser)
+- [@charliermarsh](https://github.com/charliermarsh)
+
 ## 0.0.30
 
 Released on 2026-04-13.
