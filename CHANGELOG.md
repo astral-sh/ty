@@ -6,9 +6,9 @@ Released on 2026-04-15.
 
 ### Bug fixes
 
-- Avoid double inference for `namedtuple(typename=T, field_names=x, **{})` ([#24641](https://github.com/astral-sh/ruff/pull/24641))
+- Avoid panic from double inference for `namedtuple(typename=T, field_names=x, **{})` ([#24641](https://github.com/astral-sh/ruff/pull/24641))
 - Avoid panic from double inference with missing functional `Enum(...)` names ([#24638](https://github.com/astral-sh/ruff/pull/24638))
-- Avoid panic from functional `Enum(value=...)` ([#24639](https://github.com/astral-sh/ruff/pull/24639))
+- Avoid panic from double inference with functional `Enum(value=...)` ([#24639](https://github.com/astral-sh/ruff/pull/24639))
 - Fix cases where `invalid-key` fix doesn't converge, and `override-of-final-method` produces invalid syntax ([#24649](https://github.com/astral-sh/ruff/pull/24649))
 - Fix unnecessary `ty:ignore` comments inserted by `--add-ignore` for diagnostics starting on the same line ([#24651](https://github.com/astral-sh/ruff/pull/24651))
 
