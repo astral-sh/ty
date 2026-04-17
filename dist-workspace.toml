@@ -63,7 +63,7 @@ local-artifacts-jobs = ["./build-binaries", "./build-docker"]
 # Publish jobs to run in CI
 publish-jobs = ["./publish-pypi"]
 # Post-announce jobs to run in CI
-post-announce-jobs = ["./publish-docs", "./publish-mirror"]
+post-announce-jobs = ["./publish-docs", "./publish-versions", "./publish-mirror"]
 # Custom permissions for GitHub Jobs
 github-custom-job-permissions = { "build-docker" = { packages = "write", contents = "read", id-token = "write", attestations = "write" }, "publish-mirror" = { contents = "read" } }
 # Whether to install an updater program
