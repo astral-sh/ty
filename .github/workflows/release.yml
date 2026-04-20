@@ -314,6 +314,15 @@ jobs:
       plan: ${{ needs.plan.outputs.val }}
     secrets: inherit
 
+  custom-publish-versions:
+    needs:
+      - plan
+      - announce
+    uses: ./.github/workflows/publish-versions.yml
+    with:
+      plan: ${{ needs.plan.outputs.val }}
+    secrets: inherit
+
   custom-publish-mirror:
     needs:
       - plan
