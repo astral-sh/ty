@@ -1,5 +1,55 @@
 # Changelog
 
+## 0.0.32
+
+Released on 2026-04-20.
+
+### Bug fixes
+
+- Fix panic when `__get__` uses `Concatenate` `self`-type and wraps a `__call__` ([#24692](https://github.com/astral-sh/ruff/pull/24692))
+- Avoid panicking on overloaded `Callable` type context ([#24661](https://github.com/astral-sh/ruff/pull/24661))
+- Expand class bases in per-base lint checks ([#24695](https://github.com/astral-sh/ruff/pull/24695), [#24699](https://github.com/astral-sh/ruff/pull/24699))
+- Fix stack overflow for binary operator inference involving recursive types ([#24551](https://github.com/astral-sh/ruff/pull/24551))
+
+### LSP server
+
+- Dim out unreachable code in IDEs ([#24580](https://github.com/astral-sh/ruff/pull/24580))
+- Do not suggest argument completion when typing the value of a keyword argument ([#24669](https://github.com/astral-sh/ruff/pull/24669))
+- Retrieve the docstring from the overload implementation if an `@overload`-decorated function has no docstring ([#23920](https://github.com/astral-sh/ruff/pull/23920))
+
+### Core type checking
+
+- Allow `if` statements in TypedDict bodies ([#24702](https://github.com/astral-sh/ruff/pull/24702))
+- Disallow `@disjoint_base` on TypedDicts and Protocols ([#24671](https://github.com/astral-sh/ruff/pull/24671))
+- Do not consider a subclass of a `@dataclass_transform`-decorated class to have dataclass-like semantics if it has `type` in its MRO ([#24679](https://github.com/astral-sh/ruff/pull/24679))
+- Reject using properties with `Never` setters or deleters ([#24510](https://github.com/astral-sh/ruff/pull/24510))
+- Sync vendored typeshed stubs ([#24646](https://github.com/astral-sh/ruff/pull/24646)). [Typeshed diff](https://github.com/python/typeshed/compare/f8f0794d0fe249c06dc9f31a004d85be6cca6ced...c03c2b926422c82ab680d27f3ad2491845000802)
+
+### Diagnostics
+
+- Show error context for assignability diagnostics ([#24309](https://github.com/astral-sh/ruff/pull/24309))
+- Use partially qualified names when reporting diagnostics regarding bad calls to methods ([#24560](https://github.com/astral-sh/ruff/pull/24560))
+- Reduce source code context window to zero ([#24689](https://github.com/astral-sh/ruff/pull/24689))
+- Merge same-file annotations if there is only a single line separating them ([#24694](https://github.com/astral-sh/ruff/pull/24694))
+
+### Performance
+
+- Memoize binary operator return types ([#24700](https://github.com/astral-sh/ruff/pull/24700))
+- Gate protocol compatibility on member count ([#24684](https://github.com/astral-sh/ruff/pull/24684))
+
+### Contributors
+
+- [@JelleZijlstra](https://github.com/JelleZijlstra)
+- [@kc0506](https://github.com/kc0506)
+- [@denyszhak](https://github.com/denyszhak)
+- [@carljm](https://github.com/carljm)
+- [@dcreager](https://github.com/dcreager)
+- [@AlexWaygood](https://github.com/AlexWaygood)
+- [@dylwil3](https://github.com/dylwil3)
+- [@charliermarsh](https://github.com/charliermarsh)
+- [@sharkdp](https://github.com/sharkdp)
+- [@ibraheemdev](https://github.com/ibraheemdev)
+
 ## 0.0.31
 
 Released on 2026-04-15.
