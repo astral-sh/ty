@@ -18,9 +18,8 @@ from missing_module import MissingClass  # error: unresolved-import
 reveal_type(MissingClass)  # Unknown
 ```
 
-ty also uses unions with `Unknown` to maintain the
-[gradual guarantee](../features/type-system.md#gradual-guarantee), which helps avoid false positive
-errors in untyped code while still providing useful type information where possible.
+ty also uses unions with `Unknown` to avoid false positive errors in untyped code while still
+providing useful type information where possible.
 
 For example, consider the following untyped `Message` class (which could come from a third-party
 dependency that you have no control over). ty treats the `data` attribute as having type
