@@ -49,7 +49,7 @@ emitted, or is folded into a broader category that already appears for another t
 | `duplicate-base`                | `misc`               | `reportGeneralTypeIssues`            |
 | `empty-body`                    | `empty-body`         | `reportGeneralTypeIssues`            |
 | `inconsistent-mro`              | `misc`               | `reportGeneralTypeIssues`            |
-| `index-out-of-bounds`           |                      |                                      |
+| `index-out-of-bounds`           | `misc`               | `reportGeneralTypeIssues`            |
 | `invalid-argument-type`         | `arg-type`           | `reportArgumentType`                 |
 | `invalid-assignment`            | `assignment`         | `reportAssignmentType`               |
 | `invalid-attribute-access`      | `assignment`         | `reportAttributeAccessIssue`         |
@@ -68,7 +68,7 @@ emitted, or is folded into a broader category that already appears for another t
 | `parameter-already-assigned`    | `call-arg`           | `reportCallIssue`                    |
 | `possibly-missing-attribute`    | `union-attr`         | `reportOptionalMemberAccess`         |
 | `possibly-unresolved-reference` | `possibly-undefined` | `reportPossiblyUnboundVariable`      |
-| `redundant-cast`                | `redundant-cast`     |                                      |
+| `redundant-cast`                | `redundant-cast`     | `reportUnnecessaryCast`              |
 | `too-many-positional-arguments` | `call-arg`           | `reportCallIssue`                    |
 | `type-assertion-failure`        | `assert-type`        | `reportAssertTypeFailure`            |
 | `undefined-reveal`              |                      |                                      |
