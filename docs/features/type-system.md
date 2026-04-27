@@ -169,55 +169,5 @@ def to_json(person: Person):
 
 (Full example in the [playground](https://play.ty.dev/34a227bb-93d5-405e-86c3-72f57ec5642e))
 
-## Gradual guarantee
-
-ty generally tries to avoid emitting false positive type errors in untyped code. The following
-snippet does not produce any type errors when checked with ty (whereas other type checkers make the
-assumption that `max_retries` is of type `None`, leading to an error in the attribute assignment):
-
-```py
-class RetryPolicy:
-    max_retries = None
-
-policy = RetryPolicy()
-policy.max_retries = 1
-```
-
-(Full example in the [playground](https://play.ty.dev/a5286db1-cdfd-45e7-af54-29649ba5c423))
-
-This is achieved by treating `max_retries` as being of type `Unknown | None`, which means that the
-type of the attribute is not fully known, but `None` is definitely a possible value.
-
-Users can always opt into stricter checking by adding type annotations (`int | None`, in this case).
-
-!!! info
-
-    We are also planning to add a mode for users that prefer to have stricter types inferred by default
-    in these situations. You can follow [this issue](https://github.com/astral-sh/ty/issues/1240) for
-    updates.
-
-## Fixpoint iteration
-
-In a situation where a symbol's type cyclically depends on itself, ty uses a mechanism called fixpoint iteration to
-be able to infer a type for that symbol. In the `tick` method below, note how the type of `self.value` depends on
-`self.value` itself. ty starts by assuming that `self.value` is just `Unknown | Literal[0]` (the type inferred
-from the `__init__` method), and then iterates until the type converges to `Unknown | Literal[0, 1, 2, 3, 4]`.
-Without the modulo operation, the union would grow indefinitely. In that case, we fall back to `int` after a certain
-number of iterations.
-
-```py
-class LoopingCounter:
-    def __init__(self):
-        self.value = 0
-
-    def tick(self):
-        self.value = (self.value + 1) % 5
-
-# reveals: Unknown | Literal[0, 1, 2, 3, 4]
-reveal_type(LoopingCounter().value)
-```
-
-(Full example in the [playground](https://play.ty.dev/64400d96-ee1b-48f3-8361-b583dddddf82))
-
 [materializations]: https://typing.python.org/en/latest/spec/concepts.html#materialization
 [python typing documentation]: https://typing.python.org/en/latest/spec/index.html
