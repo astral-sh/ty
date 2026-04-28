@@ -4,7 +4,7 @@
 
 Released on 2026-04-28.
 
-### Breaking changes
+### Notable changes
 
 - ty now prefers the declared type of an annotated assignment in more situations ([#24802](https://github.com/astral-sh/ruff/pull/24802)).
     Consider this example:
