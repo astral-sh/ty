@@ -4,6 +4,21 @@
 
 Released on 2026-04-28.
 
+### Breaking changes
+
+- ty now prefers the declared type of an annotated assignment in more situations ([#24802](https://github.com/astral-sh/ruff/pull/24802)).
+    Consider this example:
+
+    ```py
+    from some_library import untyped_function
+
+    threshold: int | None = 0
+    result: str = untyped_function()
+    ```
+
+    ty previously favored the *inferred* type of the right hand side expression when `threshold` and `result` were used. This is useful for `threshold`, as it allows something like `threshold += 1` to work without an error: we know that `threshold` could later become `None`, but *right now*, we see that it is an `int`. However, for `result`, the inferred type is `Unknown`. This is *not* a useful type and it can lead to false negatives. Starting with this release, ty will therefore prefer
+    the declared type *if the inferred and declared types are mutually assignable*. In the above example, `threshold` will still be inferred as `int` (or rather `Literal[1]`), but `result` will now be inferred as `str`. If you previously added `cast`s to work around this behavior, you should be able to remove them after upgrading.
+
 ### Bug fixes
 
 - Fix reporting of annotation-only locals as unused ([#24811](https://github.com/astral-sh/ruff/pull/24811))
@@ -21,7 +36,6 @@ Released on 2026-04-28.
 ### Core type checking
 
 - Support narrowing with aliased conditional expressions ([#24302](https://github.com/astral-sh/ruff/pull/24302))
-- Prefer declared type in more situations (if inferred and declared types are mutually assignable) ([#24802](https://github.com/astral-sh/ruff/pull/24802))
 - Model short-circuiting control flow in Boolean expressions ([#24458](https://github.com/astral-sh/ruff/pull/24458))
 - Handle `finally` blocks where all `try`/`except` blocks are terminal ([#24882](https://github.com/astral-sh/ruff/pull/24882))
 - Detect invalid `ClassVar` vs instance-attribute overrides ([#24767](https://github.com/astral-sh/ruff/pull/24767))
