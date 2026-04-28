@@ -1,5 +1,78 @@
 # Changelog
 
+## 0.0.33
+
+Released on 2026-04-28.
+
+### Bug fixes
+
+- Fix reporting of annotation-only locals as unused ([#24811](https://github.com/astral-sh/ruff/pull/24811))
+- Fix project and workspace selection ([#24824](https://github.com/astral-sh/ruff/pull/24824))
+- Fix go-to definition for generic classes ([#24714](https://github.com/astral-sh/ruff/pull/24714))
+- Fix receiver coloring for aliased decorators ([#24884](https://github.com/astral-sh/ruff/pull/24884))
+
+### LSP server
+
+- Add support for go-to definition in literal enum member inlay hints ([#24792](https://github.com/astral-sh/ruff/pull/24792))
+- Add support for "baking" keyword argument inlay hints into the source code ([#24667](https://github.com/astral-sh/ruff/pull/24667))
+- Don't allow inlay hint edits when introducing a non global scope symbol ([#24797](https://github.com/astral-sh/ruff/pull/24797))
+- Omit semantic highlighting for unresolved symbols ([#24718](https://github.com/astral-sh/ruff/pull/24718))
+
+### Core type checking
+
+- Support narrowing with aliased conditional expressions ([#24302](https://github.com/astral-sh/ruff/pull/24302))
+- Prefer declared type in more situations (if inferred and declared types are mutually assignable) ([#24802](https://github.com/astral-sh/ruff/pull/24802))
+- Model short-circuiting control flow in Boolean expressions ([#24458](https://github.com/astral-sh/ruff/pull/24458))
+- Handle `finally` blocks where all `try`/`except` blocks are terminal ([#24882](https://github.com/astral-sh/ruff/pull/24882))
+- Detect invalid `ClassVar` vs instance-attribute overrides ([#24767](https://github.com/astral-sh/ruff/pull/24767))
+- Emit diagnostic for invalid uses of `Unpack[...]` ([#24868](https://github.com/astral-sh/ruff/pull/24868))
+- Infer lambda parameter types with `Callable` type context ([#24317](https://github.com/astral-sh/ruff/pull/24317))
+- Support `**` unpacking of `TypedDict` in dict-literal assignments ([#24703](https://github.com/astral-sh/ruff/pull/24703))
+- Support `Unpack[TypedDict]` in `**kwargs` signatures ([#24653](https://github.com/astral-sh/ruff/pull/24653))
+- Treat `[*xs]` as an irrefutable pattern when matching on `Sequence` ([#24787](https://github.com/astral-sh/ruff/pull/24787))
+- Improve generics solving for unions in invariant positions ([#24698](https://github.com/astral-sh/ruff/pull/24698))
+- Improve generics solving for unions when matching against protocols ([#24837](https://github.com/astral-sh/ruff/pull/24837))
+
+### Diagnostics
+
+- Add error context to `invalid-return-type` diagnostics, `invalid-yield` diagnostics, attribute assignment diagnostics ([#24770](https://github.com/astral-sh/ruff/pull/24770), [#24771](https://github.com/astral-sh/ruff/pull/24771))
+- Add error context for invalid TypedDict assignments ([#24790](https://github.com/astral-sh/ruff/pull/24790))
+- Add error context for invalid intersection type assignments ([#24772](https://github.com/astral-sh/ruff/pull/24772))
+- Improve TypedDict to `dict` assignment error diagnostics ([#24768](https://github.com/astral-sh/ruff/pull/24768))
+- Add contextual secondary annotations in more places ([#24696](https://github.com/astral-sh/ruff/pull/24696))
+- Include full type in `invalid-key` diagnostics for unions of TypedDicts ([#24693](https://github.com/astral-sh/ruff/pull/24693))
+- Emit more specific diagnostics for "possibly unbound" errors from context manager dunder methods invoked on a union. ([#24662](https://github.com/astral-sh/ruff/pull/24662))
+- Remove duplicate `invalid-type-form` diagnostics for PEP-613 type alias values ([#24760](https://github.com/astral-sh/ruff/pull/24760))
+- Improve diagnostics for implicit calls to a possibly unbound unary operator ([#24816](https://github.com/astral-sh/ruff/pull/24816))
+- Improve diagnostics for possibly-unbound errors from implicit dunder calls on unions ([#24676](https://github.com/astral-sh/ruff/pull/24676))
+
+### Performance
+
+- Optimize signature checking based on number of arguments ([#24674](https://github.com/astral-sh/ruff/pull/24674))
+- Defer union of parameter types ([#24756](https://github.com/astral-sh/ruff/pull/24756))
+- Skip checks for gradual vararg calls ([#24748](https://github.com/astral-sh/ruff/pull/24748))
+
+### Other changes
+
+- Fix notifications about watched changes for entities outside any workspace ([#24775](https://github.com/astral-sh/ruff/pull/24775))
+
+### Contributors
+
+- [@MatthewMckee4](https://github.com/MatthewMckee4)
+- [@lerebear](https://github.com/lerebear)
+- [@tonyxwz](https://github.com/tonyxwz)
+- [@sharkdp](https://github.com/sharkdp)
+- [@felixscherz](https://github.com/felixscherz)
+- [@MichaReiser](https://github.com/MichaReiser)
+- [@tamird](https://github.com/tamird)
+- [@ibraheemdev](https://github.com/ibraheemdev)
+- [@AlexWaygood](https://github.com/AlexWaygood)
+- [@denyszhak](https://github.com/denyszhak)
+- [@charliermarsh](https://github.com/charliermarsh)
+- [@mtshiba](https://github.com/mtshiba)
+- [@EliteTK](https://github.com/EliteTK)
+- [@carljm](https://github.com/carljm)
+
 ## 0.0.32
 
 Released on 2026-04-20.
