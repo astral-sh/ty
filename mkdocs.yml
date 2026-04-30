@@ -60,6 +60,8 @@ markdown_extensions:
       anchor_linenums: true
   - pymdownx.tabbed:
       alternate_style: true
+  - pymdownx.arithmatex:
+      generic: true
 plugins:
   - search
   - git-revision-date-localized:
@@ -99,10 +101,14 @@ plugins:
           - reference/exit-codes.md
           - reference/environment.md
           - reference/editor-settings.md
+        Advanced:
+          - advanced/set-theoretic-gradual-types.md
 extra_css:
   - stylesheets/extra.css
 extra_javascript:
   - js/extra.js
+  - javascripts/mathjax.js
+  - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
 extra:
   analytics:
     provider: fathom
@@ -140,6 +146,8 @@ nav:
       - Exit codes: reference/exit-codes.md
       - Environment variables: reference/environment.md
       - Editor settings: reference/editor-settings.md
+  - Advanced:
+      - Set-theoretic gradual types: advanced/set-theoretic-gradual-types.md
 validation:
   omitted_files: warn
   absolute_links: warn
