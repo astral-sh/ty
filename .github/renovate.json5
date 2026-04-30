@@ -4,11 +4,11 @@
   suppressNotifications: ["prEditedNotification"],
   extends: ["github>astral-sh/renovate-config"],
   labels: ["internal"],
-  schedule: ["before 4am on Monday"],
+  schedule: ["before 4am on Wednesday"],
   semanticCommits: "disabled",
   separateMajorMinor: false,
   prHourlyLimit: 10,
-  enabledManagers: ["github-actions", "pre-commit"],
+  enabledManagers: ["github-actions", "pre-commit", "custom.regex"],
   "pre-commit": {
     enabled: true,
   },
@@ -46,7 +46,25 @@
       groupName: "prek dependencies",
       matchManagers: ["pre-commit"],
       description: "Weekly update of prek dependencies",
-    }
+    },
+    {
+      matchManagers: ["custom.regex"],
+      matchDepNames: ["maturin"],
+      commitMessageTopic: "maturin",
+    },
+  ],
+  customManagers: [
+    // Maturin version used in maturin-action
+    {
+      customType: "regex",
+      managerFilePatterns: [
+        "/.github/workflows/build-binaries\\.yml$/",
+      ],
+      matchStrings: ["maturin-version: (?<currentValue>v\\d+\\.\\d+\\.\\d+)"],
+      depNameTemplate: "maturin",
+      packageNameTemplate: "PyO3/maturin",
+      datasourceTemplate: "github-releases",
+    },
   ],
   vulnerabilityAlerts: {
     commitMessageSuffix: "",
