@@ -145,7 +145,7 @@ within a few milliseconds, even on large projects.
 | [`textDocument/semanticTokens`][semantictokens]       | ✅ Supported     |                                                               |
 | [`textDocument/signatureHelp`][signaturehelp]         | ✅ Supported     |                                                               |
 | [`textDocument/typeDefinition`][typedefinition]       | ✅ Supported     |                                                               |
-| [`typeHierarchy/*`][typehierarchy]                    | ❌ Not supported | [#534]                                                        |
+| [`typeHierarchy/*`][typehierarchy]                    | ✅ Supported     |                                                               |
 | [`workspace/diagnostic`][workspacediagnostic]         | ✅ Supported     |                                                               |
 | [`workspace/symbol`][workspacesymbol]                 | ✅ Supported     |                                                               |
 | [`workspace/willRenameFiles`][willrenamefiles]        | ❌ Not supported | [#1560]                                                       |
