@@ -1,5 +1,55 @@
 # Changelog
 
+## 0.0.34
+
+Released on 2026-05-01.
+
+### Bug fixes
+
+- Avoid panic in recursive protocol signature comparisons ([#24665](https://github.com/astral-sh/ruff/pull/24665))
+- Avoid panics for syntax error targets in invalid unpacking assignments ([#24663](https://github.com/astral-sh/ruff/pull/24663))
+- Fix unbounded type growth in nested-typevar substitutions ([#24803](https://github.com/astral-sh/ruff/pull/24803))
+- Prevent string annotation tokens from leaking across notebook cells ([#24919](https://github.com/astral-sh/ruff/pull/24919))
+- Support reference finding in stringified annotations ([#24956](https://github.com/astral-sh/ruff/pull/24956))
+
+### LSP server
+
+- Add hover support for PEP 695 type aliases ([#24926](https://github.com/astral-sh/ruff/pull/24926))
+- Offer string literal completion suggestions based on expected type ([#24555](https://github.com/astral-sh/ruff/pull/24555))
+- Support Go-to Definition, Go-To Declaration, and Find References for TypedDict and NamedTuple initializers ([#24897](https://github.com/astral-sh/ruff/pull/24897))
+- Support `Annotated` metadata in semantic tokens ([#24890](https://github.com/astral-sh/ruff/pull/24890))
+
+### Core type checking
+
+- Add support for `functools.partial` ([#24582](https://github.com/astral-sh/ruff/pull/24582))
+- Fix ParamSpec defaults and alias variance ([#24479](https://github.com/astral-sh/ruff/pull/24479))
+- Fix `TypeIs` assignability with gradual types ([#24928](https://github.com/astral-sh/ruff/pull/24928))
+- Infer `dict(**TypedDict)` in `TypedDict` context ([#24709](https://github.com/astral-sh/ruff/pull/24709))
+- Support `infer_variance` for legacy `TypeVar` ([#24930](https://github.com/astral-sh/ruff/pull/24930))
+- Support variance keywords in `ParamSpec` ([#24927](https://github.com/astral-sh/ruff/pull/24927))
+- Sync vendored typeshed stubs ([#24952](https://github.com/astral-sh/ruff/pull/24952)). [Typeshed diff](https://github.com/python/typeshed/compare/c03c2b926422c82ab680d27f3ad2491845000802...e4d32e01bee44241a5e7c33298c261175b9f1bdb)
+- Unpack `Union` of `TypedDict` in various sites ([#24958](https://github.com/astral-sh/ruff/pull/24958))
+
+### Diagnostics
+
+- Add missing error context node for protocol to protocol assignability ([#24905](https://github.com/astral-sh/ruff/pull/24905))
+- Show a diagnostic for unsupported inferred Python version ([#24581](https://github.com/astral-sh/ruff/pull/24581))
+
+### Performance
+
+- Lazily build TypeVar accumulations ([#24782](https://github.com/astral-sh/ruff/pull/24782))
+
+### Contributors
+
+- [@sharkdp](https://github.com/sharkdp)
+- [@MichaReiser](https://github.com/MichaReiser)
+- [@lerebear](https://github.com/lerebear)
+- [@MatthewMckee4](https://github.com/MatthewMckee4)
+- [@charliermarsh](https://github.com/charliermarsh)
+- [@mtshiba](https://github.com/mtshiba)
+- [@Minibrams](https://github.com/Minibrams)
+- [@denyszhak](https://github.com/denyszhak)
+
 ## 0.0.33
 
 Released on 2026-04-28.
