@@ -279,7 +279,7 @@ issue](https://github.com/astral-sh/ty/issues/1578).
 ## Does ty have a strict mode?
 
 Not yet. A stricter inference mode is tracked in
-[this issue](https://github.com/astral-sh/ty/issues/1240). In the meantime, you can consider using Ruff's
+[this issue](https://github.com/astral-sh/ty/issues/527). In the meantime, you can consider using Ruff's
 [`flake8-annotations` rules](https://docs.astral.sh/ruff/rules/#flake8-annotations-ann) to enforce
 more explicit type annotations in your code.
 
