@@ -9,10 +9,10 @@ configuration (rule disables, severity overrides) into a `pyproject.toml` `[tool
 ## How to read this table
 
 - **ty rule**: the canonical name, as listed in [Rules](rules.md). Configure under
-  `[tool.ty.rules]`.
+    `[tool.ty.rules]`.
 - **mypy error code**: the value passed to `# type: ignore[<code>]` or `disable_error_code`. Some ty
-  rules surface as one of mypy's catch-all codes (`misc`, `assignment`, `valid-type`); these
-  mappings are deliberately broad.
+    rules surface as one of mypy's catch-all codes (`misc`, `assignment`, `valid-type`); these
+    mappings are deliberately broad.
 - **pyright diagnostic**: the `report*` setting in `pyrightconfig.json` or `[tool.pyright]`.
 
 A blank cell means no direct equivalent exists in that checker (the diagnostic is either not
@@ -25,18 +25,18 @@ emitted, or is folded into a broader category that already appears for another t
 >
 > - mypy error codes: <https://mypy.readthedocs.io/en/stable/error_code_list.html>
 > - pyright diagnostic settings:
->   <https://microsoft.github.io/pyright/#/configuration?id=type-check-diagnostics-settings>
+>     <https://microsoft.github.io/pyright/#/configuration?id=type-check-diagnostics-settings>
 
 ## Migration tips
 
 - mypy disables an error code with `# type: ignore[code]`; ty's equivalent is `# ty: ignore[rule]`.
-  See [Suppression](../suppression.md).
+    See [Suppression](../suppression.md).
 - pyright suppresses a single line with `# pyright: ignore[reportName]`; ty's equivalent is
-  `# ty: ignore[rule]`.
+    `# ty: ignore[rule]`.
 - mypy's `disable_error_code` and pyright's `reportXxx = "none"` both correspond to setting
-  `<rule> = "ignore"` under `[tool.ty.rules]`.
+    `<rule> = "ignore"` under `[tool.ty.rules]`.
 - Severities in ty are `ignore`, `warn`, `error`. Pyright's `"information"` and `"hint"` levels have
-  no direct ty equivalent — use `warn` for both.
+    no direct ty equivalent — use `warn` for both.
 
 ## Mapping table
 
