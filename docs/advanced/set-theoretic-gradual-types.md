@@ -71,6 +71,83 @@ def as_json(obj: Serializable) -> str:
 
 ## Gradual types
 
+In contrast to languages where every expression has a definitive type, Python follows a gradual typing approach. Developers
+can opt in to more type safety by adding more type annotations, but it is not a requirement. Even in
+the absence of type annotations, a type checker can still infer meaningful types in many cases, but
+there are limitations. If a function parameter is not annotated, you are typically allowed to pass
+in any value you like.
+
+The way this works is by introducing a new primitive to the type system, the dynamic type `Any`.
+Its name can be taken quite literally. It can represent *any* fully static type (like `int`, `list[bool]` or `str | None`).
+
+<!-- intro graduial types -->
+
+Define set theoretic operations on gradual types. The union
+```
+G1 | G2 = [m1 | m2, for m1 in G1, for m2 in G2]
+```
+* Symmetric? check
+* Idempotent/Reflexive/…? i.e. is G1|G1 = G1?
+  ```
+  G1 | G1 = [m1 | m1' for m1, m1' in G1]
+  ```
+  Necessary condition:
+    Is only reflexive if `m1 | m1' \elem G1` for all `m1, m1' in G1`.
+    but we also need completeness: m1 | m1' needs to range over all of G1, i.e. for every m in G1,
+    there exists m1, m1' in G1 such that m1|m1' = m
+
+
+lower bound / bottom materialization
+* for every m in G, bottom[G] <= m
+* does bottom[·] distribute over unions?
+    bottom[A | B] = bottom[A] | bottom[B]?
+
+
+(strong) subtyping:
+* G1 <= G2 if forall g1. forall g2. g1 <= g2
+    top[G1] <= bottom[G2]
+    reflexive? no (Any not a subtype of Any; in fact: only reflexive on fully static types)
+    transitive? yes
+    anti-symmetric?
+assignability:
+* G1 <= G2 if exists g1, g2. g1 <= g2
+    bottom[G1] <= top[G2]
+    same as subtyping for gradual types
+    reflexive? yes
+    transitive? no (str assignable to Any, and Any assignable to int, but str not assignable to int)
+* weak subtyping(?): bottom[G1] <= bottom[G2] && top[G1] <= top[G2]
+    * this relation can help define equivalence on gradual types
+    * reflexive? yes
+    * transitive? also yes
+
+* what is this? G1 <= G2 forall g1. exists g2. g1 <= g2
+* mutual assignability
+  * bottom[G1] <= top[G2] && bottom[G2] <= top[G1]  =====> intervals overlap
+  * reflexive? yes
+  * transitive? no
+
+
+
+
+redundancy: when is U | S = U, i.e. when is it redundant to add S to a union U?
+  * we want to be able to simplify e.g. list[Any] | list[Any] to list[Any]
+  * if U | S and U are equivalent, i.e. if
+  * bottom[U | S] == bottom[U] AND top[U | S] == top[U]
+  * if U|S is a weak subtype of U and vice versa
+
+
+
+
+things that break down if gradual types are not intervals:
+* G|G != G
+* G&G != G
+* what would bottom[G]/top[G] even be?!
+
+
+
+
+
+
 <figure markdown="span">
 
 ![Visualizations of gradual unions and intersections](gradual-union-intersection.svg){ width="600" }
@@ -82,9 +159,13 @@ def as_json(obj: Serializable) -> str:
 
 - explain top/bottom materialization
 - visually show subtyping and assignability / equivalence
+  - table with properties
+  - show examples which are assignable, but not subtype etc.
+  - show which relation implies another
 - precision relation?
 - negation types? Jelle's article
-- Smallest possible gradual type that includes int and str, (int | str) & Any.
+- Smallest possible gradual type that includes int and str: (int | str) & Any. or maybe use two
+  final classes to demonstrate that more clearly?
 - meant to compliment the [type system concepts page](https://typing.python.org/en/latest/spec/concepts.html)
 - focus on intuitive understanding (and practical applications?)
 - "more visual"
@@ -94,6 +175,7 @@ def as_json(obj: Serializable) -> str:
     - hasattr narrowing
     - isinstance(…, dict)
     - setting attributes on functions
+- discuss invariant generics
 
 !!! info
 
