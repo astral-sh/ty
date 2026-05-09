@@ -1,0 +1,152 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1040 1250" role="img" aria-labelledby="title desc">
+  <title id="title">Subtyping, redundancy, and assignability on gradual types</title>
+  <desc id="desc">
+    Gradual types are shown as intervals between bottom and top materializations.
+    Subtyping compares top of the source with bottom of the target. Redundancy
+    compares union intervals before and after adding a member. Assignability
+    compares bottom of the source with top of the target.
+  </desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="context-stroke"/>
+    </marker>
+    <style>
+      .bg { fill: #ffffff; }
+      .panel { fill: #fbfafc; stroke: #d7cfdd; stroke-width: 1.5; }
+      .node { fill: #ffffff; stroke: #6f5d6f; stroke-width: 1.5; }
+      .node-any { fill: #f7e8fa; stroke: #de5fe9; }
+      .node-left { fill: #fff3db; stroke: #d88900; }
+      .node-right { fill: #ddfbfa; stroke: #0999a4; }
+      .edge { stroke: #a79dac; stroke-width: 1.5; fill: none; marker-end: url(#arrow); }
+      .interval-any { fill: #de5fe9; fill-opacity: 0.08; stroke: #de5fe9; stroke-width: 2; stroke-dasharray: 8 7; }
+      .interval-left { stroke: #d88900; stroke-width: 9; fill: none; stroke-linecap: round; }
+      .interval-right { stroke: #0999a4; stroke-width: 9; fill: none; stroke-linecap: round; }
+      .interval-gray { stroke: #7b7480; stroke-width: 9; fill: none; stroke-linecap: round; }
+      .rule { stroke: #261230; stroke-width: 2.5; fill: none; marker-end: url(#arrow); }
+      .rule-bad { stroke: #c2410c; stroke-width: 2.5; fill: none; marker-end: url(#arrow); stroke-dasharray: 8 7; }
+      text { font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #261230; }
+      .title { font-size: 30px; font-weight: 750; }
+      .h2 { font-size: 23px; font-weight: 750; }
+      .label { font-size: 17px; font-weight: 700; }
+      .small { font-size: 16px; fill: #5f5365; }
+      .tiny { font-size: 13px; fill: #5f5365; }
+      .formula { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 17px; font-weight: 650; }
+      .formula-small { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 15px; }
+      .yes { fill: #0f766e; font-weight: 800; }
+      .no { fill: #c2410c; font-weight: 800; }
+      @media (prefers-color-scheme: dark) {
+        .bg { fill: #261230; }
+        .panel { fill: #30173d; stroke: #6f5d6f; }
+        .node { fill: #261230; stroke: #cdcbfb; }
+        .node-any { fill: #472052; stroke: #f1aff6; }
+        .node-left { fill: #4b2d12; stroke: #ffac2f; }
+        .node-right { fill: #123f42; stroke: #46ebe1; }
+        .edge { stroke: #e3cee3; }
+        .interval-any { fill: #f1aff6; fill-opacity: 0.12; stroke: #f1aff6; }
+        .interval-left { stroke: #ffac2f; }
+        .interval-right { stroke: #46ebe1; }
+        .interval-gray { stroke: #d7c9dc; }
+        .rule { stroke: #ffffff; }
+        .rule-bad { stroke: #ffac2f; }
+        text { fill: #ffffff; }
+        .small, .tiny { fill: #e3cee3; }
+        .yes { fill: #46ebe1; }
+        .no { fill: #ffac2f; }
+      }
+    </style>
+  </defs>
+
+  <rect class="bg" width="1040" height="1250"/>
+
+  <text class="title" x="52" y="52">Three relations on gradual types</text>
+  <text class="small" x="52" y="82">A gradual type is an interval of static materializations: [bottom, top].</text>
+
+  <rect class="panel" x="52" y="112" width="936" height="400" rx="16"/>
+  <text class="h2" x="82" y="152">Intervals and materializations</text>
+  <text class="small" x="82" y="180">Static subtyping points upward. Wider intervals are less precise.</text>
+
+  <ellipse class="interval-any" cx="322" cy="362" rx="216" ry="112"/>
+  <path class="edge" d="M322 454 L212 402"/>
+  <path class="edge" d="M322 454 L432 402"/>
+  <path class="edge" d="M212 384 L264 326"/>
+  <path class="edge" d="M432 384 L380 326"/>
+  <path class="edge" d="M322 300 L322 258"/>
+
+  <rect class="node-any" x="282" y="238" width="80" height="38" rx="19"/>
+  <text class="label" x="322" y="263" text-anchor="middle">object</text>
+  <rect class="node-left" x="228" y="302" width="72" height="38" rx="19"/>
+  <text class="label" x="264" y="327" text-anchor="middle">int</text>
+  <rect class="node" x="344" y="302" width="72" height="38" rx="19"/>
+  <text class="label" x="380" y="327" text-anchor="middle">str</text>
+  <rect class="node-right" x="176" y="376" width="72" height="38" rx="19"/>
+  <text class="label" x="212" y="401" text-anchor="middle">bool</text>
+  <rect class="node-any" x="282" y="434" width="80" height="38" rx="19"/>
+  <text class="label" x="322" y="459" text-anchor="middle">Never</text>
+
+  <path class="interval-left" d="M264 321 C290 292, 309 272, 322 257"/>
+  <path class="interval-right" d="M322 453 C285 438, 244 417, 212 395"/>
+  <text class="tiny" x="366" y="258">top</text>
+  <text class="tiny" x="366" y="456">bottom</text>
+
+  <text class="formula" x="600" y="238">Any = [Never, object]</text>
+  <text class="small" x="600" y="266">can materialize as any static type</text>
+  <text class="formula" x="600" y="320">int | Any = [int, object]</text>
+  <text class="small" x="600" y="348">all materializations are supertypes of int</text>
+  <text class="formula" x="600" y="402">bool &amp; Any = [Never, bool]</text>
+  <text class="small" x="600" y="430">all materializations are subtypes of bool</text>
+
+  <rect class="panel" x="52" y="552" width="936" height="196" rx="16"/>
+  <text class="h2" x="82" y="593">Subtyping: all materializations fit</text>
+  <text class="formula" x="82" y="624">G &lt;: H  iff  top(G) &lt;: bottom(H)</text>
+  <text class="small" x="82" y="653">The strongest relation: every possible static type in G must be below every possible static type in H.</text>
+
+  <line class="edge" x1="660" y1="698" x2="660" y2="622"/>
+  <rect class="node-left" x="620" y="601" width="80" height="36" rx="18"/>
+  <text class="label" x="660" y="625" text-anchor="middle">int</text>
+  <rect class="node-right" x="620" y="662" width="80" height="36" rx="18"/>
+  <text class="label" x="660" y="686" text-anchor="middle">bool</text>
+  <rect class="node" x="612" y="716" width="96" height="36" rx="18"/>
+  <text class="label" x="660" y="740" text-anchor="middle">Never</text>
+  <path class="interval-right" d="M660 734 L660 680"/>
+  <line class="rule" x1="758" y1="680" x2="758" y2="622"/>
+  <text class="tiny" x="770" y="685">top(G)</text>
+  <text class="tiny" x="770" y="626">bottom(H)</text>
+  <text class="formula-small" x="82" y="705">bool &amp; Any &lt;: int</text>
+  <text class="yes" x="262" y="705">YES</text>
+
+  <rect class="panel" x="52" y="788" width="936" height="196" rx="16"/>
+  <text class="h2" x="82" y="829">Redundancy: the union interval is unchanged</text>
+  <text class="formula" x="82" y="860">S is redundant in U  iff  U | S has the same [bottom, top] as U</text>
+  <text class="small" x="82" y="889">This is what lets a type checker simplify a gradual union without losing information.</text>
+
+  <line class="edge" x1="666" y1="944" x2="666" y2="846"/>
+  <rect class="node-left" x="626" y="826" width="80" height="36" rx="18"/>
+  <text class="label" x="666" y="850" text-anchor="middle">object</text>
+  <rect class="node-left" x="626" y="882" width="80" height="36" rx="18"/>
+  <text class="label" x="666" y="906" text-anchor="middle">int</text>
+  <rect class="node-right" x="626" y="938" width="80" height="36" rx="18"/>
+  <text class="label" x="666" y="962" text-anchor="middle">bool</text>
+  <path class="interval-left" d="M666 844 L666 900"/>
+  <path class="interval-right" d="M710 844 L710 956"/>
+  <text class="formula-small" x="82" y="937">U = int | Any = [int, object]</text>
+  <text class="formula-small" x="82" y="962">U | (bool | Any) = [int, object]</text>
+  <text class="yes" x="430" y="962">REDUNDANT</text>
+
+  <rect class="panel" x="52" y="1024" width="936" height="176" rx="16"/>
+  <text class="h2" x="82" y="1065">Assignability: one compatible pair is enough</text>
+  <text class="formula" x="82" y="1096">G assignable to H  iff  bottom(G) &lt;: top(H)</text>
+  <text class="small" x="82" y="1125">The most permissive relation. It is reflexive, but not transitive.</text>
+
+  <rect class="node" x="600" y="1100" width="70" height="38" rx="19"/>
+  <text class="label" x="635" y="1125" text-anchor="middle">str</text>
+  <rect class="node-any" x="720" y="1100" width="78" height="38" rx="19"/>
+  <text class="label" x="759" y="1125" text-anchor="middle">Any</text>
+  <rect class="node-left" x="848" y="1100" width="70" height="38" rx="19"/>
+  <text class="label" x="883" y="1125" text-anchor="middle">int</text>
+  <path class="rule" d="M672 1119 L716 1119"/>
+  <path class="rule" d="M800 1119 L844 1119"/>
+  <path class="rule-bad" d="M635 1158 C702 1202, 818 1202, 883 1158"/>
+  <text class="yes" x="682" y="1102">YES</text>
+  <text class="yes" x="810" y="1102">YES</text>
+  <text class="no" x="686" y="1230">NO: str is not assignable to int</text>
+</svg>
