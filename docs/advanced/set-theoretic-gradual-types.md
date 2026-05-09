@@ -2,7 +2,7 @@
 
 This article explores the fundamental structure of Python's type system, and explains how it helps in
 modeling the inherently dynamic nature of the language. We will start by describing the *set-theoretic
-foundation* on fully static types, and then expand to *gradual types* later.
+foundation* on static types, and then expand the formulation to *gradual types* later.
 The goal of this article is to provide a framework that helps you to work with and think about
 Python types. You will learn what union and intersection types are, what a type like `int & Any`
 means, and how to determine if it is assignable to `bool | Any`.
@@ -11,15 +11,16 @@ means, and how to determine if it is assignable to `bool | Any`.
 
 ![Arrows indicate subtyping relationships](types-as-sets.svg){ width="250", align="right" }
 
-You can think of fully static types as sets of Python objects. The set that corresponds to the type `int`,
+You can think of fully static types as sets of Python objects. We will later clarify more precisely what we mean
+by "fully static", but for now let's just use some well-known types to illustrate. The set that corresponds to the type `int`,
 for example, contains all possible integer values that are representable in Python, but it also contains
-`True` and `False`, and all instances of every other subclass of `int`. Two special types are worth calling
+`True` and `False`, and all instances of every other subclass of `int`. Two special static types are worth calling
 out. The type `object` represents the set of *all* possible Python objects. In set theory, this is called
 the *universal set*. Type theory calls it the **top type**. On the other end of the spectrum, we have the
-**bottom type** `Never`, represented by the empty set $\emptyset$. Next, we can also define relationships between
-types. We say that a type `S` is a **subtype**
-of type `T` if the corresponding sets follow the subset relation $S \subseteq T$. Conversely, we call `T` a supertype of `S`.
-`Never` is a subtype of all types, while `object` is a supertype of all types. For fully static types, subtyping
+**bottom type** `Never`, represented by the empty set $\emptyset$. The special nature of these types becomes
+clear when we talk about subtyping relationships between types. We say that `S` is a **subtype**
+of type `T` if the corresponding sets follow the subset relation $S \subseteq T$. If that is the case, we also
+call `T` a supertype of `S`. We can now see that `Never` is a subtype of all types, while `object` is a supertype of all types. For fully static types, subtyping
 is the same as **assignability**: You are allowed to pass a value of type `bool` to a function expecting an `int`, because the set
 $\{\mathbf{True}, \mathbf{False}\}$ is a subset of the set describing `int`.
 Finally, we can use set-theoretic operations to create new types. In a Python type annotation, you can use the
@@ -71,16 +72,32 @@ def as_json(obj: Serializable) -> str:
 
 ## Gradual types
 
-In contrast to languages where every expression has a definitive type, Python follows a gradual typing approach. Developers
-can opt in to more type safety by adding more type annotations, but it is not a requirement. Even in
-the absence of type annotations, a type checker can still infer meaningful types in many cases, but
-there are limitations. If a function parameter is not annotated, you are typically allowed to pass
-in any value you like.
+Python has a gradual type system that allows developers to choose the level of type safety. You
+can start from an unannotated program and gradually add more annotations to enforce certain constraints.
+Without annotations, type checkers can still infer meaningful types in many cases, but there
+are limits to this. If a function has an untyped parameter, type checkers will assume that it is
+okay to pass in values of an arbitrary type. In the type system, this is modelled by adding a new
+primitive, the *dynamic type* `Any`. Some type checkers also use `Unknown` to describe an implicit
+appearance of the dynamic type (like for an unannotated function parameter), but for the purposes
+of this article, those two notions are the same. You might have noticed that the dynamic type doesn't
+fit into our sets-of-values picture described above. Instead, we've not been entirely accurate in
 
+
+<!--
 The way this works is by introducing a new primitive to the type system, the dynamic type `Any`.
 Its name can be taken quite literally. It can represent *any* fully static type (like `int`, `list[bool]` or `str | None`).
+-->
+
+<figure markdown="span">
+![Type relations](type-relations.svg){ width="600" }
+
+<figcaption></figcaption>
+</figure>
+
 
 <!-- intro graduial types -->
+
+<!--
 
 Define set theoretic operations on gradual types. The union
 ```
@@ -145,7 +162,7 @@ things that break down if gradual types are not intervals:
 
 
 
-
+-->
 
 
 <figure markdown="span">
