@@ -1,5 +1,63 @@
 # Changelog
 
+## 0.0.35
+
+Released on 2026-05-10.
+
+### Bug fixes
+
+- Allow ParamSpec specialization through unioned generic classes ([#24826](https://github.com/astral-sh/ruff/pull/24826))
+- Fix cross-file find-references for keyword arguments ([#25043](https://github.com/astral-sh/ruff/pull/25043))
+- Fix comparison between negative and positive literal integers ([#25023](https://github.com/astral-sh/ruff/pull/25023))
+- Reject dataclass decorator parameters based on supported Python version ([#25029](https://github.com/astral-sh/ruff/pull/25029))
+
+### LSP server
+
+- Adjust start of block folding range to preserve visible header for character-precise LSP clients. ([#24917](https://github.com/astral-sh/ruff/pull/24917))
+- Emit folding ranges from the language server for multi-line block headers. ([#24978](https://github.com/astral-sh/ruff/pull/24978))
+- Skip global search for references if identifier is not externally visible ([#25033](https://github.com/astral-sh/ruff/pull/25033))
+- Speed-up find-references by using multithreading for cross-file searches ([#25042](https://github.com/astral-sh/ruff/pull/25042))
+
+### CLI
+
+- Include severity in JUnit diagnostics ([#25080](https://github.com/astral-sh/ruff/pull/25080))
+
+### Core type checking
+
+- Check non-generic overload implementations ([#24936](https://github.com/astral-sh/ruff/pull/24936))
+- Expand support for narrowing within walruses ([#24968](https://github.com/astral-sh/ruff/pull/24968))
+- Filter overloads based on return type for ParamSpec mapping ([#24769](https://github.com/astral-sh/ruff/pull/24769))
+- Improve support for recursive types ([#24773](https://github.com/astral-sh/ruff/pull/24773))
+- Include TypedDict type context when inferring mixed constructors ([#25039](https://github.com/astral-sh/ruff/pull/25039))
+- Include TypedDict type context when inferring string keys ([#25037](https://github.com/astral-sh/ruff/pull/25037))
+- Preserve NewType and TypeAliasType in implicit aliases ([#25072](https://github.com/astral-sh/ruff/pull/25072))
+- Provide type cntext for generator expression yields ([#25069](https://github.com/astral-sh/ruff/pull/25069))
+- Provide type context for boolean operands ([#25070](https://github.com/astral-sh/ruff/pull/25070))
+- Selectively promote a union of homogeneous fixed-length tuples to a single variadic tuple ([#24705](https://github.com/astral-sh/ruff/pull/24705))
+- Support narrowing on `__class__` checks ([#24997](https://github.com/astral-sh/ruff/pull/24997))
+- Use more precise exception types when catching a union ([#25076](https://github.com/astral-sh/ruff/pull/25076))
+
+### Diagnostics
+
+- Include error context for overload consistency diagnostics ([#24950](https://github.com/astral-sh/ruff/pull/24950))
+
+### Performance
+
+- Cache results in desperate module resolution ([#24977](https://github.com/astral-sh/ruff/pull/24977))
+- Lazily initialize builder when transforming a union type ([#24929](https://github.com/astral-sh/ruff/pull/24929))
+- Project reachability constraints before narrowing ([#24982](https://github.com/astral-sh/ruff/pull/24982))
+- Skip parameter accumulation for object variadics ([#24976](https://github.com/astral-sh/ruff/pull/24976))
+
+### Contributors
+
+- [@MichaReiser](https://github.com/MichaReiser)
+- [@mtshiba](https://github.com/mtshiba)
+- [@dylwil3](https://github.com/dylwil3)
+- [@lerebear](https://github.com/lerebear)
+- [@carljm](https://github.com/carljm)
+- [@charliermarsh](https://github.com/charliermarsh)
+- [@dhruvmanila](https://github.com/dhruvmanila)
+
 ## 0.0.34
 
 Released on 2026-05-01.
