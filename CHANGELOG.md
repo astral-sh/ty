@@ -1,5 +1,52 @@
 # Changelog
 
+## 0.0.36
+
+Released on 2026-05-14.
+
+### Bug fixes
+
+- Fix Go To-Definition for self-imported submodules ([#25106](https://github.com/astral-sh/ruff/pull/25106))
+- Fix `ClassVar[Self]` assignment checks for class objects ([#24657](https://github.com/astral-sh/ruff/pull/24657))
+- Fix attribute access on `Callable`-bounded TypeVars ([#24793](https://github.com/astral-sh/ruff/pull/24793))
+- Fix panic from TypedDict schema cycle with `Self` fields ([#25094](https://github.com/astral-sh/ruff/pull/25094))
+- Fix panic from accessing `args[0]` for `static_assert` ([#25149](https://github.com/astral-sh/ruff/pull/25149))
+- Fix panic from non-name walrus target access ([#25121](https://github.com/astral-sh/ruff/pull/25121))
+- Fix singleton classification for runtime typing objects ([#25099](https://github.com/astral-sh/ruff/pull/25099))
+- Guard self-referential `TypeOf` recursion in generic callables ([#24668](https://github.com/astral-sh/ruff/pull/24668))
+- Preserve lexical ParamSpec scope for returned Callable annotations ([#24909](https://github.com/astral-sh/ruff/pull/24909))
+- Preserve walrus bindings through negated short-circuit conditions ([#25163](https://github.com/astral-sh/ruff/pull/25163))
+- Run full iteration analysis on narrowed typevars ([#25143](https://github.com/astral-sh/ruff/pull/25143))
+
+### LSP server
+
+- Classify TypeVar semantic tokens as type parameters ([#24891](https://github.com/astral-sh/ruff/pull/24891))
+- Emit folding ranges for an entire block ([#25113](https://github.com/astral-sh/ruff/pull/25113))
+- Respect the `includeDeclaration` request parameter ([#24960](https://github.com/astral-sh/ruff/pull/24960))
+- Support TypedDict key completions in incomplete, anonymous contexts ([#25147](https://github.com/astral-sh/ruff/pull/25147))
+
+### Performance
+
+- Bound loop-header analysis for large loops ([#24972](https://github.com/astral-sh/ruff/pull/24972))
+- Convert inference hash maps to boxed slices on finish ([#25102](https://github.com/astral-sh/ruff/pull/25102))
+
+### Core type checking
+
+- Add support for sentinel values ([PEP 661](https://peps.python.org/pep-0661/)) ([#25082](https://github.com/astral-sh/ruff/pull/25082))
+- Hoist path assignment implication checks ([#25107](https://github.com/astral-sh/ruff/pull/25107))
+- Preserve TypedDict keys through dict unpacking ([#24523](https://github.com/astral-sh/ruff/pull/24523))
+- Treat custom enum `__new__` values as dynamic ([#25136](https://github.com/astral-sh/ruff/pull/25136))
+
+### Contributors
+
+- [@RasmusNygren](https://github.com/RasmusNygren)
+- [@charliermarsh](https://github.com/charliermarsh)
+- [@JelleZijlstra](https://github.com/JelleZijlstra)
+- [@Minibrams](https://github.com/Minibrams)
+- [@lerebear](https://github.com/lerebear)
+- [@denyszhak](https://github.com/denyszhak)
+- [@MichaReiser](https://github.com/MichaReiser)
+
 ## 0.0.35
 
 Released on 2026-05-10.
