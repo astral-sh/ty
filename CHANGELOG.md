@@ -1,5 +1,40 @@
 # Changelog
 
+## 0.0.37
+
+Released on 2026-05-16.
+
+### Bug fixes
+
+- Avoid unsound `not in` narrowing ([#25161](https://github.com/astral-sh/ruff/pull/25161))
+- Fix async iteration over narrowed typevars ([#25155](https://github.com/astral-sh/ruff/pull/25155))
+- Fix panic in double-inference for single starred positional TypedDict ([#25176](https://github.com/astral-sh/ruff/pull/25176))
+- Fix panic in disjoint base check ([#25187](https://github.com/astral-sh/ruff/pull/25187))
+- Fix panic in recursive binary inference ([#25189](https://github.com/astral-sh/ruff/pull/25189))
+- Fix panic in cyclic `__new__` ([#25185](https://github.com/astral-sh/ruff/pull/25185))
+- Fix panic in `reveal_protocol`, `reveal_mro`, etc. with keyword arguments ([#25179](https://github.com/astral-sh/ruff/pull/25179))
+- Fix panic in imported overload definition ([#25168](https://github.com/astral-sh/ruff/pull/25168))
+
+### LSP server
+
+- Don't show argument inlay for case-insensitive matches or prefix/suffixes ([#25174](https://github.com/astral-sh/ruff/pull/25174))
+- Reduce CPU usage of the LSP when switching between large changesets ([#25142](https://github.com/astral-sh/ruff/pull/25142))
+
+### Core type checking
+
+- Avoid enforcing `__new__` with custom metaclasses ([#25180](https://github.com/astral-sh/ruff/pull/25180))
+- Make overload public type reachability-aware ([#25171](https://github.com/astral-sh/ruff/pull/25171))
+- Only specialized types of generic class instances should influence variance ([#25124](https://github.com/astral-sh/ruff/pull/25124))
+- Preserve ParamSpec argument context through wrapper calls ([#24934](https://github.com/astral-sh/ruff/pull/24934))
+- Support partially specialized type context for collection literals ([#24506](https://github.com/astral-sh/ruff/pull/24506))
+
+### Contributors
+
+- [@RasmusNygren](https://github.com/RasmusNygren)
+- [@MichaReiser](https://github.com/MichaReiser)
+- [@charliermarsh](https://github.com/charliermarsh)
+- [@ibraheemdev](https://github.com/ibraheemdev)
+
 ## 0.0.36
 
 Released on 2026-05-14.
