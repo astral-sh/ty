@@ -1,5 +1,40 @@
 # Changelog
 
+## 0.0.38
+
+Released on 2026-05-19.
+
+### Bug fixes
+
+- Fix panic in enum literal during cycle recovery ([#25237](https://github.com/astral-sh/ruff/pull/25237))
+- Fix panic from lazy `NewType` base expansion during cycle recovery ([#25234](https://github.com/astral-sh/ruff/pull/25234))
+- Fix class-body global lookup before class binding ([#25224](https://github.com/astral-sh/ruff/pull/25224))
+- Handle aliased dict fallbacks in TypedDict unions ([#25241](https://github.com/astral-sh/ruff/pull/25241))
+- Ignore `_generate_next_value_` with custom construction hooks ([#25210](https://github.com/astral-sh/ruff/pull/25210))
+
+### LSP server
+
+- Fix find references for `except` handlers ([#25231](https://github.com/astral-sh/ruff/pull/25231))
+- Preserve delimiters when folding expressions ([#24999](https://github.com/astral-sh/ruff/pull/24999))
+- Use incremental file walk on `.gitignore` changes ([#25183](https://github.com/astral-sh/ruff/pull/25183))
+
+### Core type checking
+
+- Add first-class support for enum complements ([#24961](https://github.com/astral-sh/ruff/pull/24961))
+- Allow known non-field writes on frozen dataclass subclasses ([#25087](https://github.com/astral-sh/ruff/pull/25087))
+- Ignore generic specialization in layout compatibility checks ([#25178](https://github.com/astral-sh/ruff/pull/25178))
+- Preserve short-circuit bindings in all condition consumers ([#25160](https://github.com/astral-sh/ruff/pull/25160))
+- Support class decorators ([#25091](https://github.com/astral-sh/ruff/pull/25091))
+- Support custom `_generate_next_value_` methods in enums ([#25196](https://github.com/astral-sh/ruff/pull/25196))
+
+### Contributors
+
+- [@MatthewMckee4](https://github.com/MatthewMckee4)
+- [@MichaReiser](https://github.com/MichaReiser)
+- [@charliermarsh](https://github.com/charliermarsh)
+- [@lerebear](https://github.com/lerebear)
+- [@thejchap](https://github.com/thejchap)
+
 ## 0.0.37
 
 Released on 2026-05-16.
