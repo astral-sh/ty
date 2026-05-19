@@ -82,7 +82,7 @@ def update_schemastore(
     ).strip()
     branch = f"update-ty-{current_sha}"
     check_call(
-        ["git", "switch", "-c", branch],
+        ["git", "switch", "-C", branch],
         cwd=schemastore_path,
     )
     check_call(
