@@ -4,7 +4,7 @@
 
 Released on 2026-05-22.
 
-This release removes the Python 3.9 branches from our vendored standard library stubs; ty now has "full" support for
+This release removes the Python 3.9 branches from our vendored standard library stubs. ty now only has "full" support for
 Python 3.10 and later, but will still report version-specific syntax errors and other diagnostics when `--python-version 3.9`
 is provided via the CLI.
 
