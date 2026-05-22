@@ -1,5 +1,59 @@
 # Changelog
 
+## 0.0.39
+
+Released on 2026-05-22.
+
+This release removes the Python 3.9 branches from our vendored standard library stubs. ty now only has "full" support for
+Python 3.10 and later, but will still report version-specific syntax errors and other diagnostics when `--python-version 3.9`
+is provided via the CLI.
+
+### Bug fixes
+
+- Avoid panicking on `__new__` assignments to classes ([#25282](https://github.com/astral-sh/ruff/pull/25282))
+- Preserve declaration order when synthesizing class fields ([#25249](https://github.com/astral-sh/ruff/pull/25249))
+- Respect `dict`-compatible fallbacks in TypedDict unions ([#25242](https://github.com/astral-sh/ruff/pull/25242))
+- Retain recursively-defined state in binary expressions ([#25277](https://github.com/astral-sh/ruff/pull/25277))
+
+### LSP server
+
+- Add Quick Fix to remove redundant cast ([#25211](https://github.com/astral-sh/ruff/pull/25211))
+- Classify property declaration semantic tokens ([#25322](https://github.com/astral-sh/ruff/pull/25322))
+- Escape HTML syntax in docstring rendering ([#25247](https://github.com/astral-sh/ruff/pull/25247))
+- Prefer symbols from standard library over those of the same name from third party libraries for import completions. ([#25108](https://github.com/astral-sh/ruff/pull/25108))
+- Support type aliases in document symbols ([#25302](https://github.com/astral-sh/ruff/pull/25302))
+
+### Diagnostics
+
+- Add error context for extra callable parameters ([#25269](https://github.com/astral-sh/ruff/pull/25269))
+
+### Performance
+
+- Avoid exponential blow-up in fall-through narrowing ([#25278](https://github.com/astral-sh/ruff/pull/25278))
+- Speed up include filtering for projects with many literal include patterns ([#25266](https://github.com/astral-sh/ruff/pull/25266))
+
+### Core type checking
+
+- Allow enum member accesses on `self` ([#25077](https://github.com/astral-sh/ruff/pull/25077))
+- Emit a diagnostic for subclassing with `order=True` ([#21704](https://github.com/astral-sh/ruff/pull/21704))
+- Full-scope bidirectional inference for unconstrained container literals ([#25279](https://github.com/astral-sh/ruff/pull/25279))
+- Infer `dict(TypedDict)` as `dict[str, object]` ([#24852](https://github.com/astral-sh/ruff/pull/24852))
+- Refine Callable class-decorator fallback for unknown results ([#25250](https://github.com/astral-sh/ruff/pull/25250))
+- Reject incompatible explicit variance in generic base classes ([#25327](https://github.com/astral-sh/ruff/pull/25327))
+- Support multi-inference through type aliases ([#25245](https://github.com/astral-sh/ruff/pull/25245))
+- Sync vendored typeshed stubs ([#25271](https://github.com/astral-sh/ruff/pull/25271), [#25172](https://github.com/astral-sh/ruff/pull/25172))
+
+### Contributors
+
+- [@ibraheemdev](https://github.com/ibraheemdev)
+- [@MatthewMckee4](https://github.com/MatthewMckee4)
+- [@sqqueak](https://github.com/sqqueak)
+- [@lerebear](https://github.com/lerebear)
+- [@sharkdp](https://github.com/sharkdp)
+- [@dhimasardinata](https://github.com/dhimasardinata)
+- [@MichaReiser](https://github.com/MichaReiser)
+- [@charliermarsh](https://github.com/charliermarsh)
+
 ## 0.0.38
 
 Released on 2026-05-19.
