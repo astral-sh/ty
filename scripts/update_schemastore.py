@@ -157,10 +157,12 @@ def determine_git_protocol(argv: list[str] | None = None) -> GitProtocol:
 
 def main() -> None:
     expected_ruff_revision = check_output(
-        ["git", "ls-tree", "main", "--format", "%(objectname)", "ruff"], cwd=TY_ROOT
+        ["git", "ls-tree", "main", "--format", "%(objectname)", "ruff"], cwd=TY_ROOT,
+        text=True,
     ).strip()
     actual_ruff_revision = check_output(
-        ["git", "-C", "ruff", "rev-parse", "HEAD"], cwd=TY_ROOT
+        ["git", "-C", "ruff", "rev-parse", "HEAD"], cwd=TY_ROOT,
+        text=True,
     ).strip()
 
     if expected_ruff_revision != actual_ruff_revision:
