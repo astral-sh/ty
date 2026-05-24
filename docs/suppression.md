@@ -5,7 +5,7 @@ entirely) to silence false positives or permissible violations.
 
 !!! note
 
-    To disable a rule entirely, set it to the `ignore` level as described in [rule levels](rules.md/#rule-levels).
+    To disable a rule entirely, set it to the `ignore` level as described in [rule levels](rules.md#rule-levels).
 
 ## ty suppression comments
 
@@ -54,7 +54,7 @@ sum_three_numbers(3, 2, "1")
 !!! note
 
     Enumerating rule names (e.g., `[rule1, rule2]`) is optional. However, we strongly recommend
-    including suppressing specific rules to avoid accidental suppression of other errors.
+    including specific rules to avoid accidental suppression of other errors.
 
 ## Standard suppression comments
 
@@ -75,7 +75,7 @@ sum_three_numbers("one", 5)  # type: ignore
 sum_three_numbers("one", 5, 2)  # type: ignore[arg-type, ty:invalid-argument-type]
 ```
 
-## Multiple suppressions comments
+## Multiple suppression comments
 
 To suppress a typing error on a line that already has a suppression comment from another tool,
 add the `# ty: ignore` comment to the same line.
