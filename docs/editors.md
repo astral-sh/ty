@@ -137,15 +137,7 @@ ty can be utilized as a language server via the built-in [Eglot](https://www.gnu
 
 If you prefer to view ty's diagnostics through [Flycheck](https://www.flycheck.org/), the
 [flycheck-eglot](https://github.com/flycheck/flycheck-eglot) package bridges Eglot's diagnostics
-to Flycheck:
-
-```elisp
-(use-package flycheck-eglot
-  :ensure t
-  :after (flycheck eglot)
-  :config
-  (global-flycheck-eglot-mode 1))
-```
+to Flycheck.
 
 ## Other editors
 
