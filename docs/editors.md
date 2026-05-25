@@ -130,10 +130,15 @@ ty can be utilized as a language server via the built-in [Eglot](https://www.gnu
 ```elisp
 (with-eval-after-load 'eglot
   (add-to-list 'eglot-server-programs
-               '(python-base-mode . ("ty" "server"))))
+               '((python-base-mode :language-id "python") . ("ty" "server"))))
 
 (add-hook 'python-base-mode-hook 'eglot-ensure)
 ```
+
+The `:language-id "python"` entry ensures Eglot advertises the document as
+`python` rather than `python-base` when registering `python-base-mode`. The ty
+server only recognises the `python` language identifier and will silently skip
+documents that announce themselves under any other identifier.
 
 If you prefer to view ty's diagnostics through [Flycheck](https://www.flycheck.org/), the
 [flycheck-eglot](https://github.com/flycheck/flycheck-eglot) package bridges Eglot's diagnostics
