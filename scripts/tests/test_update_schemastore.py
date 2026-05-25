@@ -3,7 +3,6 @@
 from __future__ import annotations
 
 import sys
-from io import StringIO
 from pathlib import Path
 from unittest.mock import patch
 
@@ -11,7 +10,7 @@ import pytest
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
-import update_schemastore  # noqa: E402
+import update_schemastore  
 
 SHA_EXPECTED = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
 SHA_ACTUAL = "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
@@ -48,10 +47,7 @@ def test_revision_mismatch_message_contains_no_bytes_repr(
     captured = capsys.readouterr()
 
     # The raw bytes repr must never appear in the output.
-    assert "b'" not in captured.out, (
-        f"Output contains bytes repr: {captured.out!r}"
-    )
-
+    assert "b'" not in captured.out, f"Output contains bytes repr: {captured.out!r}"
     # The actual SHA strings must appear cleanly.
     assert SHA_ACTUAL in captured.out
     assert SHA_EXPECTED in captured.out
