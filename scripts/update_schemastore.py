@@ -157,17 +157,19 @@ def determine_git_protocol(argv: list[str] | None = None) -> GitProtocol:
 
 def main() -> None:
     expected_ruff_revision = check_output(
-        ["git", "ls-tree", "main", "--format", "%(objectname)", "ruff"], cwd=TY_ROOT,
+        ["git", "ls-tree", "main", "--format", "%(objectname)", "ruff"],
+        cwd=TY_ROOT,
         text=True,
     ).strip()
     actual_ruff_revision = check_output(
-        ["git", "-C", "ruff", "rev-parse", "HEAD"], cwd=TY_ROOT,
+        ["git", "-C", "ruff", "rev-parse", "HEAD"],
+        cwd=TY_ROOT,
         text=True,
     ).strip()
 
     if expected_ruff_revision != actual_ruff_revision:
         print(
-            f"The ruff submodule is at {actual_ruff_revision} but main expects {expected_ruff_revision}"
+            f"The ruff submodule is at {actual_ruff_revision!r} but main expects {expected_ruff_revision!r}"
         )
         match input(
             "How do you want to proceed (u=reset submodule, n=abort, y=continue)? "
