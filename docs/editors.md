@@ -130,7 +130,7 @@ ty can be utilized as a language server via the built-in [Eglot](https://www.gnu
 ```elisp
 (with-eval-after-load 'eglot
   (add-to-list 'eglot-server-programs
-               '(python-base-mode . ("ty" "server"))))
+               '((python-base-mode :language-id "python") . ("ty" "server"))))
 
 (add-hook 'python-base-mode-hook 'eglot-ensure)
 ```
