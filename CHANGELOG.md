@@ -1,5 +1,42 @@
 # Changelog
 
+## 0.0.40
+
+Released on 2026-05-27.
+
+### Bug fixes
+
+- Accept complete enum-literal alias unions as enums ([#25341](https://github.com/astral-sh/ruff/pull/25341))
+- Fix diagnostics in ignored folders after adding new files ([#25236](https://github.com/astral-sh/ruff/pull/25236))
+- Show `LiteralString` when hovering over an inline of a literal string ([#25373](https://github.com/astral-sh/ruff/pull/25373))
+
+### LSP server
+
+- Follow aliases when resolving stub mappings ([#25328](https://github.com/astral-sh/ruff/pull/25328))
+- Treat Python notebook text documents as Python sources ([#25393](https://github.com/astral-sh/ruff/pull/25393))
+- Recover incomplete list comprehension elements ([#25326](https://github.com/astral-sh/ruff/pull/25326))
+
+### Diagnostics
+
+- Add help message to invalid-generic-class variance diagnostic ([#25385](https://github.com/astral-sh/ruff/pull/25385))
+
+### Core type checking
+
+- Ignore and reject annotations on non-name targets ([#25324](https://github.com/astral-sh/ruff/pull/25324))
+- Infer class attributes assigned by metaclass initialization ([#25342](https://github.com/astral-sh/ruff/pull/25342))
+- Reject inconsistent generic bases in dynamic classes ([#25413](https://github.com/astral-sh/ruff/pull/25413))
+- Resolve enum names for all unions arms in literal enum subsets ([#25379](https://github.com/astral-sh/ruff/pull/25379))
+- Support `typing.TypeForm` ([#25334](https://github.com/astral-sh/ruff/pull/25334))
+- Use constraint sets as pending state in `SpecializationBuilder` ([#24540](https://github.com/astral-sh/ruff/pull/24540))
+
+### Contributors
+
+- [@anuraaga](https://github.com/anuraaga)
+- [@dcreager](https://github.com/dcreager)
+- [@charliermarsh](https://github.com/charliermarsh)
+- [@MichaReiser](https://github.com/MichaReiser)
+- [@Dev-X25874](https://github.com/Dev-X25874)
+
 ## 0.0.39
 
 Released on 2026-05-22.
