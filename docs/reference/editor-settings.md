@@ -510,6 +510,67 @@ include symbols not currently in scope but available in your environment.
     }
     ```
 
+### `completeFunctionParentheses`
+
+Whether accepting a function, method, or class completion also inserts parentheses and places the
+cursor inside them.
+
+**Default value**: `false`
+
+**Type**: `boolean`
+
+**Example usage**:
+
+=== "VS Code"
+
+    ```json
+    {
+      "ty.completions.completeFunctionParentheses": true
+    }
+    ```
+
+=== "Neovim"
+
+    ```lua
+    -- Neovim >=0.11:
+    vim.lsp.config('ty', {
+      settings = {
+        ty = {
+          completions = {
+            completeFunctionParentheses = true,
+          },
+        },
+      },
+    })
+
+    -- Neovim <0.11:
+    require('lspconfig').ty.setup({
+      settings = {
+        ty = {
+          completions = {
+            completeFunctionParentheses = true,
+          },
+        },
+      },
+    })
+    ```
+
+=== "Zed"
+
+    ```json
+    {
+      "lsp": {
+        "ty": {
+          "settings": {
+            "completions": {
+              "completeFunctionParentheses": true
+            }
+          }
+        }
+      }
+    }
+    ```
+
 ______________________________________________________________________
 
 ## VS Code specific
