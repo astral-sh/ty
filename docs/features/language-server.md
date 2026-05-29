@@ -117,38 +117,40 @@ within a few milliseconds, even on large projects.
 
 <!-- markdownlint-disable MD060 -->
 
-| Feature                                               | Status           | Notes                                                         |
-| ----------------------------------------------------- | ---------------- | ------------------------------------------------------------- |
-| [`callHierarchy/*`][callhierarchy]                    | ✅ Supported     |                                                               |
-| [`notebookDocument/*`][notebookdocument]              | ✅ Supported     |                                                               |
-| [`textDocument/codeAction`][codeaction]               | ✅ Supported     | Quick fixes                                                   |
-| [`textDocument/codeLens`][codelens]                   | ❌ Not supported |                                                               |
-| [`textDocument/completion`][completion]               | ✅ Supported     |                                                               |
-| [`textDocument/declaration`][declaration]             | ✅ Supported     |                                                               |
-| [`textDocument/definition`][definition]               | ✅ Supported     |                                                               |
-| [`textDocument/diagnostic`][diagnostic]               | ✅ Supported     |                                                               |
-| [`textDocument/documentColor`][documentcolor]         | ❌ Not supported |                                                               |
-| [`textDocument/documentHighlight`][documenthighlight] | ✅ Supported     |                                                               |
-| [`textDocument/documentLink`][documentlink]           | ❌ Not supported |                                                               |
-| [`textDocument/documentSymbol`][documentsymbol]       | ✅ Supported     |                                                               |
-| [`textDocument/foldingRange`][foldingrange]           | ✅ Supported     |                                                               |
-| [`textDocument/formatting`][formatting]               | —                | Use [Ruff] for formatting                                     |
-| [`textDocument/hover`][hover]                         | ✅ Supported     |                                                               |
-| [`textDocument/implementation`][implementation]       | ❌ Not supported | [#3514]                                                       |
-| [`textDocument/inlayHint`][inlayhint]                 | ✅ Supported     |                                                               |
-| [`textDocument/onTypeFormatting`][ontypeformatting]   | —                | [Ruff #16829](https://github.com/astral-sh/ruff/issues/16829) |
-| [`textDocument/prepareRename`][preparerename]         | ✅ Supported     |                                                               |
-| [`textDocument/rangeFormatting`][rangeformatting]     | —                | Use [Ruff] for formatting                                     |
-| [`textDocument/references`][references]               | ✅ Supported     |                                                               |
-| [`textDocument/rename`][rename]                       | ✅ Supported     |                                                               |
-| [`textDocument/selectionRange`][selectionrange]       | ✅ Supported     |                                                               |
-| [`textDocument/semanticTokens`][semantictokens]       | ✅ Supported     |                                                               |
-| [`textDocument/signatureHelp`][signaturehelp]         | ✅ Supported     |                                                               |
-| [`textDocument/typeDefinition`][typedefinition]       | ✅ Supported     |                                                               |
-| [`typeHierarchy/*`][typehierarchy]                    | ✅ Supported     |                                                               |
-| [`workspace/diagnostic`][workspacediagnostic]         | ✅ Supported     |                                                               |
-| [`workspace/symbol`][workspacesymbol]                 | ✅ Supported     |                                                               |
-| [`workspace/willRenameFiles`][willrenamefiles]        | ❌ Not supported | [#1560]                                                       |
+| Feature                                                     | Status           | Notes                                                         |
+| ----------------------------------------------------------- | ---------------- | ------------------------------------------------------------- |
+| [`callHierarchy/*`][callhierarchy]                          | ✅ Supported     |                                                               |
+| [`notebookDocument/*`][notebookdocument]                    | ✅ Supported     |                                                               |
+| [`textDocument/codeAction`][codeaction]                     | ✅ Supported     | Quick fixes                                                   |
+| [`textDocument/codeLens`][codelens]                         | ❌ Not supported |                                                               |
+| [`textDocument/completion`][completion]                     | ✅ Supported     |                                                               |
+| [`textDocument/declaration`][declaration]                   | ✅ Supported     |                                                               |
+| [`textDocument/definition`][definition]                     | ✅ Supported     |                                                               |
+| [`textDocument/diagnostic`][diagnostic]                     | ✅ Supported     |                                                               |
+| [`textDocument/documentColor`][documentcolor]               | ❌ Not supported |                                                               |
+| [`textDocument/documentHighlight`][documenthighlight]       | ✅ Supported     |                                                               |
+| [`textDocument/documentLink`][documentlink]                 | ❌ Not supported |                                                               |
+| [`textDocument/documentSymbol`][documentsymbol]             | ✅ Supported     |                                                               |
+| [`textDocument/foldingRange`][foldingrange]                 | ✅ Supported     |                                                               |
+| [`textDocument/formatting`][formatting]                     | —                | Use [Ruff] for formatting                                     |
+| [`textDocument/hover`][hover]                               | ✅ Supported     |                                                               |
+| [`textDocument/implementation`][implementation]             | ❌ Not supported | [#3514]                                                       |
+| [`textDocument/inlayHint`][inlayhint]                       | ✅ Supported     |                                                               |
+| [`textDocument/onTypeFormatting`][ontypeformatting]         | —                | [Ruff #16829](https://github.com/astral-sh/ruff/issues/16829) |
+| [`textDocument/prepareCallHierarchy`][preparecallhierarchy] | ✅ Supported     |                                                               |
+| [`textDocument/prepareRename`][preparerename]               | ✅ Supported     |                                                               |
+| [`textDocument/prepareTypeHierarchy`][preparetypehierarchy] | ✅ Supported     |                                                               |
+| [`textDocument/rangeFormatting`][rangeformatting]           | —                | Use [Ruff] for formatting                                     |
+| [`textDocument/references`][references]                     | ✅ Supported     |                                                               |
+| [`textDocument/rename`][rename]                             | ✅ Supported     |                                                               |
+| [`textDocument/selectionRange`][selectionrange]             | ✅ Supported     |                                                               |
+| [`textDocument/semanticTokens`][semantictokens]             | ✅ Supported     |                                                               |
+| [`textDocument/signatureHelp`][signaturehelp]               | ✅ Supported     |                                                               |
+| [`textDocument/typeDefinition`][typedefinition]             | ✅ Supported     |                                                               |
+| [`typeHierarchy/*`][typehierarchy]                          | ✅ Supported     |                                                               |
+| [`workspace/diagnostic`][workspacediagnostic]               | ✅ Supported     |                                                               |
+| [`workspace/symbol`][workspacesymbol]                       | ✅ Supported     |                                                               |
+| [`workspace/willRenameFiles`][willrenamefiles]              | ❌ Not supported | [#1560]                                                       |
 
 [#1560]: https://github.com/astral-sh/ty/issues/1560
 [#3514]: https://github.com/astral-sh/ty/issues/3514
@@ -171,7 +173,9 @@ within a few milliseconds, even on large projects.
 [language server]: https://microsoft.github.io/language-server-protocol/
 [notebookdocument]: https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#notebookDocument_synchronization
 [ontypeformatting]: https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#textDocument_onTypeFormatting
+[preparecallhierarchy]: https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#textDocument_prepareCallHierarchy
 [preparerename]: https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#textDocument_prepareRename
+[preparetypehierarchy]: https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#textDocument_prepareTypeHierarchy
 [rangeformatting]: https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#textDocument_rangeFormatting
 [references]: https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#textDocument_references
 [rename]: https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#textDocument_rename
