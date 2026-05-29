@@ -145,14 +145,13 @@ within a few milliseconds, even on large projects.
 | [`textDocument/semanticTokens`][semantictokens]       | ✅ Supported     |                                                               |
 | [`textDocument/signatureHelp`][signaturehelp]         | ✅ Supported     |                                                               |
 | [`textDocument/typeDefinition`][typedefinition]       | ✅ Supported     |                                                               |
-| [`typeHierarchy/*`][typehierarchy]                    | ❌ Not supported | [#534]                                                        |
+| [`typeHierarchy/*`][typehierarchy]                    | ✅ Supported     |                                                               |
 | [`workspace/diagnostic`][workspacediagnostic]         | ✅ Supported     |                                                               |
 | [`workspace/symbol`][workspacesymbol]                 | ✅ Supported     |                                                               |
 | [`workspace/willRenameFiles`][willrenamefiles]        | ❌ Not supported | [#1560]                                                       |
 
 [#1560]: https://github.com/astral-sh/ty/issues/1560
 [#1976]: https://github.com/astral-sh/ty/issues/1976
-[#534]: https://github.com/astral-sh/ty/issues/534
 [callhierarchy]: https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#callHierarchy_incomingCalls
 [codeaction]: https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#textDocument_codeAction
 [codelens]: https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#textDocument_codeLens
