@@ -119,7 +119,7 @@ within a few milliseconds, even on large projects.
 
 | Feature                                               | Status           | Notes                                                         |
 | ----------------------------------------------------- | ---------------- | ------------------------------------------------------------- |
-| [`callHierarchy/*`][callhierarchy]                    | ❌ Not supported | [#1976]                                                       |
+| [`callHierarchy/*`][callhierarchy]                    | ✅ Supported     |                                                               |
 | [`notebookDocument/*`][notebookdocument]              | ✅ Supported     |                                                               |
 | [`textDocument/codeAction`][codeaction]               | ✅ Supported     | Quick fixes                                                   |
 | [`textDocument/codeLens`][codelens]                   | ❌ Not supported |                                                               |
@@ -134,7 +134,7 @@ within a few milliseconds, even on large projects.
 | [`textDocument/foldingRange`][foldingrange]           | ✅ Supported     |                                                               |
 | [`textDocument/formatting`][formatting]               | —                | Use [Ruff] for formatting                                     |
 | [`textDocument/hover`][hover]                         | ✅ Supported     |                                                               |
-| [`textDocument/implementation`][implementation]       | ❌ Not supported |                                                               |
+| [`textDocument/implementation`][implementation]       | ❌ Not supported | [#3514]                                                       |
 | [`textDocument/inlayHint`][inlayhint]                 | ✅ Supported     |                                                               |
 | [`textDocument/onTypeFormatting`][ontypeformatting]   | —                | [Ruff #16829](https://github.com/astral-sh/ruff/issues/16829) |
 | [`textDocument/prepareRename`][preparerename]         | ✅ Supported     |                                                               |
@@ -151,7 +151,7 @@ within a few milliseconds, even on large projects.
 | [`workspace/willRenameFiles`][willrenamefiles]        | ❌ Not supported | [#1560]                                                       |
 
 [#1560]: https://github.com/astral-sh/ty/issues/1560
-[#1976]: https://github.com/astral-sh/ty/issues/1976
+[#3514]: https://github.com/astral-sh/ty/issues/3514
 [callhierarchy]: https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#callHierarchy_incomingCalls
 [codeaction]: https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#textDocument_codeAction
 [codelens]: https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#textDocument_codeLens
