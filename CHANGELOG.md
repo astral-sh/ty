@@ -1,5 +1,33 @@
 # Changelog
 
+## 0.0.42
+
+Released on 2026-06-01.
+
+### Bug fixes
+
+- Fix narrowing of enum literal unions by member identity ([#25520](https://github.com/astral-sh/ruff/pull/25520))
+- Detect recursive expansion in constraint-set solving ([#25442](https://github.com/astral-sh/ruff/pull/25442))
+
+### Core type checking
+
+- Support tagged-union narrowing for nominal types ([#24916](https://github.com/astral-sh/ruff/pull/24916))
+- Extend `Generator` assignability workaround to Python 3.13+ ([#25472](https://github.com/astral-sh/ruff/pull/25472))
+- Sync vendored typeshed stubs ([#25514](https://github.com/astral-sh/ruff/pull/25514))
+
+### Performance
+
+- Avoid redundant work for empty collection context ([#25527](https://github.com/astral-sh/ruff/pull/25527))
+- Deduplicate retained use-def place states ([#25450](https://github.com/astral-sh/ruff/pull/25450))
+- Compact retained semantic maps ([#25238](https://github.com/astral-sh/ruff/pull/25238))
+
+### Contributors
+
+- [@aholyoke](https://github.com/aholyoke)
+- [@carljm](https://github.com/carljm)
+- [@charliermarsh](https://github.com/charliermarsh)
+- [@sharkdp](https://github.com/sharkdp)
+
 ## 0.0.41
 
 Released on 2026-05-31.
