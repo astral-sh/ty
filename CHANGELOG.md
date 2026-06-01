@@ -1,5 +1,55 @@
 # Changelog
 
+## 0.0.41
+
+Released on 2026-05-31.
+
+### Bug fixes
+
+- Avoid panic for deferred dataclass field annotations ([#25444](https://github.com/astral-sh/ruff/pull/25444))
+- Avoid panic from cycle in function decorator inference ([#25475](https://github.com/astral-sh/ruff/pull/25475))
+- Ignore rejected assignments for synthesized bindings ([#25340](https://github.com/astral-sh/ruff/pull/25340))
+- Infer `bool` for `not` applied to dynamic values ([#25445](https://github.com/astral-sh/ruff/pull/25445))
+- Use diagnostic message as tie-breaker when sorting ([#25424](https://github.com/astral-sh/ruff/pull/25424))
+
+### LSP server
+
+- Add call hierarchy support ([#25338](https://github.com/astral-sh/ruff/pull/25338))
+- Add function parentheses completion ([#25305](https://github.com/astral-sh/ruff/pull/25305))
+- Display docs for matching parameter when hovering over the name of an argument passed by keyword ([#25283](https://github.com/astral-sh/ruff/pull/25283))
+- Document `completeFunctionParentheses` editor setting ([#3513](https://github.com/astral-sh/ty/pull/3513))
+
+### Diagnostics
+
+- Introduce opt-in `missing-override-decorator` rule ([#25111](https://github.com/astral-sh/ruff/pull/25111))
+- Improve diagnostics for syntax errors in forward annotations ([#25158](https://github.com/astral-sh/ruff/pull/25158))
+- Improve diagnostic for failed assignment to a `Callable` type ([#25308](https://github.com/astral-sh/ruff/pull/25308))
+
+### Core type checking
+
+- Narrow bound method overloads by receiver ([#24707](https://github.com/astral-sh/ruff/pull/24707))
+- Add disjointness for protocol method members ([#25315](https://github.com/astral-sh/ruff/pull/25315))
+- Avoid treating metaclass declarations as populated values ([#25432](https://github.com/astral-sh/ruff/pull/25432))
+- Use `TypeForm` in `ty_extensions` ([#25421](https://github.com/astral-sh/ruff/pull/25421))
+
+### Performance
+
+- Avoid storing redundant reachability indexes ([#25453](https://github.com/astral-sh/ruff/pull/25453))
+- Compact retained semantic arrays ([#25454](https://github.com/astral-sh/ruff/pull/25454))
+- Remove excess capacity from more Salsa cached collections ([#25411](https://github.com/astral-sh/ruff/pull/25411))
+- Use compact sets for more immutable fields ([#25476](https://github.com/astral-sh/ruff/pull/25476))
+- Use ThinVec for sparse kwargs bindings ([#25457](https://github.com/astral-sh/ruff/pull/25457))
+
+### Contributors
+
+- [@sharkdp](https://github.com/sharkdp)
+- [@charliermarsh](https://github.com/charliermarsh)
+- [@lerebear](https://github.com/lerebear)
+- [@AlexWaygood](https://github.com/AlexWaygood)
+- [@MichaReiser](https://github.com/MichaReiser)
+- [@mhuen](https://github.com/mhuen)
+- [@jelle-openai](https://github.com/jelle-openai)
+
 ## 0.0.40
 
 Released on 2026-05-27.
