@@ -51,7 +51,7 @@ echo "Running rooster..."
 cd "$project_root"
 
 # Generate the changelog and bump versions
-uv run --isolated --only-group release \
+uv run --isolated --only-group release --default-index https://pypi.org/simple \
     rooster release "$@"
 
 # If the typeshed source commit changed and the changelog mentions a typeshed
