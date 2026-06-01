@@ -95,6 +95,7 @@ plugins:
           - reference/configuration.md
           - reference/typing-faq.md
           - reference/rules.md
+          - reference/rule-mapping.md
           - reference/cli.md
           - reference/exit-codes.md
           - reference/environment.md
@@ -136,6 +137,7 @@ nav:
       - Configuration: reference/configuration.md
       - Typing FAQ: reference/typing-faq.md
       - Rules: reference/rules.md
+      - Rule mapping (mypy/pyright): reference/rule-mapping.md
       - CLI: reference/cli.md
       - Exit codes: reference/exit-codes.md
       - Environment variables: reference/environment.md
