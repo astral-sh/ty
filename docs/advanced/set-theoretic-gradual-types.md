@@ -75,12 +75,31 @@ def as_json(obj: Serializable) -> str:
 Python has a gradual type system that allows developers to choose the level of type safety. You
 can start from an unannotated program and gradually add more annotations to enforce certain constraints.
 Without annotations, type checkers can still infer meaningful types in many cases, but there
-are limits to this. If a function has an untyped parameter, type checkers will assume that it is
-okay to pass in values of an arbitrary type. In the type system, this is modelled by adding a new
-primitive, the *dynamic type* `Any`. Some type checkers also use `Unknown` to describe an implicit
-appearance of the dynamic type (like for an unannotated function parameter), but for the purposes
-of this article, those two notions are the same. You might have noticed that the dynamic type doesn't
-fit into our sets-of-values picture described above. Instead, we've not been entirely accurate in
+are limits to this. Consider the following code, where the first function is stricly type-annotated,
+but the second is not:
+```py
+def square(x: int) -> int:
+    return x**2
+
+def print_square(number):
+    print(f"The square of {number} is {square(number)}")
+```
+There is no annotation for the `number` parameter of `print_square`, and since a type checker cannot
+possibly know all callers of this function (imagine this is part of the public API of a library),
+`number` could really be anything. However, it is important to understand that this does not mean
+that we can assign a type of `object` to that parameter. If we were to do that, the `square(number)`
+call would fail, since `object` is not assignable to `int`.
+It turns out that we need an entirely new concept to handle this. In a gradual type system,
+we model this by adding a new primitive, the *dynamic type* `Any`, which represents a arbitrary
+type (some type checkers also use `Unknown` for the implicitly occuring version of the dynamic type,
+but for the purposes of this discussion, those two are the same). 
+
+This dynamic type does not
+fit into our sets-of-objects picture described above. Instead, we need to add a layer on top of what
+we discussed in the first part, and generally think of Python types as *gradual types* that represent
+a *set of possible materializations*, where each materialization is a static type as discussed above.
+Again, there are two extremes. Fully-static types are gradual
+types that can only materialize to exactly one type. **`int` = [int]**
 
 
 <!--
