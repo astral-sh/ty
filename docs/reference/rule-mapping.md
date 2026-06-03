@@ -79,6 +79,11 @@ emitted, or is folded into a broader category that already appears for another t
 | `unsupported-operator`          | `operator`           | `reportOperatorIssue`                |
 | `unused-ignore-comment`         | `unused-ignore`      | `reportUnnecessaryTypeIgnoreComment` |
 
+> **Note**: mypy's `unimported-reveal` is off by default; it is only reported when the error code is
+> explicitly enabled — for example with `# mypy: enable-error-code=unimported-reveal` inline, or
+> `enable_error_code = ["unimported-reveal"]` under `[tool.mypy]`. ty reports `undefined-reveal`
+> without any extra configuration.
+
 The full list of ty rules — including those without a direct equivalent above — is in
 [Rules](rules.md). Contributions to extend this mapping are welcome via pull request to the
 [`ty` repository](https://github.com/astral-sh/ty); see issue
