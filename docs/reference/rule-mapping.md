@@ -71,7 +71,7 @@ emitted, or is folded into a broader category that already appears for another t
 | `redundant-cast`                | `redundant-cast`     | `reportUnnecessaryCast`              |
 | `too-many-positional-arguments` | `call-arg`           | `reportCallIssue`                    |
 | `type-assertion-failure`        | `assert-type`        | `reportAssertTypeFailure`            |
-| `undefined-reveal`              |                      |                                      |
+| `undefined-reveal`              | `unimported-reveal`  |                                      |
 | `unknown-argument`              | `call-arg`           | `reportCallIssue`                    |
 | `unresolved-attribute`          | `attr-defined`       | `reportAttributeAccessIssue`         |
 | `unresolved-import`             | `import-not-found`   | `reportMissingImports`               |
