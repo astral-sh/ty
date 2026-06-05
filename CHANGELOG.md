@@ -1,5 +1,38 @@
 # Changelog
 
+## 0.0.44
+
+Released on 2026-06-04.
+
+### Bug fixes
+
+- Avoid treating `sys.implementation.version` like `sys.version_info` ([#25608](https://github.com/astral-sh/ruff/pull/25608))
+- Fix anchor point for override diagnostics ([#25621](https://github.com/astral-sh/ruff/pull/25621))
+
+### LSP server
+
+- Show type alias value on hover ([#25381](https://github.com/astral-sh/ruff/pull/25381))
+
+### Performance
+
+- Add caching for pattern match narrowing ([#25613](https://github.com/astral-sh/ruff/pull/25613))
+- Compact retained definition and expression identities ([#25606](https://github.com/astral-sh/ruff/pull/25606))
+- Reuse expression cache for TypedDict union inference ([#25643](https://github.com/astral-sh/ruff/pull/25643))
+- Upgrade Salsa ([#25545](https://github.com/astral-sh/ruff/pull/25545))
+
+### Core type checking
+
+- Enable narrowing for unions of TypedDict ([#25188](https://github.com/astral-sh/ruff/pull/25188))
+
+### Contributors
+
+- [@lerebear](https://github.com/lerebear)
+- [@MichaReiser](https://github.com/MichaReiser)
+- [@carljm](https://github.com/carljm)
+- [@pierrem964](https://github.com/pierrem964)
+- [@charliermarsh](https://github.com/charliermarsh)
+- [@Hugo-Polloli](https://github.com/Hugo-Polloli)
+
 ## 0.0.43
 
 Released on 2026-06-03.
