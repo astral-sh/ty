@@ -80,6 +80,7 @@ plugins:
           - installation.md
           - type-checking.md
           - editors.md
+          - coming-from-mypy-or-pyright.md
         Concepts:
           - configuration.md
           - modules.md
@@ -121,6 +122,7 @@ nav:
       - Installation: installation.md
       - Type checking: type-checking.md
       - Editor integration: editors.md
+      - Coming from mypy, pyright: coming-from-mypy-or-pyright.md
   - Concepts:
       - Configuration: configuration.md
       - Module discovery: modules.md
