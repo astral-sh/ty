@@ -80,6 +80,7 @@ plugins:
           - installation.md
           - type-checking.md
           - editors.md
+          - coming-from-mypy-or-pyright.md
         Concepts:
           - configuration.md
           - modules.md
@@ -95,7 +96,6 @@ plugins:
           - reference/configuration.md
           - reference/typing-faq.md
           - reference/rules.md
-          - reference/rule-mapping.md
           - reference/cli.md
           - reference/exit-codes.md
           - reference/environment.md
@@ -122,6 +122,7 @@ nav:
       - Installation: installation.md
       - Type checking: type-checking.md
       - Editor integration: editors.md
+      - Coming from mypy, pyright: coming-from-mypy-or-pyright.md
   - Concepts:
       - Configuration: configuration.md
       - Module discovery: modules.md
@@ -137,7 +138,6 @@ nav:
       - Configuration: reference/configuration.md
       - Typing FAQ: reference/typing-faq.md
       - Rules: reference/rules.md
-      - Rule mapping (mypy/pyright): reference/rule-mapping.md
       - CLI: reference/cli.md
       - Exit codes: reference/exit-codes.md
       - Environment variables: reference/environment.md
