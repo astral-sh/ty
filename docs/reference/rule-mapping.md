@@ -40,44 +40,44 @@ emitted, or is folded into a broader category that already appears for another t
 
 ## Mapping table
 
-| ty rule                         | mypy error code      | pyright diagnostic                   |
-| ------------------------------- | -------------------- | ------------------------------------ |
-| `call-non-callable`             | `operator`           | `reportCallIssue`                    |
-| `conflicting-declarations`      | `no-redef`           | `reportRedeclaration`                |
-| `cyclic-class-definition`       | `misc`               | `reportGeneralTypeIssues`            |
-| `division-by-zero`              |                      |                                      |
-| `duplicate-base`                | `misc`               | `reportGeneralTypeIssues`            |
-| `empty-body`                    | `empty-body`         | `reportGeneralTypeIssues`            |
-| `inconsistent-mro`              | `misc`               | `reportGeneralTypeIssues`            |
-| `index-out-of-bounds`           | `misc`               | `reportGeneralTypeIssues`            |
-| `invalid-argument-type`         | `arg-type`           | `reportArgumentType`                 |
-| `invalid-assignment`            | `assignment`         | `reportAssignmentType`               |
-| `invalid-attribute-access`      | `assignment`         | `reportAttributeAccessIssue`         |
-| `invalid-await`                 | `misc`               | `reportGeneralTypeIssues`            |
-| `invalid-base`                  | `misc`               | `reportGeneralTypeIssues`            |
-| `invalid-context-manager`       | `misc`               | `reportGeneralTypeIssues`            |
-| `invalid-exception-caught`      | `misc`               | `reportGeneralTypeIssues`            |
-| `invalid-method-override`       | `override`           | `reportIncompatibleMethodOverride`   |
-| `invalid-parameter-default`     | `assignment`         | `reportArgumentType`                 |
-| `invalid-raise`                 | `misc`               | `reportGeneralTypeIssues`            |
-| `invalid-return-type`           | `return-value`       | `reportReturnType`                   |
-| `invalid-type-form`             | `valid-type`         | `reportInvalidTypeForm`              |
-| `missing-argument`              | `call-arg`           | `reportCallIssue`                    |
-| `no-matching-overload`          | `call-overload`      | `reportCallIssue`                    |
-| `not-iterable`                  | `misc`               | `reportGeneralTypeIssues`            |
-| `parameter-already-assigned`    | `call-arg`           | `reportCallIssue`                    |
-| `possibly-missing-attribute`    | `union-attr`         | `reportOptionalMemberAccess`         |
-| `possibly-unresolved-reference` | `possibly-undefined` | `reportPossiblyUnboundVariable`      |
-| `redundant-cast`                | `redundant-cast`     | `reportUnnecessaryCast`              |
-| `too-many-positional-arguments` | `call-arg`           | `reportCallIssue`                    |
-| `type-assertion-failure`        | `assert-type`        | `reportAssertTypeFailure`            |
-| `undefined-reveal`              | `unimported-reveal`  |                                      |
-| `unknown-argument`              | `call-arg`           | `reportCallIssue`                    |
-| `unresolved-attribute`          | `attr-defined`       | `reportAttributeAccessIssue`         |
-| `unresolved-import`             | `import-not-found`   | `reportMissingImports`               |
-| `unresolved-reference`          | `name-defined`       | `reportUndefinedVariable`            |
-| `unsupported-operator`          | `operator`           | `reportOperatorIssue`                |
-| `unused-ignore-comment`         | `unused-ignore`      | `reportUnnecessaryTypeIgnoreComment` |
+| ty rule                         | mypy error code        | pyright diagnostic                                         |
+| ------------------------------- | ---------------------- | ---------------------------------------------------------- |
+| `call-non-callable`             | `operator`             | `reportCallIssue`                                          |
+| `conflicting-declarations`      | `no-redef`             | `reportRedeclaration`                                      |
+| `cyclic-class-definition`       | `misc`                 | `reportGeneralTypeIssues`                                  |
+| `division-by-zero`              |                        |                                                            |
+| `duplicate-base`                | `misc`                 | `reportGeneralTypeIssues`                                  |
+| `empty-body`                    | `empty-body`           |                                                            |
+| `inconsistent-mro`              | `misc`                 | `reportGeneralTypeIssues`                                  |
+| `index-out-of-bounds`           | `misc`                 | `reportGeneralTypeIssues`                                  |
+| `invalid-argument-type`         | `arg-type`             | `reportArgumentType`                                       |
+| `invalid-assignment`            | `assignment`           | `reportAssignmentType`                                     |
+| `invalid-attribute-access`      | `misc`                 | `reportAttributeAccessIssue`                               |
+| `invalid-await`                 | `misc`                 | `reportGeneralTypeIssues`                                  |
+| `invalid-base`                  | `valid-type`           | `reportGeneralTypeIssues`                                  |
+| `invalid-context-manager`       | `misc`, `attr-defined` | `reportGeneralTypeIssues`                                  |
+| `invalid-exception-caught`      | `misc`                 | `reportGeneralTypeIssues`                                  |
+| `invalid-method-override`       | `override`             | `reportIncompatibleMethodOverride`                         |
+| `invalid-parameter-default`     | `assignment`           | `reportArgumentType`                                       |
+| `invalid-raise`                 | `misc`                 | `reportGeneralTypeIssues`                                  |
+| `invalid-return-type`           | `return-value`         | `reportReturnType`                                         |
+| `invalid-type-form`             | `valid-type`           | `reportInvalidTypeForm`                                    |
+| `missing-argument`              | `call-arg`             | `reportCallIssue`                                          |
+| `no-matching-overload`          | `call-overload`        | `reportCallIssue`                                          |
+| `not-iterable`                  | `misc`, `attr-defined` | `reportGeneralTypeIssues`                                  |
+| `parameter-already-assigned`    | `misc`, `call-arg`     | `reportCallIssue`                                          |
+| `possibly-missing-attribute`    | `union-attr`           | `reportOptionalMemberAccess`, `reportAttributeAccessIssue` |
+| `possibly-unresolved-reference` | `possibly-undefined`   | `reportPossiblyUnboundVariable`                            |
+| `redundant-cast`                | `redundant-cast`       | `reportUnnecessaryCast`                                    |
+| `too-many-positional-arguments` | `call-arg`             | `reportCallIssue`                                          |
+| `type-assertion-failure`        | `assert-type`          | `reportAssertTypeFailure`                                  |
+| `undefined-reveal`              | `unimported-reveal`    |                                                            |
+| `unknown-argument`              | `call-arg`             | `reportCallIssue`                                          |
+| `unresolved-attribute`          | `attr-defined`         | `reportAttributeAccessIssue`                               |
+| `unresolved-import`             | `import-not-found`     | `reportMissingImports`                                     |
+| `unresolved-reference`          | `name-defined`         | `reportUndefinedVariable`                                  |
+| `unsupported-operator`          | `operator`             | `reportOperatorIssue`                                      |
+| `unused-ignore-comment`         | `unused-ignore`        | `reportUnnecessaryTypeIgnoreComment`                       |
 
 > **Note**: mypy's `unimported-reveal` is off by default; it is only reported when the error code is
 > explicitly enabled — for example with `# mypy: enable-error-code=unimported-reveal` inline, or
