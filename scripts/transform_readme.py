@@ -39,7 +39,7 @@ def main() -> None:
 
     # Replace relative src="./..." attributes with absolute GitHub raw URLs.
     def replace_src(match: re.Match) -> str:
-        path = match.group(1).lstrip("./")
+        path = match.group(1).removeprefix("./")
         return f'src="https://raw.githubusercontent.com/astral-sh/ty/{version}/{path}"'
 
     content = re.sub(r'src="(\./[^"]+)"', replace_src, content)
