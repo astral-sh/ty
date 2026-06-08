@@ -1,5 +1,58 @@
 # Changelog
 
+## 0.0.45
+
+Released on 2026-06-08.
+
+### Bug fixes
+
+- Avoid treating dynamic class attributes as instance attributes ([#25678](https://github.com/astral-sh/ruff/pull/25678))
+- Fix divergence in recursive inference due to ambiguous overload ([#25548](https://github.com/astral-sh/ruff/pull/25548))
+- Preserve literal promotion for mixed bounds ([#25648](https://github.com/astral-sh/ruff/pull/25648))
+
+### Diagnostics
+
+- Add `missing-type-argument` lint rule ([#25617](https://github.com/astral-sh/ruff/pull/25617))
+
+### Core type checking
+
+- Add support for narrowing on tuple match cases ([#25493](https://github.com/astral-sh/ruff/pull/25493))
+- Check implicit open TypedDict extra items ([#25628](https://github.com/astral-sh/ruff/pull/25628))
+- Create fresh copies of generic callable typevars ([#24949](https://github.com/astral-sh/ruff/pull/24949))
+- Preserve deprecation on replacement functions ([#25688](https://github.com/astral-sh/ruff/pull/25688))
+- Preserve intersection receivers during attribute lookup ([#25626](https://github.com/astral-sh/ruff/pull/25626))
+- Preserve transparent callable decorators ([#25030](https://github.com/astral-sh/ruff/pull/25030))
+
+### Performance
+
+- Avoid AST load for callable description names ([#25728](https://github.com/astral-sh/ruff/pull/25728))
+- Avoid caching absent class decorators and type parameters ([#25689](https://github.com/astral-sh/ruff/pull/25689))
+- Avoid caching atomic type specializations ([#25663](https://github.com/astral-sh/ruff/pull/25663))
+- Avoid caching constant constraint relations ([#25656](https://github.com/astral-sh/ruff/pull/25656))
+- Avoid caching missing implicit attributes ([#25649](https://github.com/astral-sh/ruff/pull/25649))
+- Avoid caching trivial class-header queries ([#25692](https://github.com/astral-sh/ruff/pull/25692))
+- Avoid caching trivial member lookups ([#25661](https://github.com/astral-sh/ruff/pull/25661))
+- Bypass member lookup for module imports ([#25723](https://github.com/astral-sh/ruff/pull/25723))
+- Cache constraint implication checks ([#25714](https://github.com/astral-sh/ruff/pull/25714))
+- Cache upper-bound satisfiability ([#25710](https://github.com/astral-sh/ruff/pull/25710))
+- Compact retained function type signatures ([#25669](https://github.com/astral-sh/ruff/pull/25669))
+- Compact retained use-def bindings ([#25682](https://github.com/astral-sh/ruff/pull/25682))
+- Consolidate retained narrowing constraints ([#25660](https://github.com/astral-sh/ruff/pull/25660))
+- Construct trivial constraint sets directly ([#25659](https://github.com/astral-sh/ruff/pull/25659))
+- Resolve function descriptors directly ([#25675](https://github.com/astral-sh/ruff/pull/25675))
+- Share code-generator classification across specializations ([#25701](https://github.com/astral-sh/ruff/pull/25701))
+- Share parameter lists with `Arc` ([#25735](https://github.com/astral-sh/ruff/pull/25735))
+- Use same-file expression inference in reachability ([#25694](https://github.com/astral-sh/ruff/pull/25694))
+
+### Contributors
+
+- [@mtshiba](https://github.com/mtshiba)
+- [@dhruvmanila](https://github.com/dhruvmanila)
+- [@charliermarsh](https://github.com/charliermarsh)
+- [@dcreager](https://github.com/dcreager)
+- [@carljm](https://github.com/carljm)
+- [@reginaldl](https://github.com/reginaldl)
+
 ## 0.0.44
 
 Released on 2026-06-04.
