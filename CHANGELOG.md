@@ -1,5 +1,24 @@
 # Changelog
 
+## 0.0.46
+
+Released on 2026-06-08.
+
+### Bug fixes
+
+- Avoid crash when hovering over Callable ([#25759](https://github.com/astral-sh/ruff/pull/25759))
+
+### Core type checking
+
+- Support `Callable()` in match statement class patterns ([#25541](https://github.com/astral-sh/ruff/pull/25541))
+- Improve support for `enum.property` ([#25681](https://github.com/astral-sh/ruff/pull/25681))
+
+### Contributors
+
+- [@carljm](https://github.com/carljm)
+- [@charliermarsh](https://github.com/charliermarsh)
+- [@thejchap](https://github.com/thejchap)
+
 ## 0.0.45
 
 Released on 2026-06-08.
