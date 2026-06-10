@@ -14,7 +14,7 @@ Released on 2026-06-10.
 
 ### Core type checking
 
-- Add support for `extra_items` ([#25591](https://github.com/astral-sh/ruff/pull/25591))
+- Add support for TypedDict `extra_items` ([#25591](https://github.com/astral-sh/ruff/pull/25591))
 - Improve `closed` TypedDict precision ([#25651](https://github.com/astral-sh/ruff/pull/25651))
 - Require subtyping for transitive constraint pivots ([#25778](https://github.com/astral-sh/ruff/pull/25778))
 - Sync vendored typeshed stubs ([#25828](https://github.com/astral-sh/ruff/pull/25828)). [Typeshed diff](https://github.com/python/typeshed/compare/d3504ddc24c92b960a9661813efcdef10fad6d29...32b95c1f59aa2c8edd7f2a5fd3bdfeed639ee1a7)
