@@ -381,8 +381,7 @@ You can follow [this issue](https://github.com/astral-sh/ty/issues/691) for upda
 
 ## Is there a pre-commit hook for ty?
 
-Not yet. You can track progress in [this issue](https://github.com/astral-sh/ty/issues/269), which
-also includes some suggested manual hooks you can use in the meantime.
+Yes! You can find it over at https://github.com/astral-sh/ty-pre-commit.
 
 ## Does ty support (mypy) plugins?
 
