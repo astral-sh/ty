@@ -21,6 +21,13 @@ else
     exit 1
 fi
 
+# Read the typeshed source commit from the Ruff revision recorded by the
+# superproject, before switching the submodule to its local main branch.
+typeshed_commit_path="crates/ty_vendored/vendor/typeshed/source_commit.txt"
+typeshed_commit_file="ruff/${typeshed_commit_path}"
+old_ruff_commit=$(git rev-parse HEAD:ruff)
+old_typeshed_commit=$(git -C ruff show "${old_ruff_commit}:${typeshed_commit_path}" 2> /dev/null || true)
+
 ruff_head=$(git -C ruff rev-parse --abbrev-ref HEAD)
 case "${ruff_head}" in
     "HEAD")
@@ -35,15 +42,6 @@ case "${ruff_head}" in
         exit 1
         ;;
 esac
-
-
-# Save the current typeshed source commit before updating ruff,
-# so we can generate a typeshed diff link for the changelog later.
-typeshed_commit_file="ruff/crates/ty_vendored/vendor/typeshed/source_commit.txt"
-old_typeshed_commit=""
-if [ -f "$typeshed_commit_file" ]; then
-    old_typeshed_commit=$(cat "$typeshed_commit_file")
-fi
 
 echo "Updating Ruff to the latest commit..."
 git -C ruff pull origin main
