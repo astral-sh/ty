@@ -8,6 +8,11 @@
 #
 set -eu
 
+if [ ! -e ruff/.git ]; then
+    echo "Initializing Ruff submodule..."
+    git submodule update --init --recursive ruff
+fi
+
 echo "Checking Ruff submodule status..."
 if git -C ruff diff --quiet; then
     echo "Ruff submodule is clean; continuing..."
