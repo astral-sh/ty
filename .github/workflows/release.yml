@@ -305,6 +305,15 @@ jobs:
 
           gh release create "${{ needs.plan.outputs.tag }}" --target "$RELEASE_COMMIT" $PRERELEASE_FLAG --title "$ANNOUNCEMENT_TITLE" --notes-file "$RUNNER_TEMP/notes.txt" artifacts/*
 
+  custom-notify-dependents:
+    needs:
+      - plan
+      - announce
+    uses: ./.github/workflows/notify-dependents.yml
+    with:
+      plan: ${{ needs.plan.outputs.val }}
+    secrets: inherit
+
   custom-publish-docs:
     needs:
       - plan
