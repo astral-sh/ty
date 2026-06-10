@@ -1,5 +1,32 @@
 # Changelog
 
+## 0.0.47
+
+Released on 2026-06-10.
+
+### Bug fixes
+
+- Avoid panicking on encountering a recursive NamedTuple that references a recursive NewType ([#25764](https://github.com/astral-sh/ruff/pull/25764))
+- Fix out-of-bound panic in notebooks involving suppression comments ([#25629](https://github.com/astral-sh/ruff/pull/25629))
+
+### Core type checking
+
+- Preserve overloads through callable protocol decorators ([#25806](https://github.com/astral-sh/ruff/pull/25806))
+- Sync vendored typeshed stubs ([#25779](https://github.com/astral-sh/ruff/pull/25779)). [Typeshed diff](https://github.com/python/typeshed/compare/4a47505dd891ac8a94ba7f4b578899c72727ce23...d3504ddc24c92b960a9661813efcdef10fad6d29)
+
+### Performance and memory-usage improvements
+
+- Avoid caching specialization-invariant known instances ([#25816](https://github.com/astral-sh/ruff/pull/25816))
+- Avoid resolving overload sets for ordinary functions ([#25817](https://github.com/astral-sh/ruff/pull/25817))
+- Store common definition inference results inline ([#25814](https://github.com/astral-sh/ruff/pull/25814))
+- Use `Box<SystemPath>` etc. in `Files` ([#25554](https://github.com/astral-sh/ruff/pull/25554))
+
+### Contributors
+
+- [@dhruvmanila](https://github.com/dhruvmanila)
+- [@MichaReiser](https://github.com/MichaReiser)
+- [@charliermarsh](https://github.com/charliermarsh)
+
 ## 0.0.46
 
 Released on 2026-06-08.
