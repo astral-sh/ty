@@ -1,0 +1,31 @@
+# Notify downstream repositories of a new release.
+#
+# Assumed to run as a subworkflow of .github/workflows/release.yml; specifically, as a post-announce
+# job within `cargo-dist`.
+name: "[ty] Notify dependents"
+
+on:
+  workflow_call:
+    inputs:
+      plan:
+        required: true
+        type: string
+
+jobs:
+  update-dependents:
+    name: Notify dependents
+    environment:
+      name: release
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Update pre-commit mirror"
+        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
+        with:
+          github-token: ${{ secrets.TY_PRE_COMMIT_PAT }}
+          script: |
+            github.rest.actions.createWorkflowDispatch({
+              owner: 'astral-sh',
+              repo: 'ty-pre-commit',
+              workflow_id: 'main.yml',
+              ref: 'main',
+            })
