@@ -1,5 +1,39 @@
 # Changelog
 
+## 0.0.49
+
+Released on 2026-06-11.
+
+### Bug fixes
+
+- Fix site-package error when multiple versions of Python are installed in system path ([#25769](https://github.com/astral-sh/ruff/pull/25769))
+
+### Diagnostics
+
+- Point at attribute's binding site in \`invalid-await diagnostic ([#24628](https://github.com/astral-sh/ruff/pull/24628))
+- Report redefined legacy TypeVars ([#25854](https://github.com/astral-sh/ruff/pull/25854))
+
+### Performance
+
+- Add dedicated TDDs for narrowing constraints ([#25834](https://github.com/astral-sh/ruff/pull/25834))
+- Avoid caching same-file raw signatures ([#25761](https://github.com/astral-sh/ruff/pull/25761))
+- Cache reachability evaluations during inference ([#25696](https://github.com/astral-sh/ruff/pull/25696))
+- Compact retained definition maps ([#25737](https://github.com/astral-sh/ruff/pull/25737))
+- Omit redundant definition inference owner keys ([#25837](https://github.com/astral-sh/ruff/pull/25837))
+
+### Core type checking
+
+- Preserve nominal type of `enum.property` instances ([#25849](https://github.com/astral-sh/ruff/pull/25849))
+- Restrict length narrowing to types that encode their length ([#25840](https://github.com/astral-sh/ruff/pull/25840))
+- Use peer context for collection literals ([#25848](https://github.com/astral-sh/ruff/pull/25848))
+
+### Contributors
+
+- [@charliermarsh](https://github.com/charliermarsh)
+- [@anishgirianish](https://github.com/anishgirianish)
+- [@cheparity](https://github.com/cheparity)
+- [@carljm](https://github.com/carljm)
+
 ## 0.0.48
 
 Released on 2026-06-10.
