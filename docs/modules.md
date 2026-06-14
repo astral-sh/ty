@@ -8,8 +8,8 @@ By default, ty searches for first-party modules in the project's root directory 
 directory, if present.
 
 If your project uses a different layout, configure the project's
-[`environment.root`](./reference/configuration.md#root) in your `pyproject.toml` or `ty.toml`. For example,
-if your project's code is in an `app/` directory:
+[`environment.root`](./reference/configuration.md#root) in your `pyproject.toml` or `ty.toml`. For
+example, if your project's code is in an `app/` directory:
 
 ```text
 example-pkg
@@ -20,7 +20,8 @@ example-pkg
         └── __init__.py
 ```
 
-then set [`environment.root`](./reference/configuration.md#root) in your `pyproject.toml` to `["./app"]`:
+then set [`environment.root`](./reference/configuration.md#root) in your `pyproject.toml` to
+`["./app"]`:
 
 === "pyproject.toml"
 
@@ -36,16 +37,15 @@ then set [`environment.root`](./reference/configuration.md#root) in your `pyproj
     root = ["./app"]
     ```
 
-Note that a `./python` folder is automatically added to the project `root` if it exists,
-and is not itself a package (i.e. does not contain an `__init__.py` file or an
-`__init__.pyi` file).
+Note that a `./python` folder is automatically added to the project `root` if it exists, and is not
+itself a package (i.e. does not contain an `__init__.py` file or an `__init__.pyi` file).
 
 ## Third-party modules
 
 Third-party modules are Python packages that are not part of your project or the standard library.
-These are usually declared as dependencies in a `pyproject.toml` or `requirements.txt` file
-and installed using a package manager like uv or pip. Examples of popular third-party
-modules are `requests`, `numpy` and `django`.
+These are usually declared as dependencies in a `pyproject.toml` or `requirements.txt` file and
+installed using a package manager like uv or pip. Examples of popular third-party modules are
+`requests`, `numpy` and `django`.
 
 ty searches for third-party modules in the configured [Python environment](#python-environment).
 
@@ -69,3 +69,9 @@ The Python environment may be explicitly configured using the
 [`--python`](./reference/cli.md#ty-check--python) flag.
 
 When setting the environment explicitly, non-virtual environments can be provided.
+
+ty also adds any directories listed in the [`PYTHONPATH`](./reference/environment.md#pythonpath)
+environment variable to the module search paths. Use
+[`environment.extra-paths`](./reference/configuration.md#extra-paths) or
+[`--extra-search-path`](./reference/cli.md#ty-check--extra-search-path) if you want to configure
+these additional search paths explicitly.
