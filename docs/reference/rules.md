@@ -4050,7 +4050,6 @@ if b1:  # exception raised here
 
 b1 and b2  # exception raised here
 not b1  # exception raised here
-b1 < b2 < b1  # exception raised here
 ```
 
 ## `unsupported-dynamic-base`
