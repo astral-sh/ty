@@ -2,6 +2,7 @@
 set -euo pipefail
 
 ECOSYSTEM_ANALYZER_COMMIT="${ECOSYSTEM_ANALYZER_COMMIT:-7e3a45ca84ad4a30ba90cb27af0b568f37608e84}"
+ECOSYSTEM_ANALYZER_SOURCE="${ECOSYSTEM_ANALYZER_SOURCE:-git+https://github.com/astral-sh/ecosystem-analyzer@${ECOSYSTEM_ANALYZER_COMMIT}}"
 RUFF_DIR="${RUFF_DIR:-ruff}"
 EXCLUDE_NEWER="${EXCLUDE_NEWER:-$(git -C "${RUFF_DIR}" show --no-ext-diff --format=%cI --no-patch HEAD)}"
 PGO_TARGET_DIR="${PGO_TARGET_DIR:-${RUFF_DIR}/target/ty-pgo}"
@@ -11,14 +12,19 @@ TY_MAX_PARALLELISM="${TY_MAX_PARALLELISM:-8}"
 CARGO_INCREMENTAL="${CARGO_INCREMENTAL:-0}"
 
 case "$(uname -s)" in
-  Darwin | Linux) ;;
+  Darwin | Linux)
+    pgo_binary="ty"
+    ;;
+  CYGWIN* | MINGW* | MSYS*)
+    pgo_binary="ty.exe"
+    ;;
   *)
-    echo "scripts/build_ty_pgo.sh only supports host-native Darwin and Linux builds." >&2
+    echo "scripts/build_ty_pgo.sh only supports host-native Darwin, Linux, and Windows builds." >&2
     exit 1
   ;;
 esac
 
-PGO_OUTPUT="${PGO_OUTPUT:-${PGO_TARGET_DIR}/release/ty}"
+PGO_OUTPUT="${PGO_OUTPUT:-${PGO_TARGET_DIR}/release/${pgo_binary}}"
 
 find_llvm_profdata() {
   if [[ -n "${LLVM_PROFDATA:-}" ]]; then
@@ -37,6 +43,10 @@ find_llvm_profdata() {
   rustc_llvm_profdata="$(rustc --print sysroot)/lib/rustlib/${rustc_host}/bin/llvm-profdata"
   if [[ -x "${rustc_llvm_profdata}" ]]; then
     echo "${rustc_llvm_profdata}"
+    return
+  fi
+  if [[ -x "${rustc_llvm_profdata}.exe" ]]; then
+    echo "${rustc_llvm_profdata}.exe"
     return
   fi
 
@@ -88,7 +98,7 @@ echo "Building and training instrumented ty with the ecosystem analyzer corpus"
   XDG_CACHE_HOME="${cache_dir}" \
   XDG_CONFIG_HOME="${config_dir}" \
   uvx \
-    --from "git+https://github.com/astral-sh/ecosystem-analyzer@${ECOSYSTEM_ANALYZER_COMMIT}" \
+    --from "${ECOSYSTEM_ANALYZER_SOURCE}" \
     ecosystem-analyzer \
     --repository . \
     --target "${instrumented_target_dir}" \

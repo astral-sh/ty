@@ -196,6 +196,37 @@ jobs:
         with:
           python-version: ${{ env.PYTHON_VERSION }}
           architecture: ${{ matrix.platform.arch }}
+      - name: Install the latest version of uv
+        if: ${{ startsWith(matrix.platform.target, 'x86_64') }}
+        uses: astral-sh/setup-uv@fac544c07dec837d0ccb6301d7b5580bf5edae39 # v8.2.0
+        with:
+          enable-cache: true
+          version: "0.11.19"
+      - name: Install llvm-profdata
+        if: ${{ startsWith(matrix.platform.target, 'x86_64') }}
+        run: rustup component add llvm-tools-preview
+      - name: Check native target
+        if: ${{ startsWith(matrix.platform.target, 'x86_64') }}
+        shell: bash
+        run: |
+          test "$(rustc -vV | sed -n 's/^host: //p' | tr -d '\r')" = "x86_64-pc-windows-msvc"
+      - name: Configure Git for ecosystem corpus
+        if: ${{ startsWith(matrix.platform.target, 'x86_64') }}
+        shell: bash
+        run: git config --system core.longpaths true
+      - name: Train PGO ty
+        if: ${{ startsWith(matrix.platform.target, 'x86_64') }}
+        shell: bash
+        run: |
+          temp_dir="$(cygpath -u "${RUNNER_TEMP}")/ty-pgo-tmp"
+          mkdir -p "${temp_dir}"
+          TMP="$(cygpath -w "${temp_dir}")" \
+          TEMP="$(cygpath -w "${temp_dir}")" \
+          PGO_TARGET_DIR="$(cygpath -u "${RUNNER_TEMP}")/ty-pgo" \
+          scripts/build_ty_pgo.sh
+        env:
+          ECOSYSTEM_ANALYZER_SOURCE: git+https://github.com/MichaReiser/ecosystem-analyzer@3e7e4f85266d060156a7c511a921c554de33f35f
+          PGO_TRAIN_ONLY: 1
       - name: "Prep README.md"
         run: python scripts/transform_readme.py
       - name: "Build wheels"
@@ -207,6 +238,7 @@ jobs:
         env:
           # aarch64 build fails, see https://github.com/PyO3/maturin/issues/2110
           XWIN_VERSION: 16
+          RUSTFLAGS: ${{ startsWith(matrix.platform.target, 'x86_64') && format('-Cprofile-use={0}/ty-pgo/ty.profdata -Cllvm-args=-pgo-warn-missing-function', runner.temp) || '' }}
       - name: "Test wheel"
         if: ${{ !startsWith(matrix.platform.target, 'aarch64') }}
         shell: bash
