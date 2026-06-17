@@ -1,6 +1,6 @@
 # Benchmarks
 
-All benchmarks were computed on macOS (Apple M4 Pro 14, 48 GB) with the following tool versions:
+All benchmarks were computed on macOS (Apple M3 Max 16, 128 GB) with the following tool versions:
 
 - [Pyrefly](https://pypi.org/project/pyrefly/) 1.1.0
 - [Pyright](https://www.npmjs.com/package/pyright) 1.1.410
