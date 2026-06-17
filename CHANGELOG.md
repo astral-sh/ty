@@ -1,5 +1,86 @@
 # Changelog
 
+## 0.0.50
+
+Released on 2026-06-17.
+
+### Bug fixes
+
+- Avoid cross-TypeVar leakage in generic inference ([#26099](https://github.com/astral-sh/ruff/pull/26099))
+- Fix panic from oscillating collection-use constraints ([#26031](https://github.com/astral-sh/ruff/pull/26031))
+- Preserve type variables in fixed tuple aliases ([#26041](https://github.com/astral-sh/ruff/pull/26041))
+- Respect ParamSpec binding contexts ([#25993](https://github.com/astral-sh/ruff/pull/25993))
+- Show bare `Final` as a special form on hover ([#26029](https://github.com/astral-sh/ruff/pull/26029))
+- Support options in functional dataclass calls ([#25989](https://github.com/astral-sh/ruff/pull/25989))
+
+### LSP server
+
+- Add context-sensitive keyword completions ([#26036](https://github.com/astral-sh/ruff/pull/26036))
+- Fix wildcard import symbol range ([#25740](https://github.com/astral-sh/ruff/pull/25740))
+- Highlight decorated methods consistently ([#26003](https://github.com/astral-sh/ruff/pull/26003))
+- Preserve narrowing after qualified `TYPE_CHECKING` ([#26051](https://github.com/astral-sh/ruff/pull/26051))
+- Respect client's content format preference ([#25957](https://github.com/astral-sh/ruff/pull/25957))
+- Retain all diagnostic annotations in the server ([#26006](https://github.com/astral-sh/ruff/pull/26006))
+- Track unused-binding captures across nested scopes ([#25536](https://github.com/astral-sh/ruff/pull/25536))
+
+### Diagnostics
+
+- Fix override diagnostics for decorated methods ([#25671](https://github.com/astral-sh/ruff/pull/25671))
+- Improve `duplicate-base` diagnostics ([#26107](https://github.com/astral-sh/ruff/pull/26107))
+- Reject invalid dataclass flag combinations ([#25985](https://github.com/astral-sh/ruff/pull/25985))
+- Reject legacy TypeVars in PEP 695 class bases ([#25975](https://github.com/astral-sh/ruff/pull/25975))
+- Reject legacy TypeVars in PEP 695 functions ([#25979](https://github.com/astral-sh/ruff/pull/25979))
+- Respect `@no_type_check` in function validation ([#25994](https://github.com/astral-sh/ruff/pull/25994))
+
+### Performance
+
+- Avoid rebuilding unchanged specializations ([#25826](https://github.com/astral-sh/ruff/pull/25826))
+- Avoid redundant equality intersections ([#26057](https://github.com/astral-sh/ruff/pull/26057))
+- Avoid retaining empty use-def tables ([#26018](https://github.com/astral-sh/ruff/pull/26018))
+- Compact retained definition inference extras ([#25838](https://github.com/astral-sh/ruff/pull/25838))
+- Deduplicate retained scope inference types ([#25846](https://github.com/astral-sh/ruff/pull/25846))
+- Disable LRU tracking for one-shot checks ([#26106](https://github.com/astral-sh/ruff/pull/26106))
+- Fast path collection literals with exact type contexts ([#25878](https://github.com/astral-sh/ruff/pull/25878))
+- Flatten retained declaration states ([#25912](https://github.com/astral-sh/ruff/pull/25912))
+- Improve flow snapshot performance ([#26012](https://github.com/astral-sh/ruff/pull/26012))
+- Skip stub package checks in stub-free search paths ([#25963](https://github.com/astral-sh/ruff/pull/25963))
+- Speed up large-union narrowing ([#26048](https://github.com/astral-sh/ruff/pull/26048))
+- Speed up module resolution for projects with many search paths ([#25962](https://github.com/astral-sh/ruff/pull/25962))
+- Store cumulative binding end offsets ([#25913](https://github.com/astral-sh/ruff/pull/25913))
+- Use compact frozen representation for narrowing constraints ([#25990](https://github.com/astral-sh/ruff/pull/25990))
+
+### Core type checking
+
+- Annotate intersection and negation types using `&` and `~` ([#26035](https://github.com/astral-sh/ruff/pull/26035))
+- Diagnose zero-step slices on lists ([#25966](https://github.com/astral-sh/ruff/pull/25966))
+- Full-scope bidirectional inference for non-empty collection literals ([#25280](https://github.com/astral-sh/ruff/pull/25280))
+- Improve equality-based narrowing for `==`, `!=`, and `match` ([#25788](https://github.com/astral-sh/ruff/pull/25788))
+- Infer precise values for standard-library enums ([#26103](https://github.com/astral-sh/ruff/pull/26103))
+- Make equality evaluation cycle-aware ([#26055](https://github.com/astral-sh/ruff/pull/26055))
+- Narrow equality across IntEnum classes ([#26079](https://github.com/astral-sh/ruff/pull/26079))
+- Narrow tuple expression match subjects ([#25874](https://github.com/astral-sh/ruff/pull/25874))
+- Preserve literal types for loop variables over literal collections ([#25083](https://github.com/astral-sh/ruff/pull/25083))
+- Preserve negative narrowing for starred sequence patterns ([#25927](https://github.com/astral-sh/ruff/pull/25927))
+- Preserve non-final types in Hashable unions ([#26039](https://github.com/astral-sh/ruff/pull/26039))
+- Support enum literals as tagged-union discriminants ([#25855](https://github.com/astral-sh/ruff/pull/25855))
+- Sync vendored typeshed stubs ([#25952](https://github.com/astral-sh/ruff/pull/25952)). [Typeshed diff](https://github.com/python/typeshed/compare/32b95c1f59aa2c8edd7f2a5fd3bdfeed639ee1a7...feeb9aa8dde3ae9269b13f3bae435b82d8538b76)
+- Sync vendored typeshed stubs ([#25997](https://github.com/astral-sh/ruff/pull/25997)). [Typeshed diff](https://github.com/python/typeshed/compare/32b95c1f59aa2c8edd7f2a5fd3bdfeed639ee1a7...feeb9aa8dde3ae9269b13f3bae435b82d8538b76)
+- Synthesize NamedTuple `__match_args__` ([#25934](https://github.com/astral-sh/ruff/pull/25934))
+- Treat assigned enum hooks conservatively ([#25958](https://github.com/astral-sh/ruff/pull/25958))
+- Validate deprecated warning categories ([#26025](https://github.com/astral-sh/ruff/pull/26025))
+
+### Contributors
+
+- [@AlexWaygood](https://github.com/AlexWaygood)
+- [@MichaReiser](https://github.com/MichaReiser)
+- [@ankddev](https://github.com/ankddev)
+- [@sqqueak](https://github.com/sqqueak)
+- [@lerebear](https://github.com/lerebear)
+- [@sharkdp](https://github.com/sharkdp)
+- [@denyszhak](https://github.com/denyszhak)
+- [@ibraheemdev](https://github.com/ibraheemdev)
+- [@charliermarsh](https://github.com/charliermarsh)
+
 ## 0.0.49
 
 Released on 2026-06-11.
