@@ -21,7 +21,51 @@ This guide helps you migrate a project from
     corresponding to mypy's `check_untyped_defs` setting. The equivalent pyright setting is
     `analyzeUnannotatedFunctions = true`.
 
-## How to read this table
+## Stricter checking with ty
+
+For both mypy and pyright, "strict" mode enables several error codes that are otherwise disabled by
+default, but also makes fundamental changes to the way type inference and type checking works.
+Mypy's strict mode includes `--check-untyped-defs`, for example, without which unannotated
+functions are left unchecked; pyright's strict mode includes `strictListInference`, without which
+`[1, "foo"]` will be inferred as having type `list[Unknown]` rather than `list[int | str]` or
+similar.
+
+ty's default mode is currently stricter by default than either mypy or pyright in many ways. ty
+does not have flags such as `--check-untyped-defs` or `strictListInference`, because these are
+ty's default behaviour and are not currently configurable. Meanwhile, nearly all ty rules are
+enabled by default, and the ones that are disabled by default are usually in that category because
+they are either very opinionated or have many false positives.
+
+### Recommended configuration
+
+To enable all ty rules at once with the `error` severity, you can simply use `--error=all`, but we
+wouldn't recommend it. Instead, you can currently approximate something similar to the `--strict`
+-mode of other type checkers with the following configuration:
+
+```toml
+[tool.ty.terminal]
+error-on-warning = true
+
+[tool.ty.rules]
+missing-type-argument = "error"
+possibly-unresolved-reference = "warn"
+
+[tool.ruff.lint]
+extend-select = ["ANN", "PYI"]
+```
+
+This configuration:
+
+- Ensures ty exits with a non-zero status if it emits any warning-level diagnostics
+- Enables ty's disabled-by-default [`missing-type-argument`](https://docs.astral.sh/ty/reference/rules/#missing-type-argument) and [`possibly-unresolved-reference`](https://docs.astral.sh/ty/reference/rules/#possibly-unresolved-reference) rules
+- Extends Ruff's default rules with the [`ANN`](https://docs.astral.sh/ruff/rules/#flake8-annotations-ann) and [`PYI`](https://docs.astral.sh/ruff/rules/#flake8-pyi-pyi) rule categories, both of which are focussed on type-annotating your code more effectively
+
+Note that several checks in mypy and pyright are not yet implemented in ty. See the rule mapping
+table below for more details.
+
+## Mapping pyright/mypy rules to ty/Ruff rules
+
+### How to read this table
 
 - **ty or Ruff rule**: the canonical name, as listed in [Rules](reference/rules.md) if it is a ty
     rule. Configure ty rules under `[tool.ty.rules]`. Where Ruff provides equivalent coverage for a
@@ -34,7 +78,7 @@ This guide helps you migrate a project from
 A blank cell means no direct equivalent exists in that checker (the diagnostic is either not
 emitted, or is folded into a broader category that already appears for another ty rule).
 
-## Mapping table
+### Rules
 
 | ty or Ruff rule                                                                                                              | mypy error code                                                                                                                | pyright diagnostic                                                                                                       |
 | ---------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ |
