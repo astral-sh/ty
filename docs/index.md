@@ -22,7 +22,7 @@ ty is backed by [Astral](https://astral.sh), the creators of
 - 10x - 100x faster than mypy and Pyright
 - Comprehensive [diagnostics](./features/diagnostics.md) with rich contextual information
 - Configurable [rule levels](./rules.md), [per-file overrides](./reference/configuration.md#overrides), [suppression comments](./suppression.md), and first-class project support
-- Designed for adoption, with support for [redeclarations](./features/type-system.md#redeclarations) and [partially typed code](./features/type-system.md#gradual-guarantee)
+- Designed for adoption, with support for [redeclarations](./features/type-system.md#redeclarations) and partially typed code
 - [Language server](./features/language-server.md) with code navigation, completions, code actions, auto-import, inlay hints, on-hover help, etc.
 - Fine-grained [incremental analysis](./features/language-server.md#fine-grained-incrementality) designed for fast updates when editing files in an IDE
 - Editor integrations for [VS Code](./editors.md#vs-code), [PyCharm](./editors.md#pycharm), [Neovim](./editors.md#neovim) and more
