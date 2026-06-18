@@ -278,38 +278,10 @@ issue](https://github.com/astral-sh/ty/issues/1578).
 
 ## Does ty have a strict mode?
 
-ty doesn't currently have a flag called `--strict`, but there are some easy ways to enable stricter
-type-checking on your code.
-
-For both mypy and pyright, "strict" mode enables several error codes that are otherwise disabled by
-default, but also makes fundamental changes to the way type inference and type checking works.
-Mypy's strict mode includes `--check-untyped-defs`, for example, without which unannotated
-functions are left unchecked; pyright's strict mode includes `strictListInference`, without which
-`[1, "foo"]` will be inferred as having type `list[Unknown]` rather than `list[int | str]` or
-similar.
-
-ty's default mode is currently stricter by default than either mypy or pyright in many ways. ty
-does not have flags such as `--check-untyped-defs` or `strictListInference`, because these are
-ty's default behaviour and are not currently configurable. Meanwhile, nearly all ty rules are
-enabled by default, and the ones that are disabled by default are usually in that category because
-they are either very opinionated or have many false positives.
-
-To enable all ty rules at once with the `error` severity, you can simply use `--error=all`, but we
-wouldn't recommend it. Instead, you can currently approximate something similar to the `--strict`
-mode of other type checkers by:
-
-- Enabling [`tool.ty.terminal.error-on-warning`](https://docs.astral.sh/ty/reference/configuration/#error-on-warning)
-- Enabling the disabled-by-default [`missing-type-argument`](https://docs.astral.sh/ty/reference/rules/#missing-type-argument) rule
-- Enabling Ruff's [`F`](https://docs.astral.sh/ruff/rules/#pyflakes-f), [`ANN`](https://docs.astral.sh/ruff/rules/#flake8-annotations-ann), and [`PYI`](https://docs.astral.sh/ruff/rules/#flake8-pyi-pyi) rule categories
-
-You may also be interested in our disabled-by-default [`possibly-unresolved-reference`](https://docs.astral.sh/ty/reference/rules/#possibly-unresolved-reference)
-rule. Pyright's equivalent of this rule (`reportPossiblyUnboundVariable`) is enabled by default
-even when strict mode is not specified; mypy's equivalent (`possibly-undefined`) is not enabled by
-default even with `mypy --strict`.
-
-Note that several checks in mypy and pyright are not yet implemented in ty. See our
-[rule mapping table](https://docs.astral.sh/ty/coming-from-mypy-or-pyright/#coming-from-mypy-or-pyright)
-for more details.
+ty doesn't currently have a flag called `--strict`, but it is reasonably strict by default, and
+there are some easy ways to enable stricter type-checking on your code. See
+[Stricter checking with ty](../coming-from-mypy-or-pyright.md#stricter-checking-with-ty) for more
+details.
 
 ## Why doesn't ty warn about missing type annotations?
 
