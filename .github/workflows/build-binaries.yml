@@ -18,6 +18,7 @@ on:
       - pyproject.toml
       # And when we change this workflow itself...
       - .github/workflows/build-binaries.yml
+      - .github/ty-ecosystem.toml
       - scripts/build_ty_pgo.sh
 
 concurrency:
