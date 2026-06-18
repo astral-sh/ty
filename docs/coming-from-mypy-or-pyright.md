@@ -40,7 +40,7 @@ they are either very opinionated or have many false positives.
 
 To enable all ty rules at once with the `error` severity, you can simply use `--error=all`, but we
 wouldn't recommend it. Instead, you can currently approximate something similar to the `--strict`
--mode of other type checkers with the following configuration:
+mode of other type checkers with the following configuration:
 
 ```toml
 [tool.ty.terminal]
