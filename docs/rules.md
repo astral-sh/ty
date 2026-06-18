@@ -13,7 +13,9 @@ specific pattern and can be turned on or off depending on your project’s needs
 Each rule has a configurable level:
 
 - `error`: violations are reported as errors and ty exits with an exit code of 1 if there's any.
-- `warn`: violations are reported as warnings. Depending on your configuration, ty exits with an exit code of 0 if there are only warning violations (default) or 1 when using `--error-on-warning`.
+- `warn`: violations are reported as warnings. Depending on your configuration, ty exits with an
+  exit code of 0 if there are only warning violations (default) or 1 when using
+  `--error-on-warning`.
 - `ignore`: the rule is turned off
 
 You can configure the level for each rule on the command line using the `--warn`, `--error`, and
@@ -64,8 +66,8 @@ On the command line you can use `--error all`, `--warn all`, or `--ignore all`. 
 ty check --error all
 ```
 
-You can also configure this setting in the [`rules`](./reference/configuration.md#rules) section of a
-[configuration file](./configuration.md).
+You can also configure this setting in the [`rules`](./reference/configuration.md#rules) section of
+a [configuration file](./configuration.md).
 
 For example, the following is equivalent to the command above:
 
@@ -82,3 +84,17 @@ For example, the following is equivalent to the command above:
     [rules]
     all = "error"
     ```
+
+## Fixes
+
+The `ty check --fix` command applies safe fixes for diagnostics that support them. Currently, ty can
+automatically fix diagnostics for these rules:
+
+| Rule                                                                  | Fix                                                                                                                                 |
+| --------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
+| [`redundant-cast`](./reference/rules.md#redundant-cast)               | Removes the redundant `cast(...)` call while keeping the original value.                                                            |
+| [`unused-ignore-comment`](./reference/rules.md#unused-ignore-comment) | Removes unused `ty: ignore` or `type: ignore` comments, or removes only the unused rule code from a multi-code suppression comment. |
+
+Some diagnostics also offer editor quick fixes that are not applied by `ty check --fix` because they
+are not classified as safe automatic fixes. Use `ty check --add-ignore` when you want ty to add
+suppression comments instead of applying diagnostic-specific fixes.
