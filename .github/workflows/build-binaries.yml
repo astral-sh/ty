@@ -70,7 +70,7 @@ jobs:
 
   macos-x86_64:
     if: ${{ !contains(github.event.pull_request.labels.*.name, 'no-build') }}
-    runs-on: macos-15-intel
+    runs-on: macos-15
     steps:
       - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
         with:
@@ -225,7 +225,7 @@ jobs:
           PGO_TARGET_DIR="$(cygpath -u "${RUNNER_TEMP}")/ty-pgo" \
           scripts/build_ty_pgo.sh
         env:
-          ECOSYSTEM_ANALYZER_SOURCE: git+https://github.com/MichaReiser/ecosystem-analyzer@8f72ceebb2339aa0d08f8d54bf206c4418a08dea
+          ECOSYSTEM_ANALYZER_SOURCE: git+https://github.com/MichaReiser/ecosystem-analyzer@b82a3e8098d0535175d15f9024c9d5bd720bad8d
           PGO_TRAIN_ONLY: 1
       - name: "Prep README.md"
         run: python scripts/transform_readme.py
