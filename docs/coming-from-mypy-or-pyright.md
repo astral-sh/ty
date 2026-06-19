@@ -59,7 +59,8 @@ This configuration:
 
 - Ensures ty exits with a non-zero status if it emits any warning-level diagnostics
 - Enables ty's disabled-by-default [`missing-type-argument`](https://docs.astral.sh/ty/reference/rules/#missing-type-argument) and [`possibly-unresolved-reference`](https://docs.astral.sh/ty/reference/rules/#possibly-unresolved-reference) rules
-- Extends Ruff's default rules with the [`ANN`](https://docs.astral.sh/ruff/rules/#flake8-annotations-ann) and [`PYI`](https://docs.astral.sh/ruff/rules/#flake8-pyi-pyi) rule categories, both of which are focussed on type-annotating your code more effectively, and enables preview mode so that `PYI033` also checks `.py` files
+- Extends Ruff's default rules with the [`ANN`](https://docs.astral.sh/ruff/rules/#flake8-annotations-ann) and [`PYI`](https://docs.astral.sh/ruff/rules/#flake8-pyi-pyi) rule categories, both of which are focussed on type-annotating your code more effectively
+- Enables Ruff's preview mode so that `PYI033` also checks `.py` files
 
 Note that several checks in mypy and pyright are not yet implemented in ty. See the rule mapping
 table below for more details.
