@@ -46,6 +46,36 @@ msg.data = {"color": "blue"}
 
 ([Full example in the playground](https://play.ty.dev/862941a8-a3f6-4818-9ea1-d9d59b0bd2fa))
 
+## What is the `Divergent` type and when does it appear?
+
+`Divergent` is ty's way of representing type-level recursion that does not converge. Type inference
+can be recursive; for example, the type of a variable at the end of a loop can depend on its type at
+the beginning. ty analyzes such cycles repeatedly, looking for a stable result. If each iteration
+produces a new type, ty replaces the non-convergent part with `Divergent`.
+
+For example, each iteration of this loop wraps `x` in another list:
+
+```py
+def some_condition() -> bool:
+    ...
+
+
+x = 1
+while some_condition():
+    x = [x]
+
+reveal_type(x)  # Literal[1] | list[Divergent]
+```
+
+After the first analysis of the loop, `x` can be `Literal[1]` or `list[Literal[1]]`. The next
+analysis adds `list[list[Literal[1]]]`, and every subsequent analysis adds another level of nesting.
+This does not converge to a finite type. The revealed type preserves the known base case and uses
+`Divergent` for the infinitely expanding part.
+
+Like `Any` and `Unknown`, `Divergent` is a gradual type, so ty allows any operation on the
+`Divergent` part of a type. Unlike `Unknown`, it does not represent missing type information. It is
+an internal type used by ty and cannot be used in annotations.
+
 ## Why does ty show `int | float` when I annotate something as `float`?
 
 The [Python typing specification](https://typing.python.org/en/latest/spec/special-types.html)
