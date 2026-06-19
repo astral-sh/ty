@@ -52,13 +52,14 @@ possibly-unresolved-reference = "warn"
 
 [tool.ruff.lint]
 extend-select = ["ANN", "PYI"]
+preview = true
 ```
 
 This configuration:
 
 - Ensures ty exits with a non-zero status if it emits any warning-level diagnostics
 - Enables ty's disabled-by-default [`missing-type-argument`](https://docs.astral.sh/ty/reference/rules/#missing-type-argument) and [`possibly-unresolved-reference`](https://docs.astral.sh/ty/reference/rules/#possibly-unresolved-reference) rules
-- Extends Ruff's default rules with the [`ANN`](https://docs.astral.sh/ruff/rules/#flake8-annotations-ann) and [`PYI`](https://docs.astral.sh/ruff/rules/#flake8-pyi-pyi) rule categories, both of which are focussed on type-annotating your code more effectively
+- Extends Ruff's default rules with the [`ANN`](https://docs.astral.sh/ruff/rules/#flake8-annotations-ann) and [`PYI`](https://docs.astral.sh/ruff/rules/#flake8-pyi-pyi) rule categories, both of which are focussed on type-annotating your code more effectively, and enables preview mode so that `PYI033` also checks `.py` files
 
 Note that several checks in mypy and pyright are not yet implemented in ty. See the rule mapping
 table below for more details.
@@ -146,7 +147,7 @@ emitted, or is folded into a broader category that already appears for another t
 | None yet (tracked in [#200][ty-200])                                                                                         | [`attr-defined`][mypy-attr-defined]<br>(extended by [`--no-implicit-reexport`][mypy-no-implicit-reexport])                     | [`reportPrivateImportUsage`][reportprivateimportusage]                                                                   |
 | None yet (tracked in [#3633][ty-3633])                                                                                       |                                                                                                                                | [`reportPropertyTypeMismatch`][reportpropertytypemismatch]                                                               |
 | [Ruff `N804`][ruff-n804]<br>[Ruff `N805`][ruff-n805]                                                                         |                                                                                                                                | [`reportSelfClsParameterName`][reportselfclsparametername]                                                               |
-| [Ruff `PYI033`][ruff-pyi033] (stubs only)                                                                                    |                                                                                                                                | [`reportTypeCommentUsage`][reporttypecommentusage]                                                                       |
+| [Ruff `PYI033`][ruff-pyi033] (preview only)                                                                                  |                                                                                                                                | [`reportTypeCommentUsage`][reporttypecommentusage]                                                                       |
 | None yet (tracked in [#2810][ty-2810])                                                                                       |                                                                                                                                | [`reportTypedDictNotRequiredAccess`][reporttypeddictnotrequiredaccess]                                                   |
 | None yet (tracked in [#2954][ty-2954])                                                                                       |                                                                                                                                | [`reportUninitializedInstanceVariable`][reportuninitializedinstancevariable]                                             |
 | None yet (tracked in [#576][ty-576])                                                                                         | [`comparison-overlap`][mypy-comparison-overlap]                                                                                | [`reportUnnecessaryComparison`][reportunnecessarycomparison]<br>[`reportUnnecessaryContains`][reportunnecessarycontains] |
