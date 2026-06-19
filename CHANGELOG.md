@@ -1,5 +1,45 @@
 # Changelog
 
+## 0.0.51
+
+Released on 2026-06-18.
+
+### Bug fixes
+
+- Fix bound TypeVar default cycle recovery ([#26124](https://github.com/astral-sh/ruff/pull/26124))
+- Support `Annotated[Any, ...]` as a class base ([#26133](https://github.com/astral-sh/ruff/pull/26133))
+
+### LSP server
+
+- Suggest keyword-only arguments between variadic parameters ([#26134](https://github.com/astral-sh/ruff/pull/26134))
+
+### Core type checking
+
+- Avoid assuming classes with `Any` or `Unknown` bases are descriptors ([#26120](https://github.com/astral-sh/ruff/pull/26120))
+- Infer simpler types in complex lambda cycles ([#26137](https://github.com/astral-sh/ruff/pull/26137))
+- Preserve exact class objects during identity narrowing ([#26117](https://github.com/astral-sh/ruff/pull/26117))
+
+### Diagnostics
+
+- Preserve unpacking diagnostics for nested assignment targets ([#26121](https://github.com/astral-sh/ruff/pull/26121))
+
+### Performance
+
+- Compact indexed AST node storage ([#25998](https://github.com/astral-sh/ruff/pull/25998))
+- Discard dead DNF branches in intersection building ([#26144](https://github.com/astral-sh/ruff/pull/26144))
+
+### Documentation
+
+- Remove broken gradual guarantee link ([#3806](https://github.com/astral-sh/ty/pull/3806))
+
+### Contributors
+
+- [@charliermarsh](https://github.com/charliermarsh)
+- [@ibraheemdev](https://github.com/ibraheemdev)
+- [@carljm](https://github.com/carljm)
+- [@MichaReiser](https://github.com/MichaReiser)
+- [@sharkdp](https://github.com/sharkdp)
+
 ## 0.0.50
 
 Released on 2026-06-17.
