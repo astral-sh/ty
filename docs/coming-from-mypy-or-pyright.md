@@ -21,6 +21,51 @@ This guide helps you migrate a project from
     corresponding to mypy's `check_untyped_defs` setting. The equivalent pyright setting is
     `analyzeUnannotatedFunctions = true`.
 
+## Behavioral differences
+
+This is not an exhaustive list, but covers some behaviors where ty differs in ways that may
+surprise users migrating from those tools.
+
+### `hasattr()` narrowing
+
+After a `hasattr(obj, "attr")` check, mypy narrows the type of `obj.attr` to `Any`, which lets you
+call or subscript it freely. Pyright doesn't narrow on `hasattr()` at all, so the attribute access
+itself is flagged as unknown rather than as a callability error. ty narrows it to a synthesized
+type whose `attr` member is `object`, so calling or subscripting `obj.attr` is still an error —
+`hasattr()` only proves that the attribute exists, not what its type is.
+
+```python
+import unittest
+
+
+def example(instance: unittest.TestCase) -> None:
+    if hasattr(instance, "make_instance"):
+        instance.make_instance()  # error: `object` is not callable
+```
+
+If you need to call or subscript the attribute, give it a real type instead of relying on
+`hasattr()` narrowing, for example with a `Protocol` and `TypeIs`:
+
+```python
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from typing import Protocol, TypeIs
+
+    class HasMakeInstance(Protocol):
+        def make_instance(self) -> None: ...
+
+    def has_make_instance(instance: object) -> TypeIs[HasMakeInstance]: ...
+else:
+    def has_make_instance(instance):
+        return hasattr(instance, "make_instance")
+
+
+def example(instance: unittest.TestCase) -> None:
+    if has_make_instance(instance):
+        instance.make_instance()  # no error
+```
+
 ## Stricter checking with ty
 
 For both mypy and pyright, "strict" mode enables several error codes that are otherwise disabled by
