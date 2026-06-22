@@ -43,9 +43,6 @@ wouldn't recommend it. Instead, you can currently approximate something similar 
 mode of other type checkers with the following configuration:
 
 ```toml
-[tool.ty.terminal]
-error-on-warning = true
-
 [tool.ty.rules]
 missing-type-argument = "error"
 possibly-unresolved-reference = "warn"
