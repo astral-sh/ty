@@ -1,5 +1,72 @@
 # Changelog
 
+## 0.0.52
+
+Released on 2026-06-22.
+
+### Bug fixes
+
+- Avoid shadowing hints for attribute assignments ([#26164](https://github.com/astral-sh/ruff/pull/26164))
+- Fix dict.pop overloads to accept arbitrary keys with defaults ([#26241](https://github.com/astral-sh/ruff/pull/26241))
+- Normalize recursive `TypeOf` across multiple union arms ([#26230](https://github.com/astral-sh/ruff/pull/26230))
+- Normalize recursive `TypeOf` growth during cycle recovery ([#26163](https://github.com/astral-sh/ruff/pull/26163))
+- Normalize recursive protocol growth during cycle recovery ([#26246](https://github.com/astral-sh/ruff/pull/26246))
+- Preserve generic alias identity during cycle recovery ([#26166](https://github.com/astral-sh/ruff/pull/26166))
+- Recover from dynamic class code generator cycles ([#26167](https://github.com/astral-sh/ruff/pull/26167))
+
+### LSP server
+
+- Add a go-to destination for `Divergent` ([#26162](https://github.com/astral-sh/ruff/pull/26162))
+- Publish diagnostics for all open files after a single file is saved ([#25929](https://github.com/astral-sh/ruff/pull/25929))
+- Render Markdown for reStructuredText fields in docstrings on hover ([#25903](https://github.com/astral-sh/ruff/pull/25903))
+
+### CLI
+
+- Make `error-on-warning` the default ([#26157](https://github.com/astral-sh/ruff/pull/26157))
+
+### Diagnostics
+
+- Make rendering of fix diffs more concise ([#26161](https://github.com/astral-sh/ruff/pull/26161))
+
+### Performance
+
+- Avoid allocating disabled error context trees ([#26191](https://github.com/astral-sh/ruff/pull/26191))
+- Avoid lookup maps for small place tables ([#26177](https://github.com/astral-sh/ruff/pull/26177))
+- Avoid moving boxed use-def map builders ([#26211](https://github.com/astral-sh/ruff/pull/26211))
+- Avoid transient AST ID merge map ([#26185](https://github.com/astral-sh/ruff/pull/26185))
+- Batch signature typevar freshness scans ([#26196](https://github.com/astral-sh/ruff/pull/26196))
+- Box large semantic index builders ([#26186](https://github.com/astral-sh/ruff/pull/26186))
+- Build frozen definition maps directly ([#26188](https://github.com/astral-sh/ruff/pull/26188))
+- Compact use-def binding interner keys ([#26193](https://github.com/astral-sh/ruff/pull/26193))
+- Consume condition flow snapshots ([#26189](https://github.com/astral-sh/ruff/pull/26189))
+- Lazily allocate reachability caches ([#26194](https://github.com/astral-sh/ruff/pull/26194))
+- Remove redundant use-def state shrinking ([#26206](https://github.com/astral-sh/ruff/pull/26206))
+- Reuse the first union bindings buffer ([#26225](https://github.com/astral-sh/ruff/pull/26225))
+- Short-circuit terminal narrowing constraints ([#26215](https://github.com/astral-sh/ruff/pull/26215))
+- Solve simple constraint conjunctions directly ([#25879](https://github.com/astral-sh/ruff/pull/25879))
+- Store cycle-detector cache entries inline ([#26183](https://github.com/astral-sh/ruff/pull/26183))
+- Stream indexed AST construction ([#26184](https://github.com/astral-sh/ruff/pull/26184))
+- Suppress discarded TypedDict diagnostics ([#26250](https://github.com/astral-sh/ruff/pull/26250))
+- Use SmallVec for `CycleDetector::seen` ([#26181](https://github.com/astral-sh/ruff/pull/26181))
+- Use a SmallVec for seen type aliases ([#26187](https://github.com/astral-sh/ruff/pull/26187))
+
+### Core type checking
+
+- Raise limit for number of non-recursive union literals ([#25212](https://github.com/astral-sh/ruff/pull/25212))
+- Preserve gradual behavior for explicit Any subclasses ([#26034](https://github.com/astral-sh/ruff/pull/26034))
+- Preserve metaclasses when inheriting from intersection-typed bases ([#26145](https://github.com/astral-sh/ruff/pull/26145))
+- Recognize exhaustive matches over finite tuples ([#26132](https://github.com/astral-sh/ruff/pull/26132))
+
+### Contributors
+
+- [@JamBalaya56562](https://github.com/JamBalaya56562)
+- [@AlexWaygood](https://github.com/AlexWaygood)
+- [@carljm](https://github.com/carljm)
+- [@Minibrams](https://github.com/Minibrams)
+- [@lerebear](https://github.com/lerebear)
+- [@MichaReiser](https://github.com/MichaReiser)
+- [@charliermarsh](https://github.com/charliermarsh)
+
 ## 0.0.51
 
 Released on 2026-06-18.
