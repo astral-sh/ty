@@ -1,5 +1,43 @@
 # Changelog
 
+## 0.0.53
+
+Released on 2026-06-23.
+
+### Bug fixes
+
+- Avoid bypassing lazy constraints for `Divergent` ([#26288](https://github.com/astral-sh/ruff/pull/26288))
+- Avoid recursion when projecting narrowing constraints ([#26276](https://github.com/astral-sh/ruff/pull/26276))
+- Fix ParamSpec callable signature extraction for callable instances ([#26279](https://github.com/astral-sh/ruff/pull/26279))
+- Make multi-arm `TypeOf` cycle recovery monotonic ([#26275](https://github.com/astral-sh/ruff/pull/26275))
+
+### LSP server
+
+- Document all special forms in `ty_extensions` ([#26263](https://github.com/astral-sh/ruff/pull/26263))
+
+### Performance
+
+- Avoid cloning fallback condition flow snapshots ([#26203](https://github.com/astral-sh/ruff/pull/26203))
+- Avoid constructing discarded speculative diagnostics ([#26251](https://github.com/astral-sh/ruff/pull/26251))
+- Avoid path lookups when sorting same-file diagnostics ([#26257](https://github.com/astral-sh/ruff/pull/26257))
+- Cache `is_never_satisfied` results ([#26261](https://github.com/astral-sh/ruff/pull/26261))
+- Defer applying type context to simple standalone expressions ([#26252](https://github.com/astral-sh/ruff/pull/26252))
+
+### Core type checking
+
+- Infer types for names bound in match patterns ([#25940](https://github.com/astral-sh/ruff/pull/25940))
+- Preserve regular kind for callable instances ([#26253](https://github.com/astral-sh/ruff/pull/26253))
+- Simplify intersections of invariant generic types with `Any` specializations ([#26127](https://github.com/astral-sh/ruff/pull/26127))
+
+### Contributors
+
+- [@charliermarsh](https://github.com/charliermarsh)
+- [@MichaReiser](https://github.com/MichaReiser)
+- [@AlexWaygood](https://github.com/AlexWaygood)
+- [@sharkdp](https://github.com/sharkdp)
+- [@ibraheemdev](https://github.com/ibraheemdev)
+- [@carljm](https://github.com/carljm)
+
 ## 0.0.52
 
 Released on 2026-06-22.
