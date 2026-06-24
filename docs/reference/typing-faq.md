@@ -52,10 +52,9 @@ msg.data = {"color": "blue"}
 missing feature or incomplete implementation in ty. Like `Any` and `Unknown`, it is a dynamic type,
 so ty allows any operation on it.
 
-Unlike `Any`, `@Todo` does not come from an explicit annotation. Unlike `Unknown`, it does not
-represent missing type information in the code being checked; instead, it indicates a limitation in
-ty itself. It may appear in type hints, `reveal_type()` output, or diagnostics. When an explanation
-appears in parentheses, such as `@Todo(TypeVarTuple)`, it identifies the missing feature.
+Unlike `Any`, `@Todo` does not come from an explicit annotation. Unlike `Unknown`, it does
+not represent missing type information in the code being checked; instead, it indicates a
+limitation in ty itself. It may appear in type hints, `reveal_type()` output, or diagnostics.
 
 `@Todo` is an internal type and cannot be used in annotations. We aim to eliminate all `@Todo` types
 as we implement the missing functionality.
