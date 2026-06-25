@@ -1,5 +1,60 @@
 # Changelog
 
+## 0.0.54
+
+Released on 2026-06-25.
+
+### Bug fixes
+
+- Avoid duplicate configuration error output ([#26375](https://github.com/astral-sh/ruff/pull/26375))
+- Avoid stack overflows in reachability analysis ([#26272](https://github.com/astral-sh/ruff/pull/26272))
+- Fix divergent recursive tuple cycle handling in ty ([#26316](https://github.com/astral-sh/ruff/pull/26316))
+- Fix panic from relation queries during cycle recovery ([#26335](https://github.com/astral-sh/ruff/pull/26335))
+- Fix panics by reverting recursive `TypeOf` cycle recovery ([#26339](https://github.com/astral-sh/ruff/pull/26339))
+- Support basic usages of `__class__` closure cells in methods ([#26329](https://github.com/astral-sh/ruff/pull/26329))
+
+### LSP server
+
+- Fix typealias token classification inconsistency ([#26255](https://github.com/astral-sh/ruff/pull/26255))
+- Implement rust-analyzer's "Click for full compiler diagnostic" feature ([#26269](https://github.com/astral-sh/ruff/pull/26269))
+
+### Performance
+
+- Co-locate retained definition usage state ([#26019](https://github.com/astral-sh/ruff/pull/26019))
+- Use never-change durability for immutable file inputs ([#26353](https://github.com/astral-sh/ruff/pull/26353))
+
+### Diagnostics
+
+- Reject undeclared protocol instance attributes ([#26336](https://github.com/astral-sh/ruff/pull/26336))
+
+### Core type checking
+
+- Allow replacing ordinary methods with compatible functions ([#26158](https://github.com/astral-sh/ruff/pull/26158))
+- Distinguish `typing.TypedDict` from `typing_extensions.TypedDict` ([#25843](https://github.com/astral-sh/ruff/pull/25843))
+- Don't treat non-empty ranges as single-valued ([#26351](https://github.com/astral-sh/ruff/pull/26351))
+- Handle TypeVar bounds over `type[...]` in attribute lookup ([#26146](https://github.com/astral-sh/ruff/pull/26146))
+- Infer definite equality comparison results ([#26337](https://github.com/astral-sh/ruff/pull/26337))
+- Infer mismatched literal comparisons ([#26313](https://github.com/astral-sh/ruff/pull/26313))
+- `match` statements: make class-pattern fallthrough member-aware ([#26283](https://github.com/astral-sh/ruff/pull/26283))
+- `match` statements: prove TypedDict structural patterns exhaustive ([#26285](https://github.com/astral-sh/ruff/pull/26285))
+- `match` statements: resolve positional class-pattern exhaustiveness ([#26284](https://github.com/astral-sh/ruff/pull/26284))
+- Model non-exhaustive enum member sets (`enum.Flag`s) ([#26277](https://github.com/astral-sh/ruff/pull/26277))
+- Reduce retained definition map storage ([#26348](https://github.com/astral-sh/ruff/pull/26348))
+- Reuse equality semantics for membership compatibility ([#25955](https://github.com/astral-sh/ruff/pull/25955))
+- Sync vendored typeshed stubs to support `builtins.sentinel` ([#26341](https://github.com/astral-sh/ruff/pull/26341))
+- Treat non-empty `range` calls as non-empty for reachability ([#25220](https://github.com/astral-sh/ruff/pull/25220))
+- Use assignability for divergent constraints ([#26334](https://github.com/astral-sh/ruff/pull/26334))
+- Widen inferred class-valued instance attributes ([#26338](https://github.com/astral-sh/ruff/pull/26338))
+
+### Contributors
+
+- [@carljm](https://github.com/carljm)
+- [@sqqueak](https://github.com/sqqueak)
+- [@AlexWaygood](https://github.com/AlexWaygood)
+- [@mtshiba](https://github.com/mtshiba)
+- [@charliermarsh](https://github.com/charliermarsh)
+- [@MichaReiser](https://github.com/MichaReiser)
+
 ## 0.0.53
 
 Released on 2026-06-23.
