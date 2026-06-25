@@ -179,6 +179,14 @@ interface Diagnostic {
 
 For diagnostics that support this extension, `rendered` and `diagnostic_id` are either both present or both absent. Clients may use `diagnostic_id` to preserve the original identifier if they replace `Diagnostic.code` with a link to the rendered output. Clients must preserve `Diagnostic.data` when returning a diagnostic in a `textDocument/codeAction` request so that code actions continue to work.
 
+### Colored diagnostic output
+
+Experimental client capability: `{ "colorDiagnosticOutput": boolean }`
+
+When both this capability and `fullDiagnosticOutput` are `true`, the `rendered` field includes ANSI color and style escape sequences. Clients that advertise this capability must interpret or strip these sequences before displaying the output.
+
+When this capability is absent or `false`, `rendered` is plain text. This capability has no effect unless `fullDiagnosticOutput` is also `true`.
+
 [#1560]: https://github.com/astral-sh/ty/issues/1560
 [#3514]: https://github.com/astral-sh/ty/issues/3514
 [callhierarchy]: https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#callHierarchy_incomingCalls
