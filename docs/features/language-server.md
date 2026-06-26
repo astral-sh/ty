@@ -160,13 +160,13 @@ Client capabilities for these extensions are advertised through the `experimenta
 
 Experimental client capability: `{ "fullDiagnosticOutput": boolean }`
 
-When this capability is `true`, ty includes a human-readable multiline rendering of a diagnostic in the diagnostic's `data` field.
+When this capability is `true`, ty includes a human-readable multiline rendering of a diagnostic in the diagnostic's `data` field. The rendering uses only ANSI Select Graphic Rendition (SGR) escape sequences for color and text styling; clients are expected to interpret or strip these sequences before displaying the output.
 
 ```ts
 interface Diagnostic {
     // Standard LSP fields omitted.
     data?: {
-        /** A human-readable multiline rendering of the diagnostic. */
+        /** A human-readable multiline rendering of the diagnostic, including ANSI SGR styles. */
         rendered?: string;
 
         /** The original ty diagnostic identifier, such as `invalid-argument-type`. */
@@ -178,14 +178,6 @@ interface Diagnostic {
 ```
 
 For diagnostics that support this extension, `rendered` and `diagnostic_id` are either both present or both absent. Clients may use `diagnostic_id` to preserve the original identifier if they replace `Diagnostic.code` with a link to the rendered output. Clients must preserve `Diagnostic.data` when returning a diagnostic in a `textDocument/codeAction` request so that code actions continue to work.
-
-### Colored diagnostic output
-
-Experimental client capability: `{ "colorDiagnosticOutput": boolean }`
-
-When both this capability and `fullDiagnosticOutput` are `true`, the `rendered` field includes ANSI color and style escape sequences. Clients that advertise this capability must interpret or strip these sequences before displaying the output.
-
-When this capability is absent or `false`, `rendered` is plain text. This capability has no effect unless `fullDiagnosticOutput` is also `true`.
 
 [#1560]: https://github.com/astral-sh/ty/issues/1560
 [#3514]: https://github.com/astral-sh/ty/issues/3514
