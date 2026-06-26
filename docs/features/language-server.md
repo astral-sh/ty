@@ -160,13 +160,13 @@ Client capabilities for these extensions are advertised through the `experimenta
 
 Experimental client capability: `{ "fullDiagnosticOutput": boolean }`
 
-When this capability is `true`, ty includes a human-readable multiline rendering of a diagnostic in the diagnostic's `data` field.
+When this capability is `true`, ty includes a human-readable multiline rendering of a diagnostic in the diagnostic's `data` field. The rendering uses only ANSI Select Graphic Rendition (SGR) escape sequences for color and text styling; clients are expected to interpret or strip these sequences before displaying the output.
 
 ```ts
 interface Diagnostic {
     // Standard LSP fields omitted.
     data?: {
-        /** A human-readable multiline rendering of the diagnostic. */
+        /** A human-readable multiline rendering of the diagnostic, including ANSI SGR styles. */
         rendered?: string;
 
         /** The original ty diagnostic identifier, such as `invalid-argument-type`. */
