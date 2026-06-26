@@ -1,5 +1,45 @@
 # Changelog
 
+## 0.0.55
+
+Released on 2026-06-26.
+
+### LSP server
+
+- Render full diagnostics in color ([#26384](https://github.com/astral-sh/ruff/pull/26384))
+
+### Documentation
+
+- Document colored diagnostic output ([#3858](https://github.com/astral-sh/ty/pull/3858))
+
+### Performance
+
+- Improve vendored filesystem concurrency ([#26408](https://github.com/astral-sh/ruff/pull/26408))
+- Optimize enum comparisons in equality evaluation ([#26340](https://github.com/astral-sh/ruff/pull/26340))
+- Remove redundant semantic index shrinks ([#26392](https://github.com/astral-sh/ruff/pull/26392))
+- Use never-change durability for one-shot checks ([#26359](https://github.com/astral-sh/ruff/pull/26359))
+
+### Core type checking
+
+- Correct enum alias detection and scalar constructors ([#26345](https://github.com/astral-sh/ruff/pull/26345))
+- Fix structural pattern binding inference ([#26411](https://github.com/astral-sh/ruff/pull/26411))
+- Improve variable-length tuple slicing ([#26151](https://github.com/astral-sh/ruff/pull/26151))
+- Infer class and mapping pattern bindings ([#25941](https://github.com/astral-sh/ruff/pull/25941))
+- Infer empty collection constructors from later uses ([#26389](https://github.com/astral-sh/ruff/pull/26389))
+- Skip shadowed submodule bindings during import analysis ([#26385](https://github.com/astral-sh/ruff/pull/26385))
+- Sync vendored typeshed stubs ([#26406](https://github.com/astral-sh/ruff/pull/26406)). [Typeshed diff](https://github.com/python/typeshed/compare/8e6a886ca5b14742924be721d345a619762d6e93...3c6221722aac5bd9dbfc5fbf7b4f0bf64b2c5724)
+- Track literal iterable emptiness for reachability ([#25222](https://github.com/astral-sh/ruff/pull/25222))
+- Validate positional class patterns against `__match_args__` ([#26195](https://github.com/astral-sh/ruff/pull/26195))
+
+### Contributors
+
+- [@charliermarsh](https://github.com/charliermarsh)
+- [@carljm](https://github.com/carljm)
+- [@AlexWaygood](https://github.com/AlexWaygood)
+- [@MichaReiser](https://github.com/MichaReiser)
+- [@mtshiba](https://github.com/mtshiba)
+- [@felixscherz](https://github.com/felixscherz)
+
 ## 0.0.54
 
 Released on 2026-06-25.
