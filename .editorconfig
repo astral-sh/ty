@@ -15,3 +15,6 @@ indent_size = 4
 
 [*.md]
 max_line_length = 100
+
+[.gitmodules]
+indent_style = tab
