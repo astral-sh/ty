@@ -69,3 +69,14 @@ The Python environment may be explicitly configured using the
 [`--python`](./reference/cli.md#ty-check--python) flag.
 
 When setting the environment explicitly, non-virtual environments can be provided.
+
+### `PYTHONPATH`
+
+ty also respects the [`PYTHONPATH`](./reference/environment.md#pythonpath) environment variable.
+Each existing directory listed in `PYTHONPATH` is added to the module search path, just after any
+[`extra-paths`](./reference/configuration.md#extra-paths) and before the environment's
+`site-packages`, mirroring the resolution order of the Python interpreter itself.
+
+`PYTHONPATH` uses the same format as the shell's `PATH`: one or more directory paths separated by the
+platform's path separator (`:` on Unix, `;` on Windows). Entries that don't exist or aren't
+directories are ignored.
