@@ -10,8 +10,29 @@ indent_style = space
 insert_final_newline = true
 indent_size = 2
 
-[*.{rs,py,pyi,toml}]
+[*.{rs,py,pyi,toml,html,sh}]
 indent_size = 4
 
 [*.md]
 max_line_length = 100
+# Markdown has heavily context specific indentations.
+# For example, the indentation in lists depend on the length of the list marker
+# (such as '- ' or '100. '), at least in the GitHub Markdown flavor:
+# https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax#nested-lists
+# Therefore, pressing tab should insert a single space to encourage situative accurate indentations.
+indent_size = 1
+
+[BENCHMARKS.md]
+# The CLI output contains many trailing spaces. Keep this output exactly as it is.
+trim_trailing_whitespace = false
+
+[Dockerfile]
+indent_size = 4
+
+# You should NOT modify this file with your editor,
+# but if you do it anyway use the correct formatting.
+[uv.lock]
+indent_size = 4
+
+[.gitmodules]
+indent_style = tab

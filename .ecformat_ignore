@@ -1,0 +1,7 @@
+# Ignore submodule as checking for EditorConfig violations there
+# is its responsibility and out of scope for here
+ruff
+
+# Ignore binary files
+*.ico
+*.png
