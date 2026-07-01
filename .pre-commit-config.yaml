@@ -26,11 +26,6 @@ repos:
     hooks:
       - id: ruff-format
         priority: 0
-      - id: ruff
-        args: [--fix, --exit-non-zero-on-fix]
-        types_or: [python, pyi]
-        require_serial: true
-        priority: 1
 
   - repo: https://github.com/abravalheri/validate-pyproject
     rev: 4b2e70d08cb2ccd26d1fba73588de41c7a5d50b7 # frozen: v0.25
@@ -47,12 +42,6 @@ repos:
           - mdformat-mkdocs==5.1.4
           - mdformat-footnote==0.1.3
         priority: 0
-
-  - repo: https://github.com/igorshubovych/markdownlint-cli
-    rev: a4d5d37e66ebcd6b3705204a1d6dbb56dea66338 # frozen: v0.49.0
-    hooks:
-      - id: markdownlint-fix
-        priority: 1
 
   - repo: https://github.com/crate-ci/typos
     rev: 37bb98842b0d8c4ffebdb75301a13db0267cef89 # frozen: v1.47.2
@@ -109,3 +98,19 @@ repos:
           # but the integration only works if shellcheck is installed
           - "github.com/wasilibs/go-shellcheck/cmd/shellcheck@v0.11.1"
         priority: 0
+
+  # Priority 1: Second-pass fixers (e.g., markdownlint-fix runs after mdformat).
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: c59bba8fb259db0fec2bbb77ad8ba51ea7341b56 # frozen: v0.15.20
+    hooks:
+      - id: ruff
+        args: [--fix, --exit-non-zero-on-fix]
+        types_or: [python, pyi]
+        require_serial: true
+        priority: 1
+
+  - repo: https://github.com/igorshubovych/markdownlint-cli
+    rev: a4d5d37e66ebcd6b3705204a1d6dbb56dea66338 # frozen: v0.49.0
+    hooks:
+      - id: markdownlint-fix
+        priority: 1
