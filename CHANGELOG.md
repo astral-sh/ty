@@ -1,5 +1,37 @@
 # Changelog
 
+## 0.0.56
+
+Released on 2026-07-01.
+
+### Bug fixes
+
+- Avoid MRO cycle when collecting NamedTuple fields ([#26464](https://github.com/astral-sh/ruff/pull/26464))
+- Model `int` and `str` enum value normalization ([#26349](https://github.com/astral-sh/ruff/pull/26349))
+- Prefer reflected operators by runtime class ([#26434](https://github.com/astral-sh/ruff/pull/26434), [#26474](https://github.com/astral-sh/ruff/pull/26474))
+
+### CLI
+
+- Exit with status 130 when interrupted ([#26465](https://github.com/astral-sh/ruff/pull/26465))
+
+### Performance
+
+- Avoid exponential OR-pattern reachability ([#26481](https://github.com/astral-sh/ruff/pull/26481))
+- Reduce bound typevar identity overhead ([#26396](https://github.com/astral-sh/ruff/pull/26396))
+
+### Core type checking
+
+- Infer generic class pattern capture types ([#26479](https://github.com/astral-sh/ruff/pull/26479))
+- Narrow exact tuples through sequence patterns ([#26424](https://github.com/astral-sh/ruff/pull/26424))
+- Recognize inherited enum member constructors ([#26410](https://github.com/astral-sh/ruff/pull/26410))
+- Respect return-context inference when filtering overloads ([#26454](https://github.com/astral-sh/ruff/pull/26454))
+- Sync vendored typeshed stubs ([#26501](https://github.com/astral-sh/ruff/pull/26501)). [Typeshed diff](https://github.com/python/typeshed/compare/3c6221722aac5bd9dbfc5fbf7b4f0bf64b2c5724...b9090e99745ac1511d8efd828622b11a9a3623e8)
+
+### Contributors
+
+- [@charliermarsh](https://github.com/charliermarsh)
+- [@sharkdp](https://github.com/sharkdp)
+
 ## 0.0.55
 
 Released on 2026-06-26.
