@@ -96,8 +96,8 @@ repos:
       - id: actionlint
         stages:
           # This hook is disabled by default, since it's quite slow.
-          # To run all hooks *including* this hook, use `uvx pre-commit run -a --hook-stage=manual`.
-          # To run *just* this hook, use `uvx pre-commit run -a actionlint --hook-stage=manual`.
+          # To run all hooks *including* this hook, use `uv run --only-group dev --locked prek run --all-files --hook-stage=manual`.
+          # To run *just* this hook, use `uv run --only-group dev --locked prek run actionlint --all-files --hook-stage=manual`.
           - manual
         args:
           - "-ignore=SC2129" # ignorable stylistic lint from shellcheck

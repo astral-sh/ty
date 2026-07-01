@@ -50,8 +50,7 @@ You can optionally install prek hooks to automatically run the validation checks
 when making a commit:
 
 ```shell
-uv tool install prek
-prek install
+uv run --only-group dev --locked prek install
 ```
 
 ## Building the Python package
