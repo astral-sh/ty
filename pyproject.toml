@@ -40,6 +40,7 @@ requires = ["maturin>=1.0,<2.0"]
 build-backend = "maturin"
 
 [dependency-groups]
+dev = ["prek==0.4.5"]
 release = ["rooster"]
 
 [tool.uv]
@@ -52,6 +53,7 @@ cache-keys = [
 ]
 
 [tool.uv.dependency-groups]
+dev = {requires-python = ">=3.12"}
 release = {requires-python = ">=3.12"}
 
 [tool.ruff]
