@@ -8,7 +8,7 @@
   semanticCommits: "disabled",
   separateMajorMinor: false,
   prHourlyLimit: 10,
-  enabledManagers: ["github-actions", "pre-commit", "custom.regex"],
+  enabledManagers: ["github-actions", "pre-commit", "pep621", "custom.regex"],
   "pre-commit": {
     enabled: true,
   },
