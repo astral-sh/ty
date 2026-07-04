@@ -27,25 +27,25 @@ black
 Benchmark 1: ty
   Time (mean ± σ):      69.5 ms ±   1.6 ms    [User: 530.8 ms, System: 34.8 ms]
   Range (min … max):    65.7 ms …  73.6 ms    40 runs
- 
+
   Warning: Ignoring non-zero exit code.
- 
+
 Benchmark 2: Pyrefly
   Time (mean ± σ):     128.3 ms ±   2.5 ms    [User: 465.1 ms, System: 53.0 ms]
   Range (min … max):   123.4 ms … 134.3 ms    23 runs
- 
+
   Warning: Ignoring non-zero exit code.
- 
+
 Benchmark 3: mypy
   Time (mean ± σ):      1.316 s ±  0.012 s    [User: 1.216 s, System: 0.092 s]
   Range (min … max):    1.303 s …  1.336 s    10 runs
- 
+
 Benchmark 4: Pyright
   Time (mean ± σ):      1.420 s ±  0.010 s    [User: 18.088 s, System: 0.981 s]
   Range (min … max):    1.404 s …  1.433 s    10 runs
- 
+
   Warning: Ignoring non-zero exit code.
- 
+
 Summary
   ty ran
     1.85 ± 0.06 times faster than Pyrefly
@@ -60,27 +60,27 @@ discord.py
 Benchmark 1: ty
   Time (mean ± σ):     144.1 ms ±   4.9 ms    [User: 1551.3 ms, System: 63.7 ms]
   Range (min … max):   138.8 ms … 154.1 ms    20 runs
- 
+
   Warning: Ignoring non-zero exit code.
- 
+
 Benchmark 2: Pyrefly
   Time (mean ± σ):     193.4 ms ±   5.0 ms    [User: 1225.6 ms, System: 119.0 ms]
   Range (min … max):   185.8 ms … 202.7 ms    15 runs
- 
+
   Warning: Ignoring non-zero exit code.
- 
+
 Benchmark 3: mypy
   Time (mean ± σ):      2.538 s ±  0.024 s    [User: 2.429 s, System: 0.103 s]
   Range (min … max):    2.496 s …  2.575 s    10 runs
- 
+
   Warning: Ignoring non-zero exit code.
- 
+
 Benchmark 4: Pyright
   Time (mean ± σ):      3.556 s ±  0.061 s    [User: 49.585 s, System: 1.841 s]
   Range (min … max):    3.438 s …  3.650 s    10 runs
- 
+
   Warning: Ignoring non-zero exit code.
- 
+
 Summary
   ty ran
     1.34 ± 0.06 times faster than Pyrefly
@@ -95,25 +95,25 @@ homeassistant
 Benchmark 1: ty
   Time (mean ± σ):      1.812 s ±  0.033 s    [User: 23.009 s, System: 2.224 s]
   Range (min … max):    1.782 s …  1.873 s    10 runs
- 
+
   Warning: Ignoring non-zero exit code.
- 
+
 Benchmark 2: Pyrefly
   Time (mean ± σ):      2.550 s ±  0.039 s    [User: 23.491 s, System: 4.450 s]
   Range (min … max):    2.502 s …  2.624 s    10 runs
- 
+
   Warning: Ignoring non-zero exit code.
- 
+
 Benchmark 3: mypy
   Time (mean ± σ):     24.601 s ±  0.141 s    [User: 45.118 s, System: 4.172 s]
   Range (min … max):   24.340 s … 24.846 s    10 runs
- 
+
 Benchmark 4: Pyright
   Time (mean ± σ):     23.410 s ±  0.483 s    [User: 323.789 s, System: 22.983 s]
   Range (min … max):   22.596 s … 23.994 s    10 runs
- 
+
   Warning: Ignoring non-zero exit code.
- 
+
 Summary
   ty ran
     1.41 ± 0.03 times faster than Pyrefly
@@ -128,25 +128,25 @@ isort
 Benchmark 1: ty
   Time (mean ± σ):      82.3 ms ±   1.6 ms    [User: 292.6 ms, System: 19.0 ms]
   Range (min … max):    78.9 ms …  86.3 ms    33 runs
- 
+
   Warning: Ignoring non-zero exit code.
- 
+
 Benchmark 2: Pyrefly
   Time (mean ± σ):     109.6 ms ±   1.5 ms    [User: 285.4 ms, System: 40.5 ms]
   Range (min … max):   106.4 ms … 112.8 ms    25 runs
- 
+
   Warning: Ignoring non-zero exit code.
- 
+
 Benchmark 3: mypy
   Time (mean ± σ):     679.4 ms ±  10.6 ms    [User: 608.3 ms, System: 65.9 ms]
   Range (min … max):   663.7 ms … 696.1 ms    10 runs
- 
+
 Benchmark 4: Pyright
   Time (mean ± σ):      2.240 s ±  0.012 s    [User: 17.028 s, System: 0.911 s]
   Range (min … max):    2.218 s …  2.252 s    10 runs
- 
+
   Warning: Ignoring non-zero exit code.
- 
+
 Summary
   ty ran
     1.33 ± 0.03 times faster than Pyrefly
@@ -161,27 +161,27 @@ jinja
 Benchmark 1: ty
   Time (mean ± σ):      69.5 ms ±   1.4 ms    [User: 349.8 ms, System: 20.9 ms]
   Range (min … max):    67.4 ms …  73.6 ms    38 runs
- 
+
   Warning: Ignoring non-zero exit code.
- 
+
 Benchmark 2: Pyrefly
   Time (mean ± σ):     105.0 ms ±   1.9 ms    [User: 272.0 ms, System: 35.1 ms]
   Range (min … max):   102.2 ms … 109.1 ms    25 runs
- 
+
   Warning: Ignoring non-zero exit code.
- 
+
 Benchmark 3: mypy
   Time (mean ± σ):     762.7 ms ±   6.4 ms    [User: 699.8 ms, System: 59.2 ms]
   Range (min … max):   753.9 ms … 773.4 ms    10 runs
- 
+
   Warning: Ignoring non-zero exit code.
- 
+
 Benchmark 4: Pyright
   Time (mean ± σ):      1.324 s ±  0.014 s    [User: 16.361 s, System: 0.895 s]
   Range (min … max):    1.310 s …  1.346 s    10 runs
- 
+
   Warning: Ignoring non-zero exit code.
- 
+
 Summary
   ty ran
     1.51 ± 0.04 times faster than Pyrefly
@@ -196,25 +196,25 @@ pandas
 Benchmark 1: ty
   Time (mean ± σ):     428.0 ms ±  18.0 ms    [User: 4766.4 ms, System: 156.6 ms]
   Range (min … max):   410.8 ms … 465.4 ms    10 runs
- 
+
   Warning: Ignoring non-zero exit code.
- 
+
 Benchmark 2: Pyrefly
   Time (mean ± σ):     752.5 ms ±  15.4 ms    [User: 7029.6 ms, System: 280.0 ms]
   Range (min … max):   713.5 ms … 768.6 ms    10 runs
- 
+
   Warning: Ignoring non-zero exit code.
- 
+
 Benchmark 3: mypy
   Time (mean ± σ):     13.089 s ±  0.041 s    [User: 12.691 s, System: 0.382 s]
   Range (min … max):   13.025 s … 13.184 s    10 runs
- 
+
 Benchmark 4: Pyright
   Time (mean ± σ):      7.512 s ±  0.076 s    [User: 106.118 s, System: 3.573 s]
   Range (min … max):    7.425 s …  7.648 s    10 runs
- 
+
   Warning: Ignoring non-zero exit code.
- 
+
 Summary
   ty ran
     1.76 ± 0.08 times faster than Pyrefly
@@ -229,21 +229,21 @@ pandas-stubs
 Benchmark 1: ty
   Time (mean ± σ):      94.4 ms ±   3.3 ms    [User: 482.7 ms, System: 44.6 ms]
   Range (min … max):    88.9 ms … 102.0 ms    27 runs
- 
+
 Benchmark 2: Pyrefly
   Time (mean ± σ):     205.9 ms ±   1.9 ms    [User: 665.0 ms, System: 112.9 ms]
   Range (min … max):   203.8 ms … 210.0 ms    13 runs
- 
+
 Benchmark 3: mypy
   Time (mean ± σ):      6.971 s ±  0.080 s    [User: 6.684 s, System: 0.266 s]
   Range (min … max):    6.898 s …  7.190 s    10 runs
- 
+
   Warning: Statistical outliers were detected. Consider re-running this benchmark on a quiet system without any interferences from other programs.
- 
+
 Benchmark 4: Pyright
   Time (mean ± σ):      2.201 s ±  0.013 s    [User: 24.941 s, System: 1.459 s]
   Range (min … max):    2.182 s …  2.224 s    10 runs
- 
+
 Summary
   ty ran
     2.18 ± 0.08 times faster than Pyrefly
@@ -258,25 +258,25 @@ prefect
 Benchmark 1: ty
   Time (mean ± σ):     113.1 ms ±   4.8 ms    [User: 732.7 ms, System: 56.4 ms]
   Range (min … max):   105.4 ms … 122.5 ms    24 runs
- 
+
   Warning: Ignoring non-zero exit code.
- 
+
 Benchmark 2: Pyrefly
   Time (mean ± σ):     242.0 ms ±   8.8 ms    [User: 1381.6 ms, System: 166.5 ms]
   Range (min … max):   231.4 ms … 263.0 ms    11 runs
- 
+
   Warning: Ignoring non-zero exit code.
- 
+
 Benchmark 3: mypy
   Time (mean ± σ):     701.4 ms ±  10.3 ms    [User: 631.3 ms, System: 66.8 ms]
   Range (min … max):   688.2 ms … 715.3 ms    10 runs
- 
+
 Benchmark 4: Pyright
   Time (mean ± σ):      4.208 s ±  0.040 s    [User: 57.296 s, System: 2.369 s]
   Range (min … max):    4.146 s …  4.269 s    10 runs
- 
+
   Warning: Ignoring non-zero exit code.
- 
+
 Summary
   ty ran
     2.14 ± 0.12 times faster than Pyrefly
@@ -291,27 +291,27 @@ pytorch
 Benchmark 1: ty
   Time (mean ± σ):      1.216 s ±  0.042 s    [User: 14.994 s, System: 0.766 s]
   Range (min … max):    1.157 s …  1.293 s    10 runs
- 
+
   Warning: Ignoring non-zero exit code.
- 
+
 Benchmark 2: Pyrefly
   Time (mean ± σ):      1.492 s ±  0.025 s    [User: 12.424 s, System: 1.053 s]
   Range (min … max):    1.451 s …  1.519 s    10 runs
- 
+
   Warning: Ignoring non-zero exit code.
- 
+
 Benchmark 3: mypy
   Time (mean ± σ):     28.227 s ±  0.074 s    [User: 27.631 s, System: 0.580 s]
   Range (min … max):   28.137 s … 28.342 s    10 runs
- 
+
   Warning: Ignoring non-zero exit code.
- 
+
 Benchmark 4: Pyright
   Time (mean ± σ):     16.885 s ±  0.505 s    [User: 231.071 s, System: 9.429 s]
   Range (min … max):   16.283 s … 17.933 s    10 runs
- 
+
   Warning: Ignoring non-zero exit code.
- 
+
 Summary
   ty ran
     1.23 ± 0.05 times faster than Pyrefly

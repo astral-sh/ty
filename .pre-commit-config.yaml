@@ -20,6 +20,9 @@ repos:
     hooks:
       - id: check-merge-conflict
         priority: 0
+      # Priority 2: a single hook that could modify any file type
+      - id: trailing-whitespace
+        priority: 2
 
   - repo: https://github.com/astral-sh/ruff-pre-commit
     rev: c59bba8fb259db0fec2bbb77ad8ba51ea7341b56 # frozen: v0.15.20
