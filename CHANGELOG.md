@@ -1,5 +1,65 @@
 # Changelog
 
+## 0.0.57
+
+Released on 2026-07-07.
+
+### Bug fixes
+
+- Detect async generator expressions containing await ([#26568](https://github.com/astral-sh/ruff/pull/26568))
+- Preserve exhaustive gradual match patterns ([#26523](https://github.com/astral-sh/ruff/pull/26523))
+
+### LSP server
+
+- Fix selection range behavior for strings ([#26532](https://github.com/astral-sh/ruff/pull/26532))
+- Recognize that dedent ends doctest block when parsing docstrings for signature help ([#26552](https://github.com/astral-sh/ruff/pull/26552))
+- Render reStructuredText hyperlinks as Markdown in hover docstrings ([#25907](https://github.com/astral-sh/ruff/pull/25907))
+- Update `__slots__` string when renaming an attribute ([#26438](https://github.com/astral-sh/ruff/pull/26438))
+
+### Documentation
+
+- Document PYTHONPATH support in module discovery ([#3889](https://github.com/astral-sh/ty/pull/3889))
+
+### Library support
+
+- Add support for extra arguments in Pydantic model constructors ([#26520](https://github.com/astral-sh/ruff/pull/26520))
+- Detect Pydantic model configurations ([#26573](https://github.com/astral-sh/ruff/pull/26573))
+- Distinguish lax and strict mode for Pydantic models ([#26587](https://github.com/astral-sh/ruff/pull/26587))
+
+### Core type checking
+
+- Fix subtyping/assignability for `@property` protocol members ([#25332](https://github.com/astral-sh/ruff/pull/25332))
+- Narrow `isinstance` against intersections containing invalid member ([#26545](https://github.com/astral-sh/ruff/pull/26545))
+- Narrow match subjects through structural patterns ([#25942](https://github.com/astral-sh/ruff/pull/25942))
+- Preserve generic `functools.partial` signatures ([#24583](https://github.com/astral-sh/ruff/pull/24583))
+- Preserve generic variadic callback semantics ([#26521](https://github.com/astral-sh/ruff/pull/26521))
+- Preserve invariant materialization on generic specializations ([#26578](https://github.com/astral-sh/ruff/pull/26578))
+- Preserve literal enum member names ([#26592](https://github.com/astral-sh/ruff/pull/26592))
+
+### Performance
+
+- Avoid exponential invariant constraint paths ([#26538](https://github.com/astral-sh/ruff/pull/26538))
+- Batch parallel jobs when finding references ([#26534](https://github.com/astral-sh/ruff/pull/26534))
+- Build module names directly in `CompactString` ([#26546](https://github.com/astral-sh/ruff/pull/26546))
+- Elide default use-def state ([#26398](https://github.com/astral-sh/ruff/pull/26398))
+- Reuse owned buffers for string literals ([#26547](https://github.com/astral-sh/ruff/pull/26547))
+- Use ICF for macOS release builds ([#3709](https://github.com/astral-sh/ty/pull/3709))
+- Use cached class literal lookup for `is_subclass_of` ([#26585](https://github.com/astral-sh/ruff/pull/26585))
+
+### Contributors
+
+- [@sharkdp](https://github.com/sharkdp)
+- [@fenghourun](https://github.com/fenghourun)
+- [@zaniebot](https://github.com/zaniebot)
+- [@charliermarsh](https://github.com/charliermarsh)
+- [@MichaReiser](https://github.com/MichaReiser)
+- [@shaanmajid](https://github.com/shaanmajid)
+- [@jvdillon](https://github.com/jvdillon)
+- [@sqqueak](https://github.com/sqqueak)
+- [@SuryanshSS1011](https://github.com/SuryanshSS1011)
+- [@carljm](https://github.com/carljm)
+- [@lerebear](https://github.com/lerebear)
+
 ## 0.0.56
 
 Released on 2026-07-01.
