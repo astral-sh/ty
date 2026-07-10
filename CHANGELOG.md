@@ -1,5 +1,56 @@
 # Changelog
 
+## 0.0.58
+
+Released on 2026-07-09.
+
+### Bug fixes
+
+- Fix protocol matching for class variables ([#26669](https://github.com/astral-sh/ruff/pull/26669))
+- Fix reflected binary dispatch for runtime classes ([#26623](https://github.com/astral-sh/ruff/pull/26623))
+- Support cached properties in protocols ([#26681](https://github.com/astral-sh/ruff/pull/26681))
+
+### Diagnostics
+
+- Add assignability context to upper-bound diagnostics ([#26645](https://github.com/astral-sh/ruff/pull/26645))
+- Add blanket ignore comment rule ([#26426](https://github.com/astral-sh/ruff/pull/26426))
+- Improve protocol attribute diagnostic context ([#26644](https://github.com/astral-sh/ruff/pull/26644))
+
+### Library support
+
+- Pydantic: Add fields from mixin classes ([#26631](https://github.com/astral-sh/ruff/pull/26631))
+- Pydantic: Add support for `validate_by_{name,alias}` ([#26598](https://github.com/astral-sh/ruff/pull/26598))
+- Pydantic: Add support for `validation_alias` ([#26629](https://github.com/astral-sh/ruff/pull/26629))
+- Pydantic: Fix float conversion in unions ([#26655](https://github.com/astral-sh/ruff/pull/26655))
+- Pydantic: Ignore private attributes ([#26630](https://github.com/astral-sh/ruff/pull/26630))
+- Pydantic: Make `BaseSettings` fields optional by default ([#26628](https://github.com/astral-sh/ruff/pull/26628))
+- Pydantic: Recognize frozen models via config ([#26648](https://github.com/astral-sh/ruff/pull/26648))
+- Pydantic: Support dict model configurations ([#26632](https://github.com/astral-sh/ruff/pull/26632))
+- Pydantic: Support validation of `RootModel` fields ([#26634](https://github.com/astral-sh/ruff/pull/26634))
+- Pydantic: Understand ellipsis as providing no default value ([#26637](https://github.com/astral-sh/ruff/pull/26637))
+
+### Core type checking
+
+- Gate membership narrowing on `__contains__` semantics ([#25964](https://github.com/astral-sh/ruff/pull/25964))
+- Handle callable classes in solver ([#26090](https://github.com/astral-sh/ruff/pull/26090))
+- Infer `ModuleType.__doc__` as `str` in the presence of a docstring ([#26505](https://github.com/astral-sh/ruff/pull/26505))
+- Infer metaclass-declared attributes on class instances ([#26512](https://github.com/astral-sh/ruff/pull/26512))
+- Respect user stub overlays during module resolution ([#26123](https://github.com/astral-sh/ruff/pull/26123))
+
+### Performance
+
+- Avoid allocating decorated parameter names ([#26666](https://github.com/astral-sh/ruff/pull/26666))
+- Optimize `TypeCollector` ([#26593](https://github.com/astral-sh/ruff/pull/26593))
+
+### Contributors
+
+- [@carljm](https://github.com/carljm)
+- [@charliermarsh](https://github.com/charliermarsh)
+- [@mtshiba](https://github.com/mtshiba)
+- [@MichaReiser](https://github.com/MichaReiser)
+- [@sharkdp](https://github.com/sharkdp)
+- [@kaapstorm](https://github.com/kaapstorm)
+
 ## 0.0.57
 
 Released on 2026-07-07.
