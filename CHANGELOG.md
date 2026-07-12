@@ -1,5 +1,55 @@
 # Changelog
 
+## 0.0.59
+
+Released on 2026-07-12.
+
+### Bug fixes
+
+- Guard descriptor classification cycles ([#26690](https://github.com/astral-sh/ruff/pull/26690))
+- Respect `init=False` in dataclass field-order checks ([#26749](https://github.com/astral-sh/ruff/pull/26749))
+- Avoid duplicate diagnostics for overloaded TypeIs ([#26716](https://github.com/astral-sh/ruff/pull/26716))
+
+### Library support
+
+- Pydantic: Support custom `__init__` methods ([#26699](https://github.com/astral-sh/ruff/pull/26699))
+- Pydantic: Support field metadata in `Annotated` ([#26650](https://github.com/astral-sh/ruff/pull/26650))
+
+### Core type checking
+
+- Allow unsound equality-based narrowing for builtins ([#26414](https://github.com/astral-sh/ruff/pull/26414))
+- Bind Self in implicit dunder calls ([#26711](https://github.com/astral-sh/ruff/pull/26711))
+- Correct protocol method receiver binding ([#26701](https://github.com/astral-sh/ruff/pull/26701))
+- Exempt ParamSpec callables from the dunder descriptor heuristic ([#26696](https://github.com/astral-sh/ruff/pull/26696))
+- Remove transitive TypeVar artifacts during collection inference ([#26714](https://github.com/astral-sh/ruff/pull/26714))
+
+### LSP server
+
+- Avoid broad invalidation from file check eligibility ([#26741](https://github.com/astral-sh/ruff/pull/26741))
+- Correct how we expand tabs in docstrings ([#26679](https://github.com/astral-sh/ruff/pull/26679))
+- Resolve ambiguity in Google-style docstring parsing in favour of observations from popular projects ([#26673](https://github.com/astral-sh/ruff/pull/26673))
+
+### CLI
+
+- Avoid allocation for every stdout write ([#26698](https://github.com/astral-sh/ruff/pull/26698))
+- Buffer diagnostic output ([#26702](https://github.com/astral-sh/ruff/pull/26702))
+
+### Performance
+
+- Cache generic context ([#26745](https://github.com/astral-sh/ruff/pull/26745))
+- Cache known class instances ([#26746](https://github.com/astral-sh/ruff/pull/26746))
+- Reuse common TypedDict constraints through intersections ([#26747](https://github.com/astral-sh/ruff/pull/26747))
+- Use purpose-specific types for completion and module text ([#26664](https://github.com/astral-sh/ruff/pull/26664))
+
+### Contributors
+
+- [@carljm](https://github.com/carljm)
+- [@MichaReiser](https://github.com/MichaReiser)
+- [@charliermarsh](https://github.com/charliermarsh)
+- [@lerebear](https://github.com/lerebear)
+- [@ibraheemdev](https://github.com/ibraheemdev)
+- [@sharkdp](https://github.com/sharkdp)
+
 ## 0.0.58
 
 Released on 2026-07-09.
