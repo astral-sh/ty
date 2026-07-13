@@ -75,8 +75,9 @@ def as_json(obj: Serializable) -> str:
 Python has a gradual type system that allows developers to choose the level of type safety. You
 can start from an unannotated program and gradually add more annotations to enforce certain constraints.
 Without annotations, type checkers can still infer meaningful types in many cases, but there
-are limits to this. Consider the following code, where the first function is stricly type-annotated,
+are limits to this. Consider the following code, where the first function is strictly type-annotated,
 but the second is not:
+
 ```py
 def square(x: int) -> int:
     return x**2
@@ -84,15 +85,16 @@ def square(x: int) -> int:
 def print_square(number):
     print(f"The square of {number} is {square(number)}")
 ```
+
 There is no annotation for the `number` parameter of `print_square`, and since a type checker cannot
 possibly know all callers of this function (imagine this is part of the public API of a library),
 `number` could really be anything. However, it is important to understand that this does not mean
 that we can assign a type of `object` to that parameter. If we were to do that, the `square(number)`
 call would fail, since `object` is not assignable to `int`.
 It turns out that we need an entirely new concept to handle this. In a gradual type system,
-we model this by adding a new primitive, the *dynamic type* `Any`, which represents a arbitrary
-type (some type checkers also use `Unknown` for the implicitly occuring version of the dynamic type,
-but for the purposes of this discussion, those two are the same). 
+we model this by adding a new primitive, the *dynamic type* `Any`, which represents an arbitrary
+type (some type checkers also use `Unknown` for the implicitly occurring version of the dynamic type,
+but for the purposes of this discussion, those two are the same).
 
 This dynamic type does not
 fit into our sets-of-objects picture described above. Instead, we need to add a layer on top of what
@@ -100,7 +102,6 @@ we discussed in the first part, and generally think of Python types as *gradual 
 a *set of possible materializations*, where each materialization is a static type as discussed above.
 Again, there are two extremes. Fully-static types are gradual
 types that can only materialize to exactly one type. **`int` = [int]**
-
 
 <!--
 The way this works is by introducing a new primitive to the type system, the dynamic type `Any`.
@@ -112,7 +113,6 @@ Its name can be taken quite literally. It can represent *any* fully static type 
 
 <figcaption></figcaption>
 </figure>
-
 
 <!-- intro graduial types -->
 
@@ -132,12 +132,10 @@ G1 | G2 = [m1 | m2, for m1 in G1, for m2 in G2]
     but we also need completeness: m1 | m1' needs to range over all of G1, i.e. for every m in G1,
     there exists m1, m1' in G1 such that m1|m1' = m
 
-
 lower bound / bottom materialization
 * for every m in G, bottom[G] <= m
 * does bottom[·] distribute over unions?
     bottom[A | B] = bottom[A] | bottom[B]?
-
 
 (strong) subtyping:
 * G1 <= G2 if forall g1. forall g2. g1 <= g2
@@ -162,27 +160,19 @@ assignability:
   * reflexive? yes
   * transitive? no
 
-
-
-
 redundancy: when is U | S = U, i.e. when is it redundant to add S to a union U?
   * we want to be able to simplify e.g. list[Any] | list[Any] to list[Any]
   * if U | S and U are equivalent, i.e. if
   * bottom[U | S] == bottom[U] AND top[U | S] == top[U]
   * if U|S is a weak subtype of U and vice versa
 
-
-
-
 things that break down if gradual types are not intervals:
 * G|G != G
 * G&G != G
+* absorption laws
 * what would bottom[G]/top[G] even be?!
 
-
-
 -->
-
 
 <figure markdown="span">
 
@@ -218,5 +208,18 @@ things that break down if gradual types are not intervals:
     Intersection types have interesting applications. If you are curious to try them out, ty has first-class support
     for representing them and for using them in type annotations. You can read more about their applications
     [in this section](../features/type-system.md#intersection-types), which also links to some interactive demos.
+
+More interesting things:
+- If we see the lattice of fully static types as a thin category (objects are types, morphisms are subtyping relationships),
+  then gradual types can be understood as the morphisms in that category! Every morphism "spans" a gradual interval
+- strong subtyping: there is an arrow "connecting the two arrows"
+- assignability: there is an arrow that connects bottom[S] with top[T]
+- weak subtyping is described by the arrow category! arrows in Arr(C) are commutative diagrams
+- weak subtyping corresponds to the Egli-Milner order on the powerset
+
+- consider negation: do all of these relations behave well under negation?
+
+- Bottom and top are functors from the Arrow category back to the normal category
+- intersections/unions are (co)products
 
 -->
