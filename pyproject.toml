@@ -40,7 +40,7 @@ requires = ["maturin>=1.0,<2.0"]
 build-backend = "maturin"
 
 [dependency-groups]
-dev = ["prek==0.4.5"]
+dev = ["prek==0.4.8"]
 release = ["rooster"]
 
 [tool.uv]
