@@ -1,5 +1,61 @@
 # Changelog
 
+## 0.0.60
+
+Released on 2026-07-15.
+
+### Bug fixes
+
+- Expand transparent callable workaround with overloads and `Awaitable[T]` ([#26761](https://github.com/astral-sh/ruff/pull/26761))
+- Separate type-mapping caches by transformation mode ([#26857](https://github.com/astral-sh/ruff/pull/26857))
+- Avoid recursive protocol union redundancy checks ([#26689](https://github.com/astral-sh/ruff/pull/26689))
+- Handle recursive protocols in redundant-cast checks ([#26708](https://github.com/astral-sh/ruff/pull/26708))
+
+### LSP server
+
+- Prevent type that is written with a code span from being incorrectly re-wrapped during docstring Markdown rendering ([#26723](https://github.com/astral-sh/ruff/pull/26723))
+
+### Library support
+
+- Pydantic: Support `populate_by_name` and custom initializers ([#26764](https://github.com/astral-sh/ruff/pull/26764))
+- Pydantic: Warn about immediately discarded extra arguments ([#26762](https://github.com/astral-sh/ruff/pull/26762))
+
+### Diagnostics
+
+- Narrow TypeGuard keyword arguments and remove `invalid-type-guard-call` ([#26809](https://github.com/astral-sh/ruff/pull/26809))
+- Support own-line suppression comments ([#26785](https://github.com/astral-sh/ruff/pull/26785))
+
+### Core type checking
+
+- Handle cycles in derived constraint relations ([#26814](https://github.com/astral-sh/ruff/pull/26814))
+- Implement unified generic call inference ([#26141](https://github.com/astral-sh/ruff/pull/26141))
+- Preserve constraints from bound receivers ([#26776](https://github.com/astral-sh/ruff/pull/26776))
+- Project exact-length narrowing through TypeVars ([#26852](https://github.com/astral-sh/ruff/pull/26852))
+- Resolve PEP 695 aliases in type[...] annotations ([#26842](https://github.com/astral-sh/ruff/pull/26842))
+- Retain sequence pattern narrowing in successful `match` cases ([#26807](https://github.com/astral-sh/ruff/pull/26807))
+- Support class and static protocol methods ([#26574](https://github.com/astral-sh/ruff/pull/26574))
+- Support class objects satisfying instance-method protocols ([#26789](https://github.com/astral-sh/ruff/pull/26789))
+- Support `type[Protocol]` ([#26649](https://github.com/astral-sh/ruff/pull/26649))
+- Sync vendored typeshed stubs ([#26840](https://github.com/astral-sh/ruff/pull/26840)). [Typeshed diff](https://github.com/python/typeshed/compare/b9090e99745ac1511d8efd828622b11a9a3623e8...b00c387c669cb50d5d388d77b74c2e832e147fe8)
+- Treat transparent callable decorators consistently in class assignments ([#26720](https://github.com/astral-sh/ruff/pull/26720))
+
+### Performance
+
+- Compare overloaded protocol method returns pairwise ([#26684](https://github.com/astral-sh/ruff/pull/26684))
+- Extend `PathBounds` fast-path to support both upper and lower bounds ([#26782](https://github.com/astral-sh/ruff/pull/26782))
+- Skip `Self` type scans for non-generic instances ([#26703](https://github.com/astral-sh/ruff/pull/26703))
+
+### Contributors
+
+- [@sharkdp](https://github.com/sharkdp)
+- [@mtshiba](https://github.com/mtshiba)
+- [@dhruvmanila](https://github.com/dhruvmanila)
+- [@lerebear](https://github.com/lerebear)
+- [@carljm](https://github.com/carljm)
+- [@charliermarsh](https://github.com/charliermarsh)
+- [@ibraheemdev](https://github.com/ibraheemdev)
+- [@RasmusNygren](https://github.com/RasmusNygren)
+
 ## 0.0.59
 
 Released on 2026-07-12.
