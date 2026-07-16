@@ -27,6 +27,7 @@ Released on 2026-07-15.
 
 ### Core type checking
 
+- Derive descriptor setter domains for protocols ([#26683](https://github.com/astral-sh/ruff/pull/26683))
 - Handle cycles in derived constraint relations ([#26814](https://github.com/astral-sh/ruff/pull/26814))
 - Implement unified generic call inference ([#26141](https://github.com/astral-sh/ruff/pull/26141))
 - Preserve constraints from bound receivers ([#26776](https://github.com/astral-sh/ruff/pull/26776))
