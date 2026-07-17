@@ -1,5 +1,55 @@
 # Changelog
 
+## 0.0.61
+
+Released on 2026-07-17.
+
+### LSP server
+
+- Render Google docstrings as structured Markdown ([#26599](https://github.com/astral-sh/ruff/pull/26599))
+
+### Library support
+
+- Pydantic: Collect field metadata through subscripted generic `Annotated` aliases ([#26885](https://github.com/astral-sh/ruff/pull/26885))
+
+### Diagnostics
+
+- Avoid extending own-line suppressions in `--add-ignore` ([#26808](https://github.com/astral-sh/ruff/pull/26808))
+
+### Core type checking
+
+- Derive descriptor setter domains for protocols ([#26683](https://github.com/astral-sh/ruff/pull/26683))
+- Enforce declared receiver TypeVar domains ([#26863](https://github.com/astral-sh/ruff/pull/26863))
+- Infer `isinstance` results for aliases and type variables ([#26961](https://github.com/astral-sh/ruff/pull/26961))
+- Infer `isinstance` results for fixed class tuples ([#26935](https://github.com/astral-sh/ruff/pull/26935))
+- Narrow inline list and set membership checks ([#26955](https://github.com/astral-sh/ruff/pull/26955))
+- Narrow tagged unions by tag truthiness ([#26887](https://github.com/astral-sh/ruff/pull/26887))
+- Narrow walrus expression values ([#26949](https://github.com/astral-sh/ruff/pull/26949))
+- Project intersections in `to_instance` ([#26892](https://github.com/astral-sh/ruff/pull/26892))
+- Remove inferable TypeVar artifacts recursively ([#26787](https://github.com/astral-sh/ruff/pull/26787))
+- Respect mixin receiver domains in method overrides ([#26941](https://github.com/astral-sh/ruff/pull/26941))
+- Support `TypeVarTuple` and `Unpack` ([#25240](https://github.com/astral-sh/ruff/pull/25240))
+
+### Performance
+
+- Deduplicate completion labels ([#26890](https://github.com/astral-sh/ruff/pull/26890))
+- Only collect expected types for files open in the editor ([#25546](https://github.com/astral-sh/ruff/pull/25546))
+- Parallelize subtype hierarchy search ([#26875](https://github.com/astral-sh/ruff/pull/26875))
+- Share heap-backed parser names with CharStr ([#26594](https://github.com/astral-sh/ruff/pull/26594))
+- Use the new incremental checker from the `ignore` crate ([#26933](https://github.com/astral-sh/ruff/pull/26933))
+
+### Contributors
+
+- [@MichaReiser](https://github.com/MichaReiser)
+- [@denyszhak](https://github.com/denyszhak)
+- [@lerebear](https://github.com/lerebear)
+- [@dhruvmanila](https://github.com/dhruvmanila)
+- [@charliermarsh](https://github.com/charliermarsh)
+- [@BurntSushi](https://github.com/BurntSushi)
+- [@Aethryl](https://github.com/Aethryl)
+- [@carljm](https://github.com/carljm)
+- [@ibraheemdev](https://github.com/ibraheemdev)
+
 ## 0.0.60
 
 Released on 2026-07-15.
