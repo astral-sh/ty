@@ -4,6 +4,10 @@
 
 Released on 2026-07-17.
 
+### Bug fixes
+
+- Avoid recursive protocol structural comparisons ([#26721](https://github.com/astral-sh/ruff/pull/26721))
+
 ### LSP server
 
 - Render Google docstrings as structured Markdown ([#26599](https://github.com/astral-sh/ruff/pull/26599))
