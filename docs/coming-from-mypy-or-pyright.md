@@ -54,10 +54,33 @@ preview = true
 
 This configuration:
 
-- Ensures ty exits with a non-zero status if it emits any warning-level diagnostics
 - Enables ty's disabled-by-default [`missing-type-argument`](https://docs.astral.sh/ty/reference/rules/#missing-type-argument) and [`possibly-unresolved-reference`](https://docs.astral.sh/ty/reference/rules/#possibly-unresolved-reference) rules
 - Extends Ruff's default rules with the [`ANN`](https://docs.astral.sh/ruff/rules/#flake8-annotations-ann) and [`PYI`](https://docs.astral.sh/ruff/rules/#flake8-pyi-pyi) rule categories, both of which are focussed on type-annotating your code more effectively
 - Enables Ruff's preview mode so that `PYI033` also checks `.py` files
+
+An even stricter configuration -- that goes beyond what mypy and pyright check for in their default
+`--strict` mode in several respects -- might look like this:
+
+```toml
+[tool.ty.rules]
+blanket-ignore-comment = "error"
+missing-type-argument = "error"
+possibly-unresolved-reference = "warn"
+unsupported-dynamic-base = "warn"
+
+# NOTE: the following rules are known to have a significant number of false positives,
+# which is mostly unavoidable. Enable them at your own risk!
+division-by-zero = "warn"
+possibly-missing-attribute = "warn"
+possibly-missing-import = "warn"
+
+[tool.ty.analysis]
+strict-literal-narrowing = true
+
+[tool.ruff.lint]
+extend-select = ["ANN", "PYI", "PGH003"]
+preview = true
+```
 
 Note that several checks in mypy and pyright are not yet implemented in ty. See the rule mapping
 table below for more details.
@@ -69,17 +92,17 @@ table below for more details.
 - **ty or Ruff rule**: the canonical name, as listed in [Rules](reference/rules.md) if it is a ty
     rule. Configure ty rules under `[tool.ty.rules]`. Where Ruff provides equivalent coverage for a
     check that has no ty rule, the relevant Ruff rule or rule group is linked instead.
-- **mypy error code**: the value passed to `# type: ignore[<code>]` or `disable_error_code`. Some ty
+- **Mypy error code**: the value passed to `# type: ignore[<code>]` or `disable_error_code`. Some ty
     rules surface as one of mypy's catch-all codes (`misc`, `assignment`, `valid-type`); these
     mappings are deliberately broad.
-- **pyright diagnostic**: the `report*` setting in `pyrightconfig.json` or `[tool.pyright]`.
+- **Pyright diagnostic**: the `report*` setting in `pyrightconfig.json` or `[tool.pyright]`.
 
 A blank cell means no direct equivalent exists in that checker (the diagnostic is either not
 emitted, or is folded into a broader category that already appears for another ty rule).
 
 ### Rules
 
-| ty or Ruff rule                                                                                                              | mypy error code                                                                                                                | pyright diagnostic                                                                                                       |
+| ty or Ruff rule                                                                                                              | Mypy error code                                                                                                                | Pyright or basedpyright diagnostic                                                                                       |
 | ---------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ |
 | [`call-abstract-method`][ty-call-abstract-method]                                                                            |                                                                                                                                | [`reportAbstractUsage`][reportabstractusage]                                                                             |
 | [`call-non-callable`][ty-call-non-callable]                                                                                  | [`operator`][mypy-operator]                                                                                                    | [`reportCallIssue`][reportcallissue]                                                                                     |
@@ -129,6 +152,7 @@ emitted, or is folded into a broader category that already appears for another t
 | [`unsupported-operator`][ty-unsupported-operator]                                                                            | [`operator`][mypy-operator]                                                                                                    | [`reportOperatorIssue`][reportoperatorissue]                                                                             |
 | [`unused-awaitable`][ty-unused-awaitable]                                                                                    | [`unused-coroutine`][mypy-unused-coroutine]<br>[`unused-awaitable`][mypy-unused-awaitable]                                     | [`reportUnusedCoroutine`][reportunusedcoroutine]                                                                         |
 | [`unused-ignore-comment`][ty-unused-ignore-comment]                                                                          | [`unused-ignore`][mypy-unused-ignore]                                                                                          | [`reportUnnecessaryTypeIgnoreComment`][reportunnecessarytypeignorecomment]                                               |
+| [`blanket-ignore-comment`][ty-blanket-ignore-comment], [Ruff `PGH003`][ruff-pgh003]                                          | [`ignore-without-code`][mypy-ignore-without-code]                                                                              | [`reportIgnoreCommentWithoutRule`][reportignorecommentwithoutrule] (basedpyright only)                                   |
 | None yet (tracked in [Ruff #10137][ruff-10137])                                                                              |                                                                                                                                | [`reportConstantRedefinition`][reportconstantredefinition]                                                               |
 | [Ruff `F811`][ruff-f811]<br>[Ruff `I001`][ruff-i001]                                                                         |                                                                                                                                | [`reportDuplicateImport`][reportduplicateimport]                                                                         |
 | None yet (tracked in [#3647][ty-3647])                                                                                       |                                                                                                                                | [`reportImportCycles`][reportimportcycles]                                                                               |
@@ -175,6 +199,7 @@ The full list of ty rules — including those without a direct equivalent above 
 [mypy-empty-body]: https://mypy.readthedocs.io/en/stable/_refs.html#code-empty-body
 [mypy-exhaustive-match]: https://mypy.readthedocs.io/en/stable/_refs.html#code-exhaustive-match
 [mypy-explicit-override]: https://mypy.readthedocs.io/en/stable/_refs.html#code-explicit-override
+[mypy-ignore-without-code]: https://mypy.readthedocs.io/en/stable/_refs.html#code-ignore-without-code
 [mypy-import-not-found]: https://mypy.readthedocs.io/en/stable/_refs.html#code-import-not-found
 [mypy-import-untyped]: https://mypy.readthedocs.io/en/stable/_refs.html#code-import-untyped
 [mypy-index]: https://mypy.readthedocs.io/en/stable/_refs.html#code-index
@@ -215,6 +240,7 @@ The full list of ty rules — including those without a direct equivalent above 
 [reportdeprecated]: https://github.com/microsoft/pyright/blob/main/docs/configuration.md#reportDeprecated
 [reportduplicateimport]: https://github.com/microsoft/pyright/blob/main/docs/configuration.md#reportDuplicateImport
 [reportgeneraltypeissues]: https://github.com/microsoft/pyright/blob/main/docs/configuration.md#reportGeneralTypeIssues
+[reportignorecommentwithoutrule]: https://docs.basedpyright.com/latest/benefits-over-pyright/new-diagnostic-rules/#reportignorecommentwithoutrule
 [reportimplicitoverride]: https://github.com/microsoft/pyright/blob/main/docs/configuration.md#reportImplicitOverride
 [reportimportcycles]: https://github.com/microsoft/pyright/blob/main/docs/configuration.md#reportImportCycles
 [reportincompatiblemethodoverride]: https://github.com/microsoft/pyright/blob/main/docs/configuration.md#reportIncompatibleMethodOverride
@@ -268,6 +294,7 @@ The full list of ty rules — including those without a direct equivalent above 
 [ruff-i001]: https://docs.astral.sh/ruff/rules/unsorted-imports/
 [ruff-n804]: https://docs.astral.sh/ruff/rules/invalid-first-argument-name-for-class-method/
 [ruff-n805]: https://docs.astral.sh/ruff/rules/invalid-first-argument-name-for-method/
+[ruff-pgh003]: https://docs.astral.sh/ruff/rules/blanket-type-ignore/
 [ruff-ple0604]: https://docs.astral.sh/ruff/rules/invalid-all-object/
 [ruff-ple0605]: https://docs.astral.sh/ruff/rules/invalid-all-format/
 [ruff-pyi010]: https://docs.astral.sh/ruff/rules/non-empty-stub-body/
@@ -294,6 +321,7 @@ The full list of ty rules — including those without a direct equivalent above 
 [ty-3651]: https://github.com/astral-sh/ty/issues/3651
 [ty-3652]: https://github.com/astral-sh/ty/issues/3652
 [ty-576]: https://github.com/astral-sh/ty/issues/576
+[ty-blanket-ignore-comment]: reference/rules.md#blanket-ignore-comment
 [ty-call-abstract-method]: reference/rules.md#call-abstract-method
 [ty-call-non-callable]: reference/rules.md#call-non-callable
 [ty-conflicting-declarations]: reference/rules.md#conflicting-declarations
