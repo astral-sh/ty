@@ -92,17 +92,17 @@ table below for more details.
 - **ty or Ruff rule**: the canonical name, as listed in [Rules](reference/rules.md) if it is a ty
     rule. Configure ty rules under `[tool.ty.rules]`. Where Ruff provides equivalent coverage for a
     check that has no ty rule, the relevant Ruff rule or rule group is linked instead.
-- **mypy error code**: the value passed to `# type: ignore[<code>]` or `disable_error_code`. Some ty
+- **Mypy error code**: the value passed to `# type: ignore[<code>]` or `disable_error_code`. Some ty
     rules surface as one of mypy's catch-all codes (`misc`, `assignment`, `valid-type`); these
     mappings are deliberately broad.
-- **pyright diagnostic**: the `report*` setting in `pyrightconfig.json` or `[tool.pyright]`.
+- **Pyright diagnostic**: the `report*` setting in `pyrightconfig.json` or `[tool.pyright]`.
 
 A blank cell means no direct equivalent exists in that checker (the diagnostic is either not
 emitted, or is folded into a broader category that already appears for another ty rule).
 
 ### Rules
 
-| ty or Ruff rule                                                                                                              | mypy error code                                                                                                                | pyright or basedpyright diagnostic                                                                                       |
+| ty or Ruff rule                                                                                                              | Mypy error code                                                                                                                | Pyright or basedpyright diagnostic                                                                                       |
 | ---------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ |
 | [`call-abstract-method`][ty-call-abstract-method]                                                                            |                                                                                                                                | [`reportAbstractUsage`][reportabstractusage]                                                                             |
 | [`call-non-callable`][ty-call-non-callable]                                                                                  | [`operator`][mypy-operator]                                                                                                    | [`reportCallIssue`][reportcallissue]                                                                                     |
