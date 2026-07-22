@@ -1,5 +1,60 @@
 # Changelog
 
+## 0.0.62
+
+Released on 2026-07-21.
+
+### Bug fixes
+
+- Guard recursive `Protocol` and `TypedDict` relations ([#26990](https://github.com/astral-sh/ruff/pull/26990))
+- Prevent stack overflows in recursive type relation checks ([#26503](https://github.com/astral-sh/ruff/pull/26503))
+- Recover from cancelled file indexing ([#26876](https://github.com/astral-sh/ruff/pull/26876))
+
+### Diagnostics
+
+- Avoid editing ignore comments with trailing reasons ([#26939](https://github.com/astral-sh/ruff/pull/26939))
+- Prefer innermost inline suppressions ([#26940](https://github.com/astral-sh/ruff/pull/26940))
+- Remove unused own-line ignore comments ([#27013](https://github.com/astral-sh/ruff/pull/27013))
+- Reuse applicable own-line suppressions in `--add-ignore` ([#26925](https://github.com/astral-sh/ruff/pull/26925))
+
+### Configuration
+
+- Respect `rules` and `analysis` in PEP 723 script metadata configurations ([#26671](https://github.com/astral-sh/ruff/pull/26671))
+
+### Core type checking
+
+- Accept gradual constrained TypeVar solutions ([#26965](https://github.com/astral-sh/ruff/pull/26965))
+- Avoid recursive TypeVarTuple alias expansion ([#27032](https://github.com/astral-sh/ruff/pull/27032))
+- Check inherited method conflicts via the MRO ([#27019](https://github.com/astral-sh/ruff/pull/27019))
+- Contextually infer custom `__setattr__` assignments ([#27015](https://github.com/astral-sh/ruff/pull/27015))
+- Fix `Callable` `isinstance` reachability ([#26970](https://github.com/astral-sh/ruff/pull/26970))
+- Fix `Just[float]` protocol matching ([#27053](https://github.com/astral-sh/ruff/pull/27053))
+- Fix `Self` binding for classmethod `__new__` constructors ([#27030](https://github.com/astral-sh/ruff/pull/27030))
+- Fix nested short-circuit flow snapshots ([#26956](https://github.com/astral-sh/ruff/pull/26956))
+- Gate `TypedDict` PEP 728 parameters by Python version ([#26968](https://github.com/astral-sh/ruff/pull/26968))
+- Improve `match` reachability inference around value-pattern branches ([#26979](https://github.com/astral-sh/ruff/pull/26979))
+- Make membership and equality narrowing consistent ([#26982](https://github.com/astral-sh/ruff/pull/26982))
+- Preserve constrained TypeVar equality narrowing ([#26988](https://github.com/astral-sh/ruff/pull/26988))
+- Preserve constrained TypeVar inequality narrowing ([#26995](https://github.com/astral-sh/ruff/pull/26995))
+- Preserve unsatisfiable generic call constraints ([#26964](https://github.com/astral-sh/ruff/pull/26964))
+- Respect bounded typevars in union inference ([#27023](https://github.com/astral-sh/ruff/pull/27023))
+- Respect metaclass `__setattr__` for class attributes ([#27000](https://github.com/astral-sh/ruff/pull/27000))
+
+### Performance
+
+- Cache non-terminal-call reachability prefixes ([#26810](https://github.com/astral-sh/ruff/pull/26810))
+- Cache protocol `Self` binding ([#26997](https://github.com/astral-sh/ruff/pull/26997))
+- Cache sparse reachability checkpoints ([#26811](https://github.com/astral-sh/ruff/pull/26811))
+- Defer statement-call narrowing gates ([#26793](https://github.com/astral-sh/ruff/pull/26793))
+
+### Contributors
+
+- [@charliermarsh](https://github.com/charliermarsh)
+- [@MichaReiser](https://github.com/MichaReiser)
+- [@carljm](https://github.com/carljm)
+- [@AlexWaygood](https://github.com/AlexWaygood)
+- [@mtshiba](https://github.com/mtshiba)
+
 ## 0.0.61
 
 Released on 2026-07-17.
