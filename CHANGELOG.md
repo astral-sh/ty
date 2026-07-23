@@ -1,5 +1,35 @@
 # Changelog
 
+## 0.0.63
+
+Released on 2026-07-23.
+
+### Core type checking
+
+- Handle generic stringified PEP 613 type aliases ([#27092](https://github.com/astral-sh/ruff/pull/27092))
+- Allow equality narrowing across non-final classes ([#27031](https://github.com/astral-sh/ruff/pull/27031))
+- Allow interpolated string literals to be promoted to `str` ([#27104](https://github.com/astral-sh/ruff/pull/27104))
+- Fix double specialization of generic type aliases ([#27058](https://github.com/astral-sh/ruff/pull/27058))
+- Fix intersections of `type` and `TypeForm` ([#27099](https://github.com/astral-sh/ruff/pull/27099))
+- Intersect class-pattern member types ([#27103](https://github.com/astral-sh/ruff/pull/27103))
+
+### Library support
+
+- Pydantic: Stricter validation of sub-model fields in lax mode ([#27091](https://github.com/astral-sh/ruff/pull/27091))
+- Pydantic: Support special underscore parameters in `BaseSettings` models ([#27098](https://github.com/astral-sh/ruff/pull/27098))
+
+### Performance
+
+- Avoid exponential narrowing of optional dynamic match subjects ([#27100](https://github.com/astral-sh/ruff/pull/27100))
+- Avoid normalizing cached absolute file paths ([#26998](https://github.com/astral-sh/ruff/pull/26998))
+
+### Contributors
+
+- [@sharkdp](https://github.com/sharkdp)
+- [@charliermarsh](https://github.com/charliermarsh)
+- [@ibraheemdev](https://github.com/ibraheemdev)
+- [@carljm](https://github.com/carljm)
+
 ## 0.0.62
 
 Released on 2026-07-21.
