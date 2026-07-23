@@ -6,12 +6,12 @@ Released on 2026-07-23.
 
 ### Core type checking
 
-- Handle generic stringified PEP 613 type aliases ([#27092](https://github.com/astral-sh/ruff/pull/27092))
+- Handle generic stringified PEP 613 (`typing.TypeAlias`) type aliases ([#27092](https://github.com/astral-sh/ruff/pull/27092))
 - Allow equality narrowing across non-final classes ([#27031](https://github.com/astral-sh/ruff/pull/27031))
 - Allow interpolated string literals to be promoted to `str` ([#27104](https://github.com/astral-sh/ruff/pull/27104))
 - Fix double specialization of generic type aliases ([#27058](https://github.com/astral-sh/ruff/pull/27058))
 - Fix intersections of `type` and `TypeForm` ([#27099](https://github.com/astral-sh/ruff/pull/27099))
-- Intersect class-pattern member types ([#27103](https://github.com/astral-sh/ruff/pull/27103))
+- When narrowing from a `match` statement leads a variable `x` to be inferred as `A & B`, infer the type of `x.attr` as `<type of A.attr> & <type of B.attr>` ([#27103](https://github.com/astral-sh/ruff/pull/27103))
 
 ### Library support
 
@@ -20,7 +20,7 @@ Released on 2026-07-23.
 
 ### Performance
 
-- Avoid exponential narrowing of optional dynamic match subjects ([#27100](https://github.com/astral-sh/ruff/pull/27100))
+- Avoid exponential narrowing of optional dynamic `match` subjects ([#27100](https://github.com/astral-sh/ruff/pull/27100))
 - Avoid normalizing cached absolute file paths ([#26998](https://github.com/astral-sh/ruff/pull/26998))
 
 ### Contributors
