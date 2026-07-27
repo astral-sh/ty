@@ -1,5 +1,75 @@
 # Changelog
 
+## 0.0.64
+
+Released on 2026-07-27.
+
+### Bug fixes
+
+- Avoid cycles when resolving `ModuleType` globals ([#27182](https://github.com/astral-sh/ruff/pull/27182))
+- Fix identity narrowing for NewTypes ([#26439](https://github.com/astral-sh/ruff/pull/26439))
+- Make reachability analysis idempotent ([#27163](https://github.com/astral-sh/ruff/pull/27163))
+
+### LSP server
+
+- Fix ParamSpec declaration hover and type navigation ([#27183](https://github.com/astral-sh/ruff/pull/27183))
+- Implement LSP `textDocument/implementation` request ([#25410](https://github.com/astral-sh/ruff/pull/25410))
+- Introduce shared primitives for parsing backticks in docstrings ([#26928](https://github.com/astral-sh/ruff/pull/26928))
+- Render NumPy docstrings as structured Markdown ([#25925](https://github.com/astral-sh/ruff/pull/25925))
+
+### CLI
+
+- Add `--exclude-scripts` and `--include-scripts` ([#27169](https://github.com/astral-sh/ruff/pull/27169))
+- Discover uv workspace roots ([#25551](https://github.com/astral-sh/ruff/pull/25551))
+
+### Diagnostics
+
+- Add a lint rule for combined abstract and final decorators ([#26932](https://github.com/astral-sh/ruff/pull/26932))
+- Change `--add-ignore` to add space after the colon for `ty: ignore` ([#27120](https://github.com/astral-sh/ruff/pull/27120))
+- Fix `missing-override-decorator` suggestion before Python 3.12 ([#27166](https://github.com/astral-sh/ruff/pull/27166))
+- Make `with_message_override` diagnostic API more future-proof ([#27180](https://github.com/astral-sh/ruff/pull/27180))
+- Reuse full call diagnostics for implicit setter calls ([#27115](https://github.com/astral-sh/ruff/pull/27115))
+
+### Configuration
+
+- Allow unresolved unused venv home paths ([#27162](https://github.com/astral-sh/ruff/pull/27162))
+- Simplify script metadata query ([#27121](https://github.com/astral-sh/ruff/pull/27121))
+
+### Core type checking
+
+- Decorate only overload implementation signatures ([#27147](https://github.com/astral-sh/ruff/pull/27147))
+- Don't consider known-instance types, generic aliases or non-singleton special-form types to be single-valued ([#27137](https://github.com/astral-sh/ruff/pull/27137))
+- Improve identity comparison inference for singleton types ([#27126](https://github.com/astral-sh/ruff/pull/27126))
+- Improve tuple membership and rich comparison inference ([#27164](https://github.com/astral-sh/ruff/pull/27164))
+- Model walrus bindings from comprehensions ([#26466](https://github.com/astral-sh/ruff/pull/26466))
+- Narrow tagged unions using identity comparisons ([#27130](https://github.com/astral-sh/ruff/pull/27130))
+- Preserve `Self` in `__new__` calls ([#27003](https://github.com/astral-sh/ruff/pull/27003))
+- Preserve receiver constraints when binding overloaded methods ([#27038](https://github.com/astral-sh/ruff/pull/27038))
+- Remove `Type::is_single_valued()` ([#26992](https://github.com/astral-sh/ruff/pull/26992))
+- Support generic manual PEP 695 type aliases ([#27083](https://github.com/astral-sh/ruff/pull/27083))
+- Treat bivariance as covariant ([#24319](https://github.com/astral-sh/ruff/pull/24319))
+
+### Performance
+
+- Avoid expanding optional enum comparisons ([#27105](https://github.com/astral-sh/ruff/pull/27105))
+- Avoid repeated inference when copying mixed `TypedDict` unions ([#27108](https://github.com/astral-sh/ruff/pull/27108))
+- Improve importer performance ([#27159](https://github.com/astral-sh/ruff/pull/27159))
+- Improve union and intersection builder performance ([#27167](https://github.com/astral-sh/ruff/pull/27167))
+
+### Contributors
+
+- [@perfloop-agent](https://github.com/perfloop-agent)
+- [@carljm](https://github.com/carljm)
+- [@lerebear](https://github.com/lerebear)
+- [@Gankra](https://github.com/Gankra)
+- [@TrapsterDK](https://github.com/TrapsterDK)
+- [@MichaReiser](https://github.com/MichaReiser)
+- [@thejchap](https://github.com/thejchap)
+- [@mtshiba](https://github.com/mtshiba)
+- [@denyszhak](https://github.com/denyszhak)
+- [@charliermarsh](https://github.com/charliermarsh)
+- [@AlexWaygood](https://github.com/AlexWaygood)
+
 ## 0.0.63
 
 Released on 2026-07-23.
