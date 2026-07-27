@@ -27,7 +27,6 @@ Released on 2026-07-27.
 - Add a lint rule for combined abstract and final decorators ([#26932](https://github.com/astral-sh/ruff/pull/26932))
 - Change `--add-ignore` to add space after the colon for `ty: ignore` ([#27120](https://github.com/astral-sh/ruff/pull/27120))
 - Fix `missing-override-decorator` suggestion before Python 3.12 ([#27166](https://github.com/astral-sh/ruff/pull/27166))
-- Make `with_message_override` diagnostic API more future-proof ([#27180](https://github.com/astral-sh/ruff/pull/27180))
 - Reuse full call diagnostics for implicit setter calls ([#27115](https://github.com/astral-sh/ruff/pull/27115))
 
 ### Configuration
@@ -45,7 +44,6 @@ Released on 2026-07-27.
 - Narrow tagged unions using identity comparisons ([#27130](https://github.com/astral-sh/ruff/pull/27130))
 - Preserve `Self` in `__new__` calls ([#27003](https://github.com/astral-sh/ruff/pull/27003))
 - Preserve receiver constraints when binding overloaded methods ([#27038](https://github.com/astral-sh/ruff/pull/27038))
-- Remove `Type::is_single_valued()` ([#26992](https://github.com/astral-sh/ruff/pull/26992))
 - Support generic manual PEP 695 type aliases ([#27083](https://github.com/astral-sh/ruff/pull/27083))
 - Treat bivariance as covariant ([#24319](https://github.com/astral-sh/ruff/pull/24319))
 
