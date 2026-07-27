@@ -6,7 +6,6 @@ Released on 2026-07-27.
 
 ### Bug fixes
 
-- Avoid cycles when resolving `ModuleType` globals ([#27182](https://github.com/astral-sh/ruff/pull/27182))
 - Fix identity narrowing for NewTypes ([#26439](https://github.com/astral-sh/ruff/pull/26439))
 - Make reachability analysis idempotent ([#27163](https://github.com/astral-sh/ruff/pull/27163))
 
@@ -49,6 +48,7 @@ Released on 2026-07-27.
 
 ### Performance
 
+- Avoid cycles when resolving `ModuleType` globals ([#27182](https://github.com/astral-sh/ruff/pull/27182))
 - Avoid expanding optional enum comparisons ([#27105](https://github.com/astral-sh/ruff/pull/27105))
 - Avoid repeated inference when copying mixed `TypedDict` unions ([#27108](https://github.com/astral-sh/ruff/pull/27108))
 - Improve importer performance ([#27159](https://github.com/astral-sh/ruff/pull/27159))
