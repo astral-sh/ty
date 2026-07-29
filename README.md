@@ -72,8 +72,13 @@ See the
 ## Version policy
 
 ty uses `0.0.x` versioning. ty does not yet have a stable API; breaking changes, including changes
-to diagnostics, may occur between any two versions. See the [type system support](https://github.com/astral-sh/ty/issues/1889)
+to diagnostics, may occur between any two versions.
+
+See the [type system support](https://github.com/astral-sh/ty/issues/1889)
 tracking issue for a detailed overview of currently supported features.
+
+For information on the timeline go to [When will ty be ready for production use?](https://github.com/astral-sh/ty/issues/1102)
+or check the milestone [Stable](https://github.com/astral-sh/ty/milestone/4)
 
 ## FAQ
 
