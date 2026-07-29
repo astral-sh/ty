@@ -1,5 +1,48 @@
 # Changelog
 
+## 0.0.65
+
+Released on 2026-07-29.
+
+### LSP server
+
+- Support comprehension walruses in IDE features ([#26476](https://github.com/astral-sh/ruff/pull/26476))
+
+### Library support
+
+- Pydantic: Allow mutation of private attributes on frozen models ([#27257](https://github.com/astral-sh/ruff/pull/27257))
+- Pydantic: Synthesize `__replace__` for models ([#27220](https://github.com/astral-sh/ruff/pull/27220))
+
+### Diagnostics
+
+- Correct `ParamSpec` forwarded-argument diagnostic locations ([#27263](https://github.com/astral-sh/ruff/pull/27263))
+- Recover forwarded callable object and constructor sources ([#27264](https://github.com/astral-sh/ruff/pull/27264))
+- Recover forwarded `functools.partial` diagnostic sources ([#27265](https://github.com/astral-sh/ruff/pull/27265))
+
+### Core type checking
+
+- Fix gradual class assignability with generic receivers ([#27223](https://github.com/astral-sh/ruff/pull/27223))
+- Lazily materialize protocol attributes ([#27267](https://github.com/astral-sh/ruff/pull/27267))
+- Narrow tagged unions through all type kinds ([#27226](https://github.com/astral-sh/ruff/pull/27226))
+- Prefer static constrained TypeVar solutions ([#27057](https://github.com/astral-sh/ruff/pull/27057))
+- Preserve frozen-dataclass setter delegation ([#27217](https://github.com/astral-sh/ruff/pull/27217))
+- Preserve inference when filtering constructor overloads ([#27254](https://github.com/astral-sh/ruff/pull/27254))
+- Reject frozen-dataclass field deletion through subclasses ([#27001](https://github.com/astral-sh/ruff/pull/27001))
+- Stabilize recursive type-constraint ordering ([#27176](https://github.com/astral-sh/ruff/pull/27176))
+- Support materialized class type expressions ([#27258](https://github.com/astral-sh/ruff/pull/27258))
+
+### Performance
+
+- Avoid quadratic inference for large literal unions ([#27178](https://github.com/astral-sh/ruff/pull/27178))
+- Cache protocol receiver binding ([#27301](https://github.com/astral-sh/ruff/pull/27301))
+
+### Contributors
+
+- [@thejchap](https://github.com/thejchap)
+- [@benedikt-bartscher](https://github.com/benedikt-bartscher)
+- [@carljm](https://github.com/carljm)
+- [@charliermarsh](https://github.com/charliermarsh)
+
 ## 0.0.64
 
 Released on 2026-07-27.
