@@ -101,7 +101,8 @@ jobs:
       # functionality based on whether this is a pull_request, and whether it's from a fork.
       # (PRs run on the *source* but secrets are usually on the *target* -- that's *good*
       # but also really annoying to build CI around when it needs secrets to work right.)
-      - id: plan
+      - name: Plan release with cargo-dist
+        id: plan
         run: |
           dist ${{ (inputs.tag && inputs.tag != 'dry-run' && format('host --steps=create --tag={0}', inputs.tag)) || 'plan' }} --output-format=json > plan-dist-manifest.json
           echo "dist ran successfully"
@@ -165,7 +166,8 @@ jobs:
           pattern: artifacts-*
           path: target/distrib/
           merge-multiple: true
-      - id: cargo-dist
+      - name: Build global cargo-dist artifacts
+        id: cargo-dist
         shell: bash
         run: |
           dist build ${{ needs.plan.outputs.tag-flag }} --output-format=json "--artifacts=global" > dist-manifest.json
@@ -219,7 +221,8 @@ jobs:
           path: target/distrib/
           merge-multiple: true
       # This is a harmless no-op for GitHub Releases, hosting for that happens in "announce"
-      - id: host
+      - name: Host release with cargo-dist
+        id: host
         shell: bash
         run: |
           dist host ${{ needs.plan.outputs.tag-flag }} --steps=upload --steps=release --output-format=json > dist-manifest.json
