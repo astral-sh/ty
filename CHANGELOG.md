@@ -1,5 +1,52 @@
 # Changelog
 
+## 0.0.66
+
+Released on 2026-08-03.
+
+### LSP server
+
+- Index `with`-statement targets as symbols ([#27256](https://github.com/astral-sh/ruff/pull/27256))
+- Trigger signature help after completing callable with parentheses ([#27084](https://github.com/astral-sh/ruff/pull/27084))
+
+### Library support
+
+- Pydantic: Recognize models installed on extra search paths ([#27429](https://github.com/astral-sh/ruff/pull/27429))
+
+### Diagnostics
+
+- Detect `__aenter__` and `__aexit__` that do not return awaitables ([#27414](https://github.com/astral-sh/ruff/pull/27414))
+- Diagnose dataclass fields after inherited defaults ([#27327](https://github.com/astral-sh/ruff/pull/27327))
+- Emit diagnostic when specializing a non-generic class ([#26883](https://github.com/astral-sh/ruff/pull/26883))
+- Improve error context for incompatible callable signatures ([#27422](https://github.com/astral-sh/ruff/pull/27422))
+- Preserve forwarded expanded-variadic diagnostic sources ([#27266](https://github.com/astral-sh/ruff/pull/27266))
+
+### Core type checking
+
+- Avoid over-materializing user-defined `TypeIs` return types ([#26864](https://github.com/astral-sh/ruff/pull/26864))
+- Fix enum class container assignability ([#27318](https://github.com/astral-sh/ruff/pull/27318))
+- Hide stub-only helpers from implicit builtin lookup ([#27423](https://github.com/astral-sh/ruff/pull/27423))
+- Move `Unknown` out of the experimental `ty_extensions` API ([#27430](https://github.com/astral-sh/ruff/pull/27430))
+- Preserve `TypeVarTuple` context during `Generic` recovery ([#27381](https://github.com/astral-sh/ruff/pull/27381))
+- Preserve exact numeric types in covariant collections ([#27311](https://github.com/astral-sh/ruff/pull/27311))
+- Reject `ClassVar` and `Final` qualifiers in `NamedTuple` fields ([#27380](https://github.com/astral-sh/ruff/pull/27380))
+- Reject out-of-scope `ParamSpec` components ([#27378](https://github.com/astral-sh/ruff/pull/27378))
+- Reject specializing non-generic subclasses ([#27377](https://github.com/astral-sh/ruff/pull/27377))
+- Respect bounds and constraints in generic materializations ([#27228](https://github.com/astral-sh/ruff/pull/27228))
+- Sync vendored typeshed stubs ([#27401](https://github.com/astral-sh/ruff/pull/27401)). [Typeshed diff](https://github.com/python/typeshed/compare/b00c387c669cb50d5d388d77b74c2e832e147fe8...1b116673774d062a4af7b0a0b3d05533a6be55d0)
+
+### Contributors
+
+- [@dhruvmanila](https://github.com/dhruvmanila)
+- [@carljm](https://github.com/carljm)
+- [@Punisheroot](https://github.com/Punisheroot)
+- [@AlexWaygood](https://github.com/AlexWaygood)
+- [@cheparity](https://github.com/cheparity)
+- [@BitWeaverDev](https://github.com/BitWeaverDev)
+- [@charliermarsh](https://github.com/charliermarsh)
+- [@ribru17](https://github.com/ribru17)
+- [@sharkdp](https://github.com/sharkdp)
+
 ## 0.0.65
 
 Released on 2026-07-29.
