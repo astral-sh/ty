@@ -12,7 +12,6 @@ Released on 2026-08-03.
 ### Library support
 
 - Pydantic: Recognize models installed on extra search paths ([#27429](https://github.com/astral-sh/ruff/pull/27429))
-- Sync vendored typeshed stubs ([#27401](https://github.com/astral-sh/ruff/pull/27401)). [Typeshed diff](https://github.com/python/typeshed/compare/b00c387c669cb50d5d388d77b74c2e832e147fe8...1b116673774d062a4af7b0a0b3d05533a6be55d0)
 
 ### Diagnostics
 
@@ -34,6 +33,7 @@ Released on 2026-08-03.
 - Reject out-of-scope `ParamSpec` components ([#27378](https://github.com/astral-sh/ruff/pull/27378))
 - Reject specializing non-generic subclasses ([#27377](https://github.com/astral-sh/ruff/pull/27377))
 - Respect bounds and constraints in generic materializations ([#27228](https://github.com/astral-sh/ruff/pull/27228))
+- Sync vendored typeshed stubs ([#27401](https://github.com/astral-sh/ruff/pull/27401)). [Typeshed diff](https://github.com/python/typeshed/compare/b00c387c669cb50d5d388d77b74c2e832e147fe8...1b116673774d062a4af7b0a0b3d05533a6be55d0)
 
 ### Contributors
 
