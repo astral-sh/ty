@@ -7,7 +7,12 @@ body:
         Thank you for taking the time to report an issue! We're glad to have you involved with ty.
 
         **Before reporting, please make sure to search through [existing issues](https://github.com/astral-sh/ty/issues?q=is:issue+is:open+label:bug) (including [closed](https://github.com/astral-sh/ty/issues?q=is:issue%20state:closed%20label:bug)).**<br>
-        **In particular, check out the list of [frequently encountered problems](https://github.com/astral-sh/ty/issues/445).**
+
+        If you are seeing a type error on your code that you didn't expect, does the [reference documentation](https://docs.astral.sh/ty/reference/rules/) for that error code explain the problem?
+
+        Have we documented your case in our [typing FAQ](https://docs.astral.sh/ty/reference/typing-faq/)?
+
+        Is it a [typing feature](https://github.com/astral-sh/ty/issues/1889) we haven't (fully) implemented yet?
 
   - type: textarea
     attributes:
