@@ -89,7 +89,7 @@ Like `Any` and `Unknown`, `Divergent` is a gradual type, so ty allows any operat
 `Divergent` part of a type. Unlike `Unknown`, it does not represent missing type information. It is
 an internal type used by ty and cannot be used in annotations.
 
-## Why does ty show `int | float` when I annotate something as `float`?
+## Why does ty show `float*` or `complex*`?
 
 The [Python typing specification](https://typing.python.org/en/latest/spec/special-types.html)
 includes a special rule for numeric types where an `int` can be used wherever a `float` is expected:
@@ -101,13 +101,32 @@ def circle_area(radius: float) -> float:
 circle_area(2)      # OK: int is allowed where float is expected
 ```
 
-This rule is a special case, since `int` is not actually a subclass of `float`. To support this, ty
-treats `float` annotations as meaning `int | float`. Unlike some other type checkers, ty makes this
-behavior explicit in type hints and error messages. For example, if you
-[hover over the `radius` parameter](https://play.ty.dev/fdc144c6-031c-4af9-b520-a4c6ccde9261), ty
-will show `int | float`.
+This rule is a special case, since `int` is not actually a subclass of `float`. A `float` annotation
+therefore accepts both integers and actual floating-point values, and ty displays this complete type
+as `float`. When ty knows that a value is an actual `float`, rather than an `int`, it displays the
+more precise type as `float*`:
 
-A similar rule applies to `complex`, which is treated as `int | float | complex`.
+```py
+def takes_float(value: float) -> None:
+    reveal_type(value)  # float
+
+
+reveal_type(1.0)  # float*
+```
+
+A similar rule applies to `complex`: a `complex` annotation accepts `int`, `float`, and `complex`
+values, and ty displays it as `complex`. A value known to be an actual `complex`, rather than an
+`int` or a `float`, is displayed as `complex*`:
+
+```py
+def takes_complex(value: complex) -> None:
+    reveal_type(value)  # complex
+
+
+reveal_type(1j)  # complex*
+```
+
+The starred spellings only appear in ty's output; they cannot be used in Python annotations.
 
 !!! info
 
