@@ -1,5 +1,58 @@
 # Changelog
 
+## 0.0.67
+
+Released on 2026-08-05.
+
+### LSP server
+
+- Fix unused hints for OR-pattern captures ([#27438](https://github.com/astral-sh/ruff/pull/27438))
+- Index match-pattern bindings as symbols ([#27260](https://github.com/astral-sh/ruff/pull/27260))
+- Retain typing-only symbols in explicit completions ([#27435](https://github.com/astral-sh/ruff/pull/27435))
+
+### Diagnostics
+
+- Preserve called types in intersection diagnostics ([#27475](https://github.com/astral-sh/ruff/pull/27475))
+- Suppress `unimported-reveal` diagnostics in stub files and `if TYPE_CHECKING` blocks ([#27508](https://github.com/astral-sh/ruff/pull/27508))
+
+### Configuration
+
+- Remove deprecated `src.root` setting in favor of `environment.root` ([#27456](https://github.com/astral-sh/ruff/pull/27456))
+
+### Core type checking
+
+- Check property compatibility when matching class objects to protocols ([#27402](https://github.com/astral-sh/ruff/pull/27402))
+- Fix constructor calls on narrowed type-variable intersections ([#27493](https://github.com/astral-sh/ruff/pull/27493))
+- Fix specialization cycle with deferred TypeVar defaults ([#27453](https://github.com/astral-sh/ruff/pull/27453))
+- Infer generic TypedDicts from unpacked TypedDicts ([#27439](https://github.com/astral-sh/ruff/pull/27439))
+- Infer generic TypedDicts through synthesized constructor signatures ([#27436](https://github.com/astral-sh/ruff/pull/27436))
+- Normalize unpacked callable signatures for assignability ([#27450](https://github.com/astral-sh/ruff/pull/27450))
+- Preserve class type parameters through generic decorators ([#27442](https://github.com/astral-sh/ruff/pull/27442))
+- Preserve generic class type variables in constructor inference ([#27340](https://github.com/astral-sh/ruff/pull/27340))
+- Preserve return constraints for object-variadic callables ([#27431](https://github.com/astral-sh/ruff/pull/27431))
+- Preserve return constraints for top callables ([#27446](https://github.com/astral-sh/ruff/pull/27446))
+- Recover generic constructor types from failing overloads ([#27460](https://github.com/astral-sh/ruff/pull/27460))
+- Reject Self with incompatible explicit receiver annotations ([#27454](https://github.com/astral-sh/ruff/pull/27454))
+- Reject unhashable objects for Hashable protocols ([#27441](https://github.com/astral-sh/ruff/pull/27441))
+- Reject unsupported `dataclass_transform` parameters ([#27458](https://github.com/astral-sh/ruff/pull/27458))
+- Restore bottom callable subtyping for gradual prefixes ([#27519](https://github.com/astral-sh/ruff/pull/27519))
+- Top-materialize `is_dataclass` type guard ([#27455](https://github.com/astral-sh/ruff/pull/27455))
+- Validate constructor calls on unbounded type variables ([#27449](https://github.com/astral-sh/ruff/pull/27449))
+
+### Performance
+
+- Avoid exponential slowdown copying narrowed TypedDict unions ([#27492](https://github.com/astral-sh/ruff/pull/27492))
+
+### Contributors
+
+- [@Punisheroot](https://github.com/Punisheroot)
+- [@dhruvmanila](https://github.com/dhruvmanila)
+- [@AlexWaygood](https://github.com/AlexWaygood)
+- [@sharkdp](https://github.com/sharkdp)
+- [@MichaReiser](https://github.com/MichaReiser)
+- [@carljm](https://github.com/carljm)
+- [@charliermarsh](https://github.com/charliermarsh)
+
 ## 0.0.66
 
 Released on 2026-08-03.
