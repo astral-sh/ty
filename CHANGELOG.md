@@ -1,5 +1,26 @@
 # Changelog
 
+## 0.0.68
+
+Released on 2026-08-05.
+
+### Diagnostics
+
+- Preserve property getter call errors ([#27509](https://github.com/astral-sh/ruff/pull/27509))
+- Simplify numeric tower displays (e.g., `float` over `int | float`) ([#27406](https://github.com/astral-sh/ruff/pull/27406))
+- Suggest closing open `TypedDict` types for `Mapping` compatibility ([#27512](https://github.com/astral-sh/ruff/pull/27512))
+
+### Core type checking
+
+- Avoid double inference of `Unpack` operands in `Union` ([#27525](https://github.com/astral-sh/ruff/pull/27525))
+- Fix panic from mismatched OR-pattern bindings ([#27533](https://github.com/astral-sh/ruff/pull/27533))
+
+### Contributors
+
+- [@AlexWaygood](https://github.com/AlexWaygood)
+- [@charliermarsh](https://github.com/charliermarsh)
+- [@carljm](https://github.com/carljm)
+
 ## 0.0.67
 
 Released on 2026-08-05.
