@@ -1,5 +1,28 @@
 # Changelog
 
+## 0.0.69
+
+Released on 2026-08-06.
+
+### Core type checking
+
+- `isinstance` narrowing for generic classes is now more gradual by default ([#27308](https://github.com/astral-sh/ruff/pull/27308))
+
+    This new behavior is more similar to what other major type checkers do. For example:
+
+    ```py
+    def f(xs: object):
+        if isinstance(xs, list):
+            reveal_type(xs)  # now: `list[Unknown]`, before: `Top[list[Unknown]]`
+    ```
+
+    **Note**: you might consider enabling [`analysis.strict-generic-narrowing`](https://docs.astral.sh/ty/reference/configuration/#strict-generic-narrowing)
+    if you prefer the strictly correct behavior.
+
+### Contributors
+
+- [@sharkdp](https://github.com/sharkdp)
+
 ## 0.0.68
 
 Released on 2026-08-05.

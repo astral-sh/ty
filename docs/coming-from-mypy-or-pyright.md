@@ -76,6 +76,7 @@ possibly-missing-import = "warn"
 
 [tool.ty.analysis]
 strict-literal-narrowing = true
+strict-generic-narrowing = true
 
 [tool.ruff.lint]
 extend-select = ["ANN", "PYI", "PGH003"]
