@@ -328,7 +328,8 @@ the developer experience around this in the future.
 
 This type represents "all possible lists of any element type" (as opposed to `list[Unknown]`, which
 represents "a list of some unknown element type"). It usually arises from a check such as
-`if isinstance(x, list):`. If `x` was previously of type `Item | list[Item]`, you might expect this
+`if isinstance(x, list):` if you have the [`analysis.strict-generic-narrowing`](../reference/configuration.md#strict-generic-narrowing)
+option enabled. If `x` was previously of type `Item | list[Item]`, you might expect this
 check to narrow the type to `list[Item]`, but ty respects the possibility that there could be a
 common subclass of both `Item` and `list` (which may not be a list of `Item`!), and so the narrowed
 type is instead `(Item & Top[list[Unknown]]) | list[Item]`. This code can be made more robust by

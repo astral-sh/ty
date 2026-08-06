@@ -116,8 +116,9 @@ Gradual types generally have two special [materializations]. The top materializa
 For example, the top materialization of `Any` is `object`, and the top materialization of
 `Any & int` is `int`. For invariant generic classes, the top materialization cannot be expressed in
 Python's type system, but it is a useful type that ty intersects with when `isinstance` checks
-involve generic classes. For example, when checking `isinstance(…, list)`, ty intersects with the
-top materialization of `list[Unknown]`:
+involve generic classes (when [`analysis.strict-generic-narrowing`](../reference/configuration.md#strict-generic-narrowing)
+is enabled). For example, when checking `isinstance(…, list)`, ty intersects with the top materialization
+of `list[Unknown]`:
 
 ```py
 @final
@@ -129,7 +130,7 @@ def process(items: Item | list[Item]):
         reveal_type(items)
 ```
 
-(Full example in the [playground](https://play.ty.dev/f1306120-0b8d-4ed5-b832-1f2d379eae2b))
+(Full example in the [playground](https://play.ty.dev/d2759832-101c-410d-b721-50805729bc68))
 
 !!! info
 
