@@ -1,7 +1,7 @@
 blank_issues_enabled: true
 contact_links:
   - name: Documentation
-    url: https://github.com/astral-sh/ty/blob/main/README.md
+    url: https://docs.astral.sh/ty
     about: Please consult the documentation before creating an issue.
   - name: Community
     url: https://discord.com/invite/astral-sh
