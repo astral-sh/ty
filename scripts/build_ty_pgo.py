@@ -4,7 +4,9 @@
 from __future__ import annotations
 
 import argparse
+import json
 import os
+import selectors
 import shlex
 import subprocess
 import sys
@@ -212,16 +214,18 @@ def main() -> None:
             environment=training_environment,
         )
 
+    profile_language_server(instrumented_binary, profile_dir, instrumented_environment)
+
     profiles = sorted(profile_dir.glob("ty-*.profraw"))
-    missing_projects = [
-        project.name
-        for project in CORPUS_PROJECTS
-        if not list(profile_dir.glob(f"ty-{project.name}-*.profraw"))
+    missing_workloads = [
+        name
+        for name in (*(project.name for project in CORPUS_PROJECTS), "language-server")
+        if not list(profile_dir.glob(f"ty-{name}-*.profraw"))
     ]
-    if missing_projects or any(profile.stat().st_size == 0 for profile in profiles):
+    if missing_workloads or any(profile.stat().st_size == 0 for profile in profiles):
         raise RuntimeError(
             f"Incomplete ty profiling data in {profile_dir}; "
-            f"missing projects: {', '.join(missing_projects) or 'none'}"
+            f"missing workloads: {', '.join(missing_workloads) or 'none'}"
         )
 
     with tempfile.NamedTemporaryFile(
@@ -256,6 +260,218 @@ def main() -> None:
     print("Building optimized release ty", flush=True)
     run(cargo_command(target), environment=optimized_environment)
     print(f"Optimized ty: {target_dir / target / 'release' / binary_name}", flush=True)
+
+
+def profile_language_server(
+    binary: Path, profile_directory: Path, environment: dict[str, str]
+) -> None:
+    print("Profiling ty language-server incremental edits", flush=True)
+    server_environment = environment | {
+        "LLVM_PROFILE_FILE": str(profile_directory / "ty-language-server-%m-%p.profraw")
+    }
+    for variable in (
+        "CONDA_PREFIX",
+        "PYTHONPATH",
+        "TY_CONFIG_FILE",
+        "TY_LOG",
+        "TY_LOG_PROFILE",
+        "TY_OUTPUT_FORMAT",
+        "TY_UV",
+        "UV",
+        "VIRTUAL_ENV",
+    ):
+        server_environment.pop(variable, None)
+
+    with tempfile.TemporaryDirectory(
+        prefix="ty-pgo-language-server-", dir=profile_directory.parent
+    ) as temporary:
+        root = Path(temporary)
+        (root / "pyproject.toml").write_text(
+            '[project]\nname = "ty-pgo"\nversion = "0.0.0"\n'
+            'requires-python = ">=3.12"\n',
+            encoding="utf-8",
+        )
+        models = root / "models.py"
+        models_text = (
+            "from dataclasses import dataclass\n\n"
+            "@dataclass\nclass User:\n    name: str\n    age: int\n\n"
+            'def load_user() -> User:\n    return User("Ada", 37)\n'
+        )
+        models.write_text(models_text, encoding="utf-8")
+        service = root / "service.py"
+        service_text = (
+            "from models import User, load_user\n\n"
+            "def describe(user: User) -> str:\n    return user.name.upper()\n\n"
+            "user = load_user()\nresult = describe(user)\n"
+            "next_age = user.age + 1\n"
+        )
+        service.write_text(service_text, encoding="utf-8")
+
+        process = subprocess.Popen(
+            [str(binary), "server"],
+            cwd=root,
+            env=server_environment,
+            stdin=subprocess.PIPE,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            bufsize=0,
+        )
+        if process.stdin is None or process.stdout is None or process.stderr is None:
+            process.kill()
+            process.wait()
+            raise RuntimeError("Could not open language-server pipes")
+
+        selector = selectors.DefaultSelector()
+        selector.register(process.stdout, selectors.EVENT_READ)
+        request_id = 0
+
+        def send(message: dict[str, object]) -> None:
+            payload = json.dumps(message, separators=(",", ":")).encode("utf-8")
+            process.stdin.write(
+                f"Content-Length: {len(payload)}\r\n\r\n".encode("ascii")
+            )
+            process.stdin.write(payload)
+
+        def request(method: str, params: dict[str, object] | None = None) -> object:
+            nonlocal request_id
+            request_id += 1
+            identifier = request_id
+            send(
+                {"jsonrpc": "2.0", "id": identifier, "method": method, "params": params}
+            )
+            deadline = time.monotonic() + 15
+            while True:
+                headers: dict[str, str] = {}
+                while True:
+                    if not selector.select(max(0, deadline - time.monotonic())):
+                        raise TimeoutError(
+                            f"Language-server request timed out: {method}"
+                        )
+                    line = process.stdout.readline()
+                    if not line:
+                        raise RuntimeError("Language server closed its output")
+                    if line in (b"\r\n", b"\n"):
+                        break
+                    name, _, value = line.decode("ascii").partition(":")
+                    headers[name.lower()] = value.strip()
+
+                remaining = int(headers["content-length"])
+                chunks: list[bytes] = []
+                while remaining:
+                    if not selector.select(max(0, deadline - time.monotonic())):
+                        raise TimeoutError(
+                            f"Language-server response timed out: {method}"
+                        )
+                    chunk = process.stdout.read(remaining)
+                    if not chunk:
+                        raise RuntimeError("Language server closed its output")
+                    chunks.append(chunk)
+                    remaining -= len(chunk)
+                response = json.loads(b"".join(chunks))
+                if "method" in response and "id" in response:
+                    result = (
+                        [] if response["method"] == "workspace/configuration" else None
+                    )
+                    send({"jsonrpc": "2.0", "id": response["id"], "result": result})
+                elif response.get("id") == identifier:
+                    if "error" in response:
+                        raise RuntimeError(f"{method} failed: {response['error']}")
+                    return response.get("result")
+
+        def notify(method: str, params: dict[str, object] | None = None) -> None:
+            send({"jsonrpc": "2.0", "method": method, "params": params or {}})
+
+        def diagnostics(path: Path) -> list[object]:
+            result = request(
+                "textDocument/diagnostic", {"textDocument": {"uri": path.as_uri()}}
+            )
+            if not isinstance(result, dict):
+                raise RuntimeError("Expected a full document diagnostic report")
+            return result.get("items", [])
+
+        try:
+            initialized = request(
+                "initialize",
+                {
+                    "processId": os.getpid(),
+                    "rootUri": root.as_uri(),
+                    "workspaceFolders": [{"uri": root.as_uri(), "name": root.name}],
+                    "capabilities": {
+                        "workspace": {"configuration": False},
+                        "textDocument": {"diagnostic": {"dynamicRegistration": False}},
+                    },
+                },
+            )
+            if not isinstance(initialized, dict) or not initialized.get(
+                "capabilities", {}
+            ).get("diagnosticProvider"):
+                raise RuntimeError("Language server does not support pull diagnostics")
+            notify("initialized")
+
+            for path, text in ((models, models_text), (service, service_text)):
+                notify(
+                    "textDocument/didOpen",
+                    {
+                        "textDocument": {
+                            "uri": path.as_uri(),
+                            "languageId": "python",
+                            "version": 1,
+                            "text": text,
+                        }
+                    },
+                )
+            if diagnostics(models) or diagnostics(service):
+                raise RuntimeError("Expected clean initial language-server diagnostics")
+
+            for method, position in (
+                ("textDocument/hover", {"line": 7, "character": 17}),
+                ("textDocument/definition", {"line": 5, "character": 8}),
+                ("textDocument/completion", {"line": 5, "character": 16}),
+            ):
+                result = request(
+                    method,
+                    {"textDocument": {"uri": service.as_uri()}, "position": position},
+                )
+                if not result:
+                    raise RuntimeError(f"Expected a nonempty {method} result")
+
+            for index in range(12):
+                invalid = index % 2 == 0
+                changed = (
+                    models_text.replace("age: int", "age: str")
+                    if invalid
+                    else models_text
+                )
+                notify(
+                    "textDocument/didChange",
+                    {
+                        "textDocument": {
+                            "uri": models.as_uri(),
+                            "version": index + 2,
+                        },
+                        "contentChanges": [{"text": changed}],
+                    },
+                )
+                if (
+                    bool(diagnostics(models)) != invalid
+                    or bool(diagnostics(service)) != invalid
+                ):
+                    raise RuntimeError(
+                        "Incremental cross-file diagnostics did not update"
+                    )
+
+            request("shutdown")
+            notify("exit")
+            process.stdin.close()
+            if process.wait(timeout=10):
+                raise RuntimeError(
+                    process.stderr.read().decode("utf-8", errors="replace")
+                )
+        finally:
+            selector.close()
+            if process.poll() is None:
+                process.kill()
+                process.wait()
 
 
 def rustc_host() -> str:
