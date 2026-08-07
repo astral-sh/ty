@@ -46,6 +46,7 @@ mode of other type checkers with the following configuration:
 [tool.ty.rules]
 missing-type-argument = "error"
 possibly-unresolved-reference = "warn"
+unsound-return-statement = "error"
 
 [tool.ruff.lint]
 extend-select = ["ANN", "PYI"]
@@ -54,7 +55,7 @@ preview = true
 
 This configuration:
 
-- Enables ty's disabled-by-default [`missing-type-argument`](https://docs.astral.sh/ty/reference/rules/#missing-type-argument) and [`possibly-unresolved-reference`](https://docs.astral.sh/ty/reference/rules/#possibly-unresolved-reference) rules
+- Enables ty's disabled-by-default [`missing-type-argument`](https://docs.astral.sh/ty/reference/rules/#missing-type-argument), [`possibly-unresolved-reference`](https://docs.astral.sh/ty/reference/rules/#possibly-unresolved-reference), and [`unsound-return-statement`](https://docs.astral.sh/ty/reference/rules/#unsound-return-statement) rules
 - Extends Ruff's default rules with the [`ANN`](https://docs.astral.sh/ruff/rules/#flake8-annotations-ann) and [`PYI`](https://docs.astral.sh/ruff/rules/#flake8-pyi-pyi) rule categories, both of which are focussed on type-annotating your code more effectively
 - Enables Ruff's preview mode so that `PYI033` also checks `.py` files
 
@@ -66,6 +67,7 @@ An even stricter configuration -- that goes beyond what mypy and pyright check f
 blanket-ignore-comment = "error"
 missing-type-argument = "error"
 possibly-unresolved-reference = "warn"
+unsound-return-statement = "error"
 unsupported-dynamic-base = "warn"
 
 # NOTE: the following rules are known to have a significant number of false positives,
@@ -76,6 +78,7 @@ possibly-missing-import = "warn"
 
 [tool.ty.analysis]
 strict-literal-narrowing = true
+strict-generic-narrowing = true
 
 [tool.ruff.lint]
 extend-select = ["ANN", "PYI", "PGH003"]
@@ -160,6 +163,7 @@ emitted, or is folded into a broader category that already appears for another t
 | [`unresolved-attribute`][ty-unresolved-attribute]                                                                            | [`attr-defined`][mypy-attr-defined]<br>[`union-attr`][mypy-union-attr]                                                                                               | [`reportAttributeAccessIssue`][reportattributeaccessissue]<br>[`reportFunctionMemberAccess`][reportfunctionmemberaccess]<br>[`reportOptionalMemberAccess`][reportoptionalmemberaccess] |
 | [`unresolved-import`][ty-unresolved-import]                                                                                  | [`import-not-found`][mypy-import-not-found]                                                                                                                          | [`reportMissingImports`][reportmissingimports]                                                                                                                                         |
 | [`unresolved-reference`][ty-unresolved-reference], [Ruff `F823`][ruff-f823]                                                  | [`name-defined`][mypy-name-defined]<br>[`used-before-def`][mypy-used-before-def]                                                                                     | [`reportUndefinedVariable`][reportundefinedvariable]<br>[`reportUnboundVariable`][reportunboundvariable]                                                                               |
+| [`unsound-return-statement`][ty-unsound-return-statement]                                                                    | [`no-any-return`][mypy-no-any-return]                                                                                                                                |                                                                                                                                                                                        |
 | [`unsupported-operator`][ty-unsupported-operator]                                                                            | [`operator`][mypy-operator]                                                                                                                                          | [`reportOperatorIssue`][reportoperatorissue]<br>[`reportOptionalOperand`][reportoptionaloperand]                                                                                       |
 | [`unused-awaitable`][ty-unused-awaitable]                                                                                    | [`unused-coroutine`][mypy-unused-coroutine]<br>[`unused-awaitable`][mypy-unused-awaitable]                                                                           | [`reportUnusedCoroutine`][reportunusedcoroutine]                                                                                                                                       |
 | [`unused-ignore-comment`][ty-unused-ignore-comment]                                                                          | [`unused-ignore`][mypy-unused-ignore]                                                                                                                                | [`reportUnnecessaryTypeIgnoreComment`][reportunnecessarytypeignorecomment]                                                                                                             |
@@ -208,7 +212,6 @@ emitted, or is folded into a broader category that already appears for another t
 | [Ruff `F841`][ruff-f841] (function-local variables only)                                                                     |                                                                                                                                                                      | [`reportUnusedVariable`][reportunusedvariable]                                                                                                                                         |
 | [Ruff `F403`][ruff-f403]                                                                                                     |                                                                                                                                                                      | [`reportWildcardImportFromLibrary`][reportwildcardimportfromlibrary]                                                                                                                   |
 | [Ruff `ANN401`][ruff-ann401] (function parameters only)                                                                      | [`explicit-any`][mypy-explicit-any]                                                                                                                                  |                                                                                                                                                                                        |
-| None yet                                                                                                                     | [`no-any-return`][mypy-no-any-return]                                                                                                                                |                                                                                                                                                                                        |
 | None yet                                                                                                                     | [`no-any-unimported`][mypy-no-any-unimported]                                                                                                                        |                                                                                                                                                                                        |
 | None yet                                                                                                                     | [`no-untyped-call`][mypy-no-untyped-call]                                                                                                                            |                                                                                                                                                                                        |
 | [Ruff `ANN` rules][ruff-ann]                                                                                                 | [`no-untyped-def`][mypy-no-untyped-def]                                                                                                                              | [`reportMissingParameterType`][reportmissingparametertype]<br>[`reportUnknownParameterType`][reportunknownparametertype]                                                               |
@@ -464,6 +467,7 @@ The full list of ty rules — including those without a direct equivalent above 
 [ty-unresolved-attribute]: reference/rules.md#unresolved-attribute
 [ty-unresolved-import]: reference/rules.md#unresolved-import
 [ty-unresolved-reference]: reference/rules.md#unresolved-reference
+[ty-unsound-return-statement]: reference/rules.md#unsound-return-statement
 [ty-unsupported-operator]: reference/rules.md#unsupported-operator
 [ty-unused-awaitable]: reference/rules.md#unused-awaitable
 [ty-unused-ignore-comment]: reference/rules.md#unused-ignore-comment

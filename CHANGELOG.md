@@ -1,5 +1,149 @@
 # Changelog
 
+## 0.0.69
+
+Released on 2026-08-06.
+
+### Core type checking
+
+- `isinstance` narrowing for generic classes is now more gradual by default ([#27308](https://github.com/astral-sh/ruff/pull/27308))
+
+    This new behavior is more similar to what other major type checkers do. For example:
+
+    ```py
+    def f(xs: object):
+        if isinstance(xs, list):
+            reveal_type(xs)  # now: `list[Unknown]`, before: `Top[list[Unknown]]`
+    ```
+
+    **Note**: you might consider enabling [`analysis.strict-generic-narrowing`](https://docs.astral.sh/ty/reference/configuration/#strict-generic-narrowing)
+    if you prefer the strictly correct behavior.
+
+### Contributors
+
+- [@sharkdp](https://github.com/sharkdp)
+
+## 0.0.68
+
+Released on 2026-08-05.
+
+### Diagnostics
+
+- Preserve property getter call errors ([#27509](https://github.com/astral-sh/ruff/pull/27509))
+- Simplify numeric tower displays (e.g., `float` over `int | float`) ([#27406](https://github.com/astral-sh/ruff/pull/27406))
+- Suggest closing open `TypedDict` types for `Mapping` compatibility ([#27512](https://github.com/astral-sh/ruff/pull/27512))
+
+### Core type checking
+
+- Avoid double inference of `Unpack` operands in `Union` ([#27525](https://github.com/astral-sh/ruff/pull/27525))
+- Fix panic from mismatched OR-pattern bindings ([#27533](https://github.com/astral-sh/ruff/pull/27533))
+
+### Contributors
+
+- [@AlexWaygood](https://github.com/AlexWaygood)
+- [@charliermarsh](https://github.com/charliermarsh)
+- [@carljm](https://github.com/carljm)
+
+## 0.0.67
+
+Released on 2026-08-05.
+
+### LSP server
+
+- Fix unused hints for OR-pattern captures ([#27438](https://github.com/astral-sh/ruff/pull/27438))
+- Index match-pattern bindings as symbols ([#27260](https://github.com/astral-sh/ruff/pull/27260))
+- Retain typing-only symbols in explicit completions ([#27435](https://github.com/astral-sh/ruff/pull/27435))
+
+### Diagnostics
+
+- Preserve called types in intersection diagnostics ([#27475](https://github.com/astral-sh/ruff/pull/27475))
+- Suppress `unimported-reveal` diagnostics in stub files and `if TYPE_CHECKING` blocks ([#27508](https://github.com/astral-sh/ruff/pull/27508))
+
+### Configuration
+
+- Remove deprecated `src.root` setting in favor of `environment.root` ([#27456](https://github.com/astral-sh/ruff/pull/27456))
+
+### Core type checking
+
+- Check property compatibility when matching class objects to protocols ([#27402](https://github.com/astral-sh/ruff/pull/27402))
+- Fix constructor calls on narrowed type-variable intersections ([#27493](https://github.com/astral-sh/ruff/pull/27493))
+- Fix specialization cycle with deferred TypeVar defaults ([#27453](https://github.com/astral-sh/ruff/pull/27453))
+- Infer generic TypedDicts from unpacked TypedDicts ([#27439](https://github.com/astral-sh/ruff/pull/27439))
+- Infer generic TypedDicts through synthesized constructor signatures ([#27436](https://github.com/astral-sh/ruff/pull/27436))
+- Normalize unpacked callable signatures for assignability ([#27450](https://github.com/astral-sh/ruff/pull/27450))
+- Preserve class type parameters through generic decorators ([#27442](https://github.com/astral-sh/ruff/pull/27442))
+- Preserve generic class type variables in constructor inference ([#27340](https://github.com/astral-sh/ruff/pull/27340))
+- Preserve return constraints for object-variadic callables ([#27431](https://github.com/astral-sh/ruff/pull/27431))
+- Preserve return constraints for top callables ([#27446](https://github.com/astral-sh/ruff/pull/27446))
+- Recover generic constructor types from failing overloads ([#27460](https://github.com/astral-sh/ruff/pull/27460))
+- Reject Self with incompatible explicit receiver annotations ([#27454](https://github.com/astral-sh/ruff/pull/27454))
+- Reject unhashable objects for Hashable protocols ([#27441](https://github.com/astral-sh/ruff/pull/27441))
+- Reject unsupported `dataclass_transform` parameters ([#27458](https://github.com/astral-sh/ruff/pull/27458))
+- Restore bottom callable subtyping for gradual prefixes ([#27519](https://github.com/astral-sh/ruff/pull/27519))
+- Top-materialize `is_dataclass` type guard ([#27455](https://github.com/astral-sh/ruff/pull/27455))
+- Validate constructor calls on unbounded type variables ([#27449](https://github.com/astral-sh/ruff/pull/27449))
+
+### Performance
+
+- Avoid exponential slowdown copying narrowed TypedDict unions ([#27492](https://github.com/astral-sh/ruff/pull/27492))
+
+### Contributors
+
+- [@Punisheroot](https://github.com/Punisheroot)
+- [@dhruvmanila](https://github.com/dhruvmanila)
+- [@AlexWaygood](https://github.com/AlexWaygood)
+- [@sharkdp](https://github.com/sharkdp)
+- [@MichaReiser](https://github.com/MichaReiser)
+- [@carljm](https://github.com/carljm)
+- [@charliermarsh](https://github.com/charliermarsh)
+
+## 0.0.66
+
+Released on 2026-08-03.
+
+### LSP server
+
+- Index `with`-statement targets as symbols ([#27256](https://github.com/astral-sh/ruff/pull/27256))
+- Trigger signature help after completing callable with parentheses ([#27084](https://github.com/astral-sh/ruff/pull/27084))
+
+### Library support
+
+- Pydantic: Recognize models installed on extra search paths ([#27429](https://github.com/astral-sh/ruff/pull/27429))
+
+### Diagnostics
+
+- Detect `__aenter__` and `__aexit__` that do not return awaitables ([#27414](https://github.com/astral-sh/ruff/pull/27414))
+- Diagnose dataclass fields after inherited defaults ([#27327](https://github.com/astral-sh/ruff/pull/27327))
+- Emit diagnostic when specializing a non-generic class ([#26883](https://github.com/astral-sh/ruff/pull/26883))
+- Improve error context for incompatible callable signatures ([#27422](https://github.com/astral-sh/ruff/pull/27422))
+- Preserve forwarded expanded-variadic diagnostic sources ([#27266](https://github.com/astral-sh/ruff/pull/27266))
+
+### Core type checking
+
+- Avoid over-materializing user-defined `TypeIs` return types ([#26864](https://github.com/astral-sh/ruff/pull/26864))
+- Fix enum class container assignability ([#27318](https://github.com/astral-sh/ruff/pull/27318))
+- Hide stub-only helpers from implicit builtin lookup ([#27423](https://github.com/astral-sh/ruff/pull/27423))
+- Move `Unknown` out of the experimental `ty_extensions` API ([#27430](https://github.com/astral-sh/ruff/pull/27430))
+- Preserve `TypeVarTuple` context during `Generic` recovery ([#27381](https://github.com/astral-sh/ruff/pull/27381))
+- Preserve exact numeric types in covariant collections ([#27311](https://github.com/astral-sh/ruff/pull/27311))
+- Reject `ClassVar` and `Final` qualifiers in `NamedTuple` fields ([#27380](https://github.com/astral-sh/ruff/pull/27380))
+- Reject out-of-scope `ParamSpec` components ([#27378](https://github.com/astral-sh/ruff/pull/27378))
+- Reject specializing non-generic subclasses ([#27377](https://github.com/astral-sh/ruff/pull/27377))
+- Respect bounds and constraints in generic materializations ([#27228](https://github.com/astral-sh/ruff/pull/27228))
+- Sync vendored typeshed stubs ([#27401](https://github.com/astral-sh/ruff/pull/27401)). [Typeshed diff](https://github.com/python/typeshed/compare/b00c387c669cb50d5d388d77b74c2e832e147fe8...1b116673774d062a4af7b0a0b3d05533a6be55d0)
+
+### Contributors
+
+- [@dhruvmanila](https://github.com/dhruvmanila)
+- [@carljm](https://github.com/carljm)
+- [@Punisheroot](https://github.com/Punisheroot)
+- [@AlexWaygood](https://github.com/AlexWaygood)
+- [@cheparity](https://github.com/cheparity)
+- [@BitWeaverDev](https://github.com/BitWeaverDev)
+- [@charliermarsh](https://github.com/charliermarsh)
+- [@ribru17](https://github.com/ribru17)
+- [@sharkdp](https://github.com/sharkdp)
+
 ## 0.0.65
 
 Released on 2026-07-29.
