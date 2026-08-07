@@ -1,16 +1,22 @@
-#!/usr/bin/env python3
 """Build ty with profile-guided optimization using pinned ecosystem projects."""
+
+# /// script
+# requires-python = ">=3.11"
+# dependencies = []
+# ///
 
 from __future__ import annotations
 
 import argparse
 import json
 import os
-import selectors
+import queue
+import re
 import shlex
 import subprocess
 import sys
 import tempfile
+import threading
 import time
 from dataclasses import dataclass
 from pathlib import Path
@@ -20,12 +26,23 @@ RUST_WORKSPACE_ROOT = REPOSITORY_ROOT / "ruff"
 EXCLUDED_DIRECTORIES = frozenset({"_tests", "_vendor", "test", "tests"})
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, slots=True)
 class EcosystemProject:
     name: str
     repository: str
     revision: str
     source_directories: tuple[str, ...]
+
+    def __post_init__(self) -> None:
+        if re.fullmatch(r"[0-9a-f]{40}", self.revision) is None:
+            raise ValueError(
+                f"{self.repository} must be pinned to a full Git commit SHA, "
+                f"got {self.revision!r}"
+            )
+
+    @property
+    def url(self) -> str:
+        return f"https://github.com/{self.repository}.git"
 
 
 CORPUS_PROJECTS = (
@@ -106,20 +123,18 @@ def main() -> None:
         type=Path,
         help="Override the active Rust toolchain's llvm-profdata executable",
     )
-    parser.add_argument(
+    mode = parser.add_mutually_exclusive_group()
+    mode.add_argument(
         "--train-only",
         action="store_true",
         help="Only produce <target-dir>/ty.profdata for a subsequent release build",
     )
-    parser.add_argument(
+    mode.add_argument(
         "--prepare-corpus",
         action="store_true",
         help="Only download and prepare the pinned ecosystem training corpus",
     )
     args = parser.parse_args()
-
-    if args.prepare_corpus and args.train_only:
-        parser.error("--prepare-corpus and --train-only cannot be used together")
 
     target_dir = (
         args.target_dir
@@ -174,11 +189,45 @@ def main() -> None:
     if not instrumented_binary.is_file():
         raise RuntimeError(f"Instrumented ty binary not found: {instrumented_binary}")
 
-    print(f"Training on {len(corpus)} ecosystem Python files", flush=True)
+    profiles = train_ty(
+        instrumented_binary,
+        target_dir / "corpus",
+        profile_dir,
+        corpus_size=len(corpus),
+        environment=instrumented_environment,
+    )
+    merge_profiles(profiler, profiles, merged_profile, environment=environment)
+
+    if args.train_only:
+        return
+
+    optimized_environment = environment | {
+        "CARGO_TARGET_DIR": str(target_dir),
+        "RUSTFLAGS": append_flags(
+            environment.get("RUSTFLAGS"), f"-Cprofile-use={merged_profile}"
+        ),
+    }
+    print("Building optimized release ty", flush=True)
+    run(cargo_command(target), environment=optimized_environment)
+    print(f"Optimized ty: {target_dir / target / 'release' / binary_name}", flush=True)
+
+
+def train_ty(
+    binary: Path,
+    corpus_directory: Path,
+    profile_directory: Path,
+    *,
+    corpus_size: int,
+    environment: dict[str, str],
+) -> list[Path]:
+    print(f"Training on {corpus_size} ecosystem Python files", flush=True)
+    profiles = []
     for project in CORPUS_PROJECTS:
-        checkout = target_dir / "corpus" / project.name
-        training_environment = instrumented_environment | {
-            "LLVM_PROFILE_FILE": str(profile_dir / f"ty-{project.name}-%m-%p.profraw")
+        checkout = corpus_directory / project.name
+        training_environment = environment | {
+            "LLVM_PROFILE_FILE": str(
+                profile_directory / f"ty-{project.name}-%m-%p.profraw"
+            )
         }
         for variable in (
             "CONDA_PREFIX",
@@ -193,14 +242,12 @@ def main() -> None:
         print(f"Profiling ty on {project.name}", flush=True)
         run(
             [
-                str(instrumented_binary),
+                str(binary),
                 "check",
                 "--project",
                 str(checkout),
                 "--python-version",
                 "3.13",
-                "--python-platform",
-                "linux",
                 *(
                     argument
                     for directory in sorted(EXCLUDED_DIRECTORIES)
@@ -214,22 +261,44 @@ def main() -> None:
             environment=training_environment,
         )
 
-    profile_language_server(instrumented_binary, profile_dir, instrumented_environment)
-
-    profiles = sorted(profile_dir.glob("ty-*.profraw"))
-    missing_workloads = [
-        name
-        for name in (*(project.name for project in CORPUS_PROJECTS), "language-server")
-        if not list(profile_dir.glob(f"ty-{name}-*.profraw"))
-    ]
-    if missing_workloads or any(profile.stat().st_size == 0 for profile in profiles):
-        raise RuntimeError(
-            f"Incomplete ty profiling data in {profile_dir}; "
-            f"missing workloads: {', '.join(missing_workloads) or 'none'}"
+        workload_profiles = sorted(
+            profile_directory.glob(f"ty-{project.name}-*.profraw")
         )
+        if not workload_profiles or any(
+            profile.stat().st_size == 0 for profile in workload_profiles
+        ):
+            raise RuntimeError(
+                f"No complete ty {project.name} profiling data found "
+                f"in {profile_directory}"
+            )
+        profiles.extend(workload_profiles)
+
+    profile_language_server(binary, profile_directory, environment)
+    language_server_profiles = sorted(
+        profile_directory.glob("ty-language-server-*.profraw")
+    )
+    if not language_server_profiles or any(
+        profile.stat().st_size == 0 for profile in language_server_profiles
+    ):
+        raise RuntimeError(
+            f"No complete ty language-server profiling data found "
+            f"in {profile_directory}"
+        )
+    profiles.extend(language_server_profiles)
+    return profiles
+
+
+def merge_profiles(
+    profiler: Path,
+    profiles: list[Path],
+    destination: Path,
+    *,
+    environment: dict[str, str],
+) -> None:
+    profile_size = sum(profile.stat().st_size for profile in profiles)
 
     with tempfile.NamedTemporaryFile(
-        dir=target_dir, prefix="ty-", suffix=".profdata", delete=False
+        dir=destination.parent, prefix="ty-", suffix=".profdata", delete=False
     ) as temporary_file:
         temporary_profile = Path(temporary_file.name)
     try:
@@ -243,23 +312,13 @@ def main() -> None:
             ],
             environment=environment,
         )
-        temporary_profile.replace(merged_profile)
+        temporary_profile.replace(destination)
     finally:
         temporary_profile.unlink(missing_ok=True)
-    print(f"Merged PGO profile: {merged_profile}", flush=True)
-
-    if args.train_only:
-        return
-
-    optimized_environment = environment | {
-        "CARGO_TARGET_DIR": str(target_dir),
-        "RUSTFLAGS": append_flags(
-            environment.get("RUSTFLAGS"), f"-Cprofile-use={merged_profile}"
-        ),
-    }
-    print("Building optimized release ty", flush=True)
-    run(cargo_command(target), environment=optimized_environment)
-    print(f"Optimized ty: {target_dir / target / 'release' / binary_name}", flush=True)
+    print(
+        f"Merged {len(profiles)} PGO profiles ({profile_size:,} bytes): {destination}",
+        flush=True,
+    )
 
 
 def profile_language_server(
@@ -321,9 +380,36 @@ def profile_language_server(
             process.wait()
             raise RuntimeError("Could not open language-server pipes")
 
-        selector = selectors.DefaultSelector()
-        selector.register(process.stdout, selectors.EVENT_READ)
+        responses: queue.Queue[dict[str, object] | Exception] = queue.Queue()
         request_id = 0
+
+        def read_responses() -> None:
+            try:
+                while True:
+                    headers: dict[str, str] = {}
+                    while True:
+                        line = process.stdout.readline()
+                        if not line:
+                            raise RuntimeError("Language server closed its output")
+                        if line in (b"\r\n", b"\n"):
+                            break
+                        name, _, value = line.decode("ascii").partition(":")
+                        headers[name.lower()] = value.strip()
+
+                    remaining = int(headers["content-length"])
+                    chunks: list[bytes] = []
+                    while remaining:
+                        chunk = process.stdout.read(remaining)
+                        if not chunk:
+                            raise RuntimeError("Language server closed its output")
+                        chunks.append(chunk)
+                        remaining -= len(chunk)
+                    response = json.loads(b"".join(chunks))
+                    if not isinstance(response, dict):
+                        raise RuntimeError("Expected a JSON-RPC response object")
+                    responses.put(response)
+            except (OSError, RuntimeError, UnicodeError, ValueError, KeyError) as error:
+                responses.put(error)
 
         def send(message: dict[str, object]) -> None:
             payload = json.dumps(message, separators=(",", ":")).encode("utf-8")
@@ -341,33 +427,18 @@ def profile_language_server(
             )
             deadline = time.monotonic() + 15
             while True:
-                headers: dict[str, str] = {}
-                while True:
-                    if not selector.select(max(0, deadline - time.monotonic())):
-                        raise TimeoutError(
-                            f"Language-server request timed out: {method}"
-                        )
-                    line = process.stdout.readline()
-                    if not line:
-                        raise RuntimeError("Language server closed its output")
-                    if line in (b"\r\n", b"\n"):
-                        break
-                    name, _, value = line.decode("ascii").partition(":")
-                    headers[name.lower()] = value.strip()
-
-                remaining = int(headers["content-length"])
-                chunks: list[bytes] = []
-                while remaining:
-                    if not selector.select(max(0, deadline - time.monotonic())):
-                        raise TimeoutError(
-                            f"Language-server response timed out: {method}"
-                        )
-                    chunk = process.stdout.read(remaining)
-                    if not chunk:
-                        raise RuntimeError("Language server closed its output")
-                    chunks.append(chunk)
-                    remaining -= len(chunk)
-                response = json.loads(b"".join(chunks))
+                try:
+                    response = responses.get(
+                        timeout=max(0, deadline - time.monotonic())
+                    )
+                except queue.Empty as error:
+                    raise TimeoutError(
+                        f"Language-server request timed out: {method}"
+                    ) from error
+                if isinstance(response, Exception):
+                    raise RuntimeError(
+                        "Could not read language-server output"
+                    ) from response
                 if "method" in response and "id" in response:
                     result = (
                         [] if response["method"] == "workspace/configuration" else None
@@ -389,6 +460,8 @@ def profile_language_server(
                 raise RuntimeError("Expected a full document diagnostic report")
             return result.get("items", [])
 
+        reader = threading.Thread(target=read_responses, daemon=True)
+        reader.start()
         try:
             initialized = request(
                 "initialize",
@@ -468,10 +541,10 @@ def profile_language_server(
                     process.stderr.read().decode("utf-8", errors="replace")
                 )
         finally:
-            selector.close()
             if process.poll() is None:
                 process.kill()
                 process.wait()
+            reader.join(timeout=1)
 
 
 def rustc_host() -> str:
@@ -535,9 +608,23 @@ def ecosystem_python_files(
                     "remote",
                     "add",
                     "origin",
-                    f"https://github.com/{project.repository}.git",
+                    project.url,
                 ],
                 environment=git_environment,
+            )
+
+        remote = subprocess.run(
+            [*git, "config", "--local", "--get", "remote.origin.url"],
+            cwd=REPOSITORY_ROOT,
+            env=git_environment,
+            check=True,
+            capture_output=True,
+            text=True,
+        ).stdout.strip()
+        if remote != project.url:
+            raise RuntimeError(
+                f"Unexpected origin for cached {project.name} checkout: "
+                f"expected {project.url}, got {remote}"
             )
 
         run(
