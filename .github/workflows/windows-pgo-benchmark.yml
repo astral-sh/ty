@@ -1,0 +1,123 @@
+name: "Benchmark Windows PGO"
+
+on:
+  push:
+    branches:
+      - charlie/ty-windows-pgo-benchmark
+
+permissions:
+  actions: read
+  contents: read
+
+jobs:
+  windows-pgo:
+    name: "Benchmark production Windows binaries"
+    runs-on: windows-latest
+    timeout-minutes: 45
+    defaults:
+      run:
+        shell: pwsh
+    steps:
+      - name: "Check out benchmark harness"
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: "Set up Python"
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: "3.12"
+      - name: "Install uv"
+        uses: astral-sh/setup-uv@c771a70e6277c0a99b617c7a806ffedaca235ff9 # v9.0.0
+        with:
+          enable-cache: false
+      - name: "Download production baseline"
+        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
+        with:
+          github-token: ${{ github.token }}
+          run-id: 31440423411
+          name: artifacts-x86_64-pc-windows-msvc
+          path: ${{ runner.temp }}/ty-pgo-bench/artifacts/baseline
+      - name: "Download untuned PGO binary"
+        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
+        with:
+          github-token: ${{ github.token }}
+          run-id: 31428596792
+          name: artifacts-x86_64-pc-windows-msvc
+          path: ${{ runner.temp }}/ty-pgo-bench/artifacts/untuned
+      - name: "Download tuned PGO binary"
+        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
+        with:
+          github-token: ${{ github.token }}
+          run-id: 31440465270
+          name: artifacts-x86_64-pc-windows-msvc
+          path: ${{ runner.temp }}/ty-pgo-bench/artifacts/tuned
+      - name: "Verify production archive and executable hashes"
+        run: |
+          $expected = [ordered]@{
+            baseline = @{
+              archive = "a2b3f839ccd1e19b75c099bc7c44b951c43dd8b57264609a2db19c9b23477ff2"
+              binary = "c70872067cdc956b9be319aa93815704e1b286e76f5e52f99f3716bc67e3fa04"
+            }
+            untuned = @{
+              archive = "c036c4040c65b2ab038f8fd9e01bf0ccad984d9308151bd0ce152c26d8f2219b"
+              binary = "ebec38c1caca4a8c760aff91ab8931933257649d01258fc5f12cd1202f3e1a11"
+            }
+            tuned = @{
+              archive = "016d782956128e9f3bee139fcad14f358500d7e846384394a57b85d5e0695adc"
+              binary = "f146bb5ef6ff1dd0dd7ae0e3073f0896b05ef856f3ff951da831b4fdb7dc7e27"
+            }
+          }
+
+          foreach ($variant in $expected.Keys) {
+            $directory = Join-Path $env:RUNNER_TEMP "ty-pgo-bench/artifacts/$variant"
+            $archive = Join-Path $directory "ty-x86_64-pc-windows-msvc.zip"
+            $archiveHash = (Get-FileHash -LiteralPath $archive -Algorithm SHA256).Hash.ToLowerInvariant()
+            if ($archiveHash -ne $expected[$variant].archive) {
+              throw "Unexpected $variant archive SHA-256: $archiveHash"
+            }
+
+            $destination = Join-Path $env:RUNNER_TEMP "ty-pgo-bench/verified/$variant"
+            Expand-Archive -LiteralPath $archive -DestinationPath $destination -Force
+            $binary = Join-Path $destination "ty.exe"
+            $binaryHash = (Get-FileHash -LiteralPath $binary -Algorithm SHA256).Hash.ToLowerInvariant()
+            if ($binaryHash -ne $expected[$variant].binary) {
+              throw "Unexpected $variant executable SHA-256: $binaryHash"
+            }
+
+            Write-Output "$variant executable: $binaryHash"
+          }
+      - name: "Benchmark pinned held-out projects"
+        run: |
+          $root = Join-Path $env:RUNNER_TEMP "ty-pgo-bench"
+          $arguments = @(
+            "scripts/benchmark_windows_pgo.py"
+            "--baseline", (Join-Path $root "verified/baseline")
+            "--untuned", (Join-Path $root "verified/untuned")
+            "--tuned", (Join-Path $root "verified/tuned")
+            "--workspace", (Join-Path $root "work")
+            "--json-output", (Join-Path $root "results.json")
+            "--markdown-output", (Join-Path $root "results.md")
+            "--pairs", "12"
+          )
+          python @arguments
+          if ($LASTEXITCODE -ne 0) {
+            throw "Windows PGO benchmark failed with exit code $LASTEXITCODE"
+          }
+      - name: "Publish benchmark summary"
+        if: ${{ always() }}
+        run: |
+          $summary = Join-Path $env:RUNNER_TEMP "ty-pgo-bench/results.md"
+          if (Test-Path -LiteralPath $summary -PathType Leaf) {
+            Get-Content -LiteralPath $summary -Raw |
+              Out-File -FilePath $env:GITHUB_STEP_SUMMARY -Encoding utf8 -Append
+          }
+      - name: "Upload benchmark results"
+        if: ${{ always() }}
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: windows-pgo-benchmark-results
+          path: |
+            ${{ runner.temp }}/ty-pgo-bench/results.json
+            ${{ runner.temp }}/ty-pgo-bench/results.md
+          if-no-files-found: warn
+          retention-days: 7
