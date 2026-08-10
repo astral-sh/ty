@@ -23,7 +23,19 @@ from pathlib import Path
 
 REPOSITORY_ROOT = Path(__file__).resolve().parent.parent
 RUST_WORKSPACE_ROOT = REPOSITORY_ROOT / "ruff"
+PYTHON_VERSION = "3.14"
 EXCLUDED_DIRECTORIES = frozenset({"_tests", "_vendor", "test", "tests"})
+EXCLUDED_ENVIRONMENT_VARIABLES = (
+    "CONDA_PREFIX",
+    "PYTHONPATH",
+    "TY_CONFIG_FILE",
+    "TY_LOG",
+    "TY_LOG_PROFILE",
+    "TY_OUTPUT_FORMAT",
+    "TY_UV",
+    "UV",
+    "VIRTUAL_ENV",
+)
 
 
 @dataclass(frozen=True, slots=True)
@@ -253,14 +265,7 @@ def train_ty(
                 profile_directory / f"ty-{project.name}-%m-%p.profraw"
             )
         }
-        for variable in (
-            "CONDA_PREFIX",
-            "PYTHONPATH",
-            "TY_CONFIG_FILE",
-            "TY_LOG",
-            "TY_OUTPUT_FORMAT",
-            "VIRTUAL_ENV",
-        ):
+        for variable in EXCLUDED_ENVIRONMENT_VARIABLES:
             training_environment.pop(variable, None)
 
         print(f"Profiling ty on {project.name}", flush=True)
@@ -271,7 +276,7 @@ def train_ty(
                 "--project",
                 str(checkout),
                 "--python-version",
-                "3.13",
+                PYTHON_VERSION,
                 *(
                     argument
                     for directory in sorted(EXCLUDED_DIRECTORIES)
@@ -352,17 +357,7 @@ def profile_language_server(
     server_environment = environment | {
         "LLVM_PROFILE_FILE": str(profile_directory / "ty-language-server-%m-%p.profraw")
     }
-    for variable in (
-        "CONDA_PREFIX",
-        "PYTHONPATH",
-        "TY_CONFIG_FILE",
-        "TY_LOG",
-        "TY_LOG_PROFILE",
-        "TY_OUTPUT_FORMAT",
-        "TY_UV",
-        "UV",
-        "VIRTUAL_ENV",
-    ):
+    for variable in EXCLUDED_ENVIRONMENT_VARIABLES:
         server_environment.pop(variable, None)
 
     with tempfile.TemporaryDirectory(
@@ -371,7 +366,7 @@ def profile_language_server(
         root = Path(temporary)
         (root / "pyproject.toml").write_text(
             '[project]\nname = "ty-pgo"\nversion = "0.0.0"\n'
-            'requires-python = ">=3.12"\n',
+            f'requires-python = ">={PYTHON_VERSION}"\n',
             encoding="utf-8",
         )
         models = root / "models.py"
