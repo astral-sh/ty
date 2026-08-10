@@ -1,5 +1,49 @@
 # Changelog
 
+## 0.0.70
+
+Released on 2026-08-10.
+
+### LSP server
+
+- Enable and downrank auto-import completions from stub-only modules ([#27433](https://github.com/astral-sh/ruff/pull/27433))
+- Fix signature help at end of file ([#27622](https://github.com/astral-sh/ruff/pull/27622))
+- Normalize type labels in structured docstrings ([#26923](https://github.com/astral-sh/ruff/pull/26923))
+- Preserve typing-only completion ranking in `TYPE_CHECKING` blocks ([#27549](https://github.com/astral-sh/ruff/pull/27549))
+
+### CLI
+
+- Avoid deadlock when scheduling watch checks ([#27605](https://github.com/astral-sh/ruff/pull/27605))
+
+### Diagnostics
+
+- Add an opt-in `unsound-return-statement` lint ([#27561](https://github.com/astral-sh/ruff/pull/27561))
+- Add an opt-in `unsound-yield` lint ([#27593](https://github.com/astral-sh/ruff/pull/27593))
+- Diagnose invalid `__getattr__` calls ([#27502](https://github.com/astral-sh/ruff/pull/27502))
+- Diagnose invalid descriptor `__get__` calls ([#27400](https://github.com/astral-sh/ruff/pull/27400))
+
+### Core type checking
+
+- Consider object members in protocol comparisons ([#27532](https://github.com/astral-sh/ruff/pull/27532))
+- Exclude quantified constraints from semantic type walks ([#27613](https://github.com/astral-sh/ruff/pull/27613))
+- Expand `Generator` aliases when evaluating return, send, and yield types ([#27577](https://github.com/astral-sh/ruff/pull/27577))
+- Infer precise `TypedDict` key-membership truthiness ([#27579](https://github.com/astral-sh/ruff/pull/27579))
+- Infer variance through `type[T]` ([#27534](https://github.com/astral-sh/ruff/pull/27534))
+- Preserve contextual inference for declarations in loops ([#27594](https://github.com/astral-sh/ruff/pull/27594))
+- Recognize overlapping `NewType` types and their underlying values ([#27522](https://github.com/astral-sh/ruff/pull/27522))
+- Require `ClassVar` declarations for protocol members ([#27530](https://github.com/astral-sh/ruff/pull/27530))
+- Stabilize recursive gradual type alias materialization ([#27563](https://github.com/astral-sh/ruff/pull/27563))
+- Support `Annotated` inside `type[...]` ([#27629](https://github.com/astral-sh/ruff/pull/27629))
+- Validate augmented assignment stores ([#27545](https://github.com/astral-sh/ruff/pull/27545))
+
+### Contributors
+
+- [@AlexWaygood](https://github.com/AlexWaygood)
+- [@carljm](https://github.com/carljm)
+- [@charliermarsh](https://github.com/charliermarsh)
+- [@MichaReiser](https://github.com/MichaReiser)
+- [@lerebear](https://github.com/lerebear)
+
 ## 0.0.69
 
 Released on 2026-08-06.
