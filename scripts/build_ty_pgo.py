@@ -233,6 +233,10 @@ def main() -> None:
         environment=instrumented_environment,
     )
     merge_profiles(profiler, profiles, merged_profile, environment=environment)
+    hot_count = profile_hot_count(profiler, merged_profile, environment=environment)
+    hot_count_path = target_dir / "ty.profile-hot-count"
+    hot_count_path.write_text(f"{hot_count}\n", encoding="utf-8", newline="\n")
+    print(f"Using 95th-percentile PGO hot count: {hot_count}", flush=True)
 
     if args.train_only:
         return
@@ -240,7 +244,9 @@ def main() -> None:
     optimized_environment = environment | {
         "CARGO_TARGET_DIR": str(target_dir),
         "RUSTFLAGS": append_flags(
-            environment.get("RUSTFLAGS"), f"-Cprofile-use={merged_profile}"
+            environment.get("RUSTFLAGS"),
+            f"-Cprofile-use={merged_profile} "
+            f"-Cllvm-args=--profile-summary-hot-count={hot_count}",
         ),
     }
     print("Building optimized release ty", flush=True)
@@ -348,6 +354,38 @@ def merge_profiles(
         f"Merged {len(profiles)} PGO profiles ({profile_size:,} bytes): {destination}",
         flush=True,
     )
+
+
+def profile_hot_count(
+    profiler: Path, profile: Path, *, environment: dict[str, str]
+) -> int:
+    # LLVM uses the 95th percentile for profile-guided size optimization, but
+    # defaults to the 99th percentile for hot-code optimization. Align them to
+    # avoid aggressively expanding moderately hot functions.
+    summary = subprocess.run(
+        [
+            str(profiler),
+            "show",
+            "--detailed-summary",
+            "--detailed-summary-cutoffs=950000",
+            str(profile),
+        ],
+        cwd=RUST_WORKSPACE_ROOT,
+        env=environment,
+        check=True,
+        capture_output=True,
+        text=True,
+    ).stdout
+    match = re.search(
+        r"with count >= (\d+) account for 95% of the total counts\.", summary
+    )
+    if match is None:
+        raise RuntimeError("Could not determine the 95th-percentile PGO hot count")
+
+    count = int(match.group(1))
+    if count <= 0:
+        raise RuntimeError(f"PGO hot count must be positive, got {count}")
+    return count
 
 
 def profile_language_server(
