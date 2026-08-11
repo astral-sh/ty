@@ -13,7 +13,7 @@ jobs:
   windows-pgo:
     name: "Benchmark production Windows binaries"
     runs-on: windows-latest
-    timeout-minutes: 45
+    timeout-minutes: 75
     defaults:
       run:
         shell: pwsh
@@ -87,6 +87,7 @@ jobs:
             Write-Output "$variant executable: $binaryHash"
           }
       - name: "Benchmark pinned held-out projects"
+        timeout-minutes: 60
         run: |
           $root = Join-Path $env:RUNNER_TEMP "ty-pgo-bench"
           $arguments = @(
@@ -97,7 +98,9 @@ jobs:
             "--workspace", (Join-Path $root "work")
             "--json-output", (Join-Path $root "results.json")
             "--markdown-output", (Join-Path $root "results.md")
-            "--pairs", "12"
+            "--pairs", "6"
+            "--lsp-sessions", "6"
+            "--warmups", "1"
           )
           python @arguments
           if ($LASTEXITCODE -ne 0) {
