@@ -190,7 +190,7 @@ jobs:
 
   windows:
     if: ${{ !contains(github.event.pull_request.labels.*.name, 'no-build') }}
-    runs-on: ${{ github.repository == 'astral-sh/ty' && matrix.platform.target == 'x86_64-pc-windows-msvc' && 'github-windows-2025-x86_64-16' || 'windows-latest' }}
+    runs-on: ${{ github.repository == 'astral-sh/ty' && matrix.platform.target == 'x86_64-pc-windows-msvc' && 'github-windows-2025-x86_64-8' || 'windows-latest' }}
     strategy:
       matrix:
         platform:
