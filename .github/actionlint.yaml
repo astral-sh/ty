@@ -7,6 +7,6 @@ self-hosted-runner:
     - depot-ubuntu-24.04-4
     - depot-ubuntu-24.04-8
     - namespace-profile-macos-15
-    - depot-windows-2025-32
+    - namespace-profile-windows-2022-x86-64-16x32
     - github-windows-2025-x86_64-8
     - github-windows-2025-x86_64-16
