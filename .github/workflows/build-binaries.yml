@@ -117,7 +117,7 @@ jobs:
 
   macos-aarch64:
     if: ${{ !contains(github.event.pull_request.labels.*.name, 'no-build') }}
-    runs-on: macos-15
+    runs-on: ${{ github.repository == 'astral-sh/ty' && 'namespace-profile-macos-15' || 'macos-15' }}
     env:
       # Use Rust's bundled Mach-O LLD, which supports ICF.
       # ICF reduces the macOS aarch64 ty binary size by ~0.7%.
