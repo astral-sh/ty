@@ -13,17 +13,20 @@ import os
 import queue
 import re
 import shlex
+import shutil
 import subprocess
 import sys
 import tempfile
 import threading
 import time
+import tomllib
 from dataclasses import dataclass
 from pathlib import Path
 
 REPOSITORY_ROOT = Path(__file__).resolve().parent.parent
 RUST_WORKSPACE_ROOT = REPOSITORY_ROOT / "ruff"
 PYTHON_VERSION = "3.14"
+DEPENDENCY_EXCLUDE_NEWER = "2026-08-06T08:40:30Z"
 EXCLUDED_DIRECTORIES = frozenset({"_tests", "_vendor", "test", "tests"})
 EXCLUDED_ENVIRONMENT_VARIABLES = (
     "CONDA_PREFIX",
@@ -44,6 +47,7 @@ class EcosystemProject:
     repository: str
     revision: str
     source_directories: tuple[str, ...]
+    dependencies: tuple[str, ...] = ()
 
     def __post_init__(self) -> None:
         if re.fullmatch(r"[0-9a-f]{40}", self.revision) is None:
@@ -95,6 +99,17 @@ CORPUS_PROJECTS = (
         repository="zulip/zulip",
         revision="ccddbba7a3074283ccaac3bde35fd32b19faf042",
         source_directories=("zerver/views", "zerver/models"),
+        dependencies=(
+            "Django",
+            "django-stubs",
+            "pydantic",
+            "redis",
+            "orjson",
+            "requests",
+            "types-requests",
+            "PyYAML",
+            "types-PyYAML",
+        ),
     ),
     EcosystemProject(
         name="warehouse",
@@ -104,6 +119,16 @@ CORPUS_PROJECTS = (
             "warehouse/accounts",
             "warehouse/oidc",
             "warehouse/forklift",
+        ),
+        dependencies=(
+            "pyramid",
+            "pyramid-jinja2",
+            "sqlalchemy",
+            "pydantic",
+            "requests",
+            "redis",
+            "packaging",
+            "cryptography",
         ),
     ),
     EcosystemProject(
@@ -198,6 +223,9 @@ def main() -> None:
 
     profiler = find_llvm_profdata(host, args.llvm_profdata)
     corpus = ecosystem_python_files(target_dir / "corpus", environment=environment)
+    project_environments = prepare_project_environments(
+        target_dir / "environments", target_dir / "corpus", environment=environment
+    )
 
     profile_dir.mkdir(parents=True, exist_ok=True)
     for profile in profile_dir.glob("ty-*.profraw"):
@@ -230,6 +258,7 @@ def main() -> None:
         target_dir / "corpus",
         profile_dir,
         corpus_size=len(corpus),
+        project_environments=project_environments,
         environment=instrumented_environment,
     )
     merge_profiles(profiler, profiles, merged_profile, environment=environment)
@@ -260,6 +289,7 @@ def train_ty(
     profile_directory: Path,
     *,
     corpus_size: int,
+    project_environments: dict[str, Path],
     environment: dict[str, str],
 ) -> list[Path]:
     print(f"Training on {corpus_size} ecosystem Python files", flush=True)
@@ -279,6 +309,8 @@ def train_ty(
             [
                 str(binary),
                 "check",
+                "--python",
+                str(project_environments[project.name]),
                 "--project",
                 str(checkout),
                 "--python-version",
@@ -321,6 +353,61 @@ def train_ty(
         )
     profiles.extend(language_server_profiles)
     return profiles
+
+
+def prepare_project_environments(
+    environment_directory: Path,
+    corpus_directory: Path,
+    *,
+    environment: dict[str, str],
+) -> dict[str, Path]:
+    uv = shutil.which("uv", path=environment.get("PATH"))
+    if uv is None:
+        raise RuntimeError("uv is required to install PGO training dependencies")
+
+    environment_directory.mkdir(parents=True, exist_ok=True)
+    interpreters: dict[str, Path] = {}
+    for project in CORPUS_PROJECTS:
+        checkout = corpus_directory / project.name
+        destination = environment_directory / project.name
+        interpreter = destination / (
+            "Scripts/python.exe" if sys.platform == "win32" else "bin/python"
+        )
+        if not interpreter.is_file():
+            run(
+                [uv, "venv", "--quiet", "--python", PYTHON_VERSION, str(destination)],
+                environment=environment,
+            )
+
+        manifest = checkout / "pyproject.toml"
+        if not manifest.is_file():
+            raise RuntimeError(f"Missing dependency metadata for {project.name}")
+        with manifest.open("rb") as stream:
+            metadata = tomllib.load(stream)
+
+        declared_dependencies = metadata.get("project", {}).get("dependencies", ())
+        if declared_dependencies or project.dependencies:
+            command = [
+                uv,
+                "pip",
+                "install",
+                "--quiet",
+                "--python",
+                str(interpreter),
+                "--only-binary",
+                ":all:",
+                "--exclude-newer",
+                DEPENDENCY_EXCLUDE_NEWER,
+            ]
+            if declared_dependencies:
+                command.extend(("--requirements", str(manifest)))
+            command.extend(project.dependencies)
+            print(f"Installing ty training dependencies for {project.name}", flush=True)
+            run(command, environment=environment)
+
+        interpreters[project.name] = interpreter
+
+    return interpreters
 
 
 def merge_profiles(

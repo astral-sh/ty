@@ -243,6 +243,9 @@ jobs:
         with:
           python-version: ${{ env.PYTHON_VERSION }}
           architecture: x64
+      - name: "Install uv for PGO training"
+        if: ${{ matrix.target == 'x86_64-unknown-linux-gnu' }}
+        uses: astral-sh/setup-uv@c771a70e6277c0a99b617c7a806ffedaca235ff9 # v9.0.0
       - name: "Install LLVM profiling tools"
         id: pgo-toolchain
         if: ${{ matrix.target == 'x86_64-unknown-linux-gnu' }}
