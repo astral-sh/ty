@@ -25,7 +25,6 @@ from pathlib import Path
 
 REPOSITORY_ROOT = Path(__file__).resolve().parent.parent
 RUST_WORKSPACE_ROOT = REPOSITORY_ROOT / "ruff"
-PYTHON_VERSION = "3.14"
 DEPENDENCY_EXCLUDE_NEWER = "2026-08-06T08:40:30Z"
 EXCLUDED_DIRECTORIES = frozenset({"_tests", "_vendor", "test", "tests"})
 EXCLUDED_ENVIRONMENT_VARIABLES = (
@@ -47,6 +46,7 @@ class EcosystemProject:
     repository: str
     revision: str
     source_directories: tuple[str, ...]
+    python_version: str
     dependencies: tuple[str, ...] = ()
 
     def __post_init__(self) -> None:
@@ -54,6 +54,11 @@ class EcosystemProject:
             raise ValueError(
                 f"{self.repository} must be pinned to a full Git commit SHA, "
                 f"got {self.revision!r}"
+            )
+        if re.fullmatch(r"3\.\d+", self.python_version) is None:
+            raise ValueError(
+                f"{self.repository} must specify a Python major.minor version, "
+                f"got {self.python_version!r}"
             )
 
     @property
@@ -75,30 +80,35 @@ CORPUS_PROJECTS = (
         repository="pytest-dev/pytest",
         revision="28e86a6c2ae0173831e4925a4af89b02a2936d09",
         source_directories=("src/_pytest",),
+        python_version="3.10",
     ),
     EcosystemProject(
         name="httpx",
         repository="encode/httpx",
         revision="b5addb64f0161ff6bfe94c124ef76f6a1fba5254",
         source_directories=("httpx",),
+        python_version="3.9",
     ),
     EcosystemProject(
         name="fastapi",
         repository="fastapi/fastapi",
         revision="a375f6b948b99fa4260129856bbf11d037f363ef",
         source_directories=("fastapi",),
+        python_version="3.11",
     ),
     EcosystemProject(
         name="anyio",
         repository="agronholm/anyio",
         revision="ffe91331adb912c5d150f5d373f7cd28a0e96a62",
         source_directories=("src/anyio",),
+        python_version="3.10",
     ),
     EcosystemProject(
         name="zulip",
         repository="zulip/zulip",
         revision="ccddbba7a3074283ccaac3bde35fd32b19faf042",
         source_directories=("zerver/views", "zerver/models"),
+        python_version="3.10",
         dependencies=(
             "Django",
             "django-stubs",
@@ -120,6 +130,7 @@ CORPUS_PROJECTS = (
             "warehouse/oidc",
             "warehouse/forklift",
         ),
+        python_version="3.12",
         dependencies=(
             "pyramid",
             "pyramid-jinja2",
@@ -136,6 +147,7 @@ CORPUS_PROJECTS = (
         repository="pypa/pip",
         revision="d1fd55753405fd728a0751a578e27c1054acdf48",
         source_directories=("src/pip/_internal",),
+        python_version="3.10",
     ),
     EcosystemProject(
         name="sphinx",
@@ -146,12 +158,14 @@ CORPUS_PROJECTS = (
             "sphinx/ext/autodoc",
             "sphinx/domains/python",
         ),
+        python_version="3.12",
     ),
     EcosystemProject(
         name="astropy",
         repository="astropy/astropy",
         revision="b779108c7cec25c840c0f744fdf2a1550441e309",
         source_directories=("astropy/units",),
+        python_version="3.11",
     ),
     EcosystemProject(
         name="typeshed",
@@ -162,6 +176,7 @@ CORPUS_PROJECTS = (
             "stdlib/collections",
             "stubs/requests",
         ),
+        python_version="3.10",
     ),
 )
 
@@ -314,7 +329,7 @@ def train_ty(
                 "--project",
                 str(checkout),
                 "--python-version",
-                PYTHON_VERSION,
+                project.python_version,
                 *(
                     argument
                     for directory in sorted(EXCLUDED_DIRECTORIES)
@@ -375,7 +390,14 @@ def prepare_project_environments(
         )
         if not interpreter.is_file():
             run(
-                [uv, "venv", "--quiet", "--python", PYTHON_VERSION, str(destination)],
+                [
+                    uv,
+                    "venv",
+                    "--quiet",
+                    "--python",
+                    project.python_version,
+                    str(destination),
+                ],
                 environment=environment,
             )
 
@@ -491,7 +513,7 @@ def profile_language_server(
         root = Path(temporary)
         (root / "pyproject.toml").write_text(
             '[project]\nname = "ty-pgo"\nversion = "0.0.0"\n'
-            f'requires-python = ">={PYTHON_VERSION}"\n',
+            f'requires-python = ">={sys.version_info.major}.{sys.version_info.minor}"\n',
             encoding="utf-8",
         )
         models = root / "models.py"
