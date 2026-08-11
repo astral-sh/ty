@@ -190,7 +190,7 @@ jobs:
 
   windows:
     if: ${{ !contains(github.event.pull_request.labels.*.name, 'no-build') }}
-    runs-on: windows-latest
+    runs-on: ${{ github.repository == 'astral-sh/ty' && matrix.platform.target == 'x86_64-pc-windows-msvc' && 'namespace-profile-windows-2022-x86-64-16x32' || 'windows-latest' }}
     strategy:
       matrix:
         platform:
@@ -209,6 +209,30 @@ jobs:
         with:
           python-version: ${{ env.PYTHON_VERSION }}
           architecture: ${{ matrix.platform.arch }}
+      - name: "Install uv for PGO training"
+        if: ${{ matrix.platform.target == 'x86_64-pc-windows-msvc' }}
+        uses: astral-sh/setup-uv@c771a70e6277c0a99b617c7a806ffedaca235ff9 # v9.0.0
+      - name: "Install LLVM profiling tools"
+        id: pgo-toolchain
+        if: ${{ matrix.platform.target == 'x86_64-pc-windows-msvc' }}
+        working-directory: ruff
+        shell: bash
+        run: |
+          rustup component add llvm-tools-preview
+          echo "toolchain=$(rustc --version | cut -d ' ' -f2)" >> "$GITHUB_OUTPUT"
+      - name: "Train PGO ty"
+        if: ${{ matrix.platform.target == 'x86_64-pc-windows-msvc' }}
+        shell: bash
+        run: |
+          export RUSTFLAGS="${RUSTFLAGS:+${RUSTFLAGS} }-C target-feature=+crt-static"
+
+          python scripts/build_ty_pgo.py \
+            --target "${{ matrix.platform.target }}" \
+            --target-dir "${{ github.workspace }}/ruff/target/ty-pgo" \
+            --train-only
+
+          PROFILE_HOT_COUNT="$(cat "${{ github.workspace }}/ruff/target/ty-pgo/ty.profile-hot-count")"
+          echo "RUSTFLAGS=${RUSTFLAGS:+${RUSTFLAGS} }-Cprofile-use=${{ github.workspace }}/ruff/target/ty-pgo/ty.profdata -Cllvm-args=--profile-summary-hot-count=$PROFILE_HOT_COUNT" >> "$GITHUB_ENV"
       - name: "Prep README.md"
         run: python scripts/transform_readme.py
       - name: "Build wheels"
@@ -216,10 +240,24 @@ jobs:
         with:
           maturin-version: v1.14.1
           target: ${{ matrix.platform.target }}
+          rust-toolchain: ${{ steps.pgo-toolchain.outputs.toolchain }}
           args: --release --locked --out dist --compatibility pypi
         env:
           # aarch64 build fails, see https://github.com/PyO3/maturin/issues/2110
           XWIN_VERSION: 16
+      - name: "Verify static Windows runtime"
+        if: ${{ matrix.platform.target == 'x86_64-pc-windows-msvc' }}
+        working-directory: ruff
+        shell: bash
+        run: |
+          LLVM_READOBJ="$(rustc --print sysroot)/lib/rustlib/${{ matrix.platform.target }}/bin/llvm-readobj.exe"
+          IMPORTS_FILE="$RUNNER_TEMP/ty-coff-imports.txt"
+          "$LLVM_READOBJ" --coff-imports "target/${{ matrix.platform.target }}/release/ty.exe" > "$IMPORTS_FILE"
+
+          if grep -Eiq 'vcruntime[[:digit:]_]*\.dll|api-ms-win-crt-' "$IMPORTS_FILE"; then
+            echo "ty must not dynamically link the Visual C++ runtime" >&2
+            exit 1
+          fi
       - name: "Test wheel"
         if: ${{ !startsWith(matrix.platform.target, 'aarch64') }}
         shell: bash
