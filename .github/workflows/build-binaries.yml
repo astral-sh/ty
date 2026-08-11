@@ -16,6 +16,7 @@ on:
     paths:
       # When we change pyproject.toml, we want to ensure that the maturin builds still work.
       - pyproject.toml
+      - ruff
       # And when we change this workflow itself...
       - .github/workflows/build-binaries.yml
 
@@ -242,6 +243,26 @@ jobs:
         with:
           python-version: ${{ env.PYTHON_VERSION }}
           architecture: x64
+      - name: "Install uv for PGO training"
+        if: ${{ matrix.target == 'x86_64-unknown-linux-gnu' }}
+        uses: astral-sh/setup-uv@c771a70e6277c0a99b617c7a806ffedaca235ff9 # v9.0.0
+      - name: "Install LLVM profiling tools"
+        id: pgo-toolchain
+        if: ${{ matrix.target == 'x86_64-unknown-linux-gnu' }}
+        working-directory: ruff
+        run: |
+          rustup component add llvm-tools-preview
+          echo "toolchain=$(rustc --version | cut -d ' ' -f2)" >> "$GITHUB_OUTPUT"
+      - name: "Train PGO ty"
+        if: ${{ matrix.target == 'x86_64-unknown-linux-gnu' }}
+        run: |
+          python ruff/scripts/build_ty_pgo.py \
+            --target "${{ matrix.target }}" \
+            --target-dir "${{ github.workspace }}/ruff/target/ty-pgo" \
+            --train-only
+
+          PROFILE_HOT_COUNT="$(cat "${{ github.workspace }}/ruff/target/ty-pgo/ty.profile-hot-count")"
+          echo "RUSTFLAGS=${RUSTFLAGS:+${RUSTFLAGS} }-Cprofile-use=${{ github.workspace }}/ruff/target/ty-pgo/ty.profdata -Cllvm-args=--profile-summary-hot-count=$PROFILE_HOT_COUNT" >> "$GITHUB_ENV"
       - name: "Prep README.md"
         run: python scripts/transform_readme.py
       - name: "Build wheels"
@@ -249,6 +270,7 @@ jobs:
         with:
           maturin-version: v1.14.1
           target: ${{ matrix.target }}
+          rust-toolchain: ${{ steps.pgo-toolchain.outputs.toolchain }}
           manylinux: 2_17
           args: --release --locked --out dist --compatibility pypi
       - name: "Test wheel"
