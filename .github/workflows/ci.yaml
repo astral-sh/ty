@@ -21,6 +21,27 @@ env:
   PACKAGE_NAME: ty
 
 jobs:
+  pgo:
+    name: "PGO"
+    runs-on: depot-ubuntu-24.04-16
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+          submodules: recursive
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: "3.13"
+          architecture: x64
+      - uses: astral-sh/setup-uv@c771a70e6277c0a99b617c7a806ffedaca235ff9 # v9.0.0
+      - uses: Swatinem/rust-cache@c19371144df3bb44fab255c43d04cbc2ab54d1c4 # v2.9.1
+      - name: "Install LLVM profiling tools"
+        working-directory: ruff
+        run: rustup component add llvm-tools-preview
+      - name: "Run PGO pipeline"
+        run: python scripts/build_ty_pgo.py --debug
+
   python-package:
     name: "python package"
     runs-on: ubuntu-latest

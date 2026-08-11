@@ -185,6 +185,11 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--target", help="Host-native Rust target triple")
     parser.add_argument(
+        "--debug",
+        action="store_true",
+        help="Use debug builds to validate the complete PGO pipeline",
+    )
+    parser.add_argument(
         "--target-dir",
         type=Path,
         help="Cargo target directory (default: CARGO_TARGET_DIR or ruff/target/ty-pgo)",
@@ -260,11 +265,12 @@ def main() -> None:
             environment.get("RUSTFLAGS"), f"-Cprofile-generate={profile_dir}"
         ),
     }
-    print("Building instrumented release ty", flush=True)
-    run(cargo_command(target), environment=instrumented_environment)
+    profile = "debug" if args.debug else "release"
+    print(f"Building instrumented {profile} ty", flush=True)
+    run(cargo_command(target, debug=args.debug), environment=instrumented_environment)
 
     binary_name = "ty.exe" if "windows" in target else "ty"
-    instrumented_binary = instrumented_target_dir / target / "release" / binary_name
+    instrumented_binary = instrumented_target_dir / target / profile / binary_name
     if not instrumented_binary.is_file():
         raise RuntimeError(f"Instrumented ty binary not found: {instrumented_binary}")
 
@@ -293,9 +299,11 @@ def main() -> None:
             f"-Cllvm-args=--profile-summary-hot-count={hot_count}",
         ),
     }
-    print("Building optimized release ty", flush=True)
-    run(cargo_command(target), environment=optimized_environment)
-    print(f"Optimized ty: {target_dir / target / 'release' / binary_name}", flush=True)
+    print(f"Building profile-guided {profile} ty", flush=True)
+    run(cargo_command(target, debug=args.debug), environment=optimized_environment)
+    print(
+        f"Profile-guided ty: {target_dir / target / profile / binary_name}", flush=True
+    )
 
 
 def train_ty(
@@ -892,11 +900,11 @@ def run_git_with_retry(command: list[str], *, environment: dict[str, str]) -> No
             time.sleep(delay)
 
 
-def cargo_command(target: str) -> list[str]:
+def cargo_command(target: str, *, debug: bool = False) -> list[str]:
     return [
         "cargo",
         "rustc",
-        "--release",
+        *(() if debug else ("--release",)),
         "--locked",
         "--package",
         "ty",
