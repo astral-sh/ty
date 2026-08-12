@@ -68,6 +68,7 @@ blanket-ignore-comment = "error"
 missing-type-argument = "error"
 possibly-unresolved-reference = "warn"
 unsound-return-statement = "error"
+unsound-yield = "error"
 unsupported-dynamic-base = "warn"
 
 # NOTE: the following rules are known to have a significant number of false positives,
@@ -153,6 +154,7 @@ emitted, or is folded into a broader category that already appears for another t
 | [`unresolved-import`][ty-unresolved-import]                                                                                  | [`import-not-found`][mypy-import-not-found]                                                                                    | [`reportMissingImports`][reportmissingimports]                                                                           |
 | [`unresolved-reference`][ty-unresolved-reference]                                                                            | [`name-defined`][mypy-name-defined]                                                                                            | [`reportUndefinedVariable`][reportundefinedvariable]                                                                     |
 | [`unsound-return-statement`][ty-unsound-return-statement]                                                                    | [`no-any-return`][mypy-no-any-return]                                                                                          |                                                                                                                          |
+| [`unsound-yield`][ty-unsound-yield]                                                                                          |                                                                                                                                |                                                                                                                          |
 | [`unsupported-operator`][ty-unsupported-operator]                                                                            | [`operator`][mypy-operator]                                                                                                    | [`reportOperatorIssue`][reportoperatorissue]                                                                             |
 | [`unused-awaitable`][ty-unused-awaitable]                                                                                    | [`unused-coroutine`][mypy-unused-coroutine]<br>[`unused-awaitable`][mypy-unused-awaitable]                                     | [`reportUnusedCoroutine`][reportunusedcoroutine]                                                                         |
 | [`unused-ignore-comment`][ty-unused-ignore-comment]                                                                          | [`unused-ignore`][mypy-unused-ignore]                                                                                          | [`reportUnnecessaryTypeIgnoreComment`][reportunnecessarytypeignorecomment]                                               |
@@ -371,6 +373,7 @@ The full list of ty rules — including those without a direct equivalent above 
 [ty-unresolved-import]: reference/rules.md#unresolved-import
 [ty-unresolved-reference]: reference/rules.md#unresolved-reference
 [ty-unsound-return-statement]: reference/rules.md#unsound-return-statement
+[ty-unsound-yield]: reference/rules.md#unsound-yield
 [ty-unsupported-operator]: reference/rules.md#unsupported-operator
 [ty-unused-awaitable]: reference/rules.md#unused-awaitable
 [ty-unused-ignore-comment]: reference/rules.md#unused-ignore-comment
