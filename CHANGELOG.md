@@ -1,5 +1,46 @@
 # Changelog
 
+## 0.0.71
+
+Released on 2026-08-12.
+
+### Library support
+
+- Respect third-party keyword-only fields before Python 3.10 ([#27699](https://github.com/astral-sh/ruff/pull/27699))
+
+### Diagnostics
+
+- Diagnose invalid `__getattribute__` calls ([#27506](https://github.com/astral-sh/ruff/pull/27506))
+- Validate boolean conversion in comprehension filters ([#27641](https://github.com/astral-sh/ruff/pull/27641))
+- Validate unpacked callable argument shapes ([#27516](https://github.com/astral-sh/ruff/pull/27516))
+
+### Core type checking
+
+- Avoid introducing boolean literals when narrowing integers ([#27698](https://github.com/astral-sh/ruff/pull/27698))
+- Fix truthiness inference for subclassable known classes ([#27638](https://github.com/astral-sh/ruff/pull/27638))
+- Handle class objects that may be descriptors ([#26687](https://github.com/astral-sh/ruff/pull/26687))
+- Infer type variables through nominal `type[...]` parameters ([#27689](https://github.com/astral-sh/ruff/pull/27689))
+- Model exception flow with operation checkpoints ([#27471](https://github.com/astral-sh/ruff/pull/27471))
+- Preserve constrained `TypeVar` types when slicing ([#27645](https://github.com/astral-sh/ruff/pull/27645))
+- Preserve enum attributes on `Self` and bounded type variables ([#27644](https://github.com/astral-sh/ruff/pull/27644))
+- Preserve enum exhaustiveness with custom `_missing_` methods ([#27700](https://github.com/astral-sh/ruff/pull/27700))
+- Preserve literal-string origin in comparison narrowing ([#27582](https://github.com/astral-sh/ruff/pull/27582))
+- Resolve generic type aliases subscripted inside `type[]` ([#27663](https://github.com/astral-sh/ruff/pull/27663))
+- Restrict equality impossibility to static bounds ([#27655](https://github.com/astral-sh/ruff/pull/27655))
+
+### Performance
+
+- Avoid deriving sequents for type variables with concrete bounds ([#27587](https://github.com/astral-sh/ruff/pull/27587))
+
+### Contributors
+
+- [@dcreager](https://github.com/dcreager)
+- [@augustelalande](https://github.com/augustelalande)
+- [@charliermarsh](https://github.com/charliermarsh)
+- [@carljm](https://github.com/carljm)
+- [@AlexWaygood](https://github.com/AlexWaygood)
+- [@ibraheemdev](https://github.com/ibraheemdev)
+
 ## 0.0.70
 
 Released on 2026-08-10.
