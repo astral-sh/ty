@@ -1,5 +1,48 @@
 # Changelog
 
+## 0.0.72
+
+Released on 2026-08-14.
+
+### Preview features
+
+- Check PEP 723 scripts in isolation ([#27462](https://github.com/astral-sh/ruff/pull/27462))
+
+### Library support
+
+- Pydantic: Accept documented boolean and fractional inputs ([#27754](https://github.com/astral-sh/ruff/pull/27754))
+- Pydantic: Accept enum members for lax string and integer fields ([#27751](https://github.com/astral-sh/ruff/pull/27751))
+
+### Diagnostics
+
+- Improve assignability hints for protocols and `TypedDict` types ([#27717](https://github.com/astral-sh/ruff/pull/27717))
+
+### Core type checking
+
+- Avoid treating augmented assignments as attribute definitions ([#27633](https://github.com/astral-sh/ruff/pull/27633))
+- Diagnose invalid module-level `__getattr__` calls ([#27507](https://github.com/astral-sh/ruff/pull/27507))
+- Fix overload argument expansion with unpacked positional arguments ([#27744](https://github.com/astral-sh/ruff/pull/27744))
+- Fix specialization of generic `TypedDict` aliases ([#27760](https://github.com/astral-sh/ruff/pull/27760))
+- Ignore generic declaration metadata in staticness checks ([#27692](https://github.com/astral-sh/ruff/pull/27692))
+- Preserve tuple types containing `Never` ([#27580](https://github.com/astral-sh/ruff/pull/27580))
+- Report deprecated unary operations ([#27584](https://github.com/astral-sh/ruff/pull/27584))
+- Respect variance when inferring structural and callable types ([#27707](https://github.com/astral-sh/ruff/pull/27707))
+- Support `TypeVarTuple` in call binding ([#26886](https://github.com/astral-sh/ruff/pull/26886))
+- Treat generator-expression exceptions as eagerly evaluated ([#27735](https://github.com/astral-sh/ruff/pull/27735))
+
+### Performance
+
+- Avoid exponential narrowing of gradual string-literal unions ([#27742](https://github.com/astral-sh/ruff/pull/27742))
+
+### Contributors
+
+- [@AlexWaygood](https://github.com/AlexWaygood)
+- [@Andrej730](https://github.com/Andrej730)
+- [@charliermarsh](https://github.com/charliermarsh)
+- [@MichaReiser](https://github.com/MichaReiser)
+- [@dhruvmanila](https://github.com/dhruvmanila)
+- [@carljm](https://github.com/carljm)
+
 ## 0.0.71
 
 Released on 2026-08-12.
