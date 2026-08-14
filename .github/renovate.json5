@@ -1,37 +1,9 @@
 {
   $schema: "https://docs.renovatebot.com/renovate-schema.json",
-  dependencyDashboard: true,
-  suppressNotifications: ["prEditedNotification"],
   extends: ["github>astral-sh/renovate-config"],
-  labels: ["internal"],
   schedule: ["before 4am on Wednesday"],
-  semanticCommits: "disabled",
-  separateMajorMinor: false,
-  prHourlyLimit: 10,
   enabledManagers: ["github-actions", "pre-commit", "pep621", "custom.regex"],
-  "pre-commit": {
-    enabled: true,
-  },
   packageRules: [
-    // Pin GitHub Actions to immutable SHAs.
-    {
-      matchDepTypes: ["action"],
-      pinDigests: true,
-    },
-    // Annotate GitHub Actions SHAs with a SemVer version.
-    {
-      extends: ["helpers:pinGitHubActionDigests"],
-      extractVersion: "^(?<version>v?\\d+\\.\\d+\\.\\d+)$",
-      versioning: "regex:^v?(?<major>\\d+)(\\.(?<minor>\\d+)\\.(?<patch>\\d+))?$",
-    },
-    {
-      // Group upload/download artifact updates, the versions are dependent
-      groupName: "Artifact GitHub Actions dependencies",
-      matchManagers: ["github-actions"],
-      matchDatasources: ["gitea-tags", "github-tags"],
-      matchPackageNames: ["actions/upload-artifact", "actions/download-artifact"],
-      description: "Weekly update of artifact-related GitHub Actions dependencies",
-    },
     {
       // This package rule disables updates for GitHub runners:
       // we'd only pin them to a specific version
@@ -66,8 +38,4 @@
       datasourceTemplate: "github-releases",
     },
   ],
-  vulnerabilityAlerts: {
-    commitMessageSuffix: "",
-    labels: ["internal", "security"],
-  },
 }
