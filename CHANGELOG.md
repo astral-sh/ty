@@ -15,17 +15,17 @@ Released on 2026-08-14.
 
 ### Diagnostics
 
-- Diagnose invalid module-level `__getattr__` calls ([#27507](https://github.com/astral-sh/ruff/pull/27507))
 - Improve assignability hints for protocols and `TypedDict` types ([#27717](https://github.com/astral-sh/ruff/pull/27717))
-- Report deprecated unary operations ([#27584](https://github.com/astral-sh/ruff/pull/27584))
 
 ### Core type checking
 
 - Avoid treating augmented assignments as attribute definitions ([#27633](https://github.com/astral-sh/ruff/pull/27633))
+- Diagnose invalid module-level `__getattr__` calls ([#27507](https://github.com/astral-sh/ruff/pull/27507))
 - Fix overload argument expansion with unpacked positional arguments ([#27744](https://github.com/astral-sh/ruff/pull/27744))
 - Fix specialization of generic `TypedDict` aliases ([#27760](https://github.com/astral-sh/ruff/pull/27760))
 - Ignore generic declaration metadata in staticness checks ([#27692](https://github.com/astral-sh/ruff/pull/27692))
 - Preserve tuple types containing `Never` ([#27580](https://github.com/astral-sh/ruff/pull/27580))
+- Report deprecated unary operations ([#27584](https://github.com/astral-sh/ruff/pull/27584))
 - Respect variance when inferring structural and callable types ([#27707](https://github.com/astral-sh/ruff/pull/27707))
 - Support `TypeVarTuple` in call binding ([#26886](https://github.com/astral-sh/ruff/pull/26886))
 - Treat generator-expression exceptions as eagerly evaluated ([#27735](https://github.com/astral-sh/ruff/pull/27735))
