@@ -16,6 +16,7 @@ on:
   pull_request:
     paths:
       - .github/workflows/build-docker.yml
+      - Dockerfile
 
 env:
   TY_BASE_IMG: ghcr.io/${{ github.repository_owner }}/ty

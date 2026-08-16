@@ -103,7 +103,7 @@ git add ruff
 To preview any changes to the documentation locally run the development server with:
 
 ```shell
-uvx --with-requirements docs/requirements.txt -- mkdocs serve -f mkdocs.yml
+uvx --from "mkdocs==1.6.0" --with-requirements docs/requirements.txt mkdocs serve -f mkdocs.yml
 ```
 
 The documentation should then be available locally at
@@ -122,7 +122,7 @@ Cloudflare Pages.
 After making changes to the documentation, format the markdown files with:
 
 ```shell
-npx prettier --prose-wrap always --write "**/*.md"
+npx prettier@3.9.6 --prose-wrap always --write "**/*.md"
 ```
 
 ## Releasing ty
