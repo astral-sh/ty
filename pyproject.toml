@@ -44,6 +44,7 @@ dev = ["prek==0.4.11"]
 release = ["rooster"]
 
 [tool.uv]
+exclude-newer = "P7D"
 cache-keys = [
     { file = "pyproject.toml" },
     { file = "dist-workspace.toml" },
