@@ -5,7 +5,7 @@
 Use [uvx](https://docs.astral.sh/uv/guides/tools/) to quickly get started with ty:
 
 ```shell
-uvx ty@0.0.69
+uvx ty@0.0.72
 ```
 
 ## Installation methods
