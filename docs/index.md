@@ -34,7 +34,7 @@ ty is backed by [Astral](https://astral.sh), the creators of
 Run ty with [uvx](https://docs.astral.sh/uv/guides/tools/#running-tools) to get started quickly:
 
 ```shell
-uvx ty check
+uvx ty@0.0.69 check
 ```
 
 ty will check all Python files in the working directory or project by default.

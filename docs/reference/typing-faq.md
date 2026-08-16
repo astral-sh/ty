@@ -434,7 +434,7 @@ it with ty by using uv's `--with-requirements` flag to install the dependencies 
 script header:
 
 ```bash
-uvx --with-requirements script.py ty check script.py
+uvx --with-requirements script.py ty@0.0.69 check script.py
 ```
 
 If you have multiple scripts in your workspace, ty does not yet recognize that they have different

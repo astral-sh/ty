@@ -40,7 +40,7 @@ ty is currently in [beta](#version-policy).
 Run ty with [uvx](https://docs.astral.sh/uv/guides/tools/#running-tools) to get started quickly:
 
 ```shell
-uvx ty check
+uvx ty@0.0.69 check
 ```
 
 Or, check out the [ty playground](https://play.ty.dev) to try it out in your browser.

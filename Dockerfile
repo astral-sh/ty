@@ -21,7 +21,18 @@ RUN case "$TARGETPLATFORM" in \
     esac
 # Update rustup whenever we bump the rust version
 COPY ruff/rust-toolchain.toml rust-toolchain.toml
-RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --target $(cat rust_target.txt) --profile minimal --default-toolchain none
+ARG BUILDARCH
+ARG RUSTUP_VERSION=1.28.2
+RUN case "$BUILDARCH" in \
+        "amd64") rustup_target="x86_64-unknown-linux-gnu"; rustup_sha256="20a06e644b0d9bd2fbdbfd52d42540bdde820ea7df86e92e533c073da0cdd43c" ;; \
+        "arm64") rustup_target="aarch64-unknown-linux-gnu"; rustup_sha256="e3853c5a252fca15252d07cb23a1bdd9377a8c6f3efa01531109281ae47f841c" ;; \
+        *) exit 1 ;; \
+    esac && \
+    curl --proto '=https' --tlsv1.2 -sSf "https://static.rust-lang.org/rustup/archive/${RUSTUP_VERSION}/${rustup_target}/rustup-init" -o /tmp/rustup-init && \
+    echo "${rustup_sha256}  /tmp/rustup-init" | sha256sum -c - && \
+    chmod +x /tmp/rustup-init && \
+    /tmp/rustup-init -y --target "$(cat rust_target.txt)" --profile minimal --default-toolchain none && \
+    rm /tmp/rustup-init
 ENV PATH="$HOME/.cargo/bin:$PATH"
 # Installs the correct toolchain version from rust-toolchain.toml and then the musl target
 RUN rustup target add $(cat rust_target.txt)
