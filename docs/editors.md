@@ -11,6 +11,13 @@ The Astral team maintains an official VS Code extension.
 
 Install the [ty extension](https://marketplace.visualstudio.com/items?itemName=astral-sh.ty) from the VS Code Marketplace.
 
+The ty extension works without additional extensions. For Python environment detection, we
+recommend [Python Environments](https://marketplace.visualstudio.com/items?itemName=ms-python.vscode-python-envs)
+or [Python](https://marketplace.visualstudio.com/items?itemName=ms-python.python).
+When either extension is available, ty can find an executable installed in the active Python
+environment. If that lookup fails, or neither extension is available, the extension checks `PATH`
+before using its bundled ty executable. Reload VS Code after installing or enabling either extension.
+
 The extension automatically disables the language server from the [Python
 extension](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
 to avoid running two Python language servers. This is done by setting
