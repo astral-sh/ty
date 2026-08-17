@@ -581,8 +581,9 @@ The following settings are specific to [ty's VS Code extension][ty-vscode].
 
 Strategy for loading the `ty` executable.
 
-- `fromEnvironment` looks for ty in the active Python environment when the Python Environments or
-    Python extension is available, then checks `PATH`, and finally falls back to the bundled version
+- `fromEnvironment` looks for ty using [`ty.interpreter`](#interpreter), or in the active Python
+    environment when the Python Environments or Python extension is available, then checks `PATH`,
+    and finally falls back to the bundled version
 - `useBundled` uses the version bundled with the extension
 
 **Default value**: `"fromEnvironment"`
@@ -601,8 +602,8 @@ ______________________________________________________________________
 
 ### `interpreter`
 
-Path to a Python interpreter used to find the ty executable. This setting requires the
-Python Environments or Python extension.
+Path to a Python 3.8 or later executable used to find the ty executable. This setting works without
+the Python Environments or Python extension.
 
 The interpreter path is used to find the `ty` executable when
 [`ty.importStrategy`](#importstrategy) is set to `fromEnvironment`.

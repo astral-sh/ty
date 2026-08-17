@@ -15,8 +15,10 @@ The ty extension works without additional extensions. For Python environment det
 recommend [Python Environments](https://marketplace.visualstudio.com/items?itemName=ms-python.vscode-python-envs)
 or [Python](https://marketplace.visualstudio.com/items?itemName=ms-python.python).
 When either extension is available, ty can find an executable installed in the active Python
-environment. If that lookup fails, or neither extension is available, the extension checks `PATH`
-before using its bundled ty executable. Reload VS Code after installing or enabling either extension.
+environment. You can also set [`ty.interpreter`](./reference/editor-settings.md#interpreter) to a
+Python executable without either extension. If no ty executable is found in a Python environment,
+the extension checks `PATH` before using its bundled ty executable. Reload VS Code after installing
+or enabling either extension.
 
 The extension automatically disables the language server from the [Python
 extension](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
