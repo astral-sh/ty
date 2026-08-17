@@ -602,8 +602,8 @@ ______________________________________________________________________
 
 ### `interpreter`
 
-Path to a Python 3.8 or later executable used to find the ty executable. This setting works without
-the Python Environments or Python extension.
+Path to a Python executable or environment directory used to find the ty executable. Python 3.8 or
+later is required. This setting works without the Python Environments or Python extension.
 
 The interpreter path is used to find the `ty` executable when
 [`ty.importStrategy`](#importstrategy) is set to `fromEnvironment`.
