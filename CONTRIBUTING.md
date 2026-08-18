@@ -103,7 +103,7 @@ git add ruff
 To preview any changes to the documentation locally run the development server with:
 
 ```shell
-uvx --with-requirements docs/requirements.txt -- mkdocs serve -f mkdocs.yml
+uv run --only-group=docs mkdocs serve -f mkdocs.yml
 ```
 
 The documentation should then be available locally at
