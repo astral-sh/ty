@@ -2,7 +2,7 @@
   $schema: "https://docs.renovatebot.com/renovate-schema.json",
   extends: ["github>astral-sh/renovate-config"],
   schedule: ["before 4am on Wednesday"],
-  enabledManagers: ["github-actions", "pre-commit", "pep621", "npm", "custom.regex"],
+  enabledManagers: ["github-actions", "pre-commit", "pep621", "custom.regex"],
   packageRules: [
     {
       // This package rule disables updates for GitHub runners:
@@ -20,12 +20,31 @@
       description: "Weekly update of prek dependencies",
     },
     {
+      groupName: "prek dependencies",
+      matchManagers: ["custom.regex"],
+      matchDatasources: ["node-version"],
+      matchPackageNames: ["node"],
+      matchFileNames: [".pre-commit-config.yaml"],
+      allowedVersions: ">=24.19.0 <25",
+    },
+    {
       matchManagers: ["custom.regex"],
       matchDepNames: ["maturin"],
       commitMessageTopic: "maturin",
     },
   ],
   customManagers: [
+    // Node.js toolchain managed by prek
+    {
+      customType: "regex",
+      managerFilePatterns: ["/^\\.pre-commit-config\\.yaml$/"],
+      matchStrings: [
+        "(?:^|\\r?\\n)default_language_version:[ \\t]*\\r?\\n(?:[ \\t]+[^\\r\\n]*\\r?\\n)*?[ \\t]+node:[ \\t]+[\"']?(?<currentValue>\\d+\\.\\d+\\.\\d+)",
+      ],
+      depNameTemplate: "node",
+      datasourceTemplate: "node-version",
+      versioningTemplate: "node",
+    },
     // Maturin version used in maturin-action
     {
       customType: "regex",
