@@ -20,6 +20,9 @@ on:
 permissions:
   contents: read
 
+env:
+  ACTIONS_CACHE_MODE: none
+
 jobs:
   mkdocs:
     environment:
