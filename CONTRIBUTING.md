@@ -46,7 +46,7 @@ git submodule update --init --recursive
 You'll need [uv](https://docs.astral.sh/uv/getting-started/installation/) (or `pipx` and `pip`) to
 run Python utility commands.
 
-Install [Node.js 24](https://nodejs.org/en/download) (including npm) to run the
+Install [Node.js 24](https://nodejs.org/en/download) with `npm` 11.10.0 or later to run the
 Prettier hook. The hook installs the checked-in `package-lock.json` with
 `npm ci --ignore-scripts` before formatting files.
 
