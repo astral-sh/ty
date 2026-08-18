@@ -1,5 +1,63 @@
 # Changelog
 
+## 0.0.73
+
+Released on 2026-08-18.
+
+### LSP server
+
+- Do not prefer unsafe fixes in the language server ([#27822](https://github.com/astral-sh/ruff/pull/27822))
+- Fix signature help in trailing whitespace ([#27784](https://github.com/astral-sh/ruff/pull/27784))
+
+### Library support
+
+- Preserve variadic generics in `functools.partial` ([#27774](https://github.com/astral-sh/ruff/pull/27774))
+
+### Diagnostics
+
+- Add an opt-in rule flagging function decorators that transform a non-dynamic type into a dynamic type ([#27829](https://github.com/astral-sh/ruff/pull/27829))
+- Disambiguate same-named types in several diagnostics ([#27814](https://github.com/astral-sh/ruff/pull/27814))
+- Show error spans for errors originating in script metadata ([#26693](https://github.com/astral-sh/ruff/pull/26693))
+
+### Core type checking
+
+- Avoid bypassing solver during literal promotion ([#27763](https://github.com/astral-sh/ruff/pull/27763))
+- Expand nested union aliases when finding a `TypedDict` or callable ([#27740](https://github.com/astral-sh/ruff/pull/27740))
+- Implement intersection meta-type projection ([#27660](https://github.com/astral-sh/ruff/pull/27660))
+- Infer generic protocols from class objects ([#27812](https://github.com/astral-sh/ruff/pull/27812))
+- Model exception-suppressing context managers ([#27219](https://github.com/astral-sh/ruff/pull/27219))
+- Preserve `TypeAliasType` runtime origin ([#27813](https://github.com/astral-sh/ruff/pull/27813))
+- Preserve class objects in lazy protocol checks ([#27815](https://github.com/astral-sh/ruff/pull/27815))
+- Preserve declared types in exception handlers ([#27817](https://github.com/astral-sh/ruff/pull/27817))
+- Preserve explicit globals after conditional rebinding ([#27786](https://github.com/astral-sh/ruff/pull/27786))
+- Preserve property subclass types and accessors ([#27833](https://github.com/astral-sh/ruff/pull/27833))
+- Preserve required stub fields in generated constructors ([#27765](https://github.com/astral-sh/ruff/pull/27765))
+- Preserve static upper bounds of gradual solutions ([#27664](https://github.com/astral-sh/ruff/pull/27664))
+- Prevent unrelated quantified constraints from destabilizing recursive queries ([#27737](https://github.com/astral-sh/ruff/pull/27737))
+- Separate generic constraint accumulation from legacy projection ([#27743](https://github.com/astral-sh/ruff/pull/27743))
+- Simplify generic protocol inference ([#27819](https://github.com/astral-sh/ruff/pull/27819))
+- Specialize inherited members of unspecialized generic classes ([#27658](https://github.com/astral-sh/ruff/pull/27658))
+- Specialize type variables determined by bound receivers ([#27732](https://github.com/astral-sh/ruff/pull/27732))
+- Support unpacking tuple type aliases ([#27825](https://github.com/astral-sh/ruff/pull/27825))
+- Sync vendored typeshed stubs ([#27771](https://github.com/astral-sh/ruff/pull/27771)). [Typeshed diff](https://github.com/python/typeshed/compare/1b116673774d062a4af7b0a0b3d05533a6be55d0...6fba3ae73db5a9807780514b463126f1ee8ff216)
+
+### Performance
+
+- Cache `py.typed` contents ([#27805](https://github.com/astral-sh/ruff/pull/27805))
+- Deduplicate exception checkpoints across equivalent branches ([#27703](https://github.com/astral-sh/ruff/pull/27703))
+
+### Contributors
+
+- [@charliermarsh](https://github.com/charliermarsh)
+- [@AlexWaygood](https://github.com/AlexWaygood)
+- [@MichaReiser](https://github.com/MichaReiser)
+- [@augustelalande](https://github.com/augustelalande)
+- [@carljm](https://github.com/carljm)
+- [@woodruffw](https://github.com/woodruffw)
+- [@dhruvmanila](https://github.com/dhruvmanila)
+- [@ibraheemdev](https://github.com/ibraheemdev)
+- [@zaniebot](https://github.com/zaniebot)
+
 ## 0.0.72
 
 Released on 2026-08-14.
