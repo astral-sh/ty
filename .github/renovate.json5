@@ -2,7 +2,7 @@
   $schema: "https://docs.renovatebot.com/renovate-schema.json",
   extends: ["github>astral-sh/renovate-config"],
   schedule: ["before 4am on Wednesday"],
-  enabledManagers: ["github-actions", "pre-commit", "pep621", "custom.regex"],
+  enabledManagers: ["github-actions", "pre-commit", "pep621", "npm", "custom.regex"],
   packageRules: [
     {
       // This package rule disables updates for GitHub runners:

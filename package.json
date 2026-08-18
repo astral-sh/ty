@@ -1,0 +1,10 @@
+{
+  "name": "ty-development",
+  "private": true,
+  "scripts": {
+    "prettier": "node node_modules/prettier/bin/prettier.cjs"
+  },
+  "devDependencies": {
+    "prettier": "3.9.6"
+  }
+}

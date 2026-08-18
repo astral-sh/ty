@@ -8,3 +8,6 @@ wheels/
 
 # Virtual environments
 .venv
+
+# Repository formatting tools
+/node_modules/
