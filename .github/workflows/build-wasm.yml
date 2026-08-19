@@ -1,0 +1,69 @@
+# Build ty_wasm for npm.
+#
+# Assumed to run as a subworkflow of .github/workflows/release.yml; specifically, as a local
+# artifacts job within `cargo-dist`.
+name: "Build wasm"
+
+on:
+  workflow_call:
+    inputs:
+      plan:
+        required: true
+        type: string
+  pull_request:
+    paths:
+      - .github/workflows/build-wasm.yml
+
+concurrency:
+  group: build-wasm-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+permissions:
+  contents: read
+
+env:
+  ACTIONS_CACHE_MODE: none
+  CARGO_INCREMENTAL: 0
+  CARGO_NET_RETRY: 10
+  CARGO_TERM_COLOR: always
+  RUSTUP_MAX_RETRIES: 10
+
+jobs:
+  build:
+    if: ${{ !contains(github.event.pull_request.labels.*.name, 'no-build') }}
+    # `ty_wasm` links the entire type checker and the vendored typeshed stubs under fat LTO,
+    # so this needs more than a standard runner.
+    runs-on: depot-ubuntu-24.04-4
+    strategy:
+      matrix:
+        target: [web, bundler, nodejs]
+      fail-fast: false
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          submodules: recursive
+          persist-credentials: false
+      - name: "Install Rust toolchain"
+        run: rustup target add wasm32-unknown-unknown
+      - uses: jetli/wasm-pack-action@0d096b08b4e5a7de8c28de67e11e945404e9eefa # v0.4.0
+        with:
+          version: v0.13.1
+      - uses: jetli/wasm-bindgen-action@20b33e20595891ab1a0ed73145d8a21fc96e7c29 # v0.2.0
+      - name: "Run wasm-pack build"
+        run: wasm-pack build --target ${{ matrix.target }} ruff/crates/ty_wasm
+      - name: "Rename generated package"
+        # `ty_wasm` is pinned at version 0.0.0 in the submodule, since ty's version only exists in
+        # this repository. Take it from the same place the wheels do.
+        run: |
+          version="$(python3 -c 'import pathlib, tomllib; print(tomllib.loads(pathlib.Path("pyproject.toml").read_text())["project"]["version"])')"
+          jq --arg name "@astral-sh/ty-wasm-${{ matrix.target }}" --arg version "$version" \
+            '.name = $name | .version = $version' \
+            ruff/crates/ty_wasm/pkg/package.json > /tmp/package.json
+          mv /tmp/package.json ruff/crates/ty_wasm/pkg/package.json
+      - run: cp LICENSE ruff/crates/ty_wasm/pkg # wasm-pack does not put the LICENSE file in the pkg
+      - name: "Upload wasm artifact"
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          # Avoid prefixing the name with `artifacts-` here to exclude it from the GitHub release.
+          name: wasm-npm-${{ matrix.target }}
+          path: ruff/crates/ty_wasm/pkg
