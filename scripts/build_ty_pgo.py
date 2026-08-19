@@ -74,7 +74,7 @@ class EcosystemProject:
 # applications, libraries, and type stubs.
 #
 # But it wasn't a highly optimized selection process. (For example, during
-# development, we added Zulip and Warehouse, which reduced Ruff's CPU time by
+# development, we added Warehouse, which reduced Ruff's CPU time by
 # 0.35% while increasing its wheel size by 0.44%.)
 CORPUS_PROJECTS = (
     EcosystemProject(
@@ -104,24 +104,6 @@ CORPUS_PROJECTS = (
         revision="ffe91331adb912c5d150f5d373f7cd28a0e96a62",
         source_directories=("src/anyio",),
         python_version="3.10",
-    ),
-    EcosystemProject(
-        name="zulip",
-        repository="zulip/zulip",
-        revision="ccddbba7a3074283ccaac3bde35fd32b19faf042",
-        source_directories=("zerver/views", "zerver/models"),
-        python_version="3.10",
-        dependencies=(
-            "Django",
-            "django-stubs",
-            "pydantic",
-            "redis",
-            "orjson",
-            "requests",
-            "types-requests",
-            "PyYAML",
-            "types-PyYAML",
-        ),
     ),
     EcosystemProject(
         name="warehouse",
