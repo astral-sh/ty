@@ -852,8 +852,6 @@ ______________________________________________________________________
 Whether the language server should treat the workspace as untrusted. When `true`, ty does not run
 external commands. This disables all uv integrations.
 
-Set this option in trusted editor configuration before opening a workspace you do not trust.
-
 **Default value**: `false`
 
 **Type**: `boolean`
