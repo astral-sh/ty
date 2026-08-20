@@ -69,7 +69,6 @@ blanket-ignore-comment = "error"
 dynamic-function-decorator-return = "error"
 missing-type-argument = "error"
 possibly-unresolved-reference = "warn"
-# Requires a development build containing astral-sh/ruff#27874.
 unsound-assignment = "error"
 unsound-return-statement = "error"
 unsound-yield = "error"
@@ -89,10 +88,6 @@ strict-generic-narrowing = true
 extend-select = ["ANN", "PYI", "PGH003"]
 preview = true
 ```
-
-The [`unsound-assignment`][ty-unsound-assignment] rule is not yet available in ty 0.0.73; omit
-that setting when using this release. It checks assignments to variables with fully static declared
-types. Attribute and subscript assignments are not yet covered.
 
 Note that several checks in mypy and pyright are not yet implemented in ty. See the rule mapping
 table below for more details.
