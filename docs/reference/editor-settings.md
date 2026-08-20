@@ -687,8 +687,6 @@ This feature is experimental and may change. Enabling it requires
 install dependencies. All uv integrations are disabled when
 [`untrustedWorkspace`](#untrustedworkspace) is `true`.
 
-When unset, the language server uses its own default.
-
 **Default value**: `null`
 
 **Type**: `"off" | "scripts" | "on"`
