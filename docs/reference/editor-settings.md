@@ -683,12 +683,9 @@ Control how ty uses [uv](https://docs.astral.sh/uv/):
 - `on`: Use uv for project discovery and standalone script environments.
 
 This feature is experimental and may change. Enabling it requires
-[uv to be installed](https://docs.astral.sh/uv/getting-started/installation/) and can download and
+[uv 0.12.3 or later](https://docs.astral.sh/uv/getting-started/installation/) and can download and
 install dependencies. All uv integrations are disabled when
 [`untrustedWorkspace`](#untrustedworkspace) is `true`.
-
-If this option is not provided, the language server uses the `TY_UV` environment variable.
-The VS Code extension sends `"off"` by default.
 
 **Default value**: `"off"`
 
@@ -851,8 +848,7 @@ ______________________________________________________________________
 ### `untrustedWorkspace`
 
 Whether the language server should treat the workspace as untrusted. When `true`, ty does not run
-external commands. This disables uv integrations and prevents ty from running Python interpreters
-to discover environment information.
+external commands. This disables all uv integrations.
 
 Set this option in trusted editor configuration before opening a workspace you do not trust.
 
