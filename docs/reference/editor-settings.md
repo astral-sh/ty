@@ -665,12 +665,13 @@ ______________________________________________________________________
 
 ## Initialization options
 
-The following options are read when ty is initialized in an editor. Changing them requires
-restarting the language server.
+The following settings are required when ty is initialized in an editor. These settings are
+static so changing them requires restarting the editor to take effect.
 
-In VS Code, most of these options are available in the `ty.*` namespace. The extension sets
-[`untrustedWorkspace`](#untrustedworkspace) automatically. In other editors, use the field for
-language server initialization options. Refer to the examples below.
+For VS Code users, most of these settings are defined in the `ty.*` namespace as usual, but for other
+editors, they would need to be provided in a separate field of the configuration that corresponds to
+the initialization options. Refer to the examples below for how to set these options in different
+editors.
 
 ### `experimental.useUv`
 
@@ -854,7 +855,6 @@ external commands. This disables uv integrations and prevents ty from running Py
 to discover environment information.
 
 Set this option in trusted editor configuration before opening a workspace you do not trust.
-Changing it requires restarting the language server.
 
 **Default value**: `false`
 
