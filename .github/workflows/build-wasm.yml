@@ -44,6 +44,9 @@ jobs:
           submodules: recursive
           persist-credentials: false
       - name: "Install Rust toolchain"
+        # Run from `ruff`, so the target is added to the toolchain that
+        # `ruff/rust-toolchain.toml` pins rather than to the runner's default.
+        working-directory: ruff
         run: rustup target add wasm32-unknown-unknown
       - uses: jetli/wasm-pack-action@0d096b08b4e5a7de8c28de67e11e945404e9eefa # v0.4.0
         with:
@@ -53,11 +56,12 @@ jobs:
         run: wasm-pack build --target ${{ matrix.target }} ruff/crates/ty_wasm
       - name: "Rename generated package"
         # `ty_wasm` is pinned at version 0.0.0 in the submodule, since ty's version only exists in
-        # this repository. Take it from the same place the wheels do.
+        # this repository. Take it from the same place the wheels do. `homepage` is inherited from
+        # the ruff workspace and would otherwise point at ruff's docs.
         run: |
           version="$(python3 -c 'import pathlib, tomllib; print(tomllib.loads(pathlib.Path("pyproject.toml").read_text())["project"]["version"])')"
           jq --arg name "@astral-sh/ty-wasm-${{ matrix.target }}" --arg version "$version" \
-            '.name = $name | .version = $version' \
+            '.name = $name | .version = $version | .homepage = "https://docs.astral.sh/ty"' \
             ruff/crates/ty_wasm/pkg/package.json > /tmp/package.json
           mv /tmp/package.json ruff/crates/ty_wasm/pkg/package.json
       - run: cp LICENSE ruff/crates/ty_wasm/pkg # wasm-pack does not put the LICENSE file in the pkg
