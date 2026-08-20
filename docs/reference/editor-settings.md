@@ -665,13 +665,83 @@ ______________________________________________________________________
 
 ## Initialization options
 
-The following settings are required when ty is initialized in an editor. These settings are
-static so changing them requires restarting the editor to take effect.
+The following options are read when ty is initialized in an editor. Changing them requires
+restarting the language server.
 
-For VS Code users, these settings are defined in the `ty.*` namespace as usual, but for other
-editors, they would need to be provided in a separate field of the configuration that corresponds to
-the initialization options. Refer to the examples below for how to set these options in different
-editors.
+In VS Code, most of these options are available in the `ty.*` namespace. The extension sets
+[`untrustedWorkspace`](#untrustedworkspace) automatically. In other editors, use the field for
+language server initialization options. Refer to the examples below.
+
+### `experimental.useUv`
+
+Control how ty uses [uv](https://docs.astral.sh/uv/):
+
+- `off`: Do not use uv.
+- `scripts`: Use uv to create and update environments for standalone scripts with
+    [PEP 723 inline metadata](https://peps.python.org/pep-0723/).
+- `on`: Use uv for project discovery and standalone script environments.
+
+This feature is experimental and may change. Enabling it requires
+[uv to be installed](https://docs.astral.sh/uv/getting-started/installation/) and can download and
+install dependencies. All uv integrations are disabled when
+[`untrustedWorkspace`](#untrustedworkspace) is `true`.
+
+If this option is not provided, the language server uses the `TY_UV` environment variable.
+The VS Code extension sends `"off"` by default.
+
+**Default value**: `"off"`
+
+**Type**: `"off" | "scripts" | "on"`
+
+**Example usage**:
+
+=== "VS Code"
+
+    ```json
+    {
+      "ty.experimental.useUv": "scripts"
+    }
+    ```
+
+=== "Neovim"
+
+    ```lua
+    -- Neovim >=0.11:
+    vim.lsp.config('ty', {
+      init_options = {
+        experimental = {
+          useUv = 'scripts',
+        },
+      },
+    })
+
+    -- Neovim <0.11:
+    require('lspconfig').ty.setup({
+      init_options = {
+        experimental = {
+          useUv = 'scripts',
+        },
+      },
+    })
+    ```
+
+=== "Zed"
+
+    ```json
+    {
+      "lsp": {
+        "ty": {
+          "initialization_options": {
+            "experimental": {
+              "useUv": "scripts"
+            }
+          }
+        }
+      }
+    }
+    ```
+
+______________________________________________________________________
 
 ### `logFile`
 
@@ -769,6 +839,62 @@ The log level to use for the language server.
         "ty": {
           "initialization_options": {
             "logLevel": "debug"
+          }
+        }
+      }
+    }
+    ```
+
+______________________________________________________________________
+
+### `untrustedWorkspace`
+
+Whether the language server should treat the workspace as untrusted. When `true`, ty does not run
+external commands. This disables uv integrations and prevents ty from running Python interpreters
+to discover environment information.
+
+Set this option in trusted editor configuration before opening a workspace you do not trust.
+Changing it requires restarting the language server.
+
+**Default value**: `false`
+
+**Type**: `boolean`
+
+**Example usage**:
+
+=== "VS Code"
+
+    The extension sets this option automatically based on
+    [Workspace Trust](https://code.visualstudio.com/docs/editing/workspaces/workspace-trust).
+    There is no `ty.untrustedWorkspace` setting. Open the workspace in Restricted Mode to mark it
+    as untrusted.
+
+=== "Neovim"
+
+    ```lua
+    -- Neovim >=0.11:
+    vim.lsp.config('ty', {
+      init_options = {
+        untrustedWorkspace = true,
+      },
+    })
+
+    -- Neovim <0.11:
+    require('lspconfig').ty.setup({
+      init_options = {
+        untrustedWorkspace = true,
+      },
+    })
+    ```
+
+=== "Zed"
+
+    ```json
+    {
+      "lsp": {
+        "ty": {
+          "initialization_options": {
+            "untrustedWorkspace": true
           }
         }
       }
