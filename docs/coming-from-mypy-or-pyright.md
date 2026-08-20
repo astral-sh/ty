@@ -69,6 +69,8 @@ blanket-ignore-comment = "error"
 dynamic-function-decorator-return = "error"
 missing-type-argument = "error"
 possibly-unresolved-reference = "warn"
+# Requires a development build containing astral-sh/ruff#27874.
+unsound-assignment = "error"
 unsound-return-statement = "error"
 unsound-yield = "error"
 unsupported-dynamic-base = "warn"
@@ -87,6 +89,10 @@ strict-generic-narrowing = true
 extend-select = ["ANN", "PYI", "PGH003"]
 preview = true
 ```
+
+The [`unsound-assignment`][ty-unsound-assignment] rule is not yet available in ty 0.0.73; omit
+that setting when using this release. It checks assignments to variables with fully static declared
+types. Attribute and subscript assignments are not yet covered.
 
 Note that several checks in mypy and pyright are not yet implemented in ty. See the rule mapping
 table below for more details.
@@ -188,6 +194,7 @@ emitted, or is folded into a broader category that already appears for another t
 | [`unresolved-attribute`][ty-unresolved-attribute]                                                                            | [`attr-defined`][mypy-attr-defined]<br>[`union-attr`][mypy-union-attr]                                                         | [`reportAttributeAccessIssue`][reportattributeaccessissue]<br>[`reportFunctionMemberAccess`][reportfunctionmemberaccess]<br>[`reportOptionalMemberAccess`][reportoptionalmemberaccess] |
 | [`unresolved-import`][ty-unresolved-import]                                                                                  | [`import-not-found`][mypy-import-not-found]                                                                                    | [`reportMissingImports`][reportmissingimports]                                                                                                                                         |
 | [`unresolved-reference`][ty-unresolved-reference], [Ruff `F823`][ruff-f823]                                                  | [`name-defined`][mypy-name-defined]<br>[`used-before-def`][mypy-used-before-def]                                               | [`reportUndefinedVariable`][reportundefinedvariable]<br>[`reportUnboundVariable`][reportunboundvariable]                                                                               |
+| [`unsound-assignment`][ty-unsound-assignment] (unreleased; variables only)                                                   |                                                                                                                                | [`reportAny`][reportany] (basedpyright only; broader check)                                                                                                                            |
 | [`unsound-return-statement`][ty-unsound-return-statement]                                                                    | [`no-any-return`][mypy-no-any-return]                                                                                          |                                                                                                                                                                                        |
 | [`unsound-yield`][ty-unsound-yield]                                                                                          |                                                                                                                                |                                                                                                                                                                                        |
 | [`unsupported-operator`][ty-unsupported-operator]                                                                            | [`operator`][mypy-operator]                                                                                                    | [`reportOperatorIssue`][reportoperatorissue]<br>[`reportOptionalOperand`][reportoptionaloperand]                                                                                       |
@@ -316,6 +323,7 @@ The full list of ty rules — including those without a direct equivalent above 
 [mypy-valid-type]: https://mypy.readthedocs.io/en/stable/_refs.html#code-valid-type
 [mypy-var-annotated]: https://mypy.readthedocs.io/en/stable/_refs.html#code-var-annotated
 [reportabstractusage]: https://github.com/microsoft/pyright/blob/main/docs/configuration.md#reportAbstractUsage
+[reportany]: https://docs.basedpyright.com/latest/benefits-over-pyright/new-diagnostic-rules/#reportany
 [reportargumenttype]: https://github.com/microsoft/pyright/blob/main/docs/configuration.md#reportArgumentType
 [reportassertalwaystrue]: https://github.com/microsoft/pyright/blob/main/docs/configuration.md#reportAssertAlwaysTrue
 [reportasserttypefailure]: https://github.com/microsoft/pyright/blob/main/docs/configuration.md#reportAssertTypeFailure
@@ -528,6 +536,7 @@ The full list of ty rules — including those without a direct equivalent above 
 [ty-unresolved-attribute]: reference/rules.md#unresolved-attribute
 [ty-unresolved-import]: reference/rules.md#unresolved-import
 [ty-unresolved-reference]: reference/rules.md#unresolved-reference
+[ty-unsound-assignment]: https://github.com/astral-sh/ruff/blob/da575120b8cd7279d77fa0c611ddbabad00552bd/crates/ty_python_semantic/resources/lint_docs/unsound-assignment.md
 [ty-unsound-return-statement]: reference/rules.md#unsound-return-statement
 [ty-unsound-yield]: reference/rules.md#unsound-yield
 [ty-unsupported-operator]: reference/rules.md#unsupported-operator
