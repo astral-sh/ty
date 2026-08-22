@@ -1,5 +1,69 @@
 # Changelog
 
+## 0.0.74
+
+Released on 2026-08-22.
+
+### Bug fixes
+
+- Avoid duplicate bindings in multi-target assignments ([#27938](https://github.com/astral-sh/ruff/pull/27938))
+- Avoid panic on unpacked kwargs in string annotations ([#27963](https://github.com/astral-sh/ruff/pull/27963))
+- Fix stack overflow in recursive `TypedDict` dictionary compatibility ([#27951](https://github.com/astral-sh/ruff/pull/27951))
+- Handle assignment expressions in string annotations ([#27921](https://github.com/astral-sh/ruff/pull/27921))
+- Handle dynamic classes in string annotations ([#27883](https://github.com/astral-sh/ruff/pull/27883))
+- Preserve string annotation context in lambda defaults and `TypedDict` types ([#27914](https://github.com/astral-sh/ruff/pull/27914))
+- Skip invalid subscript arguments in string annotations ([#27917](https://github.com/astral-sh/ruff/pull/27917))
+- Skip invalid subscript operands in string annotations ([#27882](https://github.com/astral-sh/ruff/pull/27882))
+
+### LSP server
+
+- Add `untrustedWorkspace` option to the LSP ([#27828](https://github.com/astral-sh/ruff/pull/27828))
+- Add executable discovery to the server command ([#27806](https://github.com/astral-sh/ruff/pull/27806))
+- Handle file-valued workspace folders from Zed ([#27836](https://github.com/astral-sh/ruff/pull/27836))
+- Skip scripts with an invalid PEP 723 configuration ([#27505](https://github.com/astral-sh/ruff/pull/27505))
+- Support pull diagnostics for notebook cells ([#27778](https://github.com/astral-sh/ruff/pull/27778))
+
+### Documentation
+
+- Update mypy/pyright comparison table ([#4165](https://github.com/astral-sh/ty/pull/4165))
+
+### Diagnostics
+
+- Add an opt-in `unsound-assignment` rule for variables ([#27874](https://github.com/astral-sh/ruff/pull/27874))
+- Fix variadic signature display ([#27869](https://github.com/astral-sh/ruff/pull/27869))
+- Highlight declarations in invalid-assignment diagnostics ([#27872](https://github.com/astral-sh/ruff/pull/27872))
+- Improve `LiteralString` suggestions in string annotations ([#27931](https://github.com/astral-sh/ruff/pull/27931))
+- Use `invalid-type-form` for non-generic class annotations ([#27889](https://github.com/astral-sh/ruff/pull/27889))
+
+### Core type checking
+
+- Add bounded constraint solution projections ([#27949](https://github.com/astral-sh/ruff/pull/27949))
+- Fix invariant gradual tuple materialization ranges ([#27946](https://github.com/astral-sh/ruff/pull/27946))
+- Guard recursive constructor bindings by receiver ([#27958](https://github.com/astral-sh/ruff/pull/27958))
+- Preserve all alternatives in bounded intersections ([#27898](https://github.com/astral-sh/ruff/pull/27898))
+- Preserve keyword safety for unpacked callables ([#27517](https://github.com/astral-sh/ruff/pull/27517))
+- Preserve source protocol members and classify finite aliases ([#27772](https://github.com/astral-sh/ruff/pull/27772))
+- Preserve type-variable order when reloading constraints ([#27904](https://github.com/astral-sh/ruff/pull/27904))
+- Propagate narrowing through statically known branches ([#27752](https://github.com/astral-sh/ruff/pull/27752))
+- Recognize ABC metaclass methods on protocols ([#27897](https://github.com/astral-sh/ruff/pull/27897))
+- Support `__slots__` ([#27730](https://github.com/astral-sh/ruff/pull/27730))
+
+### Performance
+
+- Lazily infer function parameter default types ([#27857](https://github.com/astral-sh/ruff/pull/27857))
+- Optimize inherited recursive protocol comparisons ([#27922](https://github.com/astral-sh/ruff/pull/27922))
+- Traverse shared constraint source-order nodes once ([#27947](https://github.com/astral-sh/ruff/pull/27947))
+
+### Contributors
+
+- [@carljm](https://github.com/carljm)
+- [@lerebear](https://github.com/lerebear)
+- [@charliermarsh](https://github.com/charliermarsh)
+- [@dhruvmanila](https://github.com/dhruvmanila)
+- [@AlexWaygood](https://github.com/AlexWaygood)
+- [@MichaReiser](https://github.com/MichaReiser)
+- [@jelle-openai](https://github.com/jelle-openai)
+
 ## 0.0.73
 
 Released on 2026-08-18.
