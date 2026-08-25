@@ -58,7 +58,7 @@ uv run --only-group dev --locked prek install
 The Python package can be built with any Python build frontend (Maturin is used as a backend), e.g.:
 
 ```shell
-uv build
+uv build --build
 ```
 
 ## Updating the Ruff commit
