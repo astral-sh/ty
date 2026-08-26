@@ -1,5 +1,77 @@
 # Changelog
 
+## 0.0.75
+
+Released on 2026-08-26.
+
+### Preview features
+
+- Initialize PEP 723 script environments in the CLI ([#27544](https://github.com/astral-sh/ruff/pull/27544))
+- Refresh PEP 723 script environments in watch mode ([#27617](https://github.com/astral-sh/ruff/pull/27617))
+- Run PEP 723 script synchronization on bounded workers ([#27615](https://github.com/astral-sh/ruff/pull/27615))
+
+### Bug fixes
+
+- Specialize `Self` bounds of inherited methods ([#27990](https://github.com/astral-sh/ruff/pull/27990))
+
+### LSP server
+
+- Add "Go to Definition" support for pytest fixtures ([#27444](https://github.com/astral-sh/ruff/pull/27444))
+
+### Documentation
+
+- Fix documented Python package build command ([#4384](https://github.com/astral-sh/ty/pull/4384))
+- Link untyped-call tracking issue in migration guide ([#4382](https://github.com/astral-sh/ty/pull/4382))
+
+### Library support
+
+- Resolve imported pytest fixture exposures ([#27539](https://github.com/astral-sh/ruff/pull/27539))
+- Resolve installed core pytest fixture providers ([#27770](https://github.com/astral-sh/ruff/pull/27770))
+- Resolve pytest fixtures through conftest ([#27540](https://github.com/astral-sh/ruff/pull/27540))
+
+### Diagnostics
+
+- Add more autofixes ([#28029](https://github.com/astral-sh/ruff/pull/28029))
+- Add a dedicated missing-slot diagnostic ([#28039](https://github.com/astral-sh/ruff/pull/28039))
+- Explain missing storage for declared slotted attributes ([#27969](https://github.com/astral-sh/ruff/pull/27969))
+- Improve diagnostic spans for unpacked variable assignments ([#28041](https://github.com/astral-sh/ruff/pull/28041))
+
+### Core type checking
+
+- Account for known subclasses in equality inference ([#28005](https://github.com/astral-sh/ruff/pull/28005))
+- Expand `ParamSpec` signatures inferred from bound receivers ([#28020](https://github.com/astral-sh/ruff/pull/28020))
+- Fix `Self` binding in `ParamSpec` protocols ([#28016](https://github.com/astral-sh/ruff/pull/28016))
+- Fix `TypedDict` variance inference ([#28052](https://github.com/astral-sh/ruff/pull/28052))
+- Fix unsound narrowing through branch-assigned conditions ([#28006](https://github.com/astral-sh/ruff/pull/28006))
+- Ignore inconsistent binding decorators on overloads ([#28036](https://github.com/astral-sh/ruff/pull/28036))
+- Infer `yield from` send/return types from the iterator returned by `__iter__` ([#27987](https://github.com/astral-sh/ruff/pull/27987))
+- Infer tuple type parameters from union arguments ([#28062](https://github.com/astral-sh/ruff/pull/28062))
+- Infer variance through nonrecursive protocol references ([#28065](https://github.com/astral-sh/ruff/pull/28065))
+- Preserve bounds of non-literal metaclasses ([#28046](https://github.com/astral-sh/ruff/pull/28046))
+- Preserve correlated generic-call inference ([#28043](https://github.com/astral-sh/ruff/pull/28043))
+- Preserve invariant materialization constraints ([#28047](https://github.com/astral-sh/ruff/pull/28047))
+- Recover bare `TypeVarTuple`s in tuple annotations ([#27950](https://github.com/astral-sh/ruff/pull/27950))
+- Reject fixed tuples for non-inferable `TypeVarTuple`s ([#27943](https://github.com/astral-sh/ruff/pull/27943))
+- Reject incompatible constructor context for variadic packs ([#27966](https://github.com/astral-sh/ruff/pull/27966))
+- Support mixed gradual tuple assignability with `TypeVarTuple` ([#27957](https://github.com/astral-sh/ruff/pull/27957))
+- Support tagged union with multiple tags per type ([#27984](https://github.com/astral-sh/ruff/pull/27984))
+- Sync vendored typeshed stubs ([#28035](https://github.com/astral-sh/ruff/pull/28035)). [Typeshed diff](https://github.com/python/typeshed/compare/6fba3ae73db5a9807780514b463126f1ee8ff216...6b7f7b93300550eb55380db8ca62488eb0c78c77)
+- Treat `typing.Union` as a class on Python 3.14+ ([#28003](https://github.com/astral-sh/ruff/pull/28003))
+- Validate generic protocol variance ([#27531](https://github.com/astral-sh/ruff/pull/27531))
+- `collections.abc.Callable` is an instance of `type` ([#27991](https://github.com/astral-sh/ruff/pull/27991))
+
+### Contributors
+
+- [@sharkdp](https://github.com/sharkdp)
+- [@jelle-openai](https://github.com/jelle-openai)
+- [@marcelo-souzaf](https://github.com/marcelo-souzaf)
+- [@AlexWaygood](https://github.com/AlexWaygood)
+- [@krzkaczor](https://github.com/krzkaczor)
+- [@carljm](https://github.com/carljm)
+- [@charliermarsh](https://github.com/charliermarsh)
+- [@lerebear](https://github.com/lerebear)
+- [@MichaReiser](https://github.com/MichaReiser)
+
 ## 0.0.74
 
 Released on 2026-08-22.
