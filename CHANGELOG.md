@@ -1,5 +1,73 @@
 # Changelog
 
+## 0.0.76
+
+Released on 2026-08-31.
+
+### Preview features
+
+- Add a missing-direct-dependency rule ([#28001](https://github.com/astral-sh/ruff/pull/28001))
+- Cancel superseded queued uv requests ([#28108](https://github.com/astral-sh/ruff/pull/28108))
+- Check direct dependencies in PEP 723 scripts ([#28136](https://github.com/astral-sh/ruff/pull/28136))
+- Fix Goto definition in script dependencies ([#27747](https://github.com/astral-sh/ruff/pull/27747))
+- Move script environment initialization to the CLI and LSP ([#28038](https://github.com/astral-sh/ruff/pull/28038))
+- Refresh uv project metadata in the background ([#27933](https://github.com/astral-sh/ruff/pull/27933))
+- Synchronize PEP 723 script environments in the language server ([#27619](https://github.com/astral-sh/ruff/pull/27619))
+- Warn when uv metadata cannot support dependency checks ([#28133](https://github.com/astral-sh/ruff/pull/28133))
+
+### Bug fixes
+
+- Avoid panics on incomplete protocol type parameter lists ([#28088](https://github.com/astral-sh/ruff/pull/28088))
+- Fix auto-completion panic involving bare declarations ([#28191](https://github.com/astral-sh/ruff/pull/28191))
+- Guard recursive meta-type expansion ([#28143](https://github.com/astral-sh/ruff/pull/28143))
+- Preserve parentheses when removing redundant casts ([#28092](https://github.com/astral-sh/ruff/pull/28092))
+
+### LSP server
+
+- Add "Find references" support for pytest fixtures ([#28075](https://github.com/astral-sh/ruff/pull/28075))
+- Highlight PEP 723 script metadata as TOML ([#27746](https://github.com/astral-sh/ruff/pull/27746))
+- Synchronize saved script metadata on open ([#27873](https://github.com/astral-sh/ruff/pull/27873))
+
+### Core type checking
+
+- Apply mixin specialization when validating enum members ([#28101](https://github.com/astral-sh/ruff/pull/28101))
+- Bind `Self` through generic type aliases ([#28117](https://github.com/astral-sh/ruff/pull/28117))
+- Infer lambda parameters through callable type aliases ([#28109](https://github.com/astral-sh/ruff/pull/28109))
+- Intersection simplifications with subtype-related generic specializations ([#26880](https://github.com/astral-sh/ruff/pull/26880))
+- Invalidate member narrowing across loop iterations ([#28009](https://github.com/astral-sh/ruff/pull/28009))
+- Narrow functional enum members in `==` and `match` ([#28103](https://github.com/astral-sh/ruff/pull/28103))
+- Only treat recursive types with unbounded specializations as fallback cycles ([#27538](https://github.com/astral-sh/ruff/pull/27538))
+- Preserve `Final` variance in stubs ([#28119](https://github.com/astral-sh/ruff/pull/28119))
+- Preserve inferred types for unknown class-decorator results ([#28067](https://github.com/astral-sh/ruff/pull/28067))
+- Preserve list literal positions in starred unpacking ([#28061](https://github.com/astral-sh/ruff/pull/28061))
+- Preserve short-circuit reachability for direct conditions ([#28082](https://github.com/astral-sh/ruff/pull/28082))
+- Preserve type variables in bounded generic defaults ([#28122](https://github.com/astral-sh/ruff/pull/28122))
+- Reject circular type alias definitions ([#28140](https://github.com/astral-sh/ruff/pull/28140))
+- Reject class access to generic instance attributes ([#28123](https://github.com/astral-sh/ruff/pull/28123))
+- Use the subclass receiver when checking method overrides ([#28124](https://github.com/astral-sh/ruff/pull/28124))
+- Validate declared variance in method signatures ([#28116](https://github.com/astral-sh/ruff/pull/28116))
+
+### Performance
+
+- Avoid cubic narrowing with repeated assignments and context managers ([#27787](https://github.com/astral-sh/ruff/pull/27787))
+- Avoid repeated traversal of shared alias arguments ([#28147](https://github.com/astral-sh/ruff/pull/28147))
+- Reject impossible eager protocol comparisons early ([#28081](https://github.com/astral-sh/ruff/pull/28081))
+
+### Contributors
+
+- [@AlexWaygood](https://github.com/AlexWaygood)
+- [@MichaReiser](https://github.com/MichaReiser)
+- [@charliermarsh](https://github.com/charliermarsh)
+- [@BitWeaverDev](https://github.com/BitWeaverDev)
+- [@gorewilliams](https://github.com/gorewilliams)
+- [@zsol](https://github.com/zsol)
+- [@malkin0xb8](https://github.com/malkin0xb8)
+- [@sharkdp](https://github.com/sharkdp)
+- [@mtshiba](https://github.com/mtshiba)
+- [@carljm](https://github.com/carljm)
+- [@lerebear](https://github.com/lerebear)
+- [@jamtat](https://github.com/jamtat)
+
 ## 0.0.75
 
 Released on 2026-08-26.
