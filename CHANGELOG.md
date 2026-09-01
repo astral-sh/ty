@@ -1,5 +1,32 @@
 # Changelog
 
+## 0.0.77
+
+Released on 2026-08-31.
+
+### Bug fixes
+
+- Bound recursive protocol traversal in generic intersections ([#28215](https://github.com/astral-sh/ruff/pull/28215))
+- Preserve recursion guards across nested type operations ([#28150](https://github.com/astral-sh/ruff/pull/28150))
+- Preserve syntax and comments when removing redundant casts ([#28145](https://github.com/astral-sh/ruff/pull/28145))
+- Stabilize recursive receiver inference ([#28042](https://github.com/astral-sh/ruff/pull/28042))
+- Stabilize condition truthiness during cyclic inference ([#28212](https://github.com/astral-sh/ruff/pull/28212))
+
+### Core type checking
+
+- Preserve generic receivers in implicit `__init_subclass__` calls ([#28138](https://github.com/astral-sh/ruff/pull/28138))
+- Preserve specialization for inherited `TypedDict` methods ([#28111](https://github.com/astral-sh/ruff/pull/28111))
+- Propagate deletions through nested loop headers ([#28044](https://github.com/astral-sh/ruff/pull/28044))
+
+### Performance
+
+- Avoid repeated inference for literal union call results ([#28196](https://github.com/astral-sh/ruff/pull/28196))
+
+### Contributors
+
+- [@charliermarsh](https://github.com/charliermarsh)
+- [@carljm](https://github.com/carljm)
+
 ## 0.0.76
 
 Released on 2026-08-31.
