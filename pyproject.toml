@@ -74,7 +74,7 @@ extend-exclude = ["ruff"]
 per-file-target-version = { "scripts/**" = "py313" }
 
 [tool.ruff.format]
-exclude = ["docs/**/*.md"]
+exclude = ["CHANGELOG.md", "docs/**/*.md"]
 
 [tool.ruff.lint]
 select = [
