@@ -21,9 +21,6 @@ repos:
     hooks:
       - id: check-merge-conflict
         priority: 0
-      # Priority 3: a single hook that could modify any file type
-      - id: trailing-whitespace
-        priority: 3
 
   - repo: https://github.com/abravalheri/validate-pyproject
     rev: 4b2e70d08cb2ccd26d1fba73588de41c7a5d50b7 # frozen: v0.25
@@ -119,3 +116,10 @@ repos:
     hooks:
       - id: markdownlint-fix
         priority: 2
+
+  # Priority 3: Clean up whitespace after all other hooks.
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: 3e8a8703264a2f4a69428a0aa4dcb512790b2c8c # frozen: v6.0.0
+    hooks:
+      - id: trailing-whitespace
+        priority: 3
