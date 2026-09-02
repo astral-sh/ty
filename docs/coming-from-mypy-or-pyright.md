@@ -81,7 +81,7 @@ possibly-missing-attribute = "warn"
 possibly-missing-import = "warn"
 
 [tool.ty.analysis]
-strict-literal-narrowing = true
+strict-equality-semantics = true
 strict-generic-narrowing = true
 
 [tool.ruff.lint]
