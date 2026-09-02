@@ -21,15 +21,9 @@ repos:
     hooks:
       - id: check-merge-conflict
         priority: 0
-      # Priority 2: a single hook that could modify any file type
+      # Priority 3: a single hook that could modify any file type
       - id: trailing-whitespace
-        priority: 2
-
-  - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: 1f1e8bf348ff38fc88619a38d3ca4d9c56abea49 # frozen: v0.16.5
-    hooks:
-      - id: ruff-format
-        priority: 0
+        priority: 3
 
   - repo: https://github.com/abravalheri/validate-pyproject
     rev: 4b2e70d08cb2ccd26d1fba73588de41c7a5d50b7 # frozen: v0.25
@@ -103,7 +97,14 @@ repos:
           - "github.com/wasilibs/go-shellcheck/cmd/shellcheck@v0.11.1"
         priority: 0
 
-  # Priority 1: Second-pass fixers (e.g., markdownlint-fix runs after mdformat).
+  # Priority 1: Ruff formats Python code blocks after mdformat formats Markdown.
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: 1f1e8bf348ff38fc88619a38d3ca4d9c56abea49 # frozen: v0.16.5
+    hooks:
+      - id: ruff-format
+        priority: 1
+
+  # Priority 2: Second-pass fixers run after both formatters.
   - repo: https://github.com/astral-sh/ruff-pre-commit
     rev: 1f1e8bf348ff38fc88619a38d3ca4d9c56abea49 # frozen: v0.16.5
     hooks:
@@ -111,10 +112,10 @@ repos:
         args: [--fix, --exit-non-zero-on-fix]
         types_or: [python, pyi]
         require_serial: true
-        priority: 1
+        priority: 2
 
   - repo: https://github.com/igorshubovych/markdownlint-cli
     rev: 5b5dddc4fb0f83c3ea1fc5616fa63e115dce83e0 # frozen: v0.49.1
     hooks:
       - id: markdownlint-fix
-        priority: 1
+        priority: 2

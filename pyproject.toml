@@ -73,6 +73,9 @@ docs = {requires-python = ">=3.12"}
 extend-exclude = ["ruff"]
 per-file-target-version = { "scripts/**" = "py313" }
 
+[tool.ruff.format]
+exclude = ["docs/**/*.md"]
+
 [tool.ruff.lint]
 select = [
     "E",   # pycodestyle (error)
