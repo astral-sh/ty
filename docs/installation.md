@@ -169,7 +169,7 @@ The following tags are available:
 
 ### Using ty with Bazel
 
-[`aspect_rules_lint`](https://registry.bazel.build/docs/aspect_rules_lint#function-lint_ty_aspect)
+[`aspect_rules_lint`](https://registry.bazel.build/modules/aspect_rules_lint/latest/docs/lint/ty.bzl/lint_ty_aspect)
 provides a Bazel lint aspect that runs ty. See its documentation for setup instructions.
 
 ## Adding ty to your editor
