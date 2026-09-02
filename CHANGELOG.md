@@ -1,5 +1,54 @@
 # Changelog
 
+## 0.0.78
+
+Released on 2026-09-02.
+
+### Bug fixes
+
+- Defer decorator-call diagnostics to avoid recursive-default cycles ([#28226](https://github.com/astral-sh/ruff/pull/28226))
+- Make cyclic intersection simplification deterministic ([#28156](https://github.com/astral-sh/ruff/pull/28156))
+- Stabilize cyclic terminal-call reachability ([#28216](https://github.com/astral-sh/ruff/pull/28216))
+
+### Preview features
+
+- Refresh uv workspace metadata when dependencies change ([#28224](https://github.com/astral-sh/ruff/pull/28224))
+
+### Diagnostics
+
+- Add a new `disjoint-cast` rule ([#28129](https://github.com/astral-sh/ruff/pull/28129))
+- Report deprecated property accessors on intersections ([#28250](https://github.com/astral-sh/ruff/pull/28250))
+- Report deprecations for implicit constructor calls ([#28251](https://github.com/astral-sh/ruff/pull/28251))
+- Report deprecations for overloads, operators, and properties ([#28134](https://github.com/astral-sh/ruff/pull/28134))
+- Respect overload selection in deprecation diagnostics ([#28148](https://github.com/astral-sh/ruff/pull/28148))
+
+### Core type checking
+
+- Fix negative narrowing for protocols with gradual members ([#28198](https://github.com/astral-sh/ruff/pull/28198))
+- Preserve `ParamSpec` bindings inferred against type context ([#28084](https://github.com/astral-sh/ruff/pull/28084))
+- Preserve generic protocol materialization relations ([#28246](https://github.com/astral-sh/ruff/pull/28246))
+- Preserve uncertain branches during quantification ([#28211](https://github.com/astral-sh/ruff/pull/28211))
+- Respect type variables in top/bottom materializations of invariant generics ([#28072](https://github.com/astral-sh/ruff/pull/28072))
+- Sync vendored typeshed stubs ([#28217](https://github.com/astral-sh/ruff/pull/28217)). [Typeshed diff](https://github.com/python/typeshed/compare/6b7f7b93300550eb55380db8ca62488eb0c78c77...cf09d2a4d7614f648e9109dce609887499a7c6ee)
+- Treat captured bound-method receivers covariantly ([#28180](https://github.com/astral-sh/ruff/pull/28180))
+- Unsound intersection simplification for generic iterables ([#28068](https://github.com/astral-sh/ruff/pull/28068))
+- Validate type variable scopes in constructors and aliases ([#28130](https://github.com/astral-sh/ruff/pull/28130))
+- `lambda` functions are always truthy ([#28254](https://github.com/astral-sh/ruff/pull/28254))
+
+### Performance
+
+- Optimize materialized recursive protocol comparisons ([#28079](https://github.com/astral-sh/ruff/pull/28079))
+- Optimize recursive protocol checks for nested type variables ([#28257](https://github.com/astral-sh/ruff/pull/28257))
+
+### Contributors
+
+- [@charliermarsh](https://github.com/charliermarsh)
+- [@sharkdp](https://github.com/sharkdp)
+- [@zsol](https://github.com/zsol)
+- [@AlexWaygood](https://github.com/AlexWaygood)
+- [@ibraheemdev](https://github.com/ibraheemdev)
+- [@carljm](https://github.com/carljm)
+
 ## 0.0.77
 
 Released on 2026-08-31.
