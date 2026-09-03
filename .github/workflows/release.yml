@@ -149,12 +149,63 @@ jobs:
       "id-token": "write"
       "packages": "write"
 
+  # The custom binary jobs produce checksum sidecars outside cargo-dist.
+  # Include them in a local manifest before generating the installers.
+  generate-checksum-manifest:
+    needs:
+      - plan
+      - custom-build-binaries
+    if: ${{ needs.plan.outputs.publishing == 'true' || fromJson(needs.plan.outputs.val).ci.github.pr_run_mode == 'upload' || inputs.tag == 'dry-run' }}
+    permissions:
+      "contents": "read"
+    runs-on: "depot-ubuntu-latest-4"
+    steps:
+      - uses: actions/checkout@0c366fd6a839edf440554fa01a7085ccba70ac98
+        with:
+          persist-credentials: false
+          submodules: recursive
+      - name: "Install uv"
+        uses: astral-sh/setup-uv@20cfd1bf945f4377ade1205e4dbc17946fc9a30d # v10.0.1
+        with:
+          enable-cache: false
+      - name: Install cached dist
+        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c
+        with:
+          name: cargo-dist-cache
+          path: ~/.cargo/bin/
+      - run: chmod +x ~/.cargo/bin/dist
+      - name: Fetch local artifacts
+        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c
+        with:
+          pattern: artifacts-*
+          path: target/distrib/
+          merge-multiple: true
+      - name: Generate local dist manifest
+        shell: bash
+        env:
+          DIST_TAG_FLAG: ${{ needs.plan.outputs.tag-flag }}
+        run: |
+          dist_args=()
+          if [[ -n "$DIST_TAG_FLAG" ]]; then
+            dist_args+=("$DIST_TAG_FLAG")
+          fi
+          temp_manifest=target/local-dist-manifest.json.tmp
+          dist manifest "${dist_args[@]}" --output-format=json --no-local-paths --artifacts=local > "$temp_manifest"
+          uv run --locked scripts/patch-dist-manifest-checksums.py --manifest "$temp_manifest" --artifacts-dir target/distrib
+          mv "$temp_manifest" target/distrib/local-dist-manifest.json
+      - name: Upload synthesized local dist manifest
+        uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f
+        with:
+          name: artifacts-build-local-manifest
+          path: target/distrib/local-dist-manifest.json
+
   # Build and package all the platform-agnostic(ish) things
   build-global-artifacts:
     needs:
       - plan
       - custom-build-binaries
       - custom-build-docker
+      - generate-checksum-manifest
     permissions:
       "contents": "read"
     runs-on: "depot-ubuntu-latest-4"
@@ -211,8 +262,9 @@ jobs:
       - custom-build-binaries
       - custom-build-docker
       - build-global-artifacts
-    # Only run if we're "publishing", and only if plan, local and global didn't fail (skipped is fine)
-    if: ${{ always() && needs.plan.result == 'success' && needs.plan.outputs.publishing == 'true' && (needs.build-global-artifacts.result == 'skipped' || needs.build-global-artifacts.result == 'success') && (needs.custom-build-binaries.result == 'skipped' || needs.custom-build-binaries.result == 'success') && (needs.custom-build-docker.result == 'skipped' || needs.custom-build-docker.result == 'success') }}
+      - generate-checksum-manifest
+    # Require checksums for all built archives before publishing. Other build jobs may be skipped.
+    if: ${{ always() && needs.plan.result == 'success' && needs.plan.outputs.publishing == 'true' && needs.generate-checksum-manifest.result == 'success' && (needs.build-global-artifacts.result == 'skipped' || needs.build-global-artifacts.result == 'success') && (needs.custom-build-binaries.result == 'skipped' || needs.custom-build-binaries.result == 'success') && (needs.custom-build-docker.result == 'skipped' || needs.custom-build-docker.result == 'success') }}
     permissions:
       "contents": "read"
     env:
