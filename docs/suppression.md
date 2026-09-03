@@ -18,6 +18,8 @@ a = 10 + "test"  # ty: ignore[unsupported-operator]
 Rule violations spanning multiple lines can be suppressed by adding the comment at the end of the
 violation's first or last line:
 
+<!-- fmt:off -->
+
 ```py
 def sum_three_numbers(a: int, b: int, c: int) -> int: ...
 
@@ -35,6 +37,8 @@ sum_three_numbers(
     2
 )  # ty: ignore[missing-argument]
 ```
+
+<!-- fmt:on -->
 
 To suppress multiple violations on a single line, enumerate each rule separated by a comma:
 
@@ -106,8 +110,10 @@ to suppress all violations inside a function.
 ```python
 from typing import no_type_check
 
+
 def sum_three_numbers(a: int, b: int, c: int) -> int:
     return a + b + c
+
 
 @no_type_check
 def main():

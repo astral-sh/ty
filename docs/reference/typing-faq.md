@@ -69,8 +69,11 @@ produces a new type, ty replaces the non-convergent part with `Divergent`.
 For example, each iteration of this loop wraps `x` in another list:
 
 ```py
+import random
+
+
 def some_condition() -> bool:
-    ...
+    return random.choice([True, False])
 
 
 x = 1
@@ -98,7 +101,8 @@ includes a special rule for numeric types where an `int` can be used wherever a 
 def circle_area(radius: float) -> float:
     return 3.14 * radius * radius
 
-circle_area(2)      # OK: int is allowed where float is expected
+
+circle_area(2)  # OK: int is allowed where float is expected
 ```
 
 This rule is a special case, since `int` is not actually a subclass of `float`. A `float` annotation
@@ -143,10 +147,12 @@ The starred spellings only appear in ty's output; they cannot be used in Python 
     else:
         JustFloat = float
 
+
     def only_actual_floats_allowed(f: JustFloat) -> None: ...
 
+
     only_actual_floats_allowed(1.0)  # OK
-    only_actual_floats_allowed(1)    # error: invalid-argument-type
+    only_actual_floats_allowed(1)  # error: invalid-argument-type
     ```
 
     ([Full example in the playground](https://play.ty.dev/fb034780-3ba7-4c6a-9449-5b0f44128bab))
@@ -164,8 +170,10 @@ the case. The reason for this is mutability:
 ```py
 # Setup of `Entry`, `Directory`, and `File` classes (1)
 
+
 def modify(entries: list[Entry]):
-    entries.append(File("README.txt")) # mutation
+    entries.append(File("README.txt"))  # mutation
+
 
 directories: list[Directory] = [Directory("Downloads"), Directory("Documents")]
 modify(directories)  # ty emits an error on this call
@@ -176,21 +184,27 @@ modify(directories)  # ty emits an error on this call
     ```py
     from dataclasses import dataclass
 
+
     @dataclass
     class Entry:
-         path: str
-         def size_bytes(self) -> int: ...
+        path: str
+
+        def size_bytes(self) -> int: ...
+
 
     @dataclass
     class Directory(Entry):
         def children(self) -> list[Entry]: ...
 
+
     @dataclass
     class File(Entry):
         def content(self) -> bytes: ...
 
+
     def modify(entries: list[Entry]):
-        entries.append(File("README.txt")) # mutation
+        entries.append(File("README.txt"))  # mutation
+
 
     directories: list[Directory] = [Directory("Downloads"), Directory("Documents")]
     modify(directories)  # ty emits an error on this call
@@ -225,6 +239,7 @@ required:
 ```py
 def total_size_bytes(entries: list[Entry]) -> int:
     return sum(entry.size_bytes() for entry in entries)
+
 
 # inferred as `list[Directory]`
 media_entries = [Directory("Pictures"), Directory("Videos")]
@@ -318,7 +333,7 @@ the developer experience around this in the future.
 
 
     def retry(times: int, operation: FunctionLikeCallable[[], bool]) -> bool:
-        ...
+        raise NotImplementedError
     ```
 
     You can check out the full example [here](https://play.ty.dev/7a1ea4ab-04e1-4271-adf5-ddc3a5d2fcfd),

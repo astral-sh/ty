@@ -73,13 +73,6 @@ docs = {requires-python = ">=3.12"}
 extend-exclude = ["ruff"]
 per-file-target-version = { "scripts/**" = "py313" }
 
-[tool.ruff.format]
-exclude = [
-    "CHANGELOG.md",
-    # Code samples in our docs often use intentional formatting for educational reasons.
-    "docs/**/*.md",
-]
-
 [tool.ruff.lint]
 select = [
     "E",   # pycodestyle (error)
