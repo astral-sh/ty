@@ -149,12 +149,24 @@ jobs:
       "id-token": "write"
       "packages": "write"
 
+  custom-build-wasm:
+    needs:
+      - plan
+    if: ${{ needs.plan.outputs.publishing == 'true' || fromJson(needs.plan.outputs.val).ci.github.pr_run_mode == 'upload' || inputs.tag == 'dry-run' }}
+    uses: $/.github/workflows/build-wasm.yml
+    with:
+      plan: ${{ needs.plan.outputs.val }}
+    secrets: inherit
+    permissions:
+      "contents": "read"
+
   # Build and package all the platform-agnostic(ish) things
   build-global-artifacts:
     needs:
       - plan
       - custom-build-binaries
       - custom-build-docker
+      - custom-build-wasm
     permissions:
       "contents": "read"
     runs-on: "depot-ubuntu-latest-4"
@@ -210,9 +222,10 @@ jobs:
       - plan
       - custom-build-binaries
       - custom-build-docker
+      - custom-build-wasm
       - build-global-artifacts
     # Only run if we're "publishing", and only if plan, local and global didn't fail (skipped is fine)
-    if: ${{ always() && needs.plan.result == 'success' && needs.plan.outputs.publishing == 'true' && (needs.build-global-artifacts.result == 'skipped' || needs.build-global-artifacts.result == 'success') && (needs.custom-build-binaries.result == 'skipped' || needs.custom-build-binaries.result == 'success') && (needs.custom-build-docker.result == 'skipped' || needs.custom-build-docker.result == 'success') }}
+    if: ${{ always() && needs.plan.result == 'success' && needs.plan.outputs.publishing == 'true' && (needs.build-global-artifacts.result == 'skipped' || needs.build-global-artifacts.result == 'success') && (needs.custom-build-binaries.result == 'skipped' || needs.custom-build-binaries.result == 'success') && (needs.custom-build-docker.result == 'skipped' || needs.custom-build-docker.result == 'success') && (needs.custom-build-wasm.result == 'skipped' || needs.custom-build-wasm.result == 'success') }}
     permissions:
       "contents": "read"
     env:
@@ -276,6 +289,21 @@ jobs:
       "id-token": "write"
       "packages": "write"
 
+  custom-publish-wasm:
+    needs:
+      - plan
+      - host
+      - release-gate
+    if: ${{ !fromJson(needs.plan.outputs.val).announcement_is_prerelease || fromJson(needs.plan.outputs.val).publish_prereleases }}
+    uses: $/.github/workflows/publish-wasm.yml
+    with:
+      plan: ${{ needs.plan.outputs.val }}
+    secrets: inherit
+    # publish jobs get escalated permissions
+    permissions:
+      "contents": "read"
+      "id-token": "write"
+
   # Create a GitHub Release while uploading all files to it
   announce:
     needs:
@@ -283,10 +311,11 @@ jobs:
       - host
       - release-gate
       - custom-publish-pypi
+      - custom-publish-wasm
     # use "always() && ..." to allow us to wait for all publish jobs while
     # still allowing individual publish jobs to skip themselves (for prereleases).
     # "host" however must run to completion, no skipping allowed!
-    if: ${{ always() && needs.host.result == 'success' && needs.release-gate.result == 'success' && (needs.custom-publish-pypi.result == 'skipped' || needs.custom-publish-pypi.result == 'success') }}
+    if: ${{ always() && needs.host.result == 'success' && needs.release-gate.result == 'success' && (needs.custom-publish-pypi.result == 'skipped' || needs.custom-publish-pypi.result == 'success') && (needs.custom-publish-wasm.result == 'skipped' || needs.custom-publish-wasm.result == 'success') }}
     runs-on: "depot-ubuntu-latest-4"
     environment:
       name: release
