@@ -7,6 +7,7 @@ on:
   pull_request:
     paths:
       - ".github/workflows/daily_property_tests.yml"
+      - "scripts/install-mold.sh"
 
 permissions:
   contents: read
@@ -30,14 +31,18 @@ jobs:
     # Don't run the cron job on forks:
     if: ${{ github.repository == 'astral-sh/ty' || github.event_name != 'schedule' }}
     steps:
+      # Install from ty before replacing the checkout with Ruff's source.
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: "Install mold"
+        run: bash scripts/install-mold.sh
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
           repository: astral-sh/ruff
       - name: "Install Rust toolchain"
         run: rustup show
-      - name: "Install mold"
-        uses: rui314/setup-mold@9c9c13bf4c3f1adef0cc596abc155580bcb04444 # v1
       - uses: Swatinem/rust-cache@c19371144df3bb44fab255c43d04cbc2ab54d1c4 # v2.9.1
       - name: Build ty
         # A release build takes longer (2 min vs 1 min), but the property tests run much faster in release
