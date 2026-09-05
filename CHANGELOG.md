@@ -2252,6 +2252,7 @@ class Foo:
     def __init__(self) -> None:
         self.value = 1
 
+
 reveal_type(Foo().value)  # revealed: int
 Foo().value = "x"  # error: [invalid-assignment]
 ```
