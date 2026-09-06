@@ -69,11 +69,7 @@ produces a new type, ty replaces the non-convergent part with `Divergent`.
 For example, each iteration of this loop wraps `x` in another list:
 
 ```py
-import random
-
-
-def some_condition() -> bool:
-    return random.choice([True, False])
+def some_condition() -> bool: ...
 
 
 x = 1
@@ -332,8 +328,7 @@ the developer experience around this in the future.
         FunctionLikeCallable = Callable
 
 
-    def retry(times: int, operation: FunctionLikeCallable[[], bool]) -> bool:
-        raise NotImplementedError
+    def retry(times: int, operation: FunctionLikeCallable[[], bool]) -> bool: ...
     ```
 
     You can check out the full example [here](https://play.ty.dev/7a1ea4ab-04e1-4271-adf5-ddc3a5d2fcfd),

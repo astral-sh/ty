@@ -103,8 +103,7 @@ if TYPE_CHECKING:
     type SerializableVersioned = Intersection[Serializable, Versioned]
 
 
-def output_as_json(obj: SerializableVersioned) -> str:
-    raise NotImplementedError
+def output_as_json(obj: SerializableVersioned) -> str: ...
 ```
 
 (Full example in the [playground](https://play.ty.dev/f003e901-0e45-4f45-9759-d6db9d5e5f66))
