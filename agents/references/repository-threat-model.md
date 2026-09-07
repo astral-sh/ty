@@ -36,9 +36,7 @@ themselves.
 
 ## Repository-specific additions
 
-When copying this threat model, keep the generic sections unchanged and add repository-specific
-trust assumptions or security boundaries here. If a generic assumption does not apply, name it and
-state the conditions for the local exception.
+N/A
 
 ## Severity calibration
 
