@@ -43,15 +43,15 @@ state the conditions for the local exception.
 ## Severity calibration
 
 - **Critical:** With few prerequisites and safe defaults, a remote attacker or actor at a lower
-  privilege level compromises releases or broad credentials without first compromising a declared
-  trust root.
+    privilege level compromises releases or broad credentials without first compromising a declared
+    trust root.
 - **High:** A complete, demonstrated path from independent attacker input crosses a stated integrity
-  or privilege boundary, grants material new power, and causes substantial confidentiality or
-  integrity harm. It cannot depend on a trusted maintainer selecting malicious input, trust-root
-  compromise, or power the attacker already has. For example, a scheduled workflow automatically
-  runs mutable third-party code with repository-write, publishing, or equivalent credentials.
+    or privilege boundary, grants material new power, and causes substantial confidentiality or
+    integrity harm. It cannot depend on a trusted maintainer selecting malicious input, trust-root
+    compromise, or power the attacker already has. For example, a scheduled workflow automatically
+    runs mutable third-party code with repository-write, publishing, or equivalent credentials.
 - **Medium:** A real but limited boundary crossing, an uncommon realistic setup, or limited
-  credential or filesystem effect.
+    credential or filesystem effect.
 - **Low:** A narrow safety gap, limited disclosure, or a robustness problem across a real but weak
-  boundary.
+    boundary.
 - **Informational:** A genuine **security** concern with no or negligible current impact.
