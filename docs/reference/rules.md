@@ -110,7 +110,7 @@ class are explicitly declared.
 **Examples**
 
 
-```py
+```python
 from typing import ClassVar, Protocol
 
 
