@@ -683,8 +683,7 @@ Control how ty uses [uv](https://docs.astral.sh/uv/):
 - `on`: Use uv for project discovery and standalone script environments.
 
 This feature is experimental and may change. Enabling it requires
-[uv 0.12.3 or later](https://docs.astral.sh/uv/getting-started/installation/) and can download and
-install dependencies. All uv integrations are disabled when
+[uv 0.12.3 or later](https://docs.astral.sh/uv/getting-started/installation/). All uv integrations are disabled when
 [`untrustedWorkspace`](#untrustedworkspace) is `true`.
 
 **Default value**: `null`
