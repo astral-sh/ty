@@ -17,7 +17,7 @@ env:
 jobs:
   pypi-publish:
     name: Upload to PyPI
-    runs-on: ubuntu-latest
+    runs-on: ${{ github.repository == 'astral-sh/ty' && 'github-ubuntu-24.04-x86_64-4' || 'ubuntu-latest' }}
     environment:
       name: release
     permissions:
