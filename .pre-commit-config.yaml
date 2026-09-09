@@ -10,7 +10,7 @@ exclude: |
 repos:
   # Priority 0: Read-only hooks; hooks that modify disjoint file types.
   - repo: https://github.com/astral-sh/uv-pre-commit
-    rev: d153933366256874470b9d8395de436c50714f41 # frozen: 0.12.9
+    rev: e3f880aff673113aeb3e424ea3ee58e2807f9453 # frozen: 0.12.11
     hooks:
       - id: uv-lock
         priority: 0
@@ -39,7 +39,7 @@ repos:
         priority: 0
 
   - repo: https://github.com/crate-ci/typos
-    rev: bee27e3a4fd1ea2111cf90ab89cd076c870fce14 # frozen: v1.48.0
+    rev: 8a48f81b6c64dcfea44b3633223084c4be58ac5f # frozen: v1.49.0
     hooks:
       - id: typos
         priority: 0
@@ -67,7 +67,7 @@ repos:
         priority: 0
 
   - repo: https://github.com/python-jsonschema/check-jsonschema
-    rev: 6b63472e72e1a91ed8a2f6d483790dfb644fa1d3 # frozen: 0.37.4
+    rev: 12e63946db2c5cfcc9030fac21c3883ba88c6ed8 # frozen: 0.38.0
     hooks:
       - id: check-github-workflows
         priority: 0
@@ -96,14 +96,14 @@ repos:
 
   # Priority 1: Ruff formats Python code blocks after mdformat formats Markdown.
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: 1f1e8bf348ff38fc88619a38d3ca4d9c56abea49 # frozen: v0.16.5
+    rev: 321478e58f4938179c6b86e4ddfa923d1547a49b # frozen: v0.16.6
     hooks:
       - id: ruff-format
         priority: 1
 
   # Priority 2: Second-pass fixers run after both formatters.
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: 1f1e8bf348ff38fc88619a38d3ca4d9c56abea49 # frozen: v0.16.5
+    rev: 321478e58f4938179c6b86e4ddfa923d1547a49b # frozen: v0.16.6
     hooks:
       - id: ruff
         args: [--fix, --exit-non-zero-on-fix]
