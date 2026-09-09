@@ -25,7 +25,7 @@ env:
 jobs:
   property_tests:
     name: Property tests
-    runs-on: ubuntu-latest
+    runs-on: ${{ github.repository == 'astral-sh/ty' && 'github-ubuntu-24.04-x86_64-4' || 'ubuntu-latest' }}
     timeout-minutes: 20
     # Don't run the cron job on forks:
     if: ${{ github.repository == 'astral-sh/ty' || github.event_name != 'schedule' }}
@@ -54,7 +54,7 @@ jobs:
 
   create-issue-on-failure:
     name: Create an issue if the daily property test run surfaced any bugs
-    runs-on: ubuntu-latest
+    runs-on: ${{ github.repository == 'astral-sh/ty' && 'github-ubuntu-24.04-x86_64-4' || 'ubuntu-latest' }}
     needs: property_tests
     if: ${{ github.repository == 'astral-sh/ty' && always() && github.event_name == 'schedule' && needs.property_tests.result == 'failure' }}
     permissions:
