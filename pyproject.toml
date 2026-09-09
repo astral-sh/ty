@@ -1,6 +1,6 @@
 [project]
 name = "ty"
-version = "0.0.79"
+version = "0.0.80"
 requires-python = ">=3.8"
 dependencies = []
 description = "An extremely fast Python type checker, written in Rust."
@@ -55,6 +55,7 @@ docs = [
 ]
 
 [tool.uv]
+required-version = "==0.12.11"
 no-build = true
 exclude-newer = "P7D"
 cache-keys = [

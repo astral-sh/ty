@@ -1,5 +1,56 @@
 # Changelog
 
+## 0.0.80
+
+Released on 2026-09-09.
+
+### Bug fixes
+
+- Fix `--force-exclude` for directories with an excluded ancestor ([#28451](https://github.com/astral-sh/ruff/pull/28451))
+- Preserve metaclass candidates after conflicts ([#28461](https://github.com/astral-sh/ruff/pull/28461))
+
+### LSP server
+
+- Give existing autofixes descriptive titles ([#28456](https://github.com/astral-sh/ruff/pull/28456))
+- Prevent LSP hangs during inlay hint bursts ([#28390](https://github.com/astral-sh/ruff/pull/28390))
+
+### Diagnostic improvements
+
+- Preserve redundant-condition diagnostics with unreachable operands ([#28374](https://github.com/astral-sh/ruff/pull/28374))
+
+### Core type checking
+
+- Check captured receivers when calling wrapped classmethods ([#28467](https://github.com/astral-sh/ruff/pull/28467))
+- Fix cached classmethods on generic classes ([#28207](https://github.com/astral-sh/ruff/pull/28207))
+- Fix disjointness of type guards and boolean literals ([#28363](https://github.com/astral-sh/ruff/pull/28363))
+- Infer tuple variance from the full tuple spec ([#28446](https://github.com/astral-sh/ruff/pull/28446))
+- Infer tuple variance more precisely ([#28426](https://github.com/astral-sh/ruff/pull/28426))
+- Preserve callable identity across specialized types ([#28409](https://github.com/astral-sh/ruff/pull/28409))
+- Preserve callback type context through ParamSpec forwarding ([#28439](https://github.com/astral-sh/ruff/pull/28439))
+- Preserve wrapped functions in precise `functools.partial` relations ([#28460](https://github.com/astral-sh/ruff/pull/28460))
+- Respect descriptor protocol for `__set__` itself ([#28408](https://github.com/astral-sh/ruff/pull/28408))
+- Respect type-variable bounds in argument context ([#28448](https://github.com/astral-sh/ruff/pull/28448))
+- Unwrap union alternatives in overload implementations ([#28468](https://github.com/astral-sh/ruff/pull/28468))
+
+### Performance
+
+- Distribute `len` inference over unions ([#28470](https://github.com/astral-sh/ruff/pull/28470))
+- Fast-path concrete literal intersections ([#28348](https://github.com/astral-sh/ruff/pull/28348))
+
+### Memory usage improvements
+
+- Avoid excess capacity in multi-binding tables ([#28412](https://github.com/astral-sh/ruff/pull/28412))
+- Share equivalent place tables within a file ([#28319](https://github.com/astral-sh/ruff/pull/28319))
+- Share names in synthesized constructor parameters ([#28398](https://github.com/astral-sh/ruff/pull/28398))
+
+### Contributors
+
+- [@sharkdp](https://github.com/sharkdp)
+- [@charliermarsh](https://github.com/charliermarsh)
+- [@ibraheemdev](https://github.com/ibraheemdev)
+- [@AlexWaygood](https://github.com/AlexWaygood)
+- [@MichaReiser](https://github.com/MichaReiser)
+
 ## 0.0.79
 
 Released on 2026-09-07.
