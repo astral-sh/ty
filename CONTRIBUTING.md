@@ -131,6 +131,13 @@ Releases can only be performed by Astral team members.
 
 Preparation for the release is automated.
 
+Optionally, run the [Prepare release workflow](https://github.com/astral-sh/ty/actions/workflows/release-prepare.yml)
+on `main` to update the Ruff submodule, generate the version updates and changelog, and open a pull
+request. Leave `version` blank to detect the next version from pull request labels, or provide an
+explicit version. The generated changelog still needs manual review and editing. Check out the
+generated branch and continue with the changelog review and remaining steps below. To prepare the
+release locally, follow all the steps below.
+
 1. Install the prek hooks as described above, if you haven't already.
 
 1. Checkout the `main` branch and run `git pull origin main --recurse-submodules --tags`.

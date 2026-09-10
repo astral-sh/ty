@@ -1,0 +1,20 @@
+{
+  "version": 2,
+  "repositories": {
+    "ty": {
+      "name": "astral-sh/ty",
+      "id": 976731654,
+      "oidc_subject": "legacy"
+    }
+  },
+  "rules": [
+    {
+      "caller": "ty",
+      "environment": "automations",
+      "caller_workflow": "release-prepare.yml",
+      "on": ["workflow_dispatch"],
+      "permissions": { "contents": "write", "pull_requests": "write" },
+      "target": "ty"
+    }
+  ]
+}
