@@ -1,5 +1,56 @@
 # Changelog
 
+## 0.0.81
+
+Released on 2026-09-14.
+
+### Bug fixes
+
+- Escape glob characters in anchored directory paths ([#28518](https://github.com/astral-sh/ruff/pull/28518))
+- Ignore divergent markers when detecting descriptors ([#28514](https://github.com/astral-sh/ruff/pull/28514))
+
+### CLI
+
+- Anchor default exclude patterns at the project root ([#28463](https://github.com/astral-sh/ruff/pull/28463))
+
+### Core type checking
+
+- Avoid rebinding extracted method calls ([#28469](https://github.com/astral-sh/ruff/pull/28469))
+- Default-specialize class objects in meta-protocol checks ([#28265](https://github.com/astral-sh/ruff/pull/28265))
+- Fix MRO ordering for generic bases ([#28172](https://github.com/astral-sh/ruff/pull/28172))
+- Fix assignability of bounded typevars to intersection types ([#28479](https://github.com/astral-sh/ruff/pull/28479))
+- Fix variadic partial signature reduction ([#28586](https://github.com/astral-sh/ruff/pull/28586))
+- Handle gradual metaclass ancestry and conflicts ([#28474](https://github.com/astral-sh/ruff/pull/28474))
+- Preserve recursive metadata in union transformations ([#28497](https://github.com/astral-sh/ruff/pull/28497))
+- Preserve runtime comparison semantics when narrowing tagged unions ([#28053](https://github.com/astral-sh/ruff/pull/28053))
+- Preserve wrapped signatures in nominal descriptor checks ([#28466](https://github.com/astral-sh/ruff/pull/28466))
+- Reject reassignment of enum members ([#28462](https://github.com/astral-sh/ruff/pull/28462))
+- Report override conflicts introduced by new bases ([#28530](https://github.com/astral-sh/ruff/pull/28530))
+- Resolve dependencies within correlated inference alternatives ([#28252](https://github.com/astral-sh/ruff/pull/28252))
+- Respect instance dictionary storage for slotted classes ([#27749](https://github.com/astral-sh/ruff/pull/27749))
+- Validate explicitly overridden constructor signatures ([#28115](https://github.com/astral-sh/ruff/pull/28115))
+
+### Performance
+
+- Avoid redundant superclass member inference ([#28587](https://github.com/astral-sh/ruff/pull/28587))
+- Reuse rendered union elements when displaying types ([#28494](https://github.com/astral-sh/ruff/pull/28494))
+
+### Memory usage improvements
+
+- Reduce retained AST memory by shrinking expressions ([#28335](https://github.com/astral-sh/ruff/pull/28335))
+- Share strings in dependency metadata ([#28141](https://github.com/astral-sh/ruff/pull/28141))
+
+### Contributors
+
+- [@sharkdp](https://github.com/sharkdp)
+- [@ibraheemdev](https://github.com/ibraheemdev)
+- [@MichaReiser](https://github.com/MichaReiser)
+- [@zsol](https://github.com/zsol)
+- [@zanieb](https://github.com/zanieb)
+- [@charliermarsh](https://github.com/charliermarsh)
+- [@mtshiba](https://github.com/mtshiba)
+- [@carljm](https://github.com/carljm)
+
 ## 0.0.80
 
 Released on 2026-09-09.
