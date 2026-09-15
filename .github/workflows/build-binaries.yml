@@ -147,6 +147,9 @@ jobs:
       - name: "Install uv for PGO training"
         uses: astral-sh/setup-uv@20cfd1bf945f4377ade1205e4dbc17946fc9a30d # v10.0.1
         with:
+          # renovate: datasource=github-release-attachments depName=astral-sh/uv
+          version: "0.12.11"
+          checksum: "e01b69ee15e81918d5e8fc9cf39b3db7f59c5576e5e306cd9b7aeb2c7b7321c3"
           enable-cache: false
       - name: "Install LLVM profiling tools"
         id: pgo-toolchain
@@ -230,6 +233,9 @@ jobs:
         if: ${{ matrix.platform.target == 'x86_64-pc-windows-msvc' }}
         uses: astral-sh/setup-uv@20cfd1bf945f4377ade1205e4dbc17946fc9a30d # v10.0.1
         with:
+          # renovate: datasource=github-release-attachments depName=astral-sh/uv
+          version: "0.12.11"
+          checksum: "e94225dea91e051472847bd6d146d7d66c4f54ffcd1f106678866a99580845f9"
           enable-cache: false
       - name: "Install LLVM profiling tools"
         id: pgo-toolchain
@@ -327,6 +333,9 @@ jobs:
         if: ${{ matrix.target == 'x86_64-unknown-linux-gnu' }}
         uses: astral-sh/setup-uv@20cfd1bf945f4377ade1205e4dbc17946fc9a30d # v10.0.1
         with:
+          # renovate: datasource=github-release-attachments depName=astral-sh/uv
+          version: "0.12.11"
+          checksum: "4ae93e0f148a18434cc094072547cec88912fc4a72b984183c7d0d0e9586cb5e"
           enable-cache: false
       - name: "Install LLVM profiling tools"
         id: pgo-toolchain
@@ -411,6 +420,9 @@ jobs:
       - name: "Install uv for PGO training"
         uses: astral-sh/setup-uv@20cfd1bf945f4377ade1205e4dbc17946fc9a30d # v10.0.1
         with:
+          # renovate: datasource=github-release-attachments depName=astral-sh/uv
+          version: "0.12.11"
+          checksum: "e9933d907fb9cd27d606d819bbded419f2844c0e2efc98225ecfa409288eb28d"
           enable-cache: false
       - name: "Install LLVM profiling tools"
         id: pgo-toolchain
