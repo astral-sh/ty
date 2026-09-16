@@ -10,7 +10,7 @@ exclude: |
 repos:
   # Priority 0: Read-only hooks; hooks that modify disjoint file types.
   - repo: https://github.com/astral-sh/uv-pre-commit
-    rev: e3f880aff673113aeb3e424ea3ee58e2807f9453 # frozen: 0.12.11
+    rev: eec2b3c4f52295313b08b04f928ab2479e468b5c # frozen: 0.12.15
     hooks:
       - id: uv-lock
         priority: 0
@@ -96,14 +96,14 @@ repos:
 
   # Priority 1: Ruff formats Python code blocks after mdformat formats Markdown.
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: 321478e58f4938179c6b86e4ddfa923d1547a49b # frozen: v0.16.6
+    rev: e8f7d69b957a30acb2c875078d5fd012de24b64c # frozen: v0.16.7
     hooks:
       - id: ruff-format
         priority: 1
 
   # Priority 2: Second-pass fixers run after both formatters.
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: 321478e58f4938179c6b86e4ddfa923d1547a49b # frozen: v0.16.6
+    rev: e8f7d69b957a30acb2c875078d5fd012de24b64c # frozen: v0.16.7
     hooks:
       - id: ruff
         args: [--fix, --exit-non-zero-on-fix]
