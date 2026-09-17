@@ -141,6 +141,7 @@ Preparation for the release is automated.
     - Generate changelog entries based on pull requests here, and in Ruff
     - Bump the versions in the `pyproject.toml` and `dist-workspace.toml`
     - Update the generated reference documentation in `docs/reference`
+    - Open a Pull Request with these changes
 
 1. Editorialize the `CHANGELOG.md` of the resulting PR to ensure entries are consistently styled.
 
