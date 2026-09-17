@@ -131,13 +131,9 @@ Releases can only be performed by Astral team members.
 
 Preparation for the release is automated.
 
-1. Install the prek hooks as described above, if you haven't already.
+1. Run the [Prepare release workflow](https://github.com/astral-sh/ty/actions/workflows/release-prepare.yml)
 
-1. Checkout the `main` branch and run `git pull origin main --recurse-submodules --tags`.
-
-1. Create and checkout a new branch for the release.
-
-1. Run `./scripts/release.sh`.
+    Leave `version` blank to autoincrement the minor version, or provide an explicit version.
 
     The release script will:
 
@@ -145,17 +141,12 @@ Preparation for the release is automated.
     - Generate changelog entries based on pull requests here, and in Ruff
     - Bump the versions in the `pyproject.toml` and `dist-workspace.toml`
     - Update the generated reference documentation in `docs/reference`
+    - Open a Pull Request with these changes
 
-1. Editorialize the `CHANGELOG.md` file to ensure entries are consistently styled.
+1. Editorialize the `CHANGELOG.md` of the resulting PR to ensure entries are consistently styled.
 
     This usually involves simple edits, like consistent capitalization and leading verbs like
     "Add ...".
-
-1. Create a pull request with the changelog and version changes
-
-    The pull requests are usually titled as: `Bump version to <version>`.
-
-    Binary builds will automatically be tested for the release.
 
 1. Merge the pull request.
 
