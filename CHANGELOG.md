@@ -26,10 +26,10 @@ Released on 2026-09-17.
 ### Diagnostic improvements
 
 - Add an autofix for unused awaitables ([#28668](https://github.com/astral-sh/ruff/pull/28668))
+- Add annotations for unreachable code caused by boolean operands ([#28521](https://github.com/astral-sh/ruff/pull/28521))
 - Add subdiagnostics to `redundant-condition` rules warning about reachability implications ([#28263](https://github.com/astral-sh/ruff/pull/28263))
 - Clarify diagnostics for unimplemented abstract members ([#28538](https://github.com/astral-sh/ruff/pull/28538))
-- [redundant-condition rules] Extend unreachable-code annotations to `while`, `assert` and `match` statements ([#28290](https://github.com/astral-sh/ruff/pull/28290))
-- `redundant-condition(-strict)`: Add secondary annotations indicating unreachable code caused by boolean operands ([#28521](https://github.com/astral-sh/ruff/pull/28521))
+- Extend unreachable-code annotations to `while`, `assert`, and `match` statements ([#28290](https://github.com/astral-sh/ruff/pull/28290))
 
 ### Core type checking
 
