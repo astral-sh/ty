@@ -1,0 +1,105 @@
+name: Sync ty-security
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions: {}
+
+concurrency:
+  group: sync-ty-security-main
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    name: Sync ty-security
+    if: github.repository == 'astral-sh/ty' && github.ref == 'refs/heads/main'
+    runs-on: ${{ github.repository == 'astral-sh/ty' && 'github-ubuntu-24.04-x86_64-4' || 'ubuntu-latest' }}
+    environment: automations
+    permissions:
+      id-token: write # for the credential broker
+    defaults:
+      run:
+        shell: bash
+    env:
+      SOURCE_SHA: ${{ github.sha }}
+    steps:
+      - name: Prepare public history
+        env:
+          SYNC_REPOSITORY: ${{ runner.temp }}/ty-security-sync.git
+        run: |
+          if [[ ! "$SOURCE_SHA" =~ ^[0-9a-f]{40}$ ]]; then
+            echo "::error::Expected a public commit SHA."
+            exit 1
+          fi
+
+          # Keep the object database limited to public main. No checkout is needed.
+          git clone --quiet --bare --single-branch --branch main --no-tags --no-recurse-submodules \
+            https://github.com/astral-sh/ty.git "$SYNC_REPOSITORY"
+          if [[ "$(git -C "$SYNC_REPOSITORY" cat-file -t "$SOURCE_SHA" 2>/dev/null)" != commit ]] ||
+            ! git -C "$SYNC_REPOSITORY" merge-base --is-ancestor "$SOURCE_SHA" refs/heads/main; then
+            echo "::error::The requested commit is not on public main."
+            exit 1
+          fi
+
+      - name: Get ty-security token
+        id: token
+        uses: open-security-tools/ost-simple-sts@974a63a2daaaa40f7c6dec40d334f3da4421469e
+        with:
+          exchange-url: ${{ secrets.STS_API_URL }}/exchange
+          audience: ${{ secrets.STS_API_URL }}
+          repository: astral-sh/ty-security
+          # Workflow permission is required to sync changes to `.github/workflows`.
+          permissions: |
+            contents: write
+            workflows: write
+
+      - name: Sync main
+        env:
+          GH_TOKEN: ${{ steps.token.outputs.token }}
+          SYNC_REPOSITORY: ${{ runner.temp }}/ty-security-sync.git
+        run: |
+          destination_url=https://github.com/astral-sh/ty-security.git
+          destination_git() {
+            git -C "$SYNC_REPOSITORY" \
+              -c credential.helper= \
+              -c 'credential.helper=!gh auth git-credential' "$@"
+          }
+
+          # Read only the private main ref, never its objects or other branches.
+          # Suppress remote diagnostics so private refs cannot enter public logs.
+          if ! destination_main=$(destination_git ls-remote --exit-code --refs \
+            "$destination_url" refs/heads/main 2>/dev/null); then
+            echo "::error::Could not read ty-security main."
+            exit 1
+          fi
+          destination_sha="${destination_main%%$'\t'*}"
+          if [[ ! "$destination_sha" =~ ^[0-9a-f]{40}$ ||
+            "$destination_main" != "$destination_sha"$'\t'refs/heads/main ]]; then
+            echo "::error::Unexpected ty-security main ref."
+            exit 1
+          fi
+
+          if [[ "$(git -C "$SYNC_REPOSITORY" cat-file -t "$destination_sha" 2>/dev/null)" != commit ]] ||
+            ! git -C "$SYNC_REPOSITORY" merge-base --is-ancestor \
+              "$destination_sha" refs/heads/main 2>/dev/null; then
+            echo "::error::ty-security main is not on public main; refusing to sync."
+            exit 1
+          fi
+          if git -C "$SYNC_REPOSITORY" merge-base --is-ancestor "$SOURCE_SHA" "$destination_sha"; then
+            echo "ty-security main already contains this public commit."
+            exit 0
+          fi
+          if ! git -C "$SYNC_REPOSITORY" merge-base --is-ancestor "$destination_sha" "$SOURCE_SHA"; then
+            echo "::error::ty-security main has diverged from this public commit; refusing to sync."
+            exit 1
+          fi
+
+          # The explicit refspec and ordinary push cannot rewrite private main.
+          if ! destination_git push --quiet --no-force --no-follow-tags \
+            "$destination_url" "$SOURCE_SHA:refs/heads/main" > /dev/null 2>&1; then
+            echo "::error::Could not fast-forward ty-security main."
+            exit 1
+          fi
+          echo "Synced ty-security main to the public commit."
