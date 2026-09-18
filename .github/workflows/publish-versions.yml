@@ -11,7 +11,8 @@ on:
         required: true
         type: string
 
-permissions: {}
+permissions:
+  contents: read
 
 env:
   ACTIONS_CACHE_MODE: none
