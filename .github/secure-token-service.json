@@ -5,9 +5,23 @@
       "name": "astral-sh/ty",
       "id": 976731654,
       "oidc_subject": "legacy"
+    },
+    "ty-security": {
+      "name": "astral-sh/ty-security",
+      "id": 1373465135,
+      "oidc_subject": "immutable",
+      "owner_id": 115962839
     }
   },
   "rules": [
+    {
+      "caller": "ty",
+      "environment": "automations",
+      "caller_workflow": "sync-ty-security.yml",
+      "on": ["push", "workflow_dispatch"],
+      "permissions": { "contents": "write", "workflows": "write" },
+      "target": "ty-security"
+    },
     {
       "caller": "ty",
       "environment": "automations",
