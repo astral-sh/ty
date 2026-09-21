@@ -1,5 +1,56 @@
 # Changelog
 
+## 0.0.83
+
+Released on 2026-09-21.
+
+### Bug fixes
+
+- Fix hangs from repeated partial application ([#28754](https://github.com/astral-sh/ruff/pull/28754))
+- Preserve PEP 695 bindings across nested classes ([#28723](https://github.com/astral-sh/ruff/pull/28723))
+
+### LSP server
+
+- Include required imports in every inlay hint ([#28724](https://github.com/astral-sh/ruff/pull/28724))
+- Preserve fast name filtering for normalized Unicode source ([#28701](https://github.com/astral-sh/ruff/pull/28701))
+- Refresh diagnostics after workspace configuration changes ([#28755](https://github.com/astral-sh/ruff/pull/28755))
+
+### Diagnostic improvements
+
+- Expand unreachable-code annotations for redundant conditions ([#28674](https://github.com/astral-sh/ruff/pull/28674))
+- Improve diagnostics for async generator stubs ([#28692](https://github.com/astral-sh/ruff/pull/28692))
+- Improve primary diagnostic annotations for `redundant-condition(-strict)` diagnostics ([#28666](https://github.com/astral-sh/ruff/pull/28666))
+- Point misplaced tuple ellipsis diagnostics at each ellipsis ([#28709](https://github.com/astral-sh/ruff/pull/28709))
+
+### Other changes
+
+- Add rules that detect suspicious uses of `Callable`, `Iterable`, `Iterator` or `Generator` types in a boolean context ([#28554](https://github.com/astral-sh/ruff/pull/28554))
+- Allow slots to override abstract properties ([#28698](https://github.com/astral-sh/ruff/pull/28698))
+- Avoid leaking `Unknown` from unconstrained collection use-sites ([#28659](https://github.com/astral-sh/ruff/pull/28659))
+- Diagnose unguarded cycles in implicit and PEP 613 aliases ([#28704](https://github.com/astral-sh/ruff/pull/28704))
+- Eagerly bind unused `Self` receivers ([#28662](https://github.com/astral-sh/ruff/pull/28662))
+- Generalize receiver binding for wrapped callables ([#28725](https://github.com/astral-sh/ruff/pull/28725))
+- More faithful representation of bound methods ([#28410](https://github.com/astral-sh/ruff/pull/28410))
+- Only classify evidence bounds for constrained type variables ([#28700](https://github.com/astral-sh/ruff/pull/28700))
+- Preserve inferred bindings during annotation cycles ([#28717](https://github.com/astral-sh/ruff/pull/28717))
+- Preserve quoted aliases during cycle recovery ([#28710](https://github.com/astral-sh/ruff/pull/28710))
+- Reject class-scoped type variables in **init** receivers ([#28706](https://github.com/astral-sh/ruff/pull/28706))
+- Reject unsafe TypedDict updates from hidden fields ([#28711](https://github.com/astral-sh/ruff/pull/28711))
+- Respect fixed caller type variables when selecting constraints ([#28652](https://github.com/astral-sh/ruff/pull/28652))
+- Reuse cached type alias inference for diagnostics ([#28696](https://github.com/astral-sh/ruff/pull/28696))
+- Simplify unions of disjoint exclusions ([#28684](https://github.com/astral-sh/ruff/pull/28684))
+- Update typing conformance suite ([#28718](https://github.com/astral-sh/ruff/pull/28718))
+
+### Contributors
+
+- [@charliermarsh](https://github.com/charliermarsh)
+- [@AlexWaygood](https://github.com/AlexWaygood)
+- [@sharkdp](https://github.com/sharkdp)
+- [@carljm](https://github.com/carljm)
+- [@ibraheemdev](https://github.com/ibraheemdev)
+- [@zaniebot](https://github.com/zaniebot)
+- [@MichaReiser](https://github.com/MichaReiser)
+
 ## 0.0.82
 
 Released on 2026-09-17.
