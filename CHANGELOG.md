@@ -30,7 +30,6 @@ Released on 2026-09-21.
 - Diagnose unguarded cycles in implicit and PEP 613 aliases ([#28704](https://github.com/astral-sh/ruff/pull/28704))
 - Eagerly bind unused `Self` receivers ([#28662](https://github.com/astral-sh/ruff/pull/28662))
 - Generalize receiver binding for wrapped callables ([#28725](https://github.com/astral-sh/ruff/pull/28725))
-- Grant the versions workflow repository read access ([#4550](https://github.com/astral-sh/ty/pull/4550))
 - More faithful representation of bound methods ([#28410](https://github.com/astral-sh/ruff/pull/28410))
 - Only classify evidence bounds for constrained type variables ([#28700](https://github.com/astral-sh/ruff/pull/28700))
 - Preserve inferred bindings during annotation cycles ([#28717](https://github.com/astral-sh/ruff/pull/28717))
@@ -40,7 +39,6 @@ Released on 2026-09-21.
 - Respect fixed caller type variables when selecting constraints ([#28652](https://github.com/astral-sh/ruff/pull/28652))
 - Reuse cached type alias inference for diagnostics ([#28696](https://github.com/astral-sh/ruff/pull/28696))
 - Simplify unions of disjoint exclusions ([#28684](https://github.com/astral-sh/ruff/pull/28684))
-- Sync the ty security mirror ([#4549](https://github.com/astral-sh/ty/pull/4549))
 - Update typing conformance suite ([#28718](https://github.com/astral-sh/ruff/pull/28718))
 
 ### Contributors
