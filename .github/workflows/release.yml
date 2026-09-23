@@ -418,6 +418,7 @@ jobs:
     secrets: inherit
     permissions:
       "contents": "read"
+      "id-token": "write"
 
   custom-publish-versions:
     needs:
