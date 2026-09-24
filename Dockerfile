@@ -1,13 +1,20 @@
-FROM --platform=$BUILDPLATFORM ubuntu AS build
+FROM --platform=$BUILDPLATFORM ghcr.io/astral-sh/uv:0.12.11@sha256:79c6f4776b851471cc73b7d21d0cc834bb94383c292e83640d27eff512864df7 AS uv
+
+FROM --platform=$BUILDPLATFORM ubuntu AS build-tools
 ENV HOME="/root"
 WORKDIR $HOME
 
-RUN apt update && apt install -y build-essential curl python3-venv
+RUN apt update && apt install -y build-essential curl
+
+# Install uv
+COPY --from=uv /uv /usr/local/bin/uv
 
 # Setup zig as cross compiling linker
-RUN python3 -m venv $HOME/.venv
-RUN .venv/bin/pip install cargo-zigbuild
+COPY pyproject.toml uv.lock ./
+RUN uv sync --only-group docker --locked
 ENV PATH="$HOME/.venv/bin:$PATH"
+
+FROM build-tools AS build
 
 # Change to the ruff directory, which is the root for our build
 WORKDIR $HOME/ruff
