@@ -1,7 +1,7 @@
 [workspace]
 members = ["cargo:./ruff"]
 packages = ["ty"]
-version = "0.0.83"
+version = "0.0.84"
 
 # Config for 'dist'
 [dist]
