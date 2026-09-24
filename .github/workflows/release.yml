@@ -407,6 +407,8 @@ jobs:
     with:
       plan: ${{ needs.plan.outputs.val }}
     secrets: inherit
+    permissions:
+      "id-token": "write"
 
   custom-publish-docs:
     needs:
