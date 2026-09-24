@@ -16,6 +16,9 @@ on:
   pull_request:
     paths:
       - .github/workflows/build-docker.yml
+      - Dockerfile
+      - pyproject.toml
+      - uv.lock
 
 env:
   ACTIONS_CACHE_MODE: none

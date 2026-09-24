@@ -53,6 +53,9 @@ docs = [
     "mkdocs-material>=9.7.0",
     "mkdocs-redirects>=1.2.2",
 ]
+docker = [
+    "cargo-zigbuild>=0.23.4",
+]
 
 [tool.uv]
 no-build = true
@@ -69,6 +72,7 @@ cache-keys = [
 dev = {requires-python = ">=3.12"}
 release = {requires-python = ">=3.12"}
 docs = {requires-python = ">=3.12"}
+docker = {requires-python = ">=3.12"}
 
 [tool.ruff]
 extend-exclude = ["ruff"]
