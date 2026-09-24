@@ -4,6 +4,8 @@
 
 Released on 2026-09-24.
 
+This release addresses [GHSA-vxvm-j4xq-q7m4](https://github.com/astral-sh/ty/security/advisories/GHSA-vxvm-j4xq-q7m4), a use-after-free vulnerability during incremental type checking that can result in arbitrary code execution when analyzing a specially crafted Python project. Users who run ty on untrusted code should upgrade to 0.0.84 or newer.
+
 ### Bug fixes
 
 - Fix stale diagnostics from the LSP server after toggling `showSyntaxErrors` ([#28759](https://github.com/astral-sh/ruff/pull/28759))
