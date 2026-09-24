@@ -1,5 +1,56 @@
 # Changelog
 
+## 0.0.84
+
+Released on 2026-09-24.
+
+### Bug fixes
+
+- Fix stale diagnostics from the LSP server after toggling `showSyntaxErrors` ([#28759](https://github.com/astral-sh/ruff/pull/28759))
+
+### LSP server
+
+- Complete string keys from dictionary initializers ([#28820](https://github.com/astral-sh/ruff/pull/28820))
+- Support LSP requests against closed documents ([#28595](https://github.com/astral-sh/ruff/pull/28595))
+- Select projects for external files using import search paths ([#28594](https://github.com/astral-sh/ruff/pull/28594))
+- Use workspace editor settings for external files ([#28639](https://github.com/astral-sh/ruff/pull/28639))
+
+### Performance
+
+- Avoid repeated subtyping checks for materialized recursive protocols ([#28774](https://github.com/astral-sh/ruff/pull/28774))
+- Skip reading notebooks when discovering scripts ([#28781](https://github.com/astral-sh/ruff/pull/28781))
+
+### Core type checking
+
+- Avoid incorrect simplification of `TypeIs` materializations ([#28817](https://github.com/astral-sh/ruff/pull/28817))
+- Fix disjointness of generic class types ([#28787](https://github.com/astral-sh/ruff/pull/28787))
+- Fix staticmethod shadowing through generic receivers and unions ([#28766](https://github.com/astral-sh/ruff/pull/28766))
+- Infer callable signatures from bounded type variables ([#28599](https://github.com/astral-sh/ruff/pull/28599))
+- Infer constant membership in inline list and set literals (e.g. `"foo" in ["foo"]` is now inferred as `Literal[True]`) ([#28676](https://github.com/astral-sh/ruff/pull/28676))
+- Infer through optional generic containers in the legacy solver ([#28791](https://github.com/astral-sh/ruff/pull/28791))
+- Preserve call narrowing during cyclic inference ([#28708](https://github.com/astral-sh/ruff/pull/28708))
+- Preserve intersections of type guard return types ([#28796](https://github.com/astral-sh/ruff/pull/28796))
+- Use subtyping for constraint-set implication ([#28657](https://github.com/astral-sh/ruff/pull/28657))
+
+### Configuration
+
+- Disable `invalid-legacy-positional-parameter` by default ([#28834](https://github.com/astral-sh/ruff/pull/28834))
+
+### Other changes
+
+- Only consider reachable definitions when determining whether a condition should be exempted from `redundant-condition(-strict)` due to the condition being defined relative to `sys.version_info`, `sys.platform`, `os.name` or `typing.TYPE_CHECKING` ([#28788](https://github.com/astral-sh/ruff/pull/28788))
+
+### Contributors
+
+- [@ibraheemdev](https://github.com/ibraheemdev)
+- [@zsol](https://github.com/zsol)
+- [@charliermarsh](https://github.com/charliermarsh)
+- [@lerebear](https://github.com/lerebear)
+- [@MichaReiser](https://github.com/MichaReiser)
+- [@ewdurbin](https://github.com/ewdurbin)
+- [@carljm](https://github.com/carljm)
+- [@sharkdp](https://github.com/sharkdp)
+
 ## 0.0.83
 
 Released on 2026-09-21.
