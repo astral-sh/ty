@@ -6,21 +6,23 @@ Released on 2026-09-24.
 
 ### Bug fixes
 
-- Filter diagnostics before computing result IDs ([#28759](https://github.com/astral-sh/ruff/pull/28759))
+- Fix stale diagnostics after toggling `showSyntaxErrors` ([#28759](https://github.com/astral-sh/ruff/pull/28759))
 
 ### LSP server
 
 - Complete string keys from dictionary initializers ([#28820](https://github.com/astral-sh/ruff/pull/28820))
-- Fulfill language-server requests against closed documents ([#28595](https://github.com/astral-sh/ruff/pull/28595))
+- Support LSP requests against closed documents ([#28595](https://github.com/astral-sh/ruff/pull/28595))
 - Select projects for external files using import search paths ([#28594](https://github.com/astral-sh/ruff/pull/28594))
 - Use workspace editor settings for external files ([#28639](https://github.com/astral-sh/ruff/pull/28639))
 
-### Other changes
+### Performance
+
+- Avoid repeated subtyping checks for materialized recursive protocols ([#28774](https://github.com/astral-sh/ruff/pull/28774))
+- Skip reading notebooks when discovering scripts ([#28781](https://github.com/astral-sh/ruff/pull/28781))
+
+### Core type checking
 
 - Avoid incorrect simplification of `TypeIs` materializations ([#28817](https://github.com/astral-sh/ruff/pull/28817))
-- Avoid repeated subtyping checks for materialized recursive protocols ([#28774](https://github.com/astral-sh/ruff/pull/28774))
-- Clarify CLI threat-model boundaries ([#28831](https://github.com/astral-sh/ruff/pull/28831))
-- Disable invalid-legacy-positional-parameter by default ([#28834](https://github.com/astral-sh/ruff/pull/28834))
 - Fix disjointness of generic class types ([#28787](https://github.com/astral-sh/ruff/pull/28787))
 - Fix staticmethod shadowing through generic receivers and unions ([#28766](https://github.com/astral-sh/ruff/pull/28766))
 - Infer callable signatures from bounded type variables ([#28599](https://github.com/astral-sh/ruff/pull/28599))
@@ -29,10 +31,15 @@ Released on 2026-09-24.
 - Preserve call narrowing during cyclic inference ([#28708](https://github.com/astral-sh/ruff/pull/28708))
 - Preserve intersections of type guard return types ([#28796](https://github.com/astral-sh/ruff/pull/28796))
 - Retain receiver parameters in protocol access ([#28822](https://github.com/astral-sh/ruff/pull/28822))
-- Skip reading notebooks when discovering scripts ([#28781](https://github.com/astral-sh/ruff/pull/28781))
-- Use reaching definitions for redundant-condition exemptions ([#28788](https://github.com/astral-sh/ruff/pull/28788))
 - Use subtyping for constraint-set implication ([#28657](https://github.com/astral-sh/ruff/pull/28657))
-- publish to astral-sh/versions via OIDC ([#4581](https://github.com/astral-sh/ty/pull/4581))
+
+### Configuration
+
+- Disable `invalid-legacy-positional-parameter` by default ([#28834](https://github.com/astral-sh/ruff/pull/28834))
+
+### Other changes
+
+- Use reaching definitions for `redundant-condition` exemptions ([#28788](https://github.com/astral-sh/ruff/pull/28788))
 
 ### Contributors
 
