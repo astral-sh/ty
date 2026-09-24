@@ -26,11 +26,10 @@ Released on 2026-09-24.
 - Fix disjointness of generic class types ([#28787](https://github.com/astral-sh/ruff/pull/28787))
 - Fix staticmethod shadowing through generic receivers and unions ([#28766](https://github.com/astral-sh/ruff/pull/28766))
 - Infer callable signatures from bounded type variables ([#28599](https://github.com/astral-sh/ruff/pull/28599))
-- Infer constant membership in inline list and set literals ([#28676](https://github.com/astral-sh/ruff/pull/28676))
+- Infer constant membership in inline list and set literals (e.g. `"foo" in ["foo"]` is now inferred as `Literal[True]`) ([#28676](https://github.com/astral-sh/ruff/pull/28676))
 - Infer through optional generic containers in the legacy solver ([#28791](https://github.com/astral-sh/ruff/pull/28791))
 - Preserve call narrowing during cyclic inference ([#28708](https://github.com/astral-sh/ruff/pull/28708))
 - Preserve intersections of type guard return types ([#28796](https://github.com/astral-sh/ruff/pull/28796))
-- Retain receiver parameters in protocol access ([#28822](https://github.com/astral-sh/ruff/pull/28822))
 - Use subtyping for constraint-set implication ([#28657](https://github.com/astral-sh/ruff/pull/28657))
 
 ### Configuration
@@ -39,7 +38,7 @@ Released on 2026-09-24.
 
 ### Other changes
 
-- Use reaching definitions for `redundant-condition` exemptions ([#28788](https://github.com/astral-sh/ruff/pull/28788))
+- Only consider reachable definitions when determining whether a condition should be exempted from `redundant-condition(-strict)` due to the condition being defined relative to `sys.version_info`, `sys.platform`, `os.name` or `typing.TYPE_CHECKING` ([#28788](https://github.com/astral-sh/ruff/pull/28788))
 
 ### Contributors
 
