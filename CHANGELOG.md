@@ -6,7 +6,7 @@ Released on 2026-09-24.
 
 ### Bug fixes
 
-- Fix stale diagnostics after toggling `showSyntaxErrors` ([#28759](https://github.com/astral-sh/ruff/pull/28759))
+- Fix stale diagnostics from the LSP server after toggling `showSyntaxErrors` ([#28759](https://github.com/astral-sh/ruff/pull/28759))
 
 ### LSP server
 
