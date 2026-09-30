@@ -461,5 +461,6 @@ Yes! You can find it over at <https://github.com/astral-sh/ty-pre-commit>.
 No. ty does not have a plugin system and there is currently no plan to add one.
 
 We prefer extending the type system with well-specified features rather than relying on
-type-checker-specific plugins. That said, we are considering adding support for popular third-party
-libraries like pydantic, SQLAlchemy, attrs, or django directly into ty.
+type-checker-specific plugins. That said, ty already has built-in support for Pydantic, and we are
+considering adding dedicated support for other popular third-party libraries, such as Django and
+attrs.
