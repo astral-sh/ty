@@ -42,6 +42,8 @@ ty powers several language server features that allow you to navigate a Python c
     definition (could be in a stub file).
 - **Go to Type Definition**: Navigate to the type of a symbol. For example, this takes you to the class `Person`
     when invoked on a variable `user: Person`.
+- **Go to Implementation**: Find known implementations of a class or class member, including subclasses
+    and method overrides.
 - **Find all references**: Find every usage of a function, class, or variable across your entire workspace.
 - **Document and workspace symbols**: See an outline of symbols in the current file, or search through symbols across your entire workspace.
 
@@ -80,8 +82,8 @@ ty surfaces useful contextual information as you code:
 
 - **Hover**: Hover over any symbol to see its type, documentation, function signatures, and other
     useful information like the variance of type parameters.
-- **Inlay hints**: Display inline type hints for variables and parameters without explicit
-    annotations, as well as parameter names at call sites. These hints can also be double-clicked
+- **Inlay hints**: Display inline type hints for variables without explicit annotations, as well as
+    parameter names at call sites. Type hints can also be double-clicked
     to insert the type annotations into your source code. You can also click on parts of the inlay
     hints for go-to-definition navigation.
 - **Signature help**: When calling a function, ty displays the function's parameters and their
@@ -134,7 +136,7 @@ within a few milliseconds, even on large projects.
 | [`textDocument/foldingRange`][foldingrange]           | ✅ Supported     |                                                               |
 | [`textDocument/formatting`][formatting]               | —                | Use [Ruff] for formatting                                     |
 | [`textDocument/hover`][hover]                         | ✅ Supported     |                                                               |
-| [`textDocument/implementation`][implementation]       | ❌ Not supported | [#3514]                                                       |
+| [`textDocument/implementation`][implementation]       | ✅ Supported     |                                                               |
 | [`textDocument/inlayHint`][inlayhint]                 | ✅ Supported     |                                                               |
 | [`textDocument/onTypeFormatting`][ontypeformatting]   | —                | [Ruff #16829](https://github.com/astral-sh/ruff/issues/16829) |
 | [`textDocument/prepareRename`][preparerename]         | ✅ Supported     |                                                               |
@@ -180,7 +182,6 @@ interface Diagnostic {
 For diagnostics that support this extension, `rendered` and `diagnostic_id` are either both present or both absent. Clients may use `diagnostic_id` to preserve the original identifier if they replace `Diagnostic.code` with a link to the rendered output. Clients must preserve `Diagnostic.data` when returning a diagnostic in a `textDocument/codeAction` request so that code actions continue to work.
 
 [#1560]: https://github.com/astral-sh/ty/issues/1560
-[#3514]: https://github.com/astral-sh/ty/issues/3514
 [callhierarchy]: https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#callHierarchy_incomingCalls
 [codeaction]: https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#textDocument_codeAction
 [codelens]: https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#textDocument_codeLens
