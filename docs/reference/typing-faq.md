@@ -439,16 +439,28 @@ topic.
 
 ## Does ty support PEP 723 inline-metadata scripts?
 
-It depends on what you want to do. If you have a single inline-metadata script, you can type check
-it with ty by using uv's `--with-requirements` flag to install the dependencies specified in the
-script header:
+Yes. ty treats scripts with inline metadata as standalone files. By default, they do not inherit the
+enclosing project's configuration or first-party search paths. ty uses the script's `requires-python`
+field and supports inline `[tool.ty]` configuration; command-line and editor overrides still apply.
+
+By default, ty does not create environments from the scripts' dependency lists. For a single script,
+you can use uv's `--with-requirements` flag to install the dependencies specified in the script
+header:
 
 ```bash
 uvx --with-requirements script.py ty check script.py
 ```
 
-If you have multiple scripts in your workspace, ty does not yet recognize that they have different
-dependencies based on their inline metadata.
+To check multiple scripts with their own dependencies, you can enable the experimental uv
+integration. With uv 0.12.3 or later installed, run:
+
+```bash
+TY_UV=scripts ty check
+```
+
+ty will use uv to create and update a separate environment for each script. For editor integration,
+see the [`experimental.useUv`](./editor-settings.md#experimentaluseuv) setting. This integration is
+disabled by default.
 
 You can follow [this issue](https://github.com/astral-sh/ty/issues/691) for updates.
 
