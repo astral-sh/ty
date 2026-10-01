@@ -343,7 +343,7 @@ option enabled. If `x` was previously of type `Item | list[Item]`, you might exp
 check to narrow the type to `list[Item]`, but ty respects the possibility that there could be a
 common subclass of both `Item` and `list` (which may not be a list of `Item`!), and so the narrowed
 type is instead `(Item & Top[list[Unknown]]) | list[Item]`. This code can be made more robust by
-instead checking `if instance(x, Item)`, or by declaring the `Item` type as `@typing.final`.
+instead checking `if isinstance(x, Item)`, or by declaring the `Item` type as `@typing.final`.
 
 See also the [discussion
 here](https://docs.astral.sh/ty/features/type-system/#top-and-bottom-materializations) and [in this
@@ -358,9 +358,9 @@ details.
 
 ## Why doesn't ty warn about missing type annotations?
 
-ty does not report an error for unannotated function parameters, return types, or variables. When
-ty encounters an unannotated symbol, it infers the type as [`Unknown`](#what-is-the-unknown-type-and-when-does-it-appear)
-while still providing useful diagnostics where possible.
+ty does not report an error for unannotated function parameters, return types, or variables. It infers
+types where it can and uses [`Unknown`](#what-is-the-unknown-type-and-when-does-it-appear) when it
+cannot, while still providing useful diagnostics.
 
 If you are looking for the equivalent of mypy's
 [`disallow_untyped_defs`](https://mypy.readthedocs.io/en/stable/config_file.html#confval-disallow_untyped_defs)
