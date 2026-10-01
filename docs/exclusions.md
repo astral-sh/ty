@@ -1,6 +1,6 @@
 # Excluding files
 
-ty automatically discovers all Python files in your project. You can customize where ty searches by using the [`src.include`](./reference/configuration.md#include) and [`src.exclude`](./reference/configuration.md#exclude) settings.
+ty automatically discovers all Python files in your project. You can customize where ty searches by using the [`src.include`](./reference/configuration.md#include_1) and [`src.exclude`](./reference/configuration.md#exclude_1) settings.
 
 For example, with the following configuration, ty checks all Python files in the `src` and `tests` directories except those in the `src/generated` directory:
 
@@ -28,16 +28,16 @@ By default, ty excludes a [variety of commonly ignored directories](./reference/
 
     ```toml
     [tool.ty.src]
-    # Remove `build` from the excluded directories.
-    exclude = ["!**/build/"]
+    # Remove `dist` from the excluded directories.
+    exclude = ["!**/dist/"]
     ```
 
 === "ty.toml"
 
     ```toml
     [src]
-    # Remove `build` from the excluded directories.
-    exclude = ["!**/build/"]
+    # Remove `dist` from the excluded directories.
+    exclude = ["!**/dist/"]
     ```
 
 By default, ty ignores files listed in an `.ignore` or `.gitignore` file. To disable this functionality, set [`respect-ignore-files`](./reference/configuration.md#respect-ignore-files) to `false`.
@@ -76,15 +76,15 @@ All fields accepting patterns use the reduced portable glob syntax from [PEP 639
 
 ## Excluding files from virtual environments
 
-In Python 3.13+, the `venv` module will add a `.gitignore` file to the virtual environment root and
-ty will not emit diagnostics for the contained files. However, when using an older version of
-Python, ty may include diagnostics for files in the virtual environment.
+ty excludes directories named `.venv` and `venv` by default. If your virtual environment has a
+different name, ty may include diagnostics for its files unless they are ignored.
 
-You can resolve this by adding a `.gitignore` to the environment, e.g., for a virtual environment
-named `.venv`:
+In Python 3.13+, the `venv` module adds a `.gitignore` file to the virtual environment root by
+default. For an environment without this file, you can add one yourself, e.g., for an environment
+named `my-env`:
 
 ```shell
-echo "*" > .venv/.gitignore
+echo "*" > my-env/.gitignore
 ```
 
 Or by adding your virtual environment to your `.gitignore` or `.ignore` file.
