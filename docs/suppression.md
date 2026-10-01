@@ -15,6 +15,15 @@ To suppress a rule violation inline add a `# ty: ignore[<rule>]` comment at the 
 a = 10 + "test"  # ty: ignore[unsupported-operator]
 ```
 
+After Python code has begun, you can also place the comment on its own line before the affected
+statement. It applies to the following logical line:
+
+```py
+a = 10
+# ty: ignore[unsupported-operator]
+b = a + "test"
+```
+
 Rule violations spanning multiple lines can be suppressed by adding the comment at the end of the
 violation's first or last line:
 
@@ -65,11 +74,16 @@ sum_three_numbers(3, 2, "1")
 ty supports the standard [`type: ignore`](https://typing.python.org/en/latest/spec/directives.html#type-ignore-comments) comment
 format introduced by PEP 484.
 
-`type: ignore` suppresses all violations on that line.
+`type: ignore` suppresses all violations on the same line. A standalone `# type: ignore` before
+any Python code, including docstrings and imports, suppresses all violations in the file.
 
-`type: ignore[ty:<rule>]` behaves like `ty: ignore[<rule>]` and only suppresses the matching
-rule. Codes without a `ty:` prefix are ignored, which makes it possible to combine
-suppressions for multiple type checkers in a single comment.
+`type: ignore[ty:<rule>]` only suppresses the matching rule. Codes without a `ty:` prefix are
+ignored, which makes it possible to combine suppressions for multiple type checkers in a single
+comment. A standalone `# type: ignore[ty:<rule>]` before any Python code suppresses the matching
+rule for the entire file.
+
+Unlike `ty: ignore`, a standalone `type: ignore` after Python code has begun does not suppress the
+following line.
 
 ```python
 # Ignore all typing errors on the next line
@@ -95,11 +109,13 @@ result = calculate()  # fmt: off  # ty: ignore[invalid-argument-type]
 
 ## Unused suppression comments
 
-If the [`unused-ignore-comment`](./reference/rules.md#unused-ignore-comment) rule is enabled, ty
-will report unused `ty: ignore` and `type: ignore` comments.
+If enabled, the [`unused-ignore-comment`](./reference/rules.md#unused-ignore-comment) rule reports
+unused `ty: ignore` comments, and [`unused-type-ignore-comment`](./reference/rules.md#unused-type-ignore-comment)
+reports unused `type: ignore` comments.
 
-`unused-ignore-comment` violations can only be suppressed using `# ty: ignore[unused-ignore-comment]`.
-They cannot be suppressed using `# ty: ignore` without a rule code or `# type: ignore`.
+These violations can be suppressed by explicitly naming `unused-ignore-comment`, using either
+`# ty: ignore[unused-ignore-comment]` or `# type: ignore[ty:unused-ignore-comment]`. A bare
+`# ty: ignore` or `# type: ignore` does not suppress them.
 
 ## `@no_type_check` directive
 
