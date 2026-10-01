@@ -1,0 +1,134 @@
+# Each day, build ty from Ruff's current `main` branch and a baseline selected
+# by `scripts/prepare_daily_fuzz.py`. After the first run, the baseline is the
+# `main` commit checked out by the most recently created scheduled run in the
+# last seven days that completed and has an available checkpoint; if none is
+# found, the job fails.
+#
+# Run Ruff's py-fuzzer on 20,000 random seeds to find panics in the current ty
+# that do not occur in the baseline. The workflow saves the checked-out `main`
+# commit as a checkpoint before building, so it can be used by a future run
+# even if the build or fuzzer fails. A failed or cancelled fuzz job opens an
+# issue linking to the run, including when the job times out or fails during
+# setup or building.
+#
+# Note that if the prior checkpoint is missing or expired, or the cron job
+# was belatedly triggered by GitHub, the baseline commit might sometimes be
+# >24 hours old.
+
+name: Daily fuzz
+
+on:
+  schedule:
+    - cron: "0 0 * * *"
+
+permissions: {}
+
+concurrency:
+  group: ${{ github.workflow }}
+  cancel-in-progress: false
+
+env:
+  UV_LOCKED: 1
+  CARGO_INCREMENTAL: 0
+  CARGO_NET_RETRY: 10
+  CARGO_TERM_COLOR: always
+  RUSTUP_MAX_RETRIES: 10
+  CARGO_PROFILE_PROFILING_DEBUG: line-tables-only
+
+jobs:
+  fuzz:
+    name: Fuzz for new ty panics
+    permissions:
+      actions: read
+      contents: read
+    runs-on: ${{ github.repository == 'astral-sh/ty' && 'depot-ubuntu-24.04-16' || 'ubuntu-latest' }}
+    timeout-minutes: 180
+    if: ${{ github.repository == 'astral-sh/ty' }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          repository: astral-sh/ruff
+          ref: main
+          path: ruff
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Record Ruff commit to use as the next baseline
+        working-directory: ruff
+        run: git rev-parse HEAD > "$RUNNER_TEMP/ruff-head"
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: daily-fuzz-ruff-head
+          path: ${{ runner.temp }}/ruff-head
+          if-no-files-found: error
+          overwrite: true
+      - uses: astral-sh/setup-uv@c18668ad3cf93ea998bef934396af7bb5c839dc7 # v10.2.0
+        with:
+          # renovate: datasource=github-release-attachments depName=astral-sh/uv
+          version: "0.12.18"
+          checksum: "89eadd7c76fc063887959510d5ba0ab1264dfd5f1143b925ddb73021a40acf16"
+      - name: Install Rust toolchain
+        working-directory: ruff
+        run: rustup show
+      - name: Install mold
+        uses: rui314/setup-mold@9c9c13bf4c3f1adef0cc596abc155580bcb04444 # v1
+      - uses: Swatinem/rust-cache@6323deb102c322ba6fcbdcafc7e3dddab59af2b6 # v2.9.2
+        with:
+          workspaces: ruff
+      - name: Select Ruff commits
+        id: commits
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: uv run --locked --script scripts/prepare_daily_fuzz.py --ruff-root ruff >> "$GITHUB_OUTPUT"
+      - name: Build both versions of ty
+        working-directory: ruff
+        env:
+          NEW_COMMIT: ${{ steps.commits.outputs.new_commit }}
+          OLD_COMMIT: ${{ steps.commits.outputs.old_commit }}
+        run: |
+          echo "Testing $NEW_COMMIT against $OLD_COMMIT"
+          git checkout --detach "$NEW_COMMIT"
+          cargo build --locked --profile=profiling --bin=ty
+          cp target/profiling/ty "$RUNNER_TEMP/ty-new"
+          git checkout --detach "$OLD_COMMIT"
+          cargo build --locked --profile=profiling --bin=ty
+          cp target/profiling/ty "$RUNNER_TEMP/ty-old"
+          git checkout --detach "$NEW_COMMIT"
+      - name: Fuzz
+        working-directory: ruff
+        run: |
+          # ShellCheck SC2046 warns that unquoted command substitutions undergo
+          # word splitting and pathname expansion. Ignore it here: we need word
+          # splitting to pass each seed as a separate argument to the fuzzer, and
+          # the numeric seeds cannot trigger pathname expansion.
+          # shellcheck disable=SC2046
+          uv run \
+            --python=3.14 \
+            --project=./python/py-fuzzer \
+            --locked \
+            fuzz \
+            --test-executable="$RUNNER_TEMP/ty-new" \
+            --baseline-executable="$RUNNER_TEMP/ty-old" \
+            --only-new-bugs \
+            --bin=ty \
+            $(shuf -i 0-9999999999999999999 -n 20000)
+  create-issue-on-failure:
+    name: Report a failed fuzz run
+    runs-on: ${{ github.repository == 'astral-sh/ty' && 'github-ubuntu-24.04-x86_64-4' || 'ubuntu-latest' }}
+    needs: fuzz
+    if: ${{ github.repository == 'astral-sh/ty' && always() && (needs.fuzz.result == 'failure' || needs.fuzz.result == 'cancelled') }}
+    permissions:
+      issues: write
+    steps:
+      - uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
+        with:
+          script: |
+            await github.rest.issues.create({
+              owner: "astral-sh",
+              repo: "ty",
+              title: "Daily ty fuzz failed",
+              body: "This may indicate that a new panic or timeout was introduced in the last 24 hours. See the [workflow run](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}) for details.",
+              labels: ["bug", "fuzzer", "fatal"],
+            })
