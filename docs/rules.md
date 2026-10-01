@@ -23,11 +23,15 @@ You can configure the level for each rule on the command line using the `--warn`
 
 ```shell
 
+# Make `unused-ignore-comment` a warning
+# Disable `redundant-cast`
+# Error on `possibly-missing-attribute`
+# Error on `possibly-missing-import`
 ty check \
-  --warn unused-ignore-comment \        # Make `unused-ignore-comment` a warning
-  --ignore redundant-cast \             # Disable `redundant-cast`
-  --error possibly-missing-attribute \  # Error on `possibly-missing-attribute`
-  --error possibly-missing-import       # Error on `possibly-missing-import`
+  --warn unused-ignore-comment \
+  --ignore redundant-cast \
+  --error possibly-missing-attribute \
+  --error possibly-missing-import
 ```
 
 The options can be repeated. Subsequent options override earlier options.
