@@ -427,6 +427,16 @@ For monorepos with multiple Python packages, you have a few options:
     If a parent directory contains ty configuration, add a `ty.toml` file or a `[tool.ty]` table to
     each package. Otherwise, ty may discover the parent project and check all its files.
 
+1. **Check individual paths with shared configuration**: From the project root, pass a package
+    directory as a path to `ty check`:
+
+    ```bash
+    ty check packages/package-a
+    ```
+
+    This limits which files are checked, while still using the discovered project's configuration
+    and environment.
+
 1. **Configure multiple source roots**: Use [`environment.root`](./configuration.md#root) to specify
     multiple source directories:
 
