@@ -24,6 +24,9 @@ a = 10
 b = a + "test"
 ```
 
+Inside a multiline statement, an own-line comment applies only to the next non-comment physical
+line.
+
 Rule violations spanning multiple lines can be suppressed by adding the comment at the end of the
 violation's first or last line:
 
