@@ -410,8 +410,9 @@ ty reports *"Cannot resolve imported module …"*, check the following:
 
 ## Does ty support monorepos?
 
-ty can work with monorepos, but automatic discovery of nested projects is limited. By default, ty
-uses the current working directory or the `--project` option to determine the project root.
+ty can work with monorepos, but automatic discovery of nested projects is limited. ty searches
+upward from the current working directory or the directory passed to `--project` to discover the
+project root.
 
 For monorepos with multiple Python packages, you have a few options:
 
@@ -422,6 +423,9 @@ For monorepos with multiple Python packages, you have a few options:
     ty check --project packages/package-a
     ty check --project packages/package-b
     ```
+
+    If a parent directory contains ty configuration, add a `ty.toml` file or a `[tool.ty]` table to
+    each package. Otherwise, ty may discover the parent project and check all its files.
 
 1. **Configure multiple source roots**: Use [`environment.root`](./configuration.md#root) to specify
     multiple source directories:
