@@ -17,7 +17,7 @@ from datetime import UTC, datetime, timedelta
 from pathlib import Path
 from typing import Final
 
-# The workflow and its checkpoint artifacts are in the ty repository.
+# The workflow and its artifacts are in the ty repository.
 REPOSITORY: Final = "astral-sh/ty"
 
 # Bootstrap the first workflow run, which has no earlier run to compare against.
@@ -47,10 +47,10 @@ def main() -> None:
     Read the current commit from the checkout passed via `--ruff-root`. Use
     `INITIAL_COMMIT` as the baseline for the first workflow run. For later runs,
     select the `main` commit recorded by the most recently created scheduled run
-    in the last seven days that completed and has an unexpired checkpoint
-    artifact. Fail if no such artifact exists. Require the baseline to be an
-    ancestor of the current commit. Print both commits as GitHub Actions output
-    entries.
+    in the last seven days that completed and has an unexpired artifact
+    recording its commit. Fail if no such artifact exists. Require the baseline
+    to be an ancestor of the current commit. Print both commits as GitHub Actions
+    output entries.
     """
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--ruff-root", type=Path, required=True)
@@ -71,7 +71,7 @@ def main() -> None:
         cutoff = (datetime.now(UTC) - timedelta(days=7)).strftime("%Y-%m-%dT%H:%M:%SZ")
 
         # Completed runs include failures; a run that finds a new panic still
-        # uploads a checkpoint so future runs can compare against it.
+        # uploads its commit so future runs can compare against it.
         # GitHub limits filtered workflow-run searches to 1,000 results.
         previous_runs_raw = output(
             "gh",
@@ -96,7 +96,7 @@ def main() -> None:
         assert isinstance(previous_runs, list)
 
         # Runs are returned newest first. A run may have failed before uploading
-        # a checkpoint, or its artifact may have expired, so check earlier runs.
+        # its commit, or the artifact may have expired, so check earlier runs.
         for previous_run in previous_runs:
             run_id = str(previous_run["databaseId"])
             run_artifacts_raw = output(
@@ -132,7 +132,7 @@ def main() -> None:
             break
         else:
             raise RuntimeError(
-                "No available checkpoint from a completed daily fuzz run in the last seven days"
+                "No saved Ruff commit from a completed daily fuzz run in the last seven days"
             )
 
     # Require a full commit ID in the current checkout's history before the

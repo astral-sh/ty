@@ -1,16 +1,16 @@
 # Each day, build ty from Ruff's current `main` branch and a baseline selected
 # by `scripts/prepare_daily_fuzz.py`. After the first run, the baseline is the
 # `main` commit checked out by the most recently created scheduled run in the
-# last seven days that completed and has an available checkpoint; if none is
-# found, the job fails.
+# last seven days that completed and has an available artifact recording its
+# commit; if none is found, the job fails.
 #
 # Run Ruff's py-fuzzer on the seeds 0-20,000 to find panics in the current ty
 # that do not occur in the baseline. The workflow saves the checked-out `main`
-# commit as a checkpoint after fuzzing, even if the fuzzer finds a new panic.
+# commit after fuzzing, even if the fuzzer finds a new panic.
 # A failed or cancelled fuzz job opens an issue linking to the run, including
 # when the job times out or fails during setup or building.
 #
-# Note that if the prior checkpoint is missing or expired, or the cron job
+# Note that if the previous run's artifact is missing or expired, or the cron job
 # was belatedly triggered by GitHub, the baseline commit might sometimes be
 # >24 hours old.
 
