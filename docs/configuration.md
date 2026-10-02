@@ -15,8 +15,9 @@ index-out-of-bounds = "ignore"
 
 !!! note
 
-    If there is no `tool.ty` table, the `pyproject.toml` file will be ignored, and ty will continue
-    searching in the directory hierarchy.
+    If there is no `tool.ty` table, ty will continue searching the directory hierarchy for
+    configuration. The `pyproject.toml` may still be used for project metadata, such as the project
+    name and `requires-python`.
 
 ty will also search for `ty.toml` files, which follow an identical structure, but omit the `[tool.ty]` prefix. For example:
 
