@@ -4,12 +4,11 @@
 # last seven days that completed and has an available checkpoint; if none is
 # found, the job fails.
 #
-# Run Ruff's py-fuzzer on 20,000 random seeds to find panics in the current ty
+# Run Ruff's py-fuzzer on the seeds 0-20,000 to find panics in the current ty
 # that do not occur in the baseline. The workflow saves the checked-out `main`
-# commit as a checkpoint before building, so it can be used by a future run
-# even if the build or fuzzer fails. A failed or cancelled fuzz job opens an
-# issue linking to the run, including when the job times out or fails during
-# setup or building.
+# commit as a checkpoint after fuzzing, even if the fuzzer finds a new panic.
+# A failed or cancelled fuzz job opens an issue linking to the run, including
+# when the job times out or fails during setup or building.
 #
 # Note that if the prior checkpoint is missing or expired, or the cron job
 # was belatedly triggered by GitHub, the baseline commit might sometimes be
@@ -55,15 +54,6 @@ jobs:
           path: ruff
           fetch-depth: 0
           persist-credentials: false
-      - name: Record Ruff commit to use as the next baseline
-        working-directory: ruff
-        run: git rev-parse HEAD > "$RUNNER_TEMP/ruff-head"
-      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
-        with:
-          name: daily-fuzz-ruff-head
-          path: ${{ runner.temp }}/ruff-head
-          if-no-files-found: error
-          overwrite: true
       - uses: astral-sh/setup-uv@c18668ad3cf93ea998bef934396af7bb5c839dc7 # v10.2.0
         with:
           # renovate: datasource=github-release-attachments depName=astral-sh/uv
@@ -97,13 +87,9 @@ jobs:
           cp target/profiling/ty "$RUNNER_TEMP/ty-old"
           git checkout --detach "$NEW_COMMIT"
       - name: Fuzz
+        id: fuzz
         working-directory: ruff
         run: |
-          # ShellCheck SC2046 warns that unquoted command substitutions undergo
-          # word splitting and pathname expansion. Ignore it here: we need word
-          # splitting to pass each seed as a separate argument to the fuzzer, and
-          # the numeric seeds cannot trigger pathname expansion.
-          # shellcheck disable=SC2046
           uv run \
             --python=3.14 \
             --project=./python/py-fuzzer \
@@ -113,7 +99,19 @@ jobs:
             --baseline-executable="$RUNNER_TEMP/ty-old" \
             --only-new-bugs \
             --bin=ty \
-            $(shuf -i 0-9999999999999999999 -n 20000)
+            0-20000
+      - name: Record Ruff commit to use as the next baseline
+        id: next-baseline
+        if: ${{ !cancelled() && (steps.fuzz.outcome == 'success' || steps.fuzz.outcome == 'failure') }}
+        working-directory: ruff
+        run: git rev-parse HEAD > "$RUNNER_TEMP/ruff-head"
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        if: ${{ !cancelled() && steps.next-baseline.outcome == 'success' }}
+        with:
+          name: daily-fuzz-ruff-head
+          path: ${{ runner.temp }}/ruff-head
+          if-no-files-found: error
+          overwrite: true
   create-issue-on-failure:
     name: Report a failed fuzz run
     runs-on: ${{ github.repository == 'astral-sh/ty' && 'github-ubuntu-24.04-x86_64-4' || 'ubuntu-latest' }}

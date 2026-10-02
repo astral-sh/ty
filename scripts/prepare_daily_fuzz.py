@@ -70,8 +70,8 @@ def main() -> None:
     else:
         cutoff = (datetime.now(UTC) - timedelta(days=7)).strftime("%Y-%m-%dT%H:%M:%SZ")
 
-        # Completed runs include failures and cancellations, which may still have
-        # a checkpoint because the workflow uploads it before building or fuzzing.
+        # Completed runs include failures; a run that finds a new panic still
+        # uploads a checkpoint so future runs can compare against it.
         # GitHub limits filtered workflow-run searches to 1,000 results.
         previous_runs_raw = output(
             "gh",
