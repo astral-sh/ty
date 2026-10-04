@@ -89,6 +89,8 @@ jobs:
       - name: Fuzz
         id: fuzz
         working-directory: ruff
+        env:
+          FORCE_COLOR: 1
         run: |
           uv run \
             --python=3.14 \
