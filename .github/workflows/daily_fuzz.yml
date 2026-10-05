@@ -41,15 +41,21 @@ jobs:
     permissions:
       actions: read
       contents: read
-      issues: write
     outputs:
-      issue-created: ${{ steps.create_issue.outputs.created }}
+      issue-report: ${{ steps.upload_report.outputs.artifact-id }}
     runs-on: ${{ github.repository == 'astral-sh/ty' && 'depot-ubuntu-24.04-16' || 'ubuntu-latest' }}
     timeout-minutes: 180
     if: ${{ github.repository == 'astral-sh/ty' }}
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
+          # py-fuzzer uses the tested binary's recorded commit in the generated
+          # issue's reproduction instructions. If Ruff is checked out inside the
+          # ty checkout, ty's build script records the ty repository's commit
+          # instead of the tested Ruff commit, so the instructions point to the
+          # wrong revision. Keep the checkouts side by side so the instructions
+          # identify the tested Ruff commit.
+          path: ty
           persist-credentials: false
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
@@ -73,9 +79,10 @@ jobs:
           workspaces: ruff
       - name: Select Ruff commits
         id: commits
+        working-directory: ty
         env:
           GH_TOKEN: ${{ github.token }}
-        run: uv run --locked --script scripts/prepare_daily_fuzz.py --ruff-root ruff >> "$GITHUB_OUTPUT"
+        run: uv run --locked --script scripts/prepare_daily_fuzz.py --ruff-root ../ruff >> "$GITHUB_OUTPUT"
       - name: Build both versions of ty
         working-directory: ruff
         env:
@@ -107,20 +114,14 @@ jobs:
             --bin=ty \
             --write-github-issue="$RUNNER_TEMP/fuzz-issue.md" \
             0-20000
-      - name: Create an issue for ty bugs
-        id: create_issue
+      - name: Upload the fuzz report
+        id: upload_report
         if: ${{ failure() && steps.fuzz.outcome == 'failure' }}
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          if [[ -f "$RUNNER_TEMP/fuzz-issue.md" ]]; then
-            gh issue create \
-              --repo "$GITHUB_REPOSITORY" \
-              --title "Daily ty fuzz failed" \
-              --label bug --label fuzzer --label fatal \
-              --body-file "$RUNNER_TEMP/fuzz-issue.md"
-            echo 'created=true' >> "$GITHUB_OUTPUT"
-          fi
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: daily-fuzz-issue
+          path: ${{ runner.temp }}/fuzz-issue.md
+          if-no-files-found: ignore
       - name: Record Ruff commit to use as the next baseline
         id: next-baseline
         if: ${{ !cancelled() && (steps.fuzz.outcome == 'success' || steps.fuzz.outcome == 'failure') }}
@@ -134,18 +135,39 @@ jobs:
           if-no-files-found: error
           overwrite: true
 
-  # If a scheduled fuzz job fails before creating an issue (for example, on a
-  # timeout), report the failure with a link to the run. The `issue-created`
-  # output prevents a second issue when the fuzz job already created one.
+  # The fuzz job runs third-party code, including build dependencies. Keep the
+  # issue-writing token in a separate job so that code cannot access it. That code
+  # could also alter the report, so use it only as issue text and never execute it.
   create-issue-on-failure:
-    name: Create a fallback issue if the fuzz job fails
+    name: Report a failed fuzz run
     runs-on: ${{ github.repository == 'astral-sh/ty' && 'github-ubuntu-24.04-x86_64-4' || 'ubuntu-latest' }}
     needs: fuzz
-    if: ${{ github.repository == 'astral-sh/ty' && always() && (needs.fuzz.result == 'failure' || needs.fuzz.result == 'cancelled') && needs.fuzz.outputs.issue-created != 'true' }}
+    if: ${{ github.repository == 'astral-sh/ty' && always() && (needs.fuzz.result == 'failure' || needs.fuzz.result == 'cancelled') }}
     permissions:
       issues: write
     steps:
-      - uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
+      - name: Download the fuzz report
+        id: download_report
+        if: ${{ needs.fuzz.outputs.issue-report != '' }}
+        continue-on-error: true
+        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
+        with:
+          name: daily-fuzz-issue
+          path: ${{ runner.temp }}/fuzz-report
+      - name: Create an issue for ty bugs
+        id: create_issue
+        if: ${{ steps.download_report.outcome == 'success' }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh issue create \
+            --repo "$GITHUB_REPOSITORY" \
+            --title "Daily ty fuzz failed" \
+            --label bug --label fuzzer --label fatal \
+            --body-file "$RUNNER_TEMP/fuzz-report/fuzz-issue.md"
+      - name: Create a fallback issue
+        if: ${{ !cancelled() && steps.create_issue.outcome != 'success' }}
+        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
         with:
           script: |
             await github.rest.issues.create({
