@@ -17,6 +17,7 @@
     {
       groupName: "prek dependencies",
       matchManagers: ["pre-commit"],
+      matchPackageNames: ["!astral-sh/uv-pre-commit"],
       description: "Weekly update of prek dependencies",
     },
     {
