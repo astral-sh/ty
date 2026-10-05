@@ -8,7 +8,8 @@
 # that do not occur in the baseline. The workflow saves the checked-out `main`
 # commit after fuzzing, even if the fuzzer finds a new panic.
 # A failed or cancelled fuzz job opens an issue linking to the run, including
-# when the job times out or fails during setup or building.
+# when the job times out or fails during setup or building. When possible, the
+# workflow creates the issue from the fuzzer's report, including reproducers.
 #
 # Note that if the previous run's artifact is missing or expired, or the cron job
 # was belatedly triggered by GitHub, the baseline commit might sometimes be
@@ -40,6 +41,9 @@ jobs:
     permissions:
       actions: read
       contents: read
+      issues: write
+    outputs:
+      issue-created: ${{ steps.create_issue.outputs.created }}
     runs-on: ${{ github.repository == 'astral-sh/ty' && 'depot-ubuntu-24.04-16' || 'ubuntu-latest' }}
     timeout-minutes: 180
     if: ${{ github.repository == 'astral-sh/ty' }}
@@ -101,7 +105,22 @@ jobs:
             --baseline-executable="$RUNNER_TEMP/ty-old" \
             --only-new-bugs \
             --bin=ty \
+            --write-github-issue="$RUNNER_TEMP/fuzz-issue.md" \
             0-20000
+      - name: Create an issue for ty bugs
+        id: create_issue
+        if: ${{ failure() && steps.fuzz.outcome == 'failure' }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if [[ -f "$RUNNER_TEMP/fuzz-issue.md" ]]; then
+            gh issue create \
+              --repo "$GITHUB_REPOSITORY" \
+              --title "Daily ty fuzz failed" \
+              --label bug --label fuzzer --label fatal \
+              --body-file "$RUNNER_TEMP/fuzz-issue.md"
+            echo 'created=true' >> "$GITHUB_OUTPUT"
+          fi
       - name: Record Ruff commit to use as the next baseline
         id: next-baseline
         if: ${{ !cancelled() && (steps.fuzz.outcome == 'success' || steps.fuzz.outcome == 'failure') }}
@@ -114,11 +133,15 @@ jobs:
           path: ${{ runner.temp }}/ruff-head
           if-no-files-found: error
           overwrite: true
+
+  # If a scheduled fuzz job fails before creating an issue (for example, on a
+  # timeout), report the failure with a link to the run. The `issue-created`
+  # output prevents a second issue when the fuzz job already created one.
   create-issue-on-failure:
-    name: Report a failed fuzz run
+    name: Create a fallback issue if the fuzz job fails
     runs-on: ${{ github.repository == 'astral-sh/ty' && 'github-ubuntu-24.04-x86_64-4' || 'ubuntu-latest' }}
     needs: fuzz
-    if: ${{ github.repository == 'astral-sh/ty' && always() && (needs.fuzz.result == 'failure' || needs.fuzz.result == 'cancelled') }}
+    if: ${{ github.repository == 'astral-sh/ty' && always() && (needs.fuzz.result == 'failure' || needs.fuzz.result == 'cancelled') && needs.fuzz.outputs.issue-created != 'true' }}
     permissions:
       issues: write
     steps:
