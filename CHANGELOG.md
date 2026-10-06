@@ -1,5 +1,110 @@
 # Changelog
 
+## 0.0.85
+
+Released on 2026-10-06.
+
+### Preview features
+
+- Refresh uv project metadata when uv files change ([#28529](https://github.com/astral-sh/ruff/pull/28529))
+
+### Bug fixes
+
+- Avoid recursive lambda class decorator panics ([#28984](https://github.com/astral-sh/ruff/pull/28984))
+- Compare observable notebook state for equality ([#28874](https://github.com/astral-sh/ruff/pull/28874))
+- Detect recursive alias cycles through intersections ([#28916](https://github.com/astral-sh/ruff/pull/28916))
+- Fix anchoring of include and exclude patterns after the project's root changed ([#28995](https://github.com/astral-sh/ruff/pull/28995))
+- Fix stack overflow when inferring dynamic class metaclasses ([#28917](https://github.com/astral-sh/ruff/pull/28917))
+- Normalize recursive dataclass transform metadata ([#28920](https://github.com/astral-sh/ruff/pull/28920))
+- Normalize recursive TypedDicts during cycle recovery ([#28918](https://github.com/astral-sh/ruff/pull/28918))
+- Preserve cycle markers in ParamSpec specialization ([#29024](https://github.com/astral-sh/ruff/pull/29024))
+
+### CLI
+
+- Prefer existing @ paths over response files in Ruff and ty ([#28877](https://github.com/astral-sh/ruff/pull/28877))
+
+### LSP server
+
+- Add namespace package support to import completions. ([#28202](https://github.com/astral-sh/ruff/pull/28202))
+- Avoid stale I/O diagnostics when closing deleted files ([#28988](https://github.com/astral-sh/ruff/pull/28988))
+- Contain rendered code within Markdown fences ([#28869](https://github.com/astral-sh/ruff/pull/28869))
+- Refresh Python settings when virtual environments change ([#28650](https://github.com/astral-sh/ruff/pull/28650))
+
+### Diagnostic improvements
+
+- Add opt-in `truthiness-test-of-none-union` rule ([#28889](https://github.com/astral-sh/ruff/pull/28889))
+- Avoid `disjoint-cast` diagnostics in situations where the value could have been inferred as being compatible with the casted type if it had only been inferred with the right type context ([#28851](https://github.com/astral-sh/ruff/pull/28851))
+- Bound nested callable signature display ([#29049](https://github.com/astral-sh/ruff/pull/29049))
+- Explain outdated uv versions in metadata errors ([#28959](https://github.com/astral-sh/ruff/pull/28959))
+- Improve display of string literal types that include unicode characters or double quotes ([#29089](https://github.com/astral-sh/ruff/pull/29089))
+- Improve uv metadata diagnostics ([#28990](https://github.com/astral-sh/ruff/pull/28990))
+- Preserve constrained type-variable failure diagnostics ([#28768](https://github.com/astral-sh/ruff/pull/28768))
+- Preserve generic inference errors during diagnostic recovery ([#28811](https://github.com/astral-sh/ruff/pull/28811))
+- Report deprecated overloads in decorator applications ([#28999](https://github.com/astral-sh/ruff/pull/28999))
+
+### Core type checking
+
+- Bound methods without a receiver are not callable ([#28981](https://github.com/astral-sh/ruff/pull/28981))
+- Fix member lookup on union-bounded type variables ([#29018](https://github.com/astral-sh/ruff/pull/29018))
+- Fix type variable inference for final class objects ([#29097](https://github.com/astral-sh/ruff/pull/29097))
+- Freshen ParamSpec identities consistently ([#28826](https://github.com/astral-sh/ruff/pull/28826))
+- Honor generic property setters in protocol compatibility ([#28562](https://github.com/astral-sh/ruff/pull/28562))
+- Infer nominal generic specializations from bounded type variables ([#28812](https://github.com/astral-sh/ruff/pull/28812))
+- Inherit annotations for unannotated subclass defaults ([#28575](https://github.com/astral-sh/ruff/pull/28575))
+- Keep unresolved TypeIs targets provisional ([#29066](https://github.com/astral-sh/ruff/pull/29066))
+- Limit wildcard exports using literal `__all__` ([#28972](https://github.com/astral-sh/ruff/pull/28972))
+- Narrow later match cases after always-true guards ([#28960](https://github.com/astral-sh/ruff/pull/28960))
+- Pass generic context to call inference solver ([#29065](https://github.com/astral-sh/ruff/pull/29065))
+- Preserve captured variables in ParamSpec comparisons ([#28827](https://github.com/astral-sh/ruff/pull/28827))
+- Preserve intersection receivers in implicit dunder calls ([#28833](https://github.com/astral-sh/ruff/pull/28833))
+- Preserve literal unpacking during call analysis ([#28821](https://github.com/astral-sh/ruff/pull/28821))
+- Preserve recursive type context during constructor inference ([#28903](https://github.com/astral-sh/ruff/pull/28903))
+- Preserve tuple shapes when slicing NewTypes ([#29091](https://github.com/astral-sh/ruff/pull/29091))
+- Preserve tuple subclass identity during type expansion ([#29090](https://github.com/astral-sh/ruff/pull/29090))
+- Promote bounded type variables to declared constraints ([#28814](https://github.com/astral-sh/ruff/pull/28814))
+- Propagate outer type context through cast calls ([#28855](https://github.com/astral-sh/ruff/pull/28855))
+- Recognize bare `TypeVarTuple`s in materialization checks ([#28815](https://github.com/astral-sh/ruff/pull/28815))
+- Retain individual overload argument expansion outcomes ([#28825](https://github.com/astral-sh/ruff/pull/28825))
+- Specialize instance members once ([#29043](https://github.com/astral-sh/ruff/pull/29043))
+- Specialize Self bounds through generic type aliases ([#28890](https://github.com/astral-sh/ruff/pull/28890))
+- Support slots_default in dataclass_transform ([#28885](https://github.com/astral-sh/ruff/pull/28885))
+- Sync vendored typeshed stubs ([#29032](https://github.com/astral-sh/ruff/pull/29032)). [Typeshed diff](https://github.com/python/typeshed/compare/76b8c9f83b8bb876e841248b638f3728da3f86fe...b932d8ce0f893d7d9ef167f0379dcaf9f48bf70b)
+- Sync vendored typeshed stubs ([#29042](https://github.com/astral-sh/ruff/pull/29042)). [Typeshed diff](https://github.com/python/typeshed/compare/76b8c9f83b8bb876e841248b638f3728da3f86fe...b932d8ce0f893d7d9ef167f0379dcaf9f48bf70b)
+- Validate call arguments once after inference ([#28824](https://github.com/astral-sh/ruff/pull/28824))
+- Validate union operands involving None ([#28931](https://github.com/astral-sh/ruff/pull/28931))
+
+### Performance
+
+- Avoid expanding recursive protocol materializations ([#29026](https://github.com/astral-sh/ruff/pull/29026))
+- Avoid repeated work in nested match patterns ([#28926](https://github.com/astral-sh/ruff/pull/28926))
+- Cache the flattened module list ([#28932](https://github.com/astral-sh/ruff/pull/28932))
+- Index nonlocal bindings when sweeping snapshots ([#28935](https://github.com/astral-sh/ruff/pull/28935))
+- Skip descendant searches for leaf modules ([#28845](https://github.com/astral-sh/ruff/pull/28845))
+- Skip independent constraint-pair derivation ([#28950](https://github.com/astral-sh/ruff/pull/28950))
+- Skip storing default definition states ([#28934](https://github.com/astral-sh/ruff/pull/28934))
+
+### Memory usage improvements
+
+- Avoid caching empty sequent maps ([#28949](https://github.com/astral-sh/ruff/pull/28949))
+- Avoid retaining docstring literal types ([#28944](https://github.com/astral-sh/ruff/pull/28944))
+- Compact bound-method receivers ([#28969](https://github.com/astral-sh/ruff/pull/28969))
+- Move ParamSpec signature metadata to extras ([#28970](https://github.com/astral-sh/ruff/pull/28970))
+- Release closed module ASTs synchronously during auto-import discovery ([#28714](https://github.com/astral-sh/ruff/pull/28714))
+- Skip caching trivially assignable types ([#28936](https://github.com/astral-sh/ruff/pull/28936))
+
+### Contributors
+
+- [@dhruvmanila](https://github.com/dhruvmanila)
+- [@carljm](https://github.com/carljm)
+- [@sharkdp](https://github.com/sharkdp)
+- [@gorewilliams](https://github.com/gorewilliams)
+- [@AlexWaygood](https://github.com/AlexWaygood)
+- [@ibraheemdev](https://github.com/ibraheemdev)
+- [@MichaReiser](https://github.com/MichaReiser)
+- [@charliermarsh](https://github.com/charliermarsh)
+- [@zsol](https://github.com/zsol)
+- [@lerebear](https://github.com/lerebear)
+
 ## 0.0.84
 
 Released on 2026-09-24.
