@@ -92,16 +92,6 @@ Released on 2026-10-06.
 - Release closed module ASTs synchronously during auto-import discovery ([#28714](https://github.com/astral-sh/ruff/pull/28714))
 - Skip caching trivially assignable types ([#28936](https://github.com/astral-sh/ruff/pull/28936))
 
-### Documentation
-
-- [RFC] Trust analyzed project files by default ([#28892](https://github.com/astral-sh/ruff/pull/28892))
-- Link to benchmarks from documentation landing page ([#4633](https://github.com/astral-sh/ty/pull/4633))
-- Mention built-in Pydantic support in the FAQs ([#4631](https://github.com/astral-sh/ty/pull/4631))
-
-### Other changes
-
-- Pin and hash Docker build tools ([#4589](https://github.com/astral-sh/ty/pull/4589))
-
 ### Contributors
 
 - [@dhruvmanila](https://github.com/dhruvmanila)
