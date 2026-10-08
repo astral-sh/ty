@@ -59,7 +59,7 @@ def describe_binary(path, environment):
     }
 
 
-def prepare_corpus(root, environment):
+def prepare_corpus(root, environment, *, runtime_only=False):
     training_projects = pgo.CORPUS_PROJECTS
     all_projects = (*training_projects, *HOLDOUT_PROJECTS)
     try:
@@ -85,7 +85,9 @@ def prepare_corpus(root, environment):
         for name, path in interpreters.items()
     }
     save(
-        root / "evidence" / "corpus.json",
+        root
+        / "evidence"
+        / ("corpus-runtime-only.json" if runtime_only else "corpus.json"),
         {
             "projects": [asdict(project) for project in all_projects],
             "held_out_from_training": [project.name for project in HOLDOUT_PROJECTS],
@@ -95,8 +97,18 @@ def prepare_corpus(root, environment):
             "note": "Both configurations train and run against these exact shared paths and environments.",
         },
     )
+    if runtime_only:
+        original = json.loads((root / "evidence" / "corpus.json").read_text())
+        if (
+            files != original["files"]
+            or python != original["python"]
+            or dependencies != original["dependencies"]
+        ):
+            raise RuntimeError(
+                "Recovered runtime corpus or Python environments differ from the original build"
+            )
     return interpreters, sum(
-        name.split("/")[0] not in {p.name for p in HOLDOUT_PROJECTS} for name in files
+        Path(name).parts[0] not in {p.name for p in HOLDOUT_PROJECTS} for name in files
     )
 
 
@@ -161,23 +173,23 @@ def build(units, target, root, environment, interpreters, corpus_size):
     return binary
 
 
-def compare_lsp(binaries, root, environment, repetitions):
+def compare_lsp(binaries, root, environment, repetitions, evidence):
     project = root / "runtime" / "language-server"
     runtime.prepare_language_server(project)
     expected = None
     samples = []
     for round_index in range(2):
-        measure.wait_for_idle(root / "evidence" / f"lsp-idle-{round_index}.json")
+        measure.wait_for_idle(evidence / f"lsp-idle-{round_index}.json")
         for pair in range(-2, repetitions):
             order = (16, 1) if (pair + round_index) % 2 == 0 else (1, 16)
             for units in order:
                 result = runtime.language_server(binaries[units], project, environment)
                 if expected is None:
                     expected = result["replies"]
-                    save(root / "evidence" / "lsp-replies.json", expected)
+                    save(evidence / "lsp-replies.json", expected)
                 elif result["replies"] != expected:
                     save(
-                        root / "evidence" / f"lsp-mismatch-cgu{units}.json",
+                        evidence / f"lsp-mismatch-cgu{units}.json",
                         result["replies"],
                     )
                     raise RuntimeError("Language-server replies differ")
@@ -190,12 +202,12 @@ def compare_lsp(binaries, root, environment, repetitions):
                         "edit_seconds": result["edit_seconds"],
                     }
                     samples.append(sample)
-                    with (root / "evidence" / "lsp-samples.jsonl").open(
+                    with (evidence / "lsp-samples.jsonl").open(
                         "a", encoding="utf-8"
                     ) as stream:
                         stream.write(json.dumps(sample) + "\n")
         save(
-            root / "evidence" / "lsp-comparison.json",
+            evidence / "lsp-comparison.json",
             {
                 "samples": samples,
                 "replies_match": True,
@@ -219,11 +231,16 @@ def compare_lsp(binaries, root, environment, repetitions):
         )
 
 
-def compare_runtime(binaries, root, environment, interpreters, repetitions):
+def compare_runtime(binaries, root, environment, interpreters, repetitions, evidence):
     for variable in pgo.EXCLUDED_ENVIRONMENT_VARIABLES:
         environment.pop(variable, None)
     environment.update({"NO_COLOR": "1", "UV_OFFLINE": "1", "PYTHONHASHSEED": "0"})
-    cases = [("startup-version", ["version"]), ("startup-help", ["--help"])]
+    for variable in ("TY_MAX_PARALLELISM", "RAYON_NUM_THREADS"):
+        environment.pop(variable, None)
+    cases = [
+        ("startup-version", ["version"], environment),
+        ("startup-help", ["--help"], environment),
+    ]
     for project in (*pgo.CORPUS_PROJECTS, *HOLDOUT_PROJECTS):
         checkout = root / "corpus" / project.name
         arguments = [
@@ -247,21 +264,29 @@ def compare_runtime(binaries, root, environment, interpreters, repetitions):
             "concise",
             *(str(checkout / source) for source in project.source_directories),
         ]
-        cases.append((f"check-{project.name}", arguments))
+        cases.append((f"check-{project.name}", arguments, environment))
+        if project.name in ("black", "warehouse"):
+            cases.append(
+                (
+                    f"check-{project.name}-single-thread",
+                    arguments,
+                    environment | {"TY_MAX_PARALLELISM": "1", "RAYON_NUM_THREADS": "1"},
+                )
+            )
     for round_index in range(2):
-        measure.wait_for_idle(root / "evidence" / f"runtime-idle-{round_index}.json")
-        for name, arguments in cases:
+        measure.wait_for_idle(evidence / f"runtime-idle-{round_index}.json")
+        for name, arguments, case_environment in cases:
             measure.compare_commands(
                 name=name,
                 baseline=[str(binaries[16]), *arguments],
                 candidate=[str(binaries[1]), *arguments],
                 cwd=root,
-                environment=environment,
-                output=root / "evidence" / f"runtime-{name}-round{round_index}.json",
+                environment=case_environment,
+                output=evidence / f"runtime-{name}-round{round_index}.json",
                 repetitions=repetitions,
                 warmups=2,
             )
-    compare_lsp(binaries, root, environment, repetitions)
+    compare_lsp(binaries, root, environment, repetitions, evidence)
 
 
 def main():
@@ -298,7 +323,9 @@ def main():
     else:
         environment["RUSTFLAGS"] = ""
     save(
-        root / "evidence" / "context.json",
+        root
+        / "evidence"
+        / ("context-runtime-only.json" if args.runtime_only else "context.json"),
         {
             "host": measure.host_context(),
             "target": args.target,
@@ -322,12 +349,26 @@ def main():
             ],
         },
     )
-    interpreters, corpus_size = prepare_corpus(root, environment)
+    interpreters, corpus_size = prepare_corpus(
+        root, environment, runtime_only=args.runtime_only
+    )
     executable = "ty.exe" if "windows" in args.target else "ty"
     if args.runtime_only:
         binaries = {
             units: root / "binaries" / f"cgu{units}" / executable for units in (16, 1)
         }
+        for units, binary in binaries.items():
+            metadata = json.loads(
+                (root / "evidence" / f"cgu{units}-build.json").read_text()
+            )
+            with binary.open("rb") as stream:
+                actual = hashlib.file_digest(stream, "sha256").hexdigest()
+            if actual != metadata["binary"]["sha256"]:
+                raise RuntimeError(
+                    f"Downloaded CGU{units} binary digest differs from build evidence"
+                )
+            if os.name != "nt":
+                binary.chmod(binary.stat().st_mode | 0o111)
     else:
         pgo.run(
             ["cargo", "fetch", "--locked", "--target", args.target],
@@ -344,7 +385,15 @@ def main():
         != describe_binary(binaries[1], environment)["version"]
     ):
         raise RuntimeError("Binary versions differ")
-    compare_runtime(binaries, root, environment, interpreters, args.repetitions)
+    evidence = root / "evidence"
+    if args.runtime_only:
+        evidence /= "runtime-only-" + os.environ.get(
+            "GITHUB_RUN_ID", str(time.time_ns())
+        )
+    evidence.mkdir(parents=True, exist_ok=True)
+    compare_runtime(
+        binaries, root, environment, interpreters, args.repetitions, evidence
+    )
 
 
 if __name__ == "__main__":
