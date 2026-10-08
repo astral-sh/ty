@@ -6,18 +6,16 @@ ty supports persistent configuration files at both the project- and user-level.
 
 Specifically, ty will search for a `pyproject.toml` or `ty.toml` file in the current directory, or in the nearest parent directory.
 
-If a `pyproject.toml` file is found, ty will read configuration from the `[tool.ty]` table. For example, to ignore the `index-out-of-bounds` rule, add the following to a `pyproject.toml`:
+If a `pyproject.toml` file is found, ty will read configuration from the `[tool.ty]` table. If there is no `[tool.ty]` table, ty will
+continue searching the directory hierarchy for configuration. The `pyproject.toml` may still be used for project metadata, such as the
+project name and `requires-python`.
+
+The following example shows how to ignore the `index-out-of-bounds` rule by adding the following to a `pyproject.toml`:
 
 ```toml title="pyproject.toml"
 [tool.ty.rules]
 index-out-of-bounds = "ignore"
 ```
-
-!!! note
-
-    If there is no `tool.ty` table, ty will continue searching the directory hierarchy for
-    configuration. The `pyproject.toml` may still be used for project metadata, such as the project
-    name and `requires-python`.
 
 ty will also search for `ty.toml` files, which follow an identical structure, but omit the `[tool.ty]` prefix. For example:
 

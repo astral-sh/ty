@@ -59,9 +59,9 @@ The Python environment is used for discovery of third-party modules.
 For a project with no explicitly configured environment, ty searches for one in the following order:
 
 1. An active virtual environment, using the `VIRTUAL_ENV` environment variable.
-1. An active non-base Conda environment.
+1. An active [non-`base` Conda environment](https://docs.conda.io/projects/conda/en/stable/user-guide/getting-started.html#listing-environments).
 1. A `.venv` directory in the project root.
-1. An active base Conda environment.
+1. An active [`base` Conda environment](https://docs.conda.io/projects/conda/en/stable/user-guide/getting-started.html#listing-environments).
 1. A `python3` or `python` interpreter on `PATH`.
 
 !!! note
