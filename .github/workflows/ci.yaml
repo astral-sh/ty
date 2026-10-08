@@ -1,149 +1,93 @@
-name: CI
+name: Compare release codegen units
+
+on:
+  workflow_dispatch:
+    inputs:
+      artifact_run_id:
+        description: Reuse binaries from a completed benchmark run
+        required: false
+        type: string
 
 permissions:
   contents: read
-
-on:
-  push:
-    branches: [main]
-  pull_request:
-  workflow_dispatch:
+  actions: read
 
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref_name }}-${{ github.event.pull_request.number || github.sha }}
-  cancel-in-progress: true
+  group: cgu-comparison-${{ github.ref }}
+  cancel-in-progress: false
 
 env:
   CARGO_INCREMENTAL: 0
   CARGO_NET_RETRY: 10
   CARGO_TERM_COLOR: always
   RUSTUP_MAX_RETRIES: 10
-  PACKAGE_NAME: ty
 
 jobs:
-  pgo:
-    name: "PGO"
-    runs-on: depot-ubuntu-24.04-16
-    timeout-minutes: 20
+  benchmark:
+    name: ${{ matrix.target }}
+    runs-on: ${{ matrix.runner }}
+    timeout-minutes: 180
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - target: x86_64-unknown-linux-gnu
+            runner: depot-ubuntu-24.04-8
+            architecture: x64
+            uv-checksum: 9167d72b3319674b6303c4cbe071854bba13ebdf3d76b1a7cbdc175471fb66d6
+          - target: aarch64-apple-darwin
+            runner: namespace-profile-macos-15
+            architecture: arm64
+            uv-checksum: 50487ae565ccd96e499056b4674d438f4c53170202617b4c759defe0c6a1b544
+          - target: x86_64-pc-windows-msvc
+            runner: namespace-profile-windows-2022-x86-64-16x32
+            architecture: x64
+            uv-checksum: 75d05de6762778c31ee183398de7dd15093fad0ed90b1f236d8205ea5ec00c90
     steps:
-      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with:
           persist-credentials: false
           submodules: recursive
-      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
         with:
-          python-version: "3.14"
-          architecture: x64
-      - uses: astral-sh/setup-uv@c18668ad3cf93ea998bef934396af7bb5c839dc7 # v10.2.0
+          python-version: "3.13"
+          architecture: ${{ matrix.architecture }}
+      - uses: astral-sh/setup-uv@c18668ad3cf93ea998bef934396af7bb5c839dc7
         with:
-          # renovate: datasource=github-release-attachments depName=astral-sh/uv
           version: "0.12.23"
-          checksum: "9167d72b3319674b6303c4cbe071854bba13ebdf3d76b1a7cbdc175471fb66d6"
-      - uses: Swatinem/rust-cache@6323deb102c322ba6fcbdcafc7e3dddab59af2b6 # v2.9.2
-      - name: "Install LLVM profiling tools"
+          checksum: ${{ matrix.uv-checksum }}
+          enable-cache: false
+      - name: Install LLVM profiling tools
         working-directory: ruff
         run: rustup component add llvm-tools-preview
-      - name: "Run PGO pipeline"
-        run: python scripts/build_ty_pgo.py --debug
-
-  python-package:
-    name: "python package"
-    runs-on: ${{ github.repository == 'astral-sh/ty' && 'github-ubuntu-24.04-x86_64-4' || 'ubuntu-latest' }}
-    timeout-minutes: 20
-    steps:
-      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Install memory sampler
+        run: python -m pip install psutil==7.0.0
+      - name: Download completed binaries
+        if: ${{ inputs.artifact_run_id != '' }}
+        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c
         with:
-          persist-credentials: false
-          submodules: recursive
-      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
-        with:
-          python-version: ${{ env.PYTHON_VERSION }}
-          architecture: x64
-      - uses: Swatinem/rust-cache@6323deb102c322ba6fcbdcafc7e3dddab59af2b6 # v2.9.2
-      - name: "Build wheels"
-        uses: PyO3/maturin-action@e83996d129638aa358a18fbd1dfb82f0b0fb5d3b # v1.51.0
-        with:
-          args: --out dist
-      - name: "Test wheel"
+          name: cgu-comparison-${{ matrix.target }}
+          run-id: ${{ inputs.artifact_run_id }}
+          github-token: ${{ github.token }}
+          path: ${{ runner.temp }}/cgu-comparison
+      - name: Compare native PGO builds and runtime
+        env:
+          BENCHMARK_TARGET: ${{ matrix.target }}
+          BENCHMARK_ROOT: ${{ runner.temp }}/cgu-comparison
+          ARTIFACT_RUN_ID: ${{ inputs.artifact_run_id }}
+        shell: bash
         run: |
-          pip install --force-reinstall --find-links dist "${PACKAGE_NAME}" --pre
-          ty --help
-          python -m ty --help
-      - name: "Remove wheels from cache"
-        run: rm -rf target/wheels
-
-  prek:
-    name: "prek"
-    runs-on: depot-ubuntu-24.04-8
-    timeout-minutes: 10
-    steps:
-      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-        with:
-          persist-credentials: false
-      - uses: astral-sh/setup-uv@c18668ad3cf93ea998bef934396af7bb5c839dc7 # v10.2.0
-        with:
-          # renovate: datasource=github-release-attachments depName=astral-sh/uv
-          version: "0.12.23"
-          checksum: "9167d72b3319674b6303c4cbe071854bba13ebdf3d76b1a7cbdc175471fb66d6"
-      - name: "Cache prek"
-        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
-        with:
-          path: ~/.cache/prek
-          key: prek-${{ hashFiles('.pre-commit-config.yaml') }}
-      - name: "Run prek"
-        run: |
-          echo '```console' > "$GITHUB_STEP_SUMMARY"
-          # Enable color output for prek and remove it for the summary
-          # Use --hook-stage=manual to enable slower hooks that are skipped by default
-          SKIP=cargo-fmt,clippy,dev-generate-all uv run --only-group dev --locked prek run --all-files --show-diff-on-failure --color always --hook-stage manual | \
-            tee >(sed -E 's/\x1B\[([0-9]{1,2}(;[0-9]{1,2})*)?[mGK]//g' >> "$GITHUB_STEP_SUMMARY") >&1
-          exit_code="${PIPESTATUS[0]}"
-          echo '```' >> "$GITHUB_STEP_SUMMARY"
-          exit "$exit_code"
-
-  generated-check:
-    name: "Check generated files unedited"
-    runs-on: ${{ github.repository == 'astral-sh/ty' && 'github-ubuntu-24.04-x86_64-4' || 'ubuntu-latest' }}
-    timeout-minutes: 5
-    steps:
-      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-        with:
-          persist-credentials: false
-          submodules: recursive
-
-      - uses: astral-sh/setup-uv@c18668ad3cf93ea998bef934396af7bb5c839dc7 # v10.2.0
-        with:
-          # renovate: datasource=github-release-attachments depName=astral-sh/uv
-          version: "0.12.23"
-          checksum: "9167d72b3319674b6303c4cbe071854bba13ebdf3d76b1a7cbdc175471fb66d6"
-
-      - name: "Run auto generation scripts"
-        run: |
-          ./scripts/autogenerate_files.sh
-
-      - name: "Check for uncommitted changes"
-        run: |
-          if [[ -n "$(git status --porcelain)" ]]; then
-            echo "Error: Auto-generated files were manually edited."
-            echo "Files with changes:"
-            git status --porcelain
-            exit 1
+          runtime_args=()
+          if [[ -n "$ARTIFACT_RUN_ID" ]]; then
+            runtime_args+=(--runtime-only)
           fi
-
-  docs:
-    timeout-minutes: 10
-    name: "mkdocs"
-    runs-on: ${{ github.repository == 'astral-sh/ty' && 'github-ubuntu-24.04-x86_64-4' || 'ubuntu-latest' }}
-    steps:
-      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+          python -u scripts/compare_codegen_units.py --target "$BENCHMARK_TARGET" --output "$BENCHMARK_ROOT" "${runtime_args[@]}"
+      - name: Upload evidence and binaries
+        if: always()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
         with:
-          fetch-depth: 0
-          persist-credentials: false
-      - uses: astral-sh/setup-uv@c18668ad3cf93ea998bef934396af7bb5c839dc7 # v10.2.0
-        with:
-          # renovate: datasource=github-release-attachments depName=astral-sh/uv
-          version: "0.12.23"
-          checksum: "9167d72b3319674b6303c4cbe071854bba13ebdf3d76b1a7cbdc175471fb66d6"
-
-      - name: "Build docs"
-        run: uv run --only-group=docs mkdocs build --strict -f mkdocs.yml
+          name: cgu-comparison-${{ matrix.target }}
+          path: |
+            ${{ runner.temp }}/cgu-comparison/evidence
+            ${{ runner.temp }}/cgu-comparison/binaries
+          retention-days: 30
