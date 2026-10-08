@@ -7,6 +7,10 @@ on:
         description: Reuse binaries from a completed benchmark run
         required: false
         type: string
+      cases:
+        description: Comma-separated runtime case names (empty runs all cases)
+        required: false
+        type: string
 
 permissions:
   contents: read
@@ -75,13 +79,14 @@ jobs:
           BENCHMARK_TARGET: ${{ matrix.target }}
           BENCHMARK_ROOT: ${{ runner.temp }}/cgu-comparison
           ARTIFACT_RUN_ID: ${{ inputs.artifact_run_id }}
+          BENCHMARK_CASES: ${{ inputs.cases }}
         shell: bash
         run: |
           runtime_args=()
           if [[ -n "$ARTIFACT_RUN_ID" ]]; then
             runtime_args+=(--runtime-only)
           fi
-          python -u scripts/compare_codegen_units.py --target "$BENCHMARK_TARGET" --output "$BENCHMARK_ROOT" "${runtime_args[@]}"
+          python -u scripts/compare_codegen_units.py --target "$BENCHMARK_TARGET" --output "$BENCHMARK_ROOT" --cases "$BENCHMARK_CASES" "${runtime_args[@]}"
       - name: Upload evidence and binaries
         if: always()
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a

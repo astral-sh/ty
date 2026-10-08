@@ -231,7 +231,9 @@ def compare_lsp(binaries, root, environment, repetitions, evidence):
         )
 
 
-def compare_runtime(binaries, root, environment, interpreters, repetitions, evidence):
+def compare_runtime(
+    binaries, root, environment, interpreters, repetitions, evidence, selected_cases
+):
     for variable in pgo.EXCLUDED_ENVIRONMENT_VARIABLES:
         environment.pop(variable, None)
     environment.update({"NO_COLOR": "1", "UV_OFFLINE": "1", "PYTHONHASHSEED": "0"})
@@ -273,9 +275,14 @@ def compare_runtime(binaries, root, environment, interpreters, repetitions, evid
                     environment | {"TY_MAX_PARALLELISM": "1", "RAYON_NUM_THREADS": "1"},
                 )
             )
+    unknown = selected_cases - {name for name, _, _ in cases} - {"language-server"}
+    if unknown:
+        raise RuntimeError(f"Unknown runtime cases: {sorted(unknown)}")
     for round_index in range(2):
         measure.wait_for_idle(evidence / f"runtime-idle-{round_index}.json")
         for name, arguments, case_environment in cases:
+            if selected_cases and name not in selected_cases:
+                continue
             measure.compare_commands(
                 name=name,
                 baseline=[str(binaries[16]), *arguments],
@@ -286,7 +293,8 @@ def compare_runtime(binaries, root, environment, interpreters, repetitions, evid
                 repetitions=repetitions,
                 warmups=2,
             )
-    compare_lsp(binaries, root, environment, repetitions, evidence)
+    if not selected_cases or "language-server" in selected_cases:
+        compare_lsp(binaries, root, environment, repetitions, evidence)
 
 
 def main():
@@ -294,6 +302,11 @@ def main():
     parser.add_argument("--target", required=True)
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--runtime-only", action="store_true")
+    parser.add_argument(
+        "--cases",
+        default="",
+        help="Comma-separated runtime case names; empty runs all cases",
+    )
     parser.add_argument("--repetitions", type=int, default=30)
     args = parser.parse_args()
     root = args.output.resolve()
@@ -392,7 +405,13 @@ def main():
         )
     evidence.mkdir(parents=True, exist_ok=True)
     compare_runtime(
-        binaries, root, environment, interpreters, args.repetitions, evidence
+        binaries,
+        root,
+        environment,
+        interpreters,
+        args.repetitions,
+        evidence,
+        {name for name in args.cases.split(",") if name},
     )
 
 
