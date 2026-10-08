@@ -14,6 +14,7 @@ on:
         type: string
   pull_request:
     paths:
+      - .cargo/config.toml
       # When we change pyproject.toml, we want to ensure that the maturin builds still work.
       - pyproject.toml
       # And when we change this workflow itself...

@@ -61,6 +61,7 @@ docker = [
 no-build = true
 exclude-newer = "P7D"
 cache-keys = [
+    { file = ".cargo/config.toml" },
     { file = "pyproject.toml" },
     { file = "dist-workspace.toml" },
     { file = "ruff/Cargo.toml" },
@@ -113,6 +114,7 @@ module-name = "ty"
 python-source = "python"
 strip = true
 include = [
+    { path = ".cargo/config.toml", format = "sdist" },
     { path = "dist-workspace.toml", format = [
         "sdist",
     ] },

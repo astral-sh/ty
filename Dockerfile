@@ -37,6 +37,7 @@ RUN rustup target add $(cat rust_target.txt)
 COPY ruff/crates crates
 COPY ruff/Cargo.toml Cargo.toml
 COPY ruff/Cargo.lock Cargo.lock
+COPY .cargo/config.toml .cargo/config.toml
 COPY dist-workspace.toml ../dist-workspace.toml
 RUN cargo zigbuild --bin ty --target $(cat rust_target.txt) --release
 RUN cp target/$(cat rust_target.txt)/release/ty /ty

@@ -15,6 +15,7 @@ on:
         type: string
   pull_request:
     paths:
+      - .cargo/config.toml
       - .github/workflows/build-docker.yml
       - Dockerfile
       - pyproject.toml

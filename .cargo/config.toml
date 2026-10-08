@@ -1,0 +1,5 @@
+[profile.release]
+codegen-units = 1
+
+[profile.profiling]
+codegen-units = 16
