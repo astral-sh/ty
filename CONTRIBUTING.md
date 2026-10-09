@@ -75,12 +75,21 @@ Or, to update the Ruff submodule to a specific commit:
 git -C ruff checkout <commit>
 ```
 
+Regenerate the files derived from the pinned Ruff revision:
+
+```shell
+./scripts/autogenerate_files.sh
+```
+
+This also copies `ruff/rust-toolchain.toml` to the repository root so package builds use the same Rust
+toolchain as the pinned source. CI checks that the generated files match the submodule.
+
 To commit the changes:
 
 ```shell
 commit=$(git -C ruff rev-parse --short HEAD)
 git switch -c "sync/ruff-${commit}"
-git add ruff
+git add ruff rust-toolchain.toml uv.lock docs/reference
 git commit -m "Update ruff submodule to https://github.com/astral-sh/ruff/commit/${commit}"
 ```
 
@@ -140,6 +149,7 @@ Preparation for the release is automated.
     - Update the Ruff submodule to the latest commit on `main` upstream
     - Generate changelog entries based on pull requests here, and in Ruff
     - Bump the versions in the `pyproject.toml` and `dist-workspace.toml`
+    - Copy the pinned Rust toolchain to `rust-toolchain.toml`
     - Update the generated reference documentation in `docs/reference`
     - Open a Pull Request with these changes
 

@@ -73,4 +73,4 @@ if [ -n "$old_typeshed_commit" ] && [ -f "$typeshed_commit_file" ]; then
 fi
 
 "${script_root}/autogenerate_files.sh"
-git add ./docs/reference
+git add ./docs/reference ./rust-toolchain.toml

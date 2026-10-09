@@ -16,6 +16,7 @@ on:
     paths:
       # When we change pyproject.toml, we want to ensure that the maturin builds still work.
       - pyproject.toml
+      - rust-toolchain.toml
       # And when we change this workflow itself...
       - .github/workflows/build-binaries.yml
       - scripts/build_ty_pgo.py
