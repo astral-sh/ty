@@ -4,6 +4,12 @@
 
 Released on 2026-10-09.
 
+The executables in our macOS and Windows release archives and `ty` wheels are now code-signed.
+macOS executables are signed with an Apple Developer ID certificate and notarized by Apple. Windows
+executables have timestamped Authenticode signatures from Azure Artifact Signing. This enables
+verification of the release publisher and binary integrity, supports publisher-based allowlisting,
+and should reduce security warnings and antivirus false positives.
+
 ### Bug fixes
 
 - Infer empty collection branches from nonempty literals ([#29131](https://github.com/astral-sh/ruff/pull/29131))
