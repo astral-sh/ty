@@ -16,6 +16,11 @@ Released on 2026-10-09.
 
 - Show documentation for annotation operators on hover ([#29185](https://github.com/astral-sh/ruff/pull/29185))
 
+### Performance
+
+- Avoid recursion guards for non-generic nominal targets ([#29202](https://github.com/astral-sh/ruff/pull/29202))
+- Check exact exclusions before intersection positives ([#29195](https://github.com/astral-sh/ruff/pull/29195))
+
 ### Memory usage improvements
 
 - Share constraints in retained sequent maps ([#28966](https://github.com/astral-sh/ruff/pull/28966))
@@ -25,9 +30,7 @@ Released on 2026-10-09.
 - Update the default Python version to 3.15 ([#28792](https://github.com/astral-sh/ruff/pull/28792))
 - Update to Unicode 17 ([#21229](https://github.com/astral-sh/ruff/pull/21229), [#28784](https://github.com/astral-sh/ruff/pull/28784))
 - Always show fixes in the CLI ([#27810](https://github.com/astral-sh/ruff/pull/27810))
-- Avoid recursion guards for non-generic nominal targets ([#29202](https://github.com/astral-sh/ruff/pull/29202))
 - Check attribute and property override types ([#28556](https://github.com/astral-sh/ruff/pull/28556))
-- Check exact exclusions before intersection positives ([#29195](https://github.com/astral-sh/ruff/pull/29195))
 - Narrow tuple unions through truthiness and type checks ([#29125](https://github.com/astral-sh/ruff/pull/29125))
 - Preserve literal types when consuming dictionary literals ([#29145](https://github.com/astral-sh/ruff/pull/29145))
 - Preserve non-boolean comparison results for intersections ([#28045](https://github.com/astral-sh/ruff/pull/28045))
