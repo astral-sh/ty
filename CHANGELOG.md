@@ -6,11 +6,10 @@ Released on 2026-10-09.
 
 ### Bug fixes
 
-- Avoid recursive protocol intersection stack overflows ([#29059](https://github.com/astral-sh/ruff/pull/29059))
 - Infer empty collection branches from nonempty literals ([#29131](https://github.com/astral-sh/ruff/pull/29131))
 - Invalidate dependency metadata when environments change ([#29126](https://github.com/astral-sh/ruff/pull/29126))
 - Preserve final attribute restrictions on composite types ([#29135](https://github.com/astral-sh/ruff/pull/29135))
-- Preserve recursive structure in Annotated values ([#29058](https://github.com/astral-sh/ruff/pull/29058))
+- Preserve recursive structure in `Annotated` values ([#29058](https://github.com/astral-sh/ruff/pull/29058))
 - Specialize inherited dataclass field converters ([#29192](https://github.com/astral-sh/ruff/pull/29192))
 
 ### LSP server
@@ -23,6 +22,9 @@ Released on 2026-10-09.
 
 ### Other changes
 
+- Update the default Python version to 3.15 ([#28792](https://github.com/astral-sh/ruff/pull/28792))
+- Update to Unicode 17 ([#21229](https://github.com/astral-sh/ruff/pull/21229), [#28784](https://github.com/astral-sh/ruff/pull/28784))
+- Always show fixes in the CLI ([#27810](https://github.com/astral-sh/ruff/pull/27810))
 - Avoid recursion guards for non-generic nominal targets ([#29202](https://github.com/astral-sh/ruff/pull/29202))
 - Check attribute and property override types ([#28556](https://github.com/astral-sh/ruff/pull/28556))
 - Check exact exclusions before intersection positives ([#29195](https://github.com/astral-sh/ruff/pull/29195))
@@ -31,10 +33,7 @@ Released on 2026-10-09.
 - Preserve non-boolean comparison results for intersections ([#28045](https://github.com/astral-sh/ruff/pull/28045))
 - Preserve receiver specializations when calling unions of bound methods ([#29015](https://github.com/astral-sh/ruff/pull/29015))
 - Represent uninhabited truthiness explicitly ([#28843](https://github.com/astral-sh/ruff/pull/28843))
-- Revert recursive protocol specialization (#29059) ([#29217](https://github.com/astral-sh/ruff/pull/29217))
 - Solve validity type context through constraint sets ([#28909](https://github.com/astral-sh/ruff/pull/28909))
-- Thread provenance through constraint set relations ([#29142](https://github.com/astral-sh/ruff/pull/29142))
-- [minor] Reduce indentation in `relation.rs` ([#29220](https://github.com/astral-sh/ruff/pull/29220))
 
 ### Contributors
 
