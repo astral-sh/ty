@@ -4,8 +4,15 @@
 
 First-party modules are Python files that are part of your project source code.
 
-By default, ty searches for first-party modules in the project's root directory or the `src`
-directory, if present.
+By default, ty searches for first-party modules in the project root. It also searches the following
+directories, if they exist and are not themselves packages (i.e. they contain neither an
+`__init__.py` nor an `__init__.pyi` file):
+
+- `./src`
+- `./<project-name>`, if `./<project-name>/<project-name>` exists
+- `./python`
+
+These directories are searched before the project root, in the order listed above.
 
 If your project uses a different layout, configure the project's
 [`environment.root`](./reference/configuration.md#root) in your `pyproject.toml` or `ty.toml`. For example,
@@ -36,10 +43,6 @@ then set [`environment.root`](./reference/configuration.md#root) in your `pyproj
     root = ["./app"]
     ```
 
-Note that a `./python` folder is automatically added to the project `root` if it exists,
-and is not itself a package (i.e. does not contain an `__init__.py` file or an
-`__init__.pyi` file).
-
 ## Third-party modules
 
 Third-party modules are Python packages that are not part of your project or the standard library.
@@ -53,11 +56,13 @@ ty searches for third-party modules in the configured [Python environment](#pyth
 
 The Python environment is used for discovery of third-party modules.
 
-By default, ty will attempt to discover a virtual environment.
+For a project with no explicitly configured environment, ty searches for one in the following order:
 
-First, ty checks for an active virtual environment using the `VIRTUAL_ENV` environment variable. If
-not set, ty will search for a `.venv` directory in the project root or working directory. ty only
-supports discovery of virtual environments at this time.
+1. An active virtual environment, using the `VIRTUAL_ENV` environment variable.
+1. An active [non-`base` Conda environment](https://docs.conda.io/projects/conda/en/stable/user-guide/getting-started.html#listing-environments).
+1. A `.venv` directory in the project root.
+1. An active [`base` Conda environment](https://docs.conda.io/projects/conda/en/stable/user-guide/getting-started.html#listing-environments).
+1. A `python3` or `python` interpreter on `PATH`.
 
 !!! note
 
