@@ -48,6 +48,14 @@ jobs:
           submodules: recursive
           persist-credentials: false
 
+      # Authenticate read-only pulls to avoid Docker Hub's anonymous rate limits.
+      - name: Log in to Docker Hub
+        uses: docker/login-action@dbcb813823bdd20940b903addbd779551569679f # v4.6.0
+        if: ${{ inputs.plan != '' && !fromJson(inputs.plan).announcement_tag_is_implicit }}
+        with:
+          username: astralshbot
+          password: ${{ secrets.DOCKERHUB_TOKEN_RO }}
+
       - uses: docker/setup-buildx-action@37fe631027851001ddb9b187196cc803df7f5f0e # v4.3.0
 
       - uses: docker/login-action@dbcb813823bdd20940b903addbd779551569679f # v4.6.0
@@ -204,6 +212,13 @@ jobs:
           - debian:trixie-slim,trixie-slim,debian-slim
           - buildpack-deps:trixie,trixie,debian
     steps:
+      # Authenticate read-only pulls to avoid Docker Hub's anonymous rate limits.
+      - name: Log in to Docker Hub
+        uses: docker/login-action@dbcb813823bdd20940b903addbd779551569679f # v4.6.0
+        with:
+          username: astralshbot
+          password: ${{ secrets.DOCKERHUB_TOKEN_RO }}
+
       - uses: docker/setup-buildx-action@37fe631027851001ddb9b187196cc803df7f5f0e # v4.3.0
 
       - uses: docker/login-action@dbcb813823bdd20940b903addbd779551569679f # v4.6.0
