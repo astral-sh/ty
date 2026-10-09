@@ -34,6 +34,8 @@ jobs:
   docker-build:
     name: Build Docker image (ghcr.io/astral-sh/ty) for ${{ matrix.platform }}
     runs-on: ${{ github.repository == 'astral-sh/ty' && 'github-ubuntu-24.04-x86_64-4' || 'ubuntu-latest' }}
+    env:
+      DOCKERHUB_TOKEN_RO_AVAILABLE: ${{ secrets.DOCKERHUB_TOKEN_RO != '' }}
     environment:
       name: ${{ inputs.plan != '' && !fromJson(inputs.plan).announcement_tag_is_implicit && 'release' || '' }}
     strategy:
@@ -51,7 +53,7 @@ jobs:
       # Authenticate read-only pulls to avoid Docker Hub's anonymous rate limits.
       - name: Log in to Docker Hub
         uses: docker/login-action@dbcb813823bdd20940b903addbd779551569679f # v4.6.0
-        if: ${{ inputs.plan != '' && !fromJson(inputs.plan).announcement_tag_is_implicit }}
+        if: ${{ env.DOCKERHUB_TOKEN_RO_AVAILABLE == 'true' }}
         with:
           username: astralshbot
           password: ${{ secrets.DOCKERHUB_TOKEN_RO }}
