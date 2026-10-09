@@ -1,5 +1,61 @@
 # Changelog
 
+## 0.0.86
+
+Released on 2026-10-09.
+
+The executables in our macOS and Windows release archives and `ty` wheels are now code-signed.
+macOS executables are signed with an Apple Developer ID certificate and notarized by Apple. Windows
+executables have timestamped Authenticode signatures from Azure Artifact Signing. This enables
+verification of the release publisher and binary integrity, supports publisher-based allowlisting,
+and should reduce security warnings and antivirus false positives.
+
+### Bug fixes
+
+- Infer empty collection branches from nonempty literals ([#29131](https://github.com/astral-sh/ruff/pull/29131))
+- Invalidate dependency metadata when environments change ([#29126](https://github.com/astral-sh/ruff/pull/29126))
+- Preserve final attribute restrictions on composite types ([#29135](https://github.com/astral-sh/ruff/pull/29135))
+- Preserve recursive structure in `Annotated` values ([#29058](https://github.com/astral-sh/ruff/pull/29058))
+- Specialize inherited dataclass field converters ([#29192](https://github.com/astral-sh/ruff/pull/29192))
+
+### LSP server
+
+- Show documentation for annotation operators on hover ([#29185](https://github.com/astral-sh/ruff/pull/29185))
+
+### Core type checking
+
+- Check attribute and property override types ([#28556](https://github.com/astral-sh/ruff/pull/28556))
+- Narrow tuple unions through truthiness and type checks ([#29125](https://github.com/astral-sh/ruff/pull/29125))
+- Preserve literal types when consuming dictionary literals ([#29145](https://github.com/astral-sh/ruff/pull/29145))
+- Preserve non-boolean comparison results for intersections ([#28045](https://github.com/astral-sh/ruff/pull/28045))
+- Preserve receiver specializations when calling unions of bound methods ([#29015](https://github.com/astral-sh/ruff/pull/29015))
+- Represent uninhabited truthiness explicitly ([#28843](https://github.com/astral-sh/ruff/pull/28843))
+- Solve validity type context through constraint sets ([#28909](https://github.com/astral-sh/ruff/pull/28909))
+
+### Performance
+
+- Avoid recursion guards for non-generic nominal targets ([#29202](https://github.com/astral-sh/ruff/pull/29202))
+- Check exact exclusions before intersection positives ([#29195](https://github.com/astral-sh/ruff/pull/29195))
+
+### Memory usage improvements
+
+- Share constraints in retained sequent maps ([#28966](https://github.com/astral-sh/ruff/pull/28966))
+
+### Other changes
+
+- Update the default Python version to 3.15 ([#28792](https://github.com/astral-sh/ruff/pull/28792))
+- Update to Unicode 17 ([#21229](https://github.com/astral-sh/ruff/pull/21229), [#28784](https://github.com/astral-sh/ruff/pull/28784))
+- Always show fixes in the CLI ([#27810](https://github.com/astral-sh/ruff/pull/27810))
+
+### Contributors
+
+- [@gorewilliams](https://github.com/gorewilliams)
+- [@carljm](https://github.com/carljm)
+- [@AlexWaygood](https://github.com/AlexWaygood)
+- [@ibraheemdev](https://github.com/ibraheemdev)
+- [@zsol](https://github.com/zsol)
+- [@charliermarsh](https://github.com/charliermarsh)
+
 ## 0.0.85
 
 Released on 2026-10-06.
