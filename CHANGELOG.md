@@ -16,6 +16,16 @@ Released on 2026-10-09.
 
 - Show documentation for annotation operators on hover ([#29185](https://github.com/astral-sh/ruff/pull/29185))
 
+### Core type checking
+
+- Check attribute and property override types ([#28556](https://github.com/astral-sh/ruff/pull/28556))
+- Narrow tuple unions through truthiness and type checks ([#29125](https://github.com/astral-sh/ruff/pull/29125))
+- Preserve literal types when consuming dictionary literals ([#29145](https://github.com/astral-sh/ruff/pull/29145))
+- Preserve non-boolean comparison results for intersections ([#28045](https://github.com/astral-sh/ruff/pull/28045))
+- Preserve receiver specializations when calling unions of bound methods ([#29015](https://github.com/astral-sh/ruff/pull/29015))
+- Represent uninhabited truthiness explicitly ([#28843](https://github.com/astral-sh/ruff/pull/28843))
+- Solve validity type context through constraint sets ([#28909](https://github.com/astral-sh/ruff/pull/28909))
+
 ### Performance
 
 - Avoid recursion guards for non-generic nominal targets ([#29202](https://github.com/astral-sh/ruff/pull/29202))
@@ -30,13 +40,6 @@ Released on 2026-10-09.
 - Update the default Python version to 3.15 ([#28792](https://github.com/astral-sh/ruff/pull/28792))
 - Update to Unicode 17 ([#21229](https://github.com/astral-sh/ruff/pull/21229), [#28784](https://github.com/astral-sh/ruff/pull/28784))
 - Always show fixes in the CLI ([#27810](https://github.com/astral-sh/ruff/pull/27810))
-- Check attribute and property override types ([#28556](https://github.com/astral-sh/ruff/pull/28556))
-- Narrow tuple unions through truthiness and type checks ([#29125](https://github.com/astral-sh/ruff/pull/29125))
-- Preserve literal types when consuming dictionary literals ([#29145](https://github.com/astral-sh/ruff/pull/29145))
-- Preserve non-boolean comparison results for intersections ([#28045](https://github.com/astral-sh/ruff/pull/28045))
-- Preserve receiver specializations when calling unions of bound methods ([#29015](https://github.com/astral-sh/ruff/pull/29015))
-- Represent uninhabited truthiness explicitly ([#28843](https://github.com/astral-sh/ruff/pull/28843))
-- Solve validity type context through constraint sets ([#28909](https://github.com/astral-sh/ruff/pull/28909))
 
 ### Contributors
 
