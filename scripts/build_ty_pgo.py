@@ -251,7 +251,10 @@ def main() -> None:
     }
     profile = "debug" if args.debug else "release"
     print(f"Building instrumented {profile} ty", flush=True)
-    run(cargo_command(target, debug=args.debug), environment=instrumented_environment)
+    run(
+        cargo_command(target, debug=args.debug, instrumented=True),
+        environment=instrumented_environment,
+    )
 
     binary_name = "ty.exe" if "windows" in target else "ty"
     instrumented_binary = instrumented_target_dir / target / profile / binary_name
@@ -884,7 +887,9 @@ def run_git_with_retry(command: list[str], *, environment: dict[str, str]) -> No
             time.sleep(delay)
 
 
-def cargo_command(target: str, *, debug: bool = False) -> list[str]:
+def cargo_command(
+    target: str, *, debug: bool = False, instrumented: bool = False
+) -> list[str]:
     return [
         "cargo",
         "rustc",
@@ -899,6 +904,8 @@ def cargo_command(target: str, *, debug: bool = False) -> list[str]:
         "--",
         "-C",
         "strip=symbols",
+        # Override LTO only for the instrumented executable, not its dependencies.
+        *(("-C", "lto=thin") if instrumented and not debug else ()),
     ]
 
 
