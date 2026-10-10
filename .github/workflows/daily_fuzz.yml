@@ -46,7 +46,12 @@ jobs:
     runs-on: ${{ github.repository == 'astral-sh/ty' && 'depot-ubuntu-24.04-16' || 'ubuntu-latest' }}
     timeout-minutes: 180
     if: ${{ github.repository == 'astral-sh/ty' }}
+    env:
+      # Keep in sync with the job's timeout-minutes.
+      FUZZ_JOB_TIMEOUT_MINUTES: 180
     steps:
+      - name: Record job start time
+        run: echo "FUZZ_JOB_STARTED_AT=$(date +%s)" >> "$GITHUB_ENV"
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           # py-fuzzer uses the tested binary's recorded commit in the generated
@@ -103,6 +108,7 @@ jobs:
         env:
           FORCE_COLOR: 1
         run: |
+          budget_minutes=$(bash python/py-fuzzer/ci_budget.sh "$FUZZ_JOB_TIMEOUT_MINUTES")
           uv run \
             --python=3.14 \
             --project=./python/py-fuzzer \
@@ -112,6 +118,7 @@ jobs:
             --baseline-executable="$RUNNER_TEMP/ty-old" \
             --only-new-bugs \
             --bin=ty \
+            --budget-minutes="${budget_minutes}" \
             --write-github-issue="$RUNNER_TEMP/fuzz-issue.md" \
             0-20000
       - name: Upload the fuzz report
