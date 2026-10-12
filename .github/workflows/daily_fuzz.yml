@@ -108,7 +108,6 @@ jobs:
         env:
           FORCE_COLOR: 1
         run: |
-          budget_minutes=$(bash python/py-fuzzer/ci_budget.sh "$FUZZ_JOB_TIMEOUT_MINUTES")
           uv run \
             --python=3.14 \
             --project=./python/py-fuzzer \
@@ -118,7 +117,8 @@ jobs:
             --baseline-executable="$RUNNER_TEMP/ty-old" \
             --only-new-bugs \
             --bin=ty \
-            --budget-minutes="${budget_minutes}" \
+            --budget-minutes="${FUZZ_JOB_TIMEOUT_MINUTES}" \
+            --job-started-at="${FUZZ_JOB_STARTED_AT}" \
             --write-github-issue="$RUNNER_TEMP/fuzz-issue.md" \
             0-20000
       - name: Upload the fuzz report
