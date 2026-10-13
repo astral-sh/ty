@@ -1,4 +1,4 @@
-FROM --platform=$BUILDPLATFORM ghcr.io/astral-sh/uv:0.12.11@sha256:79c6f4776b851471cc73b7d21d0cc834bb94383c292e83640d27eff512864df7 AS uv
+FROM --platform=$BUILDPLATFORM ghcr.io/astral-sh/uv:0.13.0@sha256:cdc6093146eb3ff6a40107b38f008b789e050e77ad87865e381d9917da55a168 AS uv
 
 FROM --platform=$BUILDPLATFORM ubuntu AS build-tools
 ENV HOME="/root"

@@ -1,6 +1,10 @@
 # /// script
 # requires-python = ">=3.10"
 # dependencies = []
+#
+# [tool.uv]
+# require-build-hashes = true
+# preview-features = ["build-dependency-hashes"]
 # ///
 
 """Add sidecar SHA-256 checksums to a cargo-dist local manifest.
