@@ -1,5 +1,46 @@
 # Changelog
 
+## 0.0.87
+
+Released on 2026-10-13.
+
+### Bug fixes
+
+- Fix deadlock when requests arrive before workspace configuration ([#29303](https://github.com/astral-sh/ruff/pull/29303))
+- Infer defaults for absent closed TypedDict keys ([#29136](https://github.com/astral-sh/ruff/pull/29136))
+- Preserve distinct string literal displays without deprecated ICU data ([#29206](https://github.com/astral-sh/ruff/pull/29206))
+- Preserve minimum lengths of unpacked tuple unions ([#29331](https://github.com/astral-sh/ruff/pull/29331))
+- Respect suppression of attribute override diagnostics ([#29327](https://github.com/astral-sh/ruff/pull/29327))
+
+### LSP server
+
+- Clamp notebook cell positions to the end of the cell ([#29307](https://github.com/astral-sh/ruff/pull/29307))
+- Fix notebook cell lookups after cells with cell magics ([#29308](https://github.com/astral-sh/ruff/pull/29308))
+- Fix panic on completions past the end of a notebook's last cell ([#29306](https://github.com/astral-sh/ruff/pull/29306))
+
+### Diagnostic improvements
+
+- Deduplicate identical argument type diagnostics ([#29337](https://github.com/astral-sh/ruff/pull/29337))
+- Enable invalid-mutable-override by default ([#29335](https://github.com/astral-sh/ruff/pull/29335))
+
+### Other changes
+
+- Add opt-in diagnostic for mismatched sentinel names ([#27206](https://github.com/astral-sh/ruff/pull/27206))
+- Avoid constructing nominal complements ([#29292](https://github.com/astral-sh/ruff/pull/29292))
+- Check overrides of receiver attribute declarations ([#28557](https://github.com/astral-sh/ruff/pull/28557))
+- Leave room for later positional arguments when unpacking a variable-length argument ([#29293](https://github.com/astral-sh/ruff/pull/29293))
+- Optimize system path equality ([#29340](https://github.com/astral-sh/ruff/pull/29340))
+- Specialize bare generic class name with `type[...]` type context ([#29248](https://github.com/astral-sh/ruff/pull/29248))
+
+### Contributors
+
+- [@charliermarsh](https://github.com/charliermarsh)
+- [@AlexWaygood](https://github.com/AlexWaygood)
+- [@ibraheemdev](https://github.com/ibraheemdev)
+- [@zsol](https://github.com/zsol)
+- [@Amirshox](https://github.com/Amirshox)
+- [@carljm](https://github.com/carljm)
+
 ## 0.0.86
 
 Released on 2026-10-09.
