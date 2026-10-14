@@ -208,9 +208,9 @@ modify(directories)  # ty emits an error on this call
 
     You can try it out in [this playground example](https://play.ty.dev/01013e73-da54-40c4-a9c5-2af269abda9d).
 
-The `modify` call mutates the contents of the `directories` list. After this call,
-it contains two directories *and one `File`*, which clearly violates the
-`list[Directory]` type annotation. If this call *were* allowed, subsequent code
+If the `modify` call were allowed, it would mutate the contents of the `directories` list.
+The list would contain two directories *and one `File`*, violating the
+`list[Directory]` type annotation. Subsequent code
 that relies on the fact that `directories` only contains `Directory` instances might
 break at runtime:
 
@@ -288,7 +288,7 @@ class FileUpload:
 retry(3, FileUpload("image.png"))
 ```
 
-To fix this, you could use `getattr` with a fall back to a default name when the
+To fix this, you could use `getattr` with a fallback to a default name when the
 attribute is not present (or use a `hasattr(…, "__name__")` check if you access
 it multiple times):
 

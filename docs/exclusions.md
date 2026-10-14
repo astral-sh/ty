@@ -51,10 +51,11 @@ ty check src scripts/benchmark.py
 ```
 
 Paths that are passed as positional arguments to `ty check` are included even if they would otherwise be ignored through `exclude` filters or an ignore-file.
+Pass [`--force-exclude`](./reference/cli.md#ty-check--force-exclude) to apply exclusions to these paths as well.
 
 ## Include and exclude syntax
 
-Both `include` and `exclude` support gitignore like glob patterns:
+Both `include` and `exclude` support gitignore-style glob patterns:
 
 - `src/` matches a directory (including its contents) named `src`.
 - `src` matches a file or directory (including its contents) named `src`.
@@ -87,4 +88,4 @@ named `my-env`:
 echo "*" > my-env/.gitignore
 ```
 
-Or by adding your virtual environment to your `.gitignore` or `.ignore` file.
+You can also add your virtual environment to your `.gitignore` or `.ignore` file.

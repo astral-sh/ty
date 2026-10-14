@@ -140,7 +140,7 @@ pip install ty
 
 ### Installing globally with mise
 
-Install ty globally with with [mise](https://github.com/jdx/mise):
+Install ty globally with [mise](https://github.com/jdx/mise):
 
 ```shell
 mise install ty
