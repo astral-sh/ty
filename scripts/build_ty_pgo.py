@@ -5,6 +5,8 @@
 # dependencies = []
 # [tool.uv]
 # exclude-newer = "P7D"
+# require-build-hashes = true
+# preview-features = ["build-dependency-hashes"]
 # ///
 
 from __future__ import annotations
@@ -74,7 +76,7 @@ class EcosystemProject:
 # applications, libraries, and type stubs.
 #
 # But it wasn't a highly optimized selection process. (For example, during
-# development, we added Zulip and Warehouse, which reduced Ruff's CPU time by
+# development, we added Warehouse, which reduced Ruff's CPU time by
 # 0.35% while increasing its wheel size by 0.44%.)
 CORPUS_PROJECTS = (
     EcosystemProject(
@@ -104,24 +106,6 @@ CORPUS_PROJECTS = (
         revision="ffe91331adb912c5d150f5d373f7cd28a0e96a62",
         source_directories=("src/anyio",),
         python_version="3.10",
-    ),
-    EcosystemProject(
-        name="zulip",
-        repository="zulip/zulip",
-        revision="ccddbba7a3074283ccaac3bde35fd32b19faf042",
-        source_directories=("zerver/views", "zerver/models"),
-        python_version="3.10",
-        dependencies=(
-            "Django",
-            "django-stubs",
-            "pydantic",
-            "redis",
-            "orjson",
-            "requests",
-            "types-requests",
-            "PyYAML",
-            "types-PyYAML",
-        ),
     ),
     EcosystemProject(
         name="warehouse",
@@ -269,7 +253,10 @@ def main() -> None:
     }
     profile = "debug" if args.debug else "release"
     print(f"Building instrumented {profile} ty", flush=True)
-    run(cargo_command(target, debug=args.debug), environment=instrumented_environment)
+    run(
+        cargo_command(target, debug=args.debug, instrumented=True),
+        environment=instrumented_environment,
+    )
 
     binary_name = "ty.exe" if "windows" in target else "ty"
     instrumented_binary = instrumented_target_dir / target / profile / binary_name
@@ -902,7 +889,9 @@ def run_git_with_retry(command: list[str], *, environment: dict[str, str]) -> No
             time.sleep(delay)
 
 
-def cargo_command(target: str, *, debug: bool = False) -> list[str]:
+def cargo_command(
+    target: str, *, debug: bool = False, instrumented: bool = False
+) -> list[str]:
     return [
         "cargo",
         "rustc",
@@ -917,6 +906,8 @@ def cargo_command(target: str, *, debug: bool = False) -> list[str]:
         "--",
         "-C",
         "strip=symbols",
+        # Override LTO only for the instrumented executable, not its dependencies.
+        *(("-C", "lto=thin") if instrumented and not debug else ()),
     ]
 
 

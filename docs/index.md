@@ -11,7 +11,7 @@ An extremely fast Python type checker and language server, written in Rust.
 </p>
 
 <p align="center">
-  <i>Type checking the <a href="https://github.com/home-assistant/core">home-assistant</a> project without caching.</i>
+  <i>Type checking the <a href="https://github.com/home-assistant/core">home-assistant</a> project without caching (<a href="https://github.com/astral-sh/ty/blob/main/BENCHMARKS.md">benchmarks</a>).</i>
 </p>
 
 ty is backed by [Astral](https://astral.sh), the creators of

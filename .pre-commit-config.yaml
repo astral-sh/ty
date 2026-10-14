@@ -10,28 +10,20 @@ exclude: |
 repos:
   # Priority 0: Read-only hooks; hooks that modify disjoint file types.
   - repo: https://github.com/astral-sh/uv-pre-commit
-    rev: 8ff2449591c8de025b17661ba76d60237a1ae62b # frozen: 0.12.1
+    rev: 2e145a365871c9fef3715d38b9b7393ce4174c85 # frozen: 0.13.0
     hooks:
       - id: uv-lock
         priority: 0
+        args: [--check, --refresh, --default-index=https://pypi.org/simple]
 
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: 3e8a8703264a2f4a69428a0aa4dcb512790b2c8c # frozen: v6.0.0
     hooks:
       - id: check-merge-conflict
         priority: 0
-      # Priority 2: a single hook that could modify any file type
-      - id: trailing-whitespace
-        priority: 2
-
-  - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: 39d9ac5938dadb73df0564a45f163e25ff9fa6e2 # frozen: v0.16.1
-    hooks:
-      - id: ruff-format
-        priority: 0
 
   - repo: https://github.com/abravalheri/validate-pyproject
-    rev: 4b2e70d08cb2ccd26d1fba73588de41c7a5d50b7 # frozen: v0.25
+    rev: 17e12779811926f000bdfa1795f9e3735dd71ac3 # frozen: 0.26
     hooks:
       - id: validate-pyproject
         priority: 0
@@ -42,12 +34,12 @@ repos:
       - id: mdformat
         language: python # means renovate will also update `additional_dependencies`
         additional_dependencies:
-          - mdformat-mkdocs==5.2.1
+          - mdformat-mkdocs==5.3.0
           - mdformat-footnote==0.1.3
         priority: 0
 
   - repo: https://github.com/crate-ci/typos
-    rev: bee27e3a4fd1ea2111cf90ab89cd076c870fce14 # frozen: v1.48.0
+    rev: d43b6c087ac471e2ea7b8af622ff15f05c0c365b # frozen: v1.50.1
     hooks:
       - id: typos
         priority: 0
@@ -63,7 +55,7 @@ repos:
   # zizmor detects security vulnerabilities in GitHub Actions workflows.
   # Additional configuration for the tool is found in `.github/zizmor.yml`
   - repo: https://github.com/zizmorcore/zizmor-pre-commit
-    rev: 067260dc5fe6ea86b7551bfd6f8b3ba4e6c93129 # frozen: v1.28.0
+    rev: fa412071e4f5d44d44f9e365f4676f9df92456a2 # frozen: v1.30.1
     hooks:
       - id: zizmor
         priority: 0
@@ -75,7 +67,7 @@ repos:
         priority: 0
 
   - repo: https://github.com/python-jsonschema/check-jsonschema
-    rev: 6b63472e72e1a91ed8a2f6d483790dfb644fa1d3 # frozen: 0.37.4
+    rev: 12e63946db2c5cfcc9030fac21c3883ba88c6ed8 # frozen: 0.38.0
     hooks:
       - id: check-github-workflows
         priority: 0
@@ -102,18 +94,32 @@ repos:
           - "github.com/wasilibs/go-shellcheck/cmd/shellcheck@v0.11.1"
         priority: 0
 
-  # Priority 1: Second-pass fixers (e.g., markdownlint-fix runs after mdformat).
+  # Priority 1: Ruff formats Python code blocks after mdformat formats Markdown.
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: 39d9ac5938dadb73df0564a45f163e25ff9fa6e2 # frozen: v0.16.1
+    rev: 44b5042edab9382aba712eed4f9c7bab7a3d6a3e # frozen: v0.17.0
+    hooks:
+      - id: ruff-format
+        priority: 1
+
+  # Priority 2: Second-pass fixers run after both formatters.
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: 44b5042edab9382aba712eed4f9c7bab7a3d6a3e # frozen: v0.17.0
     hooks:
       - id: ruff
         args: [--fix, --exit-non-zero-on-fix]
         types_or: [python, pyi]
         require_serial: true
-        priority: 1
+        priority: 2
 
   - repo: https://github.com/igorshubovych/markdownlint-cli
     rev: 5b5dddc4fb0f83c3ea1fc5616fa63e115dce83e0 # frozen: v0.49.1
     hooks:
       - id: markdownlint-fix
-        priority: 1
+        priority: 2
+
+  # Priority 3: Clean up whitespace after all other hooks.
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: 3e8a8703264a2f4a69428a0aa4dcb512790b2c8c # frozen: v6.0.0
+    hooks:
+      - id: trailing-whitespace
+        priority: 3

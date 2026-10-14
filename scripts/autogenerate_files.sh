@@ -12,8 +12,11 @@ script_root="$(realpath "$(dirname "$0")")"
 project_root="$(dirname "$script_root")"
 cd "$project_root"
 
+echo "Copying Rust toolchain from Ruff..."
+cp ./ruff/rust-toolchain.toml ./rust-toolchain.toml
+
 echo "Updating lockfile..."
-uv lock --default-index https://pypi.org/simple
+uv lock --no-locked --default-index https://pypi.org/simple
 
 echo "Copying reference documentation from Ruff..."
 cp ./ruff/crates/ty/docs/cli.md ./docs/reference/

@@ -1,5 +1,909 @@
 # Changelog
 
+## 0.0.87
+
+Released on 2026-10-13.
+
+### LSP server
+
+- Clamp notebook cell positions to the end of the cell ([#29307](https://github.com/astral-sh/ruff/pull/29307))
+- Fix deadlock when requests arrive before workspace configuration ([#29303](https://github.com/astral-sh/ruff/pull/29303))
+- Fix notebook cell lookups after cells with cell magics ([#29308](https://github.com/astral-sh/ruff/pull/29308))
+- Fix panic on completions past the end of a notebook's last cell ([#29306](https://github.com/astral-sh/ruff/pull/29306))
+
+### Diagnostic improvements
+
+- Add opt-in `mismatched-sentinel-name` rule ([#27206](https://github.com/astral-sh/ruff/pull/27206))
+- Deduplicate identical argument type diagnostics ([#29337](https://github.com/astral-sh/ruff/pull/29337))
+- Enable `invalid-mutable-override` by default ([#29335](https://github.com/astral-sh/ruff/pull/29335))
+- Improve display of distinct string literal types ([#29206](https://github.com/astral-sh/ruff/pull/29206))
+- Respect suppression of attribute override diagnostics ([#29327](https://github.com/astral-sh/ruff/pull/29327))
+
+### Core type checking
+
+- Check overrides of receiver attribute declarations ([#28557](https://github.com/astral-sh/ruff/pull/28557))
+- Infer the default for definitely absent keys in closed `TypedDict.get` calls ([#29136](https://github.com/astral-sh/ruff/pull/29136))
+- Leave room for later positional arguments when unpacking a variable-length argument ([#29293](https://github.com/astral-sh/ruff/pull/29293))
+- Preserve minimum lengths of unpacked tuple unions ([#29331](https://github.com/astral-sh/ruff/pull/29331))
+- Specialize bare generic class name with `type[...]` type context ([#29248](https://github.com/astral-sh/ruff/pull/29248))
+
+### Performance
+
+- Avoid constructing nominal complements ([#29292](https://github.com/astral-sh/ruff/pull/29292))
+- Optimize system path equality ([#29340](https://github.com/astral-sh/ruff/pull/29340))
+
+### Contributors
+
+- [@charliermarsh](https://github.com/charliermarsh)
+- [@AlexWaygood](https://github.com/AlexWaygood)
+- [@ibraheemdev](https://github.com/ibraheemdev)
+- [@zsol](https://github.com/zsol)
+- [@Amirshox](https://github.com/Amirshox)
+- [@carljm](https://github.com/carljm)
+
+## 0.0.86
+
+Released on 2026-10-09.
+
+The executables in our macOS and Windows release archives and `ty` wheels are now code-signed.
+macOS executables are signed with an Apple Developer ID certificate and notarized by Apple. Windows
+executables have timestamped Authenticode signatures from Azure Artifact Signing. This enables
+verification of the release publisher and binary integrity, supports publisher-based allowlisting,
+and should reduce security warnings and antivirus false positives.
+
+### Bug fixes
+
+- Infer empty collection branches from nonempty literals ([#29131](https://github.com/astral-sh/ruff/pull/29131))
+- Invalidate dependency metadata when environments change ([#29126](https://github.com/astral-sh/ruff/pull/29126))
+- Preserve final attribute restrictions on composite types ([#29135](https://github.com/astral-sh/ruff/pull/29135))
+- Preserve recursive structure in `Annotated` values ([#29058](https://github.com/astral-sh/ruff/pull/29058))
+- Specialize inherited dataclass field converters ([#29192](https://github.com/astral-sh/ruff/pull/29192))
+
+### LSP server
+
+- Show documentation for annotation operators on hover ([#29185](https://github.com/astral-sh/ruff/pull/29185))
+
+### Core type checking
+
+- Check attribute and property override types ([#28556](https://github.com/astral-sh/ruff/pull/28556))
+- Narrow tuple unions through truthiness and type checks ([#29125](https://github.com/astral-sh/ruff/pull/29125))
+- Preserve literal types when consuming dictionary literals ([#29145](https://github.com/astral-sh/ruff/pull/29145))
+- Preserve non-boolean comparison results for intersections ([#28045](https://github.com/astral-sh/ruff/pull/28045))
+- Preserve receiver specializations when calling unions of bound methods ([#29015](https://github.com/astral-sh/ruff/pull/29015))
+- Represent uninhabited truthiness explicitly ([#28843](https://github.com/astral-sh/ruff/pull/28843))
+- Solve validity type context through constraint sets ([#28909](https://github.com/astral-sh/ruff/pull/28909))
+
+### Performance
+
+- Avoid recursion guards for non-generic nominal targets ([#29202](https://github.com/astral-sh/ruff/pull/29202))
+- Check exact exclusions before intersection positives ([#29195](https://github.com/astral-sh/ruff/pull/29195))
+
+### Memory usage improvements
+
+- Share constraints in retained sequent maps ([#28966](https://github.com/astral-sh/ruff/pull/28966))
+
+### Other changes
+
+- Update the default Python version to 3.15 ([#28792](https://github.com/astral-sh/ruff/pull/28792))
+- Update to Unicode 17 ([#21229](https://github.com/astral-sh/ruff/pull/21229), [#28784](https://github.com/astral-sh/ruff/pull/28784))
+- Always show fixes in the CLI ([#27810](https://github.com/astral-sh/ruff/pull/27810))
+
+### Contributors
+
+- [@gorewilliams](https://github.com/gorewilliams)
+- [@carljm](https://github.com/carljm)
+- [@AlexWaygood](https://github.com/AlexWaygood)
+- [@ibraheemdev](https://github.com/ibraheemdev)
+- [@zsol](https://github.com/zsol)
+- [@charliermarsh](https://github.com/charliermarsh)
+
+## 0.0.85
+
+Released on 2026-10-06.
+
+### Preview features
+
+- Refresh uv project metadata when uv files change ([#28529](https://github.com/astral-sh/ruff/pull/28529))
+
+### Bug fixes
+
+- Avoid recursive lambda class decorator panics ([#28984](https://github.com/astral-sh/ruff/pull/28984))
+- Compare observable notebook state for equality ([#28874](https://github.com/astral-sh/ruff/pull/28874))
+- Detect recursive alias cycles through intersections ([#28916](https://github.com/astral-sh/ruff/pull/28916))
+- Fix anchoring of include and exclude patterns after the project's root changed ([#28995](https://github.com/astral-sh/ruff/pull/28995))
+- Fix stack overflow when inferring dynamic class metaclasses ([#28917](https://github.com/astral-sh/ruff/pull/28917))
+- Normalize recursive dataclass transform metadata ([#28920](https://github.com/astral-sh/ruff/pull/28920))
+- Normalize recursive TypedDicts during cycle recovery ([#28918](https://github.com/astral-sh/ruff/pull/28918))
+- Preserve cycle markers in ParamSpec specialization ([#29024](https://github.com/astral-sh/ruff/pull/29024))
+
+### CLI
+
+- Prefer existing @ paths over response files in Ruff and ty ([#28877](https://github.com/astral-sh/ruff/pull/28877))
+
+### LSP server
+
+- Add namespace package support to import completions. ([#28202](https://github.com/astral-sh/ruff/pull/28202))
+- Avoid stale I/O diagnostics when closing deleted files ([#28988](https://github.com/astral-sh/ruff/pull/28988))
+- Contain rendered code within Markdown fences ([#28869](https://github.com/astral-sh/ruff/pull/28869))
+- Refresh Python settings when virtual environments change ([#28650](https://github.com/astral-sh/ruff/pull/28650))
+
+### Diagnostic improvements
+
+- Add opt-in `truthiness-test-of-none-union` rule ([#28889](https://github.com/astral-sh/ruff/pull/28889))
+- Avoid `disjoint-cast` diagnostics in situations where the value could have been inferred as being compatible with the casted type if it had only been inferred with the right type context ([#28851](https://github.com/astral-sh/ruff/pull/28851))
+- Bound nested callable signature display ([#29049](https://github.com/astral-sh/ruff/pull/29049))
+- Explain outdated uv versions in metadata errors ([#28959](https://github.com/astral-sh/ruff/pull/28959))
+- Improve display of string literal types that include unicode characters or double quotes ([#29089](https://github.com/astral-sh/ruff/pull/29089))
+- Improve uv metadata diagnostics ([#28990](https://github.com/astral-sh/ruff/pull/28990))
+- Preserve constrained type-variable failure diagnostics ([#28768](https://github.com/astral-sh/ruff/pull/28768))
+- Preserve generic inference errors during diagnostic recovery ([#28811](https://github.com/astral-sh/ruff/pull/28811))
+- Report deprecated overloads in decorator applications ([#28999](https://github.com/astral-sh/ruff/pull/28999))
+
+### Core type checking
+
+- Bound methods without a receiver are not callable ([#28981](https://github.com/astral-sh/ruff/pull/28981))
+- Fix member lookup on union-bounded type variables ([#29018](https://github.com/astral-sh/ruff/pull/29018))
+- Fix type variable inference for final class objects ([#29097](https://github.com/astral-sh/ruff/pull/29097))
+- Freshen ParamSpec identities consistently ([#28826](https://github.com/astral-sh/ruff/pull/28826))
+- Honor generic property setters in protocol compatibility ([#28562](https://github.com/astral-sh/ruff/pull/28562))
+- Infer nominal generic specializations from bounded type variables ([#28812](https://github.com/astral-sh/ruff/pull/28812))
+- Inherit annotations for unannotated subclass defaults ([#28575](https://github.com/astral-sh/ruff/pull/28575))
+- Keep unresolved TypeIs targets provisional ([#29066](https://github.com/astral-sh/ruff/pull/29066))
+- Limit wildcard exports using literal `__all__` ([#28972](https://github.com/astral-sh/ruff/pull/28972))
+- Narrow later match cases after always-true guards ([#28960](https://github.com/astral-sh/ruff/pull/28960))
+- Pass generic context to call inference solver ([#29065](https://github.com/astral-sh/ruff/pull/29065))
+- Preserve captured variables in ParamSpec comparisons ([#28827](https://github.com/astral-sh/ruff/pull/28827))
+- Preserve intersection receivers in implicit dunder calls ([#28833](https://github.com/astral-sh/ruff/pull/28833))
+- Preserve literal unpacking during call analysis ([#28821](https://github.com/astral-sh/ruff/pull/28821))
+- Preserve recursive type context during constructor inference ([#28903](https://github.com/astral-sh/ruff/pull/28903))
+- Preserve tuple shapes when slicing NewTypes ([#29091](https://github.com/astral-sh/ruff/pull/29091))
+- Preserve tuple subclass identity during type expansion ([#29090](https://github.com/astral-sh/ruff/pull/29090))
+- Promote bounded type variables to declared constraints ([#28814](https://github.com/astral-sh/ruff/pull/28814))
+- Propagate outer type context through cast calls ([#28855](https://github.com/astral-sh/ruff/pull/28855))
+- Recognize bare `TypeVarTuple`s in materialization checks ([#28815](https://github.com/astral-sh/ruff/pull/28815))
+- Retain individual overload argument expansion outcomes ([#28825](https://github.com/astral-sh/ruff/pull/28825))
+- Specialize instance members once ([#29043](https://github.com/astral-sh/ruff/pull/29043))
+- Specialize Self bounds through generic type aliases ([#28890](https://github.com/astral-sh/ruff/pull/28890))
+- Support slots_default in dataclass_transform ([#28885](https://github.com/astral-sh/ruff/pull/28885))
+- Sync vendored typeshed stubs ([#29032](https://github.com/astral-sh/ruff/pull/29032)). [Typeshed diff](https://github.com/python/typeshed/compare/76b8c9f83b8bb876e841248b638f3728da3f86fe...b932d8ce0f893d7d9ef167f0379dcaf9f48bf70b)
+- Sync vendored typeshed stubs ([#29042](https://github.com/astral-sh/ruff/pull/29042)). [Typeshed diff](https://github.com/python/typeshed/compare/76b8c9f83b8bb876e841248b638f3728da3f86fe...b932d8ce0f893d7d9ef167f0379dcaf9f48bf70b)
+- Validate call arguments once after inference ([#28824](https://github.com/astral-sh/ruff/pull/28824))
+- Validate union operands involving None ([#28931](https://github.com/astral-sh/ruff/pull/28931))
+
+### Performance
+
+- Avoid expanding recursive protocol materializations ([#29026](https://github.com/astral-sh/ruff/pull/29026))
+- Avoid repeated work in nested match patterns ([#28926](https://github.com/astral-sh/ruff/pull/28926))
+- Cache the flattened module list ([#28932](https://github.com/astral-sh/ruff/pull/28932))
+- Index nonlocal bindings when sweeping snapshots ([#28935](https://github.com/astral-sh/ruff/pull/28935))
+- Skip descendant searches for leaf modules ([#28845](https://github.com/astral-sh/ruff/pull/28845))
+- Skip independent constraint-pair derivation ([#28950](https://github.com/astral-sh/ruff/pull/28950))
+- Skip storing default definition states ([#28934](https://github.com/astral-sh/ruff/pull/28934))
+
+### Memory usage improvements
+
+- Avoid caching empty sequent maps ([#28949](https://github.com/astral-sh/ruff/pull/28949))
+- Avoid retaining docstring literal types ([#28944](https://github.com/astral-sh/ruff/pull/28944))
+- Compact bound-method receivers ([#28969](https://github.com/astral-sh/ruff/pull/28969))
+- Move ParamSpec signature metadata to extras ([#28970](https://github.com/astral-sh/ruff/pull/28970))
+- Release closed module ASTs synchronously during auto-import discovery ([#28714](https://github.com/astral-sh/ruff/pull/28714))
+- Skip caching trivially assignable types ([#28936](https://github.com/astral-sh/ruff/pull/28936))
+
+### Contributors
+
+- [@dhruvmanila](https://github.com/dhruvmanila)
+- [@carljm](https://github.com/carljm)
+- [@sharkdp](https://github.com/sharkdp)
+- [@gorewilliams](https://github.com/gorewilliams)
+- [@AlexWaygood](https://github.com/AlexWaygood)
+- [@ibraheemdev](https://github.com/ibraheemdev)
+- [@MichaReiser](https://github.com/MichaReiser)
+- [@charliermarsh](https://github.com/charliermarsh)
+- [@zsol](https://github.com/zsol)
+- [@lerebear](https://github.com/lerebear)
+
+## 0.0.84
+
+Released on 2026-09-24.
+
+This release addresses [GHSA-vxvm-j4xq-q7m4](https://github.com/astral-sh/ty/security/advisories/GHSA-vxvm-j4xq-q7m4), a use-after-free vulnerability during incremental type checking that can result in arbitrary code execution when analyzing a specially crafted Python project. Users who run ty on untrusted code should upgrade to 0.0.84 or newer.
+
+### Bug fixes
+
+- Fix stale diagnostics from the LSP server after toggling `showSyntaxErrors` ([#28759](https://github.com/astral-sh/ruff/pull/28759))
+
+### LSP server
+
+- Complete string keys from dictionary initializers ([#28820](https://github.com/astral-sh/ruff/pull/28820))
+- Support LSP requests against closed documents ([#28595](https://github.com/astral-sh/ruff/pull/28595))
+- Select projects for external files using import search paths ([#28594](https://github.com/astral-sh/ruff/pull/28594))
+- Use workspace editor settings for external files ([#28639](https://github.com/astral-sh/ruff/pull/28639))
+
+### Performance
+
+- Avoid repeated subtyping checks for materialized recursive protocols ([#28774](https://github.com/astral-sh/ruff/pull/28774))
+- Skip reading notebooks when discovering scripts ([#28781](https://github.com/astral-sh/ruff/pull/28781))
+
+### Core type checking
+
+- Avoid incorrect simplification of `TypeIs` materializations ([#28817](https://github.com/astral-sh/ruff/pull/28817))
+- Fix disjointness of generic class types ([#28787](https://github.com/astral-sh/ruff/pull/28787))
+- Fix staticmethod shadowing through generic receivers and unions ([#28766](https://github.com/astral-sh/ruff/pull/28766))
+- Infer callable signatures from bounded type variables ([#28599](https://github.com/astral-sh/ruff/pull/28599))
+- Infer constant membership in inline list and set literals (e.g. `"foo" in ["foo"]` is now inferred as `Literal[True]`) ([#28676](https://github.com/astral-sh/ruff/pull/28676))
+- Infer through optional generic containers in the legacy solver ([#28791](https://github.com/astral-sh/ruff/pull/28791))
+- Preserve call narrowing during cyclic inference ([#28708](https://github.com/astral-sh/ruff/pull/28708))
+- Preserve intersections of type guard return types ([#28796](https://github.com/astral-sh/ruff/pull/28796))
+- Use subtyping for constraint-set implication ([#28657](https://github.com/astral-sh/ruff/pull/28657))
+
+### Configuration
+
+- Disable `invalid-legacy-positional-parameter` by default ([#28834](https://github.com/astral-sh/ruff/pull/28834))
+
+### Other changes
+
+- Only consider reachable definitions when determining whether a condition should be exempted from `redundant-condition(-strict)` due to the condition being defined relative to `sys.version_info`, `sys.platform`, `os.name` or `typing.TYPE_CHECKING` ([#28788](https://github.com/astral-sh/ruff/pull/28788))
+
+### Contributors
+
+- [@ibraheemdev](https://github.com/ibraheemdev)
+- [@zsol](https://github.com/zsol)
+- [@charliermarsh](https://github.com/charliermarsh)
+- [@lerebear](https://github.com/lerebear)
+- [@MichaReiser](https://github.com/MichaReiser)
+- [@ewdurbin](https://github.com/ewdurbin)
+- [@carljm](https://github.com/carljm)
+- [@sharkdp](https://github.com/sharkdp)
+
+## 0.0.83
+
+Released on 2026-09-21.
+
+### Bug fixes
+
+- Fix hangs from repeated partial application ([#28754](https://github.com/astral-sh/ruff/pull/28754))
+- Preserve PEP 695 bindings across nested classes ([#28723](https://github.com/astral-sh/ruff/pull/28723))
+
+### LSP server
+
+- Include required imports in every inlay hint ([#28724](https://github.com/astral-sh/ruff/pull/28724))
+- Preserve fast name filtering for normalized Unicode source ([#28701](https://github.com/astral-sh/ruff/pull/28701))
+- Refresh diagnostics after workspace configuration changes ([#28755](https://github.com/astral-sh/ruff/pull/28755))
+
+### Diagnostic improvements
+
+- Expand unreachable-code annotations for redundant conditions ([#28674](https://github.com/astral-sh/ruff/pull/28674))
+- Improve diagnostics for async generator stubs ([#28692](https://github.com/astral-sh/ruff/pull/28692))
+- Improve primary diagnostic annotations for `redundant-condition(-strict)` diagnostics ([#28666](https://github.com/astral-sh/ruff/pull/28666))
+- Point misplaced tuple ellipsis diagnostics at each ellipsis ([#28709](https://github.com/astral-sh/ruff/pull/28709))
+
+### Other changes
+
+- Add rules that detect suspicious uses of `Callable`, `Iterable`, `Iterator` or `Generator` types in a boolean context ([#28554](https://github.com/astral-sh/ruff/pull/28554))
+- Allow slots to override abstract properties ([#28698](https://github.com/astral-sh/ruff/pull/28698))
+- Avoid leaking `Unknown` from unconstrained collection use-sites ([#28659](https://github.com/astral-sh/ruff/pull/28659))
+- Diagnose unguarded cycles in implicit and PEP 613 aliases ([#28704](https://github.com/astral-sh/ruff/pull/28704))
+- Eagerly bind unused `Self` receivers ([#28662](https://github.com/astral-sh/ruff/pull/28662))
+- Generalize receiver binding for wrapped callables ([#28725](https://github.com/astral-sh/ruff/pull/28725))
+- More faithful representation of bound methods ([#28410](https://github.com/astral-sh/ruff/pull/28410))
+- Only classify evidence bounds for constrained type variables ([#28700](https://github.com/astral-sh/ruff/pull/28700))
+- Preserve inferred bindings during annotation cycles ([#28717](https://github.com/astral-sh/ruff/pull/28717))
+- Preserve quoted aliases during cycle recovery ([#28710](https://github.com/astral-sh/ruff/pull/28710))
+- Reject class-scoped type variables in **init** receivers ([#28706](https://github.com/astral-sh/ruff/pull/28706))
+- Reject unsafe TypedDict updates from hidden fields ([#28711](https://github.com/astral-sh/ruff/pull/28711))
+- Respect fixed caller type variables when selecting constraints ([#28652](https://github.com/astral-sh/ruff/pull/28652))
+- Reuse cached type alias inference for diagnostics ([#28696](https://github.com/astral-sh/ruff/pull/28696))
+- Simplify unions of disjoint exclusions ([#28684](https://github.com/astral-sh/ruff/pull/28684))
+- Update typing conformance suite ([#28718](https://github.com/astral-sh/ruff/pull/28718))
+
+### Contributors
+
+- [@charliermarsh](https://github.com/charliermarsh)
+- [@AlexWaygood](https://github.com/AlexWaygood)
+- [@sharkdp](https://github.com/sharkdp)
+- [@carljm](https://github.com/carljm)
+- [@ibraheemdev](https://github.com/ibraheemdev)
+- [@zaniebot](https://github.com/zaniebot)
+- [@MichaReiser](https://github.com/MichaReiser)
+
+## 0.0.82
+
+Released on 2026-09-17.
+
+### Preview features
+
+- Ignore Python version from uv metadata ([#28646](https://github.com/astral-sh/ruff/pull/28646))
+- Watch script dependencies in CLI watch mode ([#28125](https://github.com/astral-sh/ruff/pull/28125))
+
+### CLI
+
+- Only skip uv workspace metadata for a single script ([#28581](https://github.com/astral-sh/ruff/pull/28581))
+- Support dependency lints with `--config-file` ([#28573](https://github.com/astral-sh/ruff/pull/28573))
+
+### LSP server
+
+- Filter string literal completions by typed text ([#28612](https://github.com/astral-sh/ruff/pull/28612))
+- Find member references across files ([#28669](https://github.com/astral-sh/ruff/pull/28669))
+- Find parameter references across files ([#28670](https://github.com/astral-sh/ruff/pull/28670))
+- Preserve valid LSP settings when configuration resolution fails ([#28653](https://github.com/astral-sh/ruff/pull/28653))
+- Reuse identifier matcher in LSP operations ([#28663](https://github.com/astral-sh/ruff/pull/28663))
+- Watch script dependencies in the language server ([#28522](https://github.com/astral-sh/ruff/pull/28522))
+
+### Diagnostic improvements
+
+- Add an autofix for unused awaitables ([#28668](https://github.com/astral-sh/ruff/pull/28668))
+- Add annotations for unreachable code caused by boolean operands ([#28521](https://github.com/astral-sh/ruff/pull/28521))
+- Add subdiagnostics to `redundant-condition` rules warning about reachability implications ([#28263](https://github.com/astral-sh/ruff/pull/28263))
+- Clarify diagnostics for unimplemented abstract members ([#28538](https://github.com/astral-sh/ruff/pull/28538))
+- Extend unreachable-code annotations to `while`, `assert`, and `match` statements ([#28290](https://github.com/astral-sh/ruff/pull/28290))
+
+### Core type checking
+
+- Allow experimental intersection syntax in PEP 695 aliases ([#28513](https://github.com/astral-sh/ruff/pull/28513))
+- Bound aliased intersection expansion during inference ([#28546](https://github.com/astral-sh/ruff/pull/28546))
+- Check declared variance against final method bindings ([#28155](https://github.com/astral-sh/ruff/pull/28155))
+- Fix recursive protocol checks for decorated methods ([#28293](https://github.com/astral-sh/ruff/pull/28293))
+- Freshen constructor-owned Self with class type variables ([#28592](https://github.com/astral-sh/ruff/pull/28592))
+- Improve disjointness of `functools.partial` types ([#28660](https://github.com/astral-sh/ruff/pull/28660))
+- Include constraint-set assignability in more checks ([#28642](https://github.com/astral-sh/ruff/pull/28642))
+- Infer conditional literals from peers in unspecialized contexts ([#28633](https://github.com/astral-sh/ruff/pull/28633))
+- Infer generic elements from gradual tuples ([#28637](https://github.com/astral-sh/ruff/pull/28637))
+- Introduce `Recursive` types and fully support recursive implicit type aliases ([#28425](https://github.com/astral-sh/ruff/pull/28425))
+- Narrow type context during tuple inference ([#28658](https://github.com/astral-sh/ruff/pull/28658))
+- Preserve field metadata after overload resolution ([#28635](https://github.com/astral-sh/ruff/pull/28635))
+- Preserve gradual class assignability in constraint-set checks ([#28638](https://github.com/astral-sh/ruff/pull/28638))
+- Preserve gradual tuple lengths during callable inference ([#28588](https://github.com/astral-sh/ruff/pull/28588))
+- Preserve tuple shapes during concatenation ([#28617](https://github.com/astral-sh/ruff/pull/28617))
+- Reject abstract class instantiation ([#28167](https://github.com/astral-sh/ruff/pull/28167))
+- Respect `frozen=False` overrides on Pydantic subclasses ([#28515](https://github.com/astral-sh/ruff/pull/28515))
+- Support `type[A & B]` ([#27124](https://github.com/astral-sh/ruff/pull/27124))
+- Sync vendored typeshed stubs ([#28597](https://github.com/astral-sh/ruff/pull/28597)). [Typeshed diff](https://github.com/python/typeshed/compare/bc016545988403f13b2dd9b56e88b931683c80b1...76b8c9f83b8bb876e841248b638f3728da3f86fe)
+- Treat imports as bindings instead of declarations ([#27325](https://github.com/astral-sh/ruff/pull/27325))
+
+### Performance
+
+- Compact reachable binding and declaration histories ([#28349](https://github.com/astral-sh/ruff/pull/28349))
+- Compare bound-method receivers before signatures ([#28384](https://github.com/astral-sh/ruff/pull/28384))
+- Deduplicate intermediate intersection branches ([#28649](https://github.com/astral-sh/ruff/pull/28649))
+- Optimize fuel management in the constraint solver ([#28568](https://github.com/astral-sh/ruff/pull/28568))
+- Skip inferring concrete methods during abstract-method discovery ([#28613](https://github.com/astral-sh/ruff/pull/28613))
+- Skip legacy namespace parsing for `__init__` files without `pkg` ([#28665](https://github.com/astral-sh/ruff/pull/28665))
+
+### Memory usage improvements
+
+- Avoid storing constraint nodes twice ([#28375](https://github.com/astral-sh/ruff/pull/28375))
+
+### Contributors
+
+- [@mtshiba](https://github.com/mtshiba)
+- [@zsol](https://github.com/zsol)
+- [@AlexWaygood](https://github.com/AlexWaygood)
+- [@charliermarsh](https://github.com/charliermarsh)
+- [@woodruffw](https://github.com/woodruffw)
+- [@carljm](https://github.com/carljm)
+- [@MichaReiser](https://github.com/MichaReiser)
+- [@sharkdp](https://github.com/sharkdp)
+- [@ibraheemdev](https://github.com/ibraheemdev)
+
+## 0.0.81
+
+Released on 2026-09-14.
+
+### Bug fixes
+
+- Escape glob characters in anchored directory paths ([#28518](https://github.com/astral-sh/ruff/pull/28518))
+- Ignore divergent markers when detecting descriptors ([#28514](https://github.com/astral-sh/ruff/pull/28514))
+
+### CLI
+
+- Anchor default exclude patterns at the project root ([#28463](https://github.com/astral-sh/ruff/pull/28463))
+
+### Core type checking
+
+- Avoid rebinding extracted method calls ([#28469](https://github.com/astral-sh/ruff/pull/28469))
+- Default-specialize class objects in meta-protocol checks ([#28265](https://github.com/astral-sh/ruff/pull/28265))
+- Fix MRO ordering for generic bases ([#28172](https://github.com/astral-sh/ruff/pull/28172))
+- Fix assignability of bounded typevars to intersection types ([#28479](https://github.com/astral-sh/ruff/pull/28479))
+- Fix variadic partial signature reduction ([#28586](https://github.com/astral-sh/ruff/pull/28586))
+- Handle gradual metaclass ancestry and conflicts ([#28474](https://github.com/astral-sh/ruff/pull/28474))
+- Preserve recursive metadata in union transformations ([#28497](https://github.com/astral-sh/ruff/pull/28497))
+- Preserve runtime comparison semantics when narrowing tagged unions ([#28053](https://github.com/astral-sh/ruff/pull/28053))
+- Preserve wrapped signatures in nominal descriptor checks ([#28466](https://github.com/astral-sh/ruff/pull/28466))
+- Reject reassignment of enum members ([#28462](https://github.com/astral-sh/ruff/pull/28462))
+- Report override conflicts introduced by new bases ([#28530](https://github.com/astral-sh/ruff/pull/28530))
+- Resolve dependencies within correlated inference alternatives ([#28252](https://github.com/astral-sh/ruff/pull/28252))
+- Respect instance dictionary storage for slotted classes ([#27749](https://github.com/astral-sh/ruff/pull/27749))
+- Validate explicitly overridden constructor signatures ([#28115](https://github.com/astral-sh/ruff/pull/28115))
+
+### Performance
+
+- Avoid redundant superclass member inference ([#28587](https://github.com/astral-sh/ruff/pull/28587))
+- Reuse rendered union elements when displaying types ([#28494](https://github.com/astral-sh/ruff/pull/28494))
+
+### Memory usage improvements
+
+- Reduce retained AST memory by shrinking expressions ([#28335](https://github.com/astral-sh/ruff/pull/28335))
+- Share strings in dependency metadata ([#28141](https://github.com/astral-sh/ruff/pull/28141))
+
+### Contributors
+
+- [@sharkdp](https://github.com/sharkdp)
+- [@ibraheemdev](https://github.com/ibraheemdev)
+- [@MichaReiser](https://github.com/MichaReiser)
+- [@zsol](https://github.com/zsol)
+- [@zanieb](https://github.com/zanieb)
+- [@charliermarsh](https://github.com/charliermarsh)
+- [@mtshiba](https://github.com/mtshiba)
+- [@carljm](https://github.com/carljm)
+
+## 0.0.80
+
+Released on 2026-09-09.
+
+### Bug fixes
+
+- Fix `--force-exclude` for directories with an excluded ancestor ([#28451](https://github.com/astral-sh/ruff/pull/28451))
+- Preserve metaclass candidates after conflicts ([#28461](https://github.com/astral-sh/ruff/pull/28461))
+
+### LSP server
+
+- Give existing autofixes descriptive titles ([#28456](https://github.com/astral-sh/ruff/pull/28456))
+- Prevent LSP hangs during inlay hint bursts ([#28390](https://github.com/astral-sh/ruff/pull/28390))
+
+### Diagnostic improvements
+
+- Preserve redundant-condition diagnostics with unreachable operands ([#28374](https://github.com/astral-sh/ruff/pull/28374))
+
+### Core type checking
+
+- Check captured receivers when calling wrapped classmethods ([#28467](https://github.com/astral-sh/ruff/pull/28467))
+- Fix cached classmethods on generic classes ([#28207](https://github.com/astral-sh/ruff/pull/28207))
+- Fix disjointness of type guards and boolean literals ([#28363](https://github.com/astral-sh/ruff/pull/28363))
+- Infer tuple variance from the full tuple spec ([#28446](https://github.com/astral-sh/ruff/pull/28446))
+- Infer tuple variance more precisely ([#28426](https://github.com/astral-sh/ruff/pull/28426))
+- Preserve callable identity across specialized types ([#28409](https://github.com/astral-sh/ruff/pull/28409))
+- Preserve callback type context through ParamSpec forwarding ([#28439](https://github.com/astral-sh/ruff/pull/28439))
+- Preserve wrapped functions in precise `functools.partial` relations ([#28460](https://github.com/astral-sh/ruff/pull/28460))
+- Respect descriptor protocol for `__set__` itself ([#28408](https://github.com/astral-sh/ruff/pull/28408))
+- Respect type-variable bounds in argument context ([#28448](https://github.com/astral-sh/ruff/pull/28448))
+- Unwrap union alternatives in overload implementations ([#28468](https://github.com/astral-sh/ruff/pull/28468))
+
+### Performance
+
+- Distribute `len` inference over unions ([#28470](https://github.com/astral-sh/ruff/pull/28470))
+- Fast-path concrete literal intersections ([#28348](https://github.com/astral-sh/ruff/pull/28348))
+
+### Memory usage improvements
+
+- Avoid excess capacity in multi-binding tables ([#28412](https://github.com/astral-sh/ruff/pull/28412))
+- Share equivalent place tables within a file ([#28319](https://github.com/astral-sh/ruff/pull/28319))
+- Share names in synthesized constructor parameters ([#28398](https://github.com/astral-sh/ruff/pull/28398))
+
+### Contributors
+
+- [@sharkdp](https://github.com/sharkdp)
+- [@charliermarsh](https://github.com/charliermarsh)
+- [@ibraheemdev](https://github.com/ibraheemdev)
+- [@AlexWaygood](https://github.com/AlexWaygood)
+- [@MichaReiser](https://github.com/MichaReiser)
+
+## 0.0.79
+
+Released on 2026-09-07.
+
+### Bug fixes
+
+- Avoid dict keyword-call panics when typing is shadowed ([#28292](https://github.com/astral-sh/ruff/pull/28292))
+- Discover configs in models derived from legacy generic classes ([#28397](https://github.com/astral-sh/ruff/pull/28397))
+- Normalize recursive collection-use constraints ([#28332](https://github.com/astral-sh/ruff/pull/28332))
+- Recover cycles when constructing known class instances ([#28289](https://github.com/astral-sh/ruff/pull/28289))
+
+### CLI
+
+- Embed archive checksums in the shell installer ([#4458](https://github.com/astral-sh/ty/pull/4458))
+
+### Diagnostic improvements
+
+- Add `Literal` fixes for diagnostics flagging invalid type annotations ([#28185](https://github.com/astral-sh/ruff/pull/28185))
+- Add `await` fixes for redundant conditions ([#28169](https://github.com/astral-sh/ruff/pull/28169))
+- Add `assert_never` fixes for redundant final `elif` branches ([#28178](https://github.com/astral-sh/ruff/pull/28178))
+- Add defensive assertion fallback for redundant `elif` fixes ([#28179](https://github.com/astral-sh/ruff/pull/28179))
+- Add rules to detect always-truthy and always-falsy conditions ([#28034](https://github.com/astral-sh/ruff/pull/28034))
+- Preserve deprecations on decorated callables ([#28256](https://github.com/astral-sh/ruff/pull/28256))
+- Require a direct dependency for `reveal_type` backport fixes ([#28177](https://github.com/astral-sh/ruff/pull/28177))
+- Suggest variable-length tuple annotations for redundant conditions ([#28168](https://github.com/astral-sh/ruff/pull/28168))
+
+### Core type checking
+
+- Align `TypeIs` and `isinstance` narrowing ([#28193](https://github.com/astral-sh/ruff/pull/28193))
+- Avoid falling back to `Unknown` when collecting type context constraints ([#28297](https://github.com/astral-sh/ruff/pull/28297))
+- Ensure `f is identity(f)` evaluates to `Literal[True]` ([#28360](https://github.com/astral-sh/ruff/pull/28360))
+- Fix callable specialization with union-valued `ParamSpec` ([#28085](https://github.com/astral-sh/ruff/pull/28085))
+- Infer variance through recursive protocols ([#28077](https://github.com/astral-sh/ruff/pull/28077))
+- Narrow types with ordered length comparisons ([#28264](https://github.com/astral-sh/ruff/pull/28264))
+- Preserve gradual type context during generic call inference ([#28091](https://github.com/astral-sh/ruff/pull/28091))
+- Preserve nominal subtyping for top-materialized protocols ([#28271](https://github.com/astral-sh/ruff/pull/28271))
+- Preserve outer type variables during `ParamSpec` inference ([#28306](https://github.com/astral-sh/ruff/pull/28306))
+- Preserve protocol intersections when narrowing gradual types ([#28391](https://github.com/astral-sh/ruff/pull/28391))
+- Promote literals in nested (non-covariant) positions ([#28389](https://github.com/astral-sh/ruff/pull/28389))
+- Reject missing attributes on `type[]` aliases ([#28267](https://github.com/astral-sh/ruff/pull/28267))
+- Solve formal unions using constraint-sets ([#28312](https://github.com/astral-sh/ruff/pull/28312))
+- Sync vendored typeshed stubs ([#28331](https://github.com/astral-sh/ruff/pull/28331)). [Typeshed diff](https://github.com/python/typeshed/compare/cf09d2a4d7614f648e9109dce609887499a7c6ee...bc016545988403f13b2dd9b56e88b931683c80b1)
+
+### Performance
+
+- Avoid unnecessary work when building specializations ([#28369](https://github.com/astral-sh/ruff/pull/28369))
+- Bypass materialization queries for simple types ([#28367](https://github.com/astral-sh/ruff/pull/28367))
+- Cache exception suppression for context managers ([#28376](https://github.com/astral-sh/ruff/pull/28376))
+- Intern statement call predicates ([#28373](https://github.com/astral-sh/ruff/pull/28373))
+- Lazily compute argument-context specializations ([#28378](https://github.com/astral-sh/ruff/pull/28378))
+- Pre-size packed AST index chunks ([#28372](https://github.com/astral-sh/ruff/pull/28372))
+- Reduce repeated work in use-def merges ([#28365](https://github.com/astral-sh/ruff/pull/28365))
+- Skip decorator flags query for undecorated methods ([#28338](https://github.com/astral-sh/ruff/pull/28338))
+
+### Memory usage improvements
+
+- Avoid caching simple type specializations ([#28333](https://github.com/astral-sh/ruff/pull/28333))
+- Box cached MRO error details ([#28351](https://github.com/astral-sh/ruff/pull/28351))
+- Reuse generic aliases as MRO query keys ([#28350](https://github.com/astral-sh/ruff/pull/28350))
+- Reuse interned bound method signatures ([#28346](https://github.com/astral-sh/ruff/pull/28346))
+- Reuse stored function signatures without caching duplicates ([#28347](https://github.com/astral-sh/ruff/pull/28347))
+- Share retained use-def tables across scopes ([#28313](https://github.com/astral-sh/ruff/pull/28313))
+- Store single narrowing operations inline ([#28345](https://github.com/astral-sh/ruff/pull/28345))
+- Store uncommon signature metadata out of line ([#28339](https://github.com/astral-sh/ruff/pull/28339))
+
+### Other changes
+
+- Declare support for Python 3.15 ([#4476](https://github.com/astral-sh/ty/pull/4476))
+
+### Contributors
+
+- [@carljm](https://github.com/carljm)
+- [@sharkdp](https://github.com/sharkdp)
+- [@charliemarsh-oai](https://github.com/charliemarsh-oai)
+- [@zsol](https://github.com/zsol)
+- [@charliermarsh](https://github.com/charliermarsh)
+- [@ibraheemdev](https://github.com/ibraheemdev)
+- [@AlexWaygood](https://github.com/AlexWaygood)
+
+## 0.0.78
+
+Released on 2026-09-02.
+
+### Bug fixes
+
+- Defer decorator-call diagnostics to avoid recursive-default cycles ([#28226](https://github.com/astral-sh/ruff/pull/28226))
+- Make cyclic intersection simplification deterministic ([#28156](https://github.com/astral-sh/ruff/pull/28156))
+- Stabilize cyclic terminal-call reachability ([#28216](https://github.com/astral-sh/ruff/pull/28216))
+
+### Preview features
+
+- Refresh uv workspace metadata when dependencies change ([#28224](https://github.com/astral-sh/ruff/pull/28224))
+
+### Diagnostics
+
+- Add a new `disjoint-cast` rule ([#28129](https://github.com/astral-sh/ruff/pull/28129))
+- Report deprecated property accessors on intersections ([#28250](https://github.com/astral-sh/ruff/pull/28250))
+- Report deprecations for implicit constructor calls ([#28251](https://github.com/astral-sh/ruff/pull/28251))
+- Report deprecations for overloads, operators, and properties ([#28134](https://github.com/astral-sh/ruff/pull/28134))
+- Respect overload selection in deprecation diagnostics ([#28148](https://github.com/astral-sh/ruff/pull/28148))
+
+### Core type checking
+
+- Fix negative narrowing for protocols with gradual members ([#28198](https://github.com/astral-sh/ruff/pull/28198))
+- Preserve `ParamSpec` bindings inferred against type context ([#28084](https://github.com/astral-sh/ruff/pull/28084))
+- Preserve generic protocol materialization relations ([#28246](https://github.com/astral-sh/ruff/pull/28246))
+- Preserve uncertain branches during quantification ([#28211](https://github.com/astral-sh/ruff/pull/28211))
+- Respect type variables in top/bottom materializations of invariant generics ([#28072](https://github.com/astral-sh/ruff/pull/28072))
+- Sync vendored typeshed stubs ([#28217](https://github.com/astral-sh/ruff/pull/28217)). [Typeshed diff](https://github.com/python/typeshed/compare/6b7f7b93300550eb55380db8ca62488eb0c78c77...cf09d2a4d7614f648e9109dce609887499a7c6ee)
+- Treat captured bound-method receivers covariantly ([#28180](https://github.com/astral-sh/ruff/pull/28180))
+- Unsound intersection simplification for generic iterables ([#28068](https://github.com/astral-sh/ruff/pull/28068))
+- Validate type variable scopes in constructors and aliases ([#28130](https://github.com/astral-sh/ruff/pull/28130))
+- `lambda` functions are always truthy ([#28254](https://github.com/astral-sh/ruff/pull/28254))
+
+### Performance
+
+- Optimize materialized recursive protocol comparisons ([#28079](https://github.com/astral-sh/ruff/pull/28079))
+- Optimize recursive protocol checks for nested type variables ([#28257](https://github.com/astral-sh/ruff/pull/28257))
+
+### Contributors
+
+- [@charliermarsh](https://github.com/charliermarsh)
+- [@sharkdp](https://github.com/sharkdp)
+- [@zsol](https://github.com/zsol)
+- [@AlexWaygood](https://github.com/AlexWaygood)
+- [@ibraheemdev](https://github.com/ibraheemdev)
+- [@carljm](https://github.com/carljm)
+
+## 0.0.77
+
+Released on 2026-08-31.
+
+### Bug fixes
+
+- Bound recursive protocol traversal in generic intersections ([#28215](https://github.com/astral-sh/ruff/pull/28215))
+- Preserve recursion guards across nested type operations ([#28150](https://github.com/astral-sh/ruff/pull/28150))
+- Preserve syntax and comments when removing redundant casts ([#28145](https://github.com/astral-sh/ruff/pull/28145))
+- Stabilize recursive receiver inference ([#28042](https://github.com/astral-sh/ruff/pull/28042))
+- Stabilize condition truthiness during cyclic inference ([#28212](https://github.com/astral-sh/ruff/pull/28212))
+
+### Core type checking
+
+- Preserve generic receivers in implicit `__init_subclass__` calls ([#28138](https://github.com/astral-sh/ruff/pull/28138))
+- Preserve specialization for inherited `TypedDict` methods ([#28111](https://github.com/astral-sh/ruff/pull/28111))
+- Propagate deletions through nested loop headers ([#28044](https://github.com/astral-sh/ruff/pull/28044))
+
+### Performance
+
+- Avoid repeated inference for literal union call results ([#28196](https://github.com/astral-sh/ruff/pull/28196))
+
+### Contributors
+
+- [@charliermarsh](https://github.com/charliermarsh)
+- [@carljm](https://github.com/carljm)
+
+## 0.0.76
+
+Released on 2026-08-31.
+
+### Preview features
+
+- Add a missing-direct-dependency rule ([#28001](https://github.com/astral-sh/ruff/pull/28001))
+- Cancel superseded queued uv requests ([#28108](https://github.com/astral-sh/ruff/pull/28108))
+- Check direct dependencies in PEP 723 scripts ([#28136](https://github.com/astral-sh/ruff/pull/28136))
+- Fix Goto definition in script dependencies ([#27747](https://github.com/astral-sh/ruff/pull/27747))
+- Move script environment initialization to the CLI and LSP ([#28038](https://github.com/astral-sh/ruff/pull/28038))
+- Refresh uv project metadata in the background ([#27933](https://github.com/astral-sh/ruff/pull/27933))
+- Synchronize PEP 723 script environments in the language server ([#27619](https://github.com/astral-sh/ruff/pull/27619))
+- Warn when uv metadata cannot support dependency checks ([#28133](https://github.com/astral-sh/ruff/pull/28133))
+
+### Bug fixes
+
+- Avoid panics on incomplete protocol type parameter lists ([#28088](https://github.com/astral-sh/ruff/pull/28088))
+- Fix auto-completion panic involving bare declarations ([#28191](https://github.com/astral-sh/ruff/pull/28191))
+- Guard recursive meta-type expansion ([#28143](https://github.com/astral-sh/ruff/pull/28143))
+- Preserve parentheses when removing redundant casts ([#28092](https://github.com/astral-sh/ruff/pull/28092))
+
+### LSP server
+
+- Add "Find references" support for pytest fixtures ([#28075](https://github.com/astral-sh/ruff/pull/28075))
+- Highlight PEP 723 script metadata as TOML ([#27746](https://github.com/astral-sh/ruff/pull/27746))
+- Synchronize saved script metadata on open ([#27873](https://github.com/astral-sh/ruff/pull/27873))
+
+### Core type checking
+
+- Apply mixin specialization when validating enum members ([#28101](https://github.com/astral-sh/ruff/pull/28101))
+- Bind `Self` through generic type aliases ([#28117](https://github.com/astral-sh/ruff/pull/28117))
+- Infer lambda parameters through callable type aliases ([#28109](https://github.com/astral-sh/ruff/pull/28109))
+- Intersection simplifications with subtype-related generic specializations ([#26880](https://github.com/astral-sh/ruff/pull/26880))
+- Invalidate member narrowing across loop iterations ([#28009](https://github.com/astral-sh/ruff/pull/28009))
+- Narrow functional enum members in `==` and `match` ([#28103](https://github.com/astral-sh/ruff/pull/28103))
+- Only treat recursive types with unbounded specializations as fallback cycles ([#27538](https://github.com/astral-sh/ruff/pull/27538))
+- Preserve `Final` variance in stubs ([#28119](https://github.com/astral-sh/ruff/pull/28119))
+- Preserve inferred types for unknown class-decorator results ([#28067](https://github.com/astral-sh/ruff/pull/28067))
+- Preserve list literal positions in starred unpacking ([#28061](https://github.com/astral-sh/ruff/pull/28061))
+- Preserve short-circuit reachability for direct conditions ([#28082](https://github.com/astral-sh/ruff/pull/28082))
+- Preserve type variables in bounded generic defaults ([#28122](https://github.com/astral-sh/ruff/pull/28122))
+- Reject circular type alias definitions ([#28140](https://github.com/astral-sh/ruff/pull/28140))
+- Reject class access to generic instance attributes ([#28123](https://github.com/astral-sh/ruff/pull/28123))
+- Use the subclass receiver when checking method overrides ([#28124](https://github.com/astral-sh/ruff/pull/28124))
+- Validate declared variance in method signatures ([#28116](https://github.com/astral-sh/ruff/pull/28116))
+
+### Performance
+
+- Avoid cubic narrowing with repeated assignments and context managers ([#27787](https://github.com/astral-sh/ruff/pull/27787))
+- Avoid repeated traversal of shared alias arguments ([#28147](https://github.com/astral-sh/ruff/pull/28147))
+- Reject impossible eager protocol comparisons early ([#28081](https://github.com/astral-sh/ruff/pull/28081))
+
+### Contributors
+
+- [@AlexWaygood](https://github.com/AlexWaygood)
+- [@MichaReiser](https://github.com/MichaReiser)
+- [@charliermarsh](https://github.com/charliermarsh)
+- [@BitWeaverDev](https://github.com/BitWeaverDev)
+- [@gorewilliams](https://github.com/gorewilliams)
+- [@zsol](https://github.com/zsol)
+- [@malkin0xb8](https://github.com/malkin0xb8)
+- [@sharkdp](https://github.com/sharkdp)
+- [@mtshiba](https://github.com/mtshiba)
+- [@carljm](https://github.com/carljm)
+- [@lerebear](https://github.com/lerebear)
+- [@jamtat](https://github.com/jamtat)
+
+## 0.0.75
+
+Released on 2026-08-26.
+
+### Preview features
+
+- Initialize PEP 723 script environments in the CLI ([#27544](https://github.com/astral-sh/ruff/pull/27544))
+- Refresh PEP 723 script environments in watch mode ([#27617](https://github.com/astral-sh/ruff/pull/27617))
+- Run PEP 723 script synchronization on bounded workers ([#27615](https://github.com/astral-sh/ruff/pull/27615))
+
+### Bug fixes
+
+- Specialize `Self` bounds of inherited methods ([#27990](https://github.com/astral-sh/ruff/pull/27990))
+
+### LSP server
+
+- Add "Go to Definition" support for pytest fixtures ([#27444](https://github.com/astral-sh/ruff/pull/27444))
+
+### Documentation
+
+- Fix documented Python package build command ([#4384](https://github.com/astral-sh/ty/pull/4384))
+- Link untyped-call tracking issue in migration guide ([#4382](https://github.com/astral-sh/ty/pull/4382))
+
+### Library support
+
+- Resolve imported pytest fixture exposures ([#27539](https://github.com/astral-sh/ruff/pull/27539))
+- Resolve installed core pytest fixture providers ([#27770](https://github.com/astral-sh/ruff/pull/27770))
+- Resolve pytest fixtures through conftest ([#27540](https://github.com/astral-sh/ruff/pull/27540))
+
+### Diagnostics
+
+- Add more autofixes ([#28029](https://github.com/astral-sh/ruff/pull/28029))
+- Add a dedicated missing-slot diagnostic ([#28039](https://github.com/astral-sh/ruff/pull/28039))
+- Explain missing storage for declared slotted attributes ([#27969](https://github.com/astral-sh/ruff/pull/27969))
+- Improve diagnostic spans for unpacked variable assignments ([#28041](https://github.com/astral-sh/ruff/pull/28041))
+
+### Core type checking
+
+- Account for known subclasses in equality inference ([#28005](https://github.com/astral-sh/ruff/pull/28005))
+- Expand `ParamSpec` signatures inferred from bound receivers ([#28020](https://github.com/astral-sh/ruff/pull/28020))
+- Fix `Self` binding in `ParamSpec` protocols ([#28016](https://github.com/astral-sh/ruff/pull/28016))
+- Fix `TypedDict` variance inference ([#28052](https://github.com/astral-sh/ruff/pull/28052))
+- Fix unsound narrowing through branch-assigned conditions ([#28006](https://github.com/astral-sh/ruff/pull/28006))
+- Ignore inconsistent binding decorators on overloads ([#28036](https://github.com/astral-sh/ruff/pull/28036))
+- Infer `yield from` send/return types from the iterator returned by `__iter__` ([#27987](https://github.com/astral-sh/ruff/pull/27987))
+- Infer tuple type parameters from union arguments ([#28062](https://github.com/astral-sh/ruff/pull/28062))
+- Infer variance through nonrecursive protocol references ([#28065](https://github.com/astral-sh/ruff/pull/28065))
+- Preserve bounds of non-literal metaclasses ([#28046](https://github.com/astral-sh/ruff/pull/28046))
+- Preserve correlated generic-call inference ([#28043](https://github.com/astral-sh/ruff/pull/28043))
+- Preserve invariant materialization constraints ([#28047](https://github.com/astral-sh/ruff/pull/28047))
+- Recover bare `TypeVarTuple`s in tuple annotations ([#27950](https://github.com/astral-sh/ruff/pull/27950))
+- Reject fixed tuples for non-inferable `TypeVarTuple`s ([#27943](https://github.com/astral-sh/ruff/pull/27943))
+- Reject incompatible constructor context for variadic packs ([#27966](https://github.com/astral-sh/ruff/pull/27966))
+- Support mixed gradual tuple assignability with `TypeVarTuple` ([#27957](https://github.com/astral-sh/ruff/pull/27957))
+- Support tagged union with multiple tags per type ([#27984](https://github.com/astral-sh/ruff/pull/27984))
+- Sync vendored typeshed stubs ([#28035](https://github.com/astral-sh/ruff/pull/28035)). [Typeshed diff](https://github.com/python/typeshed/compare/6fba3ae73db5a9807780514b463126f1ee8ff216...6b7f7b93300550eb55380db8ca62488eb0c78c77)
+- Treat `typing.Union` as a class on Python 3.14+ ([#28003](https://github.com/astral-sh/ruff/pull/28003))
+- Validate generic protocol variance ([#27531](https://github.com/astral-sh/ruff/pull/27531))
+- `collections.abc.Callable` is an instance of `type` ([#27991](https://github.com/astral-sh/ruff/pull/27991))
+
+### Contributors
+
+- [@sharkdp](https://github.com/sharkdp)
+- [@jelle-openai](https://github.com/jelle-openai)
+- [@marcelo-souzaf](https://github.com/marcelo-souzaf)
+- [@AlexWaygood](https://github.com/AlexWaygood)
+- [@krzkaczor](https://github.com/krzkaczor)
+- [@carljm](https://github.com/carljm)
+- [@charliermarsh](https://github.com/charliermarsh)
+- [@lerebear](https://github.com/lerebear)
+- [@MichaReiser](https://github.com/MichaReiser)
+
+## 0.0.74
+
+Released on 2026-08-22.
+
+### Bug fixes
+
+- Avoid duplicate bindings in multi-target assignments ([#27938](https://github.com/astral-sh/ruff/pull/27938))
+- Avoid panic on unpacked kwargs in string annotations ([#27963](https://github.com/astral-sh/ruff/pull/27963))
+- Fix stack overflow in recursive `TypedDict` dictionary compatibility ([#27951](https://github.com/astral-sh/ruff/pull/27951))
+- Handle assignment expressions in string annotations ([#27921](https://github.com/astral-sh/ruff/pull/27921))
+- Handle dynamic classes in string annotations ([#27883](https://github.com/astral-sh/ruff/pull/27883))
+- Preserve string annotation context in lambda defaults and `TypedDict` types ([#27914](https://github.com/astral-sh/ruff/pull/27914))
+- Skip invalid subscript arguments in string annotations ([#27917](https://github.com/astral-sh/ruff/pull/27917))
+- Skip invalid subscript operands in string annotations ([#27882](https://github.com/astral-sh/ruff/pull/27882))
+
+### LSP server
+
+- Add `untrustedWorkspace` option to the LSP ([#27828](https://github.com/astral-sh/ruff/pull/27828))
+- Add executable discovery to the server command ([#27806](https://github.com/astral-sh/ruff/pull/27806))
+- Handle file-valued workspace folders from Zed ([#27836](https://github.com/astral-sh/ruff/pull/27836))
+- Skip scripts with an invalid PEP 723 configuration ([#27505](https://github.com/astral-sh/ruff/pull/27505))
+- Support pull diagnostics for notebook cells ([#27778](https://github.com/astral-sh/ruff/pull/27778))
+
+### Documentation
+
+- Update mypy/pyright comparison table ([#4165](https://github.com/astral-sh/ty/pull/4165))
+
+### Diagnostics
+
+- Add an opt-in `unsound-assignment` rule for variables ([#27874](https://github.com/astral-sh/ruff/pull/27874))
+- Fix variadic signature display ([#27869](https://github.com/astral-sh/ruff/pull/27869))
+- Highlight declarations in invalid-assignment diagnostics ([#27872](https://github.com/astral-sh/ruff/pull/27872))
+- Improve `LiteralString` suggestions in string annotations ([#27931](https://github.com/astral-sh/ruff/pull/27931))
+- Use `invalid-type-form` for non-generic class annotations ([#27889](https://github.com/astral-sh/ruff/pull/27889))
+
+### Core type checking
+
+- Add bounded constraint solution projections ([#27949](https://github.com/astral-sh/ruff/pull/27949))
+- Fix invariant gradual tuple materialization ranges ([#27946](https://github.com/astral-sh/ruff/pull/27946))
+- Guard recursive constructor bindings by receiver ([#27958](https://github.com/astral-sh/ruff/pull/27958))
+- Preserve all alternatives in bounded intersections ([#27898](https://github.com/astral-sh/ruff/pull/27898))
+- Preserve keyword safety for unpacked callables ([#27517](https://github.com/astral-sh/ruff/pull/27517))
+- Preserve source protocol members and classify finite aliases ([#27772](https://github.com/astral-sh/ruff/pull/27772))
+- Preserve type-variable order when reloading constraints ([#27904](https://github.com/astral-sh/ruff/pull/27904))
+- Propagate narrowing through statically known branches ([#27752](https://github.com/astral-sh/ruff/pull/27752))
+- Recognize ABC metaclass methods on protocols ([#27897](https://github.com/astral-sh/ruff/pull/27897))
+- Support `__slots__` ([#27730](https://github.com/astral-sh/ruff/pull/27730))
+
+### Performance
+
+- Lazily infer function parameter default types ([#27857](https://github.com/astral-sh/ruff/pull/27857))
+- Optimize inherited recursive protocol comparisons ([#27922](https://github.com/astral-sh/ruff/pull/27922))
+- Traverse shared constraint source-order nodes once ([#27947](https://github.com/astral-sh/ruff/pull/27947))
+
+### Contributors
+
+- [@carljm](https://github.com/carljm)
+- [@lerebear](https://github.com/lerebear)
+- [@charliermarsh](https://github.com/charliermarsh)
+- [@dhruvmanila](https://github.com/dhruvmanila)
+- [@AlexWaygood](https://github.com/AlexWaygood)
+- [@MichaReiser](https://github.com/MichaReiser)
+- [@jelle-openai](https://github.com/jelle-openai)
+
+## 0.0.73
+
+Released on 2026-08-18.
+
+### LSP server
+
+- Do not prefer unsafe fixes in the language server ([#27822](https://github.com/astral-sh/ruff/pull/27822))
+- Fix signature help in trailing whitespace ([#27784](https://github.com/astral-sh/ruff/pull/27784))
+
+### Library support
+
+- Preserve variadic generics in `functools.partial` ([#27774](https://github.com/astral-sh/ruff/pull/27774))
+
+### Diagnostics
+
+- Add an opt-in rule flagging function decorators that transform a non-dynamic type into a dynamic type ([#27829](https://github.com/astral-sh/ruff/pull/27829))
+- Disambiguate same-named types in several diagnostics ([#27814](https://github.com/astral-sh/ruff/pull/27814))
+- Show error spans for errors originating in script metadata ([#26693](https://github.com/astral-sh/ruff/pull/26693))
+
+### Core type checking
+
+- Avoid bypassing solver during literal promotion ([#27763](https://github.com/astral-sh/ruff/pull/27763))
+- Expand nested union aliases when finding a `TypedDict` or callable ([#27740](https://github.com/astral-sh/ruff/pull/27740))
+- Implement intersection meta-type projection ([#27660](https://github.com/astral-sh/ruff/pull/27660))
+- Infer generic protocols from class objects ([#27812](https://github.com/astral-sh/ruff/pull/27812))
+- Model exception-suppressing context managers ([#27219](https://github.com/astral-sh/ruff/pull/27219))
+- Preserve `TypeAliasType` runtime origin ([#27813](https://github.com/astral-sh/ruff/pull/27813))
+- Preserve class objects in lazy protocol checks ([#27815](https://github.com/astral-sh/ruff/pull/27815))
+- Preserve declared types in exception handlers ([#27817](https://github.com/astral-sh/ruff/pull/27817))
+- Preserve explicit globals after conditional rebinding ([#27786](https://github.com/astral-sh/ruff/pull/27786))
+- Preserve property subclass types and accessors ([#27833](https://github.com/astral-sh/ruff/pull/27833))
+- Preserve required stub fields in generated constructors ([#27765](https://github.com/astral-sh/ruff/pull/27765))
+- Preserve static upper bounds of gradual solutions ([#27664](https://github.com/astral-sh/ruff/pull/27664))
+- Prevent unrelated quantified constraints from destabilizing recursive queries ([#27737](https://github.com/astral-sh/ruff/pull/27737))
+- Separate generic constraint accumulation from legacy projection ([#27743](https://github.com/astral-sh/ruff/pull/27743))
+- Simplify generic protocol inference ([#27819](https://github.com/astral-sh/ruff/pull/27819))
+- Specialize inherited members of unspecialized generic classes ([#27658](https://github.com/astral-sh/ruff/pull/27658))
+- Specialize type variables determined by bound receivers ([#27732](https://github.com/astral-sh/ruff/pull/27732))
+- Support unpacking tuple type aliases ([#27825](https://github.com/astral-sh/ruff/pull/27825))
+- Sync vendored typeshed stubs ([#27771](https://github.com/astral-sh/ruff/pull/27771)). [Typeshed diff](https://github.com/python/typeshed/compare/1b116673774d062a4af7b0a0b3d05533a6be55d0...6fba3ae73db5a9807780514b463126f1ee8ff216)
+
+### Performance
+
+- Cache `py.typed` contents ([#27805](https://github.com/astral-sh/ruff/pull/27805))
+- Deduplicate exception checkpoints across equivalent branches ([#27703](https://github.com/astral-sh/ruff/pull/27703))
+
+### Contributors
+
+- [@charliermarsh](https://github.com/charliermarsh)
+- [@AlexWaygood](https://github.com/AlexWaygood)
+- [@MichaReiser](https://github.com/MichaReiser)
+- [@augustelalande](https://github.com/augustelalande)
+- [@carljm](https://github.com/carljm)
+- [@woodruffw](https://github.com/woodruffw)
+- [@dhruvmanila](https://github.com/dhruvmanila)
+- [@ibraheemdev](https://github.com/ibraheemdev)
+- [@zaniebot](https://github.com/zaniebot)
+
 ## 0.0.72
 
 Released on 2026-08-14.
@@ -1913,6 +2817,7 @@ As of v0.0.30, ty no longer unions `Unknown` into most inferred types of unannot
 class Foo:
     def __init__(self) -> None:
         self.value = 1
+
 
 reveal_type(Foo().value)  # revealed: int
 Foo().value = "x"  # error: [invalid-assignment]
