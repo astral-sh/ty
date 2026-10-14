@@ -18,8 +18,8 @@ with your editor.
 
 ty reports type errors and other [diagnostics](./diagnostics.md) directly in your editor. Diagnostics
 are updated as you type. You can use the
-[`diagnosticMode`](../reference/editor-settings.md#diagnosticmode) setting to control if you want to
-see diagnostics for open files only, or for your entire workspace.
+[`diagnosticMode`](../reference/editor-settings.md#diagnosticmode) setting to control whether you
+see diagnostics for open files only or for your entire workspace.
 
 !!! info
 
@@ -54,7 +54,7 @@ ty powers several language server features that allow you to navigate a Python c
   <figcaption>Accepting this completion will automatically add a <code>subprocess</code> import at the top of the file.</figcaption>
 </figure>
 
-ty provides intelligent code completions as you type, offering suggestions for variables, functions, classes, and modules that are in scope.
+ty provides code completions as you type, suggesting variables, functions, classes, and modules that are in scope.
 For symbols that are not yet imported, ty suggests auto-import actions to add the necessary `import` statements.
 
 ## Code actions and refactorings
@@ -94,7 +94,7 @@ ty surfaces useful contextual information as you code:
 
 ## Code folding
 
-ty provides Python specific code folding ranges to LSP clients upon request. This includes tagging
+ty provides Python-specific code folding ranges to LSP clients upon request. This includes tagging
 docstrings as comments, which supports editor actions like "fold all comment blocks."
 
 ## Notebook support

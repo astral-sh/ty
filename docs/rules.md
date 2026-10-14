@@ -12,7 +12,7 @@ specific pattern and can be turned on or off depending on your project’s needs
 
 Each rule has a configurable level:
 
-- `error`: violations are reported as errors and ty exits with an exit code of 1 if there's any.
+- `error`: violations are reported as errors and ty exits with an exit code of 1 if there are any.
 - `warn`: violations are reported as warnings. By default, ty exits with code `1` if there are only
     warning-level violations. Use `--exit-zero-on-warning` or set `terminal.error-on-warning` to
     `false` to exit with code `0` instead.
