@@ -4,6 +4,7 @@
 self-hosted-runner:
   # Various runners we use that aren't recognized out-of-the-box by actionlint:
   labels:
+    - depot-ubuntu-latest-4
     - depot-ubuntu-24.04-4
     - depot-ubuntu-24.04-8
     - depot-ubuntu-24.04-16
@@ -13,3 +14,9 @@ self-hosted-runner:
     - namespace-profile-windows-2022-x86-64-16x32
     - github-windows-2025-x86_64-8
     - github-windows-2025-x86_64-16
+
+paths:
+  .github/workflows/release.yml:
+    ignore:
+      # `actionlint` does not yet recognize GitHub's `$/` syntax.
+      - '^reusable workflow call "\$/\.github/workflows/[^"/]+\.yml" at "uses" is not following the format '
