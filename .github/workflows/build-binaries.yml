@@ -146,7 +146,7 @@ jobs:
           python-version: ${{ env.PYTHON_VERSION }}
           architecture: arm64
       - name: "Install uv for PGO training"
-        uses: astral-sh/setup-uv@c18668ad3cf93ea998bef934396af7bb5c839dc7 # v10.2.0
+        uses: astral-sh/setup-uv@1c37ad07a6a961277cf70c0d37d6f313000f5884 # v10.3.0
         with:
           # renovate: datasource=github-release-attachments depName=astral-sh/uv
           version: "0.13.0"
@@ -232,7 +232,7 @@ jobs:
           architecture: ${{ matrix.platform.arch }}
       - name: "Install uv for PGO training"
         if: ${{ matrix.platform.target == 'x86_64-pc-windows-msvc' }}
-        uses: astral-sh/setup-uv@c18668ad3cf93ea998bef934396af7bb5c839dc7 # v10.2.0
+        uses: astral-sh/setup-uv@1c37ad07a6a961277cf70c0d37d6f313000f5884 # v10.3.0
         with:
           # renovate: datasource=github-release-attachments depName=astral-sh/uv
           version: "0.13.0"
@@ -332,7 +332,7 @@ jobs:
           architecture: x64
       - name: "Install uv for PGO training"
         if: ${{ matrix.target == 'x86_64-unknown-linux-gnu' }}
-        uses: astral-sh/setup-uv@c18668ad3cf93ea998bef934396af7bb5c839dc7 # v10.2.0
+        uses: astral-sh/setup-uv@1c37ad07a6a961277cf70c0d37d6f313000f5884 # v10.3.0
         with:
           # renovate: datasource=github-release-attachments depName=astral-sh/uv
           version: "0.13.0"
@@ -419,7 +419,7 @@ jobs:
           cache: ""
           python-version: ${{ env.PYTHON_VERSION }}
       - name: "Install uv for PGO training"
-        uses: astral-sh/setup-uv@c18668ad3cf93ea998bef934396af7bb5c839dc7 # v10.2.0
+        uses: astral-sh/setup-uv@1c37ad07a6a961277cf70c0d37d6f313000f5884 # v10.3.0
         with:
           # renovate: datasource=github-release-attachments depName=astral-sh/uv
           version: "0.13.0"
