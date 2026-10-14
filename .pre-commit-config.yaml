@@ -2,7 +2,6 @@ fail_fast: false
 
 exclude: |
   (?x)^(
-    .github/workflows/release.yml|
     ruff/.*|
     docs/reference/(cli|configuration|rules|environment).md
   )$
