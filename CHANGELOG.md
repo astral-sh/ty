@@ -1,5 +1,39 @@
 # Changelog
 
+## 0.0.88
+
+Released on 2026-10-15.
+
+### Bug fixes
+
+- Avoid panics and hangs involving recursive type aliases and intersections ([#29057](https://github.com/astral-sh/ruff/pull/29057))
+- Fix false `invalid-mutable-override` errors when overriding `object` attributes ([#29373](https://github.com/astral-sh/ruff/pull/29373))
+- Fix attribute assignment and deletion checks through bounded or constrained type variables ([#29345](https://github.com/astral-sh/ruff/pull/29345))
+- Detect instance layout conflicts hidden by additional base classes ([#29372](https://github.com/astral-sh/ruff/pull/29372))
+- Fix false missing-argument errors when Pydantic models override inherited attributes with `ClassVar` ([#29367](https://github.com/astral-sh/ruff/pull/29367))
+- Preserve known module owners when uv reports owners outside the resolution ([#29296](https://github.com/astral-sh/ruff/pull/29296))
+
+### Diagnostic improvements
+
+- Report assignments to individually frozen Pydantic fields ([#29305](https://github.com/astral-sh/ruff/pull/29305))
+
+### Core type checking
+
+- Improve type inference for intersection arguments to generic functions ([#28677](https://github.com/astral-sh/ruff/pull/28677))
+- Preserve inherited annotations for unannotated subclass attributes when a base has type `Any` or `Unknown` ([#28973](https://github.com/astral-sh/ruff/pull/28973))
+- Preserve common return-type structure when gradual arguments match multiple overloads ([#29342](https://github.com/astral-sh/ruff/pull/29342))
+- Check upper bounds when inferring type variables from caller type variables ([#29014](https://github.com/astral-sh/ruff/pull/29014))
+
+### Contributors
+
+- [@zaniebot](https://github.com/zaniebot)
+- [@charliermarsh](https://github.com/charliermarsh)
+- [@zhouzaida](https://github.com/zhouzaida)
+- [@seunghyun-24](https://github.com/seunghyun-24)
+- [@zsol](https://github.com/zsol)
+- [@RasmusNygren](https://github.com/RasmusNygren)
+- [@carljm](https://github.com/carljm)
+
 ## 0.0.87
 
 Released on 2026-10-13.
