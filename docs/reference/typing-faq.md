@@ -408,6 +408,105 @@ ty reports *"Cannot resolve imported module …"*, check the following:
     to understand the types. See also [this issue](https://github.com/astral-sh/ty/issues/487) which
     tracks improvements in this area.
 
+## How does ty handle `try`/`except ImportError` imports? { #import-fallbacks }
+
+Code that has to run in more than one environment often tries an import and falls back to
+something else if it fails. ty cannot know which branch will run, so it treats both as possible and
+gives the name a union of everything it could be bound to. Whether that union causes problems
+depends on what the fallback is. There are three common cases.
+
+### The fallback is `None`
+
+This is the usual pattern for an optional dependency, and ty handles it without any changes. The
+name has type `<module 'numpy'> | None`, and ty asks you to check for `None` before using it, which
+is exactly what the code has to do at runtime anyway:
+
+```py
+try:
+    import numpy as np
+except ImportError:
+    np = None
+
+
+def mean(values: list[float]) -> float:
+    if np is None:
+        return sum(values) / len(values)
+    return float(np.mean(values))
+```
+
+ty can only check the code that uses the dependency if the dependency is installed in the
+environment ty is checking. Otherwise it reports an `unresolved-import` error, and the name is
+`Unknown | None`.
+
+### The fallback depends on the Python version
+
+Backports such as `typing_extensions` are often imported with a `try`/`except`:
+
+```py
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
+```
+
+When ty checks for a Python version that lacks `typing.Self`, it reports an `unresolved-import`
+error on the first import, and the name becomes a union with `Unknown`. Annotations that use it are
+then only partly checked: a method returning `Self` is inferred as returning `Unknown | MyClass`.
+Use a `sys.version_info` check instead. ty evaluates it against the configured
+[`python-version`](./configuration.md#python-version) and only checks the branch that applies. The
+same works for `sys.platform` and [`python-platform`](./configuration.md#python-platform).
+
+```py
+import sys
+
+if sys.version_info >= (3, 11):
+    from typing import Self
+else:
+    from typing_extensions import Self
+```
+
+### The fallback is an alternative implementation
+
+Sometimes the fallback is a different module with the same API, for example a pure-Python version
+of a C extension, or a library for another runtime:
+
+```py
+try:
+    import datetime
+except ImportError:
+    import adafruit_datetime as datetime  # CircuitPython
+
+start = datetime.datetime(2026, 1, 1)
+start + datetime.timedelta(days=1)  # error: unsupported-operator
+```
+
+Here `datetime` is `<module 'datetime'> | <module 'adafruit_datetime'>`, and so is every attribute
+of it. ty checks the addition as if a `datetime.datetime` could be added to an
+`adafruit_datetime.timedelta`, which never happens at runtime. A stand-in fallback such as
+`Widget = object` has a similar effect: an annotation `w: Widget` then means `Widget | object`,
+which is just `object`.
+
+To check your code against one implementation only, hide the fallback from ty with a
+`TYPE_CHECKING` guard. `TYPE_CHECKING` is `False` at runtime, so the fallback still runs when the
+first import fails:
+
+```py
+from typing import TYPE_CHECKING
+
+try:
+    import datetime
+except ImportError:
+    if not TYPE_CHECKING:
+        import adafruit_datetime as datetime  # CircuitPython
+
+start = datetime.datetime(2026, 1, 1)
+start + datetime.timedelta(days=1)  # OK
+```
+
+ty no longer checks the fallback branch, so it is up to you to make sure the fallback really
+provides the same API. See [this issue](https://github.com/astral-sh/ty/issues/2096) for plans to
+handle this pattern better.
+
 ## Does ty support monorepos?
 
 ty can work with monorepos, but automatic discovery of nested projects is limited. By default, ty
