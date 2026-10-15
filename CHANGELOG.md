@@ -1,5 +1,37 @@
 # Changelog
 
+## 0.0.88
+
+Released on 2026-10-15.
+
+### Bug fixes
+
+- Avoid writable override contracts from object ([#29373](https://github.com/astral-sh/ruff/pull/29373))
+- Fix attribute writes through type variables ([#29345](https://github.com/astral-sh/ruff/pull/29345))
+- Preserve known module owners when uv reports unknown IDs ([#29296](https://github.com/astral-sh/ruff/pull/29296))
+- Preserve recursive aliases when rebuilding intersections ([#29057](https://github.com/astral-sh/ruff/pull/29057))
+- Preserve shared structure in ambiguous overload return types ([#29342](https://github.com/astral-sh/ruff/pull/29342))
+
+### Other changes
+
+- Add diagnostics when modifying frozen pydantic fields ([#29305](https://github.com/astral-sh/ruff/pull/29305))
+- Collect intersection inference through constraint relations ([#28677](https://github.com/astral-sh/ruff/pull/28677))
+- Document and lint the manually maintained release workflow ([#4320](https://github.com/astral-sh/ty/pull/4320))
+- Fix instance layout conflict detection for inherited classes ([#29372](https://github.com/astral-sh/ruff/pull/29372))
+- Preserve inherited annotations past dynamic bases ([#28973](https://github.com/astral-sh/ruff/pull/28973))
+- Validate inferred solutions against declared upper bounds ([#29014](https://github.com/astral-sh/ruff/pull/29014))
+- fix missing argument typing check caused by pydantic classvar support ([#29367](https://github.com/astral-sh/ruff/pull/29367))
+
+### Contributors
+
+- [@zaniebot](https://github.com/zaniebot)
+- [@charliermarsh](https://github.com/charliermarsh)
+- [@zhouzaida](https://github.com/zhouzaida)
+- [@seunghyun-24](https://github.com/seunghyun-24)
+- [@zsol](https://github.com/zsol)
+- [@RasmusNygren](https://github.com/RasmusNygren)
+- [@carljm](https://github.com/carljm)
+
 ## 0.0.87
 
 Released on 2026-10-13.
