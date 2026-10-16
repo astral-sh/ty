@@ -1,5 +1,47 @@
 # Changelog
 
+## 0.0.89
+
+Released on 2026-10-16.
+
+### Core type checking
+
+- Added support for return type inference for unannotated functions and methods ([#29253](https://github.com/astral-sh/ruff/pull/29253)).
+
+    Return type inference is currently disabled by default. Enable it with the [`analysis.return-type-inference`](https://docs.astral.sh/ty/reference/configuration/#return-type-inference) setting in `pyproject.toml`:
+
+    ```toml
+    [tool.ty.analysis]
+    return-type-inference = "always"
+    ```
+
+    Or in `ty.toml`:
+
+    ```toml
+    [analysis]
+    return-type-inference = "always"
+    ```
+
+    Please share your feedback, especially any problems you encounter, in [the return type inference feedback issue](https://github.com/astral-sh/ty/issues/4739).
+
+- Sync vendored typeshed stubs ([#29402](https://github.com/astral-sh/ruff/pull/29402)). [Typeshed diff](https://github.com/python/typeshed/compare/b932d8ce0f893d7d9ef167f0379dcaf9f48bf70b...86d68f86591c4bf97723350505d2cd28123ab3b6)
+
+### Bug fixes
+
+- Avoid a panic when negating dynamic type aliases ([#29427](https://github.com/astral-sh/ruff/pull/29427))
+- Widen tuple literal lengths when other collection elements contain nested tuple types ([#29147](https://github.com/astral-sh/ruff/pull/29147))
+- Report invalid `Generic` and `Protocol` arguments containing nested variadic type variables ([#29146](https://github.com/astral-sh/ruff/pull/29146))
+
+### Performance
+
+- Speed up generic class-pattern narrowing by skipping impossible intersection comparisons ([#29240](https://github.com/astral-sh/ruff/pull/29240))
+
+### Contributors
+
+- [@carljm](https://github.com/carljm)
+- [@charliermarsh](https://github.com/charliermarsh)
+- [@sharkdp](https://github.com/sharkdp)
+
 ## 0.0.88
 
 Released on 2026-10-15.
