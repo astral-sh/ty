@@ -149,8 +149,8 @@ jobs:
         uses: astral-sh/setup-uv@1c37ad07a6a961277cf70c0d37d6f313000f5884 # v10.3.0
         with:
           # renovate: datasource=github-release-attachments depName=astral-sh/uv
-          version: "0.13.0"
-          checksum: "a9c1b29002cf3c83f07fa9cd8a887a3be0107d90e23189721221e7257db8e3d6"
+          version: "0.13.4"
+          checksum: "e0b1d4743ce64c55d9f0f4a444afa6b81125680070ee04e853fcd0f6c1ebf8f1"
           enable-cache: false
       - name: "Install LLVM profiling tools"
         id: pgo-toolchain
@@ -235,8 +235,8 @@ jobs:
         uses: astral-sh/setup-uv@1c37ad07a6a961277cf70c0d37d6f313000f5884 # v10.3.0
         with:
           # renovate: datasource=github-release-attachments depName=astral-sh/uv
-          version: "0.13.0"
-          checksum: "088962f9e7b7bd9ea740c04c650b2a21c8928c345bd99ac24350dc924dba656c"
+          version: "0.13.4"
+          checksum: "ccec7508a07d9933d7cb1261880633efcf1f30d6e6eddab21823f1dae6f23225"
           enable-cache: false
       - name: "Install LLVM profiling tools"
         id: pgo-toolchain
@@ -335,8 +335,8 @@ jobs:
         uses: astral-sh/setup-uv@1c37ad07a6a961277cf70c0d37d6f313000f5884 # v10.3.0
         with:
           # renovate: datasource=github-release-attachments depName=astral-sh/uv
-          version: "0.13.0"
-          checksum: "1468ebd5a5541121837c5a2817b9972ba6090fa6caa3d142620850a47fb75154"
+          version: "0.13.4"
+          checksum: "2b428396f12572d4429cf210ca234dd599a33b3af0958a4d5ed569d63e3f344f"
           enable-cache: false
       - name: "Install LLVM profiling tools"
         id: pgo-toolchain
@@ -422,8 +422,8 @@ jobs:
         uses: astral-sh/setup-uv@1c37ad07a6a961277cf70c0d37d6f313000f5884 # v10.3.0
         with:
           # renovate: datasource=github-release-attachments depName=astral-sh/uv
-          version: "0.13.0"
-          checksum: "3ccfb6af6e242433eb552f7d9676abd5412c6595c497e990d9c8cb7b5bd4d2c3"
+          version: "0.13.4"
+          checksum: "1ae72b4718729e2ccc4f1ae2c6d1e531ca8467800e0546e9130b3886023a60ab"
           enable-cache: false
       - name: "Install LLVM profiling tools"
         id: pgo-toolchain

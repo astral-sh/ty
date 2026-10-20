@@ -9,7 +9,7 @@ exclude: |
 repos:
   # Priority 0: Read-only hooks; hooks that modify disjoint file types.
   - repo: https://github.com/astral-sh/uv-pre-commit
-    rev: 2e145a365871c9fef3715d38b9b7393ce4174c85 # frozen: 0.13.0
+    rev: dd409d04a3fa4a50f918dddb3ad3c6d8f46ab2cd # frozen: 0.13.4
     hooks:
       - id: uv-lock
         priority: 0
