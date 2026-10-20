@@ -1,5 +1,46 @@
 # Changelog
 
+## 0.0.90
+
+Released on 2026-10-20.
+
+### Bug fixes
+
+- Allow subclasses to restore hashability ([#29471](https://github.com/astral-sh/ruff/pull/29471))
+- Avoid crashes when negating recursive aliases ([#29429](https://github.com/astral-sh/ruff/pull/29429))
+- Avoid stack overflow for recursive descriptor setter checks ([#29467](https://github.com/astral-sh/ruff/pull/29467))
+- Defer constructor type variable defaults ([#29469](https://github.com/astral-sh/ruff/pull/29469))
+- Preserve bound receivers for strict signature checks ([#29396](https://github.com/astral-sh/ruff/pull/29396))
+- Preserve read types for dynamic attributes ([#29461](https://github.com/astral-sh/ruff/pull/29461))
+- Reject runtime_checkable on non-protocol classes ([#29460](https://github.com/astral-sh/ruff/pull/29460))
+- Validate TypeAliasType keyword arguments ([#29466](https://github.com/astral-sh/ruff/pull/29466))
+
+### LSP server
+
+- Add return-type inlay hints ([#29437](https://github.com/astral-sh/ruff/pull/29437))
+
+### Other changes
+
+- Adopt stable macOS signing identifiers ([#4743](https://github.com/astral-sh/ty/pull/4743))
+- Avoid inserting inlay hints containing stub-only types ([#29477](https://github.com/astral-sh/ruff/pull/29477))
+- Filter incompatible union members during union inference ([#29344](https://github.com/astral-sh/ruff/pull/29344))
+- Infer ParamSpecs from call-wide constraints ([#28828](https://github.com/astral-sh/ruff/pull/28828))
+- Mitigate pauses from clearing cached ASTs in more language server operations ([#29232](https://github.com/astral-sh/ruff/pull/29232))
+- Report read-only keys when deleting, popping, or defaulting TypedDict items ([#29441](https://github.com/astral-sh/ruff/pull/29441))
+- Support uv's nested module ownership metadata ([#29436](https://github.com/astral-sh/ruff/pull/29436))
+
+### Contributors
+
+- [@carljm](https://github.com/carljm)
+- [@zsol](https://github.com/zsol)
+- [@zanieb](https://github.com/zanieb)
+- [@ibraheemdev](https://github.com/ibraheemdev)
+- [@hsusul](https://github.com/hsusul)
+- [@charliermarsh](https://github.com/charliermarsh)
+- [@sharkdp](https://github.com/sharkdp)
+- [@dhruvmanila](https://github.com/dhruvmanila)
+- [@lerebear](https://github.com/lerebear)
+
 ## 0.0.89
 
 Released on 2026-10-16.
