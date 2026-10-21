@@ -172,15 +172,16 @@ jobs:
               owner: "astral-sh",
               repo: "ty",
               title: "Daily ty fuzz failed",
-              labels: ["bug", "fuzzer", "fatal"],
+              labels: ["bug", "fuzzer", "fatal", "regression"],
             };
-            const fallbackBody = "This may indicate that a new panic or timeout was introduced in the last 24 hours. See the [workflow run](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}) for details.";
+            const introduction = "This may indicate that a new panic or timeout was introduced in the last 24 hours.";
+            const fallbackBody = `${introduction} See the [workflow run](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}) for details.`;
             const createIssue = (body) => github.rest.issues.create({ ...issue, body });
 
             if (process.env.REPORT_DOWNLOAD_OUTCOME === "success") {
               try {
                 const report = require("node:fs").readFileSync(`${process.env.RUNNER_TEMP}/fuzz-report/fuzz-issue.md`, "utf8");
-                await createIssue(report);
+                await createIssue(`${introduction}\n\n${report}`);
                 return;
               } catch (error) {
                 core.error(error);
