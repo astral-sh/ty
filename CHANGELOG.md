@@ -1,5 +1,43 @@
 # Changelog
 
+## 0.0.91
+
+Released on 2026-10-22.
+
+### Bug fixes
+
+- Improve generics solving when an intersection is passed into a generic call to prefer solving the call to a more precise type when it is safe to do so ([#29578](https://github.com/astral-sh/ruff/pull/29578))
+- Fix recursive type materialization ([#29532](https://github.com/astral-sh/ruff/pull/29532))
+- Infer return intersections from correlated call specializations ([#28303](https://github.com/astral-sh/ruff/pull/28303))
+- Preserve `Self` when checking universal protocols ([#29207](https://github.com/astral-sh/ruff/pull/29207))
+- Fix stack overflows involving recursive descriptor setter types ([#29148](https://github.com/astral-sh/ruff/pull/29148))
+- Preserve the namespace-package fallback in module discovery when the namespace-package fallback is obscured by a partial stub package ([#29559](https://github.com/astral-sh/ruff/pull/29559))
+- Report all missing `@override` decorators together ([#29557](https://github.com/astral-sh/ruff/pull/29557))
+- Fix false-positive `invalid-argument-type` diagnostics when inferring constrained type variables from callbacks that return an invariant generic with a gradual type argument ([#29577](https://github.com/astral-sh/ruff/pull/29577))
+
+### Performance improvements
+
+- Compare protocol receiver restrictions before binding ([#29443](https://github.com/astral-sh/ruff/pull/29443))
+
+### LSP server
+
+- Avoid cancelling requests for unrelated file changes ([#29604](https://github.com/astral-sh/ruff/pull/29604))
+
+### Core type checking
+
+- Generics solving: check for unsatisfiable bodies before existentially quantifying ([#29504](https://github.com/astral-sh/ruff/pull/29504))
+- Liskov diagnostics: Check inherited attribute conflicts ([#28559](https://github.com/astral-sh/ruff/pull/28559))
+- Return type inference: eneralize nested types in inferred return types ([#29488](https://github.com/astral-sh/ruff/pull/29488))
+
+### Contributors
+
+- [@charliermarsh](https://github.com/charliermarsh)
+- [@sharkdp](https://github.com/sharkdp)
+- [@dhruvmanila](https://github.com/dhruvmanila)
+- [@carljm](https://github.com/carljm)
+- [@MichaReiser](https://github.com/MichaReiser)
+- [@dcreager](https://github.com/dcreager)
+
 ## 0.0.90
 
 Released on 2026-10-20.
