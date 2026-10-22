@@ -26,10 +26,6 @@ jobs:
     env:
       VERSION: ${{ fromJson(inputs.plan).announcement_tag }}
     steps:
-      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-        with:
-          persist-credentials: false
-
       - name: "Set branch name"
         run: echo "BRANCH_NAME=update-versions-$VERSION-$(date +%s)" >> "$GITHUB_ENV"
 
@@ -59,6 +55,7 @@ jobs:
           # renovate: datasource=github-release-attachments depName=astral-sh/uv
           version: "0.13.4"
           checksum: "2b428396f12572d4429cf210ca234dd599a33b3af0958a4d5ed569d63e3f344f"
+          python-version: "3.13"
           enable-cache: false
 
       - name: "Update versions"
