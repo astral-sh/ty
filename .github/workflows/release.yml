@@ -225,12 +225,16 @@ jobs:
           path: target/distrib/local-dist-manifest.json
 
   # Build and package all the platform-agnostic(ish) things
+  #
+  # The global artifacts use binary archives and the local dist manifest with
+  # checksums, but not Docker build outputs. Omitting `custom-build-docker` from
+  # `needs` lets this job run before Docker finishes. The `host` job still requires
+  # Docker to succeed or be skipped.
   build-global-artifacts:
     needs:
       - sign-release-binaries
       - plan
       - custom-build-binaries
-      - custom-build-docker
       - generate-checksum-manifest
     permissions:
       "contents": "read"
