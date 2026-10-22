@@ -36,8 +36,6 @@ jobs:
           repository: astral-sh/ruff
       - name: "Install Rust toolchain"
         run: rustup show
-      - name: "Install mold"
-        uses: rui314/setup-mold@9c9c13bf4c3f1adef0cc596abc155580bcb04444 # v1
       - uses: Swatinem/rust-cache@6323deb102c322ba6fcbdcafc7e3dddab59af2b6 # v2.9.2
       - name: Build ty
         # A release build takes longer (2 min vs 1 min), but the property tests run much faster in release
