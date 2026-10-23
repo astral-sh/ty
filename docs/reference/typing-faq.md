@@ -208,9 +208,9 @@ modify(directories)  # ty emits an error on this call
 
     You can try it out in [this playground example](https://play.ty.dev/01013e73-da54-40c4-a9c5-2af269abda9d).
 
-The `modify` call mutates the contents of the `directories` list. After this call,
-it contains two directories *and one `File`*, which clearly violates the
-`list[Directory]` type annotation. If this call *were* allowed, subsequent code
+If the `modify` call were allowed, it would mutate the contents of the `directories` list.
+The list would contain two directories *and one `File`*, violating the
+`list[Directory]` type annotation. Subsequent code
 that relies on the fact that `directories` only contains `Directory` instances might
 break at runtime:
 
@@ -288,7 +288,7 @@ class FileUpload:
 retry(3, FileUpload("image.png"))
 ```
 
-To fix this, you could use `getattr` with a fall back to a default name when the
+To fix this, you could use `getattr` with a fallback to a default name when the
 attribute is not present (or use a `hasattr(…, "__name__")` check if you access
 it multiple times):
 
@@ -439,18 +439,18 @@ topic.
 
 ## Does ty support PEP 723 inline-metadata scripts?
 
-It depends on what you want to do. If you have a single inline-metadata script, you can type check
-it with ty by using uv's `--with-requirements` flag to install the dependencies specified in the
-script header:
+In editors, ty's experimental uv integration can create and update environments for standalone
+scripts based on their inline metadata. Set
+[`experimental.useUv`](./editor-settings.md#experimentaluseuv) to `"scripts"` to enable it.
+
+To provide the dependencies for a single script directly, use uv's `--with-requirements` flag to
+install the dependencies specified in the script header:
 
 ```bash
 uvx --with-requirements script.py ty check script.py
 ```
 
-If you have multiple scripts in your workspace, ty does not yet recognize that they have different
-dependencies based on their inline metadata.
-
-You can follow [this issue](https://github.com/astral-sh/ty/issues/691) for updates.
+See [this issue](https://github.com/astral-sh/ty/issues/691) for further discussion of script support.
 
 ## Is there a pre-commit hook for ty?
 

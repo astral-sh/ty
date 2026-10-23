@@ -1,12 +1,12 @@
 # Diagnostics
 
-ty provides diagnostics that include snippets of your source code, annotations and helpful
-explanations. It will sometimes also provide suggestions on how to fix the reported issues.
+ty provides diagnostics that include snippets of your source code, annotations, and helpful
+explanations. It sometimes suggests how to fix the reported issues.
 
 ## Example: Typed dictionaries
 
-In this first example, ty detected an invalid assignment to a `TypedDict` key. Notice how the
-diagnostic includes both the context around the line with the error, as well as the reference to the
+In this example, ty detected an invalid assignment to a `TypedDict` key. The
+diagnostic includes both the context around the line with the error and a reference to the
 `age` item in the `TypedDict` definition:
 
 ![TypedDict invalid-assignment diagnostic](screenshots/diagnostics1.dark.png#only-dark)
@@ -29,7 +29,7 @@ function definition for `write`:
 
 ## Example: Backwards compatibility
 
-Instead of just telling you that `tomllib` can not be found, ty will tell you *why* it is not
+Instead of just telling you that `tomllib` cannot be found, ty tells you *why* it is not
 available for your project. In this case, your project is targeting Python 3.10, but `tomllib` was
 only added in Python 3.11:
 

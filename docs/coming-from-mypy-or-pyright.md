@@ -24,13 +24,13 @@ This guide helps you migrate a project from
 ## Stricter checking with ty
 
 For both mypy and pyright, "strict" mode enables several error codes that are otherwise disabled by
-default, but also makes fundamental changes to the way type inference and type checking works.
+default, but also makes fundamental changes to how type inference and type checking work.
 Mypy's strict mode includes `--check-untyped-defs`, for example, without which unannotated
 functions are left unchecked; pyright's strict mode includes `strictListInference`, without which
 `[1, "foo"]` will be inferred as having type `list[Unknown]` rather than `list[int | str]` or
 similar.
 
-ty's default mode is currently stricter by default than either mypy or pyright in many ways. ty
+ty's default mode is currently stricter than either mypy or pyright in many ways. ty
 does not have flags such as `--check-untyped-defs` or `strictListInference`, because these are
 ty's default behaviour and are not currently configurable. Meanwhile, nearly all ty rules are
 enabled by default, and the ones that are disabled by default are usually in that category because
@@ -105,8 +105,8 @@ table below for more details.
 - **Pyright diagnostic**: the `report*` setting in `pyrightconfig.json` or `[tool.pyright]`.
 
 A diagnostic may appear in multiple rows when it covers distinct cases. A blank cell means no direct
-equivalent exists in that checker (the diagnostic is either not
-emitted, or is folded into a broader category that already appears for another ty rule).
+equivalent exists in that checker (the diagnostic is either not emitted or is folded into a broader
+category that already appears for another ty rule).
 
 ### Rules
 
