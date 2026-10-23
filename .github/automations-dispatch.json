@@ -1,0 +1,46 @@
+{
+  "version": 2,
+  "repositories": {
+    "ty": {
+      "name": "astral-sh/ty",
+      "id": 976731654
+    }
+  },
+  "rules": [
+    {
+      "repository": "ty",
+      "on": {
+        "pull_request": ["labeled"]
+      },
+      "conditions": {
+        "/label/name": {
+          "one_of": ["bot:ai-policy-comment", "bot:ai-policy-close"]
+        }
+      },
+      "allow_draft": true,
+      "allow_forks": true,
+      "allow_stale_head": true,
+      "workflow": "ai-policy.yml",
+      "inputs": {
+        "label": "/label/name"
+      }
+    },
+    {
+      "repository": "ty",
+      "on": {
+        "issues": ["labeled"]
+      },
+      "conditions": {
+        "/label/name": {
+          "one_of": ["bot:ai-policy-comment", "bot:ai-policy-close"]
+        },
+        "/issue/state": "open"
+      },
+      "workflow": "ai-policy.yml",
+      "inputs": {
+        "issue": "/issue/number",
+        "label": "/label/name"
+      }
+    }
+  ]
+}
