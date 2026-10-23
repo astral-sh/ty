@@ -17,6 +17,14 @@
     {
       "caller": "ty",
       "environment": "automations",
+      "caller_workflow": "ai-policy.yml",
+      "on": ["workflow_dispatch"],
+      "permissions": { "issues": "write", "pull_requests": "write" },
+      "target": "ty"
+    },
+    {
+      "caller": "ty",
+      "environment": "automations",
       "caller_workflow": "sync-ty-security.yml",
       "on": ["push", "workflow_dispatch"],
       "permissions": { "contents": "write", "workflows": "write" },
