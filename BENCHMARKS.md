@@ -8,7 +8,7 @@ upstream revisions with dependencies resolved afresh. Both runs used the same
 checker versions, Python versions, and dependency cutoff (`2026-10-24T19:50:00Z`).
 Updated project requirements can still change the installed dependencies.
 
-Each cell shows **existing revision → updated revision (percentage change)**.
+Timing cells show **existing revision → updated revision (percentage change)**.
 Times are mean wall-clock milliseconds; negative changes mean faster checks.
 
 Detailed statistics, repetition counts, tool versions, and exact revisions are
@@ -26,7 +26,7 @@ available in [BENCHMARKS.json](BENCHMARKS.json).
 - Harness Python: 3.15.1. Project environments use Python 3.11.17, except Home
     Assistant, which uses Python 3.14.9.
 
-For run instructions, see [`ty_benchmark/README.md`](https://github.com/astral-sh/ruff/blob/6b55217a73f66710184789bf60a8412df30995d0/scripts/ty_benchmark/README.md).
+For run instructions, see [`ty_benchmark/README.md`](https://github.com/astral-sh/ruff/blob/fc1f18e8512333b0fdb970249444686c3dcde100/scripts/ty_benchmark/README.md).
 
 ## CLI cold check
 
@@ -44,6 +44,30 @@ every run.
 | pandas-stubs  |  104.3 → 105.5 (+1.2%) |  196.9 → 200.1 (+1.6%) |    4,873 → 4,683 (-3.9%) |    2,410 → 2,462 (+2.2%) |
 | prefect       |  131.5 → 133.8 (+1.7%) |  255.6 → 263.6 (+3.1%) |    494.9 → 491.2 (-0.7%) |    3,876 → 3,821 (-1.4%) |
 | pytorch       | 1,305 → 1,552 (+18.9%) | 1,039 → 1,198 (+15.3%) | 22,555 → 29,475 (+30.7%) |  15,388 → 16,815 (+9.3%) |
+
+## CLI peak RSS
+
+Mean peak resident set size across the same measured CLI runs, collected by
+[Hyperfine 2.0](https://github.com/sharkdp/hyperfine/releases/tag/v2.0.0). Values
+retain the precision of its terminal summaries; GiB values are rounded to 0.1 GiB.
+
+On macOS, Hyperfine uses [`ru_maxrss`](https://github.com/sharkdp/hyperfine/blob/v2.0.0/src/timer/unix_timer.rs).
+This metric does not sum concurrent worker RSS; Pyright runs with `--threads`.
+The LSP suites below measure latency.
+
+Each cell shows **existing revision → updated revision**.
+
+| Project       |                    ty |               Pyrefly |                  mypy |               Pyright |
+| ------------- | --------------------: | --------------------: | --------------------: | --------------------: |
+| black         | 133.6 MiB → 137.1 MiB | 155.7 MiB → 160.1 MiB | 196.0 MiB → 198.4 MiB | 295.7 MiB → 294.2 MiB |
+| discord.py    | 229.5 MiB → 229.9 MiB | 216.9 MiB → 216.5 MiB | 279.4 MiB → 279.9 MiB | 434.0 MiB → 433.7 MiB |
+| homeassistant |     3.1 GiB → 3.6 GiB |     2.5 GiB → 3.0 GiB |     1.8 GiB → 2.3 GiB |     1.6 GiB → 1.8 GiB |
+| isort         |   93.1 MiB → 90.5 MiB | 104.1 MiB → 103.9 MiB | 121.5 MiB → 120.4 MiB | 297.4 MiB → 266.0 MiB |
+| jinja         |  100.0 MiB → 99.9 MiB | 116.1 MiB → 115.9 MiB | 137.2 MiB → 136.9 MiB | 257.0 MiB → 256.8 MiB |
+| pandas        | 572.6 MiB → 584.7 MiB | 555.1 MiB → 572.2 MiB | 922.2 MiB → 925.3 MiB | 738.0 MiB → 742.9 MiB |
+| pandas-stubs  | 159.8 MiB → 163.0 MiB | 274.0 MiB → 275.0 MiB | 608.7 MiB → 615.4 MiB | 387.2 MiB → 392.8 MiB |
+| prefect       | 222.8 MiB → 224.9 MiB | 292.4 MiB → 293.6 MiB | 134.8 MiB → 135.4 MiB | 575.7 MiB → 588.8 MiB |
+| pytorch       |     1.5 GiB → 1.7 GiB |     0.8 GiB → 0.9 GiB |     1.6 GiB → 1.8 GiB |     1.4 GiB → 1.6 GiB |
 
 ## LSP: initial diagnostics
 
