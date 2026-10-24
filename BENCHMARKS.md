@@ -22,7 +22,7 @@ available in [BENCHMARKS.json](BENCHMARKS.json).
 - Harness Python: 3.15.1. Project environments use Python 3.11.17, except Home
     Assistant, which uses Python 3.14.9.
 
-For run instructions, see [`ty_benchmark/README.md`](https://github.com/astral-sh/ruff/blob/64cbba5d7babb4bc46a7c674a5903323ae42ab78/scripts/ty_benchmark/README.md).
+For run instructions, see [`ty_benchmark/README.md`](https://github.com/astral-sh/ruff/blob/94c7eca033ab0e8a45be87b670f0fede91b5470b/scripts/ty_benchmark/README.md).
 
 ## CLI cold check
 
@@ -40,6 +40,28 @@ every run.
 | pandas-stubs  |   104.3 ± 3.9 |  196.9 ± 2.5 |   4,873 ± 16.0 |   2,410 ± 23.6 |
 | prefect       |   131.5 ± 5.7 |  255.6 ± 9.7 |    494.9 ± 3.6 |   3,876 ± 44.6 |
 | pytorch       |  1,305 ± 64.0 | 1,039 ± 21.0 | 22,555 ± 132.0 | 15,388 ± 117.0 |
+
+## CLI peak RSS
+
+Mean peak resident set size across the same measured CLI runs, collected by
+[Hyperfine 2.0](https://github.com/sharkdp/hyperfine/releases/tag/v2.0.0). Values
+retain the precision of its terminal summaries; GiB values are rounded to 0.1 GiB.
+
+On macOS, Hyperfine uses [`ru_maxrss`](https://github.com/sharkdp/hyperfine/blob/v2.0.0/src/timer/unix_timer.rs).
+This metric does not sum concurrent worker RSS; Pyright runs with `--threads`.
+The LSP suites below measure latency.
+
+| Project       |        ty |   Pyrefly |      mypy |   Pyright |
+| ------------- | --------: | --------: | --------: | --------: |
+| black         | 133.6 MiB | 155.7 MiB | 196.0 MiB | 295.7 MiB |
+| discord.py    | 229.5 MiB | 216.9 MiB | 279.4 MiB | 434.0 MiB |
+| homeassistant |   3.1 GiB |   2.5 GiB |   1.8 GiB |   1.6 GiB |
+| isort         |  93.1 MiB | 104.1 MiB | 121.5 MiB | 297.4 MiB |
+| jinja         | 100.0 MiB | 116.1 MiB | 137.2 MiB | 257.0 MiB |
+| pandas        | 572.6 MiB | 555.1 MiB | 922.2 MiB | 738.0 MiB |
+| pandas-stubs  | 159.8 MiB | 274.0 MiB | 608.7 MiB | 387.2 MiB |
+| prefect       | 222.8 MiB | 292.4 MiB | 134.8 MiB | 575.7 MiB |
+| pytorch       |   1.5 GiB |   0.8 GiB |   1.6 GiB |   1.4 GiB |
 
 ## LSP: initial diagnostics
 
