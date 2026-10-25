@@ -100,6 +100,34 @@ edit fixture and is omitted from both LSP suites.
 | prefect       |    8.3 → 8.6 (+3.0%) |   76.2 → 74.2 (-2.7%) |  698.5 → 699.2 (+0.1%) |
 | pytorch       |    5.6 → 5.9 (+5.4%) |   38.5 → 34.8 (-9.6%) |  427.3 → 414.5 (-3.0%) |
 
+## Repeat validation
+
+A second pass over the updated projects used the same revisions, checkers, Python
+versions, dependency cutoff, warmups, and repetition settings. It completed 36 CLI
+measurements and 48 passing LSP cases, with six expected skips. Its timing and RSS
+statistics are recorded as `updated_repeat` in [BENCHMARKS.json](BENCHMARKS.json).
+
+Each cell below shows the median absolute change in mean time across projects,
+followed by the largest absolute change. These compare the two updated-project
+passes; the tables above use the first pass.
+
+| Checker |             CLI | Initial diagnostics | Incremental edit |
+| ------- | --------------: | ------------------: | ---------------: |
+| ty      | 2.1% (max 4.6%) |     1.4% (max 4.4%) |  2.0% (max 9.6%) |
+| Pyrefly | 0.5% (max 5.3%) |     1.3% (max 4.3%) | 2.7% (max 15.9%) |
+| mypy    | 1.1% (max 7.8%) |                   — |                — |
+| Pyright | 0.7% (max 4.1%) |     2.5% (max 3.2%) |  0.9% (max 1.3%) |
+
+Checker ordering was unchanged for every project in all three suites.
+
+The largest timing change was the incremental edit for Pyrefly on
+`pytorch`: 34.8 → 40.3 ms
+(+15.9%). Small LSP differences should be interpreted in light
+of this between-run variation.
+
+Mean peak RSS changed by a median of 0.1% in absolute terms
+(maximum 2.5%), using the rounded Hyperfine summaries.
+
 ## Project revisions
 
 | Project       | Existing                                   | Updated                                    |
