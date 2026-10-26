@@ -1,5 +1,48 @@
 # Changelog
 
+## 0.0.92
+
+Released on 2026-10-26.
+
+### Bug fixes
+
+- Avoid expanding declared bounds in captured ParamSpecs ([#29649](https://github.com/astral-sh/ruff/pull/29649))
+- Bound tuple expansion in type displays ([#29691](https://github.com/astral-sh/ruff/pull/29691))
+- Infer implicit aliases from their definition as type expressions ([#29200](https://github.com/astral-sh/ruff/pull/29200))
+
+### LSP server
+
+- Skip script discovery when uv script environments are disabled ([#29697](https://github.com/astral-sh/ruff/pull/29697))
+
+### Diagnostic improvements
+
+- Add support for SARIF output ([#29635](https://github.com/astral-sh/ruff/pull/29635))
+- Explain invalid aliases at their definitions ([#29654](https://github.com/astral-sh/ruff/pull/29654))
+
+### Other changes
+
+- Avoid redundant work when checking inherited attributes ([#29699](https://github.com/astral-sh/ruff/pull/29699))
+- Check for instance storage without inferring method assignments ([#29709](https://github.com/astral-sh/ruff/pull/29709))
+- Collect receiver annotations once per class ([#29703](https://github.com/astral-sh/ruff/pull/29703))
+- Django: synthesize `<field>_id` attributes for foreign keys ([#29664](https://github.com/astral-sh/ruff/pull/29664))
+- Django: synthesize `get_<field>_display()` methods ([#29651](https://github.com/astral-sh/ruff/pull/29651))
+- Django: synthesize `get_{next,previous}_by_<field>()` methods ([#29653](https://github.com/astral-sh/ruff/pull/29653))
+- Prioritize finite members in protocol implementation checks ([#29542](https://github.com/astral-sh/ruff/pull/29542))
+- Reuse class member lookups when checking overrides ([#29716](https://github.com/astral-sh/ruff/pull/29716))
+- Reuse each generic context's inferable type variables ([#29700](https://github.com/astral-sh/ruff/pull/29700))
+- Short-circuit top/bottom signature comparisons ([#29537](https://github.com/astral-sh/ruff/pull/29537))
+- Skip inferred writes when a declaration determines an instance member ([#29702](https://github.com/astral-sh/ruff/pull/29702))
+- Skip method signature inference for concrete decorator results ([#29708](https://github.com/astral-sh/ruff/pull/29708))
+- Very basic Django support ([#29642](https://github.com/astral-sh/ruff/pull/29642))
+
+### Contributors
+
+- [@charliermarsh](https://github.com/charliermarsh)
+- [@ntBre](https://github.com/ntBre)
+- [@carljm](https://github.com/carljm)
+- [@dcreager](https://github.com/dcreager)
+- [@sharkdp](https://github.com/sharkdp)
+
 ## 0.0.91
 
 Released on 2026-10-22.
