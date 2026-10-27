@@ -99,38 +99,49 @@ def main() -> None:
             )
 
         optimized = work / "ty-optimized"
-        rewrite = subprocess.run(
-            [
-                bolt,
-                binary,
-                f"--data={data}",
-                "--reorder-blocks=ext-tsp",
-                "--reorder-functions=cdsort",
-                "--split-functions",
-                "--split-all-cold",
-                "--split-strategy=cdsplit",
-                "--jump-tables=move",
-                "--icf=all",
-                "--align-functions=1",
-                "--align-functions-max-bytes=0",
-                "--align-blocks=false",
-                "--use-old-text",
-                "--no-huge-pages",
-                "--hugify=false",
-                "--thread-count=3",
-                "-o",
-                optimized,
-            ],
-            stdout=subprocess.PIPE,
-            stderr=subprocess.STDOUT,
-            text=True,
+
+        def rewrite(*split_options: str) -> str:
+            result = subprocess.run(
+                [
+                    bolt,
+                    binary,
+                    f"--data={data}",
+                    "--reorder-blocks=ext-tsp",
+                    "--reorder-functions=cdsort",
+                    *split_options,
+                    "--jump-tables=move",
+                    "--icf=all",
+                    "--align-functions=1",
+                    "--align-functions-max-bytes=0",
+                    "--align-blocks=false",
+                    "--use-old-text",
+                    "--no-huge-pages",
+                    "--hugify=false",
+                    "--thread-count=3",
+                    "-o",
+                    optimized,
+                ],
+                stdout=subprocess.PIPE,
+                stderr=subprocess.STDOUT,
+                text=True,
+            )
+            print(result.stdout, flush=True)
+            result.check_returncode()
+            return result.stdout
+
+        log = rewrite(
+            "--split-functions", "--split-all-cold", "--split-strategy=cdsplit"
         )
-        print(rewrite.stdout, flush=True)
-        rewrite.check_returncode()
-        # BOLT appends a second copy of the code if it outgrows the original text segment.
-        if "using original .text for new code" not in rewrite.stdout:
+        if "--use-old-text failed. The original .text too small" in log:
             print(
-                "Keeping the compiler PGO layout because the rewritten code did not fit.",
+                "Retrying without function splitting to fit the original .text.",
+                flush=True,
+            )
+            log = rewrite("--split-functions=false")
+        # BOLT appends a second copy of the code if it outgrows the original text segment.
+        if "using original .text for new code" not in log:
+            print(
+                "Keeping the compiler PGO layout because BOLT did not reuse the original .text.",
                 flush=True,
             )
             optimized = binary
