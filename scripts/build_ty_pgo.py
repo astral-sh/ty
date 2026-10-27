@@ -227,7 +227,7 @@ def main() -> None:
             f"PGO training requires the host-native target {host}, got {target}"
         )
 
-    profiler = find_llvm_profdata(host, args.llvm_profdata)
+    profiler = find_llvm_tool("llvm-profdata", host, args.llvm_profdata)
     corpus = ecosystem_python_files(target_dir / "corpus", environment=environment)
     project_environments = prepare_project_environments(
         target_dir / "environments", target_dir / "corpus", environment=environment
@@ -734,9 +734,9 @@ def rustc_host() -> str:
     raise RuntimeError("Could not determine the active Rust compiler's host target")
 
 
-def find_llvm_profdata(host: str, override: Path | None) -> Path:
+def find_llvm_tool(name: str, host: str, override: Path | None = None) -> Path:
     if override is not None:
-        profiler = override.resolve()
+        tool = override.resolve()
     else:
         sysroot = subprocess.run(
             ["rustc", "--print", "sysroot"],
@@ -745,15 +745,14 @@ def find_llvm_profdata(host: str, override: Path | None) -> Path:
             capture_output=True,
             text=True,
         ).stdout.strip()
-        binary_name = "llvm-profdata.exe" if "windows" in host else "llvm-profdata"
-        profiler = Path(sysroot) / "lib" / "rustlib" / host / "bin" / binary_name
+        binary_name = f"{name}.exe" if "windows" in host else name
+        tool = Path(sysroot) / "lib" / "rustlib" / host / "bin" / binary_name
 
-    if not profiler.is_file() or not os.access(profiler, os.X_OK):
+    if not tool.is_file() or not os.access(tool, os.X_OK):
         raise RuntimeError(
-            f"Rust toolchain llvm-profdata not found: {profiler}; "
-            "run `rustup component add llvm-tools-preview`"
+            f"Could not find {name} at {tool}. Run `rustup component add llvm-tools-preview`."
         )
-    return profiler
+    return tool
 
 
 def ecosystem_python_files(

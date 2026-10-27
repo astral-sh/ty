@@ -16,6 +16,8 @@ from pathlib import Path
 from build_ty_pgo import (
     CORPUS_PROJECTS,
     EXCLUDED_ENVIRONMENT_VARIABLES,
+    find_llvm_tool,
+    rustc_host,
     training_command,
 )
 
@@ -134,7 +136,9 @@ def main() -> None:
             optimized = binary
 
         stripped = work / "ty"
-        subprocess.run(["strip", "--strip-all", "-o", stripped, optimized], check=True)
+        # GNU strip can move BOLT's unwind sections out of their load segment.
+        strip = find_llvm_tool("llvm-strip", rustc_host())
+        subprocess.run([strip, "--strip-all", "-o", stripped, optimized], check=True)
         subprocess.run([stripped, "--version"], check=True)
         replace_wheel_executable(args.wheel, stripped)
         stripped.replace(binary)
