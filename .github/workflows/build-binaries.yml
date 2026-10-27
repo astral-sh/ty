@@ -364,6 +364,8 @@ jobs:
           PROFILE_HOT_COUNT="$(cat "${{ github.workspace }}/ruff/target/ty-pgo/ty.profile-hot-count")"
           echo "RUSTFLAGS=${RUSTFLAGS:+${RUSTFLAGS} }-Cprofile-use=${{ github.workspace }}/ruff/target/ty-pgo/ty.profdata -Cllvm-args=--profile-summary-hot-count=$PROFILE_HOT_COUNT -Clink-arg=-Wl,--emit-relocs" >> "$GITHUB_ENV"
           echo "MATURIN_STRIP=false" >> "$GITHUB_ENV"
+          # maturin-action restores ownership of this directory after the container exits.
+          echo "CARGO_TARGET_DIR=$GITHUB_WORKSPACE/ruff/target" >> "$GITHUB_ENV"
       - name: "Prep README.md"
         run: python scripts/transform_readme.py
       - name: "Build wheels"
