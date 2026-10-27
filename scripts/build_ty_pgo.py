@@ -307,7 +307,6 @@ def train_ty(
     print(f"Training on {corpus_size} ecosystem Python files", flush=True)
     profiles = []
     for project in CORPUS_PROJECTS:
-        checkout = corpus_directory / project.name
         training_environment = environment | {
             "LLVM_PROFILE_FILE": str(
                 profile_directory / f"ty-{project.name}-%m-%p.profraw"
@@ -318,25 +317,12 @@ def train_ty(
 
         print(f"Profiling ty on {project.name}", flush=True)
         run(
-            [
-                str(binary),
-                "check",
-                "--python",
-                str(project_environments[project.name]),
-                "--project",
-                str(checkout),
-                "--python-version",
-                project.python_version,
-                *(
-                    argument
-                    for directory in sorted(EXCLUDED_DIRECTORIES)
-                    for argument in ("--exclude", f"{directory}/")
-                ),
-                "--exit-zero",
-                "--no-progress",
-                "-qq",
-                *(str(checkout / source) for source in project.source_directories),
-            ],
+            training_command(
+                binary,
+                project,
+                corpus_directory / project.name,
+                project_environments[project.name],
+            ),
             environment=training_environment,
         )
 
@@ -365,6 +351,30 @@ def train_ty(
         )
     profiles.extend(language_server_profiles)
     return profiles
+
+
+def training_command(
+    binary: Path, project: EcosystemProject, checkout: Path, python: Path
+) -> list[str]:
+    return [
+        str(binary),
+        "check",
+        "--python",
+        str(python),
+        "--project",
+        str(checkout),
+        "--python-version",
+        project.python_version,
+        *(
+            argument
+            for directory in sorted(EXCLUDED_DIRECTORIES)
+            for argument in ("--exclude", f"{directory}/")
+        ),
+        "--exit-zero",
+        "--no-progress",
+        "-qq",
+        *(str(checkout / source) for source in project.source_directories),
+    ]
 
 
 def prepare_project_environments(
