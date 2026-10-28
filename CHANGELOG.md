@@ -1,5 +1,28 @@
 # Changelog
 
+## 0.0.94
+
+Released on 2026-10-28.
+
+### Bug fixes
+
+- Correctly handle line continuation when fixing unused ignore comments ([#29781](https://github.com/astral-sh/ruff/pull/29781))
+- Fix Linux x86-64 startup on older kernels ([#4853](https://github.com/astral-sh/ty/pull/4853))
+- Fix a panic when a comprehension filter depends on a later binding ([#29786](https://github.com/astral-sh/ruff/pull/29786))
+- Fix a panic when sorting diagnostics without a source location ([#29780](https://github.com/astral-sh/ruff/pull/29780))
+- Fix panic on a chained assignment with a missing value ([#29787](https://github.com/astral-sh/ruff/pull/29787))
+- Reject defaulted TypeVars after a TypeVarTuple in legacy generic classes ([#29753](https://github.com/astral-sh/ruff/pull/29753))
+
+### Other changes
+
+- Django: suppress invalid-override errors for `Meta` configurations ([#29769](https://github.com/astral-sh/ruff/pull/29769))
+
+### Contributors
+
+- [@sharkdp](https://github.com/sharkdp)
+- [@charliermarsh](https://github.com/charliermarsh)
+- [@MichaReiser](https://github.com/MichaReiser)
+
 ## 0.0.93
 
 Released on 2026-10-28.
