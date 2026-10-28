@@ -1,5 +1,49 @@
 # Changelog
 
+## 0.0.93
+
+Released on 2026-10-28.
+
+### Preview features
+
+- Add diagnostic baseline support ([#27636](https://github.com/astral-sh/ruff/pull/27636))
+
+### Bug fixes
+
+- Django: support abstract models ([#29744](https://github.com/astral-sh/ruff/pull/29744))
+- Fix a panic when checking truthiness in a loop ([#29759](https://github.com/astral-sh/ruff/pull/29759))
+- Fix hang when negating recursive unions of instance types ([#29652](https://github.com/astral-sh/ruff/pull/29652))
+- Fix narrowing of strings and integers compared with enum members ([#29743](https://github.com/astral-sh/ruff/pull/29743))
+- Honor @override on overload implementations in stubs ([#29470](https://github.com/astral-sh/ruff/pull/29470))
+- Preserve caller type variables in nested union inference ([#29611](https://github.com/astral-sh/ruff/pull/29611))
+- Preserve generic callback specializations during return refinement ([#29667](https://github.com/astral-sh/ruff/pull/29667))
+- Preserve mapping capture types on narrowed subjects ([#29749](https://github.com/astral-sh/ruff/pull/29749))
+- Preserve narrowing after guarded match subject captures ([#29558](https://github.com/astral-sh/ruff/pull/29558))
+- Preserve string literals in comparisons with `LiteralString` ([#29741](https://github.com/astral-sh/ruff/pull/29741))
+- Remove covered exclusions from unions ([#29615](https://github.com/astral-sh/ruff/pull/29615))
+
+### Other changes
+
+- Avoid replaying conditions in long boolean expressions ([#29754](https://github.com/astral-sh/ruff/pull/29754))
+- Combine constraints from repeated ParamSpecs ([#29172](https://github.com/astral-sh/ruff/pull/29172))
+- Index nominal union alternatives ([#29196](https://github.com/astral-sh/ruff/pull/29196))
+- Normalize runtime unions on demand ([#29727](https://github.com/astral-sh/ruff/pull/29727))
+- Optimize Linux x86-64 ty releases with LLVM BOLT ([#4833](https://github.com/astral-sh/ty/pull/4833))
+- Record predicate truthiness alongside expression inference ([#29706](https://github.com/astral-sh/ruff/pull/29706))
+- Reuse exception checkpoints when a new place is read ([#29750](https://github.com/astral-sh/ruff/pull/29750))
+- Reuse runtime operands in eager union annotations ([#29770](https://github.com/astral-sh/ruff/pull/29770))
+- Reuse tuple pattern analysis work ([#29197](https://github.com/astral-sh/ruff/pull/29197))
+- Skip predicates that cannot affect narrowing ([#29736](https://github.com/astral-sh/ruff/pull/29736))
+- Speed up match narrowing over large unions ([#29733](https://github.com/astral-sh/ruff/pull/29733))
+
+### Contributors
+
+- [@MichaReiser](https://github.com/MichaReiser)
+- [@sharkdp](https://github.com/sharkdp)
+- [@dhruvmanila](https://github.com/dhruvmanila)
+- [@charliermarsh](https://github.com/charliermarsh)
+- [@carljm](https://github.com/carljm)
+
 ## 0.0.92
 
 Released on 2026-10-26.
