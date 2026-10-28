@@ -23,8 +23,8 @@ from build_ty_pgo import (
 )
 
 
-def check_program_header_address(binary: Path, host: str) -> None:
-    readobj = find_llvm_tool("llvm-readobj", host)
+def check_program_header_address(binary: Path) -> None:
+    readobj = find_llvm_tool("llvm-readobj", rustc_host())
     (elf,) = json.loads(
         subprocess.check_output(
             [
@@ -126,58 +126,42 @@ def main() -> None:
 
         optimized = work / "ty-optimized"
 
-        def rewrite(*split_options: str) -> str:
-            result = subprocess.run(
-                [
-                    bolt,
-                    binary,
-                    f"--data={data}",
-                    "--reorder-blocks=ext-tsp",
-                    "--reorder-functions=cdsort",
-                    *split_options,
-                    "--jump-tables=move",
-                    "--icf=all",
-                    "--align-functions=1",
-                    "--align-functions-max-bytes=0",
-                    "--align-blocks=false",
-                    "--use-old-text",
-                    "--no-huge-pages",
-                    "--hugify=false",
-                    # llvm-strip would close the gap BOLT leaves before the program headers.
-                    "--remove-symtab",
-                    "--bolt-info=false",
-                    "--thread-count=3",
-                    "-o",
-                    optimized,
-                ],
-                stdout=subprocess.PIPE,
-                stderr=subprocess.STDOUT,
-                text=True,
-            )
-            print(result.stdout, flush=True)
-            result.check_returncode()
-            return result.stdout
-
-        log = rewrite(
-            "--split-functions", "--split-all-cold", "--split-strategy=cdsplit"
+        result = subprocess.run(
+            [
+                bolt,
+                binary,
+                f"--data={data}",
+                "--reorder-blocks=ext-tsp",
+                "--reorder-functions=cdsort",
+                "--split-functions",
+                "--split-all-cold",
+                "--split-strategy=cdsplit",
+                "--jump-tables=move",
+                "--icf=all",
+                "--align-functions=1",
+                "--align-functions-max-bytes=0",
+                "--align-blocks=false",
+                "--use-old-text",
+                "--no-huge-pages",
+                "--hugify=false",
+                # llvm-strip would close the gap BOLT leaves before the program headers.
+                "--remove-symtab",
+                "--bolt-info=false",
+                "--thread-count=3",
+                "-o",
+                optimized,
+            ],
+            stdout=subprocess.PIPE,
+            stderr=subprocess.STDOUT,
+            text=True,
         )
-        if "--use-old-text failed. The original .text too small" in log:
-            print(
-                "Retrying without function splitting to fit the original .text.",
-                flush=True,
-            )
-            log = rewrite("--split-functions=false")
-        host = rustc_host()
-        # BOLT appends a second copy of the code if it outgrows the original text segment.
-        if "using original .text for new code" not in log:
-            print(
-                "Keeping the compiler PGO layout because BOLT did not reuse the original .text.",
-                flush=True,
-            )
-            strip = find_llvm_tool("llvm-strip", host)
-            subprocess.run([strip, "--strip-all", "-o", optimized, binary], check=True)
+        print(result.stdout, flush=True)
+        result.check_returncode()
+        # BOLT can exit successfully and append a second copy of the code.
+        if "using original .text for new code" not in result.stdout:
+            raise RuntimeError("BOLT did not reuse the original .text section")
 
-        check_program_header_address(optimized, host)
+        check_program_header_address(optimized)
         subprocess.run([optimized, "--version"], check=True)
         replace_wheel_executable(args.wheel, optimized)
         optimized.replace(binary)
