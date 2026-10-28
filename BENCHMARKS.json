@@ -3,11 +3,11 @@
     "date": "2026-10-28",
     "hardware": "Apple M3 Max, 16 cores (12 performance, 4 efficiency), 128 GB RAM",
     "os": "macOS-26.5.2-arm64-arm-64bit",
-    "ty_repository_commit": "3db5e4df7becd3ca55fd06c78e98bf7c8a38e469",
-    "ruff_source_commit": "48630fbedd706272d489f81bbcb308b27feb4174",
+    "ty_repository_commit": "f8ea270e0b125116ce52868b16384819183056af",
+    "ruff_source_commit": "3937a41cabc973efd859800cc68bef96f62fbf45",
     "build_command": "cargo build --release --bin ty --locked",
     "versions": {
-      "ty": "ty 0.0.93",
+      "ty": "ty 0.0.94",
       "pyrefly": "pyrefly 1.4.0",
       "pyright": "pyright 1.1.414",
       "mypy": "2.4.0",
@@ -27,29 +27,29 @@
     "lsp_warmups": 2,
     "lsp_rounds": 10,
     "date_timezone": "UTC",
-    "release": "0.0.93",
-    "source_archive_sha256": "e2e5c69d454f0584c4947dc57ce7a3682ee32c706c8c7ee2c36d84c83cda03af",
-    "ty_binary_sha256": "6ba3834c320e7b6b09cec8e822a8dba9f23a35d28be971932cc1cb37ffb1f898",
-    "started_at": "2026-10-28T01:56:49.547615+00:00",
+    "release": "0.0.94",
+    "source_archive_sha256": "98fd451155105e28d9a1e75a4a2c304ba7a3eb84696f5ddcb31f6fbb09f3b090",
+    "ty_binary_sha256": "a8b07a2b02c855815ee009ab6564a7afe5fcaf2070184dfeb67b1a52bb15d1eb",
+    "started_at": "2026-10-28T18:17:57.281799+00:00",
     "collections": {
       "existing": {
-        "cli_started_at": "2026-10-28T01:56:49.547615+00:00",
-        "cli_completed_at": "2026-10-28T02:28:08.167872+00:00",
+        "cli_started_at": "2026-10-28T18:17:57.281799+00:00",
+        "cli_completed_at": "2026-10-28T18:50:36.833834+00:00",
         "cli_exit_code": 0,
-        "lsp_started_at": "2026-10-28T02:28:08.168448+00:00",
-        "lsp_completed_at": "2026-10-28T02:37:16.511414+00:00",
+        "lsp_started_at": "2026-10-28T18:50:36.834398+00:00",
+        "lsp_completed_at": "2026-10-28T19:00:10.182557+00:00",
         "lsp_exit_code": 0,
         "raw_result_sha256": {
-          "cli.txt": "b737f9277bb4c64a8a14894bdb0486418dc3ceccf6e1f0b5470853df8495e717",
-          "lsp.json": "1c4b6876d979a13f1e8be090a38382c4429b07162f31c3e47f88e4efc7e7bcde",
-          "lsp.xml": "273b467b7b2c65ebe64e19ee90695bf84d9433e8f7f04d0b0986a7493147054b"
+          "cli.txt": "80b93866d09b3350870817373027d8f6dd6f56aa5a7dac2bd7d71e82da5e3b42",
+          "lsp.json": "82b155ac1b21fef85a45c004db568048b4c89c65498a9d4d0a083f391d60b30a",
+          "lsp.xml": "86775a03ea39e4709835ebe41ca2883f0fa096230a6bcdbcb83e5eab5538756d"
         }
       }
     },
     "harness_revision": "94c7eca033ab0e8a45be87b670f0fede91b5470b",
     "cli_peak_rss_note": "Peak RSS summaries were parsed from rounded Hyperfine 2.0 terminal output; GiB values have 0.1 GiB precision.",
     "cli_peak_rss_scope": "Hyperfine uses wait4/ru_maxrss on macOS; the metric does not sum concurrent worker RSS.",
-    "completed_at": "2026-10-28T02:37:16.511414+00:00"
+    "completed_at": "2026-10-28T19:00:10.182557+00:00"
   },
   "cohorts": {
     "existing": {
@@ -67,126 +67,126 @@
       "cli": {
         "black": {
           "ty": {
-            "mean_ms": 78.9,
+            "mean_ms": 81.5,
             "stddev_ms": 2.9,
-            "min_ms": 75.1,
-            "max_ms": 85.6,
-            "rounds": 37,
+            "min_ms": 77.3,
+            "max_ms": 87.7,
+            "rounds": 34,
             "peak_rss_mib": {
-              "mean": 130.4,
-              "stddev": 1.0,
-              "min": 128.6,
-              "max": 132.1,
+              "mean": 130.2,
+              "stddev": 0.9,
+              "min": 128.2,
+              "max": 131.8,
               "source_unit": "MiB"
             }
           },
           "Pyrefly": {
-            "mean_ms": 122.9,
-            "stddev_ms": 2.7,
-            "min_ms": 119.1,
-            "max_ms": 130.3,
-            "rounds": 23,
+            "mean_ms": 125.3,
+            "stddev_ms": 2.5,
+            "min_ms": 119.5,
+            "max_ms": 130.1,
+            "rounds": 22,
             "peak_rss_mib": {
               "mean": 156.0,
-              "stddev": 0.9,
-              "min": 153.8,
-              "max": 157.0,
+              "stddev": 0.7,
+              "min": 154.6,
+              "max": 157.6,
               "source_unit": "MiB"
             }
           },
           "mypy": {
-            "mean_ms": 890.0,
-            "stddev_ms": 4.8,
-            "min_ms": 884.9,
-            "max_ms": 901.3,
+            "mean_ms": 917.3,
+            "stddev_ms": 10.4,
+            "min_ms": 906.6,
+            "max_ms": 938.5,
             "rounds": 10,
             "peak_rss_mib": {
-              "mean": 196.3,
-              "stddev": 0.3,
-              "min": 195.6,
-              "max": 196.6,
+              "mean": 196.4,
+              "stddev": 0.4,
+              "min": 195.9,
+              "max": 197.2,
               "source_unit": "MiB"
             }
           },
           "Pyright": {
-            "mean_ms": 1381.6,
-            "stddev_ms": 13.2,
-            "min_ms": 1362.5,
-            "max_ms": 1409.9,
+            "mean_ms": 1420.2,
+            "stddev_ms": 13.6,
+            "min_ms": 1400.6,
+            "max_ms": 1436.0,
             "rounds": 10,
             "peak_rss_mib": {
-              "mean": 289.0,
-              "stddev": 5.4,
-              "min": 281.6,
-              "max": 297.9,
+              "mean": 290.1,
+              "stddev": 4.9,
+              "min": 280.4,
+              "max": 297.0,
               "source_unit": "MiB"
             }
           }
         },
         "discord.py": {
           "ty": {
-            "mean_ms": 183.7,
-            "stddev_ms": 5.1,
-            "min_ms": 172.5,
-            "max_ms": 188.8,
-            "rounds": 15,
+            "mean_ms": 184.7,
+            "stddev_ms": 6.1,
+            "min_ms": 174.0,
+            "max_ms": 194.9,
+            "rounds": 16,
             "peak_rss_mib": {
-              "mean": 228.8,
-              "stddev": 0.9,
-              "min": 227.6,
-              "max": 230.2,
+              "mean": 228.6,
+              "stddev": 1.6,
+              "min": 225.4,
+              "max": 231.7,
               "source_unit": "MiB"
             }
           },
           "Pyrefly": {
-            "mean_ms": 175.0,
-            "stddev_ms": 4.6,
-            "min_ms": 169.3,
+            "mean_ms": 177.9,
+            "stddev_ms": 4.2,
+            "min_ms": 172.1,
             "max_ms": 184.5,
-            "rounds": 17,
+            "rounds": 16,
             "peak_rss_mib": {
-              "mean": 216.6,
-              "stddev": 1.5,
-              "min": 214.0,
-              "max": 220.4,
+              "mean": 216.1,
+              "stddev": 1.7,
+              "min": 213.6,
+              "max": 218.3,
               "source_unit": "MiB"
             }
           },
           "mypy": {
-            "mean_ms": 2079.6,
-            "stddev_ms": 15.0,
-            "min_ms": 2060.2,
-            "max_ms": 2102.4,
+            "mean_ms": 2128.0,
+            "stddev_ms": 15.2,
+            "min_ms": 2112.1,
+            "max_ms": 2159.9,
             "rounds": 10,
             "peak_rss_mib": {
-              "mean": 278.7,
-              "stddev": 1.2,
-              "min": 277.0,
-              "max": 280.6,
+              "mean": 279.1,
+              "stddev": 0.9,
+              "min": 277.9,
+              "max": 280.4,
               "source_unit": "MiB"
             }
           },
           "Pyright": {
-            "mean_ms": 3069.3,
-            "stddev_ms": 36.3,
-            "min_ms": 3011.9,
-            "max_ms": 3122.0,
+            "mean_ms": 3186.8,
+            "stddev_ms": 54.2,
+            "min_ms": 3109.6,
+            "max_ms": 3285.5,
             "rounds": 10,
             "peak_rss_mib": {
-              "mean": 436.2,
+              "mean": 429.8,
               "stddev": 6.9,
-              "min": 422.3,
-              "max": 446.4,
+              "min": 420.6,
+              "max": 443.2,
               "source_unit": "MiB"
             }
           }
         },
         "homeassistant": {
           "ty": {
-            "mean_ms": 2541.0,
-            "stddev_ms": 20.0,
-            "min_ms": 2494.0,
-            "max_ms": 2564.0,
+            "mean_ms": 2621.0,
+            "stddev_ms": 15.0,
+            "min_ms": 2591.0,
+            "max_ms": 2644.0,
             "rounds": 10,
             "peak_rss_mib": {
               "mean": 3174.4,
@@ -197,10 +197,10 @@
             }
           },
           "Pyrefly": {
-            "mean_ms": 2011.0000000000002,
-            "stddev_ms": 28.0,
-            "min_ms": 1978.0,
-            "max_ms": 2065.0,
+            "mean_ms": 2009.9999999999998,
+            "stddev_ms": 31.0,
+            "min_ms": 1957.0,
+            "max_ms": 2064.0,
             "rounds": 10,
             "peak_rss_mib": {
               "mean": 2560.0,
@@ -211,330 +211,330 @@
             }
           },
           "mypy": {
-            "mean_ms": 23377.0,
-            "stddev_ms": 86.0,
-            "min_ms": 23246.0,
-            "max_ms": 23509.0,
+            "mean_ms": 23756.0,
+            "stddev_ms": 106.0,
+            "min_ms": 23608.0,
+            "max_ms": 23921.0,
             "rounds": 10,
             "peak_rss_mib": {
               "mean": 1843.2,
               "stddev": 0.0,
-              "min": 1843.2,
+              "min": 1740.8,
               "max": 1843.2,
               "source_unit": "GiB"
             }
           },
           "Pyright": {
-            "mean_ms": 27055.0,
-            "stddev_ms": 220.0,
-            "min_ms": 26752.0,
-            "max_ms": 27422.0,
+            "mean_ms": 27876.0,
+            "stddev_ms": 139.0,
+            "min_ms": 27645.0,
+            "max_ms": 28146.0,
             "rounds": 10,
             "peak_rss_mib": {
               "mean": 1638.4,
               "stddev": 0.0,
               "min": 1536.0,
-              "max": 1638.4,
+              "max": 1740.8,
               "source_unit": "GiB"
             }
           }
         },
         "isort": {
           "ty": {
-            "mean_ms": 105.5,
-            "stddev_ms": 2.3,
-            "min_ms": 101.4,
-            "max_ms": 112.5,
+            "mean_ms": 106.3,
+            "stddev_ms": 1.7,
+            "min_ms": 102.5,
+            "max_ms": 110.9,
             "rounds": 27,
             "peak_rss_mib": {
-              "mean": 91.8,
-              "stddev": 0.9,
-              "min": 89.9,
-              "max": 93.3,
+              "mean": 91.5,
+              "stddev": 1.1,
+              "min": 88.6,
+              "max": 93.4,
               "source_unit": "MiB"
             }
           },
           "Pyrefly": {
-            "mean_ms": 104.7,
-            "stddev_ms": 2.0,
-            "min_ms": 102.1,
-            "max_ms": 108.5,
+            "mean_ms": 105.4,
+            "stddev_ms": 1.8,
+            "min_ms": 102.5,
+            "max_ms": 110.0,
             "rounds": 27,
             "peak_rss_mib": {
-              "mean": 104.2,
-              "stddev": 0.6,
-              "min": 103.2,
-              "max": 105.5,
+              "mean": 104.1,
+              "stddev": 0.4,
+              "min": 103.0,
+              "max": 105.0,
               "source_unit": "MiB"
             }
           },
           "mypy": {
-            "mean_ms": 445.8,
-            "stddev_ms": 14.0,
-            "min_ms": 438.7,
-            "max_ms": 484.9,
+            "mean_ms": 446.9,
+            "stddev_ms": 3.4,
+            "min_ms": 442.4,
+            "max_ms": 453.3,
             "rounds": 10,
             "peak_rss_mib": {
-              "mean": 122.2,
-              "stddev": 0.5,
-              "min": 121.2,
-              "max": 123.4,
+              "mean": 122.1,
+              "stddev": 0.7,
+              "min": 121.4,
+              "max": 123.7,
               "source_unit": "MiB"
             }
           },
           "Pyright": {
-            "mean_ms": 2501.4,
-            "stddev_ms": 16.0,
-            "min_ms": 2474.1,
-            "max_ms": 2521.7,
+            "mean_ms": 2535.1,
+            "stddev_ms": 31.9,
+            "min_ms": 2504.3,
+            "max_ms": 2608.2,
             "rounds": 10,
             "peak_rss_mib": {
-              "mean": 290.8,
-              "stddev": 9.4,
-              "min": 273.1,
-              "max": 302.2,
+              "mean": 299.0,
+              "stddev": 10.6,
+              "min": 285.5,
+              "max": 315.0,
               "source_unit": "MiB"
             }
           }
         },
         "jinja": {
           "ty": {
-            "mean_ms": 66.4,
-            "stddev_ms": 1.1,
-            "min_ms": 64.4,
-            "max_ms": 68.5,
-            "rounds": 41,
+            "mean_ms": 66.3,
+            "stddev_ms": 0.8,
+            "min_ms": 64.9,
+            "max_ms": 68.3,
+            "rounds": 42,
             "peak_rss_mib": {
-              "mean": 100.2,
-              "stddev": 0.7,
-              "min": 98.8,
-              "max": 101.3,
+              "mean": 100.1,
+              "stddev": 0.6,
+              "min": 98.9,
+              "max": 101.2,
               "source_unit": "MiB"
             }
           },
           "Pyrefly": {
-            "mean_ms": 104.6,
-            "stddev_ms": 1.0,
-            "min_ms": 102.4,
-            "max_ms": 106.1,
+            "mean_ms": 105.2,
+            "stddev_ms": 1.6,
+            "min_ms": 103.0,
+            "max_ms": 109.0,
             "rounds": 27,
             "peak_rss_mib": {
-              "mean": 116.1,
+              "mean": 116.0,
               "stddev": 0.7,
-              "min": 114.9,
+              "min": 114.8,
               "max": 117.5,
               "source_unit": "MiB"
             }
           },
           "mypy": {
-            "mean_ms": 533.4,
-            "stddev_ms": 5.0,
-            "min_ms": 525.4,
-            "max_ms": 543.3,
+            "mean_ms": 538.1,
+            "stddev_ms": 5.5,
+            "min_ms": 530.4,
+            "max_ms": 546.0,
             "rounds": 10,
             "peak_rss_mib": {
-              "mean": 137.3,
-              "stddev": 0.2,
-              "min": 136.9,
-              "max": 137.6,
+              "mean": 137.2,
+              "stddev": 0.3,
+              "min": 136.7,
+              "max": 137.7,
               "source_unit": "MiB"
             }
           },
           "Pyright": {
-            "mean_ms": 1285.9,
-            "stddev_ms": 9.8,
-            "min_ms": 1269.6,
-            "max_ms": 1303.7,
+            "mean_ms": 1332.7,
+            "stddev_ms": 19.7,
+            "min_ms": 1312.9,
+            "max_ms": 1375.7,
             "rounds": 10,
             "peak_rss_mib": {
-              "mean": 255.3,
-              "stddev": 3.5,
-              "min": 250.4,
-              "max": 262.5,
+              "mean": 258.1,
+              "stddev": 3.1,
+              "min": 253.1,
+              "max": 262.3,
               "source_unit": "MiB"
             }
           }
         },
         "pandas": {
           "ty": {
-            "mean_ms": 482.3,
-            "stddev_ms": 19.7,
-            "min_ms": 459.6,
-            "max_ms": 519.2,
+            "mean_ms": 506.4,
+            "stddev_ms": 20.2,
+            "min_ms": 486.1,
+            "max_ms": 542.8,
             "rounds": 10,
             "peak_rss_mib": {
-              "mean": 575.8,
-              "stddev": 6.7,
-              "min": 564.6,
-              "max": 590.0,
+              "mean": 572.9,
+              "stddev": 6.5,
+              "min": 563.4,
+              "max": 581.7,
               "source_unit": "MiB"
             }
           },
           "Pyrefly": {
-            "mean_ms": 833.5,
-            "stddev_ms": 35.6,
-            "min_ms": 734.4,
-            "max_ms": 856.3,
+            "mean_ms": 838.9,
+            "stddev_ms": 43.4,
+            "min_ms": 718.6,
+            "max_ms": 865.1,
             "rounds": 10,
             "peak_rss_mib": {
-              "mean": 556.4,
-              "stddev": 6.0,
-              "min": 545.7,
-              "max": 566.3,
+              "mean": 554.4,
+              "stddev": 9.1,
+              "min": 542.2,
+              "max": 571.3,
               "source_unit": "MiB"
             }
           },
           "mypy": {
-            "mean_ms": 9502.1,
-            "stddev_ms": 22.3,
-            "min_ms": 9466.6,
-            "max_ms": 9534.1,
+            "mean_ms": 9717.9,
+            "stddev_ms": 53.6,
+            "min_ms": 9655.6,
+            "max_ms": 9839.8,
             "rounds": 10,
             "peak_rss_mib": {
-              "mean": 924.9,
-              "stddev": 2.5,
-              "min": 921.6,
-              "max": 928.4,
+              "mean": 922.4,
+              "stddev": 2.4,
+              "min": 918.6,
+              "max": 925.4,
               "source_unit": "MiB"
             }
           },
           "Pyright": {
-            "mean_ms": 6456.3,
-            "stddev_ms": 67.4,
-            "min_ms": 6295.4,
-            "max_ms": 6524.7,
+            "mean_ms": 6795.7,
+            "stddev_ms": 90.4,
+            "min_ms": 6627.6,
+            "max_ms": 6921.8,
             "rounds": 10,
             "peak_rss_mib": {
-              "mean": 719.2,
-              "stddev": 37.0,
-              "min": 679.2,
-              "max": 806.2,
+              "mean": 747.2,
+              "stddev": 38.7,
+              "min": 705.7,
+              "max": 828.8,
               "source_unit": "MiB"
             }
           }
         },
         "pandas-stubs": {
           "ty": {
-            "mean_ms": 101.0,
-            "stddev_ms": 7.1,
-            "min_ms": 91.3,
-            "max_ms": 131.7,
-            "rounds": 28,
+            "mean_ms": 100.8,
+            "stddev_ms": 3.3,
+            "min_ms": 93.8,
+            "max_ms": 109.4,
+            "rounds": 29,
             "peak_rss_mib": {
-              "mean": 155.9,
-              "stddev": 1.5,
+              "mean": 155.3,
+              "stddev": 0.8,
               "min": 153.5,
-              "max": 159.6,
+              "max": 156.7,
               "source_unit": "MiB"
             }
           },
           "Pyrefly": {
-            "mean_ms": 195.5,
-            "stddev_ms": 2.3,
-            "min_ms": 190.9,
-            "max_ms": 200.1,
+            "mean_ms": 197.6,
+            "stddev_ms": 3.1,
+            "min_ms": 194.4,
+            "max_ms": 203.4,
             "rounds": 14,
             "peak_rss_mib": {
-              "mean": 273.4,
-              "stddev": 1.7,
-              "min": 271.3,
-              "max": 276.6,
+              "mean": 273.8,
+              "stddev": 1.4,
+              "min": 271.8,
+              "max": 276.2,
               "source_unit": "MiB"
             }
           },
           "mypy": {
-            "mean_ms": 4808.8,
-            "stddev_ms": 16.7,
-            "min_ms": 4774.2,
-            "max_ms": 4838.9,
+            "mean_ms": 4900.4,
+            "stddev_ms": 30.6,
+            "min_ms": 4861.4,
+            "max_ms": 4952.5,
             "rounds": 10,
             "peak_rss_mib": {
-              "mean": 608.8,
-              "stddev": 1.4,
-              "min": 605.8,
-              "max": 610.1,
+              "mean": 608.7,
+              "stddev": 1.3,
+              "min": 606.9,
+              "max": 610.7,
               "source_unit": "MiB"
             }
           },
           "Pyright": {
-            "mean_ms": 2395.4,
-            "stddev_ms": 36.3,
-            "min_ms": 2321.1,
-            "max_ms": 2430.0,
+            "mean_ms": 2449.0,
+            "stddev_ms": 22.0,
+            "min_ms": 2425.1,
+            "max_ms": 2493.3,
             "rounds": 10,
             "peak_rss_mib": {
-              "mean": 383.8,
-              "stddev": 3.5,
-              "min": 378.5,
-              "max": 389.1,
+              "mean": 390.6,
+              "stddev": 7.5,
+              "min": 383.2,
+              "max": 406.7,
               "source_unit": "MiB"
             }
           }
         },
         "prefect": {
           "ty": {
-            "mean_ms": 132.8,
-            "stddev_ms": 6.2,
-            "min_ms": 122.5,
-            "max_ms": 149.6,
-            "rounds": 19,
+            "mean_ms": 136.9,
+            "stddev_ms": 7.6,
+            "min_ms": 123.0,
+            "max_ms": 154.6,
+            "rounds": 22,
             "peak_rss_mib": {
-              "mean": 222.8,
-              "stddev": 0.9,
-              "min": 221.3,
-              "max": 225.5,
+              "mean": 222.4,
+              "stddev": 1.2,
+              "min": 219.2,
+              "max": 225.0,
               "source_unit": "MiB"
             }
           },
           "Pyrefly": {
-            "mean_ms": 255.8,
-            "stddev_ms": 8.5,
-            "min_ms": 244.1,
+            "mean_ms": 256.6,
+            "stddev_ms": 4.8,
+            "min_ms": 250.1,
             "max_ms": 266.7,
             "rounds": 11,
             "peak_rss_mib": {
               "mean": 292.3,
-              "stddev": 0.7,
-              "min": 291.5,
-              "max": 293.6,
+              "stddev": 1.1,
+              "min": 290.8,
+              "max": 294.5,
               "source_unit": "MiB"
             }
           },
           "mypy": {
-            "mean_ms": 492.4,
-            "stddev_ms": 4.2,
-            "min_ms": 487.4,
-            "max_ms": 501.6,
+            "mean_ms": 501.0,
+            "stddev_ms": 8.8,
+            "min_ms": 495.6,
+            "max_ms": 524.6,
             "rounds": 10,
             "peak_rss_mib": {
-              "mean": 134.6,
-              "stddev": 0.2,
-              "min": 134.4,
-              "max": 135.0,
+              "mean": 134.8,
+              "stddev": 0.3,
+              "min": 134.2,
+              "max": 135.2,
               "source_unit": "MiB"
             }
           },
           "Pyright": {
-            "mean_ms": 3821.0,
-            "stddev_ms": 38.5,
-            "min_ms": 3759.8,
-            "max_ms": 3862.5,
+            "mean_ms": 3969.1,
+            "stddev_ms": 52.9,
+            "min_ms": 3884.3,
+            "max_ms": 4066.3,
             "rounds": 10,
             "peak_rss_mib": {
-              "mean": 560.5,
-              "stddev": 15.9,
-              "min": 543.5,
-              "max": 590.5,
+              "mean": 562.3,
+              "stddev": 12.7,
+              "min": 547.3,
+              "max": 585.2,
               "source_unit": "MiB"
             }
           }
         },
         "pytorch": {
           "ty": {
-            "mean_ms": 1436.0,
-            "stddev_ms": 59.0,
-            "min_ms": 1378.0,
-            "max_ms": 1543.0,
+            "mean_ms": 1509.0,
+            "stddev_ms": 67.0,
+            "min_ms": 1415.0,
+            "max_ms": 1629.0,
             "rounds": 10,
             "peak_rss_mib": {
               "mean": 1536.0,
@@ -545,10 +545,10 @@
             }
           },
           "Pyrefly": {
-            "mean_ms": 1020.0,
-            "stddev_ms": 18.0,
-            "min_ms": 993.0,
-            "max_ms": 1043.0,
+            "mean_ms": 1024.0,
+            "stddev_ms": 22.0,
+            "min_ms": 992.0,
+            "max_ms": 1053.0,
             "rounds": 10,
             "peak_rss_mib": {
               "mean": 819.2,
@@ -559,10 +559,10 @@
             }
           },
           "mypy": {
-            "mean_ms": 22329.0,
-            "stddev_ms": 68.0,
-            "min_ms": 22250.0,
-            "max_ms": 22423.0,
+            "mean_ms": 22688.0,
+            "stddev_ms": 75.0,
+            "min_ms": 22566.0,
+            "max_ms": 22801.0,
             "rounds": 10,
             "peak_rss_mib": {
               "mean": 1638.4,
@@ -573,10 +573,10 @@
             }
           },
           "Pyright": {
-            "mean_ms": 14986.0,
-            "stddev_ms": 93.0,
-            "min_ms": 14845.0,
-            "max_ms": 15186.0,
+            "mean_ms": 15748.0,
+            "stddev_ms": 147.0,
+            "min_ms": 15513.0,
+            "max_ms": 15951.0,
             "rounds": 10,
             "peak_rss_mib": {
               "mean": 1433.6,
@@ -592,185 +592,185 @@
         "initial": {
           "black": {
             "ty": {
-              "mean_ms": 65.20084600197151,
-              "stddev_ms": 2.475678356465911,
-              "min_ms": 63.670167000964284,
-              "max_ms": 72.03858403954655,
+              "mean_ms": 64.59705020533875,
+              "stddev_ms": 0.30394496182177905,
+              "min_ms": 64.1553329769522,
+              "max_ms": 65.22612494882196,
               "rounds": 10
             },
             "Pyright": {
-              "mean_ms": 293.38559567695484,
-              "stddev_ms": 1.3291991099752656,
-              "min_ms": 292.038333020173,
-              "max_ms": 296.71033297199756,
+              "mean_ms": 298.68921249872074,
+              "stddev_ms": 3.4918286234946474,
+              "min_ms": 294.4838749244809,
+              "max_ms": 303.85662498883903,
               "rounds": 10
             },
             "Pyrefly": {
-              "mean_ms": 169.71073320601135,
-              "stddev_ms": 0.8812699577551583,
-              "min_ms": 168.14841702580452,
-              "max_ms": 170.90112494770437,
+              "mean_ms": 171.93655848968774,
+              "stddev_ms": 1.16541060041958,
+              "min_ms": 170.38808297365904,
+              "max_ms": 173.64208295475692,
               "rounds": 10
             }
           },
           "discord.py": {
             "ty": {
-              "mean_ms": 106.27092079957947,
-              "stddev_ms": 0.5961994234934356,
-              "min_ms": 104.87529099918902,
-              "max_ms": 107.07187501247972,
+              "mean_ms": 108.54465819429606,
+              "stddev_ms": 0.44266812140628026,
+              "min_ms": 108.10216597747058,
+              "max_ms": 109.654082916677,
               "rounds": 10
             },
             "Pyright": {
-              "mean_ms": 632.369875186123,
-              "stddev_ms": 10.657831332033362,
-              "min_ms": 621.9971670070663,
-              "max_ms": 659.4439999898896,
+              "mean_ms": 638.6965376092121,
+              "stddev_ms": 8.107230072261473,
+              "min_ms": 627.888209070079,
+              "max_ms": 653.8498330628499,
               "rounds": 10
             },
             "Pyrefly": {
-              "mean_ms": 188.96041659172624,
-              "stddev_ms": 0.6049994499883294,
-              "min_ms": 188.04249993991107,
-              "max_ms": 190.00037491787225,
+              "mean_ms": 193.3498706901446,
+              "stddev_ms": 1.9923153434034877,
+              "min_ms": 191.5501659968868,
+              "max_ms": 197.4953330354765,
               "rounds": 10
             }
           },
           "homeassistant": {
             "ty": {
-              "mean_ms": 94.30369548499584,
-              "stddev_ms": 0.535255974950849,
-              "min_ms": 93.46491598989815,
-              "max_ms": 95.07804096210748,
+              "mean_ms": 95.0560167664662,
+              "stddev_ms": 0.9826048789637698,
+              "min_ms": 93.62766693811864,
+              "max_ms": 96.73654206562787,
               "rounds": 10
             },
             "Pyright": {
-              "mean_ms": 1672.3031750880182,
-              "stddev_ms": 12.038830326696706,
-              "min_ms": 1655.5868330178782,
-              "max_ms": 1693.6000840505585,
+              "mean_ms": 1682.551037275698,
+              "stddev_ms": 25.296269184714284,
+              "min_ms": 1645.4582499573007,
+              "max_ms": 1724.8690830310807,
               "rounds": 10
             },
             "Pyrefly": {
-              "mean_ms": 215.51994999172166,
-              "stddev_ms": 0.6720224547009224,
-              "min_ms": 214.75612500216812,
-              "max_ms": 217.10454195272177,
+              "mean_ms": 219.1009207861498,
+              "stddev_ms": 1.2947781038476758,
+              "min_ms": 217.6365409977734,
+              "max_ms": 221.80579195264727,
               "rounds": 10
             }
           },
           "isort": {
             "ty": {
-              "mean_ms": 50.76604998903349,
-              "stddev_ms": 0.36741969710398875,
-              "min_ms": 50.13237497769296,
-              "max_ms": 51.378624979406595,
+              "mean_ms": 52.23962488817051,
+              "stddev_ms": 0.5845982137753689,
+              "min_ms": 51.61066597793251,
+              "max_ms": 53.68466698564589,
               "rounds": 10
             },
             "Pyright": {
-              "mean_ms": 353.3016168163158,
-              "stddev_ms": 1.7221944809147534,
-              "min_ms": 351.7079170560464,
-              "max_ms": 357.3792090173811,
+              "mean_ms": 360.6032250332646,
+              "stddev_ms": 1.9696168496990984,
+              "min_ms": 357.9580410150811,
+              "max_ms": 363.6072500376031,
               "rounds": 10
             },
             "Pyrefly": {
-              "mean_ms": 97.2629665164277,
-              "stddev_ms": 4.482526012451196,
-              "min_ms": 93.421290977858,
-              "max_ms": 103.92920800950378,
+              "mean_ms": 100.627166708,
+              "stddev_ms": 4.711619235088962,
+              "min_ms": 95.33008304424584,
+              "max_ms": 105.83437501918525,
               "rounds": 10
             }
           },
           "jinja": {
             "ty": {
-              "mean_ms": 53.759845916647464,
-              "stddev_ms": 0.34174766088333003,
-              "min_ms": 53.43274993356317,
-              "max_ms": 54.47237507905811,
+              "mean_ms": 54.921858315356076,
+              "stddev_ms": 0.45423663248793494,
+              "min_ms": 54.46525011211634,
+              "max_ms": 55.6897500064224,
               "rounds": 10
             },
             "Pyright": {
-              "mean_ms": 353.83097091689706,
-              "stddev_ms": 3.7464891588998754,
-              "min_ms": 348.5799999907613,
-              "max_ms": 360.34983408171684,
+              "mean_ms": 363.8673417153768,
+              "stddev_ms": 1.9844705526535822,
+              "min_ms": 361.06687504798174,
+              "max_ms": 367.6955410046503,
               "rounds": 10
             },
             "Pyrefly": {
-              "mean_ms": 123.89807099243626,
-              "stddev_ms": 0.4019979613920129,
-              "min_ms": 123.27412504237145,
-              "max_ms": 124.36887493822724,
+              "mean_ms": 127.67620829399675,
+              "stddev_ms": 0.8291956141409315,
+              "min_ms": 126.79766700603068,
+              "max_ms": 129.13095799740404,
               "rounds": 10
             }
           },
           "pandas": {
             "ty": {
-              "mean_ms": 355.43698731344193,
-              "stddev_ms": 1.600605679388863,
-              "min_ms": 353.229874977842,
-              "max_ms": 357.73433302529156,
+              "mean_ms": 366.94531249813735,
+              "stddev_ms": 3.3970628555470563,
+              "min_ms": 363.26287500560284,
+              "max_ms": 374.0441659465432,
               "rounds": 10
             },
             "Pyright": {
-              "mean_ms": 624.5272874948569,
-              "stddev_ms": 6.241953492410476,
-              "min_ms": 616.6046250145882,
-              "max_ms": 635.6047498993576,
+              "mean_ms": 641.2497831857763,
+              "stddev_ms": 7.438286235716297,
+              "min_ms": 629.9615829484537,
+              "max_ms": 650.3006670391187,
               "rounds": 10
             },
             "Pyrefly": {
-              "mean_ms": 529.7681334195659,
-              "stddev_ms": 2.245181746920431,
-              "min_ms": 528.2240830129012,
-              "max_ms": 535.8567079529166,
+              "mean_ms": 534.4367292127572,
+              "stddev_ms": 1.8512586650201728,
+              "min_ms": 532.4797910870984,
+              "max_ms": 538.9307090081275,
               "rounds": 10
             }
           },
           "prefect": {
             "ty": {
-              "mean_ms": 169.47306661168113,
-              "stddev_ms": 0.9201108491644913,
-              "min_ms": 168.4824579861015,
-              "max_ms": 171.58399999607354,
+              "mean_ms": 172.21140848705545,
+              "stddev_ms": 0.5805935208967063,
+              "min_ms": 171.16545897442847,
+              "max_ms": 173.34462504368275,
               "rounds": 10
             },
             "Pyright": {
-              "mean_ms": 1102.6721707894467,
-              "stddev_ms": 4.4299928684686956,
-              "min_ms": 1096.2749170139432,
-              "max_ms": 1109.6959579735994,
+              "mean_ms": 1119.0127791953273,
+              "stddev_ms": 6.536960499030581,
+              "min_ms": 1113.936832989566,
+              "max_ms": 1134.485249989666,
               "rounds": 10
             },
             "Pyrefly": {
-              "mean_ms": 458.73679582728073,
-              "stddev_ms": 1.7780682982998948,
-              "min_ms": 455.9991250280291,
-              "max_ms": 461.98591694701463,
+              "mean_ms": 463.1109914975241,
+              "stddev_ms": 1.4826618416847972,
+              "min_ms": 461.0312080476433,
+              "max_ms": 466.5192080428824,
               "rounds": 10
             }
           },
           "pytorch": {
             "ty": {
-              "mean_ms": 57.27024602238089,
-              "stddev_ms": 0.1544182736097155,
-              "min_ms": 57.03366699162871,
-              "max_ms": 57.55545909050852,
+              "mean_ms": 58.362116501666605,
+              "stddev_ms": 0.4498818544968423,
+              "min_ms": 57.74987500626594,
+              "max_ms": 59.17879205662757,
               "rounds": 10
             },
             "Pyright": {
-              "mean_ms": 692.7700084052049,
-              "stddev_ms": 3.7378232983714264,
-              "min_ms": 689.7401249734685,
-              "max_ms": 699.7964590555057,
+              "mean_ms": 704.6823209966533,
+              "stddev_ms": 4.945656588549494,
+              "min_ms": 698.2027500635013,
+              "max_ms": 713.6120420182124,
               "rounds": 10
             },
             "Pyrefly": {
-              "mean_ms": 117.27239980828017,
-              "stddev_ms": 12.99459505544929,
-              "min_ms": 108.36458299309015,
-              "max_ms": 137.52800005022436,
+              "mean_ms": 127.23513321252538,
+              "stddev_ms": 13.572626628873378,
+              "min_ms": 110.98345904611051,
+              "max_ms": 139.09816602244973,
               "rounds": 10
             }
           }
@@ -778,185 +778,185 @@
         "incremental": {
           "black": {
             "ty": {
-              "mean_ms": 16.303029214031994,
-              "stddev_ms": 0.2091156114220227,
-              "min_ms": 15.966042061336339,
-              "max_ms": 16.66141697205603,
+              "mean_ms": 16.850695689208806,
+              "stddev_ms": 1.0791138089019323,
+              "min_ms": 16.219082986935973,
+              "max_ms": 19.869334064424038,
               "rounds": 10
             },
             "Pyright": {
-              "mean_ms": 502.3009916883894,
-              "stddev_ms": 3.8330673973509737,
-              "min_ms": 495.5862920032814,
-              "max_ms": 506.36787491384894,
+              "mean_ms": 511.4605001173913,
+              "stddev_ms": 3.8880302347378026,
+              "min_ms": 505.11904095765203,
+              "max_ms": 519.0913340775296,
               "rounds": 10
             },
             "Pyrefly": {
-              "mean_ms": 79.52374571468681,
-              "stddev_ms": 4.565509680724104,
-              "min_ms": 72.78295897413045,
-              "max_ms": 85.1854580687359,
+              "mean_ms": 84.50178758939728,
+              "stddev_ms": 1.4593614529410819,
+              "min_ms": 82.56295800674707,
+              "max_ms": 86.48691698908806,
               "rounds": 10
             }
           },
           "discord.py": {
             "ty": {
-              "mean_ms": 27.358237677253783,
-              "stddev_ms": 0.1677893538966248,
-              "min_ms": 27.047374984249473,
-              "max_ms": 27.61758305132389,
+              "mean_ms": 28.36616262793541,
+              "stddev_ms": 0.42848131656772126,
+              "min_ms": 27.78512507211417,
+              "max_ms": 29.396875062957406,
               "rounds": 10
             },
             "Pyright": {
-              "mean_ms": 522.9175208834931,
-              "stddev_ms": 13.985830758556938,
-              "min_ms": 503.5577079979703,
-              "max_ms": 538.7503339443356,
+              "mean_ms": 516.6820668033324,
+              "stddev_ms": 2.722163713652869,
+              "min_ms": 513.1867090240121,
+              "max_ms": 522.4684999557212,
               "rounds": 10
             },
             "Pyrefly": {
-              "mean_ms": 76.69447499793023,
-              "stddev_ms": 3.455865990663517,
-              "min_ms": 71.35812507476658,
-              "max_ms": 80.9868749929592,
+              "mean_ms": 81.43523338949308,
+              "stddev_ms": 3.5845975314900365,
+              "min_ms": 75.4969579866156,
+              "max_ms": 85.14187508262694,
               "rounds": 10
             }
           },
           "homeassistant": {
             "ty": {
-              "mean_ms": 30.03827080829069,
-              "stddev_ms": 0.3955101850166064,
-              "min_ms": 29.42370797973126,
-              "max_ms": 30.717666959390044,
+              "mean_ms": 30.780712608247995,
+              "stddev_ms": 0.32286728846978174,
+              "min_ms": 30.15812498051673,
+              "max_ms": 31.347124953754246,
               "rounds": 10
             },
             "Pyright": {
-              "mean_ms": 580.0541664706543,
-              "stddev_ms": 5.533728612321806,
-              "min_ms": 572.1190829062834,
-              "max_ms": 588.6669579194859,
+              "mean_ms": 580.1939498982392,
+              "stddev_ms": 10.624107928203781,
+              "min_ms": 558.6706660687923,
+              "max_ms": 595.8405000856146,
               "rounds": 10
             },
             "Pyrefly": {
-              "mean_ms": 77.95713739469647,
-              "stddev_ms": 4.339658299141511,
-              "min_ms": 71.79158297367394,
-              "max_ms": 84.03504197485745,
+              "mean_ms": 82.78583328938112,
+              "stddev_ms": 1.0359164933122715,
+              "min_ms": 81.34583302307874,
+              "max_ms": 84.47891601826996,
               "rounds": 10
             }
           },
           "isort": {
             "ty": {
-              "mean_ms": 24.00429572444409,
-              "stddev_ms": 0.21228963272440687,
-              "min_ms": 23.63204106222838,
-              "max_ms": 24.394832900725305,
+              "mean_ms": 24.626645783428103,
+              "stddev_ms": 0.5417251807967232,
+              "min_ms": 24.18929198756814,
+              "max_ms": 26.059750001877546,
               "rounds": 10
             },
             "Pyright": {
-              "mean_ms": 423.5732918023132,
-              "stddev_ms": 5.982521653399642,
-              "min_ms": 413.0311249755323,
-              "max_ms": 432.8540420392528,
+              "mean_ms": 431.8621333106421,
+              "stddev_ms": 4.323959568765565,
+              "min_ms": 425.8962500607595,
+              "max_ms": 439.37799998093396,
               "rounds": 10
             },
             "Pyrefly": {
-              "mean_ms": 44.798770698253065,
-              "stddev_ms": 3.256380896130455,
-              "min_ms": 40.16075003892183,
-              "max_ms": 50.245541031472385,
+              "mean_ms": 47.61089583626017,
+              "stddev_ms": 0.7325444517694222,
+              "min_ms": 46.52462503872812,
+              "max_ms": 48.572042025625706,
               "rounds": 10
             }
           },
           "jinja": {
             "ty": {
-              "mean_ms": 12.601774814538658,
-              "stddev_ms": 0.09885109163596602,
-              "min_ms": 12.466041021980345,
-              "max_ms": 12.742541963234544,
+              "mean_ms": 13.398254290223122,
+              "stddev_ms": 0.17585975908381,
+              "min_ms": 13.024291954934597,
+              "max_ms": 13.650832930579782,
               "rounds": 10
             },
             "Pyright": {
-              "mean_ms": 506.95565419737255,
-              "stddev_ms": 12.693112307446725,
-              "min_ms": 493.00187500193715,
-              "max_ms": 531.2635840382427,
+              "mean_ms": 531.8874790333211,
+              "stddev_ms": 9.137935402996558,
+              "min_ms": 508.9753339998424,
+              "max_ms": 541.3299159845337,
               "rounds": 10
             },
             "Pyrefly": {
-              "mean_ms": 61.7897750926204,
-              "stddev_ms": 3.798515707395237,
-              "min_ms": 58.02100000437349,
-              "max_ms": 68.23624996468425,
+              "mean_ms": 65.72733756620437,
+              "stddev_ms": 3.0446763596777346,
+              "min_ms": 57.49854096211493,
+              "max_ms": 68.08912509586662,
               "rounds": 10
             }
           },
           "pandas": {
             "ty": {
-              "mean_ms": 50.26418747147545,
-              "stddev_ms": 0.8799699280192129,
-              "min_ms": 49.54274999909103,
-              "max_ms": 52.4692089529708,
+              "mean_ms": 52.27095411391929,
+              "stddev_ms": 0.7843074088320288,
+              "min_ms": 51.508250064216554,
+              "max_ms": 54.24875009339303,
               "rounds": 10
             },
             "Pyright": {
-              "mean_ms": 598.2587127247825,
-              "stddev_ms": 7.668458137006478,
-              "min_ms": 587.1055419556797,
-              "max_ms": 608.089292072691,
+              "mean_ms": 615.6623210059479,
+              "stddev_ms": 9.76358354691369,
+              "min_ms": 599.1745420033112,
+              "max_ms": 630.5205000098795,
               "rounds": 10
             },
             "Pyrefly": {
-              "mean_ms": 233.15552077256143,
-              "stddev_ms": 4.087793419208434,
-              "min_ms": 223.08995807543397,
-              "max_ms": 238.01245901267976,
+              "mean_ms": 238.1865706993267,
+              "stddev_ms": 4.136430047736294,
+              "min_ms": 228.67037495598197,
+              "max_ms": 243.5056660324335,
               "rounds": 10
             }
           },
           "prefect": {
             "ty": {
-              "mean_ms": 7.722341502085328,
-              "stddev_ms": 0.13290299696229102,
-              "min_ms": 7.5226250337436795,
-              "max_ms": 7.91512499563396,
+              "mean_ms": 8.154975296929479,
+              "stddev_ms": 0.11482157652512417,
+              "min_ms": 8.00966692622751,
+              "max_ms": 8.317459025420249,
               "rounds": 10
             },
             "Pyright": {
-              "mean_ms": 677.7403917978518,
-              "stddev_ms": 4.734838665153535,
-              "min_ms": 670.1608750736341,
-              "max_ms": 684.0107090538368,
+              "mean_ms": 684.5931414747611,
+              "stddev_ms": 3.116878042801294,
+              "min_ms": 680.6424160022289,
+              "max_ms": 689.7801249288023,
               "rounds": 10
             },
             "Pyrefly": {
-              "mean_ms": 57.276554114650935,
-              "stddev_ms": 4.141670296342901,
-              "min_ms": 50.33941601868719,
-              "max_ms": 62.38116696476936,
+              "mean_ms": 59.250479307956994,
+              "stddev_ms": 2.50955823537341,
+              "min_ms": 53.684458951465786,
+              "max_ms": 61.84033292811364,
               "rounds": 10
             }
           },
           "pytorch": {
             "ty": {
-              "mean_ms": 3.938837593887001,
-              "stddev_ms": 0.07187260983248711,
-              "min_ms": 3.832667018286884,
-              "max_ms": 4.0339999832212925,
+              "mean_ms": 4.152425029315054,
+              "stddev_ms": 0.08036391493440544,
+              "min_ms": 4.05483297072351,
+              "max_ms": 4.319583065807819,
               "rounds": 10
             },
             "Pyright": {
-              "mean_ms": 406.1687961104326,
-              "stddev_ms": 8.787345439562099,
-              "min_ms": 391.18562499061227,
-              "max_ms": 418.45520900096744,
+              "mean_ms": 408.97942918818444,
+              "stddev_ms": 9.025514673091275,
+              "min_ms": 390.2457499643788,
+              "max_ms": 421.6312080388889,
               "rounds": 10
             },
             "Pyrefly": {
-              "mean_ms": 22.945704287849367,
-              "stddev_ms": 1.68036525811398,
-              "min_ms": 20.497541991062462,
-              "max_ms": 25.420416961424053,
+              "mean_ms": 24.286595592275262,
+              "stddev_ms": 2.178616227360915,
+              "min_ms": 20.47041605692357,
+              "max_ms": 26.212750002741814,
               "rounds": 10
             }
           }
