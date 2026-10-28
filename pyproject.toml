@@ -1,6 +1,6 @@
 [project]
 name = "ty"
-version = "0.0.93"
+version = "0.0.94"
 requires-python = ">=3.8"
 dependencies = []
 description = "An extremely fast Python type checker, written in Rust."
