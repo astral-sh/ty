@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 455 117" role="img" aria-labelledby="title description">
   <title id="title">Home Assistant CLI type-checking benchmark</title>
-  <desc id="description">ty: 3.03 seconds; Pyrefly: 2.30 seconds; Pyright: 31.25 seconds; mypy: 29.93 seconds.</desc>
+  <desc id="description">ty: 3.12 seconds; Pyrefly: 2.31 seconds; Pyright: 32.47 seconds; mypy: 30.18 seconds.</desc>
   <style>
     .benchmarkBar {
       fill: #6340AC;
@@ -15,16 +15,16 @@
   <g transform="translate(61, 0)" font-family="Roboto Mono, monospace" font-size="12">
     <g class="benchmarkGrid" aria-hidden="true">
       <line x1="0.000" y1="0" x2="0.000" y2="100"/>
-      <line x1="110.062" y1="0" x2="110.062" y2="100"/>
-      <line x1="220.125" y1="0" x2="220.125" y2="100"/>
-      <line x1="330.187" y1="0" x2="330.187" y2="100"/>
+      <line x1="105.934" y1="0" x2="105.934" y2="100"/>
+      <line x1="211.868" y1="0" x2="211.868" y2="100"/>
+      <line x1="317.802" y1="0" x2="317.802" y2="100"/>
     </g>
 
     <g class="benchmarkLabel" aria-hidden="true" text-anchor="middle">
       <text x="0.000" y="115">0s</text>
-      <text x="110.062" y="115">10s</text>
-      <text x="220.125" y="115">20s</text>
-      <text x="330.187" y="115">30s</text>
+      <text x="105.934" y="115">10s</text>
+      <text x="211.868" y="115">20s</text>
+      <text x="317.802" y="115">30s</text>
     </g>
 
     <g class="benchmarkLabel" text-anchor="end">
@@ -35,17 +35,17 @@
     </g>
 
     <g class="benchmarkBar">
-      <rect x="0" y="6" width="33.316" height="13" aria-label="ty: 3.027 seconds"/>
-      <rect x="0" y="31" width="25.325" height="13" aria-label="Pyrefly: 2.301 seconds"/>
-      <rect x="0" y="56" width="344.000" height="13" aria-label="Pyright: 31.255 seconds"/>
-      <rect x="0" y="81" width="329.450" height="13" aria-label="mypy: 29.933 seconds"/>
+      <rect x="0" y="6" width="33.041" height="13" aria-label="ty: 3.119 seconds"/>
+      <rect x="0" y="31" width="24.428" height="13" aria-label="Pyrefly: 2.306 seconds"/>
+      <rect x="0" y="56" width="344.000" height="13" aria-label="Pyright: 32.473 seconds"/>
+      <rect x="0" y="81" width="319.720" height="13" aria-label="mypy: 30.181 seconds"/>
     </g>
 
     <g class="benchmarkLabel">
-      <text x="39.316" y="16.5" font-weight="bold">3.03s</text>
-      <text x="31.325" y="41.5">2.30s</text>
-      <text x="350.000" y="66.5">31.25s</text>
-      <text x="335.450" y="91.5">29.93s</text>
+      <text x="39.041" y="16.5" font-weight="bold">3.12s</text>
+      <text x="30.428" y="41.5">2.31s</text>
+      <text x="350.000" y="66.5">32.47s</text>
+      <text x="325.720" y="91.5">30.18s</text>
     </g>
   </g>
 </svg>
