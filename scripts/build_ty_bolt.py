@@ -7,6 +7,7 @@ import base64
 import csv
 import hashlib
 import io
+import json
 import os
 import subprocess
 import tempfile
@@ -20,6 +21,31 @@ from build_ty_pgo import (
     rustc_host,
     training_command,
 )
+
+
+def check_program_header_address(binary: Path, host: str) -> None:
+    readobj = find_llvm_tool("llvm-readobj", host)
+    (elf,) = json.loads(
+        subprocess.check_output(
+            [
+                readobj,
+                "--elf-output-style=JSON",
+                "--file-headers",
+                "--program-headers",
+                binary,
+            ]
+        )
+    )
+    # Older Linux kernels use the file offset as the address relative to the
+    # load base. Our position-independent executable starts at virtual address 0.
+    offset = elf["ElfHeader"]["ProgramHeaderOffset"]
+    for entry in elf["ProgramHeaders"]:
+        header = entry["ProgramHeader"]
+        if header["Type"]["Name"] == "PT_PHDR" and header["VirtualAddress"] == offset:
+            return
+    raise RuntimeError(
+        f"Older Linux kernels expect the ELF program headers at virtual address {offset:#x}"
+    )
 
 
 def replace_wheel_executable(wheel: Path, binary: Path) -> None:
@@ -117,6 +143,9 @@ def main() -> None:
                     "--use-old-text",
                     "--no-huge-pages",
                     "--hugify=false",
+                    # llvm-strip would close the gap BOLT leaves before the program headers.
+                    "--remove-symtab",
+                    "--bolt-info=false",
                     "--thread-count=3",
                     "-o",
                     optimized,
@@ -138,21 +167,20 @@ def main() -> None:
                 flush=True,
             )
             log = rewrite("--split-functions=false")
+        host = rustc_host()
         # BOLT appends a second copy of the code if it outgrows the original text segment.
         if "using original .text for new code" not in log:
             print(
                 "Keeping the compiler PGO layout because BOLT did not reuse the original .text.",
                 flush=True,
             )
-            optimized = binary
+            strip = find_llvm_tool("llvm-strip", host)
+            subprocess.run([strip, "--strip-all", "-o", optimized, binary], check=True)
 
-        stripped = work / "ty"
-        # GNU strip can move BOLT's unwind sections out of their load segment.
-        strip = find_llvm_tool("llvm-strip", rustc_host())
-        subprocess.run([strip, "--strip-all", "-o", stripped, optimized], check=True)
-        subprocess.run([stripped, "--version"], check=True)
-        replace_wheel_executable(args.wheel, stripped)
-        stripped.replace(binary)
+        check_program_header_address(optimized, host)
+        subprocess.run([optimized, "--version"], check=True)
+        replace_wheel_executable(args.wheel, optimized)
+        optimized.replace(binary)
 
 
 if __name__ == "__main__":
