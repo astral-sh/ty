@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 455 117" role="img" aria-labelledby="title description">
   <title id="title">Home Assistant CLI type-checking benchmark</title>
-  <desc id="description">ty: 2.54 seconds; Pyrefly: 2.01 seconds; Pyright: 27.05 seconds; mypy: 23.38 seconds.</desc>
+  <desc id="description">ty: 2.62 seconds; Pyrefly: 2.01 seconds; Pyright: 27.88 seconds; mypy: 23.76 seconds.</desc>
   <style>
     .benchmarkBar {
       fill: #6340AC;
@@ -15,14 +15,14 @@
   <g transform="translate(61, 0)" font-family="Roboto Mono, monospace" font-size="12">
     <g class="benchmarkGrid" aria-hidden="true">
       <line x1="0.000" y1="0" x2="0.000" y2="100"/>
-      <line x1="127.148" y1="0" x2="127.148" y2="100"/>
-      <line x1="254.297" y1="0" x2="254.297" y2="100"/>
+      <line x1="123.404" y1="0" x2="123.404" y2="100"/>
+      <line x1="246.807" y1="0" x2="246.807" y2="100"/>
     </g>
 
     <g class="benchmarkLabel" aria-hidden="true" text-anchor="middle">
       <text x="0.000" y="115">0s</text>
-      <text x="127.148" y="115">10s</text>
-      <text x="254.297" y="115">20s</text>
+      <text x="123.404" y="115">10s</text>
+      <text x="246.807" y="115">20s</text>
     </g>
 
     <g class="benchmarkLabel" text-anchor="end">
@@ -33,17 +33,17 @@
     </g>
 
     <g class="benchmarkBar">
-      <rect x="0" y="6" width="32.308" height="13" aria-label="ty: 2.541 seconds"/>
-      <rect x="0" y="31" width="25.570" height="13" aria-label="Pyrefly: 2.011 seconds"/>
-      <rect x="0" y="56" width="344.000" height="13" aria-label="Pyright: 27.055 seconds"/>
-      <rect x="0" y="81" width="297.235" height="13" aria-label="mypy: 23.377 seconds"/>
+      <rect x="0" y="6" width="32.344" height="13" aria-label="ty: 2.621 seconds"/>
+      <rect x="0" y="31" width="24.804" height="13" aria-label="Pyrefly: 2.010 seconds"/>
+      <rect x="0" y="56" width="344.000" height="13" aria-label="Pyright: 27.876 seconds"/>
+      <rect x="0" y="81" width="293.158" height="13" aria-label="mypy: 23.756 seconds"/>
     </g>
 
     <g class="benchmarkLabel">
-      <text x="38.308" y="16.5" font-weight="bold">2.54s</text>
-      <text x="31.570" y="41.5">2.01s</text>
-      <text x="350.000" y="66.5">27.05s</text>
-      <text x="303.235" y="91.5">23.38s</text>
+      <text x="38.344" y="16.5" font-weight="bold">2.62s</text>
+      <text x="30.804" y="41.5">2.01s</text>
+      <text x="350.000" y="66.5">27.88s</text>
+      <text x="299.158" y="91.5">23.76s</text>
     </g>
   </g>
 </svg>

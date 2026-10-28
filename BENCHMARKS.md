@@ -10,9 +10,9 @@ and benchmark tools. Project dependencies were resolved with the cutoff
 Detailed statistics, repetition counts, tool versions, and exact revisions are
 available in [BENCHMARKS.json](BENCHMARKS.json).
 
-- ty: 0.0.93, built with `cargo build --release --bin ty --locked` from the
-    [release source archive](https://github.com/astral-sh/ty/releases/tag/0.0.93),
-    which contains Ruff commit `48630fbedd706272d489f81bbcb308b27feb4174`.
+- ty: 0.0.94, built with `cargo build --release --bin ty --locked` from the
+    [release source archive](https://github.com/astral-sh/ty/releases/tag/0.0.94),
+    which contains Ruff commit `3937a41cabc973efd859800cc68bef96f62fbf45`.
 - Pyrefly: 1.4.0
 - Pyright: 1.1.414
 - mypy: 2.4.0
@@ -29,17 +29,17 @@ For run instructions, see [`ty_benchmark/README.md`](https://github.com/astral-s
 Three warmups and at least ten measured runs. The mypy cache is cleared before
 every run.
 
-| Project       |           ty |      Pyrefly |          mypy |        Pyright |
-| ------------- | -----------: | -----------: | ------------: | -------------: |
-| black         |   78.9 ± 2.9 |  122.9 ± 2.7 |   890.0 ± 4.8 |   1,382 ± 13.2 |
-| discord.py    |  183.7 ± 5.1 |  175.0 ± 4.6 |  2,080 ± 15.0 |   3,069 ± 36.3 |
-| homeassistant | 2,541 ± 20.0 | 2,011 ± 28.0 | 23,377 ± 86.0 | 27,055 ± 220.0 |
-| isort         |  105.5 ± 2.3 |  104.7 ± 2.0 |  445.8 ± 14.0 |   2,501 ± 16.0 |
-| jinja         |   66.4 ± 1.1 |  104.6 ± 1.0 |   533.4 ± 5.0 |    1,286 ± 9.8 |
-| pandas        | 482.3 ± 19.7 | 833.5 ± 35.6 |  9,502 ± 22.3 |   6,456 ± 67.4 |
-| pandas-stubs  |  101.0 ± 7.1 |  195.5 ± 2.3 |  4,809 ± 16.7 |   2,395 ± 36.3 |
-| prefect       |  132.8 ± 6.2 |  255.8 ± 8.5 |   492.4 ± 4.2 |   3,821 ± 38.5 |
-| pytorch       | 1,436 ± 59.0 | 1,020 ± 18.0 | 22,329 ± 68.0 |  14,986 ± 93.0 |
+| Project       |           ty |      Pyrefly |           mypy |        Pyright |
+| ------------- | -----------: | -----------: | -------------: | -------------: |
+| black         |   81.5 ± 2.9 |  125.3 ± 2.5 |   917.3 ± 10.4 |   1,420 ± 13.6 |
+| discord.py    |  184.7 ± 6.1 |  177.9 ± 4.2 |   2,128 ± 15.2 |   3,187 ± 54.2 |
+| homeassistant | 2,621 ± 15.0 | 2,010 ± 31.0 | 23,756 ± 106.0 | 27,876 ± 139.0 |
+| isort         |  106.3 ± 1.7 |  105.4 ± 1.8 |    446.9 ± 3.4 |   2,535 ± 31.9 |
+| jinja         |   66.3 ± 0.8 |  105.2 ± 1.6 |    538.1 ± 5.5 |   1,333 ± 19.7 |
+| pandas        | 506.4 ± 20.2 | 838.9 ± 43.4 |   9,718 ± 53.6 |   6,796 ± 90.4 |
+| pandas-stubs  |  100.8 ± 3.3 |  197.6 ± 3.1 |   4,900 ± 30.6 |   2,449 ± 22.0 |
+| prefect       |  136.9 ± 7.6 |  256.6 ± 4.8 |    501.0 ± 8.8 |   3,969 ± 52.9 |
+| pytorch       | 1,509 ± 67.0 | 1,024 ± 22.0 |  22,688 ± 75.0 | 15,748 ± 147.0 |
 
 ## CLI peak RSS
 
@@ -53,14 +53,14 @@ The LSP suites below measure latency.
 
 | Project       |        ty |   Pyrefly |      mypy |   Pyright |
 | ------------- | --------: | --------: | --------: | --------: |
-| black         | 130.4 MiB | 156.0 MiB | 196.3 MiB | 289.0 MiB |
-| discord.py    | 228.8 MiB | 216.6 MiB | 278.7 MiB | 436.2 MiB |
+| black         | 130.2 MiB | 156.0 MiB | 196.4 MiB | 290.1 MiB |
+| discord.py    | 228.6 MiB | 216.1 MiB | 279.1 MiB | 429.8 MiB |
 | homeassistant |   3.1 GiB |   2.5 GiB |   1.8 GiB |   1.6 GiB |
-| isort         |  91.8 MiB | 104.2 MiB | 122.2 MiB | 290.8 MiB |
-| jinja         | 100.2 MiB | 116.1 MiB | 137.3 MiB | 255.3 MiB |
-| pandas        | 575.8 MiB | 556.4 MiB | 924.9 MiB | 719.2 MiB |
-| pandas-stubs  | 155.9 MiB | 273.4 MiB | 608.8 MiB | 383.8 MiB |
-| prefect       | 222.8 MiB | 292.3 MiB | 134.6 MiB | 560.5 MiB |
+| isort         |  91.5 MiB | 104.1 MiB | 122.1 MiB | 299.0 MiB |
+| jinja         | 100.1 MiB | 116.0 MiB | 137.2 MiB | 258.1 MiB |
+| pandas        | 572.9 MiB | 554.4 MiB | 922.4 MiB | 747.2 MiB |
+| pandas-stubs  | 155.3 MiB | 273.8 MiB | 608.7 MiB | 390.6 MiB |
+| prefect       | 222.4 MiB | 292.3 MiB | 134.8 MiB | 562.3 MiB |
 | pytorch       |   1.5 GiB |   0.8 GiB |   1.6 GiB |   1.4 GiB |
 
 ## LSP: initial diagnostics
@@ -69,14 +69,14 @@ Two warmups and ten measured rounds per project and checker.
 
 | Project       |          ty |      Pyrefly |      Pyright |
 | ------------- | ----------: | -----------: | -----------: |
-| black         |  65.2 ± 2.5 |  169.7 ± 0.9 |  293.4 ± 1.3 |
-| discord.py    | 106.3 ± 0.6 |  189.0 ± 0.6 | 632.4 ± 10.7 |
-| homeassistant |  94.3 ± 0.5 |  215.5 ± 0.7 | 1,672 ± 12.0 |
-| isort         |  50.8 ± 0.4 |   97.3 ± 4.5 |  353.3 ± 1.7 |
-| jinja         |  53.8 ± 0.3 |  123.9 ± 0.4 |  353.8 ± 3.7 |
-| pandas        | 355.4 ± 1.6 |  529.8 ± 2.2 |  624.5 ± 6.2 |
-| prefect       | 169.5 ± 0.9 |  458.7 ± 1.8 |  1,103 ± 4.4 |
-| pytorch       |  57.3 ± 0.2 | 117.3 ± 13.0 |  692.8 ± 3.7 |
+| black         |  64.6 ± 0.3 |  171.9 ± 1.2 |  298.7 ± 3.5 |
+| discord.py    | 108.5 ± 0.4 |  193.3 ± 2.0 |  638.7 ± 8.1 |
+| homeassistant |  95.1 ± 1.0 |  219.1 ± 1.3 | 1,683 ± 25.3 |
+| isort         |  52.2 ± 0.6 |  100.6 ± 4.7 |  360.6 ± 2.0 |
+| jinja         |  54.9 ± 0.5 |  127.7 ± 0.8 |  363.9 ± 2.0 |
+| pandas        | 366.9 ± 3.4 |  534.4 ± 1.9 |  641.2 ± 7.4 |
+| prefect       | 172.2 ± 0.6 |  463.1 ± 1.5 |  1,119 ± 6.5 |
+| pytorch       |  58.4 ± 0.4 | 127.2 ± 13.6 |  704.7 ± 4.9 |
 
 ## LSP: incremental edit
 
@@ -85,14 +85,14 @@ edit fixture and is omitted from both LSP suites.
 
 | Project       |         ty |     Pyrefly |      Pyright |
 | ------------- | ---------: | ----------: | -----------: |
-| black         | 16.3 ± 0.2 |  79.5 ± 4.6 |  502.3 ± 3.8 |
-| discord.py    | 27.4 ± 0.2 |  76.7 ± 3.5 | 522.9 ± 14.0 |
-| homeassistant | 30.0 ± 0.4 |  78.0 ± 4.3 |  580.1 ± 5.5 |
-| isort         | 24.0 ± 0.2 |  44.8 ± 3.3 |  423.6 ± 6.0 |
-| jinja         | 12.6 ± 0.1 |  61.8 ± 3.8 | 507.0 ± 12.7 |
-| pandas        | 50.3 ± 0.9 | 233.2 ± 4.1 |  598.3 ± 7.7 |
-| prefect       |  7.7 ± 0.1 |  57.3 ± 4.1 |  677.7 ± 4.7 |
-| pytorch       |  3.9 ± 0.1 |  22.9 ± 1.7 |  406.2 ± 8.8 |
+| black         | 16.9 ± 1.1 |  84.5 ± 1.5 |  511.5 ± 3.9 |
+| discord.py    | 28.4 ± 0.4 |  81.4 ± 3.6 |  516.7 ± 2.7 |
+| homeassistant | 30.8 ± 0.3 |  82.8 ± 1.0 | 580.2 ± 10.6 |
+| isort         | 24.6 ± 0.5 |  47.6 ± 0.7 |  431.9 ± 4.3 |
+| jinja         | 13.4 ± 0.2 |  65.7 ± 3.0 |  531.9 ± 9.1 |
+| pandas        | 52.3 ± 0.8 | 238.2 ± 4.1 |  615.7 ± 9.8 |
+| prefect       |  8.2 ± 0.1 |  59.3 ± 2.5 |  684.6 ± 3.1 |
+| pytorch       |  4.2 ± 0.1 |  24.3 ± 2.2 |  409.0 ± 9.0 |
 
 ## Project revisions
 
