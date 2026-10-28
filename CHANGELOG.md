@@ -6,15 +6,26 @@ Released on 2026-10-28.
 
 ### Preview features
 
-- Add diagnostic baseline support ([#27636](https://github.com/astral-sh/ruff/pull/27636))
+- Add diagnostic baselines to help adopt ty in projects with existing errors ([#27636](https://github.com/astral-sh/ruff/pull/27636)). Configure a baseline in `pyproject.toml`:
+
+    ```toml
+    [tool.ty]
+    baseline = "ty-baseline.json"
+    ```
+
+    Run `ty check --update-baseline` to record existing diagnostics. Subsequent checks filter matching diagnostics from CLI output and show them as hints in the language server. The baseline format may change while the feature is in preview.
 
 ### Bug fixes
 
-- Django: support abstract models ([#29744](https://github.com/astral-sh/ruff/pull/29744))
 - Fix a panic when checking truthiness in a loop ([#29759](https://github.com/astral-sh/ruff/pull/29759))
 - Fix hang when negating recursive unions of instance types ([#29652](https://github.com/astral-sh/ruff/pull/29652))
+
+### Core type checking
+
+- Avoid synthesizing primary keys for abstract Django models ([#29744](https://github.com/astral-sh/ruff/pull/29744))
+- Combine constraints from repeated `ParamSpec`s ([#29172](https://github.com/astral-sh/ruff/pull/29172))
 - Fix narrowing of strings and integers compared with enum members ([#29743](https://github.com/astral-sh/ruff/pull/29743))
-- Honor @override on overload implementations in stubs ([#29470](https://github.com/astral-sh/ruff/pull/29470))
+- Honor `@override` on overload implementations in stubs ([#29470](https://github.com/astral-sh/ruff/pull/29470))
 - Preserve caller type variables in nested union inference ([#29611](https://github.com/astral-sh/ruff/pull/29611))
 - Preserve generic callback specializations during return refinement ([#29667](https://github.com/astral-sh/ruff/pull/29667))
 - Preserve mapping capture types on narrowed subjects ([#29749](https://github.com/astral-sh/ruff/pull/29749))
@@ -22,10 +33,9 @@ Released on 2026-10-28.
 - Preserve string literals in comparisons with `LiteralString` ([#29741](https://github.com/astral-sh/ruff/pull/29741))
 - Remove covered exclusions from unions ([#29615](https://github.com/astral-sh/ruff/pull/29615))
 
-### Other changes
+### Performance
 
 - Avoid replaying conditions in long boolean expressions ([#29754](https://github.com/astral-sh/ruff/pull/29754))
-- Combine constraints from repeated ParamSpecs ([#29172](https://github.com/astral-sh/ruff/pull/29172))
 - Index nominal union alternatives ([#29196](https://github.com/astral-sh/ruff/pull/29196))
 - Normalize runtime unions on demand ([#29727](https://github.com/astral-sh/ruff/pull/29727))
 - Optimize Linux x86-64 ty releases with LLVM BOLT ([#4833](https://github.com/astral-sh/ty/pull/4833))
