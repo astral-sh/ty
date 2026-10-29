@@ -1,6 +1,6 @@
 # Editor integration
 
-ty can be integrated with various editors to provide a seamless development experience.
+ty integrates with various editors to provide type checking and language server features.
 
 Learn more about ty's editor features in the [language server](./features/language-server.md)
 documentation.
@@ -125,7 +125,7 @@ For more information, refer to [PyCharm documentation](https://www.jetbrains.com
 
 ## Emacs
 
-ty can be utilized as a language server via the built-in [Eglot](https://www.gnu.org/software/emacs/manual/html_node/eglot/index.html) client, which is part of Emacs since version 29.
+ty can be used as a language server via the built-in [Eglot](https://www.gnu.org/software/emacs/manual/html_node/eglot/index.html) client, which has been part of Emacs since version 29.
 
 ```elisp
 (with-eval-after-load 'eglot

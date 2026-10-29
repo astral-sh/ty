@@ -66,8 +66,8 @@ For a project with no explicitly configured environment, ty searches for one in 
 
 !!! note
 
-    When using project management tools, such as uv or Poetry, the `run` command usually automatically
-    activates the virtual environment and will be detected by ty.
+    When using project management tools such as uv or Poetry, the `run` command usually activates
+    the virtual environment automatically, so ty can detect it.
 
 The Python environment may be explicitly configured using the
 [`environment.python`](./reference/configuration.md#python) setting or
