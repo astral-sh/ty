@@ -1,5 +1,30 @@
 # Changelog
 
+## 0.0.95
+
+Released on 2026-10-29.
+
+### Bug fixes
+
+- Accept another unpacked TypeVarTuple as a default ([#29752](https://github.com/astral-sh/ruff/pull/29752))
+- Accept keyword arguments for `TypeAliasType` name and value ([#29802](https://github.com/astral-sh/ruff/pull/29802))
+- Detect traversal budget exhaustion in products of lower bounds ([#29679](https://github.com/astral-sh/ruff/pull/29679))
+- Fix recursive protocol materialization self-comparison ([#29809](https://github.com/astral-sh/ruff/pull/29809))
+- Reject out-of-scope type variables in PEP 695 pack defaults ([#29805](https://github.com/astral-sh/ruff/pull/29805))
+- Use a trailing ParamSpec default after a TypeVarTuple ([#29755](https://github.com/astral-sh/ruff/pull/29755))
+
+### LSP server
+
+- Parenthesize assignment and generator expressions in argument hint edits ([#29797](https://github.com/astral-sh/ruff/pull/29797))
+- Place argument name inlay hints before grouping parentheses ([#29794](https://github.com/astral-sh/ruff/pull/29794))
+- Place variable type inlay hints after grouping parentheses ([#29795](https://github.com/astral-sh/ruff/pull/29795))
+
+### Contributors
+
+- [@carljm](https://github.com/carljm)
+- [@AlexWaygood](https://github.com/AlexWaygood)
+- [@charliermarsh](https://github.com/charliermarsh)
+
 ## 0.0.94
 
 Released on 2026-10-28.
