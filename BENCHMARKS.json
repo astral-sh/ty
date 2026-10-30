@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "date": "2026-10-29",
+    "date": "2026-10-30",
     "hardware": "Apple M3 Max, 16 cores (12 performance, 4 efficiency), 128 GB RAM",
     "os": "macOS-26.5.2-arm64-arm-64bit",
     "ty_repository_commit": "f8ea270e0b125116ce52868b16384819183056af",
@@ -20,7 +20,8 @@
     "project_python": {
       "default": "3.11.17",
       "homeassistant": "3.14.9",
-      "numpy": "3.12.15"
+      "numpy": "3.12.15",
+      "rich": "3.11.17"
     },
     "dependency_cutoff": "2026-10-24T19:50:00Z",
     "cli_warmups": 3,
@@ -37,7 +38,8 @@
       "httpx",
       "numpy",
       "fastapi",
-      "sqlalchemy"
+      "sqlalchemy",
+      "rich"
     ],
     "started_at": "2026-10-29T13:38:07.512367+00:00",
     "collections": {
@@ -52,11 +54,62 @@
           "cli.txt": "719353eea25329e2a61b87f33a1ab151fa8cbf37d490b0766b954faae15784ec",
           "lsp.json": "c6e6cc121405e3c3a591fc6e2602f97310f4c55780ba0fccf9f682dc7cb643c2",
           "lsp.xml": "48d2ecc9dc478c7763df5cde17c3bd325d25936cc53b54ceda47cadb4c4591d6"
+        },
+        "projects": [
+          "black",
+          "discord.py",
+          "homeassistant",
+          "isort",
+          "jinja",
+          "pandas",
+          "pandas-stubs",
+          "prefect",
+          "pytorch",
+          "httpx",
+          "numpy",
+          "fastapi",
+          "sqlalchemy"
+        ],
+        "harness_revision": "d06fdd4ffd26adfadbe2e2c5b82cdaade8ae160e",
+        "supplements": {
+          "rich": {
+            "harness_revision": "73eaa13076c8df139c980d71c34d378d9048c812",
+            "cli_started_at": "2026-10-30T15:56:29.066026+00:00",
+            "cli_completed_at": "2026-10-30T15:57:16.633158+00:00",
+            "cli_exit_code": 0,
+            "lsp_started_at": "2026-10-30T15:57:16.633443+00:00",
+            "lsp_completed_at": "2026-10-30T15:58:03.706062+00:00",
+            "lsp_exit_code": 0,
+            "projects": [
+              "rich"
+            ],
+            "raw_result_sha256": {
+              "cli.txt": "3fc39c78bdbba28b66675576ba4c0fe7a32a542998cec337b76fdce2327110d5",
+              "lsp.json": "23d8b08052ea901cedc908cd2aca118c9c182a6df839c44fb0dfeaa1e656c2cc",
+              "lsp.xml": "313426d439f472eb4feac1c35bec40245161bb97acf376931dbe3b206da33d2d"
+            }
+          }
         }
       }
     },
-    "harness_revision": "d06fdd4ffd26adfadbe2e2c5b82cdaade8ae160e",
-    "completed_at": "2026-10-29T14:47:02.065946+00:00"
+    "completed_at": "2026-10-30T15:58:03.706062+00:00",
+    "harness_revision": "73eaa13076c8df139c980d71c34d378d9048c812",
+    "measurement_dates": {
+      "black": "2026-10-29",
+      "discord.py": "2026-10-29",
+      "homeassistant": "2026-10-29",
+      "isort": "2026-10-29",
+      "jinja": "2026-10-29",
+      "pandas": "2026-10-29",
+      "pandas-stubs": "2026-10-29",
+      "prefect": "2026-10-29",
+      "pytorch": "2026-10-29",
+      "httpx": "2026-10-29",
+      "numpy": "2026-10-29",
+      "fastapi": "2026-10-29",
+      "sqlalchemy": "2026-10-29",
+      "rich": "2026-10-30"
+    }
   },
   "cohorts": {
     "existing": {
@@ -73,7 +126,8 @@
         "httpx": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254",
         "numpy": "f9f1772ce010001208475f751d19253469788410",
         "fastapi": "7a0a3f0b286c6c865cf4398ea0e957a87b8bffa4",
-        "sqlalchemy": "10f4d1e2d706a7722ca78e79ce05b00333a7aa5b"
+        "sqlalchemy": "10f4d1e2d706a7722ca78e79ce05b00333a7aa5b",
+        "rich": "9d8f9a372cc5916fd4781fec207ced7ddac2f08f"
       },
       "cli": {
         "black": {
@@ -829,6 +883,64 @@
               "source_unit": "MiB"
             }
           }
+        },
+        "rich": {
+          "ty": {
+            "rounds": 40,
+            "mean_ms": 74.0,
+            "stddev_ms": 3.1,
+            "min_ms": 68.1,
+            "max_ms": 80.4,
+            "peak_rss_mib": {
+              "mean": 120.2,
+              "stddev": 0.8,
+              "min": 119.2,
+              "max": 122.0,
+              "source_unit": "MiB"
+            }
+          },
+          "Pyrefly": {
+            "rounds": 24,
+            "mean_ms": 118.3,
+            "stddev_ms": 2.7,
+            "min_ms": 112.9,
+            "max_ms": 121.7,
+            "peak_rss_mib": {
+              "mean": 133.9,
+              "stddev": 1.4,
+              "min": 131.2,
+              "max": 136.7,
+              "source_unit": "MiB"
+            }
+          },
+          "mypy": {
+            "rounds": 10,
+            "mean_ms": 1103.7,
+            "stddev_ms": 8.2,
+            "min_ms": 1092.4,
+            "max_ms": 1118.3,
+            "peak_rss_mib": {
+              "mean": 226.5,
+              "stddev": 0.6,
+              "min": 225.0,
+              "max": 227.3,
+              "source_unit": "MiB"
+            }
+          },
+          "Pyright": {
+            "rounds": 10,
+            "mean_ms": 1744.2,
+            "stddev_ms": 44.2,
+            "min_ms": 1673.5,
+            "max_ms": 1815.8,
+            "peak_rss_mib": {
+              "mean": 286.0,
+              "stddev": 11.4,
+              "min": 275.6,
+              "max": 311.7,
+              "source_unit": "MiB"
+            }
+          }
         }
       },
       "lsp": {
@@ -1108,6 +1220,29 @@
               "max_ms": 247.37812508828938,
               "rounds": 10
             }
+          },
+          "rich": {
+            "ty": {
+              "mean_ms": 43.559620913583785,
+              "stddev_ms": 0.10119584851307249,
+              "min_ms": 43.34983404260129,
+              "max_ms": 43.6930829891935,
+              "rounds": 10
+            },
+            "Pyright": {
+              "mean_ms": 316.2683457718231,
+              "stddev_ms": 3.824802745545886,
+              "min_ms": 312.022874946706,
+              "max_ms": 324.51291591860354,
+              "rounds": 10
+            },
+            "Pyrefly": {
+              "mean_ms": 103.19336669053882,
+              "stddev_ms": 5.220305871961689,
+              "min_ms": 99.48954195715487,
+              "max_ms": 113.06775000412017,
+              "rounds": 10
+            }
           }
         },
         "incremental": {
@@ -1384,6 +1519,29 @@
               "stddev_ms": 3.1060805690402966,
               "min_ms": 74.56587499473244,
               "max_ms": 83.16941605880857,
+              "rounds": 10
+            }
+          },
+          "rich": {
+            "ty": {
+              "mean_ms": 6.246170774102211,
+              "stddev_ms": 0.10421841952530521,
+              "min_ms": 6.042041932232678,
+              "max_ms": 6.370999966748059,
+              "rounds": 10
+            },
+            "Pyright": {
+              "mean_ms": 441.2246460211463,
+              "stddev_ms": 8.428625512263281,
+              "min_ms": 428.72554203495383,
+              "max_ms": 454.0499170543626,
+              "rounds": 10
+            },
+            "Pyrefly": {
+              "mean_ms": 38.50971651263535,
+              "stddev_ms": 4.287737586296707,
+              "min_ms": 33.13895803876221,
+              "max_ms": 44.39208295661956,
               "rounds": 10
             }
           }
