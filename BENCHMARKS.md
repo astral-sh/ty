@@ -7,10 +7,16 @@ All projects except Rich were measured on October 29. Rich was measured
 in two passes on October 30 with the same benchmark settings.
 Collection times and raw-result hashes are recorded separately for Rich.
 
-These results retain the existing revisions for the original nine projects and
-add HTTPX, NumPy, FastAPI, SQLAlchemy, and Rich. The five additions use identical
-source revisions in both cohorts. Project dependencies were resolved with the cutoff
-`2026-10-24T19:50:00Z`. Times are mean ± standard deviation in milliseconds.
+The existing project revisions were measured first, followed by the updated
+upstream revisions with dependencies resolved afresh. Both runs used the same
+checker versions, Python versions, and dependency cutoff (`2026-10-24T19:50:00Z`).
+Updated project requirements can still change the installed dependencies. Both
+cohorts use ty 0.0.94. HTTPX, NumPy, FastAPI, SQLAlchemy, Rich, and Jinja have the same
+source and dependency inputs in both cohorts; their timing differences reflect
+run-to-run variation.
+
+Timing cells show **existing revision → updated revision (percentage change)**.
+Times are mean wall-clock milliseconds; negative changes mean faster checks.
 
 Detailed statistics, repetition counts, tool versions, and exact revisions are
 available in [BENCHMARKS.json](BENCHMARKS.json).
@@ -27,7 +33,7 @@ available in [BENCHMARKS.json](BENCHMARKS.json).
 - Harness Python: 3.15.1. Project environments use Python 3.11.17, except Home
     Assistant, which uses Python 3.14.9, and NumPy, which uses Python 3.12.15.
 
-For run instructions, see [`ty_benchmark/README.md`](https://github.com/astral-sh/ruff/blob/73eaa13076c8df139c980d71c34d378d9048c812/scripts/ty_benchmark/README.md).
+For run instructions, see [`ty_benchmark/README.md`](https://github.com/astral-sh/ruff/blob/8ab47843110fa4333cdcb117febf221db1165fc4/scripts/ty_benchmark/README.md).
 
 NumPy checks Python and stub sources with tests excluded; its C extensions are
 not built. SQLAlchemy adds a typed ORM and SQL expression workload.
@@ -38,22 +44,22 @@ Rich checks its Python package, including optional notebook integrations.
 Three warmups and at least ten measured runs. The mypy cache is cleared before
 every run.
 
-| Project       |            ty |      Pyrefly |           mypy |        Pyright |
-| ------------- | ------------: | -----------: | -------------: | -------------: |
-| black         |    80.0 ± 3.8 |  124.2 ± 2.8 |    893.3 ± 2.6 |   1,378 ± 11.3 |
-| discord.py    |   183.7 ± 4.5 |  175.6 ± 4.6 |    2,067 ± 8.1 |   3,064 ± 28.4 |
-| homeassistant | 2,785 ± 234.0 | 2,020 ± 29.0 | 23,392 ± 131.0 | 27,168 ± 332.0 |
-| isort         |   105.2 ± 1.2 |  104.5 ± 1.2 |   454.1 ± 16.8 |    2,499 ± 9.5 |
-| jinja         |    66.2 ± 1.4 |  105.3 ± 1.3 |    530.9 ± 3.2 |   1,276 ± 10.4 |
-| pandas        |  483.8 ± 15.2 | 786.4 ± 59.8 |   9,489 ± 40.8 |   6,484 ± 55.6 |
-| pandas-stubs  |    99.2 ± 3.3 |  195.9 ± 2.7 |   4,824 ± 20.8 |   2,429 ± 27.7 |
-| prefect       |   134.3 ± 5.2 |  254.6 ± 9.8 |    493.5 ± 7.8 |   3,840 ± 42.5 |
-| pytorch       |  1,431 ± 46.0 | 1,026 ± 17.0 |  22,319 ± 45.0 | 15,018 ± 140.0 |
-| httpx         |    71.7 ± 1.4 |  120.8 ± 2.7 |    860.8 ± 3.8 |   1,087 ± 16.5 |
-| numpy         | 2,462 ± 208.0 | 1,523 ± 31.0 | 80,798 ± 632.0 |   8,848 ± 91.0 |
-| fastapi       |   106.8 ± 2.0 |  301.1 ± 3.7 |   1,906 ± 21.2 |   2,163 ± 23.3 |
-| sqlalchemy    |  382.9 ± 19.2 |  319.0 ± 9.5 |   3,058 ± 19.0 |   4,382 ± 45.3 |
-| rich          |    74.0 ± 3.1 |  118.3 ± 2.7 |    1,104 ± 8.2 |   1,744 ± 44.2 |
+| Project       |                     ty |                Pyrefly |                     mypy |                  Pyright |
+| ------------- | ---------------------: | ---------------------: | -----------------------: | -----------------------: |
+| black         |   80.0 → 89.0 (+11.3%) |  124.2 → 134.5 (+8.3%) |    893.3 → 925.7 (+3.6%) |    1,378 → 1,433 (+4.0%) |
+| discord.py    |  183.7 → 184.8 (+0.6%) |  175.6 → 175.1 (-0.3%) |    2,067 → 2,081 (+0.7%) |    3,064 → 3,128 (+2.1%) |
+| homeassistant |  2,785 → 3,006 (+7.9%) | 2,020 → 2,317 (+14.7%) | 23,392 → 29,597 (+26.5%) | 27,168 → 31,131 (+14.6%) |
+| isort         | 105.2 → 131.6 (+25.1%) |  104.5 → 106.5 (+1.9%) |    454.1 → 452.6 (-0.3%) |   2,499 → 1,774 (-29.0%) |
+| jinja         |    66.2 → 66.2 (+0.0%) |  105.3 → 104.9 (-0.4%) |    530.9 → 533.7 (+0.5%) |    1,276 → 1,279 (+0.3%) |
+| pandas        |  483.8 → 505.1 (+4.4%) | 786.4 → 906.5 (+15.3%) |   9,489 → 10,341 (+9.0%) |    6,484 → 7,036 (+8.5%) |
+| pandas-stubs  |    99.2 → 98.8 (-0.4%) |  195.9 → 199.6 (+1.9%) |    4,824 → 4,613 (-4.4%) |    2,429 → 2,462 (+1.4%) |
+| prefect       |  134.3 → 135.2 (+0.7%) |  254.6 → 263.1 (+3.3%) |    493.5 → 497.7 (+0.9%) |    3,840 → 3,843 (+0.1%) |
+| pytorch       | 1,431 → 1,673 (+16.9%) | 1,026 → 1,220 (+18.9%) | 22,319 → 29,444 (+31.9%) | 15,018 → 17,099 (+13.9%) |
+| httpx         |    71.7 → 71.8 (+0.1%) |  120.8 → 120.3 (-0.4%) |    860.8 → 866.1 (+0.6%) |    1,087 → 1,093 (+0.6%) |
+| numpy         |  2,462 → 2,471 (+0.4%) |  1,523 → 1,475 (-3.2%) |  80,798 → 81,156 (+0.4%) |    8,848 → 8,919 (+0.8%) |
+| fastapi       |  106.8 → 107.8 (+0.9%) |  301.1 → 297.4 (-1.2%) |    1,906 → 1,903 (-0.1%) |    2,163 → 2,178 (+0.7%) |
+| sqlalchemy    |  382.9 → 386.1 (+0.8%) |  319.0 → 323.2 (+1.3%) |    3,058 → 3,049 (-0.3%) |    4,382 → 4,387 (+0.1%) |
+| rich          |    74.0 → 74.5 (+0.7%) |  118.3 → 123.3 (+4.2%) |    1,104 → 1,174 (+6.4%) |    1,744 → 1,758 (+0.8%) |
 
 ## CLI peak RSS
 
@@ -65,82 +71,88 @@ On macOS, Hyperfine uses [`ru_maxrss`](https://github.com/sharkdp/hyperfine/blob
 This metric does not sum concurrent worker RSS; Pyright runs with `--threads`.
 The LSP suites below measure latency.
 
-| Project       |        ty |   Pyrefly |      mypy |   Pyright |
-| ------------- | --------: | --------: | --------: | --------: |
-| black         | 130.5 MiB | 155.7 MiB | 196.3 MiB | 291.4 MiB |
-| discord.py    | 228.6 MiB | 216.0 MiB | 279.0 MiB | 429.3 MiB |
-| homeassistant |   3.1 GiB |   2.5 GiB |   1.8 GiB |   1.6 GiB |
-| isort         |  91.6 MiB | 104.0 MiB | 122.2 MiB | 296.2 MiB |
-| jinja         |  99.9 MiB | 116.4 MiB | 137.2 MiB | 257.6 MiB |
-| pandas        | 572.6 MiB | 558.1 MiB | 922.0 MiB | 734.0 MiB |
-| pandas-stubs  | 155.5 MiB | 273.5 MiB | 608.9 MiB | 386.4 MiB |
-| prefect       | 222.5 MiB | 292.4 MiB | 134.7 MiB | 572.7 MiB |
-| pytorch       |   1.5 GiB |   0.8 GiB |   1.6 GiB |   1.3 GiB |
-| httpx         | 102.4 MiB | 129.9 MiB | 190.5 MiB | 261.5 MiB |
-| numpy         | 520.9 MiB | 681.8 MiB | 644.0 MiB | 673.4 MiB |
-| fastapi       | 142.7 MiB | 193.4 MiB | 336.9 MiB | 332.5 MiB |
-| sqlalchemy    | 422.6 MiB | 295.7 MiB | 370.3 MiB | 544.4 MiB |
-| rich          | 120.2 MiB | 133.9 MiB | 226.5 MiB | 286.0 MiB |
+Each cell shows **existing revision → updated revision**.
+
+| Project       |                    ty |               Pyrefly |                  mypy |               Pyright |
+| ------------- | --------------------: | --------------------: | --------------------: | --------------------: |
+| black         | 130.5 MiB → 134.0 MiB | 155.7 MiB → 159.9 MiB | 196.3 MiB → 198.7 MiB | 291.4 MiB → 292.6 MiB |
+| discord.py    | 228.6 MiB → 229.8 MiB | 216.0 MiB → 217.0 MiB | 279.0 MiB → 279.4 MiB | 429.3 MiB → 428.5 MiB |
+| homeassistant |     3.1 GiB → 3.6 GiB |     2.5 GiB → 3.0 GiB |     1.8 GiB → 2.3 GiB |     1.6 GiB → 1.8 GiB |
+| isort         |   91.6 MiB → 89.4 MiB | 104.0 MiB → 103.9 MiB | 122.2 MiB → 120.4 MiB | 296.2 MiB → 265.4 MiB |
+| jinja         |   99.9 MiB → 99.9 MiB | 116.4 MiB → 116.0 MiB | 137.2 MiB → 137.2 MiB | 257.6 MiB → 255.7 MiB |
+| pandas        | 572.6 MiB → 588.0 MiB | 558.1 MiB → 570.6 MiB | 922.0 MiB → 926.2 MiB | 734.0 MiB → 784.8 MiB |
+| pandas-stubs  | 155.5 MiB → 158.2 MiB | 273.5 MiB → 274.6 MiB | 608.9 MiB → 615.3 MiB | 386.4 MiB → 393.0 MiB |
+| prefect       | 222.5 MiB → 224.2 MiB | 292.4 MiB → 294.4 MiB | 134.7 MiB → 135.5 MiB | 572.7 MiB → 567.7 MiB |
+| pytorch       |     1.5 GiB → 1.7 GiB |     0.8 GiB → 0.9 GiB |     1.6 GiB → 1.8 GiB |     1.3 GiB → 1.5 GiB |
+| httpx         | 102.4 MiB → 102.0 MiB | 129.9 MiB → 130.1 MiB | 190.5 MiB → 190.8 MiB | 261.5 MiB → 257.9 MiB |
+| numpy         | 520.9 MiB → 520.7 MiB | 681.8 MiB → 681.7 MiB | 644.0 MiB → 645.4 MiB | 673.4 MiB → 692.1 MiB |
+| fastapi       | 142.7 MiB → 142.6 MiB | 193.4 MiB → 193.6 MiB | 336.9 MiB → 337.1 MiB | 332.5 MiB → 335.4 MiB |
+| sqlalchemy    | 422.6 MiB → 423.5 MiB | 295.7 MiB → 296.6 MiB | 370.3 MiB → 370.3 MiB | 544.4 MiB → 538.6 MiB |
+| rich          | 120.2 MiB → 120.3 MiB | 133.9 MiB → 133.6 MiB | 226.5 MiB → 226.5 MiB | 286.0 MiB → 281.2 MiB |
 
 ## LSP: initial diagnostics
 
 Two warmups and ten measured rounds per project and checker.
 
-| Project       |          ty |      Pyrefly |      Pyright |
-| ------------- | ----------: | -----------: | -----------: |
-| black         |  63.8 ± 0.2 |  169.8 ± 1.2 |  292.7 ± 1.6 |
-| discord.py    | 106.2 ± 0.4 |  187.3 ± 0.7 |  627.1 ± 6.9 |
-| homeassistant |  94.0 ± 0.4 |  219.4 ± 3.9 | 1,677 ± 11.5 |
-| isort         |  50.6 ± 0.2 |   95.6 ± 2.9 |  354.2 ± 2.1 |
-| jinja         |  53.8 ± 0.6 |  129.8 ± 3.5 |  354.3 ± 3.6 |
-| pandas        | 354.5 ± 3.2 |  528.9 ± 1.7 |  628.5 ± 8.6 |
-| prefect       | 171.9 ± 3.3 | 433.2 ± 54.1 |  1,101 ± 5.9 |
-| pytorch       |  57.2 ± 0.2 | 116.3 ± 12.6 |  694.0 ± 2.6 |
-| httpx         |  48.0 ± 0.3 |  114.0 ± 0.5 |  226.7 ± 1.2 |
-| numpy         | 510.0 ± 1.7 |  566.3 ± 2.5 |  1,193 ± 8.5 |
-| fastapi       | 101.3 ± 0.6 |  204.7 ± 5.1 |  471.0 ± 4.5 |
-| sqlalchemy    | 216.8 ± 1.4 |  246.3 ± 0.5 |  273.4 ± 1.7 |
-| rich          |  43.6 ± 0.1 |  103.2 ± 5.2 |  316.3 ± 3.8 |
+| Project       |                     ty |                Pyrefly |                Pyright |
+| ------------- | ---------------------: | ---------------------: | ---------------------: |
+| black         |   63.8 → 74.8 (+17.3%) |  169.8 → 181.8 (+7.1%) |  292.7 → 303.6 (+3.7%) |
+| discord.py    |  106.2 → 105.4 (-0.7%) |  187.3 → 188.9 (+0.9%) |  627.1 → 625.5 (-0.2%) |
+| homeassistant |   94.0 → 101.6 (+8.1%) |  219.4 → 228.7 (+4.2%) | 1,677 → 1,965 (+17.2%) |
+| isort         |    50.6 → 53.7 (+6.0%) |  95.6 → 110.1 (+15.2%) |  354.2 → 357.3 (+0.9%) |
+| jinja         |    53.8 → 54.6 (+1.5%) |  129.8 → 124.9 (-3.8%) |  354.3 → 354.9 (+0.2%) |
+| pandas        | 354.5 → 394.1 (+11.2%) |  528.9 → 540.0 (+2.1%) |  628.5 → 637.8 (+1.5%) |
+| prefect       |  171.9 → 174.9 (+1.7%) |  433.2 → 458.6 (+5.9%) |  1,101 → 1,113 (+1.1%) |
+| pytorch       |   57.2 → 68.4 (+19.6%) | 116.3 → 134.4 (+15.5%) |  694.0 → 716.0 (+3.2%) |
+| httpx         |    48.0 → 46.8 (-2.7%) |  114.0 → 113.4 (-0.5%) |  226.7 → 223.8 (-1.3%) |
+| numpy         |  510.0 → 507.7 (-0.5%) |  566.3 → 564.6 (-0.3%) |  1,193 → 1,193 (+0.0%) |
+| fastapi       |  101.3 → 101.1 (-0.2%) |  204.7 → 201.2 (-1.7%) |  471.0 → 476.7 (+1.2%) |
+| sqlalchemy    |  216.8 → 221.6 (+2.2%) |  246.3 → 246.3 (+0.0%) |  273.4 → 272.9 (-0.2%) |
+| rich          |    43.6 → 43.5 (-0.1%) |  103.2 → 113.0 (+9.5%) |  316.3 → 316.1 (-0.1%) |
 
 ## LSP: incremental edit
 
 Two warmups and ten measured rounds per project and checker. pandas-stubs has no
 edit fixture and is omitted from both LSP suites.
 
-| Project       |         ty |     Pyrefly |      Pyright |
-| ------------- | ---------: | ----------: | -----------: |
-| black         | 16.1 ± 0.2 |  80.0 ± 6.0 |  504.5 ± 5.3 |
-| discord.py    | 27.1 ± 0.1 |  78.3 ± 3.9 | 517.2 ± 14.2 |
-| homeassistant | 29.9 ± 0.3 |  74.5 ± 8.9 |  580.4 ± 3.4 |
-| isort         | 23.7 ± 0.2 |  45.9 ± 2.8 |  421.1 ± 8.0 |
-| jinja         | 12.7 ± 0.2 |  63.9 ± 4.1 |  502.7 ± 9.7 |
-| pandas        | 50.6 ± 0.9 | 230.3 ± 5.7 | 592.4 ± 10.1 |
-| prefect       |  7.9 ± 0.1 |  57.7 ± 4.2 |  674.4 ± 7.8 |
-| pytorch       |  4.0 ± 0.1 |  22.8 ± 2.0 | 403.6 ± 10.3 |
-| httpx         |  8.3 ± 0.1 |  49.8 ± 7.0 | 425.0 ± 10.2 |
-| numpy         | 35.8 ± 0.7 | 345.6 ± 3.7 | 1,226 ± 43.3 |
-| fastapi       |  8.1 ± 0.1 |  67.6 ± 3.2 |  617.6 ± 1.5 |
-| sqlalchemy    | 12.7 ± 0.4 |  79.1 ± 3.1 |  634.9 ± 8.5 |
-| rich          |  6.2 ± 0.1 |  38.5 ± 4.3 |  441.2 ± 8.4 |
+| Project       |                   ty |               Pyrefly |                Pyright |
+| ------------- | -------------------: | --------------------: | ---------------------: |
+| black         | 16.1 → 20.4 (+26.7%) |  80.0 → 93.1 (+16.4%) |  504.5 → 551.1 (+9.3%) |
+| discord.py    |  27.1 → 27.2 (+0.3%) |   78.3 → 78.6 (+0.4%) |  517.2 → 514.8 (-0.5%) |
+| homeassistant |  29.9 → 31.6 (+5.6%) |   74.5 → 79.1 (+6.1%) |  580.4 → 574.7 (-1.0%) |
+| isort         | 23.7 → 26.5 (+11.6%) |   45.9 → 48.2 (+5.1%) |  421.1 → 427.7 (+1.6%) |
+| jinja         |  12.7 → 12.6 (-0.8%) |   63.9 → 62.6 (-2.0%) |  502.7 → 504.3 (+0.3%) |
+| pandas        |  50.6 → 50.8 (+0.5%) | 230.3 → 250.8 (+8.9%) | 592.4 → 677.7 (+14.4%) |
+| prefect       |    7.9 → 7.7 (-2.3%) |   57.7 → 55.8 (-3.3%) |  674.4 → 674.7 (+0.0%) |
+| pytorch       |    4.0 → 4.3 (+8.8%) |   22.8 → 23.4 (+2.8%) |  403.6 → 404.3 (+0.2%) |
+| httpx         |    8.3 → 8.2 (-1.0%) |   49.8 → 50.3 (+1.1%) |  425.0 → 428.0 (+0.7%) |
+| numpy         |  35.8 → 35.9 (+0.4%) | 345.6 → 342.8 (-0.8%) |  1,226 → 1,198 (-2.3%) |
+| fastapi       |    8.1 → 8.2 (+0.7%) |   67.6 → 67.7 (+0.1%) |  617.6 → 615.5 (-0.3%) |
+| sqlalchemy    |  12.7 → 12.7 (-0.2%) |   79.1 → 78.5 (-0.8%) |  634.9 → 635.2 (+0.0%) |
+| rich          |    6.2 → 6.3 (+0.3%) |   38.5 → 35.8 (-7.1%) |  441.2 → 439.7 (-0.3%) |
 
 ## Project revisions
 
-| Project       | Revision                                   |
-| ------------- | ------------------------------------------ |
-| black         | `ce1897a8f20d0f64844dd666d07f4003500d0e09` |
-| discord.py    | `2fbed9362422dad4f7850eb6c5d9b1f8bff7c71a` |
-| homeassistant | `a0162d2ff0ed061501405a617961be149b15bd1f` |
-| isort         | `87adfe4732548abff5010336f2fc4b5e8237407d` |
-| jinja         | `5ef70112a1ff19c05324ff889dd30405b1002044` |
-| pandas        | `e3a56513f27849f12265a14c814e02f4f408fb3d` |
-| pandas-stubs  | `1352ba3daa86f1c47a3cce5ad212a770cc693cb4` |
-| prefect       | `db66b14dbaea18e726fc4ea0100fd194383c6c59` |
-| pytorch       | `29d6170e7c79f2c71943692985a1546fb2bed28c` |
-| httpx         | `b5addb64f0161ff6bfe94c124ef76f6a1fba5254` |
-| numpy         | `f9f1772ce010001208475f751d19253469788410` |
-| fastapi       | `7a0a3f0b286c6c865cf4398ea0e957a87b8bffa4` |
-| sqlalchemy    | `10f4d1e2d706a7722ca78e79ce05b00333a7aa5b` |
-| rich          | `9d8f9a372cc5916fd4781fec207ced7ddac2f08f` |
+| Project       | Existing                                   | Updated                                    |
+| ------------- | ------------------------------------------ | ------------------------------------------ |
+| black         | `ce1897a8f20d0f64844dd666d07f4003500d0e09` | `55996d1fb8342725c8a19b6023cd9439c3c1d6f7` |
+| discord.py    | `2fbed9362422dad4f7850eb6c5d9b1f8bff7c71a` | `65232c38702be5844cf2ce865a4777eb1928b5d0` |
+| homeassistant | `a0162d2ff0ed061501405a617961be149b15bd1f` | `c19ae285ede74cd64c3045a3a4aa43290c224f1b` |
+| isort         | `87adfe4732548abff5010336f2fc4b5e8237407d` | `a514c71ed86c2216d0040c7d60e302ed76a4f7ab` |
+| jinja         | `5ef70112a1ff19c05324ff889dd30405b1002044` | `5ef70112a1ff19c05324ff889dd30405b1002044` |
+| pandas        | `e3a56513f27849f12265a14c814e02f4f408fb3d` | `a0225b65720018f4654390bb16d254daa6ee5e54` |
+| pandas-stubs  | `1352ba3daa86f1c47a3cce5ad212a770cc693cb4` | `8dd6d91b1c05b26e30f7ddbe3dc3d4042a92bdd6` |
+| prefect       | `db66b14dbaea18e726fc4ea0100fd194383c6c59` | `a9452ac21852755311913cb27887b083b5007c03` |
+| pytorch       | `29d6170e7c79f2c71943692985a1546fb2bed28c` | `ab92945cea42e47ae398aead69af0872d340ea0f` |
+| httpx         | `b5addb64f0161ff6bfe94c124ef76f6a1fba5254` | `b5addb64f0161ff6bfe94c124ef76f6a1fba5254` |
+| numpy         | `f9f1772ce010001208475f751d19253469788410` | `f9f1772ce010001208475f751d19253469788410` |
+| fastapi       | `7a0a3f0b286c6c865cf4398ea0e957a87b8bffa4` | `7a0a3f0b286c6c865cf4398ea0e957a87b8bffa4` |
+| sqlalchemy    | `10f4d1e2d706a7722ca78e79ce05b00333a7aa5b` | `10f4d1e2d706a7722ca78e79ce05b00333a7aa5b` |
+| rich          | `9d8f9a372cc5916fd4781fec207ced7ddac2f08f` | `9d8f9a372cc5916fd4781fec207ced7ddac2f08f` |
+
+The updated pandas revision removes `typings`, so its source list contains only
+`pandas`. Jinja and the five added projects use the same source revisions in
+both runs.
 
 Performance varies with hardware, operating system, dependencies, and background
 load. Checkers can produce different diagnostics and do different amounts of work.
