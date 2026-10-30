@@ -1,10 +1,14 @@
 # Benchmarks
 
-Computed on October 29, 2026 (UTC), on macOS 26.5.2 with an Apple M3 Max (16 cores,
+Computed on October 29–30, 2026 (UTC), on macOS 26.5.2 with an Apple M3 Max (16 cores,
 128 GB RAM).
 
+All projects except Rich were measured on October 29. Rich was measured
+in two passes on October 30 with the same benchmark settings.
+Collection times and raw-result hashes are recorded separately for Rich.
+
 These results retain the existing revisions for the original nine projects and
-add HTTPX, NumPy, FastAPI, and SQLAlchemy. The four additions use identical
+add HTTPX, NumPy, FastAPI, SQLAlchemy, and Rich. The five additions use identical
 source revisions in both cohorts. Project dependencies were resolved with the cutoff
 `2026-10-24T19:50:00Z`. Times are mean ± standard deviation in milliseconds.
 
@@ -23,10 +27,11 @@ available in [BENCHMARKS.json](BENCHMARKS.json).
 - Harness Python: 3.15.1. Project environments use Python 3.11.17, except Home
     Assistant, which uses Python 3.14.9, and NumPy, which uses Python 3.12.15.
 
-For run instructions, see [`ty_benchmark/README.md`](https://github.com/astral-sh/ruff/blob/d06fdd4ffd26adfadbe2e2c5b82cdaade8ae160e/scripts/ty_benchmark/README.md).
+For run instructions, see [`ty_benchmark/README.md`](https://github.com/astral-sh/ruff/blob/73eaa13076c8df139c980d71c34d378d9048c812/scripts/ty_benchmark/README.md).
 
 NumPy checks Python and stub sources with tests excluded; its C extensions are
 not built. SQLAlchemy adds a typed ORM and SQL expression workload.
+Rich checks its Python package, including optional notebook integrations.
 
 ## CLI cold check
 
@@ -48,6 +53,7 @@ every run.
 | numpy         | 2,462 ± 208.0 | 1,523 ± 31.0 | 80,798 ± 632.0 |   8,848 ± 91.0 |
 | fastapi       |   106.8 ± 2.0 |  301.1 ± 3.7 |   1,906 ± 21.2 |   2,163 ± 23.3 |
 | sqlalchemy    |  382.9 ± 19.2 |  319.0 ± 9.5 |   3,058 ± 19.0 |   4,382 ± 45.3 |
+| rich          |    74.0 ± 3.1 |  118.3 ± 2.7 |    1,104 ± 8.2 |   1,744 ± 44.2 |
 
 ## CLI peak RSS
 
@@ -74,6 +80,7 @@ The LSP suites below measure latency.
 | numpy         | 520.9 MiB | 681.8 MiB | 644.0 MiB | 673.4 MiB |
 | fastapi       | 142.7 MiB | 193.4 MiB | 336.9 MiB | 332.5 MiB |
 | sqlalchemy    | 422.6 MiB | 295.7 MiB | 370.3 MiB | 544.4 MiB |
+| rich          | 120.2 MiB | 133.9 MiB | 226.5 MiB | 286.0 MiB |
 
 ## LSP: initial diagnostics
 
@@ -93,6 +100,7 @@ Two warmups and ten measured rounds per project and checker.
 | numpy         | 510.0 ± 1.7 |  566.3 ± 2.5 |  1,193 ± 8.5 |
 | fastapi       | 101.3 ± 0.6 |  204.7 ± 5.1 |  471.0 ± 4.5 |
 | sqlalchemy    | 216.8 ± 1.4 |  246.3 ± 0.5 |  273.4 ± 1.7 |
+| rich          |  43.6 ± 0.1 |  103.2 ± 5.2 |  316.3 ± 3.8 |
 
 ## LSP: incremental edit
 
@@ -113,6 +121,7 @@ edit fixture and is omitted from both LSP suites.
 | numpy         | 35.8 ± 0.7 | 345.6 ± 3.7 | 1,226 ± 43.3 |
 | fastapi       |  8.1 ± 0.1 |  67.6 ± 3.2 |  617.6 ± 1.5 |
 | sqlalchemy    | 12.7 ± 0.4 |  79.1 ± 3.1 |  634.9 ± 8.5 |
+| rich          |  6.2 ± 0.1 |  38.5 ± 4.3 |  441.2 ± 8.4 |
 
 ## Project revisions
 
@@ -131,6 +140,7 @@ edit fixture and is omitted from both LSP suites.
 | numpy         | `f9f1772ce010001208475f751d19253469788410` |
 | fastapi       | `7a0a3f0b286c6c865cf4398ea0e957a87b8bffa4` |
 | sqlalchemy    | `10f4d1e2d706a7722ca78e79ce05b00333a7aa5b` |
+| rich          | `9d8f9a372cc5916fd4781fec207ced7ddac2f08f` |
 
 Performance varies with hardware, operating system, dependencies, and background
 load. Checkers can produce different diagnostics and do different amounts of work.
