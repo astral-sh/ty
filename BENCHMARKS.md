@@ -1,13 +1,17 @@
 # Benchmarks
 
-Computed on October 29, 2026 (UTC), on macOS 26.5.2 with an Apple M3 Max (16 cores,
+Computed on October 29–30, 2026 (UTC), on macOS 26.5.2 with an Apple M3 Max (16 cores,
 128 GB RAM).
+
+All projects except Rich were measured on October 29. Rich was measured
+in two passes on October 30 with the same benchmark settings.
+Collection times and raw-result hashes are recorded separately for Rich.
 
 The existing project revisions were measured first, followed by the updated
 upstream revisions with dependencies resolved afresh. Both runs used the same
 checker versions, Python versions, and dependency cutoff (`2026-10-24T19:50:00Z`).
 Updated project requirements can still change the installed dependencies. Both
-cohorts use ty 0.0.94. HTTPX, NumPy, FastAPI, SQLAlchemy, and Jinja have the same
+cohorts use ty 0.0.94. HTTPX, NumPy, FastAPI, SQLAlchemy, Rich, and Jinja have the same
 source and dependency inputs in both cohorts; their timing differences reflect
 run-to-run variation.
 
@@ -29,10 +33,11 @@ available in [BENCHMARKS.json](BENCHMARKS.json).
 - Harness Python: 3.15.1. Project environments use Python 3.11.17, except Home
     Assistant, which uses Python 3.14.9, and NumPy, which uses Python 3.12.15.
 
-For run instructions, see [`ty_benchmark/README.md`](https://github.com/astral-sh/ruff/blob/14ae772168ec5876b6f1a869e72fb3431f4953dc/scripts/ty_benchmark/README.md).
+For run instructions, see [`ty_benchmark/README.md`](https://github.com/astral-sh/ruff/blob/8ab47843110fa4333cdcb117febf221db1165fc4/scripts/ty_benchmark/README.md).
 
 NumPy checks Python and stub sources with tests excluded; its C extensions are
 not built. SQLAlchemy adds a typed ORM and SQL expression workload.
+Rich checks its Python package, including optional notebook integrations.
 
 ## CLI cold check
 
@@ -54,6 +59,7 @@ every run.
 | numpy         |  2,462 → 2,471 (+0.4%) |  1,523 → 1,475 (-3.2%) |  80,798 → 81,156 (+0.4%) |    8,848 → 8,919 (+0.8%) |
 | fastapi       |  106.8 → 107.8 (+0.9%) |  301.1 → 297.4 (-1.2%) |    1,906 → 1,903 (-0.1%) |    2,163 → 2,178 (+0.7%) |
 | sqlalchemy    |  382.9 → 386.1 (+0.8%) |  319.0 → 323.2 (+1.3%) |    3,058 → 3,049 (-0.3%) |    4,382 → 4,387 (+0.1%) |
+| rich          |    74.0 → 74.5 (+0.7%) |  118.3 → 123.3 (+4.2%) |    1,104 → 1,174 (+6.4%) |    1,744 → 1,758 (+0.8%) |
 
 ## CLI peak RSS
 
@@ -82,6 +88,7 @@ Each cell shows **existing revision → updated revision**.
 | numpy         | 520.9 MiB → 520.7 MiB | 681.8 MiB → 681.7 MiB | 644.0 MiB → 645.4 MiB | 673.4 MiB → 692.1 MiB |
 | fastapi       | 142.7 MiB → 142.6 MiB | 193.4 MiB → 193.6 MiB | 336.9 MiB → 337.1 MiB | 332.5 MiB → 335.4 MiB |
 | sqlalchemy    | 422.6 MiB → 423.5 MiB | 295.7 MiB → 296.6 MiB | 370.3 MiB → 370.3 MiB | 544.4 MiB → 538.6 MiB |
+| rich          | 120.2 MiB → 120.3 MiB | 133.9 MiB → 133.6 MiB | 226.5 MiB → 226.5 MiB | 286.0 MiB → 281.2 MiB |
 
 ## LSP: initial diagnostics
 
@@ -101,6 +108,7 @@ Two warmups and ten measured rounds per project and checker.
 | numpy         |  510.0 → 507.7 (-0.5%) |  566.3 → 564.6 (-0.3%) |  1,193 → 1,193 (+0.0%) |
 | fastapi       |  101.3 → 101.1 (-0.2%) |  204.7 → 201.2 (-1.7%) |  471.0 → 476.7 (+1.2%) |
 | sqlalchemy    |  216.8 → 221.6 (+2.2%) |  246.3 → 246.3 (+0.0%) |  273.4 → 272.9 (-0.2%) |
+| rich          |    43.6 → 43.5 (-0.1%) |  103.2 → 113.0 (+9.5%) |  316.3 → 316.1 (-0.1%) |
 
 ## LSP: incremental edit
 
@@ -121,6 +129,7 @@ edit fixture and is omitted from both LSP suites.
 | numpy         |  35.8 → 35.9 (+0.4%) | 345.6 → 342.8 (-0.8%) |  1,226 → 1,198 (-2.3%) |
 | fastapi       |    8.1 → 8.2 (+0.7%) |   67.6 → 67.7 (+0.1%) |  617.6 → 615.5 (-0.3%) |
 | sqlalchemy    |  12.7 → 12.7 (-0.2%) |   79.1 → 78.5 (-0.8%) |  634.9 → 635.2 (+0.0%) |
+| rich          |    6.2 → 6.3 (+0.3%) |   38.5 → 35.8 (-7.1%) |  441.2 → 439.7 (-0.3%) |
 
 ## Project revisions
 
@@ -139,9 +148,10 @@ edit fixture and is omitted from both LSP suites.
 | numpy         | `f9f1772ce010001208475f751d19253469788410` | `f9f1772ce010001208475f751d19253469788410` |
 | fastapi       | `7a0a3f0b286c6c865cf4398ea0e957a87b8bffa4` | `7a0a3f0b286c6c865cf4398ea0e957a87b8bffa4` |
 | sqlalchemy    | `10f4d1e2d706a7722ca78e79ce05b00333a7aa5b` | `10f4d1e2d706a7722ca78e79ce05b00333a7aa5b` |
+| rich          | `9d8f9a372cc5916fd4781fec207ced7ddac2f08f` | `9d8f9a372cc5916fd4781fec207ced7ddac2f08f` |
 
 The updated pandas revision removes `typings`, so its source list contains only
-`pandas`. Jinja and the four added projects use the same source revisions in
+`pandas`. Jinja and the five added projects use the same source revisions in
 both runs.
 
 Performance varies with hardware, operating system, dependencies, and background
