@@ -92,6 +92,10 @@ plugins:
           - features/type-system.md
           - features/diagnostics.md
           - features/language-server.md
+          - features/third-party/index.md
+          - features/third-party/pydantic.md
+          - features/third-party/django.md
+          - features/third-party/pytest.md
         Reference:
           - reference/configuration.md
           - reference/typing-faq.md
@@ -134,6 +138,11 @@ nav:
       - Type system: features/type-system.md
       - Diagnostics: features/diagnostics.md
       - Language server: features/language-server.md
+      - Third-party library support:
+          - features/third-party/index.md
+          - Pydantic: features/third-party/pydantic.md
+          - Django: features/third-party/django.md
+          - pytest: features/third-party/pytest.md
   - Reference:
       - Configuration: reference/configuration.md
       - Typing FAQ: reference/typing-faq.md
