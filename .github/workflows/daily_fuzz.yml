@@ -5,8 +5,9 @@
 # commit; if none is found, the job fails.
 #
 # Run Ruff's py-fuzzer on the seeds 0-20,000 to find panics in the current ty
-# that do not occur in the baseline. The workflow saves the checked-out `main`
-# commit after fuzzing, even if the fuzzer finds a new panic.
+# that do not occur in the baseline. Reuse the generated inputs from a previous
+# scheduled run while a matching corpus artifact is available. The workflow saves
+# the checked-out `main` commit after fuzzing, even if the fuzzer finds a new panic.
 # A failed or cancelled fuzz job opens an issue linking to the run, including
 # when the job times out or fails during setup or building. When possible, the
 # workflow creates the issue from the fuzzer's report, including reproducers.
@@ -49,6 +50,8 @@ jobs:
     env:
       # Keep in sync with the job's timeout-minutes.
       FUZZ_JOB_TIMEOUT_MINUTES: 180
+      FUZZ_PYTHON: "3.14"
+      FUZZ_SEEDS: 0-20000
     steps:
       - name: Record job start time
         run: echo "FUZZ_JOB_STARTED_AT=$(date +%s)" >> "$GITHUB_ENV"
@@ -86,6 +89,16 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: uv run --locked --script scripts/prepare_daily_fuzz.py --ruff-root ../ruff >> "$GITHUB_OUTPUT"
+      - name: Prepare the fuzz corpus
+        id: corpus
+        continue-on-error: true
+        # The action lives in the Ruff checkout at the commit being tested.
+        uses: ./ruff/python/py-fuzzer # zizmor: ignore[self-repository]
+        with:
+          python-version: ${{ env.FUZZ_PYTHON }}
+          seeds: ${{ env.FUZZ_SEEDS }}
+          producer-workflow: .github/workflows/daily_fuzz.yml
+          download: "true"
       - name: Build both versions of ty
         working-directory: ruff
         env:
@@ -105,9 +118,10 @@ jobs:
         working-directory: ruff
         env:
           FORCE_COLOR: 1
+          FUZZ_CORPUS: ${{ steps.corpus.outcome == 'success' && steps.corpus.outputs.path || '' }}
         run: |
           uv run \
-            --python=3.14 \
+            --python="$FUZZ_PYTHON" \
             --project=./python/py-fuzzer \
             --locked \
             fuzz \
@@ -115,10 +129,11 @@ jobs:
             --baseline-executable="$RUNNER_TEMP/ty-old" \
             --only-new-bugs \
             --bin=ty \
+            ${FUZZ_CORPUS:+--corpus-dir="$FUZZ_CORPUS"} \
             --budget-minutes="${FUZZ_JOB_TIMEOUT_MINUTES}" \
             --job-started-at="${FUZZ_JOB_STARTED_AT}" \
             --write-github-issue="$RUNNER_TEMP/fuzz-issue.md" \
-            0-20000
+            "$FUZZ_SEEDS"
       - name: Upload the fuzz report
         id: upload_report
         if: ${{ failure() && steps.fuzz.outcome == 'failure' }}
