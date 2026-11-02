@@ -2,9 +2,7 @@
 
 ty uses a custom versioning scheme:
 
-- **Patch releases** are made as needed for significant regressions, including performance
-    regressions. We consider the cost and risk of backporting fixes and whether they can wait for
-    the next minor release.
+- **Patch releases** contain bug fixes, enhancements, and other non-breaking changes.
 - **Minor releases** include typeshed updates and changes to type-checking behavior, configuration,
     rules, and the CLI. These releases may report new type errors.
 - **Major releases** are reserved for breaking changes that we expect to have a significant impact
