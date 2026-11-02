@@ -107,6 +107,7 @@ plugins:
           - reference/environment.md
           - reference/editor-settings.md
           - reference/ty-extensions.md
+          - reference/versioning.md
 extra_css:
   - stylesheets/extra.css
 extra_javascript:
@@ -156,6 +157,7 @@ nav:
       - Environment variables: reference/environment.md
       - Editor settings: reference/editor-settings.md
       - ty-extensions: reference/ty-extensions.md
+      - Versioning: reference/versioning.md
 validation:
   omitted_files: warn
   absolute_links: warn
