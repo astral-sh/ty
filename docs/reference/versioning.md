@@ -2,7 +2,7 @@
 
 ty uses a custom versioning scheme:
 
-- **Patch releases** contain bug fixes, enhancements, and other non-breaking changes.
+- **Patch releases** contain bug fixes.
 - **Minor releases** include typeshed updates and changes to type-checking behavior, configuration,
     rules, and the CLI. These releases may report new type errors.
 - **Major releases** are reserved for breaking changes that we expect to have a significant impact
