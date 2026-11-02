@@ -31,7 +31,7 @@ The minimum supported Rust version required to compile ty is listed in the `rust
 will never be newer than N-2 Rust versions, where N is the latest stable version. For example, if
 the latest stable Rust version is 1.85, ty's minimum supported Rust version will be at most 1.83.
 
-This is only relevant to users who build ty from source. Installing ty from the Python package index
+This is only relevant to users who build ty from source. Installing ty from the Python Package Index (PyPI)
 usually installs a pre-built binary and does not require Rust compilation.
 
 ## Visual Studio Code Extension
