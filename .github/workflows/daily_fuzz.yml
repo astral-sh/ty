@@ -97,8 +97,6 @@ jobs:
         with:
           python-version: ${{ env.FUZZ_PYTHON }}
           seeds: ${{ env.FUZZ_SEEDS }}
-          producer-workflow: .github/workflows/daily_fuzz.yml
-          download: "true"
       - name: Build both versions of ty
         working-directory: ruff
         env:
@@ -118,7 +116,7 @@ jobs:
         working-directory: ruff
         env:
           FORCE_COLOR: 1
-          FUZZ_CORPUS: ${{ steps.corpus.outcome == 'success' && steps.corpus.outputs.path || '' }}
+          FUZZ_CORPUS: ${{ steps.corpus.outputs.path }}
         run: |
           uv run \
             --python="$FUZZ_PYTHON" \
