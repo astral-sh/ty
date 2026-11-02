@@ -21,8 +21,6 @@ An extremely fast Python type checker and language server, written in Rust.
 ty is backed by [Astral](https://astral.sh), the creators of
 [uv](https://github.com/astral-sh/uv) and [Ruff](https://github.com/astral-sh/ruff).
 
-ty is currently in [beta](#version-policy).
-
 ## Highlights
 
 - 10x - 100x faster than mypy and Pyright
@@ -69,21 +67,16 @@ to anything in the `ruff` submodule (which includes all of the Rust source code)
 See the
 [contributing guide](./CONTRIBUTING.md) for more details.
 
-## Version policy
-
-ty uses `0.0.x` versioning. ty does not yet have a stable API; breaking changes, including changes
-to diagnostics, may occur between any two versions. See the [type system support](https://github.com/astral-sh/ty/issues/1889)
-tracking issue for a detailed overview of currently supported features.
-
-For information on the timeline, you can check out the [Stable](https://github.com/astral-sh/ty/milestone/4) milestone.
-
-For ty 1.0 and later, see the [versioning policy](https://docs.astral.sh/ty/reference/versioning/).
-
 ## FAQ
 
 <!-- We intentionally use smaller headings for the FAQ items -->
 
 <!-- markdownlint-disable MD001 -->
+
+#### Can upgrading ty introduce new type errors?
+
+Yes. Minor releases can report new type errors. See the
+[versioning policy](https://docs.astral.sh/ty/reference/versioning/) for details.
 
 #### Which Python versions does ty support?
 

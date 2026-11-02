@@ -1,9 +1,5 @@
 # Versioning
 
-!!! note
-
-    This policy applies to ty 1.0.0 and later.
-
 ty uses a custom versioning scheme:
 
 - **Patch releases** are made as needed for significant regressions, including performance
