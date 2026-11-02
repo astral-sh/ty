@@ -44,6 +44,13 @@ Rich checks its Python package, including optional notebook integrations.
 Three warmups and at least ten measured runs. The mypy cache is cleared before
 every run.
 
+For these CLI timings and the peak RSS measurements below, each checker
+discovered its own source files. On NumPy, mypy selected adjacent stubs where
+the other checkers also included the Python implementations. Pyright skipped
+unannotated function bodies, and mypy honored project settings for unannotated
+functions and imported modules. The [updated CLI runner](https://github.com/astral-sh/ruff/pull/29921)
+uses a shared file list and enables unannotated-body checking for future runs.
+
 | Project       |                     ty |                Pyrefly |                     mypy |                  Pyright |
 | ------------- | ---------------------: | ---------------------: | -----------------------: | -----------------------: |
 | black         |   80.0 → 89.0 (+11.3%) |  124.2 → 134.5 (+8.3%) |    893.3 → 925.7 (+3.6%) |    1,378 → 1,433 (+4.0%) |
