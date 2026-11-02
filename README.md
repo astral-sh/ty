@@ -77,6 +77,8 @@ tracking issue for a detailed overview of currently supported features.
 
 For information on the timeline, you can check out the [Stable](https://github.com/astral-sh/ty/milestone/4) milestone.
 
+For ty 1.0 and later, see the [versioning policy](https://docs.astral.sh/ty/reference/versioning/).
+
 ## FAQ
 
 <!-- We intentionally use smaller headings for the FAQ items -->
