@@ -13,6 +13,15 @@ Timing cells show **existing → updated (percentage change)**. Negative changes
 mean faster checks. HTTPX, NumPy, FastAPI, SQLAlchemy, Rich and Jinja have identical
 inputs across cohorts and reuse the same measured samples, so their deltas are zero.
 
+All ty LSP measurements were collected again with canonical workspace/document
+paths. A paired URI control found duplicate SQLAlchemy module identities under
+the lexical path spelling, which changed ty diagnostics and timing. The ty,
+Pyrefly, mypy and Pyright CLI samples and the Pyrefly/Pyright LSP samples are
+retained unchanged from the previous controlled collection, using the same
+physical source files and dependency environments.
+[BENCHMARKS.json](BENCHMARKS.json) identifies the original, CLI-correction and
+LSP-correction harness commits separately.
+
 Times are wall-clock milliseconds. Single-cohort timings show mean ± standard
 deviation; RSS values below are MiB. [BENCHMARKS.json](BENCHMARKS.json) contains
 raw samples, exact source revisions, root manifests, dependency versions,
@@ -64,7 +73,16 @@ The pandas workload excludes `pandas/tests` for every checker. Timings from suit
 that include those tests use a broader scope; selected modules, including
 clipboard, use the common unannotated-body policy here.
 
-Run instructions: [`ty_benchmark/README.md`](https://github.com/astral-sh/ruff/blob/34c56f628b479859286afb7ac3bb74bbb8b1878d/scripts/ty_benchmark/README.md).
+A separate lexical/physical LSP URI control covers isort and SQLAlchemy with ty,
+Pyrefly and Pyright: 24 initial/edit cases pass across the two path spellings.
+For ty/SQLAlchemy initial diagnostics, canonical paths remove seven duplicate
+module-identity errors (58 diagnostics versus 51) and materially reduce latency.
+[BENCHMARKS.json](BENCHMARKS.json) retains every observed normalized diagnostic
+variant and per-case timing comparison. Initial diagnostic responses can be
+partial, so snapshot differences remain visible. The control is separate from
+the comparison samples below; ty LSP was rerun across every unique project input.
+
+Run instructions: [`ty_benchmark/README.md`](https://github.com/astral-sh/ruff/blob/5ca55b2baffd6200b61c540c17255d9e20055272/scripts/ty_benchmark/README.md).
 
 ## CLI cold check
 
@@ -123,40 +141,40 @@ all background analysis.
 
 | Project       |                     ty |               Pyrefly |                Pyright |
 | ------------- | ---------------------: | --------------------: | ---------------------: |
-| black         |   62.5 → 72.2 (+15.6%) | 167.2 → 180.5 (+8.0%) |  289.7 → 300.9 (+3.9%) |
-| discord.py    |  103.2 → 104.4 (+1.2%) | 187.7 → 188.4 (+0.4%) |  623.4 → 630.3 (+1.1%) |
-| homeassistant |   92.9 → 100.8 (+8.5%) | 220.2 → 237.7 (+7.9%) | 1,617 → 1,905 (+17.8%) |
-| isort         |    48.8 → 50.1 (+2.6%) | 97.2 → 134.1 (+38.1%) |  352.3 → 358.1 (+1.6%) |
-| jinja         |    31.0 → 31.0 (+0.0%) | 126.4 → 126.4 (+0.0%) |  356.4 → 356.4 (+0.0%) |
-| pandas        | 334.2 → 371.9 (+11.3%) | 528.1 → 543.9 (+3.0%) |  626.3 → 639.1 (+2.1%) |
-| prefect       |  169.7 → 176.5 (+4.0%) | 460.3 → 452.5 (-1.7%) |  1,088 → 1,113 (+2.3%) |
-| pytorch       |   58.1 → 71.5 (+23.0%) | 117.1 → 128.7 (+9.9%) |  677.2 → 705.5 (+4.2%) |
-| httpx         |    46.1 → 46.1 (+0.0%) | 115.3 → 115.3 (+0.0%) |  226.4 → 226.4 (+0.0%) |
-| numpy         |  313.0 → 313.0 (+0.0%) | 564.4 → 564.4 (+0.0%) |  1,200 → 1,200 (+0.0%) |
-| fastapi       |    99.7 → 99.7 (+0.0%) | 200.4 → 200.4 (+0.0%) |  465.9 → 465.9 (+0.0%) |
-| sqlalchemy    |  278.4 → 278.4 (+0.0%) | 251.9 → 251.9 (+0.0%) |  272.7 → 272.7 (+0.0%) |
-| rich          |    42.6 → 42.6 (+0.0%) | 111.0 → 111.0 (+0.0%) |  311.3 → 311.3 (+0.0%) |
+| black         |   58.7 → 67.8 (+15.5%) | 167.2 → 180.5 (+8.0%) |  289.7 → 300.9 (+3.9%) |
+| discord.py    |  104.6 → 104.7 (+0.1%) | 187.7 → 188.4 (+0.4%) |  623.4 → 630.3 (+1.1%) |
+| homeassistant |   94.3 → 101.6 (+7.7%) | 220.2 → 237.7 (+7.9%) | 1,617 → 1,905 (+17.8%) |
+| isort         |    47.1 → 50.3 (+6.8%) | 97.2 → 134.1 (+38.1%) |  352.3 → 358.1 (+1.6%) |
+| jinja         |    51.5 → 51.5 (+0.0%) | 126.4 → 126.4 (+0.0%) |  356.4 → 356.4 (+0.0%) |
+| pandas        | 335.9 → 371.4 (+10.6%) | 528.1 → 543.9 (+3.0%) |  626.3 → 639.1 (+2.1%) |
+| prefect       |  169.8 → 176.5 (+3.9%) | 460.3 → 452.5 (-1.7%) |  1,088 → 1,113 (+2.3%) |
+| pytorch       |   58.1 → 71.7 (+23.5%) | 117.1 → 128.7 (+9.9%) |  677.2 → 705.5 (+4.2%) |
+| httpx         |    46.5 → 46.5 (+0.0%) | 115.3 → 115.3 (+0.0%) |  226.4 → 226.4 (+0.0%) |
+| numpy         |  308.3 → 308.3 (+0.0%) | 564.4 → 564.4 (+0.0%) |  1,200 → 1,200 (+0.0%) |
+| fastapi       |  102.0 → 102.0 (+0.0%) | 200.4 → 200.4 (+0.0%) |  465.9 → 465.9 (+0.0%) |
+| sqlalchemy    |  216.3 → 216.3 (+0.0%) | 251.9 → 251.9 (+0.0%) |  272.7 → 272.7 (+0.0%) |
+| rich          |    43.1 → 43.1 (+0.0%) | 111.0 → 111.0 (+0.0%) |  311.3 → 311.3 (+0.0%) |
 
 ## LSP: incremental edit
 
 Two warmups and ten measured rounds. Every server opens the same fixture files
 and receives the same edit. pandas-stubs has no edit fixture and is omitted.
 
-| Project       |                   ty |               Pyrefly |                Pyright |
-| ------------- | -------------------: | --------------------: | ---------------------: |
-| black         | 14.3 → 16.1 (+12.6%) |  78.1 → 91.4 (+17.0%) |  500.0 → 549.4 (+9.9%) |
-| discord.py    |  25.1 → 25.4 (+1.2%) |   77.3 → 76.5 (-1.0%) |  521.8 → 517.2 (-0.9%) |
-| homeassistant |  28.1 → 29.7 (+5.8%) |   78.3 → 75.7 (-3.3%) |  583.8 → 574.5 (-1.6%) |
-| isort         |  19.4 → 21.3 (+9.9%) |  42.3 → 52.9 (+25.2%) |  420.5 → 425.1 (+1.1%) |
-| jinja         |  10.7 → 10.7 (+0.0%) |   60.3 → 60.3 (+0.0%) |  503.9 → 503.9 (+0.0%) |
-| pandas        |  40.8 → 43.6 (+6.7%) | 229.4 → 248.6 (+8.4%) | 603.1 → 691.2 (+14.6%) |
-| prefect       |    6.9 → 6.9 (-0.1%) |   57.4 → 56.3 (-1.9%) |  670.8 → 680.9 (+1.5%) |
-| pytorch       |    3.6 → 3.9 (+7.5%) |   22.1 → 22.8 (+3.0%) |  404.0 → 416.3 (+3.0%) |
-| httpx         |    7.3 → 7.3 (+0.0%) |   51.7 → 51.7 (+0.0%) |  426.5 → 426.5 (+0.0%) |
-| numpy         |  30.0 → 30.0 (+0.0%) | 343.8 → 343.8 (+0.0%) |  1,188 → 1,188 (+0.0%) |
-| fastapi       |    7.3 → 7.3 (+0.0%) |   65.8 → 65.8 (+0.0%) |  614.2 → 614.2 (+0.0%) |
-| sqlalchemy    |  11.4 → 11.4 (+0.0%) |   76.4 → 76.4 (+0.0%) |  639.1 → 639.1 (+0.0%) |
-| rich          |    5.9 → 5.9 (+0.0%) |   31.1 → 31.1 (+0.0%) |  440.8 → 440.8 (+0.0%) |
+| Project       |                  ty |               Pyrefly |                Pyright |
+| ------------- | ------------------: | --------------------: | ---------------------: |
+| black         | 14.9 → 16.2 (+8.6%) |  78.1 → 91.4 (+17.0%) |  500.0 → 549.4 (+9.9%) |
+| discord.py    | 25.5 → 25.7 (+1.0%) |   77.3 → 76.5 (-1.0%) |  521.8 → 517.2 (-0.9%) |
+| homeassistant | 28.2 → 30.0 (+6.4%) |   78.3 → 75.7 (-3.3%) |  583.8 → 574.5 (-1.6%) |
+| isort         | 19.6 → 21.4 (+9.3%) |  42.3 → 52.9 (+25.2%) |  420.5 → 425.1 (+1.1%) |
+| jinja         | 12.3 → 12.3 (+0.0%) |   60.3 → 60.3 (+0.0%) |  503.9 → 503.9 (+0.0%) |
+| pandas        | 42.8 → 43.8 (+2.5%) | 229.4 → 248.6 (+8.4%) | 603.1 → 691.2 (+14.6%) |
+| prefect       |   8.0 → 8.0 (+0.1%) |   57.4 → 56.3 (-1.9%) |  670.8 → 680.9 (+1.5%) |
+| pytorch       |   3.7 → 4.0 (+7.5%) |   22.1 → 22.8 (+3.0%) |  404.0 → 416.3 (+3.0%) |
+| httpx         |   7.5 → 7.5 (+0.0%) |   51.7 → 51.7 (+0.0%) |  426.5 → 426.5 (+0.0%) |
+| numpy         | 29.8 → 29.8 (+0.0%) | 343.8 → 343.8 (+0.0%) |  1,188 → 1,188 (+0.0%) |
+| fastapi       |   7.3 → 7.3 (+0.0%) |   65.8 → 65.8 (+0.0%) |  614.2 → 614.2 (+0.0%) |
+| sqlalchemy    | 11.6 → 11.6 (+0.0%) |   76.4 → 76.4 (+0.0%) |  639.1 → 639.1 (+0.0%) |
+| rich          |   5.9 → 5.9 (+0.0%) |   31.1 → 31.1 (+0.0%) |  440.8 → 440.8 (+0.0%) |
 
 ## Root scope
 
@@ -211,8 +229,8 @@ are recorded in [BENCHMARKS.json](BENCHMARKS.json).
 | Metric      | Common projects | Pyrefly |   mypy | Pyright |
 | ----------- | --------------: | ------: | -----: | ------: |
 | cli         |              14 |   1.67× | 16.61× |  20.84× |
-| initial     |              13 |   2.11× |      — |   5.31× |
-| incremental |              13 |   5.51× |      — |  42.98× |
+| initial     |              13 |   2.08× |      — |   5.21× |
+| incremental |              13 |   5.35× |      — |  41.77× |
 
 Performance varies with hardware, dependencies and background load. Matching
 root scope and settings does not establish equivalent inference or diagnostic
