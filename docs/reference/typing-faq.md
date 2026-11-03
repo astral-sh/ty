@@ -458,9 +458,4 @@ Yes! You can find it over at <https://github.com/astral-sh/ty-pre-commit>.
 
 ## Does ty support (mypy) plugins?
 
-No. ty does not have a plugin system and there is currently no plan to add one.
-
-We prefer extending the type system with well-specified features rather than relying on
-type-checker-specific plugins. That said, ty already has built-in support for Pydantic, and we are
-considering adding dedicated support for other popular third-party libraries, such as Django and
-attrs.
+No, ty does not have a plugin system and there is currently no plan to add one. However, we do have [built-in support for a few popular third-party libraries](../features/third-party/index.md).

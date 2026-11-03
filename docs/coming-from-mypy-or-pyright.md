@@ -20,6 +20,7 @@ This guide helps you migrate a project from
 - Unlike mypy, ty checks the bodies of unannotated functions unconditionally, so there is no ty rule
     corresponding to mypy's `check_untyped_defs` setting. The equivalent pyright setting is
     `analyzeUnannotatedFunctions = true`.
+- ty does not have an equivalent to mypy plugins, but we do have [built-in support for select popular libraries](features/third-party/index.md).
 
 ## Stricter checking with ty
 
