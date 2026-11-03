@@ -121,3 +121,68 @@ def main():
 ```
 
 Decorating a class with `@no_type_check` isn't supported.
+
+## Baselines
+
+!!! note "Preview"
+
+    Baselines require ty 0.0.93 or later. The file format may change during preview. If ty can't
+    read your baseline after an upgrade, [regenerate it](#create-a-baseline) with `--update-baseline`.
+
+When you introduce ty to an existing project or enable a new rule, you may have more rule violations
+than you can fix at once. One option is to run [`ty check --add-ignore`](./reference/cli.md#ty-check--add-ignore)
+to suppress them all with inline ignore comments.
+
+If you prefer to keep these suppressions out of your source files, use a baseline. A baseline is
+a JSON file that records existing rule violations. On subsequent runs, `ty check` skips matching
+violations so you can focus on those introduced by new or modified code.
+
+In your editor, ty still shows matching violations as hints so you can fix them as you work on
+the relevant code. If there's no practical fix for a violation, prefer an
+[inline ignore comment](#ty-suppression-comments) to acknowledge it.
+
+### Create a baseline
+
+Run `ty check` with `--update-baseline` from the project root to record existing violations.
+
+```shell
+ty check --update-baseline --baseline ty-baseline.json
+```
+
+To use this baseline on subsequent checks, pass
+[`--baseline ty-baseline.json`](./reference/cli.md#ty-check--baseline) to `ty check` or set
+[`baseline`](./reference/configuration.md#baseline) in your `pyproject.toml` or `ty.toml`.
+
+=== "pyproject.toml"
+
+    ```toml
+    [tool.ty]
+    baseline = "ty-baseline.json"
+    ```
+
+=== "ty.toml"
+
+    ```toml
+    baseline = "ty-baseline.json"
+    ```
+
+Commit the baseline with your configuration so other contributors and CI use the same file.
+
+If you want GitHub to collapse the baseline diff by default in pull requests, mark `ty-baseline.json` as
+generated in the `.gitattributes` file at the repository root.
+
+```gitattributes
+/ty-baseline.json linguist-generated=true
+```
+
+### When to update the baseline
+
+Update the baseline after you fix a violation or if one reappears in `ty check` output, for
+example after a file rename. You can also update it to suppress existing violations of a newly
+enabled rule.
+
+First run `ty check` to review any new violations. Then run `ty check --update-baseline` to
+add them to the baseline and remove entries for violations you've fixed.
+
+ty's baseline support was inspired by
+[basedpyright](https://docs.basedpyright.com/latest/benefits-over-pyright/baseline/).
