@@ -403,6 +403,9 @@ ty reports *"Cannot resolve imported module …"*, check the following:
 1. **Third-party packages**: Ensure dependencies are installed in your virtual environment. Run ty
     with `-v` to see the search paths being used.
 
+1. For a **standalone script** with [inline script metadata (PEP 723)](https://peps.python.org/pep-0723/),
+    use [ty's built-in script support](../scripts.md).
+
 1. **Compiled extensions**: ty requires `.py` or `.pyi` files for type information. If a package
     contains only compiled extensions (`.so` or `.pyd` files), you'll need stub files (`.pyi`) for ty
     to understand the types. See also [this issue](https://github.com/astral-sh/ty/issues/487) which
@@ -437,20 +440,11 @@ For monorepos with multiple Python packages, you have a few options:
 You can follow [this issue](https://github.com/astral-sh/ty/issues/819) to get updates on this
 topic.
 
-## Does ty support PEP 723 inline-metadata scripts?
+## Does ty support inline script metadata (PEP 723)? { #does-ty-support-pep-723-inline-metadata-scripts }
 
-It depends on what you want to do. If you have a single inline-metadata script, you can type check
-it with ty by using uv's `--with-requirements` flag to install the dependencies specified in the
-script header:
-
-```bash
-uvx --with-requirements script.py ty check script.py
-```
-
-If you have multiple scripts in your workspace, ty does not yet recognize that they have different
-dependencies based on their inline metadata.
-
-You can follow [this issue](https://github.com/astral-sh/ty/issues/691) for updates.
+Yes. Use `TY_UV=scripts ty check script.py` or `uv check --script script.py` to check a script
+with its declared dependencies. See [Checking standalone scripts](../scripts.md) to check multiple
+scripts together or enable support in your editor.
 
 ## Is there a pre-commit hook for ty?
 
