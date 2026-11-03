@@ -8,6 +8,15 @@ runtimes. They use the controlled workloads described below. The stacked
 [project refresh](https://github.com/astral-sh/ty/pull/4819) measures updated
 source revisions with the same checker versions and dependency cutoff.
 
+All ty LSP measurements were collected again with canonical workspace/document
+paths. A paired URI control found duplicate SQLAlchemy module identities under
+the lexical path spelling, which changed ty diagnostics and timing. The ty,
+Pyrefly, mypy and Pyright CLI samples and the Pyrefly/Pyright LSP samples are
+retained unchanged from the previous controlled collection, using the same
+physical source files and dependency environments.
+[BENCHMARKS.json](BENCHMARKS.json) identifies the original, CLI-correction and
+LSP-correction harness commits separately.
+
 Times are wall-clock milliseconds. Single-cohort timings show mean ± standard
 deviation; RSS values below are MiB. [BENCHMARKS.json](BENCHMARKS.json) contains
 raw samples, exact source revisions, root manifests, dependency versions,
@@ -59,7 +68,16 @@ The pandas workload excludes `pandas/tests` for every checker. Timings from suit
 that include those tests use a broader scope; selected modules, including
 clipboard, use the common unannotated-body policy here.
 
-Run instructions: [`ty_benchmark/README.md`](https://github.com/astral-sh/ruff/blob/34c56f628b479859286afb7ac3bb74bbb8b1878d/scripts/ty_benchmark/README.md).
+A separate lexical/physical LSP URI control covers isort and SQLAlchemy with ty,
+Pyrefly and Pyright: 24 initial/edit cases pass across the two path spellings.
+For ty/SQLAlchemy initial diagnostics, canonical paths remove seven duplicate
+module-identity errors (58 diagnostics versus 51) and materially reduce latency.
+[BENCHMARKS.json](BENCHMARKS.json) retains every observed normalized diagnostic
+variant and per-case timing comparison. Initial diagnostic responses can be
+partial, so snapshot differences remain visible. The control is separate from
+the comparison samples below; ty LSP was rerun across every unique project input.
+
+Run instructions: [`ty_benchmark/README.md`](https://github.com/astral-sh/ruff/blob/5ca55b2baffd6200b61c540c17255d9e20055272/scripts/ty_benchmark/README.md).
 
 ## CLI cold check
 
@@ -118,19 +136,19 @@ all background analysis.
 
 | Project       |          ty |      Pyrefly |      Pyright |
 | ------------- | ----------: | -----------: | -----------: |
-| black         |  62.5 ± 0.2 |  167.2 ± 0.4 |  289.7 ± 1.4 |
-| discord.py    | 103.2 ± 1.6 |  187.7 ± 1.2 |  623.4 ± 5.1 |
-| homeassistant |  92.9 ± 0.5 |  220.2 ± 5.2 | 1,617 ± 10.4 |
-| isort         |  48.8 ± 2.9 |   97.2 ± 3.8 |  352.3 ± 2.0 |
-| jinja         |  31.0 ± 0.1 |  126.4 ± 0.4 |  356.4 ± 2.3 |
-| pandas        | 334.2 ± 0.6 |  528.1 ± 3.0 |  626.3 ± 5.6 |
-| prefect       | 169.7 ± 0.2 |  460.3 ± 1.3 |  1,088 ± 5.2 |
-| pytorch       |  58.1 ± 0.3 | 117.1 ± 13.1 |  677.2 ± 3.1 |
-| httpx         |  46.1 ± 0.2 |  115.3 ± 1.2 |  226.4 ± 1.1 |
-| numpy         | 313.0 ± 9.8 |  564.4 ± 1.4 |  1,200 ± 9.0 |
-| fastapi       |  99.7 ± 0.1 |  200.4 ± 0.6 |  465.9 ± 4.0 |
-| sqlalchemy    | 278.4 ± 6.5 |  251.9 ± 1.7 |  272.7 ± 1.6 |
-| rich          |  42.6 ± 0.1 |  111.0 ± 5.6 |  311.3 ± 1.3 |
+| black         |  58.7 ± 0.1 |  167.2 ± 0.4 |  289.7 ± 1.4 |
+| discord.py    | 104.6 ± 0.3 |  187.7 ± 1.2 |  623.4 ± 5.1 |
+| homeassistant |  94.3 ± 0.9 |  220.2 ± 5.2 | 1,617 ± 10.4 |
+| isort         |  47.1 ± 0.2 |   97.2 ± 3.8 |  352.3 ± 2.0 |
+| jinja         |  51.5 ± 0.1 |  126.4 ± 0.4 |  356.4 ± 2.3 |
+| pandas        | 335.9 ± 1.6 |  528.1 ± 3.0 |  626.3 ± 5.6 |
+| prefect       | 169.8 ± 0.2 |  460.3 ± 1.3 |  1,088 ± 5.2 |
+| pytorch       |  58.1 ± 0.1 | 117.1 ± 13.1 |  677.2 ± 3.1 |
+| httpx         |  46.5 ± 0.1 |  115.3 ± 1.2 |  226.4 ± 1.1 |
+| numpy         | 308.3 ± 1.3 |  564.4 ± 1.4 |  1,200 ± 9.0 |
+| fastapi       | 102.0 ± 3.3 |  200.4 ± 0.6 |  465.9 ± 4.0 |
+| sqlalchemy    | 216.3 ± 0.6 |  251.9 ± 1.7 |  272.7 ± 1.6 |
+| rich          |  43.1 ± 0.4 |  111.0 ± 5.6 |  311.3 ± 1.3 |
 
 ## LSP: incremental edit
 
@@ -139,19 +157,19 @@ and receives the same edit. pandas-stubs has no edit fixture and is omitted.
 
 | Project       |         ty |     Pyrefly |      Pyright |
 | ------------- | ---------: | ----------: | -----------: |
-| black         | 14.3 ± 0.2 |  78.1 ± 3.9 |  500.0 ± 5.7 |
-| discord.py    | 25.1 ± 0.3 |  77.3 ± 4.5 | 521.8 ± 14.3 |
-| homeassistant | 28.1 ± 0.3 |  78.3 ± 5.1 |  583.8 ± 5.8 |
-| isort         | 19.4 ± 0.2 |  42.3 ± 2.2 |  420.5 ± 8.4 |
-| jinja         | 10.7 ± 0.1 |  60.3 ± 4.6 | 503.9 ± 14.2 |
-| pandas        | 40.8 ± 0.7 | 229.4 ± 3.8 |  603.1 ± 7.7 |
-| prefect       |  6.9 ± 0.1 |  57.4 ± 2.9 |  670.8 ± 5.7 |
-| pytorch       |  3.6 ± 0.1 |  22.1 ± 3.7 | 404.0 ± 10.4 |
-| httpx         |  7.3 ± 0.1 |  51.7 ± 2.8 | 426.5 ± 10.5 |
-| numpy         | 30.0 ± 0.7 | 343.8 ± 6.4 | 1,188 ± 10.3 |
-| fastapi       |  7.3 ± 0.1 |  65.8 ± 3.4 |  614.2 ± 5.6 |
-| sqlalchemy    | 11.4 ± 0.2 |  76.4 ± 8.0 |  639.1 ± 5.7 |
-| rich          |  5.9 ± 0.1 |  31.1 ± 7.2 |  440.8 ± 4.4 |
+| black         | 14.9 ± 0.7 |  78.1 ± 3.9 |  500.0 ± 5.7 |
+| discord.py    | 25.5 ± 0.2 |  77.3 ± 4.5 | 521.8 ± 14.3 |
+| homeassistant | 28.2 ± 0.2 |  78.3 ± 5.1 |  583.8 ± 5.8 |
+| isort         | 19.6 ± 0.1 |  42.3 ± 2.2 |  420.5 ± 8.4 |
+| jinja         | 12.3 ± 0.6 |  60.3 ± 4.6 | 503.9 ± 14.2 |
+| pandas        | 42.8 ± 2.6 | 229.4 ± 3.8 |  603.1 ± 7.7 |
+| prefect       |  8.0 ± 0.3 |  57.4 ± 2.9 |  670.8 ± 5.7 |
+| pytorch       |  3.7 ± 0.1 |  22.1 ± 3.7 | 404.0 ± 10.4 |
+| httpx         |  7.5 ± 0.2 |  51.7 ± 2.8 | 426.5 ± 10.5 |
+| numpy         | 29.8 ± 0.4 | 343.8 ± 6.4 | 1,188 ± 10.3 |
+| fastapi       |  7.3 ± 0.2 |  65.8 ± 3.4 |  614.2 ± 5.6 |
+| sqlalchemy    | 11.6 ± 0.2 |  76.4 ± 8.0 |  639.1 ± 5.7 |
+| rich          |  5.9 ± 0.2 |  31.1 ± 7.2 |  440.8 ± 4.4 |
 
 ## Root scope
 
@@ -203,8 +221,8 @@ are recorded in [BENCHMARKS.json](BENCHMARKS.json).
 | Metric      | Common projects | Pyrefly |   mypy | Pyright |
 | ----------- | --------------: | ------: | -----: | ------: |
 | cli         |              14 |   1.66× | 16.34× |  21.62× |
-| initial     |              13 |   2.12× |      — |   5.43× |
-| incremental |              13 |   5.50× |      — |  43.50× |
+| initial     |              13 |   2.08× |      — |   5.34× |
+| incremental |              13 |   5.31× |      — |  42.03× |
 
 Performance varies with hardware, dependencies and background load. Matching
 root scope and settings does not establish equivalent inference or diagnostic
