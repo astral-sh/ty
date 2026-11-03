@@ -1,127 +1,179 @@
 # Benchmarks
 
-Computed on October 29–30, 2026 (UTC), on macOS 26.5.2 with an Apple M3 Max (16 cores,
-128 GB RAM).
+Measured on November 3, 2026 (UTC), on macOS 26.5.2 with an Apple M3 Max
+(16 cores: 12 performance and 4 efficiency; 128 GB RAM).
 
-All projects except Rich were measured on October 29. Rich was measured
-in two passes on October 30 with the same benchmark settings.
-Collection times and raw-result hashes are recorded separately for Rich.
+These results retain the existing project revisions and update the checkers and
+runtimes. They use the controlled workloads described below. The stacked
+[project refresh](https://github.com/astral-sh/ty/pull/4819) measures updated
+source revisions with the same checker versions and dependency cutoff.
 
-These results retain the existing revisions for the original nine projects and
-add HTTPX, NumPy, FastAPI, SQLAlchemy, and Rich. The five additions use identical
-source revisions in both cohorts. Project dependencies were resolved with the cutoff
-`2026-10-24T19:50:00Z`. Times are mean ± standard deviation in milliseconds.
+Times are wall-clock milliseconds. Single-cohort timings show mean ± standard
+deviation; RSS values below are MiB. [BENCHMARKS.json](BENCHMARKS.json) contains
+raw samples, exact source revisions, root manifests, dependency versions,
+generated configuration, scope audits, failures and release provenance.
 
-Detailed statistics, repetition counts, tool versions, and exact revisions are
-available in [BENCHMARKS.json](BENCHMARKS.json).
+- ty: [0.0.96](https://github.com/astral-sh/ty/releases/tag/0.0.96), published PyPI
+    macOS arm64 binary (`ty 0.0.96 (53a7844b8 2026-11-02)`).
+- Pyrefly: 1.4.0; Pyright: 1.1.414; mypy: 2.4.0 (compiled).
+- Hyperfine: 2.0.0; uv: 0.13.5; Node.js: 26.12.1; npm: 12.2.1.
+- Harness Python: 3.15.1. Project Python: 3.11.17, except Home Assistant
+    (3.14.9) and NumPy (3.12.15).
+- Dependency cutoff: `2026-10-24T19:50:00Z`. Project environments include mypy
+    regardless of which checker is selected.
 
-- ty: 0.0.94, built with `cargo build --release --bin ty --locked` from the
-    [release source archive](https://github.com/astral-sh/ty/releases/tag/0.0.94),
-    which contains Ruff commit `3937a41cabc973efd859800cc68bef96f62fbf45`.
-- Pyrefly: 1.4.0
-- Pyright: 1.1.414
-- mypy: 2.4.0
-- hyperfine: 2.0.0
-- uv: 0.13.5
-- Node.js: 26.12.1; npm: 12.2.1
-- Harness Python: 3.15.1. Project environments use Python 3.11.17, except Home
-    Assistant, which uses Python 3.14.9, and NumPy, which uses Python 3.12.15.
+## Workload and measurement controls
 
-For run instructions, see [`ty_benchmark/README.md`](https://github.com/astral-sh/ruff/blob/73eaa13076c8df139c980d71c34d378d9048c812/scripts/ty_benchmark/README.md).
+Each CLI discovers directories inside the timed command. An untimed manifest and
+compact exclusions align the expected **roots**; a preflight rejects empty or
+mismatched discovery. Counts describe roots, not all files analyzed: imported
+dependencies may still be checked. Discovery cost is included. Expanded lists of
+individual targets can themselves bias runtime.
 
-NumPy checks Python and stub sources with tests excluded; its C extensions are
-not built. SQLAlchemy adds a typed ORM and SQL expression workload.
-Rich checks its Python package, including optional notebook integrations.
+Adjacent stubs replace implementation roots for every checker. Packages take
+precedence over same-named modules; modules take precedence over non-package
+build directories. Symlinks, untracked Python files and notebooks are excluded.
+This is a controlled module workload, not default full-project discovery.
+
+Unannotated-body checking is enabled. Whole-file checker overrides are neutralized
+in disposable source copies; ordinary line-level suppressions remain. Every
+checker receives additional first-party import roots, including `src/` layouts
+and SQLAlchemy’s `lib/`, so installed releases cannot take precedence over the
+checkout. Project/user configs and checker environment overrides cannot silently
+narrow the CLI scope; ty and Pyrefly ignore discovery ignore files. Imported
+dependencies, inferred types, platform branches and diagnostic coverage can still
+differ between checkers.
+
+Multicore CLI limits are explicit: 16 mypy workers, 16 Pyright workers, 16 Pyrefly
+threads, and 16-thread pool limit for ty. This differs from earlier
+runs where mypy defaulted to zero external workers; these results cannot isolate
+only the effect of a checker release or native discovery.
+
+NumPy has **205 roots: 167 stubs and 38 implementations**. Its compiled-extension
+stub `numpy/linalg/lapack_lite.pyi` is included; the same-named build directory is
+excluded. Stub preference omits **89.9%** of otherwise eligible implementation
+lines. NumPy’s C extensions are not built. This timing therefore describes the
+shared stub-heavy workload, not checking every NumPy implementation body.
+
+The pandas workload excludes `pandas/tests` for every checker. Timings from suites
+that include those tests use a broader scope; selected modules, including
+clipboard, use the common unannotated-body policy here.
+
+Run instructions: [`ty_benchmark/README.md`](https://github.com/astral-sh/ruff/blob/34c56f628b479859286afb7ac3bb74bbb8b1878d/scripts/ty_benchmark/README.md).
 
 ## CLI cold check
 
-Three warmups and at least ten measured runs. The mypy cache is cleared before
-every run.
+Three warmups and at least ten measured runs; the mypy cache is cleared before
+every warmup and measured run.
 
-| Project       |            ty |      Pyrefly |           mypy |        Pyright |
-| ------------- | ------------: | -----------: | -------------: | -------------: |
-| black         |    80.0 ± 3.8 |  124.2 ± 2.8 |    893.3 ± 2.6 |   1,378 ± 11.3 |
-| discord.py    |   183.7 ± 4.5 |  175.6 ± 4.6 |    2,067 ± 8.1 |   3,064 ± 28.4 |
-| homeassistant | 2,785 ± 234.0 | 2,020 ± 29.0 | 23,392 ± 131.0 | 27,168 ± 332.0 |
-| isort         |   105.2 ± 1.2 |  104.5 ± 1.2 |   454.1 ± 16.8 |    2,499 ± 9.5 |
-| jinja         |    66.2 ± 1.4 |  105.3 ± 1.3 |    530.9 ± 3.2 |   1,276 ± 10.4 |
-| pandas        |  483.8 ± 15.2 | 786.4 ± 59.8 |   9,489 ± 40.8 |   6,484 ± 55.6 |
-| pandas-stubs  |    99.2 ± 3.3 |  195.9 ± 2.7 |   4,824 ± 20.8 |   2,429 ± 27.7 |
-| prefect       |   134.3 ± 5.2 |  254.6 ± 9.8 |    493.5 ± 7.8 |   3,840 ± 42.5 |
-| pytorch       |  1,431 ± 46.0 | 1,026 ± 17.0 |  22,319 ± 45.0 | 15,018 ± 140.0 |
-| httpx         |    71.7 ± 1.4 |  120.8 ± 2.7 |    860.8 ± 3.8 |   1,087 ± 16.5 |
-| numpy         | 2,462 ± 208.0 | 1,523 ± 31.0 | 80,798 ± 632.0 |   8,848 ± 91.0 |
-| fastapi       |   106.8 ± 2.0 |  301.1 ± 3.7 |   1,906 ± 21.2 |   2,163 ± 23.3 |
-| sqlalchemy    |  382.9 ± 19.2 |  319.0 ± 9.5 |   3,058 ± 19.0 |   4,382 ± 45.3 |
-| rich          |    74.0 ± 3.1 |  118.3 ± 2.7 |    1,104 ± 8.2 |   1,744 ± 44.2 |
+| Project       |           ty |      Pyrefly |           mypy |        Pyright |
+| ------------- | -----------: | -----------: | -------------: | -------------: |
+| black         |   63.3 ± 2.3 |  124.6 ± 2.1 |   656.0 ± 13.6 |    1,371 ± 6.3 |
+| discord.py    |  137.3 ± 5.8 |  176.6 ± 5.8 |   1,946 ± 16.3 |   3,080 ± 24.5 |
+| homeassistant | 1,788 ± 57.2 | 1,992 ± 27.0 |   9,550 ± 62.8 | 25,637 ± 185.8 |
+| isort         |   83.4 ± 1.9 |  104.9 ± 1.8 |   466.0 ± 11.3 |   2,501 ± 19.0 |
+| jinja         |   56.0 ± 1.3 |  105.0 ± 1.2 |   624.3 ± 12.4 |    1,348 ± 6.9 |
+| pandas        | 373.0 ± 18.8 | 772.0 ± 59.9 |  6,949 ± 107.5 |   7,311 ± 54.9 |
+| pandas-stubs  |   86.2 ± 3.4 |  205.0 ± 2.0 |   3,592 ± 36.9 |   2,188 ± 16.7 |
+| prefect       |  109.5 ± 6.6 |  258.2 ± 9.7 |   4,404 ± 32.2 |   3,848 ± 25.4 |
+| pytorch       | 1,122 ± 36.1 | 1,022 ± 18.7 |  18,884 ± 67.7 | 16,193 ± 118.5 |
+| httpx         |   67.1 ± 1.5 |  120.4 ± 3.1 |   658.8 ± 16.6 |    1,084 ± 6.3 |
+| numpy         | 395.2 ± 15.6 |  565.2 ± 9.9 | 80,800 ± 487.7 |   8,102 ± 95.3 |
+| fastapi       |   89.9 ± 3.0 |  299.5 ± 3.7 |   1,141 ± 13.2 |   2,175 ± 24.0 |
+| sqlalchemy    | 280.7 ± 12.7 |  306.3 ± 6.3 |    2,666 ± 6.7 |   4,862 ± 29.7 |
+| rich          |   64.2 ± 3.1 |  122.8 ± 3.2 |    1,002 ± 8.3 |   1,776 ± 56.7 |
 
 ## CLI peak RSS
 
-Mean peak resident set size across the same measured CLI runs, collected by
-[Hyperfine 2.0](https://github.com/sharkdp/hyperfine/releases/tag/v2.0.0). Values
-retain the precision of its terminal summaries; GiB values are rounded to 0.1 GiB.
+Mean peak RSS from the same Hyperfine runs, in MiB. On macOS this uses
+`wait4`/`ru_maxrss` and **does not sum concurrent worker processes**. In particular,
+mypy and Pyright values are not total process-tree memory. The LSP suites measure
+latency only.
 
-On macOS, Hyperfine uses [`ru_maxrss`](https://github.com/sharkdp/hyperfine/blob/v2.0.0/src/timer/unix_timer.rs).
-This metric does not sum concurrent worker RSS; Pyright runs with `--threads`.
-The LSP suites below measure latency.
-
-| Project       |        ty |   Pyrefly |      mypy |   Pyright |
-| ------------- | --------: | --------: | --------: | --------: |
-| black         | 130.5 MiB | 155.7 MiB | 196.3 MiB | 291.4 MiB |
-| discord.py    | 228.6 MiB | 216.0 MiB | 279.0 MiB | 429.3 MiB |
-| homeassistant |   3.1 GiB |   2.5 GiB |   1.8 GiB |   1.6 GiB |
-| isort         |  91.6 MiB | 104.0 MiB | 122.2 MiB | 296.2 MiB |
-| jinja         |  99.9 MiB | 116.4 MiB | 137.2 MiB | 257.6 MiB |
-| pandas        | 572.6 MiB | 558.1 MiB | 922.0 MiB | 734.0 MiB |
-| pandas-stubs  | 155.5 MiB | 273.5 MiB | 608.9 MiB | 386.4 MiB |
-| prefect       | 222.5 MiB | 292.4 MiB | 134.7 MiB | 572.7 MiB |
-| pytorch       |   1.5 GiB |   0.8 GiB |   1.6 GiB |   1.3 GiB |
-| httpx         | 102.4 MiB | 129.9 MiB | 190.5 MiB | 261.5 MiB |
-| numpy         | 520.9 MiB | 681.8 MiB | 644.0 MiB | 673.4 MiB |
-| fastapi       | 142.7 MiB | 193.4 MiB | 336.9 MiB | 332.5 MiB |
-| sqlalchemy    | 422.6 MiB | 295.7 MiB | 370.3 MiB | 544.4 MiB |
-| rich          | 120.2 MiB | 133.9 MiB | 226.5 MiB | 286.0 MiB |
+| Project       |    ty | Pyrefly |  mypy | Pyright |
+| ------------- | ----: | ------: | ----: | ------: |
+| black         | 132.7 |   155.9 | 105.7 |   290.0 |
+| discord.py    | 222.8 |   216.5 | 211.4 |   426.2 |
+| homeassistant | 2,986 |   2,579 | 958.5 |   1,713 |
+| isort         |  93.6 |   103.8 |  89.7 |   297.3 |
+| jinja         |  99.9 |   116.0 |  90.4 |   257.0 |
+| pandas        | 570.1 |   563.1 | 550.9 |   750.5 |
+| pandas-stubs  | 155.6 |   273.6 | 387.2 |   374.0 |
+| prefect       | 221.4 |   291.8 | 433.1 |   571.5 |
+| pytorch       | 1,440 |   800.3 | 1,483 |   1,570 |
+| httpx         | 105.5 |   129.8 |  96.6 |   258.1 |
+| numpy         | 285.5 |   519.2 | 566.4 |   632.9 |
+| fastapi       | 142.5 |   194.0 | 133.1 |   333.9 |
+| sqlalchemy    | 405.5 |   301.0 | 271.4 |   549.8 |
+| rich          | 122.1 |   133.3 | 119.3 |   284.4 |
 
 ## LSP: initial diagnostics
 
-Two warmups and ten measured rounds per project and checker.
+Two warmups and ten measured rounds. Every server opens the same fixture files
+and receives the same edit. pandas-stubs has no edit fixture and is omitted.
+
+Initial latency ends at the first diagnostic response for each open file. Push
+notifications can be empty or partial, so this does not establish completion of
+all background analysis.
 
 | Project       |          ty |      Pyrefly |      Pyright |
 | ------------- | ----------: | -----------: | -----------: |
-| black         |  63.8 ± 0.2 |  169.8 ± 1.2 |  292.7 ± 1.6 |
-| discord.py    | 106.2 ± 0.4 |  187.3 ± 0.7 |  627.1 ± 6.9 |
-| homeassistant |  94.0 ± 0.4 |  219.4 ± 3.9 | 1,677 ± 11.5 |
-| isort         |  50.6 ± 0.2 |   95.6 ± 2.9 |  354.2 ± 2.1 |
-| jinja         |  53.8 ± 0.6 |  129.8 ± 3.5 |  354.3 ± 3.6 |
-| pandas        | 354.5 ± 3.2 |  528.9 ± 1.7 |  628.5 ± 8.6 |
-| prefect       | 171.9 ± 3.3 | 433.2 ± 54.1 |  1,101 ± 5.9 |
-| pytorch       |  57.2 ± 0.2 | 116.3 ± 12.6 |  694.0 ± 2.6 |
-| httpx         |  48.0 ± 0.3 |  114.0 ± 0.5 |  226.7 ± 1.2 |
-| numpy         | 510.0 ± 1.7 |  566.3 ± 2.5 |  1,193 ± 8.5 |
-| fastapi       | 101.3 ± 0.6 |  204.7 ± 5.1 |  471.0 ± 4.5 |
-| sqlalchemy    | 216.8 ± 1.4 |  246.3 ± 0.5 |  273.4 ± 1.7 |
-| rich          |  43.6 ± 0.1 |  103.2 ± 5.2 |  316.3 ± 3.8 |
+| black         |  62.5 ± 0.2 |  167.2 ± 0.4 |  289.7 ± 1.4 |
+| discord.py    | 103.2 ± 1.6 |  187.7 ± 1.2 |  623.4 ± 5.1 |
+| homeassistant |  92.9 ± 0.5 |  220.2 ± 5.2 | 1,617 ± 10.4 |
+| isort         |  48.8 ± 2.9 |   97.2 ± 3.8 |  352.3 ± 2.0 |
+| jinja         |  31.0 ± 0.1 |  126.4 ± 0.4 |  356.4 ± 2.3 |
+| pandas        | 334.2 ± 0.6 |  528.1 ± 3.0 |  626.3 ± 5.6 |
+| prefect       | 169.7 ± 0.2 |  460.3 ± 1.3 |  1,088 ± 5.2 |
+| pytorch       |  58.1 ± 0.3 | 117.1 ± 13.1 |  677.2 ± 3.1 |
+| httpx         |  46.1 ± 0.2 |  115.3 ± 1.2 |  226.4 ± 1.1 |
+| numpy         | 313.0 ± 9.8 |  564.4 ± 1.4 |  1,200 ± 9.0 |
+| fastapi       |  99.7 ± 0.1 |  200.4 ± 0.6 |  465.9 ± 4.0 |
+| sqlalchemy    | 278.4 ± 6.5 |  251.9 ± 1.7 |  272.7 ± 1.6 |
+| rich          |  42.6 ± 0.1 |  111.0 ± 5.6 |  311.3 ± 1.3 |
 
 ## LSP: incremental edit
 
-Two warmups and ten measured rounds per project and checker. pandas-stubs has no
-edit fixture and is omitted from both LSP suites.
+Two warmups and ten measured rounds. Every server opens the same fixture files
+and receives the same edit. pandas-stubs has no edit fixture and is omitted.
 
 | Project       |         ty |     Pyrefly |      Pyright |
 | ------------- | ---------: | ----------: | -----------: |
-| black         | 16.1 ± 0.2 |  80.0 ± 6.0 |  504.5 ± 5.3 |
-| discord.py    | 27.1 ± 0.1 |  78.3 ± 3.9 | 517.2 ± 14.2 |
-| homeassistant | 29.9 ± 0.3 |  74.5 ± 8.9 |  580.4 ± 3.4 |
-| isort         | 23.7 ± 0.2 |  45.9 ± 2.8 |  421.1 ± 8.0 |
-| jinja         | 12.7 ± 0.2 |  63.9 ± 4.1 |  502.7 ± 9.7 |
-| pandas        | 50.6 ± 0.9 | 230.3 ± 5.7 | 592.4 ± 10.1 |
-| prefect       |  7.9 ± 0.1 |  57.7 ± 4.2 |  674.4 ± 7.8 |
-| pytorch       |  4.0 ± 0.1 |  22.8 ± 2.0 | 403.6 ± 10.3 |
-| httpx         |  8.3 ± 0.1 |  49.8 ± 7.0 | 425.0 ± 10.2 |
-| numpy         | 35.8 ± 0.7 | 345.6 ± 3.7 | 1,226 ± 43.3 |
-| fastapi       |  8.1 ± 0.1 |  67.6 ± 3.2 |  617.6 ± 1.5 |
-| sqlalchemy    | 12.7 ± 0.4 |  79.1 ± 3.1 |  634.9 ± 8.5 |
-| rich          |  6.2 ± 0.1 |  38.5 ± 4.3 |  441.2 ± 8.4 |
+| black         | 14.3 ± 0.2 |  78.1 ± 3.9 |  500.0 ± 5.7 |
+| discord.py    | 25.1 ± 0.3 |  77.3 ± 4.5 | 521.8 ± 14.3 |
+| homeassistant | 28.1 ± 0.3 |  78.3 ± 5.1 |  583.8 ± 5.8 |
+| isort         | 19.4 ± 0.2 |  42.3 ± 2.2 |  420.5 ± 8.4 |
+| jinja         | 10.7 ± 0.1 |  60.3 ± 4.6 | 503.9 ± 14.2 |
+| pandas        | 40.8 ± 0.7 | 229.4 ± 3.8 |  603.1 ± 7.7 |
+| prefect       |  6.9 ± 0.1 |  57.4 ± 2.9 |  670.8 ± 5.7 |
+| pytorch       |  3.6 ± 0.1 |  22.1 ± 3.7 | 404.0 ± 10.4 |
+| httpx         |  7.3 ± 0.1 |  51.7 ± 2.8 | 426.5 ± 10.5 |
+| numpy         | 30.0 ± 0.7 | 343.8 ± 6.4 | 1,188 ± 10.3 |
+| fastapi       |  7.3 ± 0.1 |  65.8 ± 3.4 |  614.2 ± 5.6 |
+| sqlalchemy    | 11.4 ± 0.2 |  76.4 ± 8.0 |  639.1 ± 5.7 |
+| rich          |  5.9 ± 0.1 |  31.1 ± 7.2 |  440.8 ± 4.4 |
+
+## Root scope
+
+Stub counts and omitted implementation-line fractions describe only the authored
+include/exclude scope. Imported modules can add work beyond these roots.
+
+| Project       | Roots | Stubs | Eligible implementation lines omitted |
+| ------------- | ----: | ----: | ------------------------------------: |
+| black         |    42 |     1 |                                  0.0% |
+| discord.py    |   144 |     0 |                                  0.0% |
+| homeassistant | 9,586 |     3 |                                  0.0% |
+| isort         |    44 |     0 |                                  0.0% |
+| jinja         |    25 |     0 |                                  0.0% |
+| pandas        |   335 |    41 |                                  0.0% |
+| pandas-stubs  |   184 |   184 |                                  0.0% |
+| prefect       |    57 |     0 |                                  0.0% |
+| pytorch       | 2,213 |    36 |                                  0.4% |
+| httpx         |    23 |     0 |                                  0.0% |
+| numpy         |   205 |   167 |                                 89.9% |
+| fastapi       |    52 |     0 |                                  0.0% |
+| sqlalchemy    |   258 |     0 |                                  0.0% |
+| rich          |   100 |     0 |                                  0.0% |
 
 ## Project revisions
 
@@ -142,6 +194,19 @@ edit fixture and is omitted from both LSP suites.
 | sqlalchemy    | `10f4d1e2d706a7722ca78e79ce05b00333a7aa5b` |
 | rich          | `9d8f9a372cc5916fd4781fec207ced7ddac2f08f` |
 
-Performance varies with hardware, operating system, dependencies, and background
-load. Checkers can produce different diagnostics and do different amounts of work.
-Comparisons with earlier published results also include tool and runtime changes.
+## Comparison with ty
+
+Geometric mean of competitor time divided by ty time on the common successful
+projects for each metric. A value above 1 means ty is faster. The project lists
+are recorded in [BENCHMARKS.json](BENCHMARKS.json).
+
+| Metric      | Common projects | Pyrefly |   mypy | Pyright |
+| ----------- | --------------: | ------: | -----: | ------: |
+| cli         |              14 |   1.66× | 16.34× |  21.62× |
+| initial     |              13 |   2.12× |      — |   5.43× |
+| incremental |              13 |   5.50× |      — |  43.50× |
+
+Performance varies with hardware, dependencies and background load. Matching
+root scope and settings does not establish equivalent inference or diagnostic
+quality. Earlier datasets with different workloads or worker settings are not
+directly comparable.
