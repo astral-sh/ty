@@ -160,19 +160,16 @@ Preparation for the release is automated.
 
 1. Merge the pull request.
 
-1. Run the [release workflow](https://github.com/astral-sh/ty/actions/workflows/release.yml) with
-    the version tag.
-
-    **Do not include a leading `v`**.
-
-    When running the release workflow for pre-release versions, use the Cargo version format (not PEP
-    440), e.g. `0.0.1-alpha.5` (not `0.0.1a5`). For stable releases, these formats are identical.
+1. Run the [release workflow](https://github.com/astral-sh/ty/actions/workflows/release.yml) from
+    `main`. Leave **Build release artifacts without publishing** unchecked to publish the version
+    from `pyproject.toml`. The workflow stops if that version already has a GitHub release.
+    Select the checkbox for a dry run that builds and signs the artifacts without publishing.
 
 1. Request a deployment approval from another team member.
 
-    The release workflow will pause at the `release-gate` job until this approval is granted.
+    Both releases and dry runs pause at the `release-gate` job until this approval is granted.
 
-    The release will automatically be created on GitHub after the distributions are published.
+    For a release, the workflow creates the GitHub release after the distributions are published.
 
 1. Run `uv run --no-project ./scripts/update_schemastore.py`
 
