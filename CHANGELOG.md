@@ -1,5 +1,68 @@
 # Changelog
 
+## 0.0.96
+
+Released on 2026-11-03.
+
+### Bug fixes
+
+- Fix a panic when checking protocols involving runtime type aliases ([#29840](https://github.com/astral-sh/ruff/pull/29840))
+- Preserve Pydantic field metadata in quoted annotations ([#29851](https://github.com/astral-sh/ruff/pull/29851))
+- Resolve class-local names in generic type aliases ([#29915](https://github.com/astral-sh/ruff/pull/29915))
+
+### LSP server
+
+- Keep argument name hints display-only before later positional arguments or `*args` ([#29801](https://github.com/astral-sh/ruff/pull/29801))
+- Keep argument name hints display-only when they would insert duplicate or invalid keywords ([#29806](https://github.com/astral-sh/ruff/pull/29806))
+- Show field docstrings on hover for constructor keyword arguments ([#29907](https://github.com/astral-sh/ruff/pull/29907))
+
+### CLI
+
+- Give `NO_COLOR` precedence over `FORCE_COLOR` and `CLICOLOR_FORCE` in diagnostics ([#29898](https://github.com/astral-sh/ruff/pull/29898))
+- Honor color overrides in progress bars ([#29891](https://github.com/astral-sh/ruff/pull/29891))
+- Respect `FORCE_COLOR` in `ty check` even when output is piped ([#29830](https://github.com/astral-sh/ruff/pull/29830))
+
+### Diagnostic improvements
+
+- Avoid false `redundant-cast` diagnostics when casting the result of a generic call ([#29835](https://github.com/astral-sh/ruff/pull/29835))
+
+### Core type checking
+
+- Infer type arguments for union parameters using constraints from the whole call ([#29236](https://github.com/astral-sh/ruff/pull/29236))
+- Infer type arguments from generic `TypedDict` values passed to functions ([#29903](https://github.com/astral-sh/ruff/pull/29903))
+- Sync vendored typeshed stubs ([#29869](https://github.com/astral-sh/ruff/pull/29869)). [Typeshed diff](https://github.com/python/typeshed/compare/86d68f86591c4bf97723350505d2cd28123ab3b6...2e4d4dcf657f82305709bbe3e86bca4d27d4dd46)
+
+### Performance
+
+- Avoid constraint solving when checking overlap between type variables in invariant positions ([#29878](https://github.com/astral-sh/ruff/pull/29878))
+- Cache subscript method resolution ([#29824](https://github.com/astral-sh/ruff/pull/29824))
+- Cache substitutions for generic type aliases ([#29861](https://github.com/astral-sh/ruff/pull/29861))
+- Defer member lookup when checking overrides ([#29866](https://github.com/astral-sh/ruff/pull/29866))
+- Find existing imports without scanning nested scopes ([#29882](https://github.com/astral-sh/ruff/pull/29882))
+- Reuse class metadata during member lookup ([#29864](https://github.com/astral-sh/ruff/pull/29864))
+- Reuse constructor bindings and defer looking up enclosing type variables ([#29897](https://github.com/astral-sh/ruff/pull/29897))
+- Reuse generic argument contexts across calls ([#29877](https://github.com/astral-sh/ruff/pull/29877))
+- Reuse inferred annotations when checking function returns ([#29879](https://github.com/astral-sh/ruff/pull/29879))
+- Reuse inherited override checks across subclasses ([#29867](https://github.com/astral-sh/ruff/pull/29867))
+- Reuse parameter unions when filtering overloads ([#29823](https://github.com/astral-sh/ruff/pull/29823))
+- Short-circuit equivalence checks against `Never` ([#29862](https://github.com/astral-sh/ruff/pull/29862))
+- Skip generic call inference when only a concrete receiver's `Self` needs binding ([#29747](https://github.com/astral-sh/ruff/pull/29747))
+- Skip unrelated statement calls when checking a single condition ([#29826](https://github.com/astral-sh/ruff/pull/29826))
+- Stop scanning package initializers once a legacy namespace declaration is found ([#29885](https://github.com/astral-sh/ruff/pull/29885))
+
+### Memory usage improvements
+
+- Prevent exponential memory growth when narrowing unions of intersections by equality ([#29904](https://github.com/astral-sh/ruff/pull/29904))
+
+### Contributors
+
+- [@carljm](https://github.com/carljm)
+- [@ibraheemdev](https://github.com/ibraheemdev)
+- [@charliermarsh](https://github.com/charliermarsh)
+- [@MichaReiser](https://github.com/MichaReiser)
+- [@AlexWaygood](https://github.com/AlexWaygood)
+- [@sharkdp](https://github.com/sharkdp)
+
 ## 0.0.95
 
 Released on 2026-10-29.
