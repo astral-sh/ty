@@ -1,5 +1,64 @@
 # Changelog
 
+## 0.0.96
+
+Released on 2026-11-03.
+
+### Bug fixes
+
+- Avoid expanding runtime type aliases during protocol checks ([#29840](https://github.com/astral-sh/ruff/pull/29840))
+- Preserve Pydantic field metadata in quoted annotations ([#29851](https://github.com/astral-sh/ruff/pull/29851))
+- Resolve class names in generic type aliases ([#29915](https://github.com/astral-sh/ruff/pull/29915))
+
+### LSP server
+
+- Avoid invalid keyword arguments when accepting inlay hints ([#29806](https://github.com/astral-sh/ruff/pull/29806))
+- Keep argument name hints display-only before later positional arguments ([#29801](https://github.com/astral-sh/ruff/pull/29801))
+- Show field docstrings on hover for constructor keyword arguments ([#29907](https://github.com/astral-sh/ruff/pull/29907))
+
+### CLI
+
+- Honor color overrides in progress bars ([#29891](https://github.com/astral-sh/ruff/pull/29891))
+- Respect `FORCE_COLOR` in `ty check` ([#29830](https://github.com/astral-sh/ruff/pull/29830))
+
+### Memory usage improvements
+
+- Prevent exponential growth in equality narrowing ([#29904](https://github.com/astral-sh/ruff/pull/29904))
+
+### Other changes
+
+- Bump msgpack from 1.2.1 to 1.2.3 ([#4890](https://github.com/astral-sh/ty/pull/4890))
+- Cache subscript method resolution ([#29824](https://github.com/astral-sh/ruff/pull/29824))
+- Cache substitution into generic type alias bodies ([#29861](https://github.com/astral-sh/ruff/pull/29861))
+- Defer member lookup when checking overrides ([#29866](https://github.com/astral-sh/ruff/pull/29866))
+- Find top-level imports directly in the module body ([#29882](https://github.com/astral-sh/ruff/pull/29882))
+- Ignore declared parameter type of `typing.cast` when inferring its argument ([#29835](https://github.com/astral-sh/ruff/pull/29835))
+- Infer union parameters through call-wide constraints ([#29236](https://github.com/astral-sh/ruff/pull/29236))
+- Recognize overlap between invariant type-variable arguments ([#29878](https://github.com/astral-sh/ruff/pull/29878))
+- Reuse class-header and scope data during member lookup ([#29864](https://github.com/astral-sh/ruff/pull/29864))
+- Reuse constructor bindings and defer generic scope checks ([#29897](https://github.com/astral-sh/ruff/pull/29897))
+- Reuse generic argument contexts across calls ([#29877](https://github.com/astral-sh/ruff/pull/29877))
+- Reuse inferred annotations when checking function returns ([#29879](https://github.com/astral-sh/ruff/pull/29879))
+- Reuse inherited override checks across subclasses ([#29867](https://github.com/astral-sh/ruff/pull/29867))
+- Reuse parameter unions when filtering overloads ([#29823](https://github.com/astral-sh/ruff/pull/29823))
+- Short-circuit equivalence checks against `Never` ([#29862](https://github.com/astral-sh/ruff/pull/29862))
+- Skip generic call inference for concrete receivers with an unused `Self` ([#29747](https://github.com/astral-sh/ruff/pull/29747))
+- Skip unrelated statement calls when checking a single condition ([#29826](https://github.com/astral-sh/ruff/pull/29826))
+- Stop scanning a package after its first legacy namespace declaration ([#29885](https://github.com/astral-sh/ruff/pull/29885))
+- Support generic `TypedDict`s in function calls ([#29903](https://github.com/astral-sh/ruff/pull/29903))
+- Sync vendored typeshed stubs ([#29869](https://github.com/astral-sh/ruff/pull/29869)). [Typeshed diff](https://github.com/python/typeshed/compare/86d68f86591c4bf97723350505d2cd28123ab3b6...2e4d4dcf657f82305709bbe3e86bca4d27d4dd46)
+
+### Contributors
+
+- [@carljm](https://github.com/carljm)
+- [@ibraheemdev](https://github.com/ibraheemdev)
+- [@charliermarsh](https://github.com/charliermarsh)
+- [@astral-automations-bot](https://github.com/astral-automations-bot)
+- [@MichaReiser](https://github.com/MichaReiser)
+- [@dependabot](https://github.com/dependabot)
+- [@AlexWaygood](https://github.com/AlexWaygood)
+- [@sharkdp](https://github.com/sharkdp)
+
 ## 0.0.95
 
 Released on 2026-10-29.
