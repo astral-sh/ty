@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 455 117" role="img" aria-labelledby="title description">
   <title id="title">Home Assistant CLI type-checking benchmark</title>
-  <desc id="description">ty: 1.79 seconds; Pyrefly: 1.99 seconds; Pyright: 25.64 seconds; mypy: 9.55 seconds. Native discovery, controlled root scope, 16-worker limits, ty 0.0.96.</desc>
+  <desc id="description">ty: 1.79 seconds; Pyrefly: 1.99 seconds; mypy: 9.55 seconds; Pyright: 25.64 seconds. Native discovery, controlled root scope, 16-worker limits, ty 0.0.96.</desc>
   <style>
     .benchmarkBar {
       fill: #6340AC;
@@ -32,20 +32,20 @@
     <g class="benchmarkLabel" text-anchor="end">
       <text x="-10" y="16" font-weight="bold">ty</text>
       <text x="-10" y="41">Pyrefly</text>
-      <text x="-10" y="66">Pyright</text>
-      <text x="-10" y="91">mypy</text>
+      <text x="-10" y="66">mypy</text>
+      <text x="-10" y="91">Pyright</text>
     </g>
     <g class="benchmarkBar">
       <rect x="0" y="6" width="23.989" height="13" aria-label="ty: 1.788 seconds"/>
       <rect x="0" y="31" width="26.729" height="13" aria-label="Pyrefly: 1.992 seconds"/>
-      <rect x="0" y="56" width="344.000" height="13" aria-label="Pyright: 25.637 seconds"/>
-      <rect x="0" y="81" width="128.148" height="13" aria-label="mypy: 9.550 seconds"/>
+      <rect x="0" y="56" width="128.148" height="13" aria-label="mypy: 9.550 seconds"/>
+      <rect x="0" y="81" width="344.000" height="13" aria-label="Pyright: 25.637 seconds"/>
     </g>
     <g class="benchmarkLabel">
       <text x="29.989" y="16.5" font-weight="bold">1.79s</text>
       <text x="32.729" y="41.5">1.99s</text>
-      <text x="350.000" y="66.5">25.64s</text>
-      <text x="134.148" y="91.5">9.55s</text>
+      <text x="134.148" y="66.5">9.55s</text>
+      <text x="350.000" y="91.5">25.64s</text>
     </g>
   </g>
 </svg>
