@@ -1,82 +1,22 @@
 # Benchmarks
 
-Measured on November 3, 2026 (UTC), on macOS 26.5.2 with an Apple M3 Max
-(16 cores: 12 performance and 4 efficiency; 128 GB RAM).
+We ran these benchmarks on November 3, 2026, on a 16-core Apple M3 Max
+with 128 GB of RAM running macOS 26.5.2.
 
-These results retain the existing project revisions and update the checkers and
-runtimes. They use the controlled workloads described below. The stacked
-[project refresh](https://github.com/astral-sh/ty/pull/4819) measures updated
-source revisions with the same checker versions and dependency cutoff.
+- [Pyrefly](https://pypi.org/project/pyrefly/) 1.4.0
+- [Pyright](https://www.npmjs.com/package/pyright) 1.1.414
+- [mypy](https://pypi.org/project/mypy/) 2.4.0 (compiled)
+- [ty](https://pypi.org/project/ty/) 0.0.96
 
-All ty LSP measurements were collected again with canonical workspace/document
-paths. A paired URI control found duplicate SQLAlchemy module identities under
-the lexical path spelling, which changed ty diagnostics and timing. The ty,
-Pyrefly, mypy and Pyright CLI samples and the Pyrefly/Pyright LSP samples are
-retained unchanged from the previous controlled collection, using the same
-physical source files and dependency environments.
-
-Times are wall-clock milliseconds. Single-cohort timings show mean ± standard
-deviation. RSS values are in MiB.
-
-- ty: [0.0.96](https://github.com/astral-sh/ty/releases/tag/0.0.96), published PyPI
-    macOS arm64 binary (`ty 0.0.96 (53a7844b8 2026-11-02)`).
-- Pyrefly: 1.4.0; Pyright: 1.1.414; mypy: 2.4.0 (compiled).
-- Hyperfine: 2.0.0; uv: 0.13.5; Node.js: 26.12.1; npm: 12.2.1.
-- Harness Python: 3.15.1. Project Python: 3.11.17, except Home Assistant
-    (3.14.9) and NumPy (3.12.15).
-- Dependency cutoff: `2026-10-24T19:50:00Z`. Project environments include mypy
-    regardless of which checker is selected.
-
-## Workload and measurement controls
-
-Each CLI discovers directories inside the timed command. An untimed manifest and
-compact exclusions align the expected **roots**; a preflight rejects empty or
-mismatched discovery. Counts describe roots, not all files analyzed: imported
-dependencies may still be checked. Discovery cost is included. Expanded lists of
-individual targets can themselves bias runtime.
-
-Adjacent stubs replace implementation roots for every checker. Packages take
-precedence over same-named modules; modules take precedence over non-package
-build directories. Symlinks, untracked Python files and notebooks are excluded.
-This is a controlled module workload, not default full-project discovery.
-
-Unannotated-body checking is enabled. Whole-file checker overrides are neutralized
-in disposable source copies; ordinary line-level suppressions remain. Every
-checker receives additional first-party import roots, including `src/` layouts
-and SQLAlchemy’s `lib/`, so installed releases cannot take precedence over the
-checkout. Project/user configs and checker environment overrides cannot silently
-narrow the CLI scope; ty and Pyrefly ignore discovery ignore files. Imported
-dependencies, inferred types, platform branches and diagnostic coverage can still
-differ between checkers.
-
-Multicore CLI limits are explicit: 16 mypy workers, 16 Pyright workers, 16 Pyrefly
-threads, and 16-thread pool limit for ty. This differs from earlier
-runs where mypy defaulted to zero external workers; these results cannot isolate
-only the effect of a checker release or native discovery.
-
-NumPy has **205 roots: 167 stubs and 38 implementations**. Its compiled-extension
-stub `numpy/linalg/lapack_lite.pyi` is included; the same-named build directory is
-excluded. Stub preference omits **89.9%** of otherwise eligible implementation
-lines. NumPy’s C extensions are not built. This timing therefore describes the
-shared stub-heavy workload, not checking every NumPy implementation body.
-
-The pandas workload excludes `pandas/tests` for every checker. Timings from suites
-that include those tests use a broader scope; selected modules, including
-clipboard, use the common unannotated-body policy here.
-
-A separate lexical/physical LSP URI control covers isort and SQLAlchemy with ty,
-Pyrefly and Pyright: 24 initial/edit cases pass across the two path spellings.
-For ty/SQLAlchemy initial diagnostics, canonical paths remove seven duplicate
-module-identity errors (58 diagnostics versus 51) and materially reduce latency.
-Initial diagnostic responses can be partial. We reran the ty LSP benchmarks for
-each project input and excluded the separate path comparison from the timings below.
-
-Run instructions: [`ty_benchmark/README.md`](https://github.com/astral-sh/ruff/blob/5ca55b2baffd6200b61c540c17255d9e20055272/scripts/ty_benchmark/README.md).
+For the commands and source revisions, see the [benchmark runner](https://github.com/astral-sh/ruff/blob/5ca55b2baffd6200b61c540c17255d9e20055272/scripts/ty_benchmark/README.md)
+and [project definitions](https://github.com/astral-sh/ruff/blob/73eaa13076c8df139c980d71c34d378d9048c812/scripts/ty_benchmark/src/benchmark/projects.py).
 
 ## CLI cold check
 
-Three warmups and at least ten measured runs; the mypy cache is cleared before
-every warmup and measured run.
+Each checker discovers the same input files, checks unannotated function bodies,
+and can use up to 16 workers. We ran at least ten cold checks after three
+warmups, clearing mypy’s cache before each run. Timings below are means ± one
+standard deviation in milliseconds.
 
 | Project       |           ty |      Pyrefly |           mypy |        Pyright |
 | ------------- | -----------: | -----------: | -------------: | -------------: |
@@ -97,10 +37,9 @@ every warmup and measured run.
 
 ## CLI peak RSS
 
-Mean peak RSS from the same Hyperfine runs, in MiB. On macOS this uses
-`wait4`/`ru_maxrss` and **does not sum concurrent worker processes**. In particular,
-mypy and Pyright values are not total process-tree memory. The LSP suites measure
-latency only.
+Mean peak resident memory in MiB across the same CLI runs. On macOS, peak RSS
+covers a single process, so mypy and Pyright can use more memory across all
+their workers.
 
 | Project       |    ty | Pyrefly |  mypy | Pyright |
 | ------------- | ----: | ------: | ----: | ------: |
@@ -121,12 +60,9 @@ latency only.
 
 ## LSP: initial diagnostics
 
-Two warmups and ten measured rounds. Every server opens the same fixture files
-and receives the same edit. pandas-stubs has no edit fixture and is omitted.
-
-Initial latency ends at the first diagnostic response for each open file. Push
-notifications can be empty or partial, so this does not establish completion of
-all background analysis.
+Each server opens the same files. We measure the time to the first diagnostic
+response for each file, which can be empty or partial. Both editor benchmarks
+use two warmups and ten measured rounds. pandas-stubs has no editor fixture.
 
 | Project       |          ty |      Pyrefly |      Pyright |
 | ------------- | ----------: | -----------: | -----------: |
@@ -146,8 +82,8 @@ all background analysis.
 
 ## LSP: incremental edit
 
-Two warmups and ten measured rounds. Every server opens the same fixture files
-and receives the same edit. pandas-stubs has no edit fixture and is omitted.
+Each server receives the same edit. We measure how long it takes to report
+diagnostics for the affected files.
 
 | Project       |         ty |     Pyrefly |      Pyright |
 | ------------- | ---------: | ----------: | -----------: |
@@ -167,8 +103,10 @@ and receives the same edit. pandas-stubs has no edit fixture and is omitted.
 
 ## Root scope
 
-Stub counts and omitted implementation-line fractions describe only the authored
-include/exclude scope. Imported modules can add work beyond these roots.
+These are the files each checker starts from. A stub takes precedence over the
+corresponding implementation, which accounts for most of the omitted lines in
+NumPy. The pandas benchmark excludes `pandas/tests`. Checkers may also follow
+imports outside these roots.
 
 | Project       | Roots | Stubs | Eligible implementation lines omitted |
 | ------------- | ----: | ----: | ------------------------------------: |
@@ -187,37 +125,14 @@ include/exclude scope. Imported modules can add work beyond these roots.
 | sqlalchemy    |   258 |     0 |                                  0.0% |
 | rich          |   100 |     0 |                                  0.0% |
 
-## Project revisions
-
-| Project       | Revision                                   |
-| ------------- | ------------------------------------------ |
-| black         | `ce1897a8f20d0f64844dd666d07f4003500d0e09` |
-| discord.py    | `2fbed9362422dad4f7850eb6c5d9b1f8bff7c71a` |
-| homeassistant | `a0162d2ff0ed061501405a617961be149b15bd1f` |
-| isort         | `87adfe4732548abff5010336f2fc4b5e8237407d` |
-| jinja         | `5ef70112a1ff19c05324ff889dd30405b1002044` |
-| pandas        | `e3a56513f27849f12265a14c814e02f4f408fb3d` |
-| pandas-stubs  | `1352ba3daa86f1c47a3cce5ad212a770cc693cb4` |
-| prefect       | `db66b14dbaea18e726fc4ea0100fd194383c6c59` |
-| pytorch       | `29d6170e7c79f2c71943692985a1546fb2bed28c` |
-| httpx         | `b5addb64f0161ff6bfe94c124ef76f6a1fba5254` |
-| numpy         | `f9f1772ce010001208475f751d19253469788410` |
-| fastapi       | `7a0a3f0b286c6c865cf4398ea0e957a87b8bffa4` |
-| sqlalchemy    | `10f4d1e2d706a7722ca78e79ce05b00333a7aa5b` |
-| rich          | `9d8f9a372cc5916fd4781fec207ced7ddac2f08f` |
-
 ## Comparison with ty
 
-Geometric mean of competitor time divided by ty time on the common successful
-projects for each metric. A value above 1 means ty is faster.
+Each value is the geometric mean of the other checker’s time divided by ty’s
+time. Each row includes the projects where all checkers in that row finished.
+A value above 1 means ty was faster.
 
 | Metric      | Common projects | Pyrefly |   mypy | Pyright |
 | ----------- | --------------: | ------: | -----: | ------: |
 | cli         |              14 |   1.66× | 16.34× |  21.62× |
 | initial     |              13 |   2.08× |      — |   5.34× |
 | incremental |              13 |   5.31× |      — |  42.03× |
-
-Performance varies with hardware, dependencies and background load. Matching
-root scope and settings does not establish equivalent inference or diagnostic
-quality. Earlier datasets with different workloads or worker settings are not
-directly comparable.
