@@ -1,7 +1,8 @@
 # Benchmarks
 
-We ran these benchmarks on November 3, 2026, on a 16-core Apple M3 Max
-with 128 GB of RAM running macOS 26.5.2.
+We ran the CLI benchmarks on November 4, 2026 (UTC) and the LSP
+benchmarks on November 3, 2026, on a 16-core Apple M3 Max with 128 GB of RAM
+running macOS 26.5.2.
 
 - [Pyrefly](https://pypi.org/project/pyrefly/) 1.4.0
 - [Pyright](https://www.npmjs.com/package/pyright) 1.1.414
@@ -9,63 +10,65 @@ with 128 GB of RAM running macOS 26.5.2.
 - [ty](https://pypi.org/project/ty/) 0.0.96
 - [Zuban](https://pypi.org/project/zuban/) 0.10.2
 
-For the commands and source revisions, see the [benchmark runner](https://github.com/astral-sh/ruff/blob/5ca55b2baffd6200b61c540c17255d9e20055272/scripts/ty_benchmark/README.md)
-and [project definitions](https://github.com/astral-sh/ruff/blob/5ca55b2baffd6200b61c540c17255d9e20055272/scripts/ty_benchmark/src/benchmark/projects.py).
+For the commands and source revisions, see the [benchmark runner](https://github.com/astral-sh/ruff/blob/504457130a2183e9f0c6f4e92ce1c43e970b70ca/scripts/ty_benchmark/README.md)
+and [project definitions](https://github.com/astral-sh/ruff/blob/504457130a2183e9f0c6f4e92ce1c43e970b70ca/scripts/ty_benchmark/src/benchmark/projects.py).
 
 ## CLI cold check
 
-Each checker discovers the same input files, checks unannotated function bodies,
-and can use up to 16 workers. We ran at least ten cold checks after three
-warmups, clearing mypy’s cache before each run. Timings below are means ± one
-standard deviation in milliseconds.
+Each checker discovers the same input files and checks unannotated function
+bodies. CLI runs use each checker's default concurrency. On this host, ty,
+Pyrefly, and Zuban automatically select 16 pool threads. mypy uses no external
+checking workers; its native parser can use up to eight threads. Pyright
+checks in one process. We ran at least ten cold checks after three warmups,
+clearing mypy’s cache before each run. Timings below are means ± one standard
+deviation in milliseconds.
 
-| Project       |           ty |      Pyrefly |           mypy |        Pyright |        Zuban |
-| ------------- | -----------: | -----------: | -------------: | -------------: | -----------: |
-| black         |   69.1 ± 3.1 |  134.1 ± 2.6 |   683.8 ± 10.6 |   1,433 ± 25.7 |  144.7 ± 2.3 |
-| discord.py    |  137.3 ± 6.1 |  176.3 ± 4.0 |   1,981 ± 17.2 |   3,021 ± 34.4 |  356.5 ± 3.0 |
-| homeassistant | 2,085 ± 10.4 | 2,308 ± 38.7 | 13,599 ± 116.4 | 29,820 ± 104.0 | 7,607 ± 40.2 |
-| isort         |   91.5 ± 2.3 |  106.7 ± 1.8 |   495.5 ± 11.3 |   1,744 ± 22.0 |   68.6 ± 1.4 |
-| jinja         |   56.0 ± 1.3 |  105.0 ± 1.2 |   624.3 ± 12.4 |    1,348 ± 6.9 |   86.3 ± 2.0 |
-| pandas        | 387.8 ± 18.7 |  910.8 ± 7.7 |   7,570 ± 29.5 |   7,797 ± 94.9 | 1,449 ± 10.7 |
-| pandas-stubs  |   85.7 ± 3.2 |  197.2 ± 2.8 |   3,569 ± 19.5 |   2,240 ± 16.6 |  279.7 ± 3.9 |
-| prefect       |  111.5 ± 8.1 |  273.9 ± 9.1 |   4,712 ± 18.9 |   3,912 ± 31.0 |  980.2 ± 5.4 |
-| pytorch       | 1,310 ± 41.2 | 1,225 ± 20.8 |  21,916 ± 70.8 | 18,060 ± 185.0 | 3,553 ± 76.7 |
-| httpx         |   67.1 ± 1.5 |  120.4 ± 3.1 |   658.8 ± 16.6 |    1,084 ± 6.3 |  108.1 ± 1.9 |
-| numpy         | 395.2 ± 15.6 |  565.2 ± 9.9 | 80,800 ± 487.7 |   8,102 ± 95.3 |       failed |
-| fastapi       |   89.9 ± 3.0 |  299.5 ± 3.7 |   1,141 ± 13.2 |   2,175 ± 24.0 |  196.0 ± 2.6 |
-| sqlalchemy    | 280.7 ± 12.7 |  306.3 ± 6.3 |    2,666 ± 6.7 |   4,862 ± 29.7 |  675.1 ± 8.7 |
-| rich          |   64.2 ± 3.1 |  122.8 ± 3.2 |    1,002 ± 8.3 |   1,776 ± 56.7 |  135.9 ± 2.9 |
-| django        |  248.2 ± 8.9 |  261.7 ± 2.2 |   1,455 ± 12.0 |   6,321 ± 44.7 |  520.4 ± 7.6 |
-| sympy         | 739.7 ± 20.2 |  528.9 ± 9.5 |   5,173 ± 26.2 | 13,876 ± 122.4 | 1,241 ± 13.0 |
-| openai        | 290.1 ± 16.0 | 456.6 ± 12.1 |   5,669 ± 35.8 |   5,808 ± 61.2 |  882.6 ± 6.5 |
-| pytest        | 164.6 ± 15.3 | 235.0 ± 17.3 |   1,319 ± 21.5 |   2,708 ± 11.8 |  602.6 ± 4.4 |
+| Project       |           ty |      Pyrefly |           mypy |         Pyright |        Zuban |
+| ------------- | -----------: | -----------: | -------------: | --------------: | -----------: |
+| black         |   66.9 ± 2.6 |  127.1 ± 1.7 |    921.0 ± 6.9 |    1,663 ± 11.7 |  143.8 ± 2.0 |
+| discord.py    |  137.7 ± 5.2 |  173.4 ± 4.5 |   2,086 ± 11.9 |    3,986 ± 13.6 |  356.5 ± 3.5 |
+| homeassistant | 2,092 ± 19.2 | 2,303 ± 30.8 | 52,028 ± 457.0 | 126,940 ± 7,192 | 7,454 ± 62.8 |
+| isort         |   92.2 ± 1.7 |  105.5 ± 2.0 |    454.6 ± 3.2 |    1,629 ± 11.3 |   66.0 ± 1.4 |
+| jinja         |   55.2 ± 1.2 |  104.1 ± 1.4 |    549.0 ± 9.1 |     1,178 ± 6.8 |   84.2 ± 1.6 |
+| pandas        | 404.8 ± 27.7 | 888.1 ± 27.7 |  10,469 ± 39.5 |  15,790 ± 102.1 |  1,409 ± 6.2 |
+| pandas-stubs  |   84.4 ± 3.5 |  196.0 ± 1.5 |   4,762 ± 45.1 |    2,170 ± 12.8 |  271.0 ± 1.9 |
+| prefect       |  111.0 ± 6.2 | 271.4 ± 10.1 |   7,191 ± 91.7 |    2,824 ± 18.5 |  948.1 ± 2.5 |
+| pytorch       | 1,313 ± 59.5 | 1,205 ± 14.6 |  25,373 ± 57.5 |  74,008 ± 1,512 | 3,464 ± 20.5 |
+| httpx         |   66.4 ± 1.8 |  117.9 ± 2.5 |   901.8 ± 10.3 |    950.0 ± 12.4 |  104.8 ± 1.4 |
+| numpy         | 391.9 ± 15.3 | 581.6 ± 29.3 | 80,920 ± 614.9 |   21,217 ± 79.0 |       failed |
+| fastapi       |   89.0 ± 2.4 |  297.2 ± 3.5 |   1,953 ± 17.6 |    2,216 ± 11.6 |  191.1 ± 2.3 |
+| sqlalchemy    | 289.8 ± 10.5 |  304.0 ± 7.3 |   3,932 ± 32.1 |    9,799 ± 75.7 |  660.8 ± 4.1 |
+| rich          |   63.0 ± 3.0 |  122.8 ± 3.4 |   1,209 ± 14.4 |     2,511 ± 8.1 |  130.2 ± 2.3 |
+| django        | 253.0 ± 26.2 |  259.8 ± 3.9 |   2,446 ± 17.9 |    6,931 ± 48.4 |  510.8 ± 6.1 |
+| sympy         | 720.7 ± 14.5 |  527.0 ± 5.9 |   6,645 ± 28.0 |  30,048 ± 168.2 |  1,230 ± 8.5 |
+| openai        | 294.1 ± 12.6 | 464.0 ± 11.7 |   6,770 ± 33.9 |    8,170 ± 67.3 |  861.1 ± 8.9 |
+| pytest        | 164.8 ± 12.3 | 227.2 ± 21.9 |   2,381 ± 25.0 |    4,574 ± 29.7 |  590.6 ± 5.4 |
 
 ## CLI peak RSS
 
-Mean peak resident memory in MiB across the same CLI runs. On macOS, peak RSS
-covers a single process, so mypy and Pyright can use more memory across all
-their workers.
+Mean peak resident memory in MiB across the same CLI runs. Hyperfine 2.0
+reports peak process RSS on macOS and does not sum concurrent processes.
 
 | Project       |    ty | Pyrefly |  mypy | Pyright |  Zuban |
 | ------------- | ----: | ------: | ----: | ------: | -----: |
-| black         | 136.8 |   160.0 | 106.5 |   289.6 |   79.3 |
-| discord.py    | 223.5 |   216.5 | 212.1 |   432.1 |  103.8 |
-| homeassistant | 3,497 |   3,031 | 1,234 |   1,899 |  1,943 |
-| isort         |  90.5 |   103.8 |  89.8 |   263.8 |   55.7 |
-| jinja         |  99.9 |   116.0 |  90.4 |   257.0 |   60.7 |
-| pandas        | 588.0 |   570.4 | 573.9 |   753.3 |  306.4 |
-| pandas-stubs  | 157.9 |   273.9 | 389.4 |   381.0 |   95.9 |
-| prefect       | 223.3 |   293.7 | 439.7 |   571.8 |  224.5 |
-| pytorch       | 1,646 |   904.9 | 1,667 |   1,746 |  749.6 |
-| httpx         | 105.5 |   129.8 |  96.6 |   258.1 |   66.2 |
-| numpy         | 285.5 |   519.2 | 566.4 |   632.9 | failed |
-| fastapi       | 142.5 |   194.0 | 133.1 |   333.9 |   89.1 |
-| sqlalchemy    | 405.5 |   301.0 | 271.4 |   549.8 |  168.8 |
-| rich          | 122.1 |   133.3 | 119.3 |   284.4 |   79.9 |
-| django        | 344.6 |   263.1 | 166.7 |   520.6 |  180.6 |
-| sympy         | 727.8 |   507.6 | 537.1 |   999.4 |  298.5 |
-| openai        | 347.5 |   411.0 | 516.6 |   599.8 |  209.8 |
-| pytest        | 247.5 |   245.6 | 151.4 |   378.4 |  166.4 |
+| black         | 136.2 |   159.6 | 198.7 |   427.1 |   79.4 |
+| discord.py    | 222.9 |   217.2 | 279.5 |   778.9 |  103.6 |
+| homeassistant | 3,497 |   3,031 | 4,189 |   4,208 |  1,943 |
+| isort         |  90.5 |   103.7 | 120.3 |   293.9 |   55.8 |
+| jinja         |  99.7 |   115.9 | 136.7 |   317.7 |   60.7 |
+| pandas        | 590.3 |   570.3 | 923.7 |   2,360 |  306.8 |
+| pandas-stubs  | 158.0 |   274.3 | 615.6 |   549.1 |   95.9 |
+| prefect       | 224.2 |   294.0 | 837.3 |   749.2 |  224.4 |
+| pytorch       | 1,646 |   908.9 | 1,845 |   4,179 |  752.5 |
+| httpx         | 105.2 |   129.9 | 190.2 |   362.1 |   66.4 |
+| numpy         | 284.9 |   518.6 | 642.5 |   1,536 | failed |
+| fastapi       | 142.8 |   193.4 | 333.8 |   493.5 |   89.2 |
+| sqlalchemy    | 404.2 |   298.7 | 422.6 |   1,429 |  168.8 |
+| rich          | 121.6 |   133.5 | 226.2 |   498.1 |   79.7 |
+| django        | 345.0 |   262.9 | 324.9 |   1,211 |  180.1 |
+| sympy         | 728.0 |   509.3 | 652.8 |   3,323 |  299.8 |
+| openai        | 349.3 |   409.3 | 651.0 |   1,424 |  209.5 |
+| pytest        | 248.0 |   246.0 | 371.8 |   903.3 |  166.5 |
 
 ## LSP: initial diagnostics
 
@@ -157,6 +160,6 @@ A value above 1 means ty was faster.
 
 | Metric      | Common projects | Pyrefly |   mypy | Pyright | Zuban |
 | ----------- | --------------: | ------: | -----: | ------: | ----: |
-| cli         |              17 |   1.54× | 12.39× |  20.64× | 2.47× |
+| cli         |              17 |   1.52× | 17.26× |  29.56× | 2.41× |
 | initial     |              17 |   2.16× |      — |   5.53× | 2.66× |
 | incremental |              14 |   6.19× |      — |  52.10× | 2.31× |
