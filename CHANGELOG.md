@@ -1,5 +1,46 @@
 # Changelog
 
+## 0.0.97
+
+Released on 2026-11-04.
+
+### Bug fixes
+
+- Apply a cycle iteration cutoff across type inference ([#30010](https://github.com/astral-sh/ruff/pull/30010))
+- Cap the size of inferred bytes literals during concatenation ([#29942](https://github.com/astral-sh/ruff/pull/29942))
+- Django: support ForeignKey and OneToOneField as primary keys ([#29785](https://github.com/astral-sh/ruff/pull/29785))
+- Fix a call hierarchy panic when expanding outgoing calls ([#29964](https://github.com/astral-sh/ruff/pull/29964))
+- Handle decorators that replace overrides of final methods ([#29961](https://github.com/astral-sh/ruff/pull/29961))
+- Ignore an empty `VIRTUAL_ENV` ([#29973](https://github.com/astral-sh/ruff/pull/29973))
+- Preserve narrowed type variables in union inference ([#29989](https://github.com/astral-sh/ruff/pull/29989))
+
+### Diagnostic improvements
+
+- Lower severity of diagnostics on recoverable invalid globs ([#29946](https://github.com/astral-sh/ruff/pull/29946))
+- Rename `unresolved-import` to `import-not-found` ([#29960](https://github.com/astral-sh/ruff/pull/29960))
+
+### Other changes
+
+- Document baseline support ([#4897](https://github.com/astral-sh/ty/pull/4897))
+- Document third-party library support. ([#4879](https://github.com/astral-sh/ty/pull/4879))
+- Pydantic: Respect extra-field configuration on settings models ([#29902](https://github.com/astral-sh/ruff/pull/29902))
+- Reuse matching constraints at branch joins ([#29875](https://github.com/astral-sh/ruff/pull/29875))
+- Reuse normalization of wide unions ([#29874](https://github.com/astral-sh/ruff/pull/29874))
+- Skip empty diagnostic context for overloaded callables ([#29959](https://github.com/astral-sh/ruff/pull/29959))
+- Speed up comparisons of deeply nested tuples ([#29933](https://github.com/astral-sh/ruff/pull/29933))
+- Update PyCharm setup instructions for 2026.2 ([#4914](https://github.com/astral-sh/ty/pull/4914))
+
+### Contributors
+
+- [@AlexWaygood](https://github.com/AlexWaygood)
+- [@sharkdp](https://github.com/sharkdp)
+- [@charliermarsh](https://github.com/charliermarsh)
+- [@zsol](https://github.com/zsol)
+- [@lerebear](https://github.com/lerebear)
+- [@MichaReiser](https://github.com/MichaReiser)
+- [@carljm](https://github.com/carljm)
+- [@zaniebot](https://github.com/zaniebot)
+
 ## 0.0.96
 
 Released on 2026-11-03.
