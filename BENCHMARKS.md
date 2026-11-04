@@ -1,7 +1,8 @@
 # Benchmarks
 
-We ran these benchmarks on November 3, 2026, on a 16-core Apple M3 Max
-with 128 GB of RAM running macOS 26.5.2.
+We ran the CLI benchmarks on November 4, 2026 (UTC) and the LSP
+benchmarks on November 3, 2026, on a 16-core Apple M3 Max with 128 GB of RAM
+running macOS 26.5.2.
 
 - [Pyrefly](https://pypi.org/project/pyrefly/) 1.4.0
 - [Pyright](https://www.npmjs.com/package/pyright) 1.1.414
@@ -9,36 +10,39 @@ with 128 GB of RAM running macOS 26.5.2.
 - [ty](https://pypi.org/project/ty/) 0.0.96
 - [Zuban](https://pypi.org/project/zuban/) 0.10.2
 
-For the commands and source revisions, see the [benchmark runner](https://github.com/astral-sh/ruff/blob/5ca55b2baffd6200b61c540c17255d9e20055272/scripts/ty_benchmark/README.md)
-and [project definitions](https://github.com/astral-sh/ruff/blob/5ca55b2baffd6200b61c540c17255d9e20055272/scripts/ty_benchmark/src/benchmark/projects.py).
+For the commands and source revisions, see the [benchmark runner](https://github.com/astral-sh/ruff/blob/f62ae0859ac2ce0bf983b64c414be6fb2fa6f546/scripts/ty_benchmark/README.md)
+and [project definitions](https://github.com/astral-sh/ruff/blob/f62ae0859ac2ce0bf983b64c414be6fb2fa6f546/scripts/ty_benchmark/src/benchmark/projects.py).
 
 ## CLI cold check
 
-Each checker discovers the same input files, checks unannotated function bodies,
-and can use up to 16 workers. We ran at least ten cold checks after three
-warmups, clearing mypy’s cache before each run. Timings below are means ± one
-standard deviation in milliseconds.
+Each checker discovers the same input files and checks unannotated function
+bodies. We use one concurrency limit per checker across all projects:
+ty 16, Pyrefly 16, mypy 8, Pyright 8, and Zuban 4. The
+[concurrency calibration](https://github.com/astral-sh/ruff/blob/f62ae0859ac2ce0bf983b64c414be6fb2fa6f546/scripts/ty_benchmark/concurrency.md) explains the selection and
+Home Assistant tradeoffs. We ran at least ten cold checks after three warmups,
+clearing mypy’s cache before each run. Timings below are means ± one standard
+deviation in milliseconds.
 
 | Project       |           ty |      Pyrefly |           mypy |        Pyright |        Zuban |
 | ------------- | -----------: | -----------: | -------------: | -------------: | -----------: |
-| black         |   69.1 ± 3.1 |  134.1 ± 2.6 |   683.8 ± 10.6 |   1,433 ± 25.7 |  144.7 ± 2.3 |
-| discord.py    |  137.3 ± 6.1 |  176.3 ± 4.0 |   1,981 ± 17.2 |   3,021 ± 34.4 |  356.5 ± 3.0 |
-| homeassistant | 2,085 ± 10.4 | 2,308 ± 38.7 | 13,599 ± 116.4 | 29,820 ± 104.0 | 7,607 ± 40.2 |
-| isort         |   91.5 ± 2.3 |  106.7 ± 1.8 |   495.5 ± 11.3 |   1,744 ± 22.0 |   68.6 ± 1.4 |
-| jinja         |   56.0 ± 1.3 |  105.0 ± 1.2 |   624.3 ± 12.4 |    1,348 ± 6.9 |   86.3 ± 2.0 |
-| pandas        | 387.8 ± 18.7 |  910.8 ± 7.7 |   7,570 ± 29.5 |   7,797 ± 94.9 | 1,449 ± 10.7 |
-| pandas-stubs  |   85.7 ± 3.2 |  197.2 ± 2.8 |   3,569 ± 19.5 |   2,240 ± 16.6 |  279.7 ± 3.9 |
-| prefect       |  111.5 ± 8.1 |  273.9 ± 9.1 |   4,712 ± 18.9 |   3,912 ± 31.0 |  980.2 ± 5.4 |
-| pytorch       | 1,310 ± 41.2 | 1,225 ± 20.8 |  21,916 ± 70.8 | 18,060 ± 185.0 | 3,553 ± 76.7 |
-| httpx         |   67.1 ± 1.5 |  120.4 ± 3.1 |   658.8 ± 16.6 |    1,084 ± 6.3 |  108.1 ± 1.9 |
-| numpy         | 395.2 ± 15.6 |  565.2 ± 9.9 | 80,800 ± 487.7 |   8,102 ± 95.3 |       failed |
-| fastapi       |   89.9 ± 3.0 |  299.5 ± 3.7 |   1,141 ± 13.2 |   2,175 ± 24.0 |  196.0 ± 2.6 |
-| sqlalchemy    | 280.7 ± 12.7 |  306.3 ± 6.3 |    2,666 ± 6.7 |   4,862 ± 29.7 |  675.1 ± 8.7 |
-| rich          |   64.2 ± 3.1 |  122.8 ± 3.2 |    1,002 ± 8.3 |   1,776 ± 56.7 |  135.9 ± 2.9 |
-| django        |  248.2 ± 8.9 |  261.7 ± 2.2 |   1,455 ± 12.0 |   6,321 ± 44.7 |  520.4 ± 7.6 |
-| sympy         | 739.7 ± 20.2 |  528.9 ± 9.5 |   5,173 ± 26.2 | 13,876 ± 122.4 | 1,241 ± 13.0 |
-| openai        | 290.1 ± 16.0 | 456.6 ± 12.1 |   5,669 ± 35.8 |   5,808 ± 61.2 |  882.6 ± 6.5 |
-| pytest        | 164.6 ± 15.3 | 235.0 ± 17.3 |   1,319 ± 21.5 |   2,708 ± 11.8 |  602.6 ± 4.4 |
+| black         |   67.9 ± 2.9 |  129.3 ± 2.8 |    633.9 ± 6.6 |   1,099 ± 10.0 |  125.5 ± 0.8 |
+| discord.py    |  138.9 ± 3.4 |  174.5 ± 3.2 |   1,919 ± 12.3 |   2,075 ± 21.4 |  330.2 ± 4.8 |
+| homeassistant | 2,104 ± 80.9 | 2,296 ± 24.8 |  15,331 ± 63.9 | 33,766 ± 454.9 | 7,004 ± 35.7 |
+| isort         |   91.0 ± 1.8 |  106.9 ± 2.1 |    462.0 ± 9.2 |   1,394 ± 15.2 |   54.9 ± 1.0 |
+| jinja         |   56.2 ± 1.3 |  104.9 ± 1.4 |    568.1 ± 8.0 |   963.4 ± 24.0 |   69.1 ± 0.4 |
+| pandas        | 396.0 ± 20.4 | 887.3 ± 45.5 |   7,453 ± 40.1 |   5,945 ± 52.3 |  1,343 ± 5.3 |
+| pandas-stubs  |   84.9 ± 3.4 |  200.1 ± 2.4 |   3,480 ± 19.3 |   1,585 ± 27.4 |  251.1 ± 1.9 |
+| prefect       |  113.8 ± 5.8 |  276.0 ± 9.2 |   4,667 ± 47.9 |   2,285 ± 47.6 |  929.5 ± 3.1 |
+| pytorch       | 1,281 ± 29.8 | 1,214 ± 22.2 |  21,730 ± 62.9 |  16,409 ± 78.7 | 3,167 ± 20.8 |
+| httpx         |   66.6 ± 1.8 |  119.0 ± 3.1 |    588.7 ± 5.8 |    768.1 ± 3.7 |   91.6 ± 0.8 |
+| numpy         | 396.0 ± 15.6 | 595.3 ± 22.6 | 80,584 ± 542.1 |   7,617 ± 62.4 |       failed |
+| fastapi       |   89.8 ± 2.4 |  298.5 ± 2.2 |   1,056 ± 16.2 |   1,617 ± 14.4 |  168.6 ± 0.9 |
+| sqlalchemy    | 289.7 ± 12.7 |  304.4 ± 6.6 |   2,612 ± 18.1 |   3,762 ± 44.7 |  605.7 ± 4.0 |
+| rich          |   64.5 ± 2.8 |  122.0 ± 3.6 |    936.5 ± 6.7 |   1,283 ± 20.1 |  110.8 ± 1.1 |
+| django        |  241.9 ± 5.2 |  259.0 ± 2.2 |    1,373 ± 7.9 |   4,207 ± 29.2 |  456.7 ± 9.8 |
+| sympy         | 718.0 ± 25.0 |  530.0 ± 7.8 |   5,100 ± 23.3 |  11,034 ± 81.2 |  1,117 ± 7.7 |
+| openai        | 287.9 ± 16.9 | 457.2 ± 13.0 |   5,550 ± 34.9 |   5,024 ± 66.1 |  814.0 ± 7.3 |
+| pytest        | 160.1 ± 17.0 | 240.6 ± 10.7 |    1,244 ± 9.0 |   2,080 ± 23.5 |  548.3 ± 1.6 |
 
 ## CLI peak RSS
 
@@ -48,24 +52,24 @@ their workers.
 
 | Project       |    ty | Pyrefly |  mypy | Pyright |  Zuban |
 | ------------- | ----: | ------: | ----: | ------: | -----: |
-| black         | 136.8 |   160.0 | 106.5 |   289.6 |   79.3 |
-| discord.py    | 223.5 |   216.5 | 212.1 |   432.1 |  103.8 |
-| homeassistant | 3,497 |   3,031 | 1,234 |   1,899 |  1,943 |
-| isort         |  90.5 |   103.8 |  89.8 |   263.8 |   55.7 |
-| jinja         |  99.9 |   116.0 |  90.4 |   257.0 |   60.7 |
-| pandas        | 588.0 |   570.4 | 573.9 |   753.3 |  306.4 |
-| pandas-stubs  | 157.9 |   273.9 | 389.4 |   381.0 |   95.9 |
-| prefect       | 223.3 |   293.7 | 439.7 |   571.8 |  224.5 |
-| pytorch       | 1,646 |   904.9 | 1,667 |   1,746 |  749.6 |
-| httpx         | 105.5 |   129.8 |  96.6 |   258.1 |   66.2 |
-| numpy         | 285.5 |   519.2 | 566.4 |   632.9 | failed |
-| fastapi       | 142.5 |   194.0 | 133.1 |   333.9 |   89.1 |
-| sqlalchemy    | 405.5 |   301.0 | 271.4 |   549.8 |  168.8 |
-| rich          | 122.1 |   133.3 | 119.3 |   284.4 |   79.9 |
-| django        | 344.6 |   263.1 | 166.7 |   520.6 |  180.6 |
-| sympy         | 727.8 |   507.6 | 537.1 |   999.4 |  298.5 |
-| openai        | 347.5 |   411.0 | 516.6 |   599.8 |  209.8 |
-| pytest        | 247.5 |   245.6 | 151.4 |   378.4 |  166.4 |
+| black         | 136.7 |   159.9 | 109.7 |   304.9 |   70.3 |
+| discord.py    | 223.1 |   216.3 | 216.5 |   480.0 |   92.9 |
+| homeassistant | 3,497 |   3,031 | 1,421 |   2,789 |  1,817 |
+| isort         |  90.6 |   103.7 |  90.0 |   265.9 |   47.6 |
+| jinja         |  99.9 |   116.1 |  91.7 |   265.9 |   52.2 |
+| pandas        | 591.0 |   571.1 | 585.6 |   1,041 |  288.9 |
+| pandas-stubs  | 157.8 |   275.2 | 402.1 |   386.7 |   85.8 |
+| prefect       | 223.5 |   294.5 | 479.2 |   579.7 |  214.0 |
+| pytorch       | 1,642 |   909.8 | 1,664 |   2,306 |  703.3 |
+| httpx         | 105.2 |   130.0 | 101.2 |   256.5 |   58.6 |
+| numpy         | 284.5 |   518.5 | 567.8 |   699.3 | failed |
+| fastapi       | 142.9 |   192.9 | 144.0 |   335.1 |   80.1 |
+| sqlalchemy    | 405.3 |   299.3 | 271.2 |   700.5 |  154.3 |
+| rich          | 121.7 |   133.9 | 122.1 |   328.0 |   69.8 |
+| django        | 344.3 |   262.3 | 168.9 |   599.6 |  160.0 |
+| sympy         | 726.4 |   509.2 | 540.9 |   1,318 |  276.8 |
+| openai        | 348.9 |   407.9 | 525.3 |   728.3 |  193.5 |
+| pytest        | 247.2 |   245.8 | 162.8 |   502.1 |  153.3 |
 
 ## LSP: initial diagnostics
 
@@ -157,6 +161,6 @@ A value above 1 means ty was faster.
 
 | Metric      | Common projects | Pyrefly |   mypy | Pyright | Zuban |
 | ----------- | --------------: | ------: | -----: | ------: | ----: |
-| cli         |              17 |   1.54× | 12.39× |  20.64× | 2.47× |
+| cli         |              17 |   1.54× | 11.97× |  15.80× | 2.18× |
 | initial     |              17 |   2.16× |      — |   5.53× | 2.66× |
 | incremental |              14 |   6.19× |      — |  52.10× | 2.31× |
