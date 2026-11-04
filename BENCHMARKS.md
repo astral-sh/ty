@@ -14,13 +14,9 @@ the lexical path spelling, which changed ty diagnostics and timing. The ty,
 Pyrefly, mypy and Pyright CLI samples and the Pyrefly/Pyright LSP samples are
 retained unchanged from the previous controlled collection, using the same
 physical source files and dependency environments.
-[BENCHMARKS.json](BENCHMARKS.json) identifies the original, CLI-correction and
-LSP-correction harness commits separately.
 
 Times are wall-clock milliseconds. Single-cohort timings show mean ± standard
-deviation; RSS values below are MiB. [BENCHMARKS.json](BENCHMARKS.json) contains
-raw samples, exact source revisions, root manifests, dependency versions,
-generated configuration, scope audits, failures and release provenance.
+deviation. RSS values are in MiB.
 
 - ty: [0.0.96](https://github.com/astral-sh/ty/releases/tag/0.0.96), published PyPI
     macOS arm64 binary (`ty 0.0.96 (53a7844b8 2026-11-02)`).
@@ -72,10 +68,8 @@ A separate lexical/physical LSP URI control covers isort and SQLAlchemy with ty,
 Pyrefly and Pyright: 24 initial/edit cases pass across the two path spellings.
 For ty/SQLAlchemy initial diagnostics, canonical paths remove seven duplicate
 module-identity errors (58 diagnostics versus 51) and materially reduce latency.
-[BENCHMARKS.json](BENCHMARKS.json) retains every observed normalized diagnostic
-variant and per-case timing comparison. Initial diagnostic responses can be
-partial, so snapshot differences remain visible. The control is separate from
-the comparison samples below; ty LSP was rerun across every unique project input.
+Initial diagnostic responses can be partial. We reran the ty LSP benchmarks for
+each project input and excluded the separate path comparison from the timings below.
 
 Run instructions: [`ty_benchmark/README.md`](https://github.com/astral-sh/ruff/blob/5ca55b2baffd6200b61c540c17255d9e20055272/scripts/ty_benchmark/README.md).
 
@@ -215,8 +209,7 @@ include/exclude scope. Imported modules can add work beyond these roots.
 ## Comparison with ty
 
 Geometric mean of competitor time divided by ty time on the common successful
-projects for each metric. A value above 1 means ty is faster. The project lists
-are recorded in [BENCHMARKS.json](BENCHMARKS.json).
+projects for each metric. A value above 1 means ty is faster.
 
 | Metric      | Common projects | Pyrefly |   mypy | Pyright |
 | ----------- | --------------: | ------: | -----: | ------: |
