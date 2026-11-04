@@ -1,0 +1,883 @@
+{
+  "schema_version": 1,
+  "scope": "Cold CLI wall time and peak process RSS with native checker concurrency defaults",
+  "started_at": "2026-11-04T18:36:16.899898+00:00",
+  "completed_at": "2026-11-04T20:55:06.599011+00:00",
+  "harness": {
+    "repository": "https://github.com/astral-sh/ruff",
+    "commit": "504457130a2183e9f0c6f4e92ce1c43e970b70ca",
+    "guide": "https://github.com/astral-sh/ruff/blob/504457130a2183e9f0c6f4e92ce1c43e970b70ca/scripts/ty_benchmark/README.md",
+    "projects": "https://github.com/astral-sh/ruff/blob/504457130a2183e9f0c6f4e92ce1c43e970b70ca/scripts/ty_benchmark/src/benchmark/projects.py"
+  },
+  "published_report": "https://github.com/astral-sh/ty/blob/f0117f5f0e73a2a063decc007790f0ba4e3a7154/BENCHMARKS.md",
+  "versions": {
+    "uv": "uv 0.13.5 (46776a95d 2026-10-21 aarch64-apple-darwin)",
+    "hyperfine": "hyperfine 2.0.0",
+    "node": "v26.12.1",
+    "npm": "12.2.1",
+    "ty": "ty 0.0.96 (53a7844b8 2026-11-02)",
+    "pyrefly": "pyrefly 1.4.0",
+    "zuban": "zuban 0.10.2",
+    "pyright": "pyright 1.1.414",
+    "mypy": "mypy 2.4.0 (compiled: yes)"
+  },
+  "machine": {
+    "system": "macOS 26.5.2 arm64",
+    "processor": "Apple M3 Max",
+    "cores": 16,
+    "performance_cores": 12,
+    "efficiency_cores": 4,
+    "memory_gib": 128
+  },
+  "concurrency": {
+    "mode": "native-defaults",
+    "requested_workers": {
+      "ty": null,
+      "pyrefly": null,
+      "mypy": null,
+      "pyright": null,
+      "zuban": null
+    },
+    "overrides_absent": [
+      "TY_MAX_PARALLELISM",
+      "RAYON_NUM_THREADS",
+      "RAYON_RS_NUM_CPUS",
+      "PYTHON_CPU_COUNT"
+    ],
+    "semantics": {
+      "ty": "native available-parallelism auto (16 logical CPUs on this host)",
+      "pyrefly": "native automatic thread selection (16 on this host)",
+      "mypy": "no --num-workers; default0 external workers, with independent native parser threads (up to8)",
+      "pyright": "no --threads; native single-process CLI",
+      "zuban": "native Rayon automatic pool; no Rayon overrides"
+    },
+    "suite_wide_counts": "No requested worker counts; effective native internals differ by checker."
+  },
+  "measurement": {
+    "hyperfine_schema_version": 2,
+    "warmup_runs": 3,
+    "minimum_measured_runs": 10,
+    "cold_mypy_cache_before_each_invocation": true,
+    "dependency_cutoff": "2026-10-24T19:50:00Z",
+    "rss_scope": "Hyperfine 2.0 peak process RSS on macOS; concurrent worker-process memory is not summed.",
+    "total_measured_runs": 1202
+  },
+  "projects": {
+    "black": {
+      "repository": "https://github.com/psf/black",
+      "revision": "55996d1fb8342725c8a19b6023cd9439c3c1d6f7",
+      "python": "3.11",
+      "root_files": 42,
+      "stub_files": 1,
+      "root_manifest_sha256": "d43588222fe8fbc476269df02caa3ca4d9203a391700a9e443ecc3115655f79d",
+      "dependency_freeze_sha256": "6e66bdc1ad811c338de3496b0a24647fa38e1eb89fe35936e13e1383cbe32811",
+      "normalized_source_files": 3
+    },
+    "discord.py": {
+      "repository": "https://github.com/Rapptz/discord.py.git",
+      "revision": "65232c38702be5844cf2ce865a4777eb1928b5d0",
+      "python": "3.11",
+      "root_files": 144,
+      "stub_files": 0,
+      "root_manifest_sha256": "acc49699cabeba8f137b492eba0bfe52af923e7fcb3af2e11181f3e1ded08a1e",
+      "dependency_freeze_sha256": "6f0e910e8f49d0f7d3fab925f46ef7e518c50fd9498938bf96221d11758040dd",
+      "normalized_source_files": 0
+    },
+    "homeassistant": {
+      "repository": "https://github.com/home-assistant/core.git",
+      "revision": "c19ae285ede74cd64c3045a3a4aa43290c224f1b",
+      "python": "3.14",
+      "root_files": 10765,
+      "stub_files": 3,
+      "root_manifest_sha256": "7d54c399da2cb39a697d4e631e7fe8c504c6ee54dffdfde1ffd92ef727512539",
+      "dependency_freeze_sha256": "3292616cacb5f17f36aac5db9656766ee7e6631fb2f3700c2db274dbbac80c1f",
+      "normalized_source_files": 47
+    },
+    "isort": {
+      "repository": "https://github.com/pycqa/isort",
+      "revision": "a514c71ed86c2216d0040c7d60e302ed76a4f7ab",
+      "python": "3.11",
+      "root_files": 40,
+      "stub_files": 0,
+      "root_manifest_sha256": "6732b296157e8cadd201facc3b142fead537037810de35151b336b02ef6ccb7f",
+      "dependency_freeze_sha256": "d789cd104bf289366583a5f0a30c40e82fc7994e2f923cc451214a15e7dfb412",
+      "normalized_source_files": 0
+    },
+    "jinja": {
+      "repository": "https://github.com/pallets/jinja",
+      "revision": "5ef70112a1ff19c05324ff889dd30405b1002044",
+      "python": "3.11",
+      "root_files": 25,
+      "stub_files": 0,
+      "root_manifest_sha256": "8b7527c7ce393863462811693a3d30f54c357351d241912c952514ece2fa15ba",
+      "dependency_freeze_sha256": "5faae045958aef33d0bcd48e0db9f31a398b5ee7810f53a731bf216982553c99",
+      "normalized_source_files": 0
+    },
+    "pandas": {
+      "repository": "https://github.com/pandas-dev/pandas",
+      "revision": "a0225b65720018f4654390bb16d254daa6ee5e54",
+      "python": "3.11",
+      "root_files": 337,
+      "stub_files": 41,
+      "root_manifest_sha256": "7a01984ee8d028744741b2b6853d52fd8ba711a9223efedaadd3f6c7d347d2df",
+      "dependency_freeze_sha256": "f5f35bc23997751f05b11d8d822f3b7815f41007f76873e8d341a52536dc5657",
+      "normalized_source_files": 6
+    },
+    "pandas-stubs": {
+      "repository": "https://github.com/pandas-dev/pandas-stubs",
+      "revision": "8dd6d91b1c05b26e30f7ddbe3dc3d4042a92bdd6",
+      "python": "3.11",
+      "root_files": 183,
+      "stub_files": 183,
+      "root_manifest_sha256": "1308b818f6cd705b6ad0b6ab972caf4065c66b51cd29599c39880b677ca5fdeb",
+      "dependency_freeze_sha256": "f330b1346af0e7a5f9cffdb785390af9dea2e619106897521a64c69cd012a1aa",
+      "normalized_source_files": 5
+    },
+    "prefect": {
+      "repository": "https://github.com/PrefectHQ/prefect.git",
+      "revision": "a9452ac21852755311913cb27887b083b5007c03",
+      "python": "3.11",
+      "root_files": 58,
+      "stub_files": 0,
+      "root_manifest_sha256": "9a73fd6fb704d752f4bf4b8d26668428aa12de6a3f7b7ebda755340502febc52",
+      "dependency_freeze_sha256": "44bd442159782765272dafe9fbfb358018cf2fbfed0efe90a4a78800c231c8b0",
+      "normalized_source_files": 1
+    },
+    "pytorch": {
+      "repository": "https://github.com/pytorch/pytorch.git",
+      "revision": "ab92945cea42e47ae398aead69af0872d340ea0f",
+      "python": "3.11",
+      "root_files": 2416,
+      "stub_files": 37,
+      "root_manifest_sha256": "59b7eb4ea16968bbd533ad42a9da3181268cd5311552ee1ff5a27b6379c0b216",
+      "dependency_freeze_sha256": "e635c63eda3d086df2892ed766e3f1d363222636747f170116e9d3a31e44b96e",
+      "normalized_source_files": 1117
+    },
+    "httpx": {
+      "repository": "https://github.com/encode/httpx",
+      "revision": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254",
+      "python": "3.11",
+      "root_files": 23,
+      "stub_files": 0,
+      "root_manifest_sha256": "6c94a127c86bca35d803c9de52e2b1ff1a8d0b48d3d9fd54bd30f7562eda0e63",
+      "dependency_freeze_sha256": "0f37628eb395fc20e3cf79aaa21c94059acd556738e984cdf44e8d7347050a36",
+      "normalized_source_files": 0
+    },
+    "numpy": {
+      "repository": "https://github.com/numpy/numpy",
+      "revision": "f9f1772ce010001208475f751d19253469788410",
+      "python": "3.12",
+      "root_files": 205,
+      "stub_files": 167,
+      "root_manifest_sha256": "73ffa00552444e85c8570d19596ecf3b21121ee4422ef9431dba281f5c99ac33",
+      "dependency_freeze_sha256": "b50b9c9157e96d30a206975c58dbc58182f4669242586252a7bc491b5602e0b8",
+      "normalized_source_files": 9
+    },
+    "fastapi": {
+      "repository": "https://github.com/fastapi/fastapi",
+      "revision": "7a0a3f0b286c6c865cf4398ea0e957a87b8bffa4",
+      "python": "3.11",
+      "root_files": 52,
+      "stub_files": 0,
+      "root_manifest_sha256": "a5301dd6beba5eaf8de5a1f6176a2df197ea4509b45630d6ca855f5f72380df2",
+      "dependency_freeze_sha256": "a3cdec0dad559d0739b234839a49edce6355c423ec450858a14d00a959d90c9d",
+      "normalized_source_files": 0
+    },
+    "sqlalchemy": {
+      "repository": "https://github.com/sqlalchemy/sqlalchemy",
+      "revision": "10f4d1e2d706a7722ca78e79ce05b00333a7aa5b",
+      "python": "3.11",
+      "root_files": 258,
+      "stub_files": 0,
+      "root_manifest_sha256": "63af6a6d83d2936bea987cfc1c1309a043d232df9154025e275457588a3ee6a2",
+      "dependency_freeze_sha256": "9cea4f1162845529f3bce3e0e1b79699be70b68aa6330363dc05d795574e67e4",
+      "normalized_source_files": 128
+    },
+    "rich": {
+      "repository": "https://github.com/Textualize/rich",
+      "revision": "9d8f9a372cc5916fd4781fec207ced7ddac2f08f",
+      "python": "3.11",
+      "root_files": 100,
+      "stub_files": 0,
+      "root_manifest_sha256": "aeef23ee3d29b7af5c31eba7be061a0d0c91d711291d958e7719a5ad71294aaa",
+      "dependency_freeze_sha256": "a80910586483fe4f9decccc82f6081574c831cff7ae2c4c5bae240f9f355af8b",
+      "normalized_source_files": 0
+    },
+    "django": {
+      "repository": "https://github.com/django/django",
+      "revision": "b501b8493f31cf8cba31211d59b3b78642b8cb02",
+      "python": "3.12",
+      "root_files": 907,
+      "stub_files": 0,
+      "root_manifest_sha256": "04ab42f1fd9d44eb0aea5bf837c0cfea4e0abf41449610afead753160fa36e09",
+      "dependency_freeze_sha256": "12cdfc5584daf7465d068f18f3e6057efbc6d7a951b95df99924a286d14f7a65",
+      "normalized_source_files": 0
+    },
+    "sympy": {
+      "repository": "https://github.com/sympy/sympy",
+      "revision": "85d3998a4517ffbc8a9709b8efa769bb417c174a",
+      "python": "3.11",
+      "root_files": 835,
+      "stub_files": 0,
+      "root_manifest_sha256": "3343a81689cd989b2424777a101a9337498868276a32df892d8c4f4377b35811",
+      "dependency_freeze_sha256": "e16306e964ec07cd33a1f9dac8810c16f0f6a3a3683d3cd8653a3c859d621254",
+      "normalized_source_files": 0
+    },
+    "openai": {
+      "repository": "https://github.com/openai/openai-python",
+      "revision": "f6e8480f9a5b2a4d02b17a1da54a1e57964bc312",
+      "python": "3.11",
+      "root_files": 2053,
+      "stub_files": 0,
+      "root_manifest_sha256": "8280f192b9c7c2a789587baa2f2b3804fd85ecf45743c6c4097e5d17cb434002",
+      "dependency_freeze_sha256": "72c48ef8f47de31b6a343d03f49f8a51ff2a157bcf2de38a1d44a5f1feb68678",
+      "normalized_source_files": 0
+    },
+    "pytest": {
+      "repository": "https://github.com/pytest-dev/pytest",
+      "revision": "8b005ed7f972987033ec34dc1e68b0635fb8142b",
+      "python": "3.11",
+      "root_files": 172,
+      "stub_files": 0,
+      "root_manifest_sha256": "0d53395951799c5938baeb709b1e64bd46fd4bace69de789aceefc227844d54b",
+      "dependency_freeze_sha256": "082cc54c5dd5684a458766a28c849637fa5ffbb87f01791d209a7527d3b5e781",
+      "normalized_source_files": 156
+    }
+  },
+  "results": [
+    {
+      "project": "black",
+      "checker": "ty",
+      "file": "hyperfine/black/ty.json",
+      "sha256": "faf5729cced4982a60febe15a35188a8c4c7294dc74a3de2abba469faf6c22ef",
+      "measured_runs": 35
+    },
+    {
+      "project": "black",
+      "checker": "pyrefly",
+      "file": "hyperfine/black/pyrefly.json",
+      "sha256": "8e3c895ae0daf8e49c2bad370276f29ffa0bae7f905b660aac6292213c09aa1f",
+      "measured_runs": 19
+    },
+    {
+      "project": "black",
+      "checker": "mypy",
+      "file": "hyperfine/black/mypy.json",
+      "sha256": "d3081e70b66faecaa4f62b8a7b27536c234c9f22c3250687c65e62ee950da8fc",
+      "measured_runs": 10
+    },
+    {
+      "project": "black",
+      "checker": "pyright",
+      "file": "hyperfine/black/pyright.json",
+      "sha256": "2b5dd33c9644ff9027edc4bdd320cab12460765fdb6b20d164cf5fed7f154f34",
+      "measured_runs": 10
+    },
+    {
+      "project": "black",
+      "checker": "zuban",
+      "file": "hyperfine/black/zuban.json",
+      "sha256": "11e09645537cf60f6bac26ef1532b1addf061fc3f9d9d1a1b31d64f42556624a",
+      "measured_runs": 17
+    },
+    {
+      "project": "discord.py",
+      "checker": "ty",
+      "file": "hyperfine/discord.py/ty.json",
+      "sha256": "6861a66f582d2c637abe19a514e9cf53a2f5497fe061d9933ddb23d67afee5a8",
+      "measured_runs": 18
+    },
+    {
+      "project": "discord.py",
+      "checker": "pyrefly",
+      "file": "hyperfine/discord.py/pyrefly.json",
+      "sha256": "8d7f8fe9fbb857289094912a1be5dc792ec97e337808df6144a44b956b859185",
+      "measured_runs": 15
+    },
+    {
+      "project": "discord.py",
+      "checker": "mypy",
+      "file": "hyperfine/discord.py/mypy.json",
+      "sha256": "46b9693dd3c684beb4b196e567103cb16bdfef38dd8def563623b88549aa591e",
+      "measured_runs": 10
+    },
+    {
+      "project": "discord.py",
+      "checker": "pyright",
+      "file": "hyperfine/discord.py/pyright.json",
+      "sha256": "3798cce5958ee10d5242e343c46d231baa7cf437c03fa410351003702fe6fc3f",
+      "measured_runs": 10
+    },
+    {
+      "project": "discord.py",
+      "checker": "zuban",
+      "file": "hyperfine/discord.py/zuban.json",
+      "sha256": "805c3a43b7008c07e5c730dff2858664b37a4fc07611da812ad573049b9d569f",
+      "measured_runs": 10
+    },
+    {
+      "project": "homeassistant",
+      "checker": "ty",
+      "file": "hyperfine/homeassistant/ty.json",
+      "sha256": "c213358d970194ffac4abe20b7b84bcccdcb45d0964a69eda5ec07578591be87",
+      "measured_runs": 10
+    },
+    {
+      "project": "homeassistant",
+      "checker": "pyrefly",
+      "file": "hyperfine/homeassistant/pyrefly.json",
+      "sha256": "7afc3fef45bd7ead3fbfafeb9f4b0a41df11313ee81b31d6170d472b44aa647e",
+      "measured_runs": 10
+    },
+    {
+      "project": "homeassistant",
+      "checker": "mypy",
+      "file": "hyperfine/homeassistant/mypy.json",
+      "sha256": "efff04ed428b6da4c1988f93cc1d39a501a879f5c814767f31417751c80917dc",
+      "measured_runs": 10
+    },
+    {
+      "project": "homeassistant",
+      "checker": "pyright",
+      "file": "hyperfine/homeassistant/pyright.json",
+      "sha256": "b5dcb8c1eea905c2e00f7236c1e938dedda9951ed0291c039a340226d7a3a03e",
+      "measured_runs": 10
+    },
+    {
+      "project": "homeassistant",
+      "checker": "zuban",
+      "file": "hyperfine/homeassistant/zuban.json",
+      "sha256": "352621d653df57c4a486c5505e82574bd54e9b5b6c7802620f6ad1d57c8e34b4",
+      "measured_runs": 10
+    },
+    {
+      "project": "isort",
+      "checker": "ty",
+      "file": "hyperfine/isort/ty.json",
+      "sha256": "22f6c3e82715fd652638680c01e1197959260839c5300a7b77e1c1279ee49923",
+      "measured_runs": 26
+    },
+    {
+      "project": "isort",
+      "checker": "pyrefly",
+      "file": "hyperfine/isort/pyrefly.json",
+      "sha256": "9ebf0a4c0bf3fc003821eef846ca6a08a28edda2bc5aab2f707e5b5a3de88548",
+      "measured_runs": 23
+    },
+    {
+      "project": "isort",
+      "checker": "mypy",
+      "file": "hyperfine/isort/mypy.json",
+      "sha256": "b37bf52f783d6743b153fc6d40c1414983d2eeb2d09c4058d1734b8b9e082668",
+      "measured_runs": 10
+    },
+    {
+      "project": "isort",
+      "checker": "pyright",
+      "file": "hyperfine/isort/pyright.json",
+      "sha256": "e82c2e6ce6f4192557125b06c2eab628b078d9038860b77fc3d769da03a1129b",
+      "measured_runs": 10
+    },
+    {
+      "project": "isort",
+      "checker": "zuban",
+      "file": "hyperfine/isort/zuban.json",
+      "sha256": "00a7c7cf93b13d33bf2fd922ba0e09be5c1d97b12e96ad60145df1a466b02ccb",
+      "measured_runs": 33
+    },
+    {
+      "project": "jinja",
+      "checker": "ty",
+      "file": "hyperfine/jinja/ty.json",
+      "sha256": "f9e188d30de3b415e20e03fe6938d42a0c8504f42cd5875f733d51e3a6df5157",
+      "measured_runs": 38
+    },
+    {
+      "project": "jinja",
+      "checker": "pyrefly",
+      "file": "hyperfine/jinja/pyrefly.json",
+      "sha256": "c19a7e519b57a888fe7209ab37253b87e2618166a4b105e794234e017f3aad6b",
+      "measured_runs": 23
+    },
+    {
+      "project": "jinja",
+      "checker": "mypy",
+      "file": "hyperfine/jinja/mypy.json",
+      "sha256": "abbc5f91c97fb248a17c8c987c817e5fd714cc8d5a7cb5386e2294763ec0f359",
+      "measured_runs": 10
+    },
+    {
+      "project": "jinja",
+      "checker": "pyright",
+      "file": "hyperfine/jinja/pyright.json",
+      "sha256": "4886582a1f29c6681ba31d3b90606802abe41a5371168eb811f8753bccd2ff83",
+      "measured_runs": 10
+    },
+    {
+      "project": "jinja",
+      "checker": "zuban",
+      "file": "hyperfine/jinja/zuban.json",
+      "sha256": "22057156547330e73948039b50b40234bef80cfb1b8d09c0a77ab684c8492752",
+      "measured_runs": 27
+    },
+    {
+      "project": "pandas",
+      "checker": "ty",
+      "file": "hyperfine/pandas/ty.json",
+      "sha256": "4cdb5d9c5bbf1f47ed6b09e0280ae852668fa6b583b526345db47395fdde9131",
+      "measured_runs": 10
+    },
+    {
+      "project": "pandas",
+      "checker": "pyrefly",
+      "file": "hyperfine/pandas/pyrefly.json",
+      "sha256": "ccc251cabdb1c2f7af43f3fcd11bac88bea2600d520f0817f4cfecfbfca82730",
+      "measured_runs": 10
+    },
+    {
+      "project": "pandas",
+      "checker": "mypy",
+      "file": "hyperfine/pandas/mypy.json",
+      "sha256": "da4d82c9abbbe6b1e126795675650b4e4baef6f78a10d70fea9709e6628a8f1d",
+      "measured_runs": 10
+    },
+    {
+      "project": "pandas",
+      "checker": "pyright",
+      "file": "hyperfine/pandas/pyright.json",
+      "sha256": "0179deb91d607a8d4546559fb35f5ca8909ec1a94e8ca01f46b08bacf6bbc44f",
+      "measured_runs": 10
+    },
+    {
+      "project": "pandas",
+      "checker": "zuban",
+      "file": "hyperfine/pandas/zuban.json",
+      "sha256": "282e3081d18d32cd9ad23a040957e03bd3741a8764d0a6b5b371af2b712480ec",
+      "measured_runs": 10
+    },
+    {
+      "project": "pandas-stubs",
+      "checker": "ty",
+      "file": "hyperfine/pandas-stubs/ty.json",
+      "sha256": "75ea3beed977d98eeda03b7215b7fc1a6913957de56a68f4785c9adeab3991cd",
+      "measured_runs": 26
+    },
+    {
+      "project": "pandas-stubs",
+      "checker": "pyrefly",
+      "file": "hyperfine/pandas-stubs/pyrefly.json",
+      "sha256": "f05e00ae2ef5fc15597501a70039861df2c407feeecf4d53c43fe39273d640f5",
+      "measured_runs": 13
+    },
+    {
+      "project": "pandas-stubs",
+      "checker": "mypy",
+      "file": "hyperfine/pandas-stubs/mypy.json",
+      "sha256": "47f40a722ac838aaa8aab192775a8f180813c1abfa0f7dab28f3a1e2a559a8bd",
+      "measured_runs": 10
+    },
+    {
+      "project": "pandas-stubs",
+      "checker": "pyright",
+      "file": "hyperfine/pandas-stubs/pyright.json",
+      "sha256": "2f18bb6e0ae652fbf5f383d64764a1a4dba04654344732c88c60fb571109c75e",
+      "measured_runs": 10
+    },
+    {
+      "project": "pandas-stubs",
+      "checker": "zuban",
+      "file": "hyperfine/pandas-stubs/zuban.json",
+      "sha256": "4835b687ec1ccb38063bcff36af71e4a2972cd4730332143c523a91ea63aa45a",
+      "measured_runs": 10
+    },
+    {
+      "project": "prefect",
+      "checker": "ty",
+      "file": "hyperfine/prefect/ty.json",
+      "sha256": "447f3332ee2e15d66645c49dd296d38a102a7dca7e412d9db14f6ca574613fb9",
+      "measured_runs": 21
+    },
+    {
+      "project": "prefect",
+      "checker": "pyrefly",
+      "file": "hyperfine/prefect/pyrefly.json",
+      "sha256": "158701095480baf07afba6d0f0d4f82a9002588b6025c33a21540538f82b7b04",
+      "measured_runs": 10
+    },
+    {
+      "project": "prefect",
+      "checker": "mypy",
+      "file": "hyperfine/prefect/mypy.json",
+      "sha256": "83b3df8a6071ff0f2960371d8960de59c7aae73c9f5f6e8a01a7f925366e225d",
+      "measured_runs": 10
+    },
+    {
+      "project": "prefect",
+      "checker": "pyright",
+      "file": "hyperfine/prefect/pyright.json",
+      "sha256": "17ab9f1fb74f3f90c6abdb8d17f85f118c527fac0bf097cc35731e85291c52aa",
+      "measured_runs": 10
+    },
+    {
+      "project": "prefect",
+      "checker": "zuban",
+      "file": "hyperfine/prefect/zuban.json",
+      "sha256": "bc34906f087d6b16beb2f135d2cccd0ac4e3b96072f4fa275b68506224b1be17",
+      "measured_runs": 10
+    },
+    {
+      "project": "pytorch",
+      "checker": "ty",
+      "file": "hyperfine/pytorch/ty.json",
+      "sha256": "39e6e085f0ba79091cb66aa29f1515694332c5629aedd2f6691abe3409f918ce",
+      "measured_runs": 10
+    },
+    {
+      "project": "pytorch",
+      "checker": "pyrefly",
+      "file": "hyperfine/pytorch/pyrefly.json",
+      "sha256": "6fb045f77c7f8c3335e376a60dce130e454c9bdcb5b7ee840a7ed8ce625ecf02",
+      "measured_runs": 10
+    },
+    {
+      "project": "pytorch",
+      "checker": "mypy",
+      "file": "hyperfine/pytorch/mypy.json",
+      "sha256": "5270ce3d6f08e39abe77928af7b9a7f19d61f737b93f5cb3dc2e9c7946bea246",
+      "measured_runs": 10
+    },
+    {
+      "project": "pytorch",
+      "checker": "pyright",
+      "file": "hyperfine/pytorch/pyright.json",
+      "sha256": "0ff6a85f9cce4a1d0120d3b3fe51dd9874d7e8bf21a0e13f3193777f859903bf",
+      "measured_runs": 10
+    },
+    {
+      "project": "pytorch",
+      "checker": "zuban",
+      "file": "hyperfine/pytorch/zuban.json",
+      "sha256": "3e5b9e2a2ad3395f6be9f86904202cee8ac32525fc66025aa5571343efa093b3",
+      "measured_runs": 10
+    },
+    {
+      "project": "httpx",
+      "checker": "ty",
+      "file": "hyperfine/httpx/ty.json",
+      "sha256": "4190e76656a3d23c89d5a8886d9ccf8a115cab716672c62013784a59675beb87",
+      "measured_runs": 32
+    },
+    {
+      "project": "httpx",
+      "checker": "pyrefly",
+      "file": "hyperfine/httpx/pyrefly.json",
+      "sha256": "798c7d3d8a787be32a25d7ff2c8c983c2c9d955a64ff46838d5dd5a2912a8b24",
+      "measured_runs": 20
+    },
+    {
+      "project": "httpx",
+      "checker": "mypy",
+      "file": "hyperfine/httpx/mypy.json",
+      "sha256": "0ecf3c60a546dd1b46684761bbc3f7f406f814f9c3891134da2b9dac765b7767",
+      "measured_runs": 10
+    },
+    {
+      "project": "httpx",
+      "checker": "pyright",
+      "file": "hyperfine/httpx/pyright.json",
+      "sha256": "2d9c051c34b490fc8889d5128190ad0a45e945819e19b3adf30bbf0d27e7b8f1",
+      "measured_runs": 10
+    },
+    {
+      "project": "httpx",
+      "checker": "zuban",
+      "file": "hyperfine/httpx/zuban.json",
+      "sha256": "c922912e22584d4886a1095f9c2aec45ac678eff407c2d2dc5d2876f7739c176",
+      "measured_runs": 23
+    },
+    {
+      "project": "numpy",
+      "checker": "ty",
+      "file": "hyperfine/numpy/ty.json",
+      "sha256": "1464797b6a1478ac4d154804bfc222285697ba5dac26eb637050cfbaa3d5209f",
+      "measured_runs": 10
+    },
+    {
+      "project": "numpy",
+      "checker": "pyrefly",
+      "file": "hyperfine/numpy/pyrefly.json",
+      "sha256": "9f0843bb3e2dd647e4c62ce510b673f80821cb6a25b3a81dfa50a253b1f7b36f",
+      "measured_runs": 10
+    },
+    {
+      "project": "numpy",
+      "checker": "mypy",
+      "file": "hyperfine/numpy/mypy.json",
+      "sha256": "26f5de5676df79243b9ce43e8cb6114d98f9c8308846cae4d4805b76aa98adb7",
+      "measured_runs": 10
+    },
+    {
+      "project": "numpy",
+      "checker": "pyright",
+      "file": "hyperfine/numpy/pyright.json",
+      "sha256": "0dc5d7e91ecb906b3406dec4276bca1fb9f8ce3f2e8a9d6a66ceb138ca2ba1dc",
+      "measured_runs": 10
+    },
+    {
+      "project": "fastapi",
+      "checker": "ty",
+      "file": "hyperfine/fastapi/ty.json",
+      "sha256": "a6490b4cd2bae6da629b2ef0acf06390f2cac6590003787bd7ae7986a66811fb",
+      "measured_runs": 26
+    },
+    {
+      "project": "fastapi",
+      "checker": "pyrefly",
+      "file": "hyperfine/fastapi/pyrefly.json",
+      "sha256": "cbe08b8a5e48715be36be32f8f0e7a67746f41aadc295e139d60dfc56b2f9380",
+      "measured_runs": 10
+    },
+    {
+      "project": "fastapi",
+      "checker": "mypy",
+      "file": "hyperfine/fastapi/mypy.json",
+      "sha256": "a463a0f9d7d7c789ec4fb4809c3c68662b819068b558b6e28c21a9e0d9ab5900",
+      "measured_runs": 10
+    },
+    {
+      "project": "fastapi",
+      "checker": "pyright",
+      "file": "hyperfine/fastapi/pyright.json",
+      "sha256": "badbe932d9b5fb2d4a78c44eb37de1cb55159bd0bb52467eeeb34f26aec993ba",
+      "measured_runs": 10
+    },
+    {
+      "project": "fastapi",
+      "checker": "zuban",
+      "file": "hyperfine/fastapi/zuban.json",
+      "sha256": "49f5dad690a44f6bc9e385fefa5aef1473746f10a9f5278403c45a9522a3239e",
+      "measured_runs": 14
+    },
+    {
+      "project": "sqlalchemy",
+      "checker": "ty",
+      "file": "hyperfine/sqlalchemy/ty.json",
+      "sha256": "511c4256bed291eaabc84ab067f38dfe5ce480b58b49d72e0b69c6b7a0bcebdf",
+      "measured_runs": 10
+    },
+    {
+      "project": "sqlalchemy",
+      "checker": "pyrefly",
+      "file": "hyperfine/sqlalchemy/pyrefly.json",
+      "sha256": "0c87a73a82355f1ef6c634298c3a7f17a0171a6ca2e78d12a0735451fb624d79",
+      "measured_runs": 10
+    },
+    {
+      "project": "sqlalchemy",
+      "checker": "mypy",
+      "file": "hyperfine/sqlalchemy/mypy.json",
+      "sha256": "a82adb65704e227ac0fa7cb1105d91bb7ae23f00c02f6c88c6af3a59f0c0be8f",
+      "measured_runs": 10
+    },
+    {
+      "project": "sqlalchemy",
+      "checker": "pyright",
+      "file": "hyperfine/sqlalchemy/pyright.json",
+      "sha256": "e0c500068b3184f08891bde96fb0206c08c0e5b6706ac6bf4e2116a0ab7e0fe3",
+      "measured_runs": 10
+    },
+    {
+      "project": "sqlalchemy",
+      "checker": "zuban",
+      "file": "hyperfine/sqlalchemy/zuban.json",
+      "sha256": "77fe8d14221bf5f3d48080c59e5f7c49a22e0f63b373b03ee5bf71494f1a9e66",
+      "measured_runs": 10
+    },
+    {
+      "project": "rich",
+      "checker": "ty",
+      "file": "hyperfine/rich/ty.json",
+      "sha256": "ede8c0e15ac798f352283a0528cad98da61dbaff11a555aa363f4689f441f6da",
+      "measured_runs": 34
+    },
+    {
+      "project": "rich",
+      "checker": "pyrefly",
+      "file": "hyperfine/rich/pyrefly.json",
+      "sha256": "a6c96eb0ea7f6263ff0c892f62762ab3012a0af593db9afce08dd6b8cbc41f41",
+      "measured_runs": 20
+    },
+    {
+      "project": "rich",
+      "checker": "mypy",
+      "file": "hyperfine/rich/mypy.json",
+      "sha256": "b699ff5369372a38435f56f159e4c1006dd886dcfd2913f536bd3c24eb411f83",
+      "measured_runs": 10
+    },
+    {
+      "project": "rich",
+      "checker": "pyright",
+      "file": "hyperfine/rich/pyright.json",
+      "sha256": "2198762e3f6ee29516701d515bff1d6aac911dbbd007522dfc59c033bd5caf5f",
+      "measured_runs": 10
+    },
+    {
+      "project": "rich",
+      "checker": "zuban",
+      "file": "hyperfine/rich/zuban.json",
+      "sha256": "cddcb10ef1ae5acb629bed3503fdc5ce1e62a094a758c126afb36d23f15ffa7e",
+      "measured_runs": 19
+    },
+    {
+      "project": "django",
+      "checker": "ty",
+      "file": "hyperfine/django/ty.json",
+      "sha256": "98ec203f4b3ece9ed3dde29add117aaf38694115ddf34fae3f2f4dcceef5b66f",
+      "measured_runs": 12
+    },
+    {
+      "project": "django",
+      "checker": "pyrefly",
+      "file": "hyperfine/django/pyrefly.json",
+      "sha256": "9efae4ae6b3e7a949c6b6a11791c55ffa2f94efb260bd1792fbcc7cf5911b886",
+      "measured_runs": 10
+    },
+    {
+      "project": "django",
+      "checker": "mypy",
+      "file": "hyperfine/django/mypy.json",
+      "sha256": "ad46b3994ea3a4c37587446a16bc8cbf7cb688e5bb598bb2361b2be4735e909a",
+      "measured_runs": 10
+    },
+    {
+      "project": "django",
+      "checker": "pyright",
+      "file": "hyperfine/django/pyright.json",
+      "sha256": "28775b3077f51888446c5a369af6ead57291e631256dc47411985b96635a8acb",
+      "measured_runs": 10
+    },
+    {
+      "project": "django",
+      "checker": "zuban",
+      "file": "hyperfine/django/zuban.json",
+      "sha256": "1832ccbfe4efe1c9f14339eb9162424d00986fa6c08c6323c4e054274a6f1cff",
+      "measured_runs": 10
+    },
+    {
+      "project": "sympy",
+      "checker": "ty",
+      "file": "hyperfine/sympy/ty.json",
+      "sha256": "9dfb61dc2f431edb3abc378536bfca3b230ccd125bec325cc113e825b8c93d6f",
+      "measured_runs": 10
+    },
+    {
+      "project": "sympy",
+      "checker": "pyrefly",
+      "file": "hyperfine/sympy/pyrefly.json",
+      "sha256": "c3f70214b62f41733ae63e8f085c6a4fd1b17269c261ce71bee3cfae95901683",
+      "measured_runs": 10
+    },
+    {
+      "project": "sympy",
+      "checker": "mypy",
+      "file": "hyperfine/sympy/mypy.json",
+      "sha256": "de77656a2c6598526ba97344d40a9bf2fd327d6a50d06add293518416a75f8f4",
+      "measured_runs": 10
+    },
+    {
+      "project": "sympy",
+      "checker": "pyright",
+      "file": "hyperfine/sympy/pyright.json",
+      "sha256": "708a87315c9ea4a756a03deda769a4013949a500a98c5fa0b21db78d60070e96",
+      "measured_runs": 10
+    },
+    {
+      "project": "sympy",
+      "checker": "zuban",
+      "file": "hyperfine/sympy/zuban.json",
+      "sha256": "54002cb4dd02655c11b89145b1b335c5939c745b2cf85ff84a4cdb98d71c6d7b",
+      "measured_runs": 10
+    },
+    {
+      "project": "openai",
+      "checker": "ty",
+      "file": "hyperfine/openai/ty.json",
+      "sha256": "f1c1056e951ff1a8c9ffe73800ce8d4ead5a3115d8edaf8bdd50e2c80a849951",
+      "measured_runs": 10
+    },
+    {
+      "project": "openai",
+      "checker": "pyrefly",
+      "file": "hyperfine/openai/pyrefly.json",
+      "sha256": "4874c7968a4c788dd994c8591b6a0c2fbd50ac409177fb2b172e9a32f4e8d265",
+      "measured_runs": 10
+    },
+    {
+      "project": "openai",
+      "checker": "mypy",
+      "file": "hyperfine/openai/mypy.json",
+      "sha256": "2063cce2b14ffa24aef38515f54f74080d38e0bef7afd04d6e7736c5fe5c18d4",
+      "measured_runs": 10
+    },
+    {
+      "project": "openai",
+      "checker": "pyright",
+      "file": "hyperfine/openai/pyright.json",
+      "sha256": "59bee45ef552f3cb7520274b47a546bd10d7f386df02ef4ba2a4e1ef5d29bae6",
+      "measured_runs": 10
+    },
+    {
+      "project": "openai",
+      "checker": "zuban",
+      "file": "hyperfine/openai/zuban.json",
+      "sha256": "47775e057189f996966f9e38bfa145333f3f88d16b277167dad85545dd41a6ba",
+      "measured_runs": 10
+    },
+    {
+      "project": "pytest",
+      "checker": "ty",
+      "file": "hyperfine/pytest/ty.json",
+      "sha256": "10d882fe1e215daf8f1f5eb909bc3f20cc3b18f03264fc665412ca185725c8a5",
+      "measured_runs": 16
+    },
+    {
+      "project": "pytest",
+      "checker": "pyrefly",
+      "file": "hyperfine/pytest/pyrefly.json",
+      "sha256": "656a92bec5eaae533da5d53647edd2e7b779a37d8cf30af8cbac9d5eb6bb903d",
+      "measured_runs": 12
+    },
+    {
+      "project": "pytest",
+      "checker": "mypy",
+      "file": "hyperfine/pytest/mypy.json",
+      "sha256": "5945e228c38e87547927adc6499a6d92c4b247020f783e9f61c86cd26f831ec6",
+      "measured_runs": 10
+    },
+    {
+      "project": "pytest",
+      "checker": "pyright",
+      "file": "hyperfine/pytest/pyright.json",
+      "sha256": "3fa7f354383ac4819affe0b481e1d926a054b829de526900267623d5b8071eb1",
+      "measured_runs": 10
+    },
+    {
+      "project": "pytest",
+      "checker": "zuban",
+      "file": "hyperfine/pytest/zuban.json",
+      "sha256": "be860d7ff1e39c310ba460c43dc7d13268e92d7c9b59ff37f36d84205d4d635a",
+      "measured_runs": 10
+    }
+  ],
+  "failures": [
+    {
+      "project": "numpy",
+      "checker": "zuban",
+      "stage": "root-preflight",
+      "outcome": "timeout",
+      "timeout_seconds": 600,
+      "elapsed_seconds": 600.0095445001498,
+      "measured_runs": 0
+    }
+  ]
+}
