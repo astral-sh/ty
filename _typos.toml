@@ -1,8 +1,5 @@
 [files]
-extend-exclude = [
-    # Verbatim root paths, dependency names, and checker output.
-    "BENCHMARKS.json",
-]
+extend-exclude = []
 
 [default.extend-words]
 
