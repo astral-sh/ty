@@ -17,13 +17,9 @@ the lexical path spelling, which changed ty diagnostics and timing. The ty,
 Pyrefly, mypy and Pyright CLI samples and the Pyrefly/Pyright LSP samples are
 retained unchanged from the previous controlled collection, using the same
 physical source files and dependency environments.
-[BENCHMARKS.json](BENCHMARKS.json) identifies the original, CLI-correction and
-LSP-correction harness commits separately.
 
 Times are wall-clock milliseconds. Single-cohort timings show mean ± standard
-deviation; RSS values below are MiB. [BENCHMARKS.json](BENCHMARKS.json) contains
-raw samples, exact source revisions, root manifests, dependency versions,
-generated configuration, scope audits, failures and release provenance.
+deviation. RSS values are in MiB.
 
 - ty: [0.0.96](https://github.com/astral-sh/ty/releases/tag/0.0.96), published PyPI
     macOS arm64 binary (`ty 0.0.96 (53a7844b8 2026-11-02)`).
@@ -80,9 +76,8 @@ pytest excludes nested test-input programs under `testing/example_scripts`.
 An additional isort audit checked all 40 implementation roots (10,871 lines).
 In separate copies, both ty and Zuban detected deliberate errors inside all 177
 existing function bodies and inside typed and untyped probe functions in every
-root. Contradictory project mypy settings did not change their diagnostics. The
-probes are recorded in [BENCHMARKS.json](BENCHMARKS.json); modified copies were
-never timed. These checks address the workload discrepancies in
+root. Contradictory project mypy settings did not change their diagnostics.
+We timed only the original copies. These checks address the workload discrepancies in
 [lolpack/type_coverage_py#160](https://github.com/lolpack/type_coverage_py/issues/160),
 without asserting identical inference or diagnostic quality.
 
@@ -90,10 +85,8 @@ A separate lexical/physical LSP URI control covers isort and SQLAlchemy with ty,
 Pyrefly and Pyright: 24 initial/edit cases pass across the two path spellings.
 For ty/SQLAlchemy initial diagnostics, canonical paths remove seven duplicate
 module-identity errors (58 diagnostics versus 51) and materially reduce latency.
-[BENCHMARKS.json](BENCHMARKS.json) retains every observed normalized diagnostic
-variant and per-case timing comparison. Initial diagnostic responses can be
-partial, so snapshot differences remain visible. The control is separate from
-the comparison samples below; ty LSP was rerun across every unique project input.
+Initial diagnostic responses can be partial. We reran the ty LSP benchmarks for
+each project input and excluded the separate path comparison from the timings below.
 
 Run instructions: [`ty_benchmark/README.md`](https://github.com/astral-sh/ruff/blob/5ca55b2baffd6200b61c540c17255d9e20055272/scripts/ty_benchmark/README.md).
 
@@ -267,14 +260,13 @@ assignment-marker root audit.
 - CLI `numpy` / Zuban: Untimed root preflight failed or timed out; no timing published.
 - LSP `test_incremental_edit[updated-numpy-zuban]`: server/test failure; no timing published.
 
-Failures remain visible; no successful subset or weakened assertion replaces
-them. Aggregates include only the explicitly listed common successful cases.
+For each metric, the averages below include only projects where every checker
+in that comparison completed the benchmark.
 
 ## Comparison with ty
 
 Geometric mean of competitor time divided by ty time on the common successful
-projects for each metric. A value above 1 means ty is faster. The project lists
-are recorded in [BENCHMARKS.json](BENCHMARKS.json).
+projects for each metric. A value above 1 means ty is faster.
 
 | Metric      | Common projects | Pyrefly |   mypy | Pyright | Zuban |
 | ----------- | --------------: | ------: | -----: | ------: | ----: |
