@@ -1,5 +1,48 @@
 # Changelog
 
+## 0.0.98
+
+Released on 2026-11-05.
+
+### Bug fixes
+
+- Avoid cubic narrowing for enum OR patterns ([#30019](https://github.com/astral-sh/ruff/pull/30019))
+- Avoid duplicate warnings for unknown rules and override sections ([#30028](https://github.com/astral-sh/ruff/pull/30028))
+- Fix class-pattern exhaustiveness after class identity checks ([#30045](https://github.com/astral-sh/ruff/pull/30045))
+- Fix conditional type and tuple annotations ([#29987](https://github.com/astral-sh/ruff/pull/29987))
+- Prefer active unnamed Conda and Pixi environments ([#29974](https://github.com/astral-sh/ruff/pull/29974))
+- Preserve baseline matches when a rule is renamed ([#30040](https://github.com/astral-sh/ruff/pull/30040))
+- Preserve exception types after tuple truthiness checks ([#30018](https://github.com/astral-sh/ruff/pull/30018))
+- Report invalid module globs once per override pattern ([#30031](https://github.com/astral-sh/ruff/pull/30031))
+- Skip active Conda and Pixi environments during discovery if the environment doesn't contain Python ([#30066](https://github.com/astral-sh/ruff/pull/30066))
+
+### Configuration changes
+
+- Don't fail configuration deserialization on conflicting rule names ([#30023](https://github.com/astral-sh/ruff/pull/30023))
+- Inherit project settings and overrides for PEP 723 scripts ([#29793](https://github.com/astral-sh/ruff/pull/29793))
+- Warn when configuration uses a renamed rule ([#30024](https://github.com/astral-sh/ruff/pull/30024))
+
+### Memory usage improvements
+
+- Reuse callable signatures in function definition checks ([#30042](https://github.com/astral-sh/ruff/pull/30042))
+
+### Other changes
+
+- Retain all successful generic call narrowing attempts ([#29666](https://github.com/astral-sh/ruff/pull/29666))
+- Reuse specialized ancestors in class relations ([#29881](https://github.com/astral-sh/ruff/pull/29881))
+- Support shadowing methods on instances ([#29482](https://github.com/astral-sh/ruff/pull/29482))
+- Warn about renamed rules in ignore comments ([#30026](https://github.com/astral-sh/ruff/pull/30026))
+
+### Contributors
+
+- [@carljm](https://github.com/carljm)
+- [@sharkdp](https://github.com/sharkdp)
+- [@MichaReiser](https://github.com/MichaReiser)
+- [@charliermarsh](https://github.com/charliermarsh)
+- [@zaniebot](https://github.com/zaniebot)
+- [@ibraheemdev](https://github.com/ibraheemdev)
+- [@AlexWaygood](https://github.com/AlexWaygood)
+
 ## 0.0.97
 
 Released on 2026-11-04.
