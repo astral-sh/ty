@@ -1,8 +1,0 @@
-[src]
-include = ["homeassistant"]
-exclude = ["homeassistant/util/event_type.py", "homeassistant/util/hass_dict.py", "homeassistant/util/signal_type.py"]
-
-[environment]
-python-version = "3.14"
-python = "/tmp/ty-benchmark-0.0.96-2026-11-02/checkouts/updated-homeassistant/venv"
-extra-paths = []

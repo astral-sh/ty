@@ -1,6 +1,0 @@
-project-includes = ["pandas"]
-project-excludes = ["pandas/tests"]
-python-interpreter-path = "/tmp/ty-benchmark-0.0.96-2026-11-02/checkouts/updated-pandas/venv/bin/python"
-python-version = "3.11"
-site-package-path = ["/tmp/ty-benchmark-0.0.96-2026-11-02/checkouts/updated-pandas/venv"]
-untyped-def-behavior = "check-and-infer-return-any"

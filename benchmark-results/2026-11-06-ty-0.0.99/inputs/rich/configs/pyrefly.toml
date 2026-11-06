@@ -1,6 +1,0 @@
-project-includes = ["rich"]
-project-excludes = []
-python-interpreter-path = "/tmp/ty-benchmark-0.0.96-2026-11-02/checkouts/updated-rich/venv/bin/python"
-python-version = "3.11"
-site-package-path = ["/tmp/ty-benchmark-0.0.96-2026-11-02/checkouts/updated-rich/venv"]
-untyped-def-behavior = "check-and-infer-return-any"

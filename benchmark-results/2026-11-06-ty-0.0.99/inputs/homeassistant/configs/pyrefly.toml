@@ -1,6 +1,0 @@
-project-includes = ["homeassistant"]
-project-excludes = ["homeassistant/util/event_type.py", "homeassistant/util/hass_dict.py", "homeassistant/util/signal_type.py"]
-python-interpreter-path = "/tmp/ty-benchmark-0.0.96-2026-11-02/checkouts/updated-homeassistant/venv/bin/python"
-python-version = "3.14"
-site-package-path = ["/tmp/ty-benchmark-0.0.96-2026-11-02/checkouts/updated-homeassistant/venv"]
-untyped-def-behavior = "check-and-infer-return-any"

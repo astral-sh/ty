@@ -1,6 +1,0 @@
-project-includes = ["pandas-stubs"]
-project-excludes = ["pandas-stubs/io/parsers.pyi"]
-python-interpreter-path = "/tmp/ty-benchmark-0.0.96-2026-11-02/checkouts/updated-pandas-stubs/venv/bin/python"
-python-version = "3.11"
-site-package-path = ["/tmp/ty-benchmark-0.0.96-2026-11-02/checkouts/updated-pandas-stubs/venv"]
-untyped-def-behavior = "check-and-infer-return-any"
