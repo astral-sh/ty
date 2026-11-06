@@ -1,0 +1,7 @@
+project-includes = ["src/openai"]
+project-excludes = ["src/openai/_vendor"]
+python-interpreter-path = "/tmp/ty-benchmark-0.0.96-2026-11-02/checkouts/updated-openai/venv/bin/python"
+python-version = "3.11"
+site-package-path = ["/tmp/ty-benchmark-0.0.96-2026-11-02/checkouts/updated-openai/venv"]
+untyped-def-behavior = "check-and-infer-return-any"
+search-path = ["src", "."]

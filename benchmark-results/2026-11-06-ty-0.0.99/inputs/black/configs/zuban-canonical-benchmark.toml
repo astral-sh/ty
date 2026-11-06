@@ -1,0 +1,10 @@
+[tool.zuban]
+mode = "mypy"
+python_version = "3.11"
+python_executable = "/tmp/ty-benchmark-0.0.96-2026-11-02/checkouts/updated-black/venv/bin/python"
+mypy_path = ["/private/tmp/ty-benchmark-0.0.96-2026-11-02/checkouts/updated-black/src"]
+files = ["src"]
+exclude = []
+exclude_gitignore = false
+check_untyped_defs = true
+untyped_function_return_mode = "any"

@@ -1,0 +1,147 @@
+{
+    "machine_info": {
+        "node": "MacBook-Pro-8.local",
+        "processor": "arm",
+        "machine": "arm64",
+        "python_compiler": "Clang 23.1.3 ",
+        "python_implementation": "CPython",
+        "python_implementation_version": "3.15.1",
+        "python_version": "3.15.1",
+        "python_build": [
+            "main",
+            "Oct 21 2026 17:39:16"
+        ],
+        "release": "25.5.0",
+        "system": "Darwin",
+        "cpu": {
+            "python_version": "3.15.1.final.0 (64 bit)",
+            "cpuinfo_version": [
+                10,
+                1,
+                1
+            ],
+            "cpuinfo_version_string": "10.1.1",
+            "arch": "ARM_8",
+            "bits": 64,
+            "count": 16,
+            "arch_string_raw": "arm64",
+            "brand_raw": "Apple M3 Max"
+        }
+    },
+    "commit_info": {
+        "id": "504457130a2183e9f0c6f4e92ce1c43e970b70ca",
+        "time": "2026-11-04T13:31:31-05:00",
+        "author_time": "2026-11-04T13:31:31-05:00",
+        "dirty": false,
+        "project": "ruff",
+        "branch": "codex/benchmark-ty-0-0-99-replay"
+    },
+    "benchmarks": [
+        {
+            "group": "pandas",
+            "name": "test_fetch_diagnostics[updated-pandas-ty]",
+            "fullname": "src/benchmark/test_lsp_diagnostics.py::test_fetch_diagnostics[updated-pandas-ty]",
+            "params": {
+                "project_setup": "updated-pandas",
+                "tool": "ty"
+            },
+            "param": "updated-pandas-ty",
+            "extra_info": {},
+            "options": {
+                "disable_gc": false,
+                "timer": "perf_counter",
+                "min_rounds": 5,
+                "max_time": 1.0,
+                "min_time": 5e-06,
+                "precision": null,
+                "confidence": null,
+                "warmup": false
+            },
+            "stats": {
+                "min": 0.37634708313271403,
+                "max": 0.38598395814187825,
+                "mean": 0.3793928915867582,
+                "stddev": 0.0032335433085551786,
+                "rounds": 10,
+                "median": 0.37818374997004867,
+                "iqr": 0.0036342910025268793,
+                "q1": 0.3772270418703556,
+                "q3": 0.3808613328728825,
+                "iqr_outliers": 0,
+                "stddev_outliers": 2,
+                "outliers": "2;0",
+                "ld15iqr": 0.37634708313271403,
+                "hd15iqr": 0.38598395814187825,
+                "ops": 2.6357900271078845,
+                "total": 3.793928915867582,
+                "data": [
+                    0.3775064579676837,
+                    0.37634708313271403,
+                    0.37651091697625816,
+                    0.37810149998404086,
+                    0.379290624987334,
+                    0.3782659999560565,
+                    0.3838339999783784,
+                    0.38598395814187825,
+                    0.3808613328728825,
+                    0.3772270418703556
+                ],
+                "iterations": 1
+            }
+        },
+        {
+            "group": "pandas",
+            "name": "test_incremental_edit[updated-pandas-ty]",
+            "fullname": "src/benchmark/test_lsp_diagnostics.py::test_incremental_edit[updated-pandas-ty]",
+            "params": {
+                "project_setup": "updated-pandas",
+                "tool": "ty"
+            },
+            "param": "updated-pandas-ty",
+            "extra_info": {},
+            "options": {
+                "disable_gc": false,
+                "timer": "perf_counter",
+                "min_rounds": 5,
+                "max_time": 1.0,
+                "min_time": 5e-06,
+                "precision": null,
+                "confidence": null,
+                "warmup": false
+            },
+            "stats": {
+                "min": 0.04885658295825124,
+                "max": 0.061178541043773293,
+                "mean": 0.05274157910607755,
+                "stddev": 0.00464920083546008,
+                "rounds": 10,
+                "median": 0.050683416542597115,
+                "iqr": 0.005068042082712054,
+                "q1": 0.04954812489449978,
+                "q3": 0.05461616697721183,
+                "iqr_outliers": 0,
+                "stddev_outliers": 2,
+                "outliers": "2;0",
+                "ld15iqr": 0.04885658295825124,
+                "hd15iqr": 0.061178541043773293,
+                "ops": 18.960372763749263,
+                "total": 0.5274157910607755,
+                "data": [
+                    0.04927833401598036,
+                    0.04885658295825124,
+                    0.061178541043773293,
+                    0.04954812489449978,
+                    0.05035787494853139,
+                    0.05182508286088705,
+                    0.05100895813666284,
+                    0.060812750132754445,
+                    0.05461616697721183,
+                    0.04993337509222329
+                ],
+                "iterations": 1
+            }
+        }
+    ],
+    "datetime": "2026-11-06T12:10:15.104525+00:00",
+    "version": "5.3.0"
+}

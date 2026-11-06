@@ -1,0 +1,147 @@
+{
+    "machine_info": {
+        "node": "MacBook-Pro-8.local",
+        "processor": "arm",
+        "machine": "arm64",
+        "python_compiler": "Clang 23.1.3 ",
+        "python_implementation": "CPython",
+        "python_implementation_version": "3.15.1",
+        "python_version": "3.15.1",
+        "python_build": [
+            "main",
+            "Oct 21 2026 17:39:16"
+        ],
+        "release": "25.5.0",
+        "system": "Darwin",
+        "cpu": {
+            "python_version": "3.15.1.final.0 (64 bit)",
+            "cpuinfo_version": [
+                10,
+                1,
+                1
+            ],
+            "cpuinfo_version_string": "10.1.1",
+            "arch": "ARM_8",
+            "bits": 64,
+            "count": 16,
+            "arch_string_raw": "arm64",
+            "brand_raw": "Apple M3 Max"
+        }
+    },
+    "commit_info": {
+        "id": "504457130a2183e9f0c6f4e92ce1c43e970b70ca",
+        "time": "2026-11-04T13:31:31-05:00",
+        "author_time": "2026-11-04T13:31:31-05:00",
+        "dirty": false,
+        "project": "ruff",
+        "branch": "codex/benchmark-ty-0-0-99-replay"
+    },
+    "benchmarks": [
+        {
+            "group": "pytorch",
+            "name": "test_fetch_diagnostics[updated-pytorch-ty]",
+            "fullname": "src/benchmark/test_lsp_diagnostics.py::test_fetch_diagnostics[updated-pytorch-ty]",
+            "params": {
+                "project_setup": "updated-pytorch",
+                "tool": "ty"
+            },
+            "param": "updated-pytorch-ty",
+            "extra_info": {},
+            "options": {
+                "disable_gc": false,
+                "timer": "perf_counter",
+                "min_rounds": 5,
+                "max_time": 1.0,
+                "min_time": 5e-06,
+                "precision": null,
+                "confidence": null,
+                "warmup": false
+            },
+            "stats": {
+                "min": 0.06976320804096758,
+                "max": 0.07239874987863004,
+                "mean": 0.07147560836747288,
+                "stddev": 0.0010381348732175027,
+                "rounds": 10,
+                "median": 0.07191183348186314,
+                "iqr": 0.0017270003445446491,
+                "q1": 0.07054954185150564,
+                "q3": 0.07227654219605029,
+                "iqr_outliers": 0,
+                "stddev_outliers": 2,
+                "outliers": "2;0",
+                "ld15iqr": 0.06976320804096758,
+                "hd15iqr": 0.07239874987863004,
+                "ops": 13.990786827007685,
+                "total": 0.7147560836747289,
+                "data": [
+                    0.07239874987863004,
+                    0.07054954185150564,
+                    0.06976320804096758,
+                    0.069818208925426,
+                    0.07171475002542138,
+                    0.0721089169383049,
+                    0.07219245797023177,
+                    0.07229408295825124,
+                    0.07227654219605029,
+                    0.07163962488994002
+                ],
+                "iterations": 1
+            }
+        },
+        {
+            "group": "pytorch",
+            "name": "test_incremental_edit[updated-pytorch-ty]",
+            "fullname": "src/benchmark/test_lsp_diagnostics.py::test_incremental_edit[updated-pytorch-ty]",
+            "params": {
+                "project_setup": "updated-pytorch",
+                "tool": "ty"
+            },
+            "param": "updated-pytorch-ty",
+            "extra_info": {},
+            "options": {
+                "disable_gc": false,
+                "timer": "perf_counter",
+                "min_rounds": 5,
+                "max_time": 1.0,
+                "min_time": 5e-06,
+                "precision": null,
+                "confidence": null,
+                "warmup": false
+            },
+            "stats": {
+                "min": 0.00390691589564085,
+                "max": 0.004360791994258761,
+                "mean": 0.004140908317640424,
+                "stddev": 0.0001307735423253337,
+                "rounds": 10,
+                "median": 0.004147729487158358,
+                "iqr": 5.983375012874603e-05,
+                "q1": 0.0041163330897688866,
+                "q3": 0.004176166839897633,
+                "iqr_outliers": 4,
+                "stddev_outliers": 4,
+                "outliers": "4;4",
+                "ld15iqr": 0.0041163330897688866,
+                "hd15iqr": 0.004280500113964081,
+                "ops": 241.49291007964672,
+                "total": 0.04140908317640424,
+                "data": [
+                    0.003974250052124262,
+                    0.004360791994258761,
+                    0.004280500113964081,
+                    0.004171458072960377,
+                    0.0041320419404655695,
+                    0.00390691589564085,
+                    0.0041163330897688866,
+                    0.0041272081434726715,
+                    0.004163417033851147,
+                    0.004176166839897633
+                ],
+                "iterations": 1
+            }
+        }
+    ],
+    "datetime": "2026-11-06T12:10:24.898450+00:00",
+    "version": "5.3.0"
+}

@@ -1,0 +1,1 @@
+{"extends": "./pyrightconfig.json", "include": ["src/openai"], "exclude": ["src/openai/_vendor"], "analyzeUnannotatedFunctions": true}

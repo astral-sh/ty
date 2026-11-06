@@ -1,0 +1,147 @@
+{
+    "machine_info": {
+        "node": "MacBook-Pro-8.local",
+        "processor": "arm",
+        "machine": "arm64",
+        "python_compiler": "Clang 23.1.3 ",
+        "python_implementation": "CPython",
+        "python_implementation_version": "3.15.1",
+        "python_version": "3.15.1",
+        "python_build": [
+            "main",
+            "Oct 21 2026 17:39:16"
+        ],
+        "release": "25.5.0",
+        "system": "Darwin",
+        "cpu": {
+            "python_version": "3.15.1.final.0 (64 bit)",
+            "cpuinfo_version": [
+                10,
+                1,
+                1
+            ],
+            "cpuinfo_version_string": "10.1.1",
+            "arch": "ARM_8",
+            "bits": 64,
+            "count": 16,
+            "arch_string_raw": "arm64",
+            "brand_raw": "Apple M3 Max"
+        }
+    },
+    "commit_info": {
+        "id": "504457130a2183e9f0c6f4e92ce1c43e970b70ca",
+        "time": "2026-11-04T13:31:31-05:00",
+        "author_time": "2026-11-04T13:31:31-05:00",
+        "dirty": false,
+        "project": "ruff",
+        "branch": "codex/benchmark-ty-0-0-99-replay"
+    },
+    "benchmarks": [
+        {
+            "group": "jinja",
+            "name": "test_fetch_diagnostics[updated-jinja-ty]",
+            "fullname": "src/benchmark/test_lsp_diagnostics.py::test_fetch_diagnostics[updated-jinja-ty]",
+            "params": {
+                "project_setup": "updated-jinja",
+                "tool": "ty"
+            },
+            "param": "updated-jinja-ty",
+            "extra_info": {},
+            "options": {
+                "disable_gc": false,
+                "timer": "perf_counter",
+                "min_rounds": 5,
+                "max_time": 1.0,
+                "min_time": 5e-06,
+                "precision": null,
+                "confidence": null,
+                "warmup": false
+            },
+            "stats": {
+                "min": 0.0500173750333488,
+                "max": 0.05100595811381936,
+                "mean": 0.05048080002889037,
+                "stddev": 0.0003032476346491226,
+                "rounds": 10,
+                "median": 0.050484333420172334,
+                "iqr": 0.00037012388929724693,
+                "q1": 0.0502665841486305,
+                "q3": 0.05063670803792775,
+                "iqr_outliers": 0,
+                "stddev_outliers": 3,
+                "outliers": "3;0",
+                "ld15iqr": 0.0500173750333488,
+                "hd15iqr": 0.05100595811381936,
+                "ops": 19.809511723817685,
+                "total": 0.5048080002889037,
+                "data": [
+                    0.05100595811381936,
+                    0.050479749916121364,
+                    0.05052908300422132,
+                    0.050488916924223304,
+                    0.0502665841486305,
+                    0.0500173750333488,
+                    0.05063670803792775,
+                    0.05019470816478133,
+                    0.05031445901840925,
+                    0.050874457927420735
+                ],
+                "iterations": 1
+            }
+        },
+        {
+            "group": "jinja",
+            "name": "test_incremental_edit[updated-jinja-ty]",
+            "fullname": "src/benchmark/test_lsp_diagnostics.py::test_incremental_edit[updated-jinja-ty]",
+            "params": {
+                "project_setup": "updated-jinja",
+                "tool": "ty"
+            },
+            "param": "updated-jinja-ty",
+            "extra_info": {},
+            "options": {
+                "disable_gc": false,
+                "timer": "perf_counter",
+                "min_rounds": 5,
+                "max_time": 1.0,
+                "min_time": 5e-06,
+                "precision": null,
+                "confidence": null,
+                "warmup": false
+            },
+            "stats": {
+                "min": 0.011750125093385577,
+                "max": 0.012074708007276058,
+                "mean": 0.011911091580986976,
+                "stddev": 0.00011347914415227484,
+                "rounds": 10,
+                "median": 0.011913166963495314,
+                "iqr": 0.0002004997804760933,
+                "q1": 0.011814000084996223,
+                "q3": 0.012014499865472317,
+                "iqr_outliers": 0,
+                "stddev_outliers": 3,
+                "outliers": "3;0",
+                "ld15iqr": 0.011750125093385577,
+                "hd15iqr": 0.012074708007276058,
+                "ops": 83.9553615385046,
+                "total": 0.11911091580986977,
+                "data": [
+                    0.011814000084996223,
+                    0.011917708907276392,
+                    0.011750125093385577,
+                    0.012074708007276058,
+                    0.011755290906876326,
+                    0.012018457986414433,
+                    0.012014499865472317,
+                    0.011871207971125841,
+                    0.011908625019714236,
+                    0.011986291967332363
+                ],
+                "iterations": 1
+            }
+        }
+    ],
+    "datetime": "2026-11-06T12:10:02.811728+00:00",
+    "version": "5.3.0"
+}

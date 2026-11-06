@@ -1,0 +1,8 @@
+[src]
+include = ["src", "testing"]
+exclude = ["testing/example_scripts"]
+
+[environment]
+python-version = "3.11"
+python = "/tmp/ty-benchmark-0.0.96-2026-11-02/checkouts/updated-pytest/venv"
+extra-paths = ["src"]

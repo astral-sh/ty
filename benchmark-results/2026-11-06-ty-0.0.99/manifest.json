@@ -1,0 +1,4013 @@
+{
+  "schema_version": 1,
+  "release": {
+    "release": "0.0.99",
+    "version": "ty 0.0.99 (9b48f40c9 2026-11-06)",
+    "binary_sha256": "34688103a83c3123d9eb0f4d85cdaa15f06ff16ce422d8a42616e6b1c885200e",
+    "asset_sha256": "9967b1433cc65f2c89c74794bca7a767bcb45f400ff0d61102b93486657bb1d4",
+    "release_url": "https://github.com/astral-sh/ty/releases/tag/0.0.99",
+    "distribution": "Official isolated macOS arm64 release; supplied/verified by root"
+  },
+  "source": {
+    "repository": "astral-sh/ruff",
+    "commit": "504457130a2183e9f0c6f4e92ce1c43e970b70ca",
+    "guide_url": "https://github.com/astral-sh/ruff/blob/504457130a2183e9f0c6f4e92ce1c43e970b70ca/scripts/ty_benchmark/README.md"
+  },
+  "published_report": {
+    "repository": "astral-sh/ty",
+    "commit": "879d7333d1956bd131c285bd8885832a6d268a92",
+    "url": "https://github.com/astral-sh/ty/blob/879d7333d1956bd131c285bd8885832a6d268a92/BENCHMARKS.md"
+  },
+  "tool_versions": {
+    "uv": "uv 0.13.5 (46776a95d 2026-10-21 aarch64-apple-darwin)",
+    "hyperfine": "hyperfine 2.0.0",
+    "node": "v26.12.1",
+    "npm": "12.2.1",
+    "ty": "ty 0.0.99 (9b48f40c9 2026-11-06)",
+    "pyrefly": "pyrefly 1.4.0",
+    "zuban": "zuban 0.10.2",
+    "pyright": "pyright 1.1.414",
+    "mypy": "mypy 2.4.0 (compiled: yes)"
+  },
+  "machine": {
+    "system": "macOS 26.5.2 arm64",
+    "processor": "Apple M3 Max",
+    "cores": 16,
+    "performance_cores": 12,
+    "efficiency_cores": 4,
+    "memory_gib": 128
+  },
+  "measurement": {
+    "cli": {
+      "warmup": 3,
+      "minimum_measured_runs": 10,
+      "concurrency": "native checker defaults",
+      "cold_mypy": "Result cache removed before each warmup/measured invocation; OS caches not flushed.",
+      "rss": "Hyperfine2 peak process RSS on macOS; concurrent process memory is not summed."
+    },
+    "lsp": {
+      "warmup_rounds": 2,
+      "measured_rounds": 10,
+      "iterations": 1,
+      "server_pool_threads": 16
+    }
+  },
+  "counts": {
+    "current_cli_successful_exports": 89,
+    "retained_cli_failure_outcomes": 1,
+    "prior_ty_cli_exports": 18,
+    "fresh_ty_cli_samples": 358,
+    "active_cli_samples": 1206,
+    "lsp_intended_outcomes": 136,
+    "active_lsp_successful_objects": 133,
+    "retained_lsp_failures": 3,
+    "prior_ty_lsp_objects": 34,
+    "fresh_ty_full_pytest_exports": 17,
+    "fresh_ty_lsp_samples": 340,
+    "active_lsp_samples": 1330,
+    "fresh_ty_cli_plus_lsp_samples": 698
+  },
+  "dates": {
+    "fresh_ty_cli": {
+      "started_at": "2026-11-06T12:06:03.874295+00:00",
+      "completed_at": "2026-11-06T12:08:19.069046+00:00"
+    },
+    "fresh_ty_lsp": {
+      "started_at": "2026-11-06T12:09:42.881055+00:00",
+      "completed_at": "2026-11-06T12:11:04.873533+00:00"
+    },
+    "retained_cli": "2026-11-04",
+    "retained_lsp": "2026-11-03",
+    "per_case_dates": "protocol/commands.json"
+  },
+  "projects": [
+    {
+      "name": "black",
+      "input_key": "updated-black",
+      "revision": "55996d1fb8342725c8a19b6023cd9439c3c1d6f7",
+      "python_version": "3.11",
+      "root_count": 42,
+      "workload": {
+        "roots": 42,
+        "stubs": 1,
+        "eligible_implementation_lines": 20011,
+        "selected_implementation_lines": 20011,
+        "omitted_implementation_line_fraction": 0.0,
+        "manifest_sha256": "d43588222fe8fbc476269df02caa3ca4d9203a391700a9e443ecc3115655f79d"
+      },
+      "root_manifest_sha256": "d43588222fe8fbc476269df02caa3ca4d9203a391700a9e443ecc3115655f79d",
+      "dependency_freeze_sha256": "6e66bdc1ad811c338de3496b0a24647fa38e1eb89fe35936e13e1383cbe32811",
+      "root_list": "inputs/black/benchmark-files.txt",
+      "dependency_freeze": "inputs/black/dependencies.txt",
+      "configs": [
+        "inputs/black/configs/mypy-benchmark.toml",
+        "inputs/black/configs/pyrefly.toml",
+        "inputs/black/configs/pyrightconfig.benchmark.json",
+        "inputs/black/configs/ty.toml",
+        "inputs/black/configs/zuban-benchmark.toml",
+        "inputs/black/configs/zuban-canonical-benchmark.toml"
+      ]
+    },
+    {
+      "name": "discord.py",
+      "input_key": "updated-discord.py",
+      "revision": "65232c38702be5844cf2ce865a4777eb1928b5d0",
+      "python_version": "3.11",
+      "root_count": 144,
+      "workload": {
+        "roots": 144,
+        "stubs": 0,
+        "eligible_implementation_lines": 90510,
+        "selected_implementation_lines": 90510,
+        "omitted_implementation_line_fraction": 0.0,
+        "manifest_sha256": "acc49699cabeba8f137b492eba0bfe52af923e7fcb3af2e11181f3e1ded08a1e"
+      },
+      "root_manifest_sha256": "acc49699cabeba8f137b492eba0bfe52af923e7fcb3af2e11181f3e1ded08a1e",
+      "dependency_freeze_sha256": "6f0e910e8f49d0f7d3fab925f46ef7e518c50fd9498938bf96221d11758040dd",
+      "root_list": "inputs/discord.py/benchmark-files.txt",
+      "dependency_freeze": "inputs/discord.py/dependencies.txt",
+      "configs": [
+        "inputs/discord.py/configs/mypy-benchmark.toml",
+        "inputs/discord.py/configs/pyrefly.toml",
+        "inputs/discord.py/configs/pyrightconfig.benchmark.json",
+        "inputs/discord.py/configs/ty.toml",
+        "inputs/discord.py/configs/zuban-benchmark.toml",
+        "inputs/discord.py/configs/zuban-canonical-benchmark.toml"
+      ]
+    },
+    {
+      "name": "homeassistant",
+      "input_key": "updated-homeassistant",
+      "revision": "c19ae285ede74cd64c3045a3a4aa43290c224f1b",
+      "python_version": "3.14",
+      "root_count": 10765,
+      "workload": {
+        "roots": 10765,
+        "stubs": 3,
+        "eligible_implementation_lines": 1632937,
+        "selected_implementation_lines": 1632877,
+        "omitted_implementation_line_fraction": 3.6743609826972445e-05,
+        "manifest_sha256": "7d54c399da2cb39a697d4e631e7fe8c504c6ee54dffdfde1ffd92ef727512539"
+      },
+      "root_manifest_sha256": "7d54c399da2cb39a697d4e631e7fe8c504c6ee54dffdfde1ffd92ef727512539",
+      "dependency_freeze_sha256": "3292616cacb5f17f36aac5db9656766ee7e6631fb2f3700c2db274dbbac80c1f",
+      "root_list": "inputs/homeassistant/benchmark-files.txt",
+      "dependency_freeze": "inputs/homeassistant/dependencies.txt",
+      "configs": [
+        "inputs/homeassistant/configs/mypy-benchmark.toml",
+        "inputs/homeassistant/configs/pyrefly.toml",
+        "inputs/homeassistant/configs/pyrightconfig.benchmark.json",
+        "inputs/homeassistant/configs/ty.toml",
+        "inputs/homeassistant/configs/zuban-benchmark.toml",
+        "inputs/homeassistant/configs/zuban-canonical-benchmark.toml"
+      ]
+    },
+    {
+      "name": "isort",
+      "input_key": "updated-isort",
+      "revision": "a514c71ed86c2216d0040c7d60e302ed76a4f7ab",
+      "python_version": "3.11",
+      "root_count": 40,
+      "workload": {
+        "roots": 40,
+        "stubs": 0,
+        "eligible_implementation_lines": 10871,
+        "selected_implementation_lines": 10871,
+        "omitted_implementation_line_fraction": 0.0,
+        "manifest_sha256": "6732b296157e8cadd201facc3b142fead537037810de35151b336b02ef6ccb7f"
+      },
+      "root_manifest_sha256": "6732b296157e8cadd201facc3b142fead537037810de35151b336b02ef6ccb7f",
+      "dependency_freeze_sha256": "d789cd104bf289366583a5f0a30c40e82fc7994e2f923cc451214a15e7dfb412",
+      "root_list": "inputs/isort/benchmark-files.txt",
+      "dependency_freeze": "inputs/isort/dependencies.txt",
+      "configs": [
+        "inputs/isort/configs/mypy-benchmark.toml",
+        "inputs/isort/configs/pyrefly.toml",
+        "inputs/isort/configs/pyrightconfig.benchmark.json",
+        "inputs/isort/configs/ty.toml",
+        "inputs/isort/configs/zuban-benchmark.toml",
+        "inputs/isort/configs/zuban-canonical-benchmark.toml"
+      ]
+    },
+    {
+      "name": "jinja",
+      "input_key": "updated-jinja",
+      "revision": "5ef70112a1ff19c05324ff889dd30405b1002044",
+      "python_version": "3.11",
+      "root_count": 25,
+      "workload": {
+        "roots": 25,
+        "stubs": 0,
+        "eligible_implementation_lines": 14351,
+        "selected_implementation_lines": 14351,
+        "omitted_implementation_line_fraction": 0.0,
+        "manifest_sha256": "8b7527c7ce393863462811693a3d30f54c357351d241912c952514ece2fa15ba"
+      },
+      "root_manifest_sha256": "8b7527c7ce393863462811693a3d30f54c357351d241912c952514ece2fa15ba",
+      "dependency_freeze_sha256": "5faae045958aef33d0bcd48e0db9f31a398b5ee7810f53a731bf216982553c99",
+      "root_list": "inputs/jinja/benchmark-files.txt",
+      "dependency_freeze": "inputs/jinja/dependencies.txt",
+      "configs": [
+        "inputs/jinja/configs/mypy-benchmark.toml",
+        "inputs/jinja/configs/pyrefly.toml",
+        "inputs/jinja/configs/pyrightconfig.benchmark.json",
+        "inputs/jinja/configs/ty.toml",
+        "inputs/jinja/configs/zuban-benchmark.toml",
+        "inputs/jinja/configs/zuban-canonical-benchmark.toml"
+      ]
+    },
+    {
+      "name": "pandas",
+      "input_key": "updated-pandas",
+      "revision": "a0225b65720018f4654390bb16d254daa6ee5e54",
+      "python_version": "3.11",
+      "root_count": 337,
+      "workload": {
+        "roots": 337,
+        "stubs": 41,
+        "eligible_implementation_lines": 276310,
+        "selected_implementation_lines": 276310,
+        "omitted_implementation_line_fraction": 0.0,
+        "manifest_sha256": "7a01984ee8d028744741b2b6853d52fd8ba711a9223efedaadd3f6c7d347d2df"
+      },
+      "root_manifest_sha256": "7a01984ee8d028744741b2b6853d52fd8ba711a9223efedaadd3f6c7d347d2df",
+      "dependency_freeze_sha256": "f5f35bc23997751f05b11d8d822f3b7815f41007f76873e8d341a52536dc5657",
+      "root_list": "inputs/pandas/benchmark-files.txt",
+      "dependency_freeze": "inputs/pandas/dependencies.txt",
+      "configs": [
+        "inputs/pandas/configs/mypy-benchmark.toml",
+        "inputs/pandas/configs/pyrefly.toml",
+        "inputs/pandas/configs/pyrightconfig.benchmark.json",
+        "inputs/pandas/configs/ty.toml",
+        "inputs/pandas/configs/zuban-benchmark.toml",
+        "inputs/pandas/configs/zuban-canonical-benchmark.toml"
+      ]
+    },
+    {
+      "name": "pandas-stubs",
+      "input_key": "updated-pandas-stubs",
+      "revision": "8dd6d91b1c05b26e30f7ddbe3dc3d4042a92bdd6",
+      "python_version": "3.11",
+      "root_count": 183,
+      "workload": {
+        "roots": 183,
+        "stubs": 183,
+        "eligible_implementation_lines": 0,
+        "selected_implementation_lines": 0,
+        "omitted_implementation_line_fraction": 0,
+        "manifest_sha256": "1308b818f6cd705b6ad0b6ab972caf4065c66b51cd29599c39880b677ca5fdeb"
+      },
+      "root_manifest_sha256": "1308b818f6cd705b6ad0b6ab972caf4065c66b51cd29599c39880b677ca5fdeb",
+      "dependency_freeze_sha256": "f330b1346af0e7a5f9cffdb785390af9dea2e619106897521a64c69cd012a1aa",
+      "root_list": "inputs/pandas-stubs/benchmark-files.txt",
+      "dependency_freeze": "inputs/pandas-stubs/dependencies.txt",
+      "configs": [
+        "inputs/pandas-stubs/configs/mypy-benchmark.toml",
+        "inputs/pandas-stubs/configs/pyrefly.toml",
+        "inputs/pandas-stubs/configs/pyrightconfig.benchmark.json",
+        "inputs/pandas-stubs/configs/ty.toml",
+        "inputs/pandas-stubs/configs/zuban-benchmark.toml",
+        "inputs/pandas-stubs/configs/zuban-canonical-benchmark.toml"
+      ]
+    },
+    {
+      "name": "prefect",
+      "input_key": "updated-prefect",
+      "revision": "a9452ac21852755311913cb27887b083b5007c03",
+      "python_version": "3.11",
+      "root_count": 58,
+      "workload": {
+        "roots": 58,
+        "stubs": 0,
+        "eligible_implementation_lines": 17612,
+        "selected_implementation_lines": 17612,
+        "omitted_implementation_line_fraction": 0.0,
+        "manifest_sha256": "9a73fd6fb704d752f4bf4b8d26668428aa12de6a3f7b7ebda755340502febc52"
+      },
+      "root_manifest_sha256": "9a73fd6fb704d752f4bf4b8d26668428aa12de6a3f7b7ebda755340502febc52",
+      "dependency_freeze_sha256": "44bd442159782765272dafe9fbfb358018cf2fbfed0efe90a4a78800c231c8b0",
+      "root_list": "inputs/prefect/benchmark-files.txt",
+      "dependency_freeze": "inputs/prefect/dependencies.txt",
+      "configs": [
+        "inputs/prefect/configs/mypy-benchmark.toml",
+        "inputs/prefect/configs/pyrefly.toml",
+        "inputs/prefect/configs/pyrightconfig.benchmark.json",
+        "inputs/prefect/configs/ty.toml",
+        "inputs/prefect/configs/zuban-benchmark.toml",
+        "inputs/prefect/configs/zuban-canonical-benchmark.toml"
+      ]
+    },
+    {
+      "name": "pytorch",
+      "input_key": "updated-pytorch",
+      "revision": "ab92945cea42e47ae398aead69af0872d340ea0f",
+      "python_version": "3.11",
+      "root_count": 2416,
+      "workload": {
+        "roots": 2416,
+        "stubs": 37,
+        "eligible_implementation_lines": 1221996,
+        "selected_implementation_lines": 1218144,
+        "omitted_implementation_line_fraction": 0.0031522198108667743,
+        "manifest_sha256": "59b7eb4ea16968bbd533ad42a9da3181268cd5311552ee1ff5a27b6379c0b216"
+      },
+      "root_manifest_sha256": "59b7eb4ea16968bbd533ad42a9da3181268cd5311552ee1ff5a27b6379c0b216",
+      "dependency_freeze_sha256": "e635c63eda3d086df2892ed766e3f1d363222636747f170116e9d3a31e44b96e",
+      "root_list": "inputs/pytorch/benchmark-files.txt",
+      "dependency_freeze": "inputs/pytorch/dependencies.txt",
+      "configs": [
+        "inputs/pytorch/configs/mypy-benchmark.toml",
+        "inputs/pytorch/configs/pyrefly.toml",
+        "inputs/pytorch/configs/pyrightconfig.benchmark.json",
+        "inputs/pytorch/configs/ty.toml",
+        "inputs/pytorch/configs/zuban-benchmark.toml",
+        "inputs/pytorch/configs/zuban-canonical-benchmark.toml"
+      ]
+    },
+    {
+      "name": "httpx",
+      "input_key": "updated-httpx",
+      "revision": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254",
+      "python_version": "3.11",
+      "root_count": 23,
+      "workload": {
+        "roots": 23,
+        "stubs": 0,
+        "eligible_implementation_lines": 8827,
+        "selected_implementation_lines": 8827,
+        "omitted_implementation_line_fraction": 0.0,
+        "manifest_sha256": "6c94a127c86bca35d803c9de52e2b1ff1a8d0b48d3d9fd54bd30f7562eda0e63"
+      },
+      "root_manifest_sha256": "6c94a127c86bca35d803c9de52e2b1ff1a8d0b48d3d9fd54bd30f7562eda0e63",
+      "dependency_freeze_sha256": "0f37628eb395fc20e3cf79aaa21c94059acd556738e984cdf44e8d7347050a36",
+      "root_list": "inputs/httpx/benchmark-files.txt",
+      "dependency_freeze": "inputs/httpx/dependencies.txt",
+      "configs": [
+        "inputs/httpx/configs/mypy-benchmark.toml",
+        "inputs/httpx/configs/pyrefly.toml",
+        "inputs/httpx/configs/pyrightconfig.benchmark.json",
+        "inputs/httpx/configs/ty.toml",
+        "inputs/httpx/configs/zuban-benchmark.toml",
+        "inputs/httpx/configs/zuban-canonical-benchmark.toml"
+      ]
+    },
+    {
+      "name": "numpy",
+      "input_key": "updated-numpy",
+      "revision": "f9f1772ce010001208475f751d19253469788410",
+      "python_version": "3.12",
+      "root_count": 205,
+      "workload": {
+        "roots": 205,
+        "stubs": 167,
+        "eligible_implementation_lines": 125021,
+        "selected_implementation_lines": 12660,
+        "omitted_implementation_line_fraction": 0.8987370121819535,
+        "manifest_sha256": "73ffa00552444e85c8570d19596ecf3b21121ee4422ef9431dba281f5c99ac33"
+      },
+      "root_manifest_sha256": "73ffa00552444e85c8570d19596ecf3b21121ee4422ef9431dba281f5c99ac33",
+      "dependency_freeze_sha256": "b50b9c9157e96d30a206975c58dbc58182f4669242586252a7bc491b5602e0b8",
+      "root_list": "inputs/numpy/benchmark-files.txt",
+      "dependency_freeze": "inputs/numpy/dependencies.txt",
+      "configs": [
+        "inputs/numpy/configs/mypy-benchmark.toml",
+        "inputs/numpy/configs/pyrefly.toml",
+        "inputs/numpy/configs/pyrightconfig.benchmark.json",
+        "inputs/numpy/configs/ty.toml",
+        "inputs/numpy/configs/zuban-benchmark.toml",
+        "inputs/numpy/configs/zuban-canonical-benchmark.toml"
+      ]
+    },
+    {
+      "name": "fastapi",
+      "input_key": "updated-fastapi",
+      "revision": "7a0a3f0b286c6c865cf4398ea0e957a87b8bffa4",
+      "python_version": "3.11",
+      "root_count": 52,
+      "workload": {
+        "roots": 52,
+        "stubs": 0,
+        "eligible_implementation_lines": 22748,
+        "selected_implementation_lines": 22748,
+        "omitted_implementation_line_fraction": 0.0,
+        "manifest_sha256": "a5301dd6beba5eaf8de5a1f6176a2df197ea4509b45630d6ca855f5f72380df2"
+      },
+      "root_manifest_sha256": "a5301dd6beba5eaf8de5a1f6176a2df197ea4509b45630d6ca855f5f72380df2",
+      "dependency_freeze_sha256": "a3cdec0dad559d0739b234839a49edce6355c423ec450858a14d00a959d90c9d",
+      "root_list": "inputs/fastapi/benchmark-files.txt",
+      "dependency_freeze": "inputs/fastapi/dependencies.txt",
+      "configs": [
+        "inputs/fastapi/configs/mypy-benchmark.toml",
+        "inputs/fastapi/configs/pyrefly.toml",
+        "inputs/fastapi/configs/pyrightconfig.benchmark.json",
+        "inputs/fastapi/configs/ty.toml",
+        "inputs/fastapi/configs/zuban-benchmark.toml",
+        "inputs/fastapi/configs/zuban-canonical-benchmark.toml"
+      ]
+    },
+    {
+      "name": "sqlalchemy",
+      "input_key": "updated-sqlalchemy",
+      "revision": "10f4d1e2d706a7722ca78e79ce05b00333a7aa5b",
+      "python_version": "3.11",
+      "root_count": 258,
+      "workload": {
+        "roots": 258,
+        "stubs": 0,
+        "eligible_implementation_lines": 253551,
+        "selected_implementation_lines": 253551,
+        "omitted_implementation_line_fraction": 0.0,
+        "manifest_sha256": "63af6a6d83d2936bea987cfc1c1309a043d232df9154025e275457588a3ee6a2"
+      },
+      "root_manifest_sha256": "63af6a6d83d2936bea987cfc1c1309a043d232df9154025e275457588a3ee6a2",
+      "dependency_freeze_sha256": "9cea4f1162845529f3bce3e0e1b79699be70b68aa6330363dc05d795574e67e4",
+      "root_list": "inputs/sqlalchemy/benchmark-files.txt",
+      "dependency_freeze": "inputs/sqlalchemy/dependencies.txt",
+      "configs": [
+        "inputs/sqlalchemy/configs/mypy-benchmark.toml",
+        "inputs/sqlalchemy/configs/pyrefly.toml",
+        "inputs/sqlalchemy/configs/pyrightconfig.benchmark.json",
+        "inputs/sqlalchemy/configs/ty.toml",
+        "inputs/sqlalchemy/configs/zuban-benchmark.toml",
+        "inputs/sqlalchemy/configs/zuban-canonical-benchmark.toml"
+      ]
+    },
+    {
+      "name": "rich",
+      "input_key": "updated-rich",
+      "revision": "9d8f9a372cc5916fd4781fec207ced7ddac2f08f",
+      "python_version": "3.11",
+      "root_count": 100,
+      "workload": {
+        "roots": 100,
+        "stubs": 0,
+        "eligible_implementation_lines": 38515,
+        "selected_implementation_lines": 38515,
+        "omitted_implementation_line_fraction": 0.0,
+        "manifest_sha256": "aeef23ee3d29b7af5c31eba7be061a0d0c91d711291d958e7719a5ad71294aaa"
+      },
+      "root_manifest_sha256": "aeef23ee3d29b7af5c31eba7be061a0d0c91d711291d958e7719a5ad71294aaa",
+      "dependency_freeze_sha256": "a80910586483fe4f9decccc82f6081574c831cff7ae2c4c5bae240f9f355af8b",
+      "root_list": "inputs/rich/benchmark-files.txt",
+      "dependency_freeze": "inputs/rich/dependencies.txt",
+      "configs": [
+        "inputs/rich/configs/mypy-benchmark.toml",
+        "inputs/rich/configs/pyrefly.toml",
+        "inputs/rich/configs/pyrightconfig.benchmark.json",
+        "inputs/rich/configs/ty.toml",
+        "inputs/rich/configs/zuban-benchmark.toml",
+        "inputs/rich/configs/zuban-canonical-benchmark.toml"
+      ]
+    },
+    {
+      "name": "django",
+      "input_key": "updated-django",
+      "revision": "b501b8493f31cf8cba31211d59b3b78642b8cb02",
+      "python_version": "3.12",
+      "root_count": 907,
+      "workload": {
+        "roots": 907,
+        "stubs": 0,
+        "eligible_implementation_lines": 166155,
+        "selected_implementation_lines": 166155,
+        "omitted_implementation_line_fraction": 0.0,
+        "manifest_sha256": "04ab42f1fd9d44eb0aea5bf837c0cfea4e0abf41449610afead753160fa36e09"
+      },
+      "root_manifest_sha256": "04ab42f1fd9d44eb0aea5bf837c0cfea4e0abf41449610afead753160fa36e09",
+      "dependency_freeze_sha256": "12cdfc5584daf7465d068f18f3e6057efbc6d7a951b95df99924a286d14f7a65",
+      "root_list": "inputs/django/benchmark-files.txt",
+      "dependency_freeze": "inputs/django/dependencies.txt",
+      "configs": [
+        "inputs/django/configs/mypy-benchmark.toml",
+        "inputs/django/configs/pyrefly.toml",
+        "inputs/django/configs/pyrightconfig.benchmark.json",
+        "inputs/django/configs/ty.toml",
+        "inputs/django/configs/zuban-benchmark.toml",
+        "inputs/django/configs/zuban-canonical-benchmark.toml"
+      ]
+    },
+    {
+      "name": "sympy",
+      "input_key": "updated-sympy",
+      "revision": "85d3998a4517ffbc8a9709b8efa769bb417c174a",
+      "python_version": "3.11",
+      "root_count": 835,
+      "workload": {
+        "roots": 835,
+        "stubs": 0,
+        "eligible_implementation_lines": 525457,
+        "selected_implementation_lines": 525457,
+        "omitted_implementation_line_fraction": 0.0,
+        "manifest_sha256": "3343a81689cd989b2424777a101a9337498868276a32df892d8c4f4377b35811"
+      },
+      "root_manifest_sha256": "3343a81689cd989b2424777a101a9337498868276a32df892d8c4f4377b35811",
+      "dependency_freeze_sha256": "e16306e964ec07cd33a1f9dac8810c16f0f6a3a3683d3cd8653a3c859d621254",
+      "root_list": "inputs/sympy/benchmark-files.txt",
+      "dependency_freeze": "inputs/sympy/dependencies.txt",
+      "configs": [
+        "inputs/sympy/configs/mypy-benchmark.toml",
+        "inputs/sympy/configs/pyrefly.toml",
+        "inputs/sympy/configs/pyrightconfig.benchmark.json",
+        "inputs/sympy/configs/ty.toml",
+        "inputs/sympy/configs/zuban-benchmark.toml",
+        "inputs/sympy/configs/zuban-canonical-benchmark.toml"
+      ]
+    },
+    {
+      "name": "openai",
+      "input_key": "updated-openai",
+      "revision": "f6e8480f9a5b2a4d02b17a1da54a1e57964bc312",
+      "python_version": "3.11",
+      "root_count": 2053,
+      "workload": {
+        "roots": 2053,
+        "stubs": 0,
+        "eligible_implementation_lines": 240665,
+        "selected_implementation_lines": 240665,
+        "omitted_implementation_line_fraction": 0.0,
+        "manifest_sha256": "8280f192b9c7c2a789587baa2f2b3804fd85ecf45743c6c4097e5d17cb434002"
+      },
+      "root_manifest_sha256": "8280f192b9c7c2a789587baa2f2b3804fd85ecf45743c6c4097e5d17cb434002",
+      "dependency_freeze_sha256": "72c48ef8f47de31b6a343d03f49f8a51ff2a157bcf2de38a1d44a5f1feb68678",
+      "root_list": "inputs/openai/benchmark-files.txt",
+      "dependency_freeze": "inputs/openai/dependencies.txt",
+      "configs": [
+        "inputs/openai/configs/mypy-benchmark.toml",
+        "inputs/openai/configs/pyrefly.toml",
+        "inputs/openai/configs/pyrightconfig.benchmark.json",
+        "inputs/openai/configs/ty.toml",
+        "inputs/openai/configs/zuban-benchmark.toml",
+        "inputs/openai/configs/zuban-canonical-benchmark.toml"
+      ]
+    },
+    {
+      "name": "pytest",
+      "input_key": "updated-pytest",
+      "revision": "8b005ed7f972987033ec34dc1e68b0635fb8142b",
+      "python_version": "3.11",
+      "root_count": 172,
+      "workload": {
+        "roots": 172,
+        "stubs": 0,
+        "eligible_implementation_lines": 114385,
+        "selected_implementation_lines": 114385,
+        "omitted_implementation_line_fraction": 0.0,
+        "manifest_sha256": "0d53395951799c5938baeb709b1e64bd46fd4bace69de789aceefc227844d54b"
+      },
+      "root_manifest_sha256": "0d53395951799c5938baeb709b1e64bd46fd4bace69de789aceefc227844d54b",
+      "dependency_freeze_sha256": "082cc54c5dd5684a458766a28c849637fa5ffbb87f01791d209a7527d3b5e781",
+      "root_list": "inputs/pytest/benchmark-files.txt",
+      "dependency_freeze": "inputs/pytest/dependencies.txt",
+      "configs": [
+        "inputs/pytest/configs/mypy-benchmark.toml",
+        "inputs/pytest/configs/pyrefly.toml",
+        "inputs/pytest/configs/pyrightconfig.benchmark.json",
+        "inputs/pytest/configs/ty.toml",
+        "inputs/pytest/configs/zuban-benchmark.toml",
+        "inputs/pytest/configs/zuban-canonical-benchmark.toml"
+      ]
+    }
+  ],
+  "omitted_public_inputs": [],
+  "private_provenance_excluded": [
+    "Full private reports/metadata",
+    "Inherited environment keys/value hashes",
+    "Per-source-file hash maps",
+    "Backups/task state"
+  ],
+  "files": [
+    {
+      "path": "cli/current/black/mypy.json",
+      "size": 9598,
+      "sha256": "d3081e70b66faecaa4f62b8a7b27536c234c9f22c3250687c65e62ee950da8fc",
+      "role": "original-hyperfine2-export",
+      "origin": {
+        "mode": "retained",
+        "checker_version": "mypy 2.4.0 (compiled: yes)",
+        "started_at": "2026-11-04T18:36:29.535412+00:00",
+        "completed_at": "2026-11-04T18:36:42.167727+00:00"
+      }
+    },
+    {
+      "path": "cli/current/black/pyrefly.json",
+      "size": 15879,
+      "sha256": "8e3c895ae0daf8e49c2bad370276f29ffa0bae7f905b660aac6292213c09aa1f",
+      "role": "original-hyperfine2-export",
+      "origin": {
+        "mode": "retained",
+        "checker_version": "pyrefly 1.4.0",
+        "started_at": "2026-11-04T18:36:26.112853+00:00",
+        "completed_at": "2026-11-04T18:36:29.533894+00:00"
+      }
+    },
+    {
+      "path": "cli/current/black/pyright.json",
+      "size": 9332,
+      "sha256": "2b5dd33c9644ff9027edc4bdd320cab12460765fdb6b20d164cf5fed7f154f34",
+      "role": "original-hyperfine2-export",
+      "origin": {
+        "mode": "retained",
+        "checker_version": "pyright 1.1.414",
+        "started_at": "2026-11-04T18:36:42.169263+00:00",
+        "completed_at": "2026-11-04T18:37:05.791258+00:00"
+      }
+    },
+    {
+      "path": "cli/current/black/ty.json",
+      "size": 26716,
+      "sha256": "a0f65ea2fd396e3e8b7e2d1b4d462ac69710354256f7ce6cd0e7a40d8a777a51",
+      "role": "original-hyperfine2-export",
+      "origin": {
+        "mode": "fresh",
+        "checker_version": "ty 0.0.99 (9b48f40c9 2026-11-06)",
+        "started_at": "2026-11-06T12:06:10.680063+00:00",
+        "completed_at": "2026-11-06T12:06:14.017193+00:00"
+      }
+    },
+    {
+      "path": "cli/current/black/zuban.json",
+      "size": 14313,
+      "sha256": "11e09645537cf60f6bac26ef1532b1addf061fc3f9d9d1a1b31d64f42556624a",
+      "role": "original-hyperfine2-export",
+      "origin": {
+        "mode": "retained",
+        "checker_version": "zuban 0.10.2",
+        "started_at": "2026-11-04T18:37:05.792921+00:00",
+        "completed_at": "2026-11-04T18:37:09.269646+00:00"
+      }
+    },
+    {
+      "path": "cli/current/discord.py/mypy.json",
+      "size": 9517,
+      "sha256": "46b9693dd3c684beb4b196e567103cb16bdfef38dd8def563623b88549aa591e",
+      "role": "original-hyperfine2-export",
+      "origin": {
+        "mode": "retained",
+        "checker_version": "mypy 2.4.0 (compiled: yes)",
+        "started_at": "2026-11-04T18:37:16.624959+00:00",
+        "completed_at": "2026-11-04T18:37:44.364648+00:00"
+      }
+    },
+    {
+      "path": "cli/current/discord.py/pyrefly.json",
+      "size": 12974,
+      "sha256": "8d7f8fe9fbb857289094912a1be5dc792ec97e337808df6144a44b956b859185",
+      "role": "original-hyperfine2-export",
+      "origin": {
+        "mode": "retained",
+        "checker_version": "pyrefly 1.4.0",
+        "started_at": "2026-11-04T18:37:12.902105+00:00",
+        "completed_at": "2026-11-04T18:37:16.623213+00:00"
+      }
+    },
+    {
+      "path": "cli/current/discord.py/pyright.json",
+      "size": 9347,
+      "sha256": "3798cce5958ee10d5242e343c46d231baa7cf437c03fa410351003702fe6fc3f",
+      "role": "original-hyperfine2-export",
+      "origin": {
+        "mode": "retained",
+        "checker_version": "pyright 1.1.414",
+        "started_at": "2026-11-04T18:37:44.366464+00:00",
+        "completed_at": "2026-11-04T18:38:40.390015+00:00"
+      }
+    },
+    {
+      "path": "cli/current/discord.py/ty.json",
+      "size": 15830,
+      "sha256": "b8142cfb4d8ad0e23787d02ef30552712310fd54d30ada4a5dd88fcd6f4293f6",
+      "role": "original-hyperfine2-export",
+      "origin": {
+        "mode": "fresh",
+        "checker_version": "ty 0.0.99 (9b48f40c9 2026-11-06)",
+        "started_at": "2026-11-06T12:06:14.136070+00:00",
+        "completed_at": "2026-11-06T12:06:17.802216+00:00"
+      }
+    },
+    {
+      "path": "cli/current/discord.py/zuban.json",
+      "size": 9363,
+      "sha256": "805c3a43b7008c07e5c730dff2858664b37a4fc07611da812ad573049b9d569f",
+      "role": "original-hyperfine2-export",
+      "origin": {
+        "mode": "retained",
+        "checker_version": "zuban 0.10.2",
+        "started_at": "2026-11-04T18:38:40.391861+00:00",
+        "completed_at": "2026-11-04T18:38:45.694295+00:00"
+      }
+    },
+    {
+      "path": "cli/current/django/mypy.json",
+      "size": 9495,
+      "sha256": "ad46b3994ea3a4c37587446a16bc8cbf7cb688e5bb598bb2361b2be4735e909a",
+      "role": "original-hyperfine2-export",
+      "origin": {
+        "mode": "retained",
+        "checker_version": "mypy 2.4.0 (compiled: yes)",
+        "started_at": "2026-11-04T20:37:58.472660+00:00",
+        "completed_at": "2026-11-04T20:38:31.094146+00:00"
+      }
+    },
+    {
+      "path": "cli/current/django/pyrefly.json",
+      "size": 9411,
+      "sha256": "9efae4ae6b3e7a949c6b6a11791c55ffa2f94efb260bd1792fbcc7cf5911b886",
+      "role": "original-hyperfine2-export",
+      "origin": {
+        "mode": "retained",
+        "checker_version": "pyrefly 1.4.0",
+        "started_at": "2026-11-04T20:37:54.487961+00:00",
+        "completed_at": "2026-11-04T20:37:58.466291+00:00"
+      }
+    },
+    {
+      "path": "cli/current/django/pyright.json",
+      "size": 9369,
+      "sha256": "28775b3077f51888446c5a369af6ead57291e631256dc47411985b96635a8acb",
+      "role": "original-hyperfine2-export",
+      "origin": {
+        "mode": "retained",
+        "checker_version": "pyright 1.1.414",
+        "started_at": "2026-11-04T20:38:31.100582+00:00",
+        "completed_at": "2026-11-04T20:40:08.322125+00:00"
+      }
+    },
+    {
+      "path": "cli/current/django/ty.json",
+      "size": 10120,
+      "sha256": "5c6fb7f0fbf7d0c54c187723b568be74344d828c2d2af156fc13798f140f9124",
+      "role": "original-hyperfine2-export",
+      "origin": {
+        "mode": "fresh",
+        "checker_version": "ty 0.0.99 (9b48f40c9 2026-11-06)",
+        "started_at": "2026-11-06T12:07:50.968699+00:00",
+        "completed_at": "2026-11-06T12:07:55.046024+00:00"
+      }
+    },
+    {
+      "path": "cli/current/django/zuban.json",
+      "size": 9295,
+      "sha256": "1832ccbfe4efe1c9f14339eb9162424d00986fa6c08c6323c4e054274a6f1cff",
+      "role": "original-hyperfine2-export",
+      "origin": {
+        "mode": "retained",
+        "checker_version": "zuban 0.10.2",
+        "started_at": "2026-11-04T20:40:08.328584+00:00",
+        "completed_at": "2026-11-04T20:40:15.860191+00:00"
+      }
+    },
+    {
+      "path": "cli/current/fastapi/mypy.json",
+      "size": 9522,
+      "sha256": "a463a0f9d7d7c789ec4fb4809c3c68662b819068b558b6e28c21a9e0d9ab5900",
+      "role": "original-hyperfine2-export",
+      "origin": {
+        "mode": "retained",
+        "checker_version": "mypy 2.4.0 (compiled: yes)",
+        "started_at": "2026-11-04T20:32:17.354571+00:00",
+        "completed_at": "2026-11-04T20:32:43.557056+00:00"
+      }
+    },
+    {
+      "path": "cli/current/fastapi/pyrefly.json",
+      "size": 9449,
+      "sha256": "cbe08b8a5e48715be36be32f8f0e7a67746f41aadc295e139d60dfc56b2f9380",
+      "role": "original-hyperfine2-export",
+      "origin": {
+        "mode": "retained",
+        "checker_version": "pyrefly 1.4.0",
+        "started_at": "2026-11-04T20:32:12.868135+00:00",
+        "completed_at": "2026-11-04T20:32:17.349635+00:00"
+      }
+    },
+    {
+      "path": "cli/current/fastapi/pyright.json",
+      "size": 9334,
+      "sha256": "badbe932d9b5fb2d4a78c44eb37de1cb55159bd0bb52467eeeb34f26aec993ba",
+      "role": "original-hyperfine2-export",
+      "origin": {
+        "mode": "retained",
+        "checker_version": "pyright 1.1.414",
+        "started_at": "2026-11-04T20:32:43.562088+00:00",
+        "completed_at": "2026-11-04T20:33:14.951867+00:00"
+      }
+    },
+    {
+      "path": "cli/current/fastapi/ty.json",
+      "size": 20929,
+      "sha256": "d5da16d5f2990733137c7b9a12a425e491fc14e9a2ab529fce67d459158c0477",
+      "role": "original-hyperfine2-export",
+      "origin": {
+        "mode": "fresh",
+        "checker_version": "ty 0.0.99 (9b48f40c9 2026-11-06)",
+        "started_at": "2026-11-06T12:07:38.938278+00:00",
+        "completed_at": "2026-11-06T12:07:42.311086+00:00"
+      }
+    },
+    {
+      "path": "cli/current/fastapi/zuban.json",
+      "size": 12156,
+      "sha256": "49f5dad690a44f6bc9e385fefa5aef1473746f10a9f5278403c45a9522a3239e",
+      "role": "original-hyperfine2-export",
+      "origin": {
+        "mode": "retained",
+        "checker_version": "zuban 0.10.2",
+        "started_at": "2026-11-04T20:33:14.957020+00:00",
+        "completed_at": "2026-11-04T20:33:18.804344+00:00"
+      }
+    },
+    {
+      "path": "cli/current/homeassistant/mypy.json",
+      "size": 9718,
+      "sha256": "efff04ed428b6da4c1988f93cc1d39a501a879f5c814767f31417751c80917dc",
+      "role": "original-hyperfine2-export",
+      "origin": {
+        "mode": "retained",
+        "checker_version": "mypy 2.4.0 (compiled: yes)",
+        "started_at": "2026-11-04T18:39:49.611810+00:00",
+        "completed_at": "2026-11-04T18:51:08.003014+00:00"
+      }
+    },
+    {
+      "path": "cli/current/homeassistant/pyrefly.json",
+      "size": 9399,
+      "sha256": "7afc3fef45bd7ead3fbfafeb9f4b0a41df11313ee81b31d6170d472b44aa647e",
+      "role": "original-hyperfine2-export",
+      "origin": {
+        "mode": "retained",
+        "checker_version": "pyrefly 1.4.0",
+        "started_at": "2026-11-04T18:39:16.832945+00:00",
+        "completed_at": "2026-11-04T18:39:49.605314+00:00"
+      }
+    },
+    {
+      "path": "cli/current/homeassistant/pyright.json",
+      "size": 9460,
+      "sha256": "b5dcb8c1eea905c2e00f7236c1e938dedda9951ed0291c039a340226d7a3a03e",
+      "role": "original-hyperfine2-export",
+      "origin": {
+        "mode": "retained",
+        "checker_version": "pyright 1.1.414",
+        "started_at": "2026-11-04T18:51:08.009778+00:00",
+        "completed_at": "2026-11-04T19:20:39.281635+00:00"
+      }
+    },
+    {
+      "path": "cli/current/homeassistant/ty.json",
+      "size": 9383,
+      "sha256": "bcfe7cc4bb9c2d4a57c8cf2ba876f4e8f443221cd6a48e8bf114fc323a708507",
+      "role": "original-hyperfine2-export",
+      "origin": {
+        "mode": "fresh",
+        "checker_version": "ty 0.0.99 (9b48f40c9 2026-11-06)",
+        "started_at": "2026-11-06T12:06:18.720365+00:00",
+        "completed_at": "2026-11-06T12:06:49.205490+00:00"
+      }
+    },
+    {
+      "path": "cli/current/homeassistant/zuban.json",
+      "size": 9352,
+      "sha256": "352621d653df57c4a486c5505e82574bd54e9b5b6c7802620f6ad1d57c8e34b4",
+      "role": "original-hyperfine2-export",
+      "origin": {
+        "mode": "retained",
+        "checker_version": "zuban 0.10.2",
+        "started_at": "2026-11-04T19:20:39.288798+00:00",
+        "completed_at": "2026-11-04T19:22:24.452881+00:00"
+      }
+    },
+    {
+      "path": "cli/current/httpx/mypy.json",
+      "size": 9639,
+      "sha256": "0ecf3c60a546dd1b46684761bbc3f7f406f814f9c3891134da2b9dac765b7767",
+      "role": "original-hyperfine2-export",
+      "origin": {
+        "mode": "retained",
+        "checker_version": "mypy 2.4.0 (compiled: yes)",
+        "started_at": "2026-11-04T19:58:55.264716+00:00",
+        "completed_at": "2026-11-04T19:59:07.729456+00:00"
+      }
+    },
+    {
+      "path": "cli/current/httpx/pyrefly.json",
+      "size": 16555,
+      "sha256": "798c7d3d8a787be32a25d7ff2c8c983c2c9d955a64ff46838d5dd5a2912a8b24",
+      "role": "original-hyperfine2-export",
+      "origin": {
+        "mode": "retained",
+        "checker_version": "pyrefly 1.4.0",
+        "started_at": "2026-11-04T19:58:51.870828+00:00",
+        "completed_at": "2026-11-04T19:58:55.260467+00:00"
+      }
+    },
+    {
+      "path": "cli/current/httpx/pyright.json",
+      "size": 9378,
+      "sha256": "2d9c051c34b490fc8889d5128190ad0a45e945819e19b3adf30bbf0d27e7b8f1",
+      "role": "original-hyperfine2-export",
+      "origin": {
+        "mode": "retained",
+        "checker_version": "pyright 1.1.414",
+        "started_at": "2026-11-04T19:59:07.734152+00:00",
+        "completed_at": "2026-11-04T19:59:21.357659+00:00"
+      }
+    },
+    {
+      "path": "cli/current/httpx/ty.json",
+      "size": 26482,
+      "sha256": "0bfd33767fbf7b11ec0f90b84ce3f4d6dbf952069474b3ddc0c1e72fcd521756",
+      "role": "original-hyperfine2-export",
+      "origin": {
+        "mode": "fresh",
+        "checker_version": "ty 0.0.99 (9b48f40c9 2026-11-06)",
+        "started_at": "2026-11-06T12:07:29.909061+00:00",
+        "completed_at": "2026-11-06T12:07:33.251602+00:00"
+      }
+    },
+    {
+      "path": "cli/current/httpx/zuban.json",
+      "size": 18635,
+      "sha256": "c922912e22584d4886a1095f9c2aec45ac678eff407c2d2dc5d2876f7739c176",
+      "role": "original-hyperfine2-export",
+      "origin": {
+        "mode": "retained",
+        "checker_version": "zuban 0.10.2",
+        "started_at": "2026-11-04T19:59:21.362479+00:00",
+        "completed_at": "2026-11-04T19:59:24.796480+00:00"
+      }
+    },
+    {
+      "path": "cli/current/isort/mypy.json",
+      "size": 9596,
+      "sha256": "b37bf52f783d6743b153fc6d40c1414983d2eeb2d09c4058d1734b8b9e082668",
+      "role": "original-hyperfine2-export",
+      "origin": {
+        "mode": "retained",
+        "checker_version": "mypy 2.4.0 (compiled: yes)",
+        "started_at": "2026-11-04T19:22:32.699897+00:00",
+        "completed_at": "2026-11-04T19:22:39.338211+00:00"
+      }
+    },
+    {
+      "path": "cli/current/isort/pyrefly.json",
+      "size": 18816,
+      "sha256": "9ebf0a4c0bf3fc003821eef846ca6a08a28edda2bc5aab2f707e5b5a3de88548",
+      "role": "original-hyperfine2-export",
+      "origin": {
+        "mode": "retained",
+        "checker_version": "pyrefly 1.4.0",
+        "started_at": "2026-11-04T19:22:29.203210+00:00",
+        "completed_at": "2026-11-04T19:22:32.697035+00:00"
+      }
+    },
+    {
+      "path": "cli/current/isort/pyright.json",
+      "size": 9301,
+      "sha256": "e82c2e6ce6f4192557125b06c2eab628b078d9038860b77fc3d769da03a1129b",
+      "role": "original-hyperfine2-export",
+      "origin": {
+        "mode": "retained",
+        "checker_version": "pyright 1.1.414",
+        "started_at": "2026-11-04T19:22:39.340625+00:00",
+        "completed_at": "2026-11-04T19:23:02.472588+00:00"
+      }
+    },
+    {
+      "path": "cli/current/isort/ty.json",
+      "size": 20913,
+      "sha256": "a86eee9955cb06e90c6fa33cfdbb6988a2ce9ae9281c1bf02fa83256a810af64",
+      "role": "original-hyperfine2-export",
+      "origin": {
+        "mode": "fresh",
+        "checker_version": "ty 0.0.99 (9b48f40c9 2026-11-06)",
+        "started_at": "2026-11-06T12:06:50.147672+00:00",
+        "completed_at": "2026-11-06T12:06:53.414234+00:00"
+      }
+    },
+    {
+      "path": "cli/current/isort/zuban.json",
+      "size": 25778,
+      "sha256": "00a7c7cf93b13d33bf2fd922ba0e09be5c1d97b12e96ad60145df1a466b02ccb",
+      "role": "original-hyperfine2-export",
+      "origin": {
+        "mode": "retained",
+        "checker_version": "zuban 0.10.2",
+        "started_at": "2026-11-04T19:23:02.475023+00:00",
+        "completed_at": "2026-11-04T19:23:05.732154+00:00"
+      }
+    },
+    {
+      "path": "cli/current/jinja/mypy.json",
+      "size": 9546,
+      "sha256": "abbc5f91c97fb248a17c8c987c817e5fd714cc8d5a7cb5386e2294763ec0f359",
+      "role": "original-hyperfine2-export",
+      "origin": {
+        "mode": "retained",
+        "checker_version": "mypy 2.4.0 (compiled: yes)",
+        "started_at": "2026-11-04T19:23:12.524108+00:00",
+        "completed_at": "2026-11-04T19:23:20.393956+00:00"
+      }
+    },
+    {
+      "path": "cli/current/jinja/pyrefly.json",
+      "size": 18746,
+      "sha256": "c19a7e519b57a888fe7209ab37253b87e2618166a4b105e794234e017f3aad6b",
+      "role": "original-hyperfine2-export",
+      "origin": {
+        "mode": "retained",
+        "checker_version": "pyrefly 1.4.0",
+        "started_at": "2026-11-04T19:23:09.096313+00:00",
+        "completed_at": "2026-11-04T19:23:12.521289+00:00"
+      }
+    },
+    {
+      "path": "cli/current/jinja/pyright.json",
+      "size": 9370,
+      "sha256": "4886582a1f29c6681ba31d3b90606802abe41a5371168eb811f8753bccd2ff83",
+      "role": "original-hyperfine2-export",
+      "origin": {
+        "mode": "retained",
+        "checker_version": "pyright 1.1.414",
+        "started_at": "2026-11-04T19:23:20.396777+00:00",
+        "completed_at": "2026-11-04T19:23:37.189610+00:00"
+      }
+    },
+    {
+      "path": "cli/current/jinja/ty.json",
+      "size": 29423,
+      "sha256": "0de1518ecc16c3ec0c59ab162680c5024c7422fc03780886184168e9b5c4b9a7",
+      "role": "original-hyperfine2-export",
+      "origin": {
+        "mode": "fresh",
+        "checker_version": "ty 0.0.99 (9b48f40c9 2026-11-06)",
+        "started_at": "2026-11-06T12:06:53.507607+00:00",
+        "completed_at": "2026-11-06T12:06:56.742025+00:00"
+      }
+    },
+    {
+      "path": "cli/current/jinja/zuban.json",
+      "size": 21564,
+      "sha256": "22057156547330e73948039b50b40234bef80cfb1b8d09c0a77ab684c8492752",
+      "role": "original-hyperfine2-export",
+      "origin": {
+        "mode": "retained",
+        "checker_version": "zuban 0.10.2",
+        "started_at": "2026-11-04T19:23:37.192502+00:00",
+        "completed_at": "2026-11-04T19:23:40.505022+00:00"
+      }
+    },
+    {
+      "path": "cli/current/numpy/mypy.json",
+      "size": 14120,
+      "sha256": "26f5de5676df79243b9ce43e8cb6114d98f9c8308846cae4d4805b76aa98adb7",
+      "role": "original-hyperfine2-export",
+      "origin": {
+        "mode": "retained",
+        "checker_version": "mypy 2.4.0 (compiled: yes)",
+        "started_at": "2026-11-04T19:59:39.371049+00:00",
+        "completed_at": "2026-11-04T20:17:11.414356+00:00"
+      }
+    },
+    {
+      "path": "cli/current/numpy/pyrefly.json",
+      "size": 9412,
+      "sha256": "9f0843bb3e2dd647e4c62ce510b673f80821cb6a25b3a81dfa50a253b1f7b36f",
+      "role": "original-hyperfine2-export",
+      "origin": {
+        "mode": "retained",
+        "checker_version": "pyrefly 1.4.0",
+        "started_at": "2026-11-04T19:59:30.883490+00:00",
+        "completed_at": "2026-11-04T19:59:39.366525+00:00"
+      }
+    },
+    {
+      "path": "cli/current/numpy/pyright.json",
+      "size": 9418,
+      "sha256": "0dc5d7e91ecb906b3406dec4276bca1fb9f8ce3f2e8a9d6a66ceb138ca2ba1dc",
+      "role": "original-hyperfine2-export",
+      "origin": {
+        "mode": "retained",
+        "checker_version": "pyright 1.1.414",
+        "started_at": "2026-11-04T20:17:11.418993+00:00",
+        "completed_at": "2026-11-04T20:22:09.166058+00:00"
+      }
+    },
+    {
+      "path": "cli/current/numpy/ty.json",
+      "size": 9391,
+      "sha256": "5bc4be72d1abde72bba5e27bc0ad7798d7f2925ce81032849b1963462043d315",
+      "role": "original-hyperfine2-export",
+      "origin": {
+        "mode": "fresh",
+        "checker_version": "ty 0.0.99 (9b48f40c9 2026-11-06)",
+        "started_at": "2026-11-06T12:07:33.438551+00:00",
+        "completed_at": "2026-11-06T12:07:38.696937+00:00"
+      }
+    },
+    {
+      "path": "cli/current/numpy/zuban.failure.json",
+      "size": 442,
+      "sha256": "c01439ddd9c2f2c946232684dec5973a6f5eeaf00a6f1f05114570dc5a842430",
+      "role": "explicit-failed-outcome",
+      "origin": {
+        "mode": "retained",
+        "checker_version": "zuban 0.10.2",
+        "started_at": "2026-11-04T20:22:09.170914+00:00",
+        "completed_at": "2026-11-04T20:32:09.218699+00:00"
+      }
+    },
+    {
+      "path": "cli/current/openai/mypy.json",
+      "size": 9543,
+      "sha256": "2063cce2b14ffa24aef38515f54f74080d38e0bef7afd04d6e7736c5fe5c18d4",
+      "role": "original-hyperfine2-export",
+      "origin": {
+        "mode": "retained",
+        "checker_version": "mypy 2.4.0 (compiled: yes)",
+        "started_at": "2026-11-04T20:49:31.868693+00:00",
+        "completed_at": "2026-11-04T20:51:00.834520+00:00"
+      }
+    },
+    {
+      "path": "cli/current/openai/pyrefly.json",
+      "size": 9337,
+      "sha256": "4874c7968a4c788dd994c8591b6a0c2fbd50ac409177fb2b172e9a32f4e8d265",
+      "role": "original-hyperfine2-export",
+      "origin": {
+        "mode": "retained",
+        "checker_version": "pyrefly 1.4.0",
+        "started_at": "2026-11-04T20:49:25.095172+00:00",
+        "completed_at": "2026-11-04T20:49:31.861869+00:00"
+      }
+    },
+    {
+      "path": "cli/current/openai/pyright.json",
+      "size": 9391,
+      "sha256": "59bee45ef552f3cb7520274b47a546bd10d7f386df02ef4ba2a4e1ef5d29bae6",
+      "role": "original-hyperfine2-export",
+      "origin": {
+        "mode": "retained",
+        "checker_version": "pyright 1.1.414",
+        "started_at": "2026-11-04T20:51:00.841335+00:00",
+        "completed_at": "2026-11-04T20:52:55.520053+00:00"
+      }
+    },
+    {
+      "path": "cli/current/openai/ty.json",
+      "size": 9394,
+      "sha256": "eaddab6cb962e6e839cf268b09ca5aecb17b2e4e141945075ffd2bed5d0b4c27",
+      "role": "original-hyperfine2-export",
+      "origin": {
+        "mode": "fresh",
+        "checker_version": "ty 0.0.99 (9b48f40c9 2026-11-06)",
+        "started_at": "2026-11-06T12:08:06.280758+00:00",
+        "completed_at": "2026-11-06T12:08:10.643118+00:00"
+      }
+    },
+    {
+      "path": "cli/current/openai/zuban.json",
+      "size": 9393,
+      "sha256": "47775e057189f996966f9e38bfa145333f3f88d16b277167dad85545dd41a6ba",
+      "role": "original-hyperfine2-export",
+      "origin": {
+        "mode": "retained",
+        "checker_version": "zuban 0.10.2",
+        "started_at": "2026-11-04T20:52:55.526942+00:00",
+        "completed_at": "2026-11-04T20:53:07.966981+00:00"
+      }
+    },
+    {
+      "path": "cli/current/pandas-stubs/mypy.json",
+      "size": 9635,
+      "sha256": "47f40a722ac838aaa8aab192775a8f180813c1abfa0f7dab28f3a1e2a559a8bd",
+      "role": "original-hyperfine2-export",
+      "origin": {
+        "mode": "retained",
+        "checker_version": "mypy 2.4.0 (compiled: yes)",
+        "started_at": "2026-11-04T19:30:25.434671+00:00",
+        "completed_at": "2026-11-04T19:31:28.196311+00:00"
+      }
+    },
+    {
+      "path": "cli/current/pandas-stubs/pyrefly.json",
+      "size": 11590,
+      "sha256": "f05e00ae2ef5fc15597501a70039861df2c407feeecf4d53c43fe39273d640f5",
+      "role": "original-hyperfine2-export",
+      "origin": {
+        "mode": "retained",
+        "checker_version": "pyrefly 1.4.0",
+        "started_at": "2026-11-04T19:30:21.704042+00:00",
+        "completed_at": "2026-11-04T19:30:25.430550+00:00"
+      }
+    },
+    {
+      "path": "cli/current/pandas-stubs/pyright.json",
+      "size": 9350,
+      "sha256": "2f18bb6e0ae652fbf5f383d64764a1a4dba04654344732c88c60fb571109c75e",
+      "role": "original-hyperfine2-export",
+      "origin": {
+        "mode": "retained",
+        "checker_version": "pyright 1.1.414",
+        "started_at": "2026-11-04T19:31:28.199664+00:00",
+        "completed_at": "2026-11-04T19:31:58.929141+00:00"
+      }
+    },
+    {
+      "path": "cli/current/pandas-stubs/ty.json",
+      "size": 22393,
+      "sha256": "4c4c5b590c8131131f9f7bb5484a3858ad32ee72390144ff82621ffed26c5346",
+      "role": "original-hyperfine2-export",
+      "origin": {
+        "mode": "fresh",
+        "checker_version": "ty 0.0.99 (9b48f40c9 2026-11-06)",
+        "started_at": "2026-11-06T12:07:03.410171+00:00",
+        "completed_at": "2026-11-06T12:07:06.823586+00:00"
+      }
+    },
+    {
+      "path": "cli/current/pandas-stubs/zuban.json",
+      "size": 9344,
+      "sha256": "4835b687ec1ccb38063bcff36af71e4a2972cd4730332143c523a91ea63aa45a",
+      "role": "original-hyperfine2-export",
+      "origin": {
+        "mode": "retained",
+        "checker_version": "zuban 0.10.2",
+        "started_at": "2026-11-04T19:31:58.932627+00:00",
+        "completed_at": "2026-11-04T19:32:03.038559+00:00"
+      }
+    },
+    {
+      "path": "cli/current/pandas/mypy.json",
+      "size": 9603,
+      "sha256": "da4d82c9abbbe6b1e126795675650b4e4baef6f78a10d70fea9709e6628a8f1d",
+      "role": "original-hyperfine2-export",
+      "origin": {
+        "mode": "retained",
+        "checker_version": "mypy 2.4.0 (compiled: yes)",
+        "started_at": "2026-11-04T19:23:59.507545+00:00",
+        "completed_at": "2026-11-04T19:26:16.559630+00:00"
+      }
+    },
+    {
+      "path": "cli/current/pandas/pyrefly.json",
+      "size": 9353,
+      "sha256": "ccc251cabdb1c2f7af43f3fcd11bac88bea2600d520f0817f4cfecfbfca82730",
+      "role": "original-hyperfine2-export",
+      "origin": {
+        "mode": "retained",
+        "checker_version": "pyrefly 1.4.0",
+        "started_at": "2026-11-04T19:23:46.838848+00:00",
+        "completed_at": "2026-11-04T19:23:59.504232+00:00"
+      }
+    },
+    {
+      "path": "cli/current/pandas/pyright.json",
+      "size": 9374,
+      "sha256": "0179deb91d607a8d4546559fb35f5ca8909ec1a94e8ca01f46b08bacf6bbc44f",
+      "role": "original-hyperfine2-export",
+      "origin": {
+        "mode": "retained",
+        "checker_version": "pyright 1.1.414",
+        "started_at": "2026-11-04T19:26:16.562956+00:00",
+        "completed_at": "2026-11-04T19:29:57.990534+00:00"
+      }
+    },
+    {
+      "path": "cli/current/pandas/ty.json",
+      "size": 9378,
+      "sha256": "76e25353c837efedee45161e0236f216fe7a42bace05b89735b22d1967f06df7",
+      "role": "original-hyperfine2-export",
+      "origin": {
+        "mode": "fresh",
+        "checker_version": "ty 0.0.99 (9b48f40c9 2026-11-06)",
+        "started_at": "2026-11-06T12:06:57.034138+00:00",
+        "completed_at": "2026-11-06T12:07:03.133541+00:00"
+      }
+    },
+    {
+      "path": "cli/current/pandas/zuban.json",
+      "size": 9281,
+      "sha256": "282e3081d18d32cd9ad23a040957e03bd3741a8764d0a6b5b371af2b712480ec",
+      "role": "original-hyperfine2-export",
+      "origin": {
+        "mode": "retained",
+        "checker_version": "zuban 0.10.2",
+        "started_at": "2026-11-04T19:29:57.995668+00:00",
+        "completed_at": "2026-11-04T19:30:18.138172+00:00"
+      }
+    },
+    {
+      "path": "cli/current/prefect/mypy.json",
+      "size": 9662,
+      "sha256": "83b3df8a6071ff0f2960371d8960de59c7aae73c9f5f6e8a01a7f925366e225d",
+      "role": "original-hyperfine2-export",
+      "origin": {
+        "mode": "retained",
+        "checker_version": "mypy 2.4.0 (compiled: yes)",
+        "started_at": "2026-11-04T19:32:10.853842+00:00",
+        "completed_at": "2026-11-04T19:33:45.251405+00:00"
+      }
+    },
+    {
+      "path": "cli/current/prefect/pyrefly.json",
+      "size": 9437,
+      "sha256": "158701095480baf07afba6d0f0d4f82a9002588b6025c33a21540538f82b7b04",
+      "role": "original-hyperfine2-export",
+      "origin": {
+        "mode": "retained",
+        "checker_version": "pyrefly 1.4.0",
+        "started_at": "2026-11-04T19:32:06.753151+00:00",
+        "completed_at": "2026-11-04T19:32:10.849878+00:00"
+      }
+    },
+    {
+      "path": "cli/current/prefect/pyright.json",
+      "size": 9362,
+      "sha256": "17ab9f1fb74f3f90c6abdb8d17f85f118c527fac0bf097cc35731e85291c52aa",
+      "role": "original-hyperfine2-export",
+      "origin": {
+        "mode": "retained",
+        "checker_version": "pyright 1.1.414",
+        "started_at": "2026-11-04T19:33:45.255437+00:00",
+        "completed_at": "2026-11-04T19:34:25.082286+00:00"
+      }
+    },
+    {
+      "path": "cli/current/prefect/ty.json",
+      "size": 18772,
+      "sha256": "70d23b10772f349d0a0c9450b81900a74bd21a458a5510c7c7686dd53913b600",
+      "role": "original-hyperfine2-export",
+      "origin": {
+        "mode": "fresh",
+        "checker_version": "ty 0.0.99 (9b48f40c9 2026-11-06)",
+        "started_at": "2026-11-06T12:07:07.124937+00:00",
+        "completed_at": "2026-11-06T12:07:10.623115+00:00"
+      }
+    },
+    {
+      "path": "cli/current/prefect/zuban.json",
+      "size": 9356,
+      "sha256": "bc34906f087d6b16beb2f135d2cccd0ac4e3b96072f4fa275b68506224b1be17",
+      "role": "original-hyperfine2-export",
+      "origin": {
+        "mode": "retained",
+        "checker_version": "zuban 0.10.2",
+        "started_at": "2026-11-04T19:34:25.086342+00:00",
+        "completed_at": "2026-11-04T19:34:38.674326+00:00"
+      }
+    },
+    {
+      "path": "cli/current/pytest/mypy.json",
+      "size": 9584,
+      "sha256": "5945e228c38e87547927adc6499a6d92c4b247020f783e9f61c86cd26f831ec6",
+      "role": "original-hyperfine2-export",
+      "origin": {
+        "mode": "retained",
+        "checker_version": "mypy 2.4.0 (compiled: yes)",
+        "started_at": "2026-11-04T20:53:15.996575+00:00",
+        "completed_at": "2026-11-04T20:53:47.704979+00:00"
+      }
+    },
+    {
+      "path": "cli/current/pytest/pyrefly.json",
+      "size": 10902,
+      "sha256": "656a92bec5eaae533da5d53647edd2e7b779a37d8cf30af8cbac9d5eb6bb903d",
+      "role": "original-hyperfine2-export",
+      "origin": {
+        "mode": "retained",
+        "checker_version": "pyrefly 1.4.0",
+        "started_at": "2026-11-04T20:53:11.944000+00:00",
+        "completed_at": "2026-11-04T20:53:15.989979+00:00"
+      }
+    },
+    {
+      "path": "cli/current/pytest/pyright.json",
+      "size": 9332,
+      "sha256": "3fa7f354383ac4819affe0b481e1d926a054b829de526900267623d5b8071eb1",
+      "role": "original-hyperfine2-export",
+      "origin": {
+        "mode": "retained",
+        "checker_version": "pyright 1.1.414",
+        "started_at": "2026-11-04T20:53:47.711602+00:00",
+        "completed_at": "2026-11-04T20:54:52.389498+00:00"
+      }
+    },
+    {
+      "path": "cli/current/pytest/ty.json",
+      "size": 12264,
+      "sha256": "9d9d3c57caae093df155f30160c719ce2bc9c55bb75c5457903251b69809b5a9",
+      "role": "original-hyperfine2-export",
+      "origin": {
+        "mode": "fresh",
+        "checker_version": "ty 0.0.99 (9b48f40c9 2026-11-06)",
+        "started_at": "2026-11-06T12:08:10.843063+00:00",
+        "completed_at": "2026-11-06T12:08:14.299482+00:00"
+      }
+    },
+    {
+      "path": "cli/current/pytest/zuban.json",
+      "size": 9397,
+      "sha256": "be860d7ff1e39c310ba460c43dc7d13268e92d7c9b59ff37f36d84205d4d635a",
+      "role": "original-hyperfine2-export",
+      "origin": {
+        "mode": "retained",
+        "checker_version": "zuban 0.10.2",
+        "started_at": "2026-11-04T20:54:52.396303+00:00",
+        "completed_at": "2026-11-04T20:55:00.992275+00:00"
+      }
+    },
+    {
+      "path": "cli/current/pytorch/mypy.json",
+      "size": 10965,
+      "sha256": "5270ce3d6f08e39abe77928af7b9a7f19d61f737b93f5cb3dc2e9c7946bea246",
+      "role": "original-hyperfine2-export",
+      "origin": {
+        "mode": "retained",
+        "checker_version": "mypy 2.4.0 (compiled: yes)",
+        "started_at": "2026-11-04T19:35:15.482722+00:00",
+        "completed_at": "2026-11-04T19:40:46.286939+00:00"
+      }
+    },
+    {
+      "path": "cli/current/pytorch/pyrefly.json",
+      "size": 9386,
+      "sha256": "6fb045f77c7f8c3335e376a60dce130e454c9bdcb5b7ee840a7ed8ce625ecf02",
+      "role": "original-hyperfine2-export",
+      "origin": {
+        "mode": "retained",
+        "checker_version": "pyrefly 1.4.0",
+        "started_at": "2026-11-04T19:34:58.229370+00:00",
+        "completed_at": "2026-11-04T19:35:15.477710+00:00"
+      }
+    },
+    {
+      "path": "cli/current/pytorch/pyright.json",
+      "size": 9414,
+      "sha256": "0ff6a85f9cce4a1d0120d3b3fe51dd9874d7e8bf21a0e13f3193777f859903bf",
+      "role": "original-hyperfine2-export",
+      "origin": {
+        "mode": "retained",
+        "checker_version": "pyright 1.1.414",
+        "started_at": "2026-11-04T19:40:46.294746+00:00",
+        "completed_at": "2026-11-04T19:57:59.506569+00:00"
+      }
+    },
+    {
+      "path": "cli/current/pytorch/ty.json",
+      "size": 9359,
+      "sha256": "c60dcc5505a646baab505736a0e1f14bc0de5f325be1dd2144027ead2d3732dc",
+      "role": "original-hyperfine2-export",
+      "origin": {
+        "mode": "fresh",
+        "checker_version": "ty 0.0.99 (9b48f40c9 2026-11-06)",
+        "started_at": "2026-11-06T12:07:11.135238+00:00",
+        "completed_at": "2026-11-06T12:07:29.609538+00:00"
+      }
+    },
+    {
+      "path": "cli/current/pytorch/zuban.json",
+      "size": 9306,
+      "sha256": "3e5b9e2a2ad3395f6be9f86904202cee8ac32525fc66025aa5571343efa093b3",
+      "role": "original-hyperfine2-export",
+      "origin": {
+        "mode": "retained",
+        "checker_version": "zuban 0.10.2",
+        "started_at": "2026-11-04T19:57:59.511941+00:00",
+        "completed_at": "2026-11-04T19:58:48.358217+00:00"
+      }
+    },
+    {
+      "path": "cli/current/rich/mypy.json",
+      "size": 9500,
+      "sha256": "b699ff5369372a38435f56f159e4c1006dd886dcfd2913f536bd3c24eb411f83",
+      "role": "original-hyperfine2-export",
+      "origin": {
+        "mode": "retained",
+        "checker_version": "mypy 2.4.0 (compiled: yes)",
+        "started_at": "2026-11-04T20:36:54.144458+00:00",
+        "completed_at": "2026-11-04T20:37:10.652413+00:00"
+      }
+    },
+    {
+      "path": "cli/current/rich/pyrefly.json",
+      "size": 16567,
+      "sha256": "a6c96eb0ea7f6263ff0c892f62762ab3012a0af593db9afce08dd6b8cbc41f41",
+      "role": "original-hyperfine2-export",
+      "origin": {
+        "mode": "retained",
+        "checker_version": "pyrefly 1.4.0",
+        "started_at": "2026-11-04T20:36:50.634359+00:00",
+        "completed_at": "2026-11-04T20:36:54.138650+00:00"
+      }
+    },
+    {
+      "path": "cli/current/rich/pyright.json",
+      "size": 9338,
+      "sha256": "2198762e3f6ee29516701d515bff1d6aac911dbbd007522dfc59c033bd5caf5f",
+      "role": "original-hyperfine2-export",
+      "origin": {
+        "mode": "retained",
+        "checker_version": "pyright 1.1.414",
+        "started_at": "2026-11-04T20:37:10.657941+00:00",
+        "completed_at": "2026-11-04T20:37:46.137161+00:00"
+      }
+    },
+    {
+      "path": "cli/current/rich/ty.json",
+      "size": 27391,
+      "sha256": "7b20b565e65f5e14814bbaef576020587ebd008b80466ad6078eb568f4a9873e",
+      "role": "original-hyperfine2-export",
+      "origin": {
+        "mode": "fresh",
+        "checker_version": "ty 0.0.99 (9b48f40c9 2026-11-06)",
+        "started_at": "2026-11-06T12:07:47.297006+00:00",
+        "completed_at": "2026-11-06T12:07:50.684052+00:00"
+      }
+    },
+    {
+      "path": "cli/current/rich/zuban.json",
+      "size": 15809,
+      "sha256": "cddcb10ef1ae5acb629bed3503fdc5ce1e62a094a758c126afb36d23f15ffa7e",
+      "role": "original-hyperfine2-export",
+      "origin": {
+        "mode": "retained",
+        "checker_version": "zuban 0.10.2",
+        "started_at": "2026-11-04T20:37:46.142830+00:00",
+        "completed_at": "2026-11-04T20:37:49.662215+00:00"
+      }
+    },
+    {
+      "path": "cli/current/sqlalchemy/mypy.json",
+      "size": 9524,
+      "sha256": "a82adb65704e227ac0fa7cb1105d91bb7ae23f00c02f6c88c6af3a59f0c0be8f",
+      "role": "original-hyperfine2-export",
+      "origin": {
+        "mode": "retained",
+        "checker_version": "mypy 2.4.0 (compiled: yes)",
+        "started_at": "2026-11-04T20:33:28.056060+00:00",
+        "completed_at": "2026-11-04T20:34:19.909591+00:00"
+      }
+    },
+    {
+      "path": "cli/current/sqlalchemy/pyrefly.json",
+      "size": 9350,
+      "sha256": "0c87a73a82355f1ef6c634298c3a7f17a0171a6ca2e78d12a0735451fb624d79",
+      "role": "original-hyperfine2-export",
+      "origin": {
+        "mode": "retained",
+        "checker_version": "pyrefly 1.4.0",
+        "started_at": "2026-11-04T20:33:23.459064+00:00",
+        "completed_at": "2026-11-04T20:33:28.050961+00:00"
+      }
+    },
+    {
+      "path": "cli/current/sqlalchemy/pyright.json",
+      "size": 9326,
+      "sha256": "e0c500068b3184f08891bde96fb0206c08c0e5b6706ac6bf4e2116a0ab7e0fe3",
+      "role": "original-hyperfine2-export",
+      "origin": {
+        "mode": "retained",
+        "checker_version": "pyright 1.1.414",
+        "started_at": "2026-11-04T20:34:19.915154+00:00",
+        "completed_at": "2026-11-04T20:36:37.591332+00:00"
+      }
+    },
+    {
+      "path": "cli/current/sqlalchemy/ty.json",
+      "size": 9372,
+      "sha256": "cf86b1cdbe25cfcc75bdb130e40b80729020ae9eaa361d017925856b1e04b005",
+      "role": "original-hyperfine2-export",
+      "origin": {
+        "mode": "fresh",
+        "checker_version": "ty 0.0.99 (9b48f40c9 2026-11-06)",
+        "started_at": "2026-11-06T12:07:42.528556+00:00",
+        "completed_at": "2026-11-06T12:07:47.131029+00:00"
+      }
+    },
+    {
+      "path": "cli/current/sqlalchemy/zuban.json",
+      "size": 9304,
+      "sha256": "77fe8d14221bf5f3d48080c59e5f7c49a22e0f63b373b03ee5bf71494f1a9e66",
+      "role": "original-hyperfine2-export",
+      "origin": {
+        "mode": "retained",
+        "checker_version": "zuban 0.10.2",
+        "started_at": "2026-11-04T20:36:37.596765+00:00",
+        "completed_at": "2026-11-04T20:36:47.175884+00:00"
+      }
+    },
+    {
+      "path": "cli/current/sympy/mypy.json",
+      "size": 11495,
+      "sha256": "de77656a2c6598526ba97344d40a9bf2fd327d6a50d06add293518416a75f8f4",
+      "role": "original-hyperfine2-export",
+      "origin": {
+        "mode": "retained",
+        "checker_version": "mypy 2.4.0 (compiled: yes)",
+        "started_at": "2026-11-04T20:40:34.481981+00:00",
+        "completed_at": "2026-11-04T20:42:01.811524+00:00"
+      }
+    },
+    {
+      "path": "cli/current/sympy/pyrefly.json",
+      "size": 9397,
+      "sha256": "c3f70214b62f41733ae63e8f085c6a4fd1b17269c261ce71bee3cfae95901683",
+      "role": "original-hyperfine2-export",
+      "origin": {
+        "mode": "retained",
+        "checker_version": "pyrefly 1.4.0",
+        "started_at": "2026-11-04T20:40:26.803681+00:00",
+        "completed_at": "2026-11-04T20:40:34.475669+00:00"
+      }
+    },
+    {
+      "path": "cli/current/sympy/pyright.json",
+      "size": 9395,
+      "sha256": "708a87315c9ea4a756a03deda769a4013949a500a98c5fa0b21db78d60070e96",
+      "role": "original-hyperfine2-export",
+      "origin": {
+        "mode": "retained",
+        "checker_version": "pyright 1.1.414",
+        "started_at": "2026-11-04T20:42:01.817932+00:00",
+        "completed_at": "2026-11-04T20:49:02.596344+00:00"
+      }
+    },
+    {
+      "path": "cli/current/sympy/ty.json",
+      "size": 9402,
+      "sha256": "5f906c2731be1a6dd08cae490c991ca347186726a1f2bf5631a05c5285cb2bc5",
+      "role": "original-hyperfine2-export",
+      "origin": {
+        "mode": "fresh",
+        "checker_version": "ty 0.0.99 (9b48f40c9 2026-11-06)",
+        "started_at": "2026-11-06T12:07:55.413075+00:00",
+        "completed_at": "2026-11-06T12:08:05.938422+00:00"
+      }
+    },
+    {
+      "path": "cli/current/sympy/zuban.json",
+      "size": 9277,
+      "sha256": "54002cb4dd02655c11b89145b1b335c5939c745b2cf85ff84a4cdb98d71c6d7b",
+      "role": "original-hyperfine2-export",
+      "origin": {
+        "mode": "retained",
+        "checker_version": "zuban 0.10.2",
+        "started_at": "2026-11-04T20:49:02.602873+00:00",
+        "completed_at": "2026-11-04T20:49:20.186067+00:00"
+      }
+    },
+    {
+      "path": "cli/prior-ty-0.0.96/black.json",
+      "size": 27297,
+      "sha256": "faf5729cced4982a60febe15a35188a8c4c7294dc74a3de2abba469faf6c22ef",
+      "role": "original-prior-ty-hyperfine2-export",
+      "origin": {
+        "mode": "prior-ty-comparison",
+        "checker_version": "ty 0.0.96 (53a7844b8 2026-11-02)",
+        "started_at": "2026-11-04T18:36:22.655112+00:00",
+        "completed_at": "2026-11-04T18:36:26.111347+00:00"
+      }
+    },
+    {
+      "path": "cli/prior-ty-0.0.96/discord.py.json",
+      "size": 15077,
+      "sha256": "6861a66f582d2c637abe19a514e9cf53a2f5497fe061d9933ddb23d67afee5a8",
+      "role": "original-prior-ty-hyperfine2-export",
+      "origin": {
+        "mode": "prior-ty-comparison",
+        "checker_version": "ty 0.0.96 (53a7844b8 2026-11-02)",
+        "started_at": "2026-11-04T18:37:09.377214+00:00",
+        "completed_at": "2026-11-04T18:37:12.900351+00:00"
+      }
+    },
+    {
+      "path": "cli/prior-ty-0.0.96/django.json",
+      "size": 10810,
+      "sha256": "98ec203f4b3ece9ed3dde29add117aaf38694115ddf34fae3f2f4dcceef5b66f",
+      "role": "original-prior-ty-hyperfine2-export",
+      "origin": {
+        "mode": "prior-ty-comparison",
+        "checker_version": "ty 0.0.96 (53a7844b8 2026-11-02)",
+        "started_at": "2026-11-04T20:37:50.027488+00:00",
+        "completed_at": "2026-11-04T20:37:54.481630+00:00"
+      }
+    },
+    {
+      "path": "cli/prior-ty-0.0.96/fastapi.json",
+      "size": 20923,
+      "sha256": "a6490b4cd2bae6da629b2ef0acf06390f2cac6590003787bd7ae7986a66811fb",
+      "role": "original-prior-ty-hyperfine2-export",
+      "origin": {
+        "mode": "prior-ty-comparison",
+        "checker_version": "ty 0.0.96 (53a7844b8 2026-11-02)",
+        "started_at": "2026-11-04T20:32:09.493330+00:00",
+        "completed_at": "2026-11-04T20:32:12.863204+00:00"
+      }
+    },
+    {
+      "path": "cli/prior-ty-0.0.96/homeassistant.json",
+      "size": 9363,
+      "sha256": "c213358d970194ffac4abe20b7b84bcccdcb45d0964a69eda5ec07578591be87",
+      "role": "original-prior-ty-hyperfine2-export",
+      "origin": {
+        "mode": "prior-ty-comparison",
+        "checker_version": "ty 0.0.96 (53a7844b8 2026-11-02)",
+        "started_at": "2026-11-04T18:38:46.653488+00:00",
+        "completed_at": "2026-11-04T18:39:16.826683+00:00"
+      }
+    },
+    {
+      "path": "cli/prior-ty-0.0.96/httpx.json",
+      "size": 25191,
+      "sha256": "4190e76656a3d23c89d5a8886d9ccf8a115cab716672c62013784a59675beb87",
+      "role": "original-prior-ty-hyperfine2-export",
+      "origin": {
+        "mode": "prior-ty-comparison",
+        "checker_version": "ty 0.0.96 (53a7844b8 2026-11-02)",
+        "started_at": "2026-11-04T19:58:48.655484+00:00",
+        "completed_at": "2026-11-04T19:58:51.866606+00:00"
+      }
+    },
+    {
+      "path": "cli/prior-ty-0.0.96/isort.json",
+      "size": 20759,
+      "sha256": "22f6c3e82715fd652638680c01e1197959260839c5300a7b77e1c1279ee49923",
+      "role": "original-prior-ty-hyperfine2-export",
+      "origin": {
+        "mode": "prior-ty-comparison",
+        "checker_version": "ty 0.0.96 (53a7844b8 2026-11-02)",
+        "started_at": "2026-11-04T19:22:25.766720+00:00",
+        "completed_at": "2026-11-04T19:22:29.200840+00:00"
+      }
+    },
+    {
+      "path": "cli/prior-ty-0.0.96/jinja.json",
+      "size": 29458,
+      "sha256": "f9e188d30de3b415e20e03fe6938d42a0c8504f42cd5875f733d51e3a6df5157",
+      "role": "original-prior-ty-hyperfine2-export",
+      "origin": {
+        "mode": "prior-ty-comparison",
+        "checker_version": "ty 0.0.96 (53a7844b8 2026-11-02)",
+        "started_at": "2026-11-04T19:23:05.819604+00:00",
+        "completed_at": "2026-11-04T19:23:09.093453+00:00"
+      }
+    },
+    {
+      "path": "cli/prior-ty-0.0.96/numpy.json",
+      "size": 9359,
+      "sha256": "1464797b6a1478ac4d154804bfc222285697ba5dac26eb637050cfbaa3d5209f",
+      "role": "original-prior-ty-hyperfine2-export",
+      "origin": {
+        "mode": "prior-ty-comparison",
+        "checker_version": "ty 0.0.96 (53a7844b8 2026-11-02)",
+        "started_at": "2026-11-04T19:59:25.047863+00:00",
+        "completed_at": "2026-11-04T19:59:30.878905+00:00"
+      }
+    },
+    {
+      "path": "cli/prior-ty-0.0.96/openai.json",
+      "size": 9356,
+      "sha256": "f1c1056e951ff1a8c9ffe73800ce8d4ead5a3115d8edaf8bdd50e2c80a849951",
+      "role": "original-prior-ty-hyperfine2-export",
+      "origin": {
+        "mode": "prior-ty-comparison",
+        "checker_version": "ty 0.0.96 (53a7844b8 2026-11-02)",
+        "started_at": "2026-11-04T20:49:20.584384+00:00",
+        "completed_at": "2026-11-04T20:49:25.088324+00:00"
+      }
+    },
+    {
+      "path": "cli/prior-ty-0.0.96/pandas-stubs.json",
+      "size": 20954,
+      "sha256": "75ea3beed977d98eeda03b7215b7fc1a6913957de56a68f4785c9adeab3991cd",
+      "role": "original-prior-ty-hyperfine2-export",
+      "origin": {
+        "mode": "prior-ty-comparison",
+        "checker_version": "ty 0.0.96 (53a7844b8 2026-11-02)",
+        "started_at": "2026-11-04T19:30:18.472828+00:00",
+        "completed_at": "2026-11-04T19:30:21.700691+00:00"
+      }
+    },
+    {
+      "path": "cli/prior-ty-0.0.96/pandas.json",
+      "size": 9330,
+      "sha256": "4cdb5d9c5bbf1f47ed6b09e0280ae852668fa6b583b526345db47395fdde9131",
+      "role": "original-prior-ty-hyperfine2-export",
+      "origin": {
+        "mode": "prior-ty-comparison",
+        "checker_version": "ty 0.0.96 (53a7844b8 2026-11-02)",
+        "started_at": "2026-11-04T19:23:40.786902+00:00",
+        "completed_at": "2026-11-04T19:23:46.835462+00:00"
+      }
+    },
+    {
+      "path": "cli/prior-ty-0.0.96/prefect.json",
+      "size": 17344,
+      "sha256": "447f3332ee2e15d66645c49dd296d38a102a7dca7e412d9db14f6ca574613fb9",
+      "role": "original-prior-ty-hyperfine2-export",
+      "origin": {
+        "mode": "prior-ty-comparison",
+        "checker_version": "ty 0.0.96 (53a7844b8 2026-11-02)",
+        "started_at": "2026-11-04T19:32:03.398429+00:00",
+        "completed_at": "2026-11-04T19:32:06.748776+00:00"
+      }
+    },
+    {
+      "path": "cli/prior-ty-0.0.96/pytest.json",
+      "size": 13619,
+      "sha256": "10d882fe1e215daf8f1f5eb909bc3f20cc3b18f03264fc665412ca185725c8a5",
+      "role": "original-prior-ty-hyperfine2-export",
+      "origin": {
+        "mode": "prior-ty-comparison",
+        "checker_version": "ty 0.0.96 (53a7844b8 2026-11-02)",
+        "started_at": "2026-11-04T20:53:08.188467+00:00",
+        "completed_at": "2026-11-04T20:53:11.937482+00:00"
+      }
+    },
+    {
+      "path": "cli/prior-ty-0.0.96/pytorch.json",
+      "size": 9356,
+      "sha256": "39e6e085f0ba79091cb66aa29f1515694332c5629aedd2f6691abe3409f918ce",
+      "role": "original-prior-ty-hyperfine2-export",
+      "origin": {
+        "mode": "prior-ty-comparison",
+        "checker_version": "ty 0.0.96 (53a7844b8 2026-11-02)",
+        "started_at": "2026-11-04T19:34:39.360187+00:00",
+        "completed_at": "2026-11-04T19:34:58.224499+00:00"
+      }
+    },
+    {
+      "path": "cli/prior-ty-0.0.96/rich.json",
+      "size": 26603,
+      "sha256": "ede8c0e15ac798f352283a0528cad98da61dbaff11a555aa363f4689f441f6da",
+      "role": "original-prior-ty-hyperfine2-export",
+      "origin": {
+        "mode": "prior-ty-comparison",
+        "checker_version": "ty 0.0.96 (53a7844b8 2026-11-02)",
+        "started_at": "2026-11-04T20:36:47.352376+00:00",
+        "completed_at": "2026-11-04T20:36:50.628949+00:00"
+      }
+    },
+    {
+      "path": "cli/prior-ty-0.0.96/sqlalchemy.json",
+      "size": 9349,
+      "sha256": "511c4256bed291eaabc84ab067f38dfe5ce480b58b49d72e0b69c6b7a0bcebdf",
+      "role": "original-prior-ty-hyperfine2-export",
+      "origin": {
+        "mode": "prior-ty-comparison",
+        "checker_version": "ty 0.0.96 (53a7844b8 2026-11-02)",
+        "started_at": "2026-11-04T20:33:19.074714+00:00",
+        "completed_at": "2026-11-04T20:33:23.454006+00:00"
+      }
+    },
+    {
+      "path": "cli/prior-ty-0.0.96/sympy.json",
+      "size": 9345,
+      "sha256": "9dfb61dc2f431edb3abc378536bfca3b230ccd125bec325cc113e825b8c93d6f",
+      "role": "original-prior-ty-hyperfine2-export",
+      "origin": {
+        "mode": "prior-ty-comparison",
+        "checker_version": "ty 0.0.96 (53a7844b8 2026-11-02)",
+        "started_at": "2026-11-04T20:40:16.314079+00:00",
+        "completed_at": "2026-11-04T20:40:26.797488+00:00"
+      }
+    },
+    {
+      "path": "inputs/black/benchmark-files.txt",
+      "size": 1072,
+      "sha256": "d43588222fe8fbc476269df02caa3ca4d9203a391700a9e443ecc3115655f79d",
+      "role": "project-root-list"
+    },
+    {
+      "path": "inputs/black/configs/mypy-benchmark.toml",
+      "size": 32,
+      "sha256": "9741962a3f723aa264496392c9eece257b92cd577872c2306b7b25d8c402ec0c",
+      "role": "generated-benchmark-config"
+    },
+    {
+      "path": "inputs/black/configs/pyrefly.toml",
+      "size": 345,
+      "sha256": "0b7f646b7a3e0c56e1a68d7ee2a673b0737aae80e9fc48b344b90a00c70f0f88",
+      "role": "generated-benchmark-config"
+    },
+    {
+      "path": "inputs/black/configs/pyrightconfig.benchmark.json",
+      "size": 107,
+      "sha256": "e4461113a782b81e172f855ab71756f65b8dc8dd7f10c3c9eb558ef4b0e52340",
+      "role": "generated-benchmark-config"
+    },
+    {
+      "path": "inputs/black/configs/ty.toml",
+      "size": 174,
+      "sha256": "bfa47c95058a83bd6218eb569a15b0e2b35ccf490a758c50b2c791b6063ec9a2",
+      "role": "generated-benchmark-config"
+    },
+    {
+      "path": "inputs/black/configs/zuban-benchmark.toml",
+      "size": 347,
+      "sha256": "593b182c4c662af7129c7da4c0525bd6ab096d56d0d208e143f06feab9078859",
+      "role": "generated-benchmark-config"
+    },
+    {
+      "path": "inputs/black/configs/zuban-canonical-benchmark.toml",
+      "size": 355,
+      "sha256": "9465c92638982bf561658a38466a13df8a03ed46d2e8d5e9f5fb1422d484db2c",
+      "role": "generated-benchmark-config"
+    },
+    {
+      "path": "inputs/black/dependencies.txt",
+      "size": 357,
+      "sha256": "6e66bdc1ad811c338de3496b0a24647fa38e1eb89fe35936e13e1383cbe32811",
+      "role": "project-dependency-freeze"
+    },
+    {
+      "path": "inputs/discord.py/benchmark-files.txt",
+      "size": 3698,
+      "sha256": "acc49699cabeba8f137b492eba0bfe52af923e7fcb3af2e11181f3e1ded08a1e",
+      "role": "project-root-list"
+    },
+    {
+      "path": "inputs/discord.py/configs/mypy-benchmark.toml",
+      "size": 27,
+      "sha256": "b3c4e583128412327e0da99f3f180c1782febb7b442fcea0f5d33eacb1b084c2",
+      "role": "generated-benchmark-config"
+    },
+    {
+      "path": "inputs/discord.py/configs/pyrefly.toml",
+      "size": 332,
+      "sha256": "05d521fd85a8799250903408946b0b7d17d0910ccf83ccbae9bbd05010fabd57",
+      "role": "generated-benchmark-config"
+    },
+    {
+      "path": "inputs/discord.py/configs/pyrightconfig.benchmark.json",
+      "size": 111,
+      "sha256": "7b978ef57d161be53bf7aa1a73d4339e785174f0371714202d6cdd7453a0f544",
+      "role": "generated-benchmark-config"
+    },
+    {
+      "path": "inputs/discord.py/configs/ty.toml",
+      "size": 178,
+      "sha256": "13dd856d33de7c96230d6a75424ae2cc33f7e12fac16b2d01c39f6f7ff607c79",
+      "role": "generated-benchmark-config"
+    },
+    {
+      "path": "inputs/discord.py/configs/zuban-benchmark.toml",
+      "size": 357,
+      "sha256": "42860eaa328a486de3e0fa638ebb50e6ef56769152101b3e19909ec31bb6443f",
+      "role": "generated-benchmark-config"
+    },
+    {
+      "path": "inputs/discord.py/configs/zuban-canonical-benchmark.toml",
+      "size": 365,
+      "sha256": "6075c8ba358b74a7770f6e4cea6a02e000dffea8799e0f5998cf9a4b253a8349",
+      "role": "generated-benchmark-config"
+    },
+    {
+      "path": "inputs/discord.py/dependencies.txt",
+      "size": 260,
+      "sha256": "6f0e910e8f49d0f7d3fab925f46ef7e518c50fd9498938bf96221d11758040dd",
+      "role": "project-dependency-freeze"
+    },
+    {
+      "path": "inputs/django/benchmark-files.txt",
+      "size": 34610,
+      "sha256": "04ab42f1fd9d44eb0aea5bf837c0cfea4e0abf41449610afead753160fa36e09",
+      "role": "project-root-list"
+    },
+    {
+      "path": "inputs/django/configs/mypy-benchmark.toml",
+      "size": 27,
+      "sha256": "b3c4e583128412327e0da99f3f180c1782febb7b442fcea0f5d33eacb1b084c2",
+      "role": "generated-benchmark-config"
+    },
+    {
+      "path": "inputs/django/configs/pyrefly.toml",
+      "size": 323,
+      "sha256": "0442c9cfb94e8045c0699cec22d3dff8bc018ea000d5e05d2ca6323644e6828f",
+      "role": "generated-benchmark-config"
+    },
+    {
+      "path": "inputs/django/configs/pyrightconfig.benchmark.json",
+      "size": 110,
+      "sha256": "742b1c5f59df24d3bda817875e025c5e081517d2795b3acd1816849f9252ab8d",
+      "role": "generated-benchmark-config"
+    },
+    {
+      "path": "inputs/django/configs/ty.toml",
+      "size": 173,
+      "sha256": "9f00013fea926abbe8820b65abb55badcc5fe347f8009402cb7c56ee60350c8f",
+      "role": "generated-benchmark-config"
+    },
+    {
+      "path": "inputs/django/configs/zuban-benchmark.toml",
+      "size": 348,
+      "sha256": "df3673f5bdc17175645da4d7a24d777456f50996111038460b89274584cfb5bd",
+      "role": "generated-benchmark-config"
+    },
+    {
+      "path": "inputs/django/configs/zuban-canonical-benchmark.toml",
+      "size": 356,
+      "sha256": "73e71f762bed632bfa02b43f047bac3c57b3933e23c21bd66b7f151e8930028e",
+      "role": "generated-benchmark-config"
+    },
+    {
+      "path": "inputs/django/dependencies.txt",
+      "size": 145,
+      "sha256": "12cdfc5584daf7465d068f18f3e6057efbc6d7a951b95df99924a286d14f7a65",
+      "role": "project-dependency-freeze"
+    },
+    {
+      "path": "inputs/fastapi/benchmark-files.txt",
+      "size": 1421,
+      "sha256": "a5301dd6beba5eaf8de5a1f6176a2df197ea4509b45630d6ca855f5f72380df2",
+      "role": "project-root-list"
+    },
+    {
+      "path": "inputs/fastapi/configs/mypy-benchmark.toml",
+      "size": 27,
+      "sha256": "b3c4e583128412327e0da99f3f180c1782febb7b442fcea0f5d33eacb1b084c2",
+      "role": "generated-benchmark-config"
+    },
+    {
+      "path": "inputs/fastapi/configs/pyrefly.toml",
+      "size": 326,
+      "sha256": "4b082c5343e47b45b61bcbc993989edca421cd871b981dc78a7acc9b0424caa8",
+      "role": "generated-benchmark-config"
+    },
+    {
+      "path": "inputs/fastapi/configs/pyrightconfig.benchmark.json",
+      "size": 111,
+      "sha256": "fa187c7751e6e0e0af9951b080fcd5ba60c6133deb811c3170e6d6a10459ce53",
+      "role": "generated-benchmark-config"
+    },
+    {
+      "path": "inputs/fastapi/configs/ty.toml",
+      "size": 175,
+      "sha256": "7c3934bb9d0adb491b76e380417cd7ad7a23a26eb19b011847fbdd7e7c747721",
+      "role": "generated-benchmark-config"
+    },
+    {
+      "path": "inputs/fastapi/configs/zuban-benchmark.toml",
+      "size": 351,
+      "sha256": "96b7706debf0a5ef411a0ee2d05933dd191c97839369d2080f6fbbc25127d648",
+      "role": "generated-benchmark-config"
+    },
+    {
+      "path": "inputs/fastapi/configs/zuban-canonical-benchmark.toml",
+      "size": 359,
+      "sha256": "6958135760abd43d5c96263112ecde7287f1daa12de4a9516a03077ae38f980e",
+      "role": "generated-benchmark-config"
+    },
+    {
+      "path": "inputs/fastapi/dependencies.txt",
+      "size": 1337,
+      "sha256": "a3cdec0dad559d0739b234839a49edce6355c423ec450858a14d00a959d90c9d",
+      "role": "project-dependency-freeze"
+    },
+    {
+      "path": "inputs/homeassistant/benchmark-files.txt",
+      "size": 525528,
+      "sha256": "7d54c399da2cb39a697d4e631e7fe8c504c6ee54dffdfde1ffd92ef727512539",
+      "role": "project-root-list"
+    },
+    {
+      "path": "inputs/homeassistant/configs/mypy-benchmark.toml",
+      "size": 27,
+      "sha256": "b3c4e583128412327e0da99f3f180c1782febb7b442fcea0f5d33eacb1b084c2",
+      "role": "generated-benchmark-config"
+    },
+    {
+      "path": "inputs/homeassistant/configs/pyrefly.toml",
+      "size": 450,
+      "sha256": "8f08d8de7778f498b981b8f744b347c3ef283ea6e1cb43cc7a1961bcc43aa072",
+      "role": "generated-benchmark-config"
+    },
+    {
+      "path": "inputs/homeassistant/configs/pyrightconfig.benchmark.json",
+      "size": 223,
+      "sha256": "4974683bdd162ca3991a013cbe1ec11a74239a2156c672aeabbfc2111204b95f",
+      "role": "generated-benchmark-config"
+    },
+    {
+      "path": "inputs/homeassistant/configs/ty.toml",
+      "size": 293,
+      "sha256": "fe675f0c6bb85c33e6732d7c1b8b0976902ced98513756f976e8f79a558b8660",
+      "role": "generated-benchmark-config"
+    },
+    {
+      "path": "inputs/homeassistant/configs/zuban-benchmark.toml",
+      "size": 592,
+      "sha256": "ec1aa3d6be1457e785177f6a59e1f4011f27aac936bb61ee2b5f46ddd0ba0844",
+      "role": "generated-benchmark-config"
+    },
+    {
+      "path": "inputs/homeassistant/configs/zuban-canonical-benchmark.toml",
+      "size": 600,
+      "sha256": "e1eba2d069ed152bcb0df7b85467ff6cf25de7ab9360f685c1b545c9da2e1493",
+      "role": "generated-benchmark-config"
+    },
+    {
+      "path": "inputs/homeassistant/dependencies.txt",
+      "size": 33172,
+      "sha256": "3292616cacb5f17f36aac5db9656766ee7e6631fb2f3700c2db274dbbac80c1f",
+      "role": "project-dependency-freeze"
+    },
+    {
+      "path": "inputs/httpx/benchmark-files.txt",
+      "size": 510,
+      "sha256": "6c94a127c86bca35d803c9de52e2b1ff1a8d0b48d3d9fd54bd30f7562eda0e63",
+      "role": "project-root-list"
+    },
+    {
+      "path": "inputs/httpx/configs/mypy-benchmark.toml",
+      "size": 27,
+      "sha256": "b3c4e583128412327e0da99f3f180c1782febb7b442fcea0f5d33eacb1b084c2",
+      "role": "generated-benchmark-config"
+    },
+    {
+      "path": "inputs/httpx/configs/pyrefly.toml",
+      "size": 320,
+      "sha256": "8fe1b488432d6652281743b6b35e6a5ce596e05db451c7bfaca9c7a4326a58d6",
+      "role": "generated-benchmark-config"
+    },
+    {
+      "path": "inputs/httpx/configs/pyrightconfig.benchmark.json",
+      "size": 109,
+      "sha256": "f6bb5d576da41ff14aae39cc9954f29542a6a7eeb2566eff74e1882d9a9d9303",
+      "role": "generated-benchmark-config"
+    },
+    {
+      "path": "inputs/httpx/configs/ty.toml",
+      "size": 171,
+      "sha256": "43c716733502a5d3c1064011686ece5198a5787068f0708fe2fef34e8e72c2bc",
+      "role": "generated-benchmark-config"
+    },
+    {
+      "path": "inputs/httpx/configs/zuban-benchmark.toml",
+      "size": 345,
+      "sha256": "98fb7d3e7eccb360478d3268d980694202a0da47d82f1e25bf1a8c6af28846c7",
+      "role": "generated-benchmark-config"
+    },
+    {
+      "path": "inputs/httpx/configs/zuban-canonical-benchmark.toml",
+      "size": 353,
+      "sha256": "3539fe44c78405d2268eb4dea2a7f632fc65608218f2220f4f9d7649189938f8",
+      "role": "generated-benchmark-config"
+    },
+    {
+      "path": "inputs/httpx/dependencies.txt",
+      "size": 352,
+      "sha256": "0f37628eb395fc20e3cf79aaa21c94059acd556738e984cdf44e8d7347050a36",
+      "role": "project-dependency-freeze"
+    },
+    {
+      "path": "inputs/isort/benchmark-files.txt",
+      "size": 831,
+      "sha256": "6732b296157e8cadd201facc3b142fead537037810de35151b336b02ef6ccb7f",
+      "role": "project-root-list"
+    },
+    {
+      "path": "inputs/isort/configs/mypy-benchmark.toml",
+      "size": 27,
+      "sha256": "b3c4e583128412327e0da99f3f180c1782febb7b442fcea0f5d33eacb1b084c2",
+      "role": "generated-benchmark-config"
+    },
+    {
+      "path": "inputs/isort/configs/pyrefly.toml",
+      "size": 320,
+      "sha256": "d93a3a5bb2a86d8cda400994373a34f1198638f1ba4197c4f8e95582897167c1",
+      "role": "generated-benchmark-config"
+    },
+    {
+      "path": "inputs/isort/configs/pyrightconfig.benchmark.json",
+      "size": 109,
+      "sha256": "1ac09605be0470b466ef2ac263a3c13755e229007550f85acc6adeffc2a10450",
+      "role": "generated-benchmark-config"
+    },
+    {
+      "path": "inputs/isort/configs/ty.toml",
+      "size": 171,
+      "sha256": "fd9a44f3c306d7c4aa95cb0b48507c78a3e27c32f585e8a63e0c85e0a7c1c7e8",
+      "role": "generated-benchmark-config"
+    },
+    {
+      "path": "inputs/isort/configs/zuban-benchmark.toml",
+      "size": 345,
+      "sha256": "818a00b20361c09c0e4cca5e584d4df914015c5d654e5a7dac47bda3bbba17cd",
+      "role": "generated-benchmark-config"
+    },
+    {
+      "path": "inputs/isort/configs/zuban-canonical-benchmark.toml",
+      "size": 353,
+      "sha256": "066dba9aa4a1c0736b691a83bec6cb318ce923ace092b0349d3732e8fa64520f",
+      "role": "generated-benchmark-config"
+    },
+    {
+      "path": "inputs/isort/dependencies.txt",
+      "size": 161,
+      "sha256": "d789cd104bf289366583a5f0a30c40e82fc7994e2f923cc451214a15e7dfb412",
+      "role": "project-dependency-freeze"
+    },
+    {
+      "path": "inputs/jinja/benchmark-files.txt",
+      "size": 611,
+      "sha256": "8b7527c7ce393863462811693a3d30f54c357351d241912c952514ece2fa15ba",
+      "role": "project-root-list"
+    },
+    {
+      "path": "inputs/jinja/configs/mypy-benchmark.toml",
+      "size": 32,
+      "sha256": "9741962a3f723aa264496392c9eece257b92cd577872c2306b7b25d8c402ec0c",
+      "role": "generated-benchmark-config"
+    },
+    {
+      "path": "inputs/jinja/configs/pyrefly.toml",
+      "size": 345,
+      "sha256": "e5d809aed0fb0d194a97344ec704a7342e51ef2796256a23a54547d01b229431",
+      "role": "generated-benchmark-config"
+    },
+    {
+      "path": "inputs/jinja/configs/pyrightconfig.benchmark.json",
+      "size": 107,
+      "sha256": "e4461113a782b81e172f855ab71756f65b8dc8dd7f10c3c9eb558ef4b0e52340",
+      "role": "generated-benchmark-config"
+    },
+    {
+      "path": "inputs/jinja/configs/ty.toml",
+      "size": 174,
+      "sha256": "2fe519b13ebaf7a0fa0fd05ab0e7b50f8136e42b187ab529702aa79db21f3325",
+      "role": "generated-benchmark-config"
+    },
+    {
+      "path": "inputs/jinja/configs/zuban-benchmark.toml",
+      "size": 347,
+      "sha256": "dec2db19485bd8cf9accdd2ee171bde6fd36c4a73c8d64a4a9893f19e123b93b",
+      "role": "generated-benchmark-config"
+    },
+    {
+      "path": "inputs/jinja/configs/zuban-canonical-benchmark.toml",
+      "size": 355,
+      "sha256": "160404ac357046b59ca72622d43e089c2cd23e5bc2728eb6b960e269d375283d",
+      "role": "generated-benchmark-config"
+    },
+    {
+      "path": "inputs/jinja/dependencies.txt",
+      "size": 131,
+      "sha256": "5faae045958aef33d0bcd48e0db9f31a398b5ee7810f53a731bf216982553c99",
+      "role": "project-dependency-freeze"
+    },
+    {
+      "path": "inputs/numpy/benchmark-files.txt",
+      "size": 6238,
+      "sha256": "73ffa00552444e85c8570d19596ecf3b21121ee4422ef9431dba281f5c99ac33",
+      "role": "project-root-list"
+    },
+    {
+      "path": "inputs/numpy/configs/mypy-benchmark.toml",
+      "size": 27,
+      "sha256": "b3c4e583128412327e0da99f3f180c1782febb7b442fcea0f5d33eacb1b084c2",
+      "role": "generated-benchmark-config"
+    },
+    {
+      "path": "inputs/numpy/configs/pyrefly.toml",
+      "size": 5009,
+      "sha256": "276f91077cd246211b21d8912eb811b334ccd2c5cda6062ca130719385a7f19b",
+      "role": "generated-benchmark-config"
+    },
+    {
+      "path": "inputs/numpy/configs/pyrightconfig.benchmark.json",
+      "size": 4798,
+      "sha256": "10ef747dc279d3d4d4688a729c7dc96918e192228ba3e2a357775f4f2401f270",
+      "role": "generated-benchmark-config"
+    },
+    {
+      "path": "inputs/numpy/configs/ty.toml",
+      "size": 4860,
+      "sha256": "bcea493f7538cd68d2fc668d96da0cc7bec35f97d0724e18bdc4f8b7e16f2dd7",
+      "role": "generated-benchmark-config"
+    },
+    {
+      "path": "inputs/numpy/configs/zuban-benchmark.toml",
+      "size": 11419,
+      "sha256": "990513388ccb5fdc5fb3f0e7094b027c53faa8c5529149e1f04f7259d13c8c2f",
+      "role": "generated-benchmark-config"
+    },
+    {
+      "path": "inputs/numpy/configs/zuban-canonical-benchmark.toml",
+      "size": 11427,
+      "sha256": "3ab291c02e01f6e40fe6d1dc7aac5dcc5f445c424ad1c7c19c774a509c1d9189",
+      "role": "generated-benchmark-config"
+    },
+    {
+      "path": "inputs/numpy/dependencies.txt",
+      "size": 129,
+      "sha256": "b50b9c9157e96d30a206975c58dbc58182f4669242586252a7bc491b5602e0b8",
+      "role": "project-dependency-freeze"
+    },
+    {
+      "path": "inputs/openai/benchmark-files.txt",
+      "size": 117274,
+      "sha256": "8280f192b9c7c2a789587baa2f2b3804fd85ecf45743c6c4097e5d17cb434002",
+      "role": "project-root-list"
+    },
+    {
+      "path": "inputs/openai/configs/mypy-benchmark.toml",
+      "size": 32,
+      "sha256": "9741962a3f723aa264496392c9eece257b92cd577872c2306b7b25d8c402ec0c",
+      "role": "generated-benchmark-config"
+    },
+    {
+      "path": "inputs/openai/configs/pyrefly.toml",
+      "size": 374,
+      "sha256": "dd3ed7a254de68b21280cbf39e2389c013985ba5a3fbe3896ca7753d84f151f3",
+      "role": "generated-benchmark-config"
+    },
+    {
+      "path": "inputs/openai/configs/pyrightconfig.benchmark.json",
+      "size": 134,
+      "sha256": "fe222f617c27c8a7293d74e94b9462f1be6173f6798014cb49b1445a027e007c",
+      "role": "generated-benchmark-config"
+    },
+    {
+      "path": "inputs/openai/configs/ty.toml",
+      "size": 202,
+      "sha256": "accb16b78429b9e947f773db5bcfd63f0015fc4e8d5368a8b1fd31bd5348f402",
+      "role": "generated-benchmark-config"
+    },
+    {
+      "path": "inputs/openai/configs/zuban-benchmark.toml",
+      "size": 462,
+      "sha256": "5b36ffd59d59c70afc057868abbb859be73248b405e0d7daef50c9f891d09d23",
+      "role": "generated-benchmark-config"
+    },
+    {
+      "path": "inputs/openai/configs/zuban-canonical-benchmark.toml",
+      "size": 470,
+      "sha256": "0b4a6f848dc86552b4e5990e6cb9b7e98a26c8a5c960bcef64bd0520ceb02438",
+      "role": "generated-benchmark-config"
+    },
+    {
+      "path": "inputs/openai/dependencies.txt",
+      "size": 778,
+      "sha256": "72c48ef8f47de31b6a343d03f49f8a51ff2a157bcf2de38a1d44a5f1feb68678",
+      "role": "project-dependency-freeze"
+    },
+    {
+      "path": "inputs/pandas-stubs/benchmark-files.txt",
+      "size": 6845,
+      "sha256": "1308b818f6cd705b6ad0b6ab972caf4065c66b51cd29599c39880b677ca5fdeb",
+      "role": "project-root-list"
+    },
+    {
+      "path": "inputs/pandas-stubs/configs/mypy-benchmark.toml",
+      "size": 27,
+      "sha256": "b3c4e583128412327e0da99f3f180c1782febb7b442fcea0f5d33eacb1b084c2",
+      "role": "generated-benchmark-config"
+    },
+    {
+      "path": "inputs/pandas-stubs/configs/pyrefly.toml",
+      "size": 370,
+      "sha256": "0955f80450c6895a59ce66cfec92ef5434f76c0e39944ef99ba84aaf35d2b1e9",
+      "role": "generated-benchmark-config"
+    },
+    {
+      "path": "inputs/pandas-stubs/configs/pyrightconfig.benchmark.json",
+      "size": 145,
+      "sha256": "21a2773aa576479913431b6940be60e0c9e3bf801dffb705f43d6eda079f19c5",
+      "role": "generated-benchmark-config"
+    },
+    {
+      "path": "inputs/pandas-stubs/configs/ty.toml",
+      "size": 214,
+      "sha256": "fe3baf6ca4c3c1cdc6d143dbd0434373aa2e445e4c2d261c359dd1354df45418",
+      "role": "generated-benchmark-config"
+    },
+    {
+      "path": "inputs/pandas-stubs/configs/zuban-benchmark.toml",
+      "size": 436,
+      "sha256": "17445b0dc3847d046e7da10290a90a91d22d9335c34f7a95dc1d7d323ec46a0c",
+      "role": "generated-benchmark-config"
+    },
+    {
+      "path": "inputs/pandas-stubs/configs/zuban-canonical-benchmark.toml",
+      "size": 444,
+      "sha256": "e16e52d8af273cdeb04b457618871197ea7a8adfd873dc0a59dcbbdf6c31b591",
+      "role": "generated-benchmark-config"
+    },
+    {
+      "path": "inputs/pandas-stubs/dependencies.txt",
+      "size": 1816,
+      "sha256": "f330b1346af0e7a5f9cffdb785390af9dea2e619106897521a64c69cd012a1aa",
+      "role": "project-dependency-freeze"
+    },
+    {
+      "path": "inputs/pandas/benchmark-files.txt",
+      "size": 10638,
+      "sha256": "7a01984ee8d028744741b2b6853d52fd8ba711a9223efedaadd3f6c7d347d2df",
+      "role": "project-root-list"
+    },
+    {
+      "path": "inputs/pandas/configs/mypy-benchmark.toml",
+      "size": 27,
+      "sha256": "b3c4e583128412327e0da99f3f180c1782febb7b442fcea0f5d33eacb1b084c2",
+      "role": "generated-benchmark-config"
+    },
+    {
+      "path": "inputs/pandas/configs/pyrefly.toml",
+      "size": 337,
+      "sha256": "93fdfa14af578e1b664cdd7a5121d1902abe03b01645af730609f84bcba0451e",
+      "role": "generated-benchmark-config"
+    },
+    {
+      "path": "inputs/pandas/configs/pyrightconfig.benchmark.json",
+      "size": 124,
+      "sha256": "3b3593a711c0aca59b90545f628f81c555a8f2885dba927a142df82edd976a00",
+      "role": "generated-benchmark-config"
+    },
+    {
+      "path": "inputs/pandas/configs/ty.toml",
+      "size": 187,
+      "sha256": "614c283feb98a3d4144216bfc89a22c9ffc38f03f41f75253c455256be5f68b3",
+      "role": "generated-benchmark-config"
+    },
+    {
+      "path": "inputs/pandas/configs/zuban-benchmark.toml",
+      "size": 393,
+      "sha256": "5efbd3cc6714ab0846f898d549d7a6d9d58a7dde899b3fc8ddf1d521070679b4",
+      "role": "generated-benchmark-config"
+    },
+    {
+      "path": "inputs/pandas/configs/zuban-canonical-benchmark.toml",
+      "size": 401,
+      "sha256": "a20dea55f2f3ef7581929bd42668408cf56a0f6cdbaaf9ead7133d0959b2fe2a",
+      "role": "generated-benchmark-config"
+    },
+    {
+      "path": "inputs/pandas/dependencies.txt",
+      "size": 5455,
+      "sha256": "f5f35bc23997751f05b11d8d822f3b7815f41007f76873e8d341a52536dc5657",
+      "role": "project-dependency-freeze"
+    },
+    {
+      "path": "inputs/prefect/benchmark-files.txt",
+      "size": 2327,
+      "sha256": "9a73fd6fb704d752f4bf4b8d26668428aa12de6a3f7b7ebda755340502febc52",
+      "role": "project-root-list"
+    },
+    {
+      "path": "inputs/prefect/configs/mypy-benchmark.toml",
+      "size": 32,
+      "sha256": "9741962a3f723aa264496392c9eece257b92cd577872c2306b7b25d8c402ec0c",
+      "role": "generated-benchmark-config"
+    },
+    {
+      "path": "inputs/prefect/configs/pyrefly.toml",
+      "size": 441,
+      "sha256": "40bc50f82a21607b90429150577ece5887c3e5b314793a7fbe2f7b4320153b48",
+      "role": "generated-benchmark-config"
+    },
+    {
+      "path": "inputs/prefect/configs/pyrightconfig.benchmark.json",
+      "size": 199,
+      "sha256": "6dbbfc1dbbcb5f83ee30b12381b16f5fcdbc001b28eb497cef21f86fa4e8e0a9",
+      "role": "generated-benchmark-config"
+    },
+    {
+      "path": "inputs/prefect/configs/ty.toml",
+      "size": 268,
+      "sha256": "2f08804aa9c7ef7e14c64cfe46686291dccab60ee4b964e67c6e058eb4f5ad0a",
+      "role": "generated-benchmark-config"
+    },
+    {
+      "path": "inputs/prefect/configs/zuban-benchmark.toml",
+      "size": 443,
+      "sha256": "4939c48d6db5f7376e39e1a012450136f738ef901b19ad2514b0266668dacab2",
+      "role": "generated-benchmark-config"
+    },
+    {
+      "path": "inputs/prefect/configs/zuban-canonical-benchmark.toml",
+      "size": 451,
+      "sha256": "cfe101baa54420445cae519f892c1f66c7b7bb71d74ad953ce4ed60ceaafab76",
+      "role": "generated-benchmark-config"
+    },
+    {
+      "path": "inputs/prefect/dependencies.txt",
+      "size": 4347,
+      "sha256": "44bd442159782765272dafe9fbfb358018cf2fbfed0efe90a4a78800c231c8b0",
+      "role": "project-dependency-freeze"
+    },
+    {
+      "path": "inputs/pytest/benchmark-files.txt",
+      "size": 5286,
+      "sha256": "0d53395951799c5938baeb709b1e64bd46fd4bace69de789aceefc227844d54b",
+      "role": "project-root-list"
+    },
+    {
+      "path": "inputs/pytest/configs/mypy-benchmark.toml",
+      "size": 32,
+      "sha256": "9741962a3f723aa264496392c9eece257b92cd577872c2306b7b25d8c402ec0c",
+      "role": "generated-benchmark-config"
+    },
+    {
+      "path": "inputs/pytest/configs/pyrefly.toml",
+      "size": 383,
+      "sha256": "28d5b25468197d9b84bb25d07a49bad1332cc7911aa0af23a3ff400d4064553c",
+      "role": "generated-benchmark-config"
+    },
+    {
+      "path": "inputs/pytest/configs/pyrightconfig.benchmark.json",
+      "size": 143,
+      "sha256": "701f43d329400468a00bcb5f78317ce647b588396a9c33706f753fbb35d34a14",
+      "role": "generated-benchmark-config"
+    },
+    {
+      "path": "inputs/pytest/configs/ty.toml",
+      "size": 211,
+      "sha256": "ab8bceb16f1f61d3e174f26f7314702e77a523b1ce9559ecebff23d06fbba68b",
+      "role": "generated-benchmark-config"
+    },
+    {
+      "path": "inputs/pytest/configs/zuban-benchmark.toml",
+      "size": 532,
+      "sha256": "b64e13c0d632daedb4a0199c39b527173ad8f3c5ee4a30745a35997d587eef1c",
+      "role": "generated-benchmark-config"
+    },
+    {
+      "path": "inputs/pytest/configs/zuban-canonical-benchmark.toml",
+      "size": 548,
+      "sha256": "d1aba3cc8b6b358da1b6fde3b7c5196e7d559b7b2d0b4bc92b2ffa4451e8511f",
+      "role": "generated-benchmark-config"
+    },
+    {
+      "path": "inputs/pytest/dependencies.txt",
+      "size": 536,
+      "sha256": "082cc54c5dd5684a458766a28c849637fa5ffbb87f01791d209a7527d3b5e781",
+      "role": "project-dependency-freeze"
+    },
+    {
+      "path": "inputs/pytorch/benchmark-files.txt",
+      "size": 101986,
+      "sha256": "59b7eb4ea16968bbd533ad42a9da3181268cd5311552ee1ff5a27b6379c0b216",
+      "role": "project-root-list"
+    },
+    {
+      "path": "inputs/pytorch/configs/mypy-benchmark.toml",
+      "size": 27,
+      "sha256": "b3c4e583128412327e0da99f3f180c1782febb7b442fcea0f5d33eacb1b084c2",
+      "role": "generated-benchmark-config"
+    },
+    {
+      "path": "inputs/pytorch/configs/pyrefly.toml",
+      "size": 1689,
+      "sha256": "543b398ef6e8ae33614fb8bd0381e26f3059471cef49ee0e5dad6ca5a941285b",
+      "role": "generated-benchmark-config"
+    },
+    {
+      "path": "inputs/pytorch/configs/pyrightconfig.benchmark.json",
+      "size": 1474,
+      "sha256": "c667da23001b5317ddc0312a249202d5410e69abefb0f2e3c939ee18b08ad1e9",
+      "role": "generated-benchmark-config"
+    },
+    {
+      "path": "inputs/pytorch/configs/ty.toml",
+      "size": 1538,
+      "sha256": "778260f062fd1cd0767ad525551701f27da4863fbca80b8f2502d814ce754d68",
+      "role": "generated-benchmark-config"
+    },
+    {
+      "path": "inputs/pytorch/configs/zuban-benchmark.toml",
+      "size": 3391,
+      "sha256": "1fc50c5c2ff0b7a047a2102382d7680f6d4e2eb9d0fe1e6fa30972a8ac87d78a",
+      "role": "generated-benchmark-config"
+    },
+    {
+      "path": "inputs/pytorch/configs/zuban-canonical-benchmark.toml",
+      "size": 3407,
+      "sha256": "773fac5663681c937637802ea42897b0ce96e16d919ceec6693000935eacc71f",
+      "role": "generated-benchmark-config"
+    },
+    {
+      "path": "inputs/pytorch/dependencies.txt",
+      "size": 627,
+      "sha256": "e635c63eda3d086df2892ed766e3f1d363222636747f170116e9d3a31e44b96e",
+      "role": "project-dependency-freeze"
+    },
+    {
+      "path": "inputs/rich/benchmark-files.txt",
+      "size": 2269,
+      "sha256": "aeef23ee3d29b7af5c31eba7be061a0d0c91d711291d958e7719a5ad71294aaa",
+      "role": "project-root-list"
+    },
+    {
+      "path": "inputs/rich/configs/mypy-benchmark.toml",
+      "size": 27,
+      "sha256": "b3c4e583128412327e0da99f3f180c1782febb7b442fcea0f5d33eacb1b084c2",
+      "role": "generated-benchmark-config"
+    },
+    {
+      "path": "inputs/rich/configs/pyrefly.toml",
+      "size": 317,
+      "sha256": "5e535ff2e66609a15e3a6527ae3a8cf623b09467c75919997de901087a16bf8c",
+      "role": "generated-benchmark-config"
+    },
+    {
+      "path": "inputs/rich/configs/pyrightconfig.benchmark.json",
+      "size": 108,
+      "sha256": "0b96b52248dff1410aab63ee878f964c278aa167e417bced445b7953110dd8e8",
+      "role": "generated-benchmark-config"
+    },
+    {
+      "path": "inputs/rich/configs/ty.toml",
+      "size": 169,
+      "sha256": "59791bb58a43025771512601068c927cdbec59fd466ab8dbcb2e37c1229243b5",
+      "role": "generated-benchmark-config"
+    },
+    {
+      "path": "inputs/rich/configs/zuban-benchmark.toml",
+      "size": 342,
+      "sha256": "2a7de28276d36eac7a5a4f43cf9ecd743b6657cc7b95fc4acd3744c037177ae1",
+      "role": "generated-benchmark-config"
+    },
+    {
+      "path": "inputs/rich/configs/zuban-canonical-benchmark.toml",
+      "size": 350,
+      "sha256": "de03d7803617c54fcd06b01e1a8691324a2c4e6108926e93b58761ca45a57e48",
+      "role": "generated-benchmark-config"
+    },
+    {
+      "path": "inputs/rich/dependencies.txt",
+      "size": 533,
+      "sha256": "a80910586483fe4f9decccc82f6081574c831cff7ae2c4c5bae240f9f355af8b",
+      "role": "project-dependency-freeze"
+    },
+    {
+      "path": "inputs/sqlalchemy/benchmark-files.txt",
+      "size": 9991,
+      "sha256": "63af6a6d83d2936bea987cfc1c1309a043d232df9154025e275457588a3ee6a2",
+      "role": "project-root-list"
+    },
+    {
+      "path": "inputs/sqlalchemy/configs/mypy-benchmark.toml",
+      "size": 32,
+      "sha256": "007d66accdf2e73dc1a635e23b7c911cc81595cb8d26620e981a5ba84fc4a969",
+      "role": "generated-benchmark-config"
+    },
+    {
+      "path": "inputs/sqlalchemy/configs/pyrefly.toml",
+      "size": 366,
+      "sha256": "857fc3c9e905516ff13a67304b98efb4acb8a11c8f93e7b7b7d132caedcdb2e3",
+      "role": "generated-benchmark-config"
+    },
+    {
+      "path": "inputs/sqlalchemy/configs/pyrightconfig.benchmark.json",
+      "size": 118,
+      "sha256": "e14b91d2bc455b9b7f509abd52871a29ef566c1af08a131348bfaa0cfec1c4cb",
+      "role": "generated-benchmark-config"
+    },
+    {
+      "path": "inputs/sqlalchemy/configs/ty.toml",
+      "size": 190,
+      "sha256": "8ea15fd382c61d0578b36756bafbb9f5598857d8757908e4a03e5d6e2cb6a2d7",
+      "role": "generated-benchmark-config"
+    },
+    {
+      "path": "inputs/sqlalchemy/configs/zuban-benchmark.toml",
+      "size": 368,
+      "sha256": "0888cdc82b2d899b6cc18d0dc80190c6273bea1564987213019ea4623e5f3237",
+      "role": "generated-benchmark-config"
+    },
+    {
+      "path": "inputs/sqlalchemy/configs/zuban-canonical-benchmark.toml",
+      "size": 376,
+      "sha256": "eb39332a17083e75cc2775908281f26918dda3ce8cf3ec5f60b9afd7197c81ec",
+      "role": "generated-benchmark-config"
+    },
+    {
+      "path": "inputs/sqlalchemy/dependencies.txt",
+      "size": 238,
+      "sha256": "9cea4f1162845529f3bce3e0e1b79699be70b68aa6330363dc05d795574e67e4",
+      "role": "project-dependency-freeze"
+    },
+    {
+      "path": "inputs/sympy/benchmark-files.txt",
+      "size": 28223,
+      "sha256": "3343a81689cd989b2424777a101a9337498868276a32df892d8c4f4377b35811",
+      "role": "project-root-list"
+    },
+    {
+      "path": "inputs/sympy/configs/mypy-benchmark.toml",
+      "size": 27,
+      "sha256": "b3c4e583128412327e0da99f3f180c1782febb7b442fcea0f5d33eacb1b084c2",
+      "role": "generated-benchmark-config"
+    },
+    {
+      "path": "inputs/sympy/configs/pyrefly.toml",
+      "size": 2442,
+      "sha256": "72aa6fbfb56d58c58ec6be3084f680edd0fd0ace71da844444deba07128dd532",
+      "role": "generated-benchmark-config"
+    },
+    {
+      "path": "inputs/sympy/configs/pyrightconfig.benchmark.json",
+      "size": 2231,
+      "sha256": "6391b39b30c5f8846bee2240f301e1b75c42b7e6fb7ecfc2273e73599a41e758",
+      "role": "generated-benchmark-config"
+    },
+    {
+      "path": "inputs/sympy/configs/ty.toml",
+      "size": 2293,
+      "sha256": "6186847f95fed95ca619bda5a4316a9a137205ab1d0b342982244bc67215582d",
+      "role": "generated-benchmark-config"
+    },
+    {
+      "path": "inputs/sympy/configs/zuban-benchmark.toml",
+      "size": 5467,
+      "sha256": "eb7c65453d8816185e9691ac2ac59f1c261409f322133af0376fb8db7583bd03",
+      "role": "generated-benchmark-config"
+    },
+    {
+      "path": "inputs/sympy/configs/zuban-canonical-benchmark.toml",
+      "size": 5475,
+      "sha256": "ed260ee62a8dadb70856790474d3d75990e7e5fca6f889f80e3b172cb899cffd",
+      "role": "generated-benchmark-config"
+    },
+    {
+      "path": "inputs/sympy/dependencies.txt",
+      "size": 127,
+      "sha256": "e16306e964ec07cd33a1f9dac8810c16f0f6a3a3683d3cd8653a3c859d621254",
+      "role": "project-dependency-freeze"
+    },
+    {
+      "path": "lsp/current-benchmarks.json",
+      "size": 197543,
+      "sha256": "5f15f434bf46b19bd85f95f8777694644c312f9897acaabfdce01607c1e29774",
+      "role": "active-lsp-benchmark-objects-with-full-round-data"
+    },
+    {
+      "path": "lsp/current-testcases.json",
+      "size": 30189,
+      "sha256": "c9f3fc7db369920be54517a7206be6084df1a28f531893ea4d4e8f6cc5937a93",
+      "role": "active-lsp-testcases-including-three-retained-failures"
+    },
+    {
+      "path": "lsp/fresh-ty-0.0.99/updated-black/output.txt",
+      "size": 2878,
+      "sha256": "9ae650d4e8a677706a0d6accdf50d98c5db162805ee82d669ffe65003ca7d9c5",
+      "role": "original-pytest-benchmark-export-or-trace",
+      "origin": {
+        "mode": "fresh",
+        "checker_version": "ty 0.0.99 (9b48f40c9 2026-11-06)",
+        "started_at": "2026-11-06T12:09:43.037743+00:00",
+        "completed_at": "2026-11-06T12:09:47.175105+00:00"
+      }
+    },
+    {
+      "path": "lsp/fresh-ty-0.0.99/updated-black/results.json",
+      "size": 5114,
+      "sha256": "1fec6ec2465e07949c57d922c24794b2e2eb70b5bd2a3ebab8a7d0f10bdc2076",
+      "role": "original-pytest-benchmark-export-or-trace",
+      "origin": {
+        "mode": "fresh",
+        "checker_version": "ty 0.0.99 (9b48f40c9 2026-11-06)",
+        "started_at": "2026-11-06T12:09:43.037743+00:00",
+        "completed_at": "2026-11-06T12:09:47.175105+00:00"
+      }
+    },
+    {
+      "path": "lsp/fresh-ty-0.0.99/updated-black/results.xml",
+      "size": 494,
+      "sha256": "ceba8f5d425d3d237752ba533c925c61c3b31a3e142fe538baf4e1549cced7fc",
+      "role": "original-pytest-benchmark-export-or-trace",
+      "origin": {
+        "mode": "fresh",
+        "checker_version": "ty 0.0.99 (9b48f40c9 2026-11-06)",
+        "started_at": "2026-11-06T12:09:43.037743+00:00",
+        "completed_at": "2026-11-06T12:09:47.175105+00:00"
+      }
+    },
+    {
+      "path": "lsp/fresh-ty-0.0.99/updated-discord.py/output.txt",
+      "size": 2934,
+      "sha256": "46bd960dd7af61fbb4c1802b968741a3d1afa0ecb87a5808c48ffe6d4b7ce3e1",
+      "role": "original-pytest-benchmark-export-or-trace",
+      "origin": {
+        "mode": "fresh",
+        "checker_version": "ty 0.0.99 (9b48f40c9 2026-11-06)",
+        "started_at": "2026-11-06T12:09:47.218914+00:00",
+        "completed_at": "2026-11-06T12:09:51.391974+00:00"
+      }
+    },
+    {
+      "path": "lsp/fresh-ty-0.0.99/updated-discord.py/results.json",
+      "size": 5167,
+      "sha256": "f3ec14c4d36f003c3a14b0b15c1487c7029ab267b2b6aa64bbbbd79dad2aa421",
+      "role": "original-pytest-benchmark-export-or-trace",
+      "origin": {
+        "mode": "fresh",
+        "checker_version": "ty 0.0.99 (9b48f40c9 2026-11-06)",
+        "started_at": "2026-11-06T12:09:47.218914+00:00",
+        "completed_at": "2026-11-06T12:09:51.391974+00:00"
+      }
+    },
+    {
+      "path": "lsp/fresh-ty-0.0.99/updated-discord.py/results.xml",
+      "size": 504,
+      "sha256": "5349ebfdfffde167ae08a2f2e00889782e0c2ff0d6926acbd1996268e9ac1377",
+      "role": "original-pytest-benchmark-export-or-trace",
+      "origin": {
+        "mode": "fresh",
+        "checker_version": "ty 0.0.99 (9b48f40c9 2026-11-06)",
+        "started_at": "2026-11-06T12:09:47.218914+00:00",
+        "completed_at": "2026-11-06T12:09:51.391974+00:00"
+      }
+    },
+    {
+      "path": "lsp/fresh-ty-0.0.99/updated-django/output.txt",
+      "size": 2894,
+      "sha256": "b176ba934d4e05c903c47fe7af56666202435f2a313792b947d846e5beba76fe",
+      "role": "original-pytest-benchmark-export-or-trace",
+      "origin": {
+        "mode": "fresh",
+        "checker_version": "ty 0.0.99 (9b48f40c9 2026-11-06)",
+        "started_at": "2026-11-06T12:10:51.204903+00:00",
+        "completed_at": "2026-11-06T12:10:53.546872+00:00"
+      }
+    },
+    {
+      "path": "lsp/fresh-ty-0.0.99/updated-django/results.json",
+      "size": 5150,
+      "sha256": "b7db55eadd6337bf5789165f45905d7ed3351cef8af5d6c87a9f6452bcccbe02",
+      "role": "original-pytest-benchmark-export-or-trace",
+      "origin": {
+        "mode": "fresh",
+        "checker_version": "ty 0.0.99 (9b48f40c9 2026-11-06)",
+        "started_at": "2026-11-06T12:10:51.204903+00:00",
+        "completed_at": "2026-11-06T12:10:53.546872+00:00"
+      }
+    },
+    {
+      "path": "lsp/fresh-ty-0.0.99/updated-django/results.xml",
+      "size": 496,
+      "sha256": "5bf2f4996a98372125fe6e3a01b92783a6b574cf99c84588c40e870408fb4de7",
+      "role": "original-pytest-benchmark-export-or-trace",
+      "origin": {
+        "mode": "fresh",
+        "checker_version": "ty 0.0.99 (9b48f40c9 2026-11-06)",
+        "started_at": "2026-11-06T12:10:51.204903+00:00",
+        "completed_at": "2026-11-06T12:10:53.546872+00:00"
+      }
+    },
+    {
+      "path": "lsp/fresh-ty-0.0.99/updated-fastapi/output.txt",
+      "size": 2910,
+      "sha256": "14d19b88dce013cc73a7bf055b8ab4b659db2ccd022a924b55d41ece6ba9fed6",
+      "role": "original-pytest-benchmark-export-or-trace",
+      "origin": {
+        "mode": "fresh",
+        "checker_version": "ty 0.0.99 (9b48f40c9 2026-11-06)",
+        "started_at": "2026-11-06T12:10:37.694849+00:00",
+        "completed_at": "2026-11-06T12:10:41.524082+00:00"
+      }
+    },
+    {
+      "path": "lsp/fresh-ty-0.0.99/updated-fastapi/results.json",
+      "size": 5155,
+      "sha256": "6eead4077a11fa5337f6b0fab2985c0e342903ada58696f838dd14cdf71588d1",
+      "role": "original-pytest-benchmark-export-or-trace",
+      "origin": {
+        "mode": "fresh",
+        "checker_version": "ty 0.0.99 (9b48f40c9 2026-11-06)",
+        "started_at": "2026-11-06T12:10:37.694849+00:00",
+        "completed_at": "2026-11-06T12:10:41.524082+00:00"
+      }
+    },
+    {
+      "path": "lsp/fresh-ty-0.0.99/updated-fastapi/results.xml",
+      "size": 498,
+      "sha256": "9d71fbb166cb56bbf27c22975038a647e2c95955bc89ffba80338c5fb19233e3",
+      "role": "original-pytest-benchmark-export-or-trace",
+      "origin": {
+        "mode": "fresh",
+        "checker_version": "ty 0.0.99 (9b48f40c9 2026-11-06)",
+        "started_at": "2026-11-06T12:10:37.694849+00:00",
+        "completed_at": "2026-11-06T12:10:41.524082+00:00"
+      }
+    },
+    {
+      "path": "lsp/fresh-ty-0.0.99/updated-homeassistant/output.txt",
+      "size": 2976,
+      "sha256": "0543d474157397bfdfdee69cf905fdfa38d4a9035f4023361f2259c4369ada23",
+      "role": "original-pytest-benchmark-export-or-trace",
+      "origin": {
+        "mode": "fresh",
+        "checker_version": "ty 0.0.99 (9b48f40c9 2026-11-06)",
+        "started_at": "2026-11-06T12:09:52.876826+00:00",
+        "completed_at": "2026-11-06T12:09:57.624025+00:00"
+      }
+    },
+    {
+      "path": "lsp/fresh-ty-0.0.99/updated-homeassistant/results.json",
+      "size": 5193,
+      "sha256": "33317e3f4b74a5a90006d03f24e7da6b9a881e08032068627c2a36025b71bb8d",
+      "role": "original-pytest-benchmark-export-or-trace",
+      "origin": {
+        "mode": "fresh",
+        "checker_version": "ty 0.0.99 (9b48f40c9 2026-11-06)",
+        "started_at": "2026-11-06T12:09:52.876826+00:00",
+        "completed_at": "2026-11-06T12:09:57.624025+00:00"
+      }
+    },
+    {
+      "path": "lsp/fresh-ty-0.0.99/updated-homeassistant/results.xml",
+      "size": 510,
+      "sha256": "58f7c41d3d7e2f4bb73cd7425ecb706a5550a1fe3a6b3dd777ac81f73f7b33c3",
+      "role": "original-pytest-benchmark-export-or-trace",
+      "origin": {
+        "mode": "fresh",
+        "checker_version": "ty 0.0.99 (9b48f40c9 2026-11-06)",
+        "started_at": "2026-11-06T12:09:52.876826+00:00",
+        "completed_at": "2026-11-06T12:09:57.624025+00:00"
+      }
+    },
+    {
+      "path": "lsp/fresh-ty-0.0.99/updated-httpx/output.txt",
+      "size": 2884,
+      "sha256": "60138959c691aadc8d8159fe077ddac2e1efafec5ec1d9703edd293ee7a5800a",
+      "role": "original-pytest-benchmark-export-or-trace",
+      "origin": {
+        "mode": "fresh",
+        "checker_version": "ty 0.0.99 (9b48f40c9 2026-11-06)",
+        "started_at": "2026-11-06T12:10:25.188592+00:00",
+        "completed_at": "2026-11-06T12:10:27.573557+00:00"
+      }
+    },
+    {
+      "path": "lsp/fresh-ty-0.0.99/updated-httpx/results.json",
+      "size": 5131,
+      "sha256": "065a8a046cf3d029609ada2ce40a07fd72867d1a1b4fbeffe5951c92a3d033a7",
+      "role": "original-pytest-benchmark-export-or-trace",
+      "origin": {
+        "mode": "fresh",
+        "checker_version": "ty 0.0.99 (9b48f40c9 2026-11-06)",
+        "started_at": "2026-11-06T12:10:25.188592+00:00",
+        "completed_at": "2026-11-06T12:10:27.573557+00:00"
+      }
+    },
+    {
+      "path": "lsp/fresh-ty-0.0.99/updated-httpx/results.xml",
+      "size": 494,
+      "sha256": "26c95d2f650f6a3b55d64bda9a138aa23217f39ffb9d31bfc0e6662abe08c450",
+      "role": "original-pytest-benchmark-export-or-trace",
+      "origin": {
+        "mode": "fresh",
+        "checker_version": "ty 0.0.99 (9b48f40c9 2026-11-06)",
+        "started_at": "2026-11-06T12:10:25.188592+00:00",
+        "completed_at": "2026-11-06T12:10:27.573557+00:00"
+      }
+    },
+    {
+      "path": "lsp/fresh-ty-0.0.99/updated-isort/output.txt",
+      "size": 2878,
+      "sha256": "772d33380765c7304c697a7fc997c79451de135ec4776561f14c713840b62b63",
+      "role": "original-pytest-benchmark-export-or-trace",
+      "origin": {
+        "mode": "fresh",
+        "checker_version": "ty 0.0.99 (9b48f40c9 2026-11-06)",
+        "started_at": "2026-11-06T12:09:57.656110+00:00",
+        "completed_at": "2026-11-06T12:10:00.265675+00:00"
+      }
+    },
+    {
+      "path": "lsp/fresh-ty-0.0.99/updated-isort/results.json",
+      "size": 5127,
+      "sha256": "2e6d000b8bf100794e839064ab324773b0451cd05e276f2cfefcdab20b75940a",
+      "role": "original-pytest-benchmark-export-or-trace",
+      "origin": {
+        "mode": "fresh",
+        "checker_version": "ty 0.0.99 (9b48f40c9 2026-11-06)",
+        "started_at": "2026-11-06T12:09:57.656110+00:00",
+        "completed_at": "2026-11-06T12:10:00.265675+00:00"
+      }
+    },
+    {
+      "path": "lsp/fresh-ty-0.0.99/updated-isort/results.xml",
+      "size": 494,
+      "sha256": "a9e7b39d5eaf3305f9d8ea32866bc85c86b610a2628955d150ce12830c3b1f59",
+      "role": "original-pytest-benchmark-export-or-trace",
+      "origin": {
+        "mode": "fresh",
+        "checker_version": "ty 0.0.99 (9b48f40c9 2026-11-06)",
+        "started_at": "2026-11-06T12:09:57.656110+00:00",
+        "completed_at": "2026-11-06T12:10:00.265675+00:00"
+      }
+    },
+    {
+      "path": "lsp/fresh-ty-0.0.99/updated-jinja/output.txt",
+      "size": 2878,
+      "sha256": "4057561264d1400a9f563989d65eee7f3aa19758acae1f6d95ba172d11a8512b",
+      "role": "original-pytest-benchmark-export-or-trace",
+      "origin": {
+        "mode": "fresh",
+        "checker_version": "ty 0.0.99 (9b48f40c9 2026-11-06)",
+        "started_at": "2026-11-06T12:10:00.292023+00:00",
+        "completed_at": "2026-11-06T12:10:02.918401+00:00"
+      }
+    },
+    {
+      "path": "lsp/fresh-ty-0.0.99/updated-jinja/results.json",
+      "size": 5128,
+      "sha256": "199ac3c4ae5158d1f3bda5b72378d826efde18d1e3cb61f8e9030cebfe353120",
+      "role": "original-pytest-benchmark-export-or-trace",
+      "origin": {
+        "mode": "fresh",
+        "checker_version": "ty 0.0.99 (9b48f40c9 2026-11-06)",
+        "started_at": "2026-11-06T12:10:00.292023+00:00",
+        "completed_at": "2026-11-06T12:10:02.918401+00:00"
+      }
+    },
+    {
+      "path": "lsp/fresh-ty-0.0.99/updated-jinja/results.xml",
+      "size": 494,
+      "sha256": "cb314aed38db8db89acc09384dd6eadd26222d1e9cb038b1713bea5b78fc2458",
+      "role": "original-pytest-benchmark-export-or-trace",
+      "origin": {
+        "mode": "fresh",
+        "checker_version": "ty 0.0.99 (9b48f40c9 2026-11-06)",
+        "started_at": "2026-11-06T12:10:00.292023+00:00",
+        "completed_at": "2026-11-06T12:10:02.918401+00:00"
+      }
+    },
+    {
+      "path": "lsp/fresh-ty-0.0.99/updated-numpy/output.txt",
+      "size": 2902,
+      "sha256": "b9871d7d681e3cb568b6c45ef77709283613dce733c1236ebb0d8cb56322f12e",
+      "role": "original-pytest-benchmark-export-or-trace",
+      "origin": {
+        "mode": "fresh",
+        "checker_version": "ty 0.0.99 (9b48f40c9 2026-11-06)",
+        "started_at": "2026-11-06T12:10:27.683051+00:00",
+        "completed_at": "2026-11-06T12:10:37.594581+00:00"
+      }
+    },
+    {
+      "path": "lsp/fresh-ty-0.0.99/updated-numpy/results.json",
+      "size": 5108,
+      "sha256": "cf38e82038169be69b8743bbcb588230b1e33cd7b4d6b7d12207822a8b3cbedc",
+      "role": "original-pytest-benchmark-export-or-trace",
+      "origin": {
+        "mode": "fresh",
+        "checker_version": "ty 0.0.99 (9b48f40c9 2026-11-06)",
+        "started_at": "2026-11-06T12:10:27.683051+00:00",
+        "completed_at": "2026-11-06T12:10:37.594581+00:00"
+      }
+    },
+    {
+      "path": "lsp/fresh-ty-0.0.99/updated-numpy/results.xml",
+      "size": 494,
+      "sha256": "b1bb9b4549a66996b128afb81583f519d257663ff3d1e8a9225b1f6a86580d83",
+      "role": "original-pytest-benchmark-export-or-trace",
+      "origin": {
+        "mode": "fresh",
+        "checker_version": "ty 0.0.99 (9b48f40c9 2026-11-06)",
+        "started_at": "2026-11-06T12:10:27.683051+00:00",
+        "completed_at": "2026-11-06T12:10:37.594581+00:00"
+      }
+    },
+    {
+      "path": "lsp/fresh-ty-0.0.99/updated-openai/output.txt",
+      "size": 2894,
+      "sha256": "612938bf72cca430e6ffcd892066d0e044ddfeaaa7badb9f21ce3ff1bc99abe1",
+      "role": "original-pytest-benchmark-export-or-trace",
+      "origin": {
+        "mode": "fresh",
+        "checker_version": "ty 0.0.99 (9b48f40c9 2026-11-06)",
+        "started_at": "2026-11-06T12:10:57.093240+00:00",
+        "completed_at": "2026-11-06T12:11:00.118903+00:00"
+      }
+    },
+    {
+      "path": "lsp/fresh-ty-0.0.99/updated-openai/results.json",
+      "size": 5139,
+      "sha256": "37e24bee8d0a45ef81a5ee1548e5133a0074d74f16d37f0ff0ea574c12249166",
+      "role": "original-pytest-benchmark-export-or-trace",
+      "origin": {
+        "mode": "fresh",
+        "checker_version": "ty 0.0.99 (9b48f40c9 2026-11-06)",
+        "started_at": "2026-11-06T12:10:57.093240+00:00",
+        "completed_at": "2026-11-06T12:11:00.118903+00:00"
+      }
+    },
+    {
+      "path": "lsp/fresh-ty-0.0.99/updated-openai/results.xml",
+      "size": 496,
+      "sha256": "f28766f3e70bcf899e536a6a3624cbe4079f7ec3a4c71daf25ad62c8d46fe65f",
+      "role": "original-pytest-benchmark-export-or-trace",
+      "origin": {
+        "mode": "fresh",
+        "checker_version": "ty 0.0.99 (9b48f40c9 2026-11-06)",
+        "started_at": "2026-11-06T12:10:57.093240+00:00",
+        "completed_at": "2026-11-06T12:11:00.118903+00:00"
+      }
+    },
+    {
+      "path": "lsp/fresh-ty-0.0.99/updated-pandas/output.txt",
+      "size": 2912,
+      "sha256": "2241e4a903c7f2d2326aa2b3f2e286f5b8ccf85ad0e155261d2463eedd684d3c",
+      "role": "original-pytest-benchmark-export-or-trace",
+      "origin": {
+        "mode": "fresh",
+        "checker_version": "ty 0.0.99 (9b48f40c9 2026-11-06)",
+        "started_at": "2026-11-06T12:10:03.102266+00:00",
+        "completed_at": "2026-11-06T12:10:15.248725+00:00"
+      }
+    },
+    {
+      "path": "lsp/fresh-ty-0.0.99/updated-pandas/results.json",
+      "size": 5111,
+      "sha256": "f9da718a6999f91863fa4f2eaa4e6020b9a1fe068c99db94fe3e5c15ecc7aa2f",
+      "role": "original-pytest-benchmark-export-or-trace",
+      "origin": {
+        "mode": "fresh",
+        "checker_version": "ty 0.0.99 (9b48f40c9 2026-11-06)",
+        "started_at": "2026-11-06T12:10:03.102266+00:00",
+        "completed_at": "2026-11-06T12:10:15.248725+00:00"
+      }
+    },
+    {
+      "path": "lsp/fresh-ty-0.0.99/updated-pandas/results.xml",
+      "size": 497,
+      "sha256": "d7b04d1c41143fac26711a7c280477a38c4aee4febc947322e49f5d5b375d800",
+      "role": "original-pytest-benchmark-export-or-trace",
+      "origin": {
+        "mode": "fresh",
+        "checker_version": "ty 0.0.99 (9b48f40c9 2026-11-06)",
+        "started_at": "2026-11-06T12:10:03.102266+00:00",
+        "completed_at": "2026-11-06T12:10:15.248725+00:00"
+      }
+    },
+    {
+      "path": "lsp/fresh-ty-0.0.99/updated-prefect/output.txt",
+      "size": 2928,
+      "sha256": "64f890b48cb3668609f148aa2c147ee839eb359277381484b8077ebe8a68de37",
+      "role": "original-pytest-benchmark-export-or-trace",
+      "origin": {
+        "mode": "fresh",
+        "checker_version": "ty 0.0.99 (9b48f40c9 2026-11-06)",
+        "started_at": "2026-11-06T12:10:15.446189+00:00",
+        "completed_at": "2026-11-06T12:10:21.375643+00:00"
+      }
+    },
+    {
+      "path": "lsp/fresh-ty-0.0.99/updated-prefect/results.json",
+      "size": 5133,
+      "sha256": "8c813bd74958a0bf0206e54e084a58bef3957c278d7e555c97e01ad014b2a5a7",
+      "role": "original-pytest-benchmark-export-or-trace",
+      "origin": {
+        "mode": "fresh",
+        "checker_version": "ty 0.0.99 (9b48f40c9 2026-11-06)",
+        "started_at": "2026-11-06T12:10:15.446189+00:00",
+        "completed_at": "2026-11-06T12:10:21.375643+00:00"
+      }
+    },
+    {
+      "path": "lsp/fresh-ty-0.0.99/updated-prefect/results.xml",
+      "size": 498,
+      "sha256": "8849fe4f8d1ee4da70032ce4e1c37b562caf0e83913dcc3c378285c2a76cfbdd",
+      "role": "original-pytest-benchmark-export-or-trace",
+      "origin": {
+        "mode": "fresh",
+        "checker_version": "ty 0.0.99 (9b48f40c9 2026-11-06)",
+        "started_at": "2026-11-06T12:10:15.446189+00:00",
+        "completed_at": "2026-11-06T12:10:21.375643+00:00"
+      }
+    },
+    {
+      "path": "lsp/fresh-ty-0.0.99/updated-pytest/output.txt",
+      "size": 2894,
+      "sha256": "efc007a44ba2c7583101c4553004ad12d96f3534bfc73993a1010f09fa58d7a3",
+      "role": "original-pytest-benchmark-export-or-trace",
+      "origin": {
+        "mode": "fresh",
+        "checker_version": "ty 0.0.99 (9b48f40c9 2026-11-06)",
+        "started_at": "2026-11-06T12:11:00.169641+00:00",
+        "completed_at": "2026-11-06T12:11:03.453774+00:00"
+      }
+    },
+    {
+      "path": "lsp/fresh-ty-0.0.99/updated-pytest/results.json",
+      "size": 5135,
+      "sha256": "9332dcca0198b88efba56652c715b42b2767e6da757d4a5c69919c00b10c44c6",
+      "role": "original-pytest-benchmark-export-or-trace",
+      "origin": {
+        "mode": "fresh",
+        "checker_version": "ty 0.0.99 (9b48f40c9 2026-11-06)",
+        "started_at": "2026-11-06T12:11:00.169641+00:00",
+        "completed_at": "2026-11-06T12:11:03.453774+00:00"
+      }
+    },
+    {
+      "path": "lsp/fresh-ty-0.0.99/updated-pytest/results.xml",
+      "size": 496,
+      "sha256": "0166df46d1b41c881bc88148d2fd10a4734fdc0bafc9aba5f0d53083f7af841c",
+      "role": "original-pytest-benchmark-export-or-trace",
+      "origin": {
+        "mode": "fresh",
+        "checker_version": "ty 0.0.99 (9b48f40c9 2026-11-06)",
+        "started_at": "2026-11-06T12:11:00.169641+00:00",
+        "completed_at": "2026-11-06T12:11:03.453774+00:00"
+      }
+    },
+    {
+      "path": "lsp/fresh-ty-0.0.99/updated-pytorch/output.txt",
+      "size": 2904,
+      "sha256": "86f0bd78130099827e86c48366dcef07a3568b8222fe9845a62bab0a575394cb",
+      "role": "original-pytest-benchmark-export-or-trace",
+      "origin": {
+        "mode": "fresh",
+        "checker_version": "ty 0.0.99 (9b48f40c9 2026-11-06)",
+        "started_at": "2026-11-06T12:10:22.006248+00:00",
+        "completed_at": "2026-11-06T12:10:25.162521+00:00"
+      }
+    },
+    {
+      "path": "lsp/fresh-ty-0.0.99/updated-pytorch/results.json",
+      "size": 5149,
+      "sha256": "b021d04cfb8a1c91b10bb6dae44cb43c7a63c9d1b80d905585676ad732f3c67d",
+      "role": "original-pytest-benchmark-export-or-trace",
+      "origin": {
+        "mode": "fresh",
+        "checker_version": "ty 0.0.99 (9b48f40c9 2026-11-06)",
+        "started_at": "2026-11-06T12:10:22.006248+00:00",
+        "completed_at": "2026-11-06T12:10:25.162521+00:00"
+      }
+    },
+    {
+      "path": "lsp/fresh-ty-0.0.99/updated-pytorch/results.xml",
+      "size": 498,
+      "sha256": "b7186cb2fb2452c7747c76b843d22d3c06577b1b2f5559b56a1dfe3a4f4aeda5",
+      "role": "original-pytest-benchmark-export-or-trace",
+      "origin": {
+        "mode": "fresh",
+        "checker_version": "ty 0.0.99 (9b48f40c9 2026-11-06)",
+        "started_at": "2026-11-06T12:10:22.006248+00:00",
+        "completed_at": "2026-11-06T12:10:25.162521+00:00"
+      }
+    },
+    {
+      "path": "lsp/fresh-ty-0.0.99/updated-rich/output.txt",
+      "size": 2874,
+      "sha256": "53d0b8eea970cf60cb746a16c51a6d2b8c007b3f939e32ae1aa9f5ba60a76eea",
+      "role": "original-pytest-benchmark-export-or-trace",
+      "origin": {
+        "mode": "fresh",
+        "checker_version": "ty 0.0.99 (9b48f40c9 2026-11-06)",
+        "started_at": "2026-11-06T12:10:48.762008+00:00",
+        "completed_at": "2026-11-06T12:10:50.959787+00:00"
+      }
+    },
+    {
+      "path": "lsp/fresh-ty-0.0.99/updated-rich/results.json",
+      "size": 5125,
+      "sha256": "af1e784d41d1ef943e5b0a77d9fd075668a81f52b8aced9a4203f5bee83287e8",
+      "role": "original-pytest-benchmark-export-or-trace",
+      "origin": {
+        "mode": "fresh",
+        "checker_version": "ty 0.0.99 (9b48f40c9 2026-11-06)",
+        "started_at": "2026-11-06T12:10:48.762008+00:00",
+        "completed_at": "2026-11-06T12:10:50.959787+00:00"
+      }
+    },
+    {
+      "path": "lsp/fresh-ty-0.0.99/updated-rich/results.xml",
+      "size": 492,
+      "sha256": "5e10316dd95d2e102628cd89c3080105e19c32faa557af850d902cd7bbcf3ccc",
+      "role": "original-pytest-benchmark-export-or-trace",
+      "origin": {
+        "mode": "fresh",
+        "checker_version": "ty 0.0.99 (9b48f40c9 2026-11-06)",
+        "started_at": "2026-11-06T12:10:48.762008+00:00",
+        "completed_at": "2026-11-06T12:10:50.959787+00:00"
+      }
+    },
+    {
+      "path": "lsp/fresh-ty-0.0.99/updated-sqlalchemy/output.txt",
+      "size": 2952,
+      "sha256": "f5337403a6fd9acdcc22ed0fd1e94e243db8dbd1c2b63619fa0d4a1569c354ca",
+      "role": "original-pytest-benchmark-export-or-trace",
+      "origin": {
+        "mode": "fresh",
+        "checker_version": "ty 0.0.99 (9b48f40c9 2026-11-06)",
+        "started_at": "2026-11-06T12:10:41.639727+00:00",
+        "completed_at": "2026-11-06T12:10:48.722603+00:00"
+      }
+    },
+    {
+      "path": "lsp/fresh-ty-0.0.99/updated-sqlalchemy/results.json",
+      "size": 5164,
+      "sha256": "bd96ed256446cf196c62df5e020e5e658c7268bd2bba3dcf0d7ffdfdcd094b4b",
+      "role": "original-pytest-benchmark-export-or-trace",
+      "origin": {
+        "mode": "fresh",
+        "checker_version": "ty 0.0.99 (9b48f40c9 2026-11-06)",
+        "started_at": "2026-11-06T12:10:41.639727+00:00",
+        "completed_at": "2026-11-06T12:10:48.722603+00:00"
+      }
+    },
+    {
+      "path": "lsp/fresh-ty-0.0.99/updated-sqlalchemy/results.xml",
+      "size": 504,
+      "sha256": "1c879d0b1c06b25260c7330578e9936b31ed94e1a1e4fd531eab0c46a1603f25",
+      "role": "original-pytest-benchmark-export-or-trace",
+      "origin": {
+        "mode": "fresh",
+        "checker_version": "ty 0.0.99 (9b48f40c9 2026-11-06)",
+        "started_at": "2026-11-06T12:10:41.639727+00:00",
+        "completed_at": "2026-11-06T12:10:48.722603+00:00"
+      }
+    },
+    {
+      "path": "lsp/fresh-ty-0.0.99/updated-sympy/output.txt",
+      "size": 2884,
+      "sha256": "be6837edfaa27c7b3cf93795d2a3afa41e91532583cd735e05eb6e7d576e3589",
+      "role": "original-pytest-benchmark-export-or-trace",
+      "origin": {
+        "mode": "fresh",
+        "checker_version": "ty 0.0.99 (9b48f40c9 2026-11-06)",
+        "started_at": "2026-11-06T12:10:53.730627+00:00",
+        "completed_at": "2026-11-06T12:10:56.878450+00:00"
+      }
+    },
+    {
+      "path": "lsp/fresh-ty-0.0.99/updated-sympy/results.json",
+      "size": 5131,
+      "sha256": "f6fbcb24917cb8726fa1a969d899c9b8cf0b44adb76d405f2889b66e69fa88d8",
+      "role": "original-pytest-benchmark-export-or-trace",
+      "origin": {
+        "mode": "fresh",
+        "checker_version": "ty 0.0.99 (9b48f40c9 2026-11-06)",
+        "started_at": "2026-11-06T12:10:53.730627+00:00",
+        "completed_at": "2026-11-06T12:10:56.878450+00:00"
+      }
+    },
+    {
+      "path": "lsp/fresh-ty-0.0.99/updated-sympy/results.xml",
+      "size": 494,
+      "sha256": "4174b245441311b3d82ce8928fbc751e02c203a5fdcd2c13c002f5dd096858ad",
+      "role": "original-pytest-benchmark-export-or-trace",
+      "origin": {
+        "mode": "fresh",
+        "checker_version": "ty 0.0.99 (9b48f40c9 2026-11-06)",
+        "started_at": "2026-11-06T12:10:53.730627+00:00",
+        "completed_at": "2026-11-06T12:10:56.878450+00:00"
+      }
+    },
+    {
+      "path": "lsp/prior-ty-0.0.96.json",
+      "size": 50934,
+      "sha256": "b8fa2aeb24c9eafe1afa64423aa6e201ce476f1574d9fc22b8200beb0642094c",
+      "role": "prior-ty-lsp-objects-with-full-round-data"
+    },
+    {
+      "path": "protocol/cli/black/mypy.roots.json",
+      "size": 1166,
+      "sha256": "43f85489ac82bd8a9268cdeae124818fbc6d80f141fa6677e0d88310da8c0bb9",
+      "role": "root-parity-proof"
+    },
+    {
+      "path": "protocol/cli/black/pyrefly.roots.json",
+      "size": 567,
+      "sha256": "87e5b77954a8040e5dd6434a0c56b2a6f026fb5bc8c4ea7a3912a612799929c9",
+      "role": "root-parity-proof"
+    },
+    {
+      "path": "protocol/cli/black/pyright.roots.json",
+      "size": 496,
+      "sha256": "173847a77bf5946a82fff0a695096a9c7db99152b56081c89a00d837313b33db",
+      "role": "root-parity-proof"
+    },
+    {
+      "path": "protocol/cli/black/ty.roots.json",
+      "size": 511,
+      "sha256": "ca18654e1dce6609aeece9e521fbb62acc0e2bdeac4aa8cd0860bc955b55b59b",
+      "role": "root-parity-proof"
+    },
+    {
+      "path": "protocol/cli/black/zuban.roots.json",
+      "size": 423,
+      "sha256": "1e6a0056897f708d6b46a0b982756a19103f562e69bcce67808c259876c37ed1",
+      "role": "root-parity-proof"
+    },
+    {
+      "path": "protocol/cli/discord.py/mypy.roots.json",
+      "size": 1196,
+      "sha256": "ee5b173d8dc9ee8888de6a066a4dc2c30bb777f8ee1df661ef257e7c90f40e7c",
+      "role": "root-parity-proof"
+    },
+    {
+      "path": "protocol/cli/discord.py/pyrefly.roots.json",
+      "size": 569,
+      "sha256": "1cddee58dc604d57b0a227435693dde661a2c1d9f42b41360e808b8e36cc4a1c",
+      "role": "root-parity-proof"
+    },
+    {
+      "path": "protocol/cli/discord.py/pyright.roots.json",
+      "size": 498,
+      "sha256": "6eb9a09e3cccfa27471641a28e5a3726918fde291cb45100e67cc6e864011a00",
+      "role": "root-parity-proof"
+    },
+    {
+      "path": "protocol/cli/discord.py/ty.roots.json",
+      "size": 513,
+      "sha256": "5c41230a2538a193bd015ee0f7019289506e4b6ea81d4548e9cc8946a81bb53e",
+      "role": "root-parity-proof"
+    },
+    {
+      "path": "protocol/cli/discord.py/zuban.roots.json",
+      "size": 425,
+      "sha256": "9032039e53d513794908991cbe76778480cce3b7682f8e73864e3106c789f169",
+      "role": "root-parity-proof"
+    },
+    {
+      "path": "protocol/cli/django/mypy.roots.json",
+      "size": 1177,
+      "sha256": "5156f55839534736ed52edbe9b3ab63d24b9d39490b88a0c0b5e89723cd25514",
+      "role": "root-parity-proof"
+    },
+    {
+      "path": "protocol/cli/django/pyrefly.roots.json",
+      "size": 569,
+      "sha256": "717a85f7df588e640892daf6735519bc5fd114931ff846bab5b8f41eb32017a0",
+      "role": "root-parity-proof"
+    },
+    {
+      "path": "protocol/cli/django/pyright.roots.json",
+      "size": 498,
+      "sha256": "7df4cd623312250f541da590d7f94eabb23ddde6c5c3c569dfb1ecac8117738b",
+      "role": "root-parity-proof"
+    },
+    {
+      "path": "protocol/cli/django/ty.roots.json",
+      "size": 513,
+      "sha256": "7ab71010e013c4348b98956aca7b34ac8b2cf95f4a8419d8977b06960e1b63bd",
+      "role": "root-parity-proof"
+    },
+    {
+      "path": "protocol/cli/django/zuban.roots.json",
+      "size": 425,
+      "sha256": "1d82ae507aa5403ca3a380e5373b9cbf32654202f491f98fdc6e6b1c0c12631a",
+      "role": "root-parity-proof"
+    },
+    {
+      "path": "protocol/cli/fastapi/mypy.roots.json",
+      "size": 1182,
+      "sha256": "5cf6f3fc2ac7c2a747b74886c50ceadfe88916a8e8c104a9c808c2bbbbe64192",
+      "role": "root-parity-proof"
+    },
+    {
+      "path": "protocol/cli/fastapi/pyrefly.roots.json",
+      "size": 567,
+      "sha256": "ff54d009ffdb6a96aef7d73c0872dc00259175f1983490f41dd50f573b233528",
+      "role": "root-parity-proof"
+    },
+    {
+      "path": "protocol/cli/fastapi/pyright.roots.json",
+      "size": 496,
+      "sha256": "26c358bec893a56326d2a0306921cfef258eee1d98eee3cc3c75c2069208fb98",
+      "role": "root-parity-proof"
+    },
+    {
+      "path": "protocol/cli/fastapi/ty.roots.json",
+      "size": 511,
+      "sha256": "e89d7598886d311abcab0d614eccbe4da937e1d327acad83aafa89796cff6fc5",
+      "role": "root-parity-proof"
+    },
+    {
+      "path": "protocol/cli/fastapi/zuban.roots.json",
+      "size": 423,
+      "sha256": "830e9e1ac9d82e915aae2682458e307c7b2111d4e2ca8d70c6ce429eadb4319a",
+      "role": "root-parity-proof"
+    },
+    {
+      "path": "protocol/cli/homeassistant/mypy.roots.json",
+      "size": 1536,
+      "sha256": "db4a3e96f8b9a43ee1cc936dd7a71d3ebcd1bf32fb4583908fa0968257dabd70",
+      "role": "root-parity-proof"
+    },
+    {
+      "path": "protocol/cli/homeassistant/pyrefly.roots.json",
+      "size": 573,
+      "sha256": "d64285db2c2cedf57fc2a69936dd456d4a17623ef04639ea29a63382710444b5",
+      "role": "root-parity-proof"
+    },
+    {
+      "path": "protocol/cli/homeassistant/pyright.roots.json",
+      "size": 502,
+      "sha256": "91e832eb1774c4d66aeb2ace478bd9cc1b9b2bf0d687530a018b3d743a2d1bf9",
+      "role": "root-parity-proof"
+    },
+    {
+      "path": "protocol/cli/homeassistant/ty.roots.json",
+      "size": 517,
+      "sha256": "26da9503dcf7f844e4237e30fbcbd2a287aa60eb7b22edf5ae28997d956ec5dc",
+      "role": "root-parity-proof"
+    },
+    {
+      "path": "protocol/cli/homeassistant/zuban.roots.json",
+      "size": 429,
+      "sha256": "88eb80e17075dacfee32e865ce2916b57e93385dc58e0f1e0e77a1394187bf04",
+      "role": "root-parity-proof"
+    },
+    {
+      "path": "protocol/cli/httpx/mypy.roots.json",
+      "size": 1170,
+      "sha256": "608c9d07b51a3de1fbbaf3bed53c6e7f2b5e6979a9964cde5ec0d49195e94a60",
+      "role": "root-parity-proof"
+    },
+    {
+      "path": "protocol/cli/httpx/pyrefly.roots.json",
+      "size": 567,
+      "sha256": "e1f6e960f76867aa054d7bc1f918b96ecd5696e12825e745d5938cfe6f0e7938",
+      "role": "root-parity-proof"
+    },
+    {
+      "path": "protocol/cli/httpx/pyright.roots.json",
+      "size": 496,
+      "sha256": "fa47a5d648fb7280c49f8cfea2f6d23c5c442f43a42bc4fcf10a05b8907bb297",
+      "role": "root-parity-proof"
+    },
+    {
+      "path": "protocol/cli/httpx/ty.roots.json",
+      "size": 511,
+      "sha256": "4f2565e4a3ae5302200f82176255597cb2744ffbfe40d110b06d520d475c5890",
+      "role": "root-parity-proof"
+    },
+    {
+      "path": "protocol/cli/httpx/zuban.roots.json",
+      "size": 423,
+      "sha256": "c36581190ccac3c50254076a77f594eb2e1f3c099beca0ef6f26cd367fbf0bf0",
+      "role": "root-parity-proof"
+    },
+    {
+      "path": "protocol/cli/isort/mypy.roots.json",
+      "size": 1170,
+      "sha256": "5102b9050b2c5542f225cd24e215c29a38dc351792faedeec18a7cab7fced0ef",
+      "role": "root-parity-proof"
+    },
+    {
+      "path": "protocol/cli/isort/pyrefly.roots.json",
+      "size": 567,
+      "sha256": "6af9e3abd2b6c738e3f72c092ca98df7cddb1cf3ade3e7ceb180359fdf1910cc",
+      "role": "root-parity-proof"
+    },
+    {
+      "path": "protocol/cli/isort/pyright.roots.json",
+      "size": 496,
+      "sha256": "574f80b9750105527195b62d1b861673daa39e3438ed3b991d5f2405c7e8a07b",
+      "role": "root-parity-proof"
+    },
+    {
+      "path": "protocol/cli/isort/ty.roots.json",
+      "size": 511,
+      "sha256": "1d357d7f01590284d2f061e2469fc787d3eb7e3081934d8d50ea516ddd0f29cf",
+      "role": "root-parity-proof"
+    },
+    {
+      "path": "protocol/cli/isort/zuban.roots.json",
+      "size": 423,
+      "sha256": "93221d80986a4d959890f26a57bd11611bc5c8a51c8a93db90ce78e94169de18",
+      "role": "root-parity-proof"
+    },
+    {
+      "path": "protocol/cli/jinja/mypy.roots.json",
+      "size": 1166,
+      "sha256": "b34b48615bdbbe2548282cb1be4dcf59f524a57e987d3caca462e21f4d46f993",
+      "role": "root-parity-proof"
+    },
+    {
+      "path": "protocol/cli/jinja/pyrefly.roots.json",
+      "size": 567,
+      "sha256": "b3a645b0c482ca26c450a21c3b857dc3e56889aa149216f9c956c40f8cd10253",
+      "role": "root-parity-proof"
+    },
+    {
+      "path": "protocol/cli/jinja/pyright.roots.json",
+      "size": 496,
+      "sha256": "5d532fbfa3cbb51f65b57ea7d871ce50d1193b98001039e403f3baebeb0cdc04",
+      "role": "root-parity-proof"
+    },
+    {
+      "path": "protocol/cli/jinja/ty.roots.json",
+      "size": 511,
+      "sha256": "fdea2ba9dba6d141aa74bbb5eb46cdcc7064a427fd95ec4784bdb1efd3efd868",
+      "role": "root-parity-proof"
+    },
+    {
+      "path": "protocol/cli/jinja/zuban.roots.json",
+      "size": 423,
+      "sha256": "81f27c7e429f803bab46cf6ed0f245e17801a4f4f680c153b01c8c66f6bb7ec9",
+      "role": "root-parity-proof"
+    },
+    {
+      "path": "protocol/cli/numpy/mypy.roots.json",
+      "size": 10572,
+      "sha256": "6e965c406a626969f45189fff59f5d44f63444e767b2a2a76353774a9cb24cba",
+      "role": "root-parity-proof"
+    },
+    {
+      "path": "protocol/cli/numpy/pyrefly.roots.json",
+      "size": 569,
+      "sha256": "26aadb3234acb6206d1a375a57ef49de3a4f8257d7e8ffcee877cc5d73425662",
+      "role": "root-parity-proof"
+    },
+    {
+      "path": "protocol/cli/numpy/pyright.roots.json",
+      "size": 498,
+      "sha256": "38cd49c8de0cd4dee6902252a46506f3622f99b28966fc0c491d81a2cd7d5ae1",
+      "role": "root-parity-proof"
+    },
+    {
+      "path": "protocol/cli/numpy/ty.roots.json",
+      "size": 513,
+      "sha256": "99b714c04fc5195151882a0a9ad4e574f7cdf3dfcb007bfbc113391dd1ee140c",
+      "role": "root-parity-proof"
+    },
+    {
+      "path": "protocol/cli/openai/mypy.roots.json",
+      "size": 1321,
+      "sha256": "100f75bc59757b522956c85cfaaeb8bbd356173f5a7eec8b403cb87181bfcec1",
+      "role": "root-parity-proof"
+    },
+    {
+      "path": "protocol/cli/openai/pyrefly.roots.json",
+      "size": 571,
+      "sha256": "c8d7677ff0a750536acbf779960d848435444d212fd96ab069598be17bb30a09",
+      "role": "root-parity-proof"
+    },
+    {
+      "path": "protocol/cli/openai/pyright.roots.json",
+      "size": 500,
+      "sha256": "d416c94585578c521ee6ff9429183ad06ea96aa4486e7df65202c7e3bcb3de06",
+      "role": "root-parity-proof"
+    },
+    {
+      "path": "protocol/cli/openai/ty.roots.json",
+      "size": 515,
+      "sha256": "75cf9cf4edaa03ce127188339f1b7169cb0e744d6920ec64051a3a67b557764c",
+      "role": "root-parity-proof"
+    },
+    {
+      "path": "protocol/cli/openai/zuban.roots.json",
+      "size": 427,
+      "sha256": "63fe573504d5c08ef3fea79a4c8c8bab1a4a0bec8d3bc38dac13d0805b4cda56",
+      "role": "root-parity-proof"
+    },
+    {
+      "path": "protocol/cli/pandas-stubs/mypy.roots.json",
+      "size": 1378,
+      "sha256": "d10ff5b01af7ca318d7f167fa884499405af2bba996383f25f7d39560bdb4dbb",
+      "role": "root-parity-proof"
+    },
+    {
+      "path": "protocol/cli/pandas-stubs/pyrefly.roots.json",
+      "size": 569,
+      "sha256": "5fca07039f0c8fb8c8ed186af8a7e2f24e0ae096b0306402739c01e403ffb751",
+      "role": "root-parity-proof"
+    },
+    {
+      "path": "protocol/cli/pandas-stubs/pyright.roots.json",
+      "size": 498,
+      "sha256": "4706233516c9788ff8deae94c471f509310e2be68f23fc2a11359f2ef44c902c",
+      "role": "root-parity-proof"
+    },
+    {
+      "path": "protocol/cli/pandas-stubs/ty.roots.json",
+      "size": 513,
+      "sha256": "f56579a9d89e5a2dc3f52ef149dc987c46e821fdb31cb3a217f68622be2d2d1a",
+      "role": "root-parity-proof"
+    },
+    {
+      "path": "protocol/cli/pandas-stubs/zuban.roots.json",
+      "size": 425,
+      "sha256": "e472bce310636db53fef8ebbcc2ea843d3ddb84b0a7ca8065c04486613d47064",
+      "role": "root-parity-proof"
+    },
+    {
+      "path": "protocol/cli/pandas/mypy.roots.json",
+      "size": 1300,
+      "sha256": "9b665e29a6bd4a1c15896bedfd6223b420aa5ad308310f34fbbebed6fc5ab22a",
+      "role": "root-parity-proof"
+    },
+    {
+      "path": "protocol/cli/pandas/pyrefly.roots.json",
+      "size": 569,
+      "sha256": "399eaee64225d44b4aed87d46a5bbb93ff862b36be83ea3fc22f97849e684ec7",
+      "role": "root-parity-proof"
+    },
+    {
+      "path": "protocol/cli/pandas/pyright.roots.json",
+      "size": 498,
+      "sha256": "373b03ab6321c5f2e7c923bda12a91abfe1def43db57c2bddf10ee9a0049cd7d",
+      "role": "root-parity-proof"
+    },
+    {
+      "path": "protocol/cli/pandas/ty.roots.json",
+      "size": 513,
+      "sha256": "d99cdae18e349fad80a6fb3a3a81d29a97259ea637cefaf5d83eed2efd777287",
+      "role": "root-parity-proof"
+    },
+    {
+      "path": "protocol/cli/pandas/zuban.roots.json",
+      "size": 425,
+      "sha256": "aca79c86ea0051369a7dd21b9533ac3d8e64ff28baaba35d0b53774789467504",
+      "role": "root-parity-proof"
+    },
+    {
+      "path": "protocol/cli/prefect/mypy.roots.json",
+      "size": 1376,
+      "sha256": "1e45d0dffcda79dd4f2c2022acddd9f9e12af15d71f364b493a0c440ceac97ee",
+      "role": "root-parity-proof"
+    },
+    {
+      "path": "protocol/cli/prefect/pyrefly.roots.json",
+      "size": 567,
+      "sha256": "af76c7014945fc38a5ac59dc3e4127ee27fa6050cd97ff2a1452db254e50fb3c",
+      "role": "root-parity-proof"
+    },
+    {
+      "path": "protocol/cli/prefect/pyright.roots.json",
+      "size": 496,
+      "sha256": "93d2f1ba9e31f8c8d6507185a1269f629c164c7b9d828f6e49310a34bb509267",
+      "role": "root-parity-proof"
+    },
+    {
+      "path": "protocol/cli/prefect/ty.roots.json",
+      "size": 511,
+      "sha256": "cb1c5307bb58cb74105ed013d1e394fa8401cf72ea3773c0690d41a3d42f9df2",
+      "role": "root-parity-proof"
+    },
+    {
+      "path": "protocol/cli/prefect/zuban.roots.json",
+      "size": 423,
+      "sha256": "2743b83ec36ddb6d16eae96e1191ccea627c588ac6e81658bbefd95b2fb47260",
+      "role": "root-parity-proof"
+    },
+    {
+      "path": "protocol/cli/pytest/mypy.roots.json",
+      "size": 1351,
+      "sha256": "579e2910c7dd4215c9d2d344acc78d0e07fdb3a782feab249abb932260a342a4",
+      "role": "root-parity-proof"
+    },
+    {
+      "path": "protocol/cli/pytest/pyrefly.roots.json",
+      "size": 569,
+      "sha256": "f7220e1250d77b3c1fd36303da440f94e15ad2701a1a467f2b39f8e696cc9eec",
+      "role": "root-parity-proof"
+    },
+    {
+      "path": "protocol/cli/pytest/pyright.roots.json",
+      "size": 498,
+      "sha256": "1e622ceeb96a45a2b44fc37e0b4ada9e65aa31cd84e02335d2bfefbb537cb92e",
+      "role": "root-parity-proof"
+    },
+    {
+      "path": "protocol/cli/pytest/ty.roots.json",
+      "size": 513,
+      "sha256": "40fe016feef21e8feeb0e5cc2e7520fa037775a1359f0b5daf83a704d8703820",
+      "role": "root-parity-proof"
+    },
+    {
+      "path": "protocol/cli/pytest/zuban.roots.json",
+      "size": 425,
+      "sha256": "65a28bb9f85a27f3a8d4a5f1369bf82b535a02c580cb202013f2f119cf1ccad2",
+      "role": "root-parity-proof"
+    },
+    {
+      "path": "protocol/cli/pytorch/mypy.roots.json",
+      "size": 4000,
+      "sha256": "564c117bfa1500f801e172b503ce02282ec23e597cc8fa224a923b3b81d8c9b5",
+      "role": "root-parity-proof"
+    },
+    {
+      "path": "protocol/cli/pytorch/pyrefly.roots.json",
+      "size": 571,
+      "sha256": "3a86088f54dd972177f3758e43f08fb7873e46329509f101b29a6b5cb2acdf03",
+      "role": "root-parity-proof"
+    },
+    {
+      "path": "protocol/cli/pytorch/pyright.roots.json",
+      "size": 500,
+      "sha256": "c1694cc2908c80121fab5414de93e40be4e485e6a2e831bd39a3e64ed1415cff",
+      "role": "root-parity-proof"
+    },
+    {
+      "path": "protocol/cli/pytorch/ty.roots.json",
+      "size": 515,
+      "sha256": "c7af89dee91a12b2aab8de7f82f7e7f0ed031b70d9e9bdc8274117d8885e62c2",
+      "role": "root-parity-proof"
+    },
+    {
+      "path": "protocol/cli/pytorch/zuban.roots.json",
+      "size": 427,
+      "sha256": "1d5fa09bf12183479ef0fe75e6056ef76bc0cf9c3ada9cc986f1654cfafcfd4f",
+      "role": "root-parity-proof"
+    },
+    {
+      "path": "protocol/cli/rich/mypy.roots.json",
+      "size": 1166,
+      "sha256": "145279a64ac4ba447bf48e7d0b93fcd5818f5781632b120be5041aacaa02e533",
+      "role": "root-parity-proof"
+    },
+    {
+      "path": "protocol/cli/rich/pyrefly.roots.json",
+      "size": 569,
+      "sha256": "ed9e0ffbb294061cc413241b9f05000ce452f644c1c23ee0cc1868b8adb484d4",
+      "role": "root-parity-proof"
+    },
+    {
+      "path": "protocol/cli/rich/pyright.roots.json",
+      "size": 498,
+      "sha256": "6de0710118afbe316ff50348df7a6fc272357b1dea84a60979b0e0d23b19ffb0",
+      "role": "root-parity-proof"
+    },
+    {
+      "path": "protocol/cli/rich/ty.roots.json",
+      "size": 513,
+      "sha256": "29f474a21986ca4b5df9e9cc46895789ea199bf5bfbeedac6f03b932367e095c",
+      "role": "root-parity-proof"
+    },
+    {
+      "path": "protocol/cli/rich/zuban.roots.json",
+      "size": 425,
+      "sha256": "13e10e2730f64155138e936a72226f51617e8029d42531b075a2d04e8175665b",
+      "role": "root-parity-proof"
+    },
+    {
+      "path": "protocol/cli/sqlalchemy/mypy.roots.json",
+      "size": 1210,
+      "sha256": "25603cd80861ea3f495b59ed710419591ea33c1a1b22fc989f0250221aa25137",
+      "role": "root-parity-proof"
+    },
+    {
+      "path": "protocol/cli/sqlalchemy/pyrefly.roots.json",
+      "size": 569,
+      "sha256": "7319abd10dd03f1166101b9ae7acc1d748b8adf6d346966be20b0d01bfb5995e",
+      "role": "root-parity-proof"
+    },
+    {
+      "path": "protocol/cli/sqlalchemy/pyright.roots.json",
+      "size": 498,
+      "sha256": "489d4eec3ff30f0c783d0bc59dc550d3fa296c8004dce8344cbb084a8298a06d",
+      "role": "root-parity-proof"
+    },
+    {
+      "path": "protocol/cli/sqlalchemy/ty.roots.json",
+      "size": 513,
+      "sha256": "fbb325d4bed854f0c002fefaf200da94ca58f8a99d5575ae53e24ff58de1e3ed",
+      "role": "root-parity-proof"
+    },
+    {
+      "path": "protocol/cli/sqlalchemy/zuban.roots.json",
+      "size": 425,
+      "sha256": "9cf60fd9a4c976a13a6a763c189c1cb894c35bdc8fb98cd3f5515a95e41c310b",
+      "role": "root-parity-proof"
+    },
+    {
+      "path": "protocol/cli/sympy/mypy.roots.json",
+      "size": 5065,
+      "sha256": "cbb230bcb755f222ed46a9ba115e0c90bf98aa5905020d4a6fca40ec1f62ea26",
+      "role": "root-parity-proof"
+    },
+    {
+      "path": "protocol/cli/sympy/pyrefly.roots.json",
+      "size": 569,
+      "sha256": "a3f1c945ce10ae8b246d730e7844cddb89cc61601ae078963506259e62abad68",
+      "role": "root-parity-proof"
+    },
+    {
+      "path": "protocol/cli/sympy/pyright.roots.json",
+      "size": 498,
+      "sha256": "ba2c30785559f9022adc920cdcc2628f481487b6ad32707c3d29eac01feaec12",
+      "role": "root-parity-proof"
+    },
+    {
+      "path": "protocol/cli/sympy/ty.roots.json",
+      "size": 513,
+      "sha256": "0cdd39c4bd4d1ae51062b3b923190179d46e3cc260bb1f0e02e97791ef3e84a5",
+      "role": "root-parity-proof"
+    },
+    {
+      "path": "protocol/cli/sympy/zuban.roots.json",
+      "size": 425,
+      "sha256": "758ab2910800a8a77f433819df0ddf666eb3b1dcee84c1beb861d3cf64541279",
+      "role": "root-parity-proof"
+    },
+    {
+      "path": "protocol/commands.json",
+      "size": 105249,
+      "sha256": "94a1d5ae3cced0991aa229c3bfdb08937aef7f353db27f019414a7cb37a9185f",
+      "role": "commands-and-measurement-dates"
+    },
+    {
+      "path": "protocol/lsp/updated-black.json",
+      "size": 360,
+      "sha256": "0f93067cd1b21072b5b0be5f263f6a5eed0daeced116382de111939081d9175f",
+      "role": "server-start-document-scope-proof"
+    },
+    {
+      "path": "protocol/lsp/updated-discord.py.json",
+      "size": 364,
+      "sha256": "1214b225058d2fb81897fcf0d008843587e5e268f5b77787dbf754980fdcc775",
+      "role": "server-start-document-scope-proof"
+    },
+    {
+      "path": "protocol/lsp/updated-django.json",
+      "size": 378,
+      "sha256": "892e065e64e6839246bb15bd8a530ed3d54b6c6593fb8a5c630b729c73d4abe5",
+      "role": "server-start-document-scope-proof"
+    },
+    {
+      "path": "protocol/lsp/updated-fastapi.json",
+      "size": 360,
+      "sha256": "d84aabea65be6267f157038b2f394fe71e9e70813df01508c721df5cc191f87b",
+      "role": "server-start-document-scope-proof"
+    },
+    {
+      "path": "protocol/lsp/updated-homeassistant.json",
+      "size": 389,
+      "sha256": "9f4b7b73358e1d44e9dd178d922f2dc11b85958b259e402d360c7a7e971e9586",
+      "role": "server-start-document-scope-proof"
+    },
+    {
+      "path": "protocol/lsp/updated-httpx.json",
+      "size": 352,
+      "sha256": "4d46aacb747c1b513c7279ad87ca68c0c6e2ba9fd4133e8d7f071204b31de1af",
+      "role": "server-start-document-scope-proof"
+    },
+    {
+      "path": "protocol/lsp/updated-isort.json",
+      "size": 353,
+      "sha256": "c0e5e9f409f20fe32b02d3347df5820584d572e474dc3c31a4be5da50363a667",
+      "role": "server-start-document-scope-proof"
+    },
+    {
+      "path": "protocol/lsp/updated-jinja.json",
+      "size": 602,
+      "sha256": "78f385106070364c460a9112d7256e80c768cbbcdce33320d6b1edf0696d355b",
+      "role": "server-start-document-scope-proof"
+    },
+    {
+      "path": "protocol/lsp/updated-numpy.json",
+      "size": 370,
+      "sha256": "2648c151503173b1f73b387f866561407a3c45846839b4538801cc19e3d11b08",
+      "role": "server-start-document-scope-proof"
+    },
+    {
+      "path": "protocol/lsp/updated-openai.json",
+      "size": 366,
+      "sha256": "23019746039ed4115c7575baa4274e26f2b226298eca8c8fa96a9974b971b1a2",
+      "role": "server-start-document-scope-proof"
+    },
+    {
+      "path": "protocol/lsp/updated-pandas.json",
+      "size": 361,
+      "sha256": "5952907912f5a88b48caef0e9df35e258dbb49b680614d1ed85c0cbdc0202062",
+      "role": "server-start-document-scope-proof"
+    },
+    {
+      "path": "protocol/lsp/updated-prefect.json",
+      "size": 401,
+      "sha256": "f18197ae9c88b2c4720fc09302719e4ddc8577b91ba71ec03481e970cd1db790",
+      "role": "server-start-document-scope-proof"
+    },
+    {
+      "path": "protocol/lsp/updated-pytest.json",
+      "size": 376,
+      "sha256": "9f71be389a8b53e1325ca87974ccb14c173add78dcdea038b0394b4a16d689b8",
+      "role": "server-start-document-scope-proof"
+    },
+    {
+      "path": "protocol/lsp/updated-pytorch.json",
+      "size": 387,
+      "sha256": "6b81b7c6cd4099502b8d5a033fbb69ee351df7bf106b247c4657cba5d9bd6c02",
+      "role": "server-start-document-scope-proof"
+    },
+    {
+      "path": "protocol/lsp/updated-rich.json",
+      "size": 346,
+      "sha256": "9245f888bddc4cd63d379834c794899bfae67936b7bf0637d261b4464f34fc79",
+      "role": "server-start-document-scope-proof"
+    },
+    {
+      "path": "protocol/lsp/updated-sqlalchemy.json",
+      "size": 395,
+      "sha256": "0a46efd14397bd2da57db4f97b20bfd0de668c4116a2a2655f1b399bfdc7cbff",
+      "role": "server-start-document-scope-proof"
+    },
+    {
+      "path": "protocol/lsp/updated-sympy.json",
+      "size": 362,
+      "sha256": "dea5ba587aac70d3d3df7637528c2794188fc735fd0c5a1d02169481c72c8933",
+      "role": "server-start-document-scope-proof"
+    }
+  ],
+  "checksum_scope": "Original raw exports, public inputs and protocol/commands only; README and this manifest exclude themselves."
+}

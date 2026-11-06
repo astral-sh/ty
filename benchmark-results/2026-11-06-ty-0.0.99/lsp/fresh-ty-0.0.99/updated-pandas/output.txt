@@ -1,0 +1,33 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.15.1, pytest-9.1.1, pluggy-1.7.0 -- /tmp/ty-benchmark-zuban-runner/bin/python
+cachedir: .pytest_cache
+benchmark: 5.3.0 (defaults: timer=time.perf_counter disable_gc=False min_rounds=5 min_time=0.000005 max_time=1.0 calibration_precision=10 warmup=False warmup_iterations=100000)
+rootdir: /private/tmp/ty-benchmark-0.0.99-replay-ruff/scripts/ty_benchmark
+configfile: pyproject.toml
+plugins: benchmark-5.3.0
+collecting ... collected 2 items
+
+src/benchmark/test_lsp_diagnostics.py::test_fetch_diagnostics[updated-pandas-ty] PASSED [ 50%]
+src/benchmark/test_lsp_diagnostics.py::test_incremental_edit[updated-pandas-ty] PASSED [100%]
+Wrote benchmark data in: /tmp/ty-release-0.0.99-2026-11-06/lsp/updated-pandas/results.json
+
+
+=============================== warnings summary ===============================
+src/benchmark/test_lsp_diagnostics.py: 48 warnings
+  /tmp/ty-benchmark-zuban-runner/lib/python3.15/site-packages/pygls/feature_manager.py:86: DeprecationWarning: 'asyncio.iscoroutinefunction' is deprecated and slated for removal in Python 3.16; use inspect.iscoroutinefunction() instead
+    if asyncio.iscoroutinefunction(f):
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+- generated xml file: /tmp/ty-release-0.0.99-2026-11-06/lsp/updated-pandas/results.xml -
+
+------------------------------------------------------------------------------------------ benchmark 'pandas': 2 tests ------------------------------------------------------------------------------------------
+Name (time in ms)                                  Min                 Max                Mean            StdDev              Median               IQR            Outliers      OPS            Rounds  Iterations
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+test_incremental_edit[updated-pandas-ty]       48.8566 (1.0)       61.1785 (1.0)       52.7416 (1.0)      4.6492 (1.44)      50.6834 (1.0)      5.0680 (1.39)          2;0  18.9604 (1.0)          10           1
+test_fetch_diagnostics[updated-pandas-ty]     376.3471 (7.70)     385.9840 (6.31)     379.3929 (7.19)     3.2335 (1.0)      378.1837 (7.46)     3.6343 (1.0)           2;0   2.6358 (0.14)         10           1
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Legend:
+  Outliers: 1 Standard Deviation from Mean; 1.5 IQR (InterQuartile Range) from 1st Quartile and 3rd Quartile.
+  OPS: Operations Per Second, computed as 1 / Mean
+======================= 2 passed, 48 warnings in 11.70s ========================

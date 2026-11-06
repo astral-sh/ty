@@ -1,0 +1,29 @@
+{
+  "expected_roots": 172,
+  "actual_roots": 172,
+  "paths_verified": true,
+  "command": [
+    "/tmp/ty-benchmark-0.0.96-2026-11-02/checkouts/updated-pytest/venv/bin/mypy",
+    "--python-executable",
+    "/tmp/ty-benchmark-0.0.96-2026-11-02/checkouts/updated-pytest/venv/bin/python",
+    "--python-version",
+    "3.11",
+    "--no-pretty",
+    "--config-file=mypy-benchmark.toml",
+    "--follow-imports=normal",
+    "--check-untyped-defs",
+    "src",
+    "testing",
+    "--exclude",
+    "\\A(?:testing/example_scripts)(?:[/\\\\]|\\Z)",
+    "--cache-dir",
+    ".mypy_cache_benchmark"
+  ],
+  "preflight_command": [
+    "/private/tmp/ty-benchmark-expansion-2026-11-02/checkouts/pytest/venv/bin/python",
+    "-c",
+    "import json,sys; from pathlib import Path; from mypy.main import process_options; sources,_=process_options(json.loads(sys.argv[1])); print(json.dumps([(str(Path(s.path).resolve()),s.module) for s in sources]))",
+    "[\"--python-executable\", \"/tmp/ty-benchmark-0.0.96-2026-11-02/checkouts/updated-pytest/venv/bin/python\", \"--python-version\", \"3.11\", \"--no-pretty\", \"--config-file=mypy-benchmark.toml\", \"--follow-imports=normal\", \"--check-untyped-defs\", \"src\", \"testing\", \"--exclude\", \"\\\\A(?:testing/example_scripts)(?:[/\\\\\\\\]|\\\\Z)\", \"--cache-dir\", \".mypy_cache_benchmark\"]"
+  ],
+  "environment": {}
+}

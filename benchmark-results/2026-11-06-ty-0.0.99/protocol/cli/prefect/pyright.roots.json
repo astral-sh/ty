@@ -1,0 +1,19 @@
+{
+  "expected_roots": 58,
+  "actual_roots": 58,
+  "paths_verified": false,
+  "command": [
+    "/Users/crmarsh/workspace/ty/ruff/scripts/ty_benchmark/node_modules/pyright/index.js",
+    "--level=warning",
+    "--project",
+    "pyrightconfig.benchmark.json"
+  ],
+  "preflight_command": [
+    "/Users/crmarsh/workspace/ty/ruff/scripts/ty_benchmark/node_modules/pyright/index.js",
+    "--level=warning",
+    "--project",
+    "pyrightconfig.benchmark.json",
+    "--verbose"
+  ],
+  "environment": {}
+}

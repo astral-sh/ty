@@ -1,5 +1,6 @@
 [files]
-extend-exclude = []
+# Preserve original package names, configurations, and failure traces verbatim.
+extend-exclude = ["benchmark-results/2026-11-06-ty-0.0.99/**"]
 
 [default.extend-words]
 
