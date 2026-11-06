@@ -8,9 +8,6 @@ All benchmarks were computed on macOS (Apple M3 Max 16, 128 GB) with the followi
 - [ty](https://pypi.org/project/ty/) 0.0.99
 - [Zuban](https://pypi.org/project/zuban/) 0.10.2
 
-ty was measured on November 6, 2026. The other CLI and LSP results are retained
-from November 4 and November 3, respectively.
-
 Benchmark performance may vary across operating systems, and from project to project. This document
 includes benchmarks from a variety of projects to provide a representative example of real-world
 usage: [Black](https://github.com/psf/black), [discord.py](https://github.com/Rapptz/discord.py),
