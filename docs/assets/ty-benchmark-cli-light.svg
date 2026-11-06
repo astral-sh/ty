@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 455 148" role="img" aria-labelledby="title description">
   <title id="title">Home Assistant CLI type-checking benchmark</title>
-  <desc id="description">ty: 2.09 seconds; Pyrefly: 2.30 seconds; Zuban: 7.45 seconds; mypy: 52.03 seconds; Pyright: 126.94 seconds. Native discovery, controlled root scope. Default concurrency: ty, Pyrefly, and Zuban automatically select 16 pool threads; mypy has no external checking workers and its native parser can use up to eight threads; Pyright checks in one process. ty 0.0.96.</desc>
+  <desc id="description">ty: 2.11 seconds; Pyrefly: 2.30 seconds; Zuban: 7.45 seconds; mypy: 52.03 seconds; Pyright: 126.94 seconds. Native discovery, controlled root scope. Default concurrency: ty, Pyrefly, and Zuban automatically select 16 pool threads; mypy has no external checking workers and its native parser can use up to eight threads; Pyright checks in one process. ty 0.0.99.</desc>
   <style>
     .benchmarkBar {
       fill: #6340AC;
@@ -31,14 +31,14 @@
       <text x="-10" y="116">Pyright</text>
     </g>
     <g class="benchmarkBar">
-      <rect x="0" y="6" width="5.289" height="13" aria-label="ty: 2.092 seconds"/>
+      <rect x="0" y="6" width="5.328" height="13" aria-label="ty: 2.107 seconds"/>
       <rect x="0" y="31" width="5.823" height="13" aria-label="Pyrefly: 2.303 seconds"/>
       <rect x="0" y="56" width="18.850" height="13" aria-label="Zuban: 7.454 seconds"/>
       <rect x="0" y="81" width="131.565" height="13" aria-label="mypy: 52.028 seconds"/>
       <rect x="0" y="106" width="321.000" height="13" aria-label="Pyright: 126.940 seconds"/>
     </g>
     <g class="benchmarkLabel">
-      <text x="11.289" y="16.5" font-weight="bold">2.09s</text>
+      <text x="11.328" y="16.5" font-weight="bold">2.11s</text>
       <text x="11.823" y="41.5">2.30s</text>
       <text x="24.850" y="66.5">7.45s</text>
       <text x="137.565" y="91.5">52.03s</text>
