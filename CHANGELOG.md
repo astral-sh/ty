@@ -1,5 +1,42 @@
 # Changelog
 
+## 0.0.99
+
+Released on 2026-11-06.
+
+### Bug fixes
+
+- Handle output errors when generating shell completions ([#29997](https://github.com/astral-sh/ruff/pull/29997))
+- Invalidate aliased conditions across loop iterations ([#30074](https://github.com/astral-sh/ruff/pull/30074))
+
+### LSP server
+
+- Add support for `workspace/willRenameFiles` LSP request ([#28330](https://github.com/astral-sh/ruff/pull/28330))
+
+### Other changes
+
+- Bound comparisons of wide builtin literal unions ([#30052](https://github.com/astral-sh/ruff/pull/30052))
+- Fix call argument validation for variadic parameters ([#30086](https://github.com/astral-sh/ruff/pull/30086))
+- Freshen method typevars before owner specialization ([#29543](https://github.com/astral-sh/ruff/pull/29543))
+- Inform call specializations compatibility through type context ([#29932](https://github.com/astral-sh/ruff/pull/29932))
+- Keep source place IDs out of the use-def map ([#30077](https://github.com/astral-sh/ruff/pull/30077))
+- Preserve type structure during typevar freshening ([#29803](https://github.com/astral-sh/ruff/pull/29803))
+- Preserve typevars when mapping leaves their bounds unchanged ([#29547](https://github.com/astral-sh/ruff/pull/29547))
+- Preserve unions inferred during fixpoint iteration ([#29927](https://github.com/astral-sh/ruff/pull/29927))
+- Record lexical place IDs with their uses ([#29956](https://github.com/astral-sh/ruff/pull/29956))
+- Skip existing release artifacts when retrying mirror uploads ([#4937](https://github.com/astral-sh/ty/pull/4937))
+- Skip fixpoint iteration for simple generic calls ([#30054](https://github.com/astral-sh/ruff/pull/30054))
+- Solve generic call type context through constraint sets ([#26680](https://github.com/astral-sh/ruff/pull/26680))
+
+### Contributors
+
+- [@ibraheemdev](https://github.com/ibraheemdev)
+- [@lerebear](https://github.com/lerebear)
+- [@ewdurbin](https://github.com/ewdurbin)
+- [@carljm](https://github.com/carljm)
+- [@charliermarsh](https://github.com/charliermarsh)
+- [@dcreager](https://github.com/dcreager)
+
 ## 0.0.98
 
 Released on 2026-11-05.
