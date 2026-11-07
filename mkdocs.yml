@@ -104,6 +104,7 @@ plugins:
           - reference/exit-codes.md
           - reference/environment.md
           - reference/editor-settings.md
+          - reference/versioning.md
 extra_css:
   - stylesheets/extra.css
 extra_javascript:
@@ -151,6 +152,7 @@ nav:
       - Exit codes: reference/exit-codes.md
       - Environment variables: reference/environment.md
       - Editor settings: reference/editor-settings.md
+      - Versioning: reference/versioning.md
 validation:
   omitted_files: warn
   absolute_links: warn
