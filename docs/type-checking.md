@@ -27,6 +27,9 @@ be provided to ty to explicitly specify a path to a Python interpreter.
 
 See the [module discovery](./modules.md) documentation for details.
 
+For scripts that declare their dependencies using inline script metadata, see
+[Checking standalone scripts](./scripts.md).
+
 ## File selection
 
 ty will run on all Python files in the working directory (including subdirectories, recursively).
