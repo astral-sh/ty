@@ -1,5 +1,57 @@
 # Changelog
 
+## 0.0.100
+
+Released on 2026-11-09.
+
+### Breaking changes
+
+- Distinguish attributes missing from some union members ([#29944](https://github.com/astral-sh/ruff/pull/29944))
+- Give abstract class instantiation its own diagnostic rule ([#29948](https://github.com/astral-sh/ruff/pull/29948))
+- Separate missing and inconsistent overload implementation diagnostics ([#29953](https://github.com/astral-sh/ruff/pull/29953))
+- Split `invalid-key` into three TypedDict diagnostic rules ([#29955](https://github.com/astral-sh/ruff/pull/29955))
+- Split out `lost-keyword-for-regular-parameter` from `incompatible-method-override` ([#30143](https://github.com/astral-sh/ruff/pull/30143))
+
+### Bug fixes
+
+- Fix partial application of ParamSpec decorators ([#30150](https://github.com/astral-sh/ruff/pull/30150))
+- Offer inlay hint edits only for valid annotation targets ([#30208](https://github.com/astral-sh/ruff/pull/30208))
+- Preserve distinct bytes keys during narrowing ([#30207](https://github.com/astral-sh/ruff/pull/30207))
+
+### Diagnostic improvements
+
+- Explain why a rule was removed in configuration and ignore comments ([#30128](https://github.com/astral-sh/ruff/pull/30128))
+- Rename incompatible override rules ([#30142](https://github.com/astral-sh/ruff/pull/30142))
+
+### Memory usage improvements
+
+- Avoid caching bundled stub source during parsing ([#30181](https://github.com/astral-sh/ruff/pull/30181))
+- Defer formatting details for suppressed diagnostics ([#30169](https://github.com/astral-sh/ruff/pull/30169))
+
+### Other changes
+
+- Avoid repeated scans when merging class MROs ([#30095](https://github.com/astral-sh/ruff/pull/30095))
+- Cache context-free specialized alias values ([#30099](https://github.com/astral-sh/ruff/pull/30099))
+- Cache raw signatures for overload declarations ([#30106](https://github.com/astral-sh/ruff/pull/30106))
+- Cache the previous declaration in an overload set ([#30110](https://github.com/astral-sh/ruff/pull/30110))
+- Check constraint equivalence by searching for counterexamples ([#30093](https://github.com/astral-sh/ruff/pull/30093))
+- Collect namespace members once per metaclass ([#30165](https://github.com/astral-sh/ruff/pull/30165))
+- Index lazy enclosing snapshots by symbol name ([#30088](https://github.com/astral-sh/ruff/pull/30088))
+- Reduce redundant work in structural recursive type inference ([#29975](https://github.com/astral-sh/ruff/pull/29975))
+- Reject incompatible fixed tuple contexts as elements are inferred ([#30183](https://github.com/astral-sh/ruff/pull/30183))
+- Reuse the incoming flow after boolean expressions without assignments ([#30097](https://github.com/astral-sh/ruff/pull/30097))
+- Skip repeated type constraints for collection literals ([#30089](https://github.com/astral-sh/ruff/pull/30089))
+- Skip union checks for incomparable types ([#30102](https://github.com/astral-sh/ruff/pull/30102))
+
+### Contributors
+
+- [@mtshiba](https://github.com/mtshiba)
+- [@charliermarsh](https://github.com/charliermarsh)
+- [@AlexWaygood](https://github.com/AlexWaygood)
+- [@MichaReiser](https://github.com/MichaReiser)
+- [@sharkdp](https://github.com/sharkdp)
+- [@carljm](https://github.com/carljm)
+
 ## 0.0.99
 
 Released on 2026-11-06.
