@@ -107,24 +107,22 @@ More information in [Zed's documentation](https://zed.dev/docs/languages/python#
 
 ## PyCharm
 
-PyCharm has supported ty natively since 2025.3. In 2026.2, the ty settings moved to **External Tools**.
+### PyCharm 2026.3
 
-1. Open **Settings → Python → Tools → External Tools** and turn on the switch in the **ty** row.
+Open **Settings → Python → Tools → External Tools** and enable **ty**. For configuration options,
+see the [PyCharm documentation](https://www.jetbrains.com/help/pycharm/lsp-tools.html#ty).
 
-1. In the **Lookup** column, choose how PyCharm finds ty.
+### PyCharm 2026.2
 
-    - **Sdk** looks for ty in the module's Python interpreter, then on `$PATH`, and falls back
-        to `uvx`.
-    - **Path** looks for ty on `$PATH` and falls back to `uvx`.
-    - **uvx** runs ty using [uv](https://docs.astral.sh/uv/) without requiring ty in your project or on `$PATH`.
+Open **Settings → Python → Tools → External Tools** and enable **ty**. Use
+[**Lookup**](https://www.jetbrains.com/help/pycharm/2026.2/lsp-tools.html#external-tools-settings)
+to choose how PyCharm finds ty.
 
-1. Click the gear icon in the **ty** row to open **Configure ty**. Under **Features**, you can enable
-    **Inspections**, **Completions**, **Inlay hints**, and **Documentation**.
+### PyCharm 2025.3 through 2026.1
 
-See the [PyCharm documentation](https://www.jetbrains.com/help/pycharm/lsp-tools.html) for more details.
-
-In PyCharm 2025.3 through 2026.1, open **Settings → Python → Tools → ty** and select **Enable**.
-See the [PyCharm 2026.1 documentation](https://www.jetbrains.com/help/pycharm/2026.1/lsp-tools.html#ty).
+Open **Settings → Python → Tools → ty** and select **Enable**. See the
+[PyCharm 2026.1 documentation](https://www.jetbrains.com/help/pycharm/2026.1/lsp-tools.html#ty)
+for configuration options.
 
 ## Emacs
 
