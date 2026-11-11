@@ -139,11 +139,11 @@ ______________________________________________________________________
 
 ## `disableLanguageServices`
 
-Whether to disable the language services for the ty language server like code completion, hover,
-go to definition, etc.
+Whether to disable language services in the ty language server, such as code completion, hover,
+and go to definition.
 
-This is useful if you want to use ty exclusively for type checking and want to use another language
-server for features like code completion, hover, go to definition, etc.
+This is useful if you want to use ty exclusively for type checking and another language server
+for those features.
 
 **Default value**: `false`
 
@@ -264,8 +264,8 @@ ______________________________________________________________________
 
 Whether to show syntax error diagnostics.
 
-This is useful when using ty with other language servers, allowing the user to refer to syntax errors
-from only one source.
+When using ty with other language servers, you can use this setting to see syntax errors from only
+one source.
 
 **Default value**: `true`
 
@@ -622,7 +622,7 @@ ______________________________________________________________________
 
 ### `path`
 
-A list of path to `ty` executables.
+A list of paths to `ty` executables.
 
 The extension uses the first executable that exists. This setting takes precedence over the
 [`ty.importStrategy`](#importstrategy) setting.
@@ -666,7 +666,7 @@ ______________________________________________________________________
 ## Initialization options
 
 The following settings are required when ty is initialized in an editor. These settings are
-static so changing them requires restarting the editor to take effect.
+static, so changing them requires restarting the editor to take effect.
 
 For VS Code users, most of these settings are defined in the `ty.*` namespace as usual, but for other
 editors, they would need to be provided in a separate field of the configuration that corresponds to
