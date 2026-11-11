@@ -403,7 +403,7 @@ ty reports *"Cannot resolve imported module …"*, check the following:
 1. **Third-party packages**: Ensure dependencies are installed in your virtual environment. Run ty
     with `-v` to see the search paths being used.
 
-1. For a **standalone script** with [inline script metadata (PEP 723)](https://peps.python.org/pep-0723/),
+1. For a **standalone script** with [inline metadata (PEP 723)](https://peps.python.org/pep-0723/),
     use [ty's built-in script support](../scripts.md).
 
 1. **Compiled extensions**: ty requires `.py` or `.pyi` files for type information. If a package
@@ -443,8 +443,8 @@ topic.
 ## Does ty support inline script metadata (PEP 723)? { #does-ty-support-pep-723-inline-metadata-scripts }
 
 Yes. Use `TY_UV=scripts ty check script.py` or `uv check --script script.py` to check a script
-with its declared dependencies. See [Checking standalone scripts](../scripts.md) to check multiple
-scripts together or enable support in your editor.
+with its declared dependencies. See [Checking standalone scripts](../scripts.md) for instructions on how to check multiple
+scripts together or how to enable support in your editor.
 
 ## Is there a pre-commit hook for ty?
 
