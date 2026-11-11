@@ -1,5 +1,32 @@
 # Changelog
 
+## 0.0.101
+
+Released on 2026-11-11.
+
+### Bug fixes
+
+- Avoid a panic on unions of recursive named tuples ([#30222](https://github.com/astral-sh/ruff/pull/30222))
+- Avoid repeatedly normalizing nested partials ([#30234](https://github.com/astral-sh/ruff/pull/30234))
+- Preserve Pydantic strictness through PEP 695 type aliases ([#30210](https://github.com/astral-sh/ruff/pull/30210))
+- Preserve the element type when passing tuple as a callback ([#30152](https://github.com/astral-sh/ruff/pull/30152))
+- Record exception checkpoints for nested unpacking targets ([#30206](https://github.com/astral-sh/ruff/pull/30206))
+
+### LSP server
+
+- Fall back to a workspace-wide watch when file watcher registration fails ([#30120](https://github.com/astral-sh/ruff/pull/30120))
+
+### Other changes
+
+- Do not narrow `Field[..]` specializations to expanded unions ([#30264](https://github.com/astral-sh/ruff/pull/30264))
+
+### Contributors
+
+- [@charliermarsh](https://github.com/charliermarsh)
+- [@MichaReiser](https://github.com/MichaReiser)
+- [@carljm](https://github.com/carljm)
+- [@sharkdp](https://github.com/sharkdp)
+
 ## 0.0.100
 
 Released on 2026-11-09.
