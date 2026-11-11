@@ -678,8 +678,8 @@ editors.
 Control how ty uses [uv](https://docs.astral.sh/uv/):
 
 - `off`: Do not use uv.
-- `scripts`: Use uv to create and update environments for standalone scripts with
-    [PEP 723 inline metadata](https://peps.python.org/pep-0723/).
+- `scripts`: Use uv to create and update environments for [standalone scripts](../scripts.md#in-your-editor) with
+    [inline metadata (PEP 723)](https://peps.python.org/pep-0723/).
 - `on`: Use uv for project discovery and standalone script environments.
 
 This feature is experimental and may change. Enabling it requires

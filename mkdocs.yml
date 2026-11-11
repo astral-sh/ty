@@ -79,6 +79,7 @@ plugins:
         Guides:
           - installation.md
           - type-checking.md
+          - scripts.md
           - editors.md
           - coming-from-mypy-or-pyright.md
         Concepts:
@@ -125,6 +126,7 @@ nav:
   - Guides:
       - Installation: installation.md
       - Type checking: type-checking.md
+      - Checking standalone scripts: scripts.md
       - Editor integration: editors.md
       - Coming from mypy, pyright: coming-from-mypy-or-pyright.md
   - Concepts:
