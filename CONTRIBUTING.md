@@ -160,13 +160,9 @@ Preparation for the release is automated.
 
 1. Merge the pull request.
 
-1. Run the [release workflow](https://github.com/astral-sh/ty/actions/workflows/release.yml) with
-    the version tag.
-
-    **Do not include a leading `v`**.
-
-    When running the release workflow for pre-release versions, use the Cargo version format (not PEP
-    440), e.g. `0.0.1-alpha.5` (not `0.0.1a5`). For stable releases, these formats are identical.
+1. Run the [release workflow](https://github.com/astral-sh/ty/actions/workflows/release.yml) from
+    `main`. The workflow reads the version from `dist-workspace.toml` and rejects versions that
+    already have a GitHub release. Enable **dry-run** to build release artifacts without publishing.
 
 1. Request a deployment approval from another team member.
 
