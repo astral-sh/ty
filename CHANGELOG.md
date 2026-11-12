@@ -1,5 +1,48 @@
 # Changelog
 
+## 0.0.102
+
+Released on 2026-11-12.
+
+### Breaking changes
+
+- Split `invalid-return-type` into 3 focussed rules; rename `empty-body` and `unsound-return` ([#29947](https://github.com/astral-sh/ruff/pull/29947))
+
+### Bug fixes
+
+- Avoid runaway inference for nested calls with union parameters ([#30220](https://github.com/astral-sh/ruff/pull/30220))
+- Fix a panic when simplifying recursive wide unions ([#30141](https://github.com/astral-sh/ruff/pull/30141))
+- Fix a stack overflow when inferring calls that return recursive aliases ([#30149](https://github.com/astral-sh/ruff/pull/30149))
+- Keep callable-local type variables out of enclosing constraints ([#30241](https://github.com/astral-sh/ruff/pull/30241))
+- Preserve Self for unary operators on bounded type variables ([#30242](https://github.com/astral-sh/ruff/pull/30242))
+- Preserve descriptor write contracts in overrides and protocols ([#30252](https://github.com/astral-sh/ruff/pull/30252))
+
+### Diagnostic improvements
+
+- Rename `call-abstract-method` to `abstract-method-call` ([#30287](https://github.com/astral-sh/ruff/pull/30287))
+- Rename `call-non-callable` to `not-callable` ([#30284](https://github.com/astral-sh/ruff/pull/30284))
+- Rename `call-top-callable` to `call-to-function-with-unknown-signature` ([#30285](https://github.com/astral-sh/ruff/pull/30285))
+- Rename `dataclass-field-order` to `invalid-dataclass-field-order` ([#30289](https://github.com/astral-sh/ruff/pull/30289))
+- Rename `implicit-concatenated-string-type-annotation` to `implicit-string-concatenation-in-annotation`; improve documentation ([#30286](https://github.com/astral-sh/ruff/pull/30286))
+- Warn by default for a single overload ([#30214](https://github.com/astral-sh/ruff/pull/30214))
+
+### Memory usage improvements
+
+- Check unused stub parameters in the surrounding inference ([#30251](https://github.com/astral-sh/ruff/pull/30251))
+
+### Other changes
+
+- Cache alias-preserving binary unions ([#30094](https://github.com/astral-sh/ruff/pull/30094))
+- Share use-def layouts for stub function parameters ([#30248](https://github.com/astral-sh/ruff/pull/30248))
+- Skip unused parameter bindings in stub bodies ([#30330](https://github.com/astral-sh/ruff/pull/30330))
+
+### Contributors
+
+- [@MichaReiser](https://github.com/MichaReiser)
+- [@charliermarsh](https://github.com/charliermarsh)
+- [@carljm](https://github.com/carljm)
+- [@AlexWaygood](https://github.com/AlexWaygood)
+
 ## 0.0.101
 
 Released on 2026-11-11.
