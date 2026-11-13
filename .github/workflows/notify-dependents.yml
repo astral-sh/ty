@@ -69,5 +69,5 @@ jobs:
           GH_TOKEN: ${{ steps.vscode-token.outputs.token }}
           TY_VERSION: ${{ fromJson(inputs.plan).releases[0].app_version }}
         run: |
-          gh workflow run release-prepare.yml --repo astral-sh/ty-vscode --ref main \
+          gh workflow run release-prepare.yml --repo astral-sh/ty-vscode \
             -f ty-version="$TY_VERSION" -f auto-promote=true
