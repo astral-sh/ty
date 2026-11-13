@@ -1,5 +1,25 @@
 # Changelog
 
+## 0.0.104
+
+Released on 2026-11-13.
+
+### Bug fixes
+
+- Narrow class objects in equality and membership checks ([#30393](https://github.com/astral-sh/ruff/pull/30393))
+- Preserve literals outside a protocol when simplifying unions ([#30398](https://github.com/astral-sh/ruff/pull/30398))
+- Respect implicit `__hash__ = None` when a class defines `__eq__` ([#30145](https://github.com/astral-sh/ruff/pull/30145))
+
+### LSP server
+
+- Fix completion after an alias in a parenthesized import ([#30394](https://github.com/astral-sh/ruff/pull/30394))
+- Suppress completions while typing multiline import aliases ([#30397](https://github.com/astral-sh/ruff/pull/30397))
+
+### Contributors
+
+- [@lerebear](https://github.com/lerebear)
+- [@carljm](https://github.com/carljm)
+
 ## 0.0.103
 
 Released on 2026-11-13.
