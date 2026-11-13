@@ -179,10 +179,10 @@ Preparation for the release is automated.
 
     The script is a no-op if there are no schema changes.
 
-1. Update and release `ty-vscode`.
+1. For stable releases, approve the `ty-vscode` release gate after the extension builds.
 
-    The instructions are [in the `ty-vscode`
-    repository](https://github.com/astral-sh/ty-vscode/blob/main/CONTRIBUTING.md#release).
+    The ty release starts the extension workflow automatically. For retries and manual releases,
+    see the [extension release instructions](https://github.com/astral-sh/ty-vscode/blob/main/CONTRIBUTING.md#release).
 
 ## Updating ty's conformance results upstream
 
