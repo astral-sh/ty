@@ -1,5 +1,29 @@
 # Changelog
 
+## 0.0.103
+
+Released on 2026-11-13.
+
+### Bug fixes
+
+- Avoid spurious syntax warnings when applying fixes ([#30404](https://github.com/astral-sh/ruff/pull/30404))
+- Fix a panic checking class decorators with inferred return types ([#30399](https://github.com/astral-sh/ruff/pull/30399))
+- Infer nested classes as read-only attributes ([#29346](https://github.com/astral-sh/ruff/pull/29346))
+- Infer value types for bare `Final` and `ClassVar` ([#30293](https://github.com/astral-sh/ruff/pull/30293))
+- Preserve excluded types when inferring type variable upper bounds ([#30237](https://github.com/astral-sh/ruff/pull/30237))
+- Preserve inherited value types on repeated bare ClassVar annotations ([#30396](https://github.com/astral-sh/ruff/pull/30396))
+- Respect return constraints when promoting literal arguments ([#30153](https://github.com/astral-sh/ruff/pull/30153))
+
+### LSP server
+
+- Resolve pytest fixtures registered through pytest_plugins ([#29588](https://github.com/astral-sh/ruff/pull/29588))
+
+### Contributors
+
+- [@carljm](https://github.com/carljm)
+- [@abalakh](https://github.com/abalakh)
+- [@AlexWaygood](https://github.com/AlexWaygood)
+
 ## 0.0.102
 
 Released on 2026-11-12.
