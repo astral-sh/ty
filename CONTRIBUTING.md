@@ -181,7 +181,7 @@ Preparation for the release is automated.
 
 1. For stable releases, approve the `ty-vscode` release gate after the extension builds.
 
-    The ty release starts the extension workflow automatically. For retries and manual releases,
+    The ty release starts the extension preparation workflow with `auto-promote=true`. For retries and manual releases,
     see the [extension release instructions](https://github.com/astral-sh/ty-vscode/blob/main/CONTRIBUTING.md#release).
 
 ## Updating ty's conformance results upstream

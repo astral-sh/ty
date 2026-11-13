@@ -63,11 +63,11 @@ jobs:
           permissions: |
             actions: write
 
-      - name: Dispatch extension release
+      - name: Prepare extension release
         if: ${{ !cancelled() && steps.vscode-token.outcome == 'success' }}
         env:
           GH_TOKEN: ${{ steps.vscode-token.outputs.token }}
           TY_VERSION: ${{ fromJson(inputs.plan).releases[0].app_version }}
         run: |
-          gh workflow run release.yml --repo astral-sh/ty-vscode --ref main \
-            -f ty-version="$TY_VERSION" -f publish-extensions=true
+          gh workflow run release-prepare.yml --repo astral-sh/ty-vscode --ref main \
+            -f ty-version="$TY_VERSION" -f auto-promote=true
