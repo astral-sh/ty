@@ -13,7 +13,7 @@ you are seeing; it may explain the problem.
 way as `Any`, but appears implicitly, rather than through an explicit `Any` annotation:
 
 ```py
-from missing_module import MissingClass  # error: unresolved-import
+from missing_module import MissingClass  # error: import-not-found
 
 reveal_type(MissingClass)  # Unknown
 ```

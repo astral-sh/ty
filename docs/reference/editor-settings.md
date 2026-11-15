@@ -624,8 +624,9 @@ ______________________________________________________________________
 
 A list of paths to `ty` executables.
 
-The extension uses the first executable that exists. This setting takes precedence over the
-[`ty.importStrategy`](#importstrategy) setting.
+In a trusted workspace, the extension uses the first executable that exists. If none of the paths
+exist, the extension falls back to [`ty.importStrategy`](#importstrategy). In an untrusted
+workspace, this setting is ignored: the extension always uses the bundled ty executable.
 
 **Default value**: `[]`
 

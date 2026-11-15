@@ -21,7 +21,7 @@ match "echo hello".split():
 print(sys.abi_info)
 
 if sys.version_info >= (3, 15):
-    # ty skips this branch for older targets, where `sys.abi_info` is unavailable.
+    # ok, because the usage is guarded by a version check:
     print(sys.abi_info)
 ```
 
@@ -34,10 +34,11 @@ For [scripts with inline metadata](./scripts.md), ty uses the script's inline
 inline metadata has neither setting and contains no `[tool.ty]` table, the script can inherit the
 project's Python version.
 
-If `requires-python` is absent and no target version has been set, ty will try to infer it from
-the configured or discovered [Python environment](./modules.md#python-environment).
+For either scripts or larger projects, if the `requires-python` field is not available but a
+virtual environment *has* been configured or detected, ty will try to infer the Python version
+being used from the virtual environment's metadata.
 
-If no Python environment is present or inferring the Python version from it fails,
+If no virtual environment is present or inferring the Python version from the metadata fails,
 ty will fall back to the default [`python-version`](./reference/configuration.md#python-version).
 
 The Python version may also be explicitly specified using the
