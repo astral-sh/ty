@@ -48,7 +48,7 @@ mode of other type checkers with the following configuration:
 dynamic-function-decorator-return = "error"
 missing-type-argument = "error"
 possibly-unresolved-reference = "warn"
-unsound-return-statement = "error"
+unsound-return = "error"
 
 [tool.ruff.lint]
 extend-select = ["ANN", "PYI"]
@@ -57,7 +57,7 @@ preview = true
 
 This configuration:
 
-- Enables ty's disabled-by-default [`dynamic-function-decorator-return`](https://docs.astral.sh/ty/reference/rules/#dynamic-function-decorator-return), [`missing-type-argument`](https://docs.astral.sh/ty/reference/rules/#missing-type-argument), [`possibly-unresolved-reference`](https://docs.astral.sh/ty/reference/rules/#possibly-unresolved-reference), and [`unsound-return-statement`](https://docs.astral.sh/ty/reference/rules/#unsound-return-statement) rules
+- Enables ty's disabled-by-default [`dynamic-function-decorator-return`](https://docs.astral.sh/ty/reference/rules/#dynamic-function-decorator-return), [`missing-type-argument`](https://docs.astral.sh/ty/reference/rules/#missing-type-argument), [`possibly-unresolved-reference`](https://docs.astral.sh/ty/reference/rules/#possibly-unresolved-reference), and [`unsound-return`](https://docs.astral.sh/ty/reference/rules/#unsound-return) rules
 - Extends Ruff's default rules with the [`ANN`](https://docs.astral.sh/ruff/rules/#flake8-annotations-ann) and [`PYI`](https://docs.astral.sh/ruff/rules/#flake8-pyi-pyi) rule categories, both of which are focussed on type-annotating your code more effectively
 - Enables Ruff's preview mode so that `PYI033` also checks `.py` files
 
@@ -71,7 +71,7 @@ dynamic-function-decorator-return = "error"
 missing-type-argument = "error"
 possibly-unresolved-reference = "warn"
 unsound-assignment = "error"
-unsound-return-statement = "error"
+unsound-return = "error"
 unsound-yield = "error"
 unsupported-dynamic-base = "warn"
 

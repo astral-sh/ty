@@ -142,8 +142,8 @@ ______________________________________________________________________
 Whether to disable language services in the ty language server, such as code completion, hover,
 and go to definition.
 
-This is useful if you want to use ty exclusively for type checking and another language server
-for those features.
+This is useful if you want to use ty exclusively for type checking and want to use
+another language server for those features.
 
 **Default value**: `false`
 
@@ -264,8 +264,8 @@ ______________________________________________________________________
 
 Whether to show syntax error diagnostics.
 
-When using ty with other language servers, you can use this setting to see syntax errors from only
-one source.
+When using ty alongside other language servers, you can use this setting to see syntax errors from
+only one source.
 
 **Default value**: `true`
 
@@ -665,8 +665,8 @@ ______________________________________________________________________
 
 ## Initialization options
 
-The following settings are required when ty is initialized in an editor. These settings are
-static, so changing them requires restarting the editor to take effect.
+The following settings are read when ty is initialized in an editor. Changing them requires
+restarting the language server.
 
 For VS Code users, most of these settings are defined in the `ty.*` namespace as usual, but for other
 editors, they would need to be provided in a separate field of the configuration that corresponds to

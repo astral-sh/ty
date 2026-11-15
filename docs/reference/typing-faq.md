@@ -261,14 +261,15 @@ In some cases it's also a reasonable solution to create a copy of the list
 
 ## Why does ty say `Callable` has no attribute `__name__`?
 
-When you access `__name__`, `__qualname__`, `__module__`, or `__doc__` on a value typed as `Callable`,
-ty reports an `unresolved-attribute` error. This is because not all callables have these attributes.
-Functions do (including lambdas), but other callable objects do not. The `FileUpload` class below, for
-example, is callable, but instances of `FileUpload` do not have a `__name__` attribute. Passing a
-`FileUpload` instance to `retry` would lead to an `AttributeError` at runtime.
+When you access `__name__` or `__qualname__` on a value typed as `Callable`, ty reports a
+[`missing-attribute`](./rules.md#missing-attribute) error. This is because not all callables have
+these attributes. Functions do (including lambdas), but other callable objects may lack them.
+Instances of `FileUpload` below, for example, are callable but do not have a `__name__` attribute.
+Passing a `FileUpload` instance to `retry` would lead to an `AttributeError` at runtime.
 
 ```py
 from typing import Callable
+
 
 def retry(times: int, operation: Callable[[], bool]) -> bool:
     for i in range(times):
@@ -278,12 +279,14 @@ def retry(times: int, operation: Callable[[], bool]) -> bool:
             return True
     return False
 
+
 class FileUpload:
     def __init__(self, name: str) -> None:
-        # …
+        self.name = name
 
     def __call__(self) -> bool:
-        # …
+        return bool(self.name)
+
 
 retry(3, FileUpload("image.png"))
 ```
@@ -300,6 +303,8 @@ Alternatively, you could use an `isinstance(…, types.FunctionType)` check to n
 `operation` to something that definitely has a `__name__` attribute:
 
 ```py
+from types import FunctionType
+
 if isinstance(operation, FunctionType):
     print(f"Calling {operation.__name__}, attempt {i + 1} of {times}")
 else:
@@ -442,9 +447,13 @@ topic.
 
 ## Does ty support inline script metadata (PEP 723)? { #does-ty-support-pep-723-inline-metadata-scripts }
 
-Yes. Use `TY_UV=scripts ty check script.py` or `uv check --script script.py` to check a script
-with its declared dependencies. See [Checking standalone scripts](../scripts.md) for instructions on how to check multiple
-scripts together or how to enable support in your editor.
+Yes! (But you have to opt in.)
+
+Use `TY_UV=scripts ty check script.py` or `uv check --script script.py` to check a script with its
+declared dependencies. See [Checking standalone scripts](../scripts.md) for instructions on how
+to check multiple scripts together or how to enable support in your editor.
+
+Follow [this issue](https://github.com/astral-sh/ty/issues/691) for further discussion of script support.
 
 ## Is there a pre-commit hook for ty?
 

@@ -1,6 +1,6 @@
 # Editor integration
 
-ty integrates with various editors to provide type checking and language server features.
+ty can be integrated with various editors to provide a seamless development experience.
 
 Learn more about ty's editor features in the [language server](./features/language-server.md)
 documentation.

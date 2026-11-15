@@ -50,8 +50,8 @@ You may explicitly pass the paths that ty should check, e.g.:
 ty check src scripts/benchmark.py
 ```
 
-Paths that are passed as positional arguments to `ty check` are included even if they would otherwise be ignored through `exclude` filters or an ignore-file.
-Pass [`--force-exclude`](./reference/cli.md#ty-check--force-exclude) to apply exclusions to these paths as well.
+By default, paths that are passed as positional arguments to `ty check` are included even if they would otherwise be ignored through `exclude` filters or an ignore-file.
+[`--force-exclude`](./reference/cli.md#ty-check--force-exclude) can be used to apply exclusions to these paths as well.
 
 ## Include and exclude syntax
 
@@ -88,4 +88,4 @@ named `my-env`:
 echo "*" > my-env/.gitignore
 ```
 
-You can also add your virtual environment to your `.gitignore` or `.ignore` file.
+Or by adding your virtual environment to your `.gitignore` or `.ignore` file.

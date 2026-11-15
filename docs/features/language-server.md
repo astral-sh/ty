@@ -54,7 +54,7 @@ ty powers several language server features that allow you to navigate a Python c
   <figcaption>Accepting this completion will automatically add a <code>subprocess</code> import at the top of the file.</figcaption>
 </figure>
 
-ty provides code completions as you type, suggesting variables, functions, classes, and modules that are in scope.
+ty provides intelligent code completions as you type, suggesting variables, functions, classes, and modules that are in scope.
 For symbols that are not yet imported, ty suggests auto-import actions to add the necessary `import` statements.
 
 ## Code actions and refactorings
