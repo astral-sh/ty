@@ -3,10 +3,9 @@
 The Python version affects allowed syntax, type definitions of the standard library, and type
 definitions of first- and third-party modules that are conditional on the Python version.
 
-For example, Python 3.10 introduced support for `match` statements and added the
-`sys.stdlib_module_names` symbol to the standard library. Syntactic features always
-need to be available in the lowest supported Python version, but symbols may be used
-in a `sys.version_info` conditional branch:
+For example, Python 3.10 introduced support for `match` statements, and Python 3.15 added
+`sys.abi_info` to the standard library. Syntactic features always need to be available in the
+lowest supported Python version, but symbols may be used in a `sys.version_info` conditional branch.
 
 ```python
 import sys
@@ -18,24 +17,29 @@ match "echo hello".split():
     case _:
         print("unknown command")
 
-# `unresolved-attribute` error if `python-version` is set to 3.9 or lower:
-print(sys.stdlib_module_names)
+# `missing-attribute` error if `python-version` is set to 3.14 or lower:
+print(sys.abi_info)
 
-if sys.version_info >= (3, 10):
+if sys.version_info >= (3, 15):
     # ok, because the usage is guarded by a version check:
-    print(sys.stdlib_module_names)
+    print(sys.abi_info)
 ```
 
 By default, the lower bound of the project's [`requires-python`](https://packaging.python.org/en/latest/guides/writing-pyproject-toml/#python-requires) field (from the `pyproject.toml`) is
 used as the target Python version, ensuring that features and symbols only available in newer Python
 versions are not used.
 
-If the `requires-python` field is not available but a virtual environment *has* been
-configured or detected, ty will try to infer the Python version being used from the virtual
-environment's metadata.
+For [scripts with inline metadata](./scripts.md), ty uses the script's inline
+`environment.python-version` if set, then the lower bound of its `requires-python` field. If the
+inline metadata has neither setting and contains no `[tool.ty]` table, the script can inherit the
+project's Python version.
+
+For either scripts or larger projects, if the `requires-python` field is not available but a
+virtual environment *has* been configured or detected, ty will try to infer the Python version
+being used from the virtual environment's metadata.
 
 If no virtual environment is present or inferring the Python version from the metadata fails,
-ty will fall back to the latest stable Python version supported by ty (currently 3.14).
+ty will fall back to the default [`python-version`](./reference/configuration.md#python-version).
 
 The Python version may also be explicitly specified using the
 [`python-version`](./reference/configuration.md#python-version) setting or the

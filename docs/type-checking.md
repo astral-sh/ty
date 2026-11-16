@@ -20,12 +20,12 @@ ty check
 The type checker needs to discover your installed packages in order to check your use of imported
 dependencies.
 
-ty will find installed packages in the active virtual environment (via `VIRTUAL_ENV`) or discover a
-virtual environment named `.venv` in the project root or working directory. Failing that, ty will
-look for a `python3` or `python` binary available in `PATH`. Alternatively, the `--python` flag can
-be provided to ty to explicitly specify a path to a Python interpreter.
+ty will discover installed packages in an active virtual environment, an active Conda or Pixi
+environment containing Python, or a virtual environment named `.venv` in the project root. If none of
+these is found, ty looks for a `python3` or `python` binary on `PATH`. Use the `--python` flag to
+explicitly specify a path to a Python interpreter or environment.
 
-See the [module discovery](./modules.md) documentation for details.
+See the [module discovery](./modules.md#python-environment) documentation for the full search order.
 
 For scripts that declare their dependencies using inline metadata, see
 [Checking standalone scripts](./scripts.md).

@@ -35,7 +35,7 @@ If these packages are missing from your Python environment, `ty check` reports u
 
 ```console
 $ ty check example.py
-error[unresolved-import]: Cannot resolve imported module `requests`
+error[import-not-found]: Cannot resolve imported module `requests`
  --> example.py:6:8
   |
 6 | import requests
