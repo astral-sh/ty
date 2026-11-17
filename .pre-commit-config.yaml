@@ -3,7 +3,7 @@ fail_fast: false
 exclude: |
   (?x)^(
     ruff/.*|
-    docs/reference/(cli|configuration|rules|environment).md
+    docs/reference/(cli|configuration|rules|environment|ty-extensions).md
   )$
 
 repos:
