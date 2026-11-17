@@ -90,23 +90,31 @@ def greet(being: Person | Animal | None):
     type as well, you can make `Animal` a `@final` class. This also allows ty to infer a more precise
     type for `being.name` (`str` instead of `object`).
 
-If ty is the only type checker you use, you can also make direct use of intersection types in
-annotations by importing `Intersection` from the special `ty_extensions` module that is (currently)
-only available at type-checking time:
+You can also use intersection types in type annotations (if ty is the only type checker that you use).
+There are several ways to do this. If your project never evaluates type annotations at runtime, you can
+use the (experimental) `A & B` syntax directly in your type annotations.[^intersection-syntax]
+If you do this, you might want to disable the `experimental-syntax` rule in your ty configuration.
 
-```py
-from typing import TYPE_CHECKING
+Alternatively, you can use `Intersection[...]` from `ty_extensions`. ty bundles the stubs for
+this module, so you can use it in `if TYPE_CHECKING` blocks or your own stubs without installing anything. However,
+if you want to use `Intersection[...]` in normal type annotations, you should install the runtime package
+[`ty-extensions`](https://pypi.org/project/ty-extensions/), which allows these annotations to be evaluated and
+potentially inspected at runtime.
 
-if TYPE_CHECKING:
-    from ty_extensions import Intersection
-
-    type SerializableVersioned = Intersection[Serializable, Versioned]
-
-
-def output_as_json(obj: SerializableVersioned) -> str: ...
+```sh
+uv add ty-extensions
 ```
 
-(Full example in the [playground](https://play.ty.dev/f003e901-0e45-4f45-9759-d6db9d5e5f66))
+You can then use `Intersection[...]` in your type annotations:
+
+```py
+from ty_extensions import Intersection
+
+
+def output_as_json(obj: Intersection[Serializable, Versioned]) -> str: ...
+```
+
+(Full example in the [playground](https://play.ty.dev/bc8a3faa-e958-47d0-af4c-2570cacaf128))
 
 ## Top and bottom materializations
 
@@ -171,6 +179,9 @@ def to_json(person: Person):
 ```
 
 (Full example in the [playground](https://play.ty.dev/34a227bb-93d5-405e-86c3-72f57ec5642e))
+
+[^intersection-syntax]: On Python 3.13 and earlier, add `from __future__ import annotations` or quote the annotation
+    (for example, `"A & B"`) to avoid evaluating it when Python defines the function.
 
 [materializations]: https://typing.python.org/en/latest/spec/concepts.html#materialization
 [python typing documentation]: https://typing.python.org/en/latest/spec/index.html

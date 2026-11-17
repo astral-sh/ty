@@ -42,6 +42,7 @@ site_dir: site/ty
 site_description: ty is an extremely fast Python type checker.
 markdown_extensions:
   - admonition
+  - footnotes
   - pymdownx.details
   - pymdownx.snippets:
   - pymdownx.magiclink:
