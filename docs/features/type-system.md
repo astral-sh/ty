@@ -90,16 +90,17 @@ def greet(being: Person | Animal | None):
     type as well, you can make `Animal` a `@final` class. This also allows ty to infer a more precise
     type for `being.name` (`str` instead of `object`).
 
-You can also use intersection types in type annotations (if ty is the only type checker that you use).
-There are several ways to do this. If your project never evaluates type annotations at runtime, you can
-use the (experimental) `A & B` syntax directly in your type annotations.[^intersection-syntax]
-If you do this, you might want to disable the `experimental-syntax` rule in your ty configuration.
+You can also use `A & B`, `~A`, and `A & ~B` in type annotations with ty.[^intersection-syntax]
+These spellings can raise an exception if Python or a library such as Pydantic evaluates the
+annotations at runtime.
 
-Alternatively, you can use `Intersection[...]` from `ty_extensions`. ty bundles the stubs for
-this module, so you can use it in `if TYPE_CHECKING` blocks or your own stubs without installing anything. However,
-if you want to use `Intersection[...]` in normal type annotations, you should install the runtime package
-[`ty-extensions`](https://pypi.org/project/ty-extensions/), which allows these annotations to be evaluated and
-potentially inspected at runtime.
+If your project evaluates annotations at runtime, install the
+[`ty-extensions` package](https://pypi.org/project/ty-extensions/) from PyPI.
+`ty_extensions.Intersection[A, B]` spells the same type as `A & B`, and `ty_extensions.Not[A]`
+spells the same type as `~A`.
+
+Note that other type checkers may reject annotations that use the experimental syntax or the
+`ty-extensions` special forms.
 
 ```sh
 uv add ty-extensions
