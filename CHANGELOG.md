@@ -1,5 +1,51 @@
 # Changelog
 
+## 0.0.105
+
+Released on 2026-11-17.
+
+### Breaking changes
+
+- Split `missing-module-member` out of `import-not-found` ([#30342](https://github.com/astral-sh/ruff/pull/30342))
+- Split invalid dataclass `__post_init__` signatures into a separate rule ([#30335](https://github.com/astral-sh/ruff/pull/30335))
+- Use the constraints rule for single-constraint TypeVar calls ([#30340](https://github.com/astral-sh/ruff/pull/30340))
+
+### Bug fixes
+
+- Fix stale diagnostic when using `diagnosticMode: "workspace"` ([#30415](https://github.com/astral-sh/ruff/pull/30415))
+- Preserve type context kind when propagating to nested expressions ([#30280](https://github.com/astral-sh/ruff/pull/30280))
+- Speed up materialization of nested generic types ([#30462](https://github.com/astral-sh/ruff/pull/30462))
+
+### LSP server
+
+- Keep the language server responsive when the worker queue fills ([#30127](https://github.com/astral-sh/ruff/pull/30127))
+- Speed-up find references in workspaces with many unicode files ([#30402](https://github.com/astral-sh/ruff/pull/30402))
+- Update imports when renaming Python package folders ([#30084](https://github.com/astral-sh/ruff/pull/30084))
+
+### Memory usage improvements
+
+- Skip union comparisons for unrelated nominal classes ([#30429](https://github.com/astral-sh/ruff/pull/30429))
+
+### Other changes
+
+- Avoid definition lookups in recursive TypedDict comparisons ([#30444](https://github.com/astral-sh/ruff/pull/30444))
+- Avoid preferring inferred attribute types during call inference ([#30151](https://github.com/astral-sh/ruff/pull/30151))
+- Avoid tracking ordinary instances twice in type searches ([#30438](https://github.com/astral-sh/ruff/pull/30438))
+- Check protocol member names before specializing the source interface ([#30445](https://github.com/astral-sh/ruff/pull/30445))
+- Ignore type context when inferring `assert_never` arguments ([#30389](https://github.com/astral-sh/ruff/pull/30389))
+- Reuse unpacked field types across TypedDict union candidates ([#30437](https://github.com/astral-sh/ruff/pull/30437))
+- Skip discarded TypedDict validation diagnostics in union matching ([#30435](https://github.com/astral-sh/ruff/pull/30435))
+- Skip repeated validation lookups for checked overloads ([#30436](https://github.com/astral-sh/ruff/pull/30436))
+
+### Contributors
+
+- [@carljm](https://github.com/carljm)
+- [@AlexWaygood](https://github.com/AlexWaygood)
+- [@lerebear](https://github.com/lerebear)
+- [@MichaReiser](https://github.com/MichaReiser)
+- [@charliermarsh](https://github.com/charliermarsh)
+- [@ibraheemdev](https://github.com/ibraheemdev)
+
 ## 0.0.104
 
 Released on 2026-11-13.
