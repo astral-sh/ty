@@ -25,3 +25,6 @@ cp ./ruff/crates/ty/docs/rules.md ./docs/reference/
 cp ./ruff/crates/ty/docs/environment.md ./docs/reference/
 
 echo "Documentation has been copied from Ruff submodule"
+
+echo "Generating the ty-extensions API reference..."
+uv run --default-index https://pypi.org/simple --script "$script_root/generate_ty_extensions_docs.py"
