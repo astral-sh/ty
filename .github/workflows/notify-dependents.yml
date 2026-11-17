@@ -51,3 +51,23 @@ jobs:
                 version: process.env.VERSION,
               },
             })
+
+      - name: Get VS Code extension token
+        if: ${{ !cancelled() && !fromJson(inputs.plan).announcement_is_prerelease }}
+        id: vscode-token
+        uses: astral-sh/github-actions/simple-token-service@eb81cf4d13127c3f9539f621c17e4c65327636c8
+        with:
+          exchange-url: ${{ secrets.RELEASES_STS_API_URL }}/exchange
+          audience: ${{ secrets.RELEASES_STS_API_URL }}
+          repository: astral-sh/ty-vscode
+          permissions: |
+            actions: write
+
+      - name: Prepare extension release
+        if: ${{ !cancelled() && steps.vscode-token.outcome == 'success' }}
+        env:
+          GH_TOKEN: ${{ steps.vscode-token.outputs.token }}
+          TY_VERSION: ${{ fromJson(inputs.plan).releases[0].app_version }}
+        run: |
+          gh workflow run release-prepare.yml --repo astral-sh/ty-vscode \
+            -f ty-version="$TY_VERSION" -f auto-promote=true
