@@ -133,15 +133,12 @@ The starred spellings only appear in ty's output; they cannot be used in Python 
     These special rules for `float` and `complex` exist for a reason. In almost all cases, you
     probably want to accept both `int` and `float` when you annotate something as `float`.
     If you really need to accept *only* `float` and not `int`, you can use ty's `JustFloat`
-    type. At the time of writing, this import needs to be guarded by a `TYPE_CHECKING` block:
+    type. [Install `ty-extensions`](https://pypi.org/project/ty-extensions/) to use this,
+    or guard the `ty_extensions` import (and the usage) with `if TYPE_CHECKING:` to avoid
+    runtime import errors.
 
     ```py
-    from typing import TYPE_CHECKING
-
-    if TYPE_CHECKING:
-        from ty_extensions import JustFloat
-    else:
-        JustFloat = float
+    from ty_extensions import JustFloat
 
 
     def only_actual_floats_allowed(f: JustFloat) -> None: ...
@@ -317,20 +314,17 @@ the developer experience around this in the future.
 
 !!! info
 
-    ty has first-class support for intersection types. If you only want to accept function-like
-    callables, you could define `FunctionLikeCallable` as an intersection of `Callable` and
-    `types.FunctionType`:
+    ty has first-class support for [intersection types](../features/type-system.md#intersection-types).
+    If you only want to accept function-like callables, you could define `FunctionLikeCallable` as an
+    intersection of `Callable` and `types.FunctionType`:
 
     ```py
-    from typing import Callable, TYPE_CHECKING
     from types import FunctionType
+    from typing import Callable
 
-    if TYPE_CHECKING:
-        from ty_extensions import Intersection
+    from ty_extensions import Intersection
 
-        type FunctionLikeCallable[**P, R] = Intersection[Callable[P, R], FunctionType]
-    else:
-        FunctionLikeCallable = Callable
+    type FunctionLikeCallable[**P, R] = Intersection[Callable[P, R], FunctionType]
 
 
     def retry(times: int, operation: FunctionLikeCallable[[], bool]) -> bool: ...

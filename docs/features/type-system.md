@@ -90,23 +90,31 @@ def greet(being: Person | Animal | None):
     type as well, you can make `Animal` a `@final` class. This also allows ty to infer a more precise
     type for `being.name` (`str` instead of `object`).
 
-If ty is the only type checker you use, you can also make direct use of intersection types in
-annotations by importing `Intersection` from the special `ty_extensions` module that is (currently)
-only available at type-checking time:
+You can also use intersection types in type annotations: `A & B`, `~A` and `A & ~B` will all be understood
+by ty if you use them in your Python code.[^intersection-syntax] However, this syntax may lead to an
+exception if your code evaluates annotations at runtime (or uses a third-party library, such as
+pydantic, that evaluates annotations at runtime). If that applies to your project, you can
+consider installing our [`ty-extensions` package](https://pypi.org/project/ty-extensions/)
+from PyPI, which provides runtime-accessible spellings of these types: `ty_extensions.Intersection[A, B]`
+spells the same type as `A & B`, and `ty_extensions.Not[A]` spells the same type as `~A`.
 
-```py
-from typing import TYPE_CHECKING
+Note that other type checkers may reject annotations that use the experimental syntax or the
+`ty-extensions` special forms.
 
-if TYPE_CHECKING:
-    from ty_extensions import Intersection
-
-    type SerializableVersioned = Intersection[Serializable, Versioned]
-
-
-def output_as_json(obj: SerializableVersioned) -> str: ...
+```sh
+uv add ty-extensions
 ```
 
-(Full example in the [playground](https://play.ty.dev/f003e901-0e45-4f45-9759-d6db9d5e5f66))
+You can then use `Intersection[...]` in your type annotations:
+
+```py
+from ty_extensions import Intersection
+
+
+def output_as_json(obj: Intersection[Serializable, Versioned]) -> str: ...
+```
+
+(Full example in the [playground](https://play.ty.dev/bc8a3faa-e958-47d0-af4c-2570cacaf128))
 
 ## Top and bottom materializations
 
@@ -171,6 +179,9 @@ def to_json(person: Person):
 ```
 
 (Full example in the [playground](https://play.ty.dev/34a227bb-93d5-405e-86c3-72f57ec5642e))
+
+[^intersection-syntax]: On Python 3.13 and earlier, add `from __future__ import annotations` or quote the annotation
+    (for example, `"A & B"`) to avoid evaluating it when Python defines the function.
 
 [materializations]: https://typing.python.org/en/latest/spec/concepts.html#materialization
 [python typing documentation]: https://typing.python.org/en/latest/spec/index.html
