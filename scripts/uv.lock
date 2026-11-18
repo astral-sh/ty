@@ -47,4 +47,4 @@ dev = [
 [package.metadata]
 
 [package.metadata.requires-dev]
-dev = [{ name = "ty", specifier = "==0.0.100" }]
+dev = [{ name = "ty" }]
