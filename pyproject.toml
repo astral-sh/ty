@@ -153,15 +153,6 @@ extend-exclude = ["ruff"]
 [tool.ruff.lint]
 extend-select = ["missing-required-import"]
 
-ignore = [
-    # only relevant if you run a script with `python -0`,
-    # which seems unlikely for any of the scripts in this repo
-    "assert-false",
-    # Leave it to the formatter to split long lines and
-    # the judgement of all of us.
-    "line-too-long",
-]
-
 [tool.ruff.lint.isort]
 required-imports = ["from __future__ import annotations"]
 
