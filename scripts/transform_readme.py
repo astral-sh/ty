@@ -4,8 +4,6 @@ By default, we assume that our README.md will be rendered on GitHub. However,
 PyPI includes the README with different rendering.
 """
 
-from __future__ import annotations
-
 import re
 import tomllib
 import urllib.parse
@@ -62,8 +60,7 @@ def main() -> None:
 
     content = re.sub(r"> \[\!(\w*)\]", replace, content)
 
-    with Path("README.md").open("w", encoding="utf8") as fp:
-        fp.write(content)
+    Path("README.md").write_text(content, encoding="utf8")
 
 
 if __name__ == "__main__":

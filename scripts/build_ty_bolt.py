@@ -1,7 +1,5 @@
 """Optimize the Linux x86-64 ty executable and wheel with LLVM BOLT."""
 
-from __future__ import annotations
-
 import argparse
 import base64
 import csv
@@ -26,15 +24,13 @@ from build_ty_pgo import (
 def check_program_header_address(binary: Path) -> None:
     readobj = find_llvm_tool("llvm-readobj", rustc_host())
     (elf,) = json.loads(
-        subprocess.check_output(
-            [
-                readobj,
-                "--elf-output-style=JSON",
-                "--file-headers",
-                "--program-headers",
-                binary,
-            ]
-        )
+        subprocess.check_output([
+            readobj,
+            "--elf-output-style=JSON",
+            "--file-headers",
+            "--program-headers",
+            binary,
+        ])
     )
     # Older Linux kernels use the file offset as the address relative to the
     # load base. Our position-independent executable starts at virtual address 0.
@@ -151,6 +147,7 @@ def main() -> None:
                 "-o",
                 optimized,
             ],
+            check=False,
             stdout=subprocess.PIPE,
             stderr=subprocess.STDOUT,
             text=True,

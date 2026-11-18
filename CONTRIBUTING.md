@@ -170,7 +170,7 @@ Preparation for the release is automated.
 
     The release will automatically be created on GitHub after the distributions are published.
 
-1. Run `uv run --no-project ./scripts/update_schemastore.py`
+1. Run `./scripts/update_schemastore.py`
 
     This script will prepare a branch to update the `ty.json` schema in the `schemastore`
     repository.

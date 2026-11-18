@@ -1,11 +1,9 @@
 # /// script
-# requires-python = ">=3.13"
+# requires-python = ">=3.14"
 # dependencies = []
 # ///
 
 """Generate the ty-extensions reference documentation from its vendored stub files."""
-
-from __future__ import annotations
 
 import ast
 from inspect import cleandoc

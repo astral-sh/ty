@@ -1,5 +1,5 @@
 # /// script
-# requires-python = ">=3.10"
+# requires-python = ">=3.14"
 # dependencies = []
 #
 # [tool.uv]
@@ -14,8 +14,6 @@ generation needs their checksums in the manifest, so copy them from the sidecars
 uploaded by the binary build jobs. Require a checksum for every downloaded
 executable archive to avoid publishing installers with partial checksum coverage.
 """
-
-from __future__ import annotations
 
 import argparse
 import json
