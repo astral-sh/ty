@@ -1,15 +1,13 @@
 """Build ty with profile-guided optimization using pinned ecosystem projects."""
 
 # /// script
-# requires-python = ">=3.11"
+# requires-python = ">=3.15"
 # dependencies = []
 # [tool.uv]
 # exclude-newer = "P7D"
 # require-build-hashes = true
 # preview-features = ["build-dependency-hashes"]
 # ///
-
-from __future__ import annotations
 
 import argparse
 import json
@@ -579,9 +577,16 @@ def profile_language_server(
                         remaining -= len(chunk)
                     response = json.loads(b"".join(chunks))
                     if not isinstance(response, dict):
-                        raise RuntimeError("Expected a JSON-RPC response object")
+                        raise TypeError("Expected a JSON-RPC response object")
                     responses.put(response)
-            except (OSError, RuntimeError, UnicodeError, ValueError, KeyError) as error:
+            except (
+                OSError,
+                RuntimeError,
+                TypeError,
+                UnicodeError,
+                ValueError,
+                KeyError,
+            ) as error:
                 responses.put(error)
 
         def send(message: dict[str, object]) -> None:
@@ -595,9 +600,12 @@ def profile_language_server(
             nonlocal request_id
             request_id += 1
             identifier = request_id
-            send(
-                {"jsonrpc": "2.0", "id": identifier, "method": method, "params": params}
-            )
+            send({
+                "jsonrpc": "2.0",
+                "id": identifier,
+                "method": method,
+                "params": params,
+            })
             deadline = time.monotonic() + 15
             while True:
                 try:
@@ -609,6 +617,7 @@ def profile_language_server(
                         f"Language-server request timed out: {method}"
                     ) from error
                 if isinstance(response, Exception):
+                    # ruff: ignore[type-check-without-type-error]
                     raise RuntimeError(
                         "Could not read language-server output"
                     ) from response
@@ -630,7 +639,7 @@ def profile_language_server(
                 "textDocument/diagnostic", {"textDocument": {"uri": path.as_uri()}}
             )
             if not isinstance(result, dict):
-                raise RuntimeError("Expected a full document diagnostic report")
+                raise TypeError("Expected a full document diagnostic report")
             return result.get("items", [])
 
         reader = threading.Thread(target=read_responses, daemon=True)

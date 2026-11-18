@@ -1,3 +1,4 @@
+#!/usr/bin/env -S uv run --no-project --script
 """Update ty.json in schemastore.
 
 This script will clone `astral-sh/schemastore`, update the schema and push the changes
@@ -6,10 +7,8 @@ to schemastore in the CLI.
 
 Usage:
 
-    uv run --only-dev scripts/update_schemastore.py
+    ./scripts/update_schemastore.py
 """
-
-from __future__ import annotations
 
 import enum
 import json
