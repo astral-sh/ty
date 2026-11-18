@@ -1,5 +1,30 @@
 # Changelog
 
+## 0.0.107
+
+Released on 2026-11-18.
+
+### Preview features
+
+- Show progress and handle Ctrl-C during initial file indexing ([#30492](https://github.com/astral-sh/ruff/pull/30492))
+
+### Bug fixes
+
+- Fix a hang when specializing generic constructors ([#30510](https://github.com/astral-sh/ruff/pull/30510))
+- Isolate uv-managed scripts from the project environment ([#30461](https://github.com/astral-sh/ruff/pull/30461))
+
+### Other changes
+
+- Reject union narrowing attempts with failed nested calls ([#30217](https://github.com/astral-sh/ruff/pull/30217))
+- Skip enum-complement recognition without exclusions ([#30539](https://github.com/astral-sh/ruff/pull/30539))
+
+### Contributors
+
+- [@carljm](https://github.com/carljm)
+- [@dcreager](https://github.com/dcreager)
+- [@charliermarsh](https://github.com/charliermarsh)
+- [@MichaReiser](https://github.com/MichaReiser)
+
 ## 0.0.106
 
 Released on 2026-11-18.
