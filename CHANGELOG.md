@@ -1,5 +1,45 @@
 # Changelog
 
+## 0.0.106
+
+Released on 2026-11-18.
+
+### Breaking changes
+
+- Split incompatible TypeIs narrowings into two new rules ([#29949](https://github.com/astral-sh/ruff/pull/29949))
+
+### Bug fixes
+
+- Avoid exponential constraint search in generic constructor inference ([#30474](https://github.com/astral-sh/ruff/pull/30474))
+- Check fixed prefixes when assigning ParamSpec callables to gradual Concatenate ([#30470](https://github.com/astral-sh/ruff/pull/30470))
+- Fix stack overflow checking a generic base initializer ([#30473](https://github.com/astral-sh/ruff/pull/30473))
+- Fix variance inference for frozen Pydantic models on 3.12 and earlier ([#30452](https://github.com/astral-sh/ruff/pull/30452))
+- Preserve compatible overloads when partially binding a union argument ([#30446](https://github.com/astral-sh/ruff/pull/30446))
+- Preserve fixed parameters when comparing gradual callables ([#30509](https://github.com/astral-sh/ruff/pull/30509))
+
+### LSP server
+
+- Report workspace diagnostics while scripts initialize ([#30410](https://github.com/astral-sh/ruff/pull/30410))
+- Sync script environments when opening the file, when using `diagnosticMode: "openFilesOnly"` ([#30381](https://github.com/astral-sh/ruff/pull/30381))
+
+### Configuration changes
+
+- Add `project-manager.script = "uv"` ([#30489](https://github.com/astral-sh/ruff/pull/30489))
+- Resolve script file settings independently of uv ([#30407](https://github.com/astral-sh/ruff/pull/30407))
+
+### Other changes
+
+- Auto-generate reference documentation for ty-extensions ([#5056](https://github.com/astral-sh/ty/pull/5056))
+- Handle TypedDict union pairs before other simplifications ([#30516](https://github.com/astral-sh/ruff/pull/30516))
+
+### Contributors
+
+- [@MichaReiser](https://github.com/MichaReiser)
+- [@AlexWaygood](https://github.com/AlexWaygood)
+- [@sharkdp](https://github.com/sharkdp)
+- [@charliermarsh](https://github.com/charliermarsh)
+- [@carljm](https://github.com/carljm)
+
 ## 0.0.105
 
 Released on 2026-11-17.
