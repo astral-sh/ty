@@ -1,0 +1,10 @@
+[project]
+name = "ty-scripts"
+version = "0.0.0"
+requires-python = ">=3.15"
+
+[dependency-groups]
+dev = ["ty==0.0.100"]
+
+[tool.ruff]
+preview = true

@@ -149,7 +149,6 @@ docker = {requires-python = ">=3.12"}
 [tool.ruff]
 preview = true
 extend-exclude = ["ruff"]
-per-file-target-version = { "scripts/**" = "py315" }
 
 [tool.ruff.lint]
 extend-select = ["missing-required-import"]
@@ -162,11 +161,6 @@ ignore = [
     # the judgement of all of us.
     "line-too-long",
 ]
-
-[tool.ruff.lint.per-file-ignores]
-# Python 3.15 defers annotation evaluation by default, so scripts can omit
-# `from __future__ import annotations`.
-"scripts/**" = ["missing-required-import"]
 
 [tool.ruff.lint.isort]
 required-imports = ["from __future__ import annotations"]

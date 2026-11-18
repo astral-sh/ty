@@ -120,7 +120,7 @@ repos:
     hooks:
       - id: ty-check-scripts
         name: Type check scripts with ty
-        entry: uvx --default-index=https://pypi.org/simple ty@0.0.106 check --python-version=3.15 scripts/
+        entry: uv run --directory scripts --locked --only-dev ty check
         language: system
         pass_filenames: false
         always_run: true
