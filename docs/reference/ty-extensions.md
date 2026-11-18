@@ -2,15 +2,37 @@
 
 # ty-extensions
 
-Experimental ty APIs intended to be exposed to end users.
+ty-extensions is a module that provides experimental typing features supported by ty.
+
+ty bundles the typing stubs for this module, which means that you can use them without
+installing anything. However, if you rely on runtime evaluation of type annotations,
+you should add the [`ty-extensions` package](https://pypi.org/project/ty-extensions/)
+as a dependency in your project:
+
+```bash
+uv add ty-extensions
+```
+
+## `static_assert`
+
+Make sure that a certain condition holds at type-check time.
+
+Example:
+
+```python
+static_assert(sys.version_info[:2] >= (3, 13), "Python 3.13 or higher is required")
+```
+
+At runtime, a false condition raises `AssertionError` (even with Python optimization enabled).
 
 ## `Not`
 
 `Not[T]`, also spelled as `~T`, represents the set of all objects that do not inhabit the type `T`.
 
 In type expressions, ty supports the experimental spelling `~T`, and also uses it when displaying
-negation types. Note that either spelling will fail in runtime contexts or in cases where an
-annotation expression could be evaluated.
+negation types. While the experimental syntax will raise an exception in runtime contexts or in
+cases where an annotation expression could be evaluated, however, `Not[]` can be used in arbitrary
+contexts if the `ty-extensions` package is installed.
 
 ## `Intersection`
 
@@ -33,8 +55,29 @@ s: Intersection[P, Q] = S()
 ```
 
 In type expressions, ty supports the experimental spelling `T1 & T2`, and also uses this syntax
-when displaying intersection types. Note that either spelling will fail in runtime contexts or in
-cases where an annotation expression could be evaluated.
+when displaying intersection types. While the experimental syntax will raise an exception in
+runtime contexts or in cases where an annotation expression could be evaluated, however,
+`Intersection[]` can be used in arbitrary contexts if the `ty-extensions` package is installed.
+
+Nested intersections are flattened at runtime, and duplicate operands are removed using
+runtime equality, keeping the first occurrence of each. A named alias created using the
+`type` statement is always kept as an operand. Intersections are unordered types, so
+nongeneric intersections always compare equal at runtime when they have the same
+operands:
+
+```pycon
+>>> from ty_extensions import Intersection
+>>> Intersection[Intersection[str, int], str]
+ty_extensions.Intersection[str, int]
+>>> type Alias = Intersection[str, int]  # Python 3.12+
+>>> Intersection[Alias, str]
+ty_extensions.Intersection[Alias, str]
+>>> Intersection[int, str] == Intersection[str, int]
+True
+>>> hash(Intersection[int, str]) == hash(Intersection[str, int])
+True
+
+```
 
 ## `Top`
 
@@ -104,12 +147,12 @@ context.
 literal strings, integers and bytestrings. It can also be inhabited by instances of classes
 with `__bool__` methods returning `Literal[True]`.
 
-In practice, most Python objects inhabit neither `AlwaysTruthy` nor `AlwaysFalsy`, since
-their boolean evaluation may be uncertain or depend on runtime state. For example, although
-an instance of *exactly* `object` is always truthy, a variable annotated as having type
-`object` could also be an instance of an arbitrary subclass of `object` that is always falsy.
-This means that the boolean evaluation of a variable inferred as `object` is uncertain, so
-`object` is not a subtype of `AlwaysTruthy`.
+In practice, most Python objects inhabit neither `AlwaysTruthy` nor `AlwaysFalsy`, since their
+boolean evaluation may be uncertain or depend on runtime state. For example, although an
+instance of *exactly* `object` is always truthy, a variable annotated as having type `object`
+could also be an instance of an arbitrary subclass of `object` that is always falsy. This means
+that the boolean evaluation of a variable inferred as `object` is uncertain, so `object` is
+not a subtype of `AlwaysTruthy`.
 
 ## `AlwaysFalsy`
 
@@ -122,6 +165,26 @@ methods returning `Literal[False]`.
 
 In practice, however, most Python objects inhabit neither `AlwaysTruthy` nor `AlwaysFalsy`,
 since their boolean evaluation may be uncertain or depend on runtime state.
+
+## `JustFloat`
+
+`JustFloat` represents an instance of the class `float`. This can be used to circumvent
+the [type-system special case] that lets `float` annotations accept values of
+type `int` as well.
+
+At runtime, `JustFloat` is an alias for the built-in `float` class.
+
+[type-system special case]: https://typing.python.org/en/latest/spec/special-types.html#special-cases-for-float-and-complex
+
+## `JustComplex`
+
+`JustComplex` represents an instance of the class `complex`. This can be used to circumvent
+the [type-system special case] that lets `complex` annotations accept values of
+type `float` or `int` as well.
+
+At runtime, `JustComplex` is an alias for the built-in `complex` class.
+
+[type-system special case]: https://typing.python.org/en/latest/spec/special-types.html#special-cases-for-float-and-complex
 
 ## `NamedTupleLike`
 
