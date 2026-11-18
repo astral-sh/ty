@@ -116,6 +116,16 @@ repos:
       - id: markdownlint-fix
         priority: 2
 
+  - repo: local
+    hooks:
+      - id: ty-check-scripts
+        name: Type check scripts with ty
+        entry: uvx --default-index=https://pypi.org/simple ty@0.0.106 check --python-version=3.15 scripts/
+        language: system
+        pass_filenames: false
+        always_run: true
+        priority: 2
+
   # Priority 3: Clean up whitespace after all other hooks.
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: 3e8a8703264a2f4a69428a0aa4dcb512790b2c8c # frozen: v6.0.0

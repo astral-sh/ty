@@ -20,12 +20,14 @@ def main() -> None:
     """Modify the README.md to support PyPI."""
     # Read the current version from the `dist-workspace.toml`.
     with Path("dist-workspace.toml").open(mode="rb") as fp:
-        # Parse the TOML.
-        dist_workspace = tomllib.load(fp)
-        if "workspace" in dist_workspace and "version" in dist_workspace["workspace"]:
-            version = dist_workspace["workspace"]["version"]
-        else:
-            raise ValueError("Version not found in dist-workspace.toml")
+        workspace = tomllib.load(fp).get("workspace")
+    if not isinstance(workspace, dict) or "version" not in workspace:
+        raise ValueError("Version not found in dist-workspace.toml")
+    version: object = workspace["version"]
+    if not isinstance(version, str):
+        raise TypeError(
+            "Expected workspace.version to be a string in dist-workspace.toml"
+        )
 
     content = Path("README.md").read_text(encoding="utf8")
 
@@ -36,14 +38,14 @@ def main() -> None:
     content = content.replace(BENCHMARK_URL, BENCHMARK_URL_LIGHT)
 
     # Replace relative src="./..." attributes with absolute GitHub raw URLs.
-    def replace_src(match: re.Match) -> str:
+    def replace_src(match: re.Match[str]) -> str:
         path = match.group(1).removeprefix("./")
         return f'src="https://raw.githubusercontent.com/astral-sh/ty/{version}/{path}"'
 
     content = re.sub(r'src="(\./[^"]+)"', replace_src, content)
 
     # Replace any relative URLs (e.g., `[CONTRIBUTING.md`) with absolute URLs.
-    def replace(match: re.Match) -> str:
+    def replace(match: re.Match[str]) -> str:
         url = match.group(1)
         if not url.startswith("http"):
             url = urllib.parse.urljoin(
@@ -54,7 +56,7 @@ def main() -> None:
     content = re.sub(r"]\(([^)]+)\)", replace, content)
 
     # Replace any GitHub admonitions
-    def replace(match: re.Match) -> str:
+    def replace(match: re.Match[str]) -> str:
         name = match.group(1)
         return f"> {name}:"
 
