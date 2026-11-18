@@ -1,7 +1,7 @@
 """Build ty with profile-guided optimization using pinned ecosystem projects."""
 
 # /// script
-# requires-python = ">=3.14"
+# requires-python = ">=3.15"
 # dependencies = []
 # [tool.uv]
 # exclude-newer = "P7D"
