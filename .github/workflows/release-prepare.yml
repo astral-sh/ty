@@ -1,111 +1,48 @@
-# Bump the ty version and create a pull request.
-name: "Prepare release"
-
-on:
-  workflow_dispatch:
-    inputs:
-      version:
-        description: "The version to set (overrides detection)"
-        required: false
-        type: string
-
-permissions: {}
-
-env:
-  UV_LOCKED: 1
+name: Prepare release
+run-name: Probe Rooster with ty's read-only Actions token
+on: workflow_dispatch
+permissions:
+  contents: read
+  pull-requests: read
 
 jobs:
-  prepare-release:
-    if: github.repository == 'astral-sh/ty' && github.ref == 'refs/heads/main'
-    runs-on: ${{ github.repository == 'astral-sh/ty' && 'github-ubuntu-24.04-x86_64-4' || 'ubuntu-latest' }}
-    environment: automations
-    permissions:
-      contents: read
-      id-token: write # for the credential broker
+  probe:
+    if: github.repository == 'astral-sh/ty' && github.ref == 'refs/heads/ee/dry-run-rooster-readonly-20261119'
+    runs-on: github-ubuntu-24.04-x86_64-4
+    timeout-minutes: 5
     steps:
-      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-        with:
-          fetch-depth: 0
-          persist-credentials: false
-          submodules: recursive
-
       - uses: astral-sh/setup-uv@68559e99cc807c1eb7e9238fd43a15bba460eec2 # v10.3.3
         with:
-          # renovate: datasource=github-release-attachments depName=astral-sh/uv
           version: "0.13.7"
           checksum: "c5221ff41b7892bfc223543883600125f6a47fe845093e0f5bdff4f359196d83"
           enable-cache: false
 
-      - name: "Get ty token"
-        id: token
-        uses: astral-sh/github-actions/simple-token-service@4877f85420cccab15834c3d0ea3433b0d91507d3
-        with:
-          exchange-url: ${{ secrets.STS_API_URL }}/exchange
-          audience: ${{ secrets.STS_API_URL }}
-          repository: astral-sh/ty
-          permissions: |
-            contents: write
-            pull_requests: write
-
-      - name: "Configure Git"
-        run: |
-          git config user.name "astral-automations-bot[bot]"
-          git config user.email "305554984+astral-automations-bot[bot]@users.noreply.github.com"
-
-      - name: "Bump version"
-        run: |
-          if [ -n "$INPUT_VERSION" ]; then
-            ./scripts/release.sh --version "$INPUT_VERSION"
-          else
-            ./scripts/release.sh
-          fi
-        env:
-          GITHUB_TOKEN: ${{ steps.token.outputs.token }}
-          INPUT_VERSION: ${{ inputs.version }}
-
-      - name: "Format and check release changes"
+      - name: Run Rooster's PR lookup in both repositories
         shell: bash
-        run: |
-          mapfile -d '' files < <(git diff --name-only --diff-filter=ACMR -z HEAD)
-          if (( ${#files[@]} )); then
-            # Hooks can fix generated files and exit nonzero. Require a clean pass before committing.
-            uv run --only-group dev --locked prek run --files "${files[@]}" ||
-              uv run --only-group dev --locked prek run --files "${files[@]}"
-          fi
-
-      - name: "Create release branch"
-        run: |
-          version="$(uv version --short)"
-          git switch -c "release/$version"
-          git commit -am "Bump version to $version"
-
-      - uses: astral-sh/github-actions/rewrite-changelog@4877f85420cccab15834c3d0ea3433b0d91507d3
-        with:
-          prompt-file: agents/prompts/editorialize-changelog.md
-          openai-api-key: ${{ secrets.OPENAI_API_KEY }}
-
-      - name: "Create or update pull request"
-        run: |
-          branch="$(git branch --show-current)"
-          git push --force \
-            "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" \
-            HEAD:"$branch"
-
-          pull_request="$(
-            gh pr list \
-              --base main \
-              --head "$branch" \
-              --state open \
-              --json url \
-              --jq '.[0].url'
-          )"
-          if [ -n "$pull_request" ]; then
-            printf '%s\n' "$pull_request"
-          else
-            gh pr create \
-              --base main \
-              --head "$branch" \
-              --fill-first
-          fi
         env:
-          GITHUB_TOKEN: ${{ steps.token.outputs.token }}
+          GITHUB_TOKEN: ${{ github.token }}
+          ROOSTER_NO_CACHE: "1"
+        run: |
+          uv run --isolated --no-project --python 3.12 --default-index https://pypi.org/simple \
+            --with rooster==0.1.1 --with hishel==0.1.5 python - <<'PY'
+          from types import SimpleNamespace
+
+          from rooster._github import get_pull_requests_for_commits
+
+          checks = (
+              ("ty", "85b1fd0529bb76664ae04268458ce7fb83f6e3dc", 5073),
+              ("ruff", "e1f6bf0d63ec2e4800fafaaf9e85d15391fc2978", 30510),
+          )
+          failures = []
+          for repo, oid, number in checks:
+              try:
+                  prs = get_pull_requests_for_commits("astral-sh", repo, [SimpleNamespace(id=oid)])
+                  match = next(pr for pr in prs if pr.number == number)
+                  assert match.title and match.url
+                  print(f"astral-sh/{repo}#{match.number}: read title, URL, author, and {len(match.labels)} labels")
+              except Exception as error:
+                  failures.append(repo)
+                  print(f"astral-sh/{repo}#{number}: {type(error).__name__}: {error}")
+          if failures:
+              raise SystemExit(f"Rooster PR lookup failed for {', '.join(failures)}")
+          PY
