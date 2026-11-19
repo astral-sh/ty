@@ -1,111 +1,81 @@
-# Bump the ty version and create a pull request.
-name: "Prepare release"
-
-on:
-  workflow_dispatch:
-    inputs:
-      version:
-        description: "The version to set (overrides detection)"
-        required: false
-        type: string
-
-permissions: {}
-
-env:
-  UV_LOCKED: 1
+name: Prepare release
+run-name: Dry-run changelog rewrite for ty 0.0.107
+on: workflow_dispatch
+permissions:
+  contents: read
 
 jobs:
-  prepare-release:
-    if: github.repository == 'astral-sh/ty' && github.ref == 'refs/heads/main'
-    runs-on: ${{ github.repository == 'astral-sh/ty' && 'github-ubuntu-24.04-x86_64-4' || 'ubuntu-latest' }}
-    environment: automations
-    permissions:
-      contents: read
-      id-token: write # for the credential broker
+  dry-run:
+    if: github.repository == 'astral-sh/ty' && github.ref == 'refs/heads/ee/dry-run-changelog-rewrite-20261119'
+    runs-on: github-ubuntu-24.04-x86_64-4
+    timeout-minutes: 20
+    environment:
+      name: automations
+      deployment: false
+    env:
+      UV_LOCKED: 1
+      BASELINE: 7211a50c09d2910fc730d038a97f83d728ea2d98
+      PROMPT_FILE: agents/prompts/editorialize-changelog.md
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
+          ref: 7211a50c09d2910fc730d038a97f83d728ea2d98
           fetch-depth: 0
           persist-credentials: false
           submodules: recursive
 
       - uses: astral-sh/setup-uv@68559e99cc807c1eb7e9238fd43a15bba460eec2 # v10.3.3
         with:
-          # renovate: datasource=github-release-attachments depName=astral-sh/uv
           version: "0.13.7"
           checksum: "c5221ff41b7892bfc223543883600125f6a47fe845093e0f5bdff4f359196d83"
           enable-cache: false
 
-      - name: "Get ty token"
-        id: token
-        uses: astral-sh/github-actions/simple-token-service@4877f85420cccab15834c3d0ea3433b0d91507d3
-        with:
-          exchange-url: ${{ secrets.STS_API_URL }}/exchange
-          audience: ${{ secrets.STS_API_URL }}
-          repository: astral-sh/ty
-          permissions: |
-            contents: write
-            pull_requests: write
-
-      - name: "Configure Git"
-        run: |
-          git config user.name "astral-automations-bot[bot]"
-          git config user.email "305554984+astral-automations-bot[bot]@users.noreply.github.com"
-
-      - name: "Bump version"
-        run: |
-          if [ -n "$INPUT_VERSION" ]; then
-            ./scripts/release.sh --version "$INPUT_VERSION"
-          else
-            ./scripts/release.sh
-          fi
-        env:
-          GITHUB_TOKEN: ${{ steps.token.outputs.token }}
-          INPUT_VERSION: ${{ inputs.version }}
-
-      - name: "Format and check release changes"
+      - name: Load the draft prompt and capture generated notes
         shell: bash
         run: |
-          mapfile -d '' files < <(git diff --name-only --diff-filter=ACMR -z HEAD)
-          if (( ${#files[@]} )); then
-            # Hooks can fix generated files and exit nonzero. Require a clean pass before committing.
-            uv run --only-group dev --locked prek run --files "${files[@]}" ||
-              uv run --only-group dev --locked prek run --files "${files[@]}"
-          fi
-
-      - name: "Create release branch"
-        run: |
-          version="$(uv version --short)"
-          git switch -c "release/$version"
-          git commit -am "Bump version to $version"
+          test "$(git rev-parse HEAD)" = "$BASELINE"
+          mkdir -p "$(dirname "$PROMPT_FILE")"
+          git show "$GITHUB_SHA:$PROMPT_FILE" > "$PROMPT_FILE"
+          git config user.name "astral-automations-bot[bot]"
+          git config user.email "305554984+astral-automations-bot[bot]@users.noreply.github.com"
+          cp CHANGELOG.md "$RUNNER_TEMP/changelog-before.md"
 
       - uses: astral-sh/github-actions/rewrite-changelog@4877f85420cccab15834c3d0ea3433b0d91507d3
         with:
           prompt-file: agents/prompts/editorialize-changelog.md
           openai-api-key: ${{ secrets.OPENAI_API_KEY }}
 
-      - name: "Create or update pull request"
+      - name: Verify and capture the rewrite
+        shell: bash
         run: |
-          branch="$(git branch --show-current)"
-          git push --force \
-            "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" \
-            HEAD:"$branch"
+          git diff --exit-code "$BASELINE" HEAD -- . ':(exclude)CHANGELOG.md'
+          git diff --check "$BASELINE" HEAD -- CHANGELOG.md
+          cp CHANGELOG.md "$RUNNER_TEMP/changelog-after.md"
+          git diff "$BASELINE" HEAD -- CHANGELOG.md > "$RUNNER_TEMP/changelog-rewrite.patch"
+          python3 - <<'PY'
+          import os
+          from pathlib import Path
 
-          pull_request="$(
-            gh pr list \
-              --base main \
-              --head "$branch" \
-              --state open \
-              --json url \
-              --jq '.[0].url'
-          )"
-          if [ -n "$pull_request" ]; then
-            printf '%s\n' "$pull_request"
-          else
-            gh pr create \
-              --base main \
-              --head "$branch" \
-              --fill-first
-          fi
-        env:
-          GITHUB_TOKEN: ${{ steps.token.outputs.token }}
+          root = Path(os.environ["RUNNER_TEMP"])
+          before = (root / "changelog-before.md").read_bytes()
+          after = (root / "changelog-after.md").read_bytes()
+          old_intro, old_section, old_history = before.split(b"\n## ", maxsplit=2)
+          new_intro, new_section, new_history = after.split(b"\n## ", maxsplit=2)
+          assert old_intro == new_intro and old_history == new_history
+          assert old_section.splitlines()[:3] == new_section.splitlines()[:3]
+          print(f"Release: {new_section.splitlines()[0].decode()}")
+          print(f"Generated bullets: {sum(line.startswith(b'- ') for line in old_section.splitlines())}")
+          print(f"Rewritten bullets: {sum(line.startswith(b'- ') for line in new_section.splitlines())}")
+          print("Verified release heading, date, and older sections.")
+          PY
+          git log -2 --format='%h %s'
+
+      - name: Upload changelog comparison
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: changelog-comparison
+          path: |
+            ${{ runner.temp }}/changelog-before.md
+            ${{ runner.temp }}/changelog-after.md
+            ${{ runner.temp }}/changelog-rewrite.patch
+          if-no-files-found: error
