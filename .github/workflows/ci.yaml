@@ -50,11 +50,18 @@ jobs:
     name: "python package"
     runs-on: ${{ github.repository == 'astral-sh/ty' && 'github-ubuntu-24.04-x86_64-4' || 'ubuntu-latest' }}
     timeout-minutes: 20
+    permissions:
+      actions: read
+      contents: read
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
           submodules: recursive
+      - name: "Check Cargo dependency cooldowns"
+        uses: astral-sh/github-actions/cargo-cooldowns@4d0d0b9f3efeb82c92183f4423e395b81c3fcf5e
+        with:
+          working-directory: ruff
       - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
         with:
           python-version: ${{ env.PYTHON_VERSION }}
