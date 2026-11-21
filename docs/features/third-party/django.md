@@ -11,6 +11,9 @@ We support the following features:
 
 - Type inference and assignment checking for model fields, including nullable fields declared with `null=True`.
 - Recognition of automatic `id` fields and the `pk` alias, whose type follows the model's primary key.
+    Abstract models have no automatic `id`. If a foreign key or one-to-one field is the primary key,
+    the type of `pk` follows the related model's primary key.
+- Recognition of `Meta` configurations that override or inherit from the `Meta` of a parent model.
 - Inference of types for forward foreign-key relationships and their generated `<field>_id` attributes.
     The ID type follows the related primary key or the field selected with `to_field`.
 - Inference of return types for `get_<field>_display()` methods generated for fields with choices.
@@ -45,6 +48,38 @@ reveal_type(review.id)  # revealed: int
 reveal_type(review.pk)  # revealed: int
 
 book.title = 3  # error: [invalid-assignment]
+```
+
+### Abstract models and primary keys
+
+Django adds no automatic `id` to an abstract model, but it does add one to its concrete subclasses.
+A model can declare its own `Meta` or inherit from its parent's `Meta`. If a foreign key or
+one-to-one field is the primary key, the type of `pk` follows the related model's primary key:
+
+```python
+class Timestamped(models.Model):
+    created = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        abstract = True
+        ordering = ["created"]
+
+
+class Note(Timestamped):
+    text = models.TextField()
+
+    class Meta(Timestamped.Meta):
+        ordering = ["text"]
+
+
+class BookDetails(models.Model):
+    book = models.OneToOneField(Book, on_delete=models.CASCADE, primary_key=True)
+
+
+def show_primary_keys(base: Timestamped, note: Note, details: BookDetails) -> None:
+    base.id  # error: [missing-attribute]
+    reveal_type(note.id)  # revealed: int
+    reveal_type(details.pk)  # revealed: str
 ```
 
 ### Generated methods
