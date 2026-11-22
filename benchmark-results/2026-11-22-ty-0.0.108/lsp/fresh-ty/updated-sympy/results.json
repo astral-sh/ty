@@ -1,0 +1,200 @@
+{
+    "machine_info": {
+        "node": "MacBook-Pro-8.local",
+        "processor": "arm",
+        "machine": "arm64",
+        "python_compiler": "Clang 23.1.3 ",
+        "python_implementation": "CPython",
+        "python_implementation_version": "3.15.1",
+        "python_version": "3.15.1",
+        "python_build": [
+            "main",
+            "Oct 21 2026 17:39:16"
+        ],
+        "release": "25.5.0",
+        "system": "Darwin",
+        "cpu": {
+            "python_version": "3.15.1.final.0 (64 bit)",
+            "cpuinfo_version": [
+                10,
+                1,
+                1
+            ],
+            "cpuinfo_version_string": "10.1.1",
+            "arch": "ARM_8",
+            "bits": 64,
+            "count": 16,
+            "arch_string_raw": "arm64"
+        }
+    },
+    "commit_info": {
+        "id": "504457130a2183e9f0c6f4e92ce1c43e970b70ca",
+        "time": "2026-11-04T13:31:31-05:00",
+        "author_time": "2026-11-04T13:31:31-05:00",
+        "dirty": false,
+        "project": "ty_benchmark",
+        "branch": "(detached head)"
+    },
+    "benchmarks": [
+        {
+            "group": "sympy",
+            "name": "test_fetch_diagnostics[updated-sympy-ty]",
+            "fullname": "src/benchmark/test_lsp_diagnostics.py::test_fetch_diagnostics[updated-sympy-ty]",
+            "params": {
+                "project_setup": [
+                    "sympy",
+                    "https://github.com/sympy/sympy",
+                    "85d3998a4517ffbc8a9709b8efa769bb417c174a",
+                    [
+                        "mpmath>=1.1.0,<1.4",
+                        "typing-extensions"
+                    ],
+                    "3.11",
+                    null,
+                    [
+                        "sympy"
+                    ],
+                    [
+                        "sympy/**/tests/**",
+                        "sympy/**/benchmarks/**",
+                        "sympy/parsing/autolev/test-examples/**"
+                    ],
+                    [
+                        "sympy/core/sorting.py",
+                        [
+                            "sympy/core/basic.py"
+                        ],
+                        "def ordered(seq, keys=None, default=True, warn=False):",
+                        "def ordered(seq, keys=None, default=True, warn=False) -> int:"
+                    ],
+                    []
+                ],
+                "tool": "UNSERIALIZABLE[<benchmark.tool.Ty object at 0x1098c4910>]"
+            },
+            "param": "updated-sympy-ty",
+            "extra_info": {},
+            "options": {
+                "disable_gc": false,
+                "timer": "perf_counter",
+                "min_rounds": 5,
+                "max_time": 1.0,
+                "min_time": 5e-06,
+                "precision": null,
+                "confidence": null,
+                "warmup": false
+            },
+            "stats": {
+                "min": 0.07184799993410707,
+                "max": 0.07317579188384116,
+                "mean": 0.0722481208620593,
+                "stddev": 0.00038954834289542774,
+                "rounds": 10,
+                "median": 0.07216895848978311,
+                "iqr": 0.0004300002474337816,
+                "q1": 0.0719573749229312,
+                "q3": 0.07238737517036498,
+                "iqr_outliers": 1,
+                "stddev_outliers": 2,
+                "outliers": "2;1",
+                "ld15iqr": 0.07184799993410707,
+                "hd15iqr": 0.07317579188384116,
+                "ops": 13.841190442991087,
+                "total": 0.722481208620593,
+                "data": [
+                    0.07227137498557568,
+                    0.07184799993410707,
+                    0.07317579188384116,
+                    0.07219841703772545,
+                    0.07213949994184077,
+                    0.07238737517036498,
+                    0.0719573749229312,
+                    0.0725031248293817,
+                    0.07186174998059869,
+                    0.07213849993422627
+                ],
+                "iterations": 1
+            }
+        },
+        {
+            "group": "sympy",
+            "name": "test_incremental_edit[updated-sympy-ty]",
+            "fullname": "src/benchmark/test_lsp_diagnostics.py::test_incremental_edit[updated-sympy-ty]",
+            "params": {
+                "project_setup": [
+                    "sympy",
+                    "https://github.com/sympy/sympy",
+                    "85d3998a4517ffbc8a9709b8efa769bb417c174a",
+                    [
+                        "mpmath>=1.1.0,<1.4",
+                        "typing-extensions"
+                    ],
+                    "3.11",
+                    null,
+                    [
+                        "sympy"
+                    ],
+                    [
+                        "sympy/**/tests/**",
+                        "sympy/**/benchmarks/**",
+                        "sympy/parsing/autolev/test-examples/**"
+                    ],
+                    [
+                        "sympy/core/sorting.py",
+                        [
+                            "sympy/core/basic.py"
+                        ],
+                        "def ordered(seq, keys=None, default=True, warn=False):",
+                        "def ordered(seq, keys=None, default=True, warn=False) -> int:"
+                    ],
+                    []
+                ],
+                "tool": "UNSERIALIZABLE[<benchmark.tool.Ty object at 0x1098c4910>]"
+            },
+            "param": "updated-sympy-ty",
+            "extra_info": {},
+            "options": {
+                "disable_gc": false,
+                "timer": "perf_counter",
+                "min_rounds": 5,
+                "max_time": 1.0,
+                "min_time": 5e-06,
+                "precision": null,
+                "confidence": null,
+                "warmup": false
+            },
+            "stats": {
+                "min": 0.0034787910990417004,
+                "max": 0.0038779168389737606,
+                "mean": 0.0036264080787077545,
+                "stddev": 0.0001231164916268727,
+                "rounds": 10,
+                "median": 0.003603021032176912,
+                "iqr": 0.00010033301077783108,
+                "q1": 0.0035456249024719,
+                "q3": 0.003645957913249731,
+                "iqr_outliers": 2,
+                "stddev_outliers": 3,
+                "outliers": "3;2",
+                "ld15iqr": 0.0034787910990417004,
+                "hd15iqr": 0.003798416117206216,
+                "ops": 275.75495594978463,
+                "total": 0.036264080787077546,
+                "data": [
+                    0.003521583043038845,
+                    0.003595333080738783,
+                    0.003576332936063409,
+                    0.003645957913249731,
+                    0.0038779168389737606,
+                    0.0036107089836150408,
+                    0.0035456249024719,
+                    0.003798416117206216,
+                    0.0036134158726781607,
+                    0.0034787910990417004
+                ],
+                "iterations": 1
+            }
+        }
+    ],
+    "datetime": "2026-11-22T22:31:52.742788+00:00",
+    "version": "5.3.0"
+}

@@ -1,0 +1,200 @@
+{
+    "machine_info": {
+        "node": "MacBook-Pro-8.local",
+        "processor": "arm",
+        "machine": "arm64",
+        "python_compiler": "Clang 23.1.3 ",
+        "python_implementation": "CPython",
+        "python_implementation_version": "3.15.1",
+        "python_version": "3.15.1",
+        "python_build": [
+            "main",
+            "Oct 21 2026 17:39:16"
+        ],
+        "release": "25.5.0",
+        "system": "Darwin",
+        "cpu": {
+            "python_version": "3.15.1.final.0 (64 bit)",
+            "cpuinfo_version": [
+                10,
+                1,
+                1
+            ],
+            "cpuinfo_version_string": "10.1.1",
+            "arch": "ARM_8",
+            "bits": 64,
+            "count": 16,
+            "arch_string_raw": "arm64"
+        }
+    },
+    "commit_info": {
+        "id": "504457130a2183e9f0c6f4e92ce1c43e970b70ca",
+        "time": "2026-11-04T13:31:31-05:00",
+        "author_time": "2026-11-04T13:31:31-05:00",
+        "dirty": false,
+        "project": "ty_benchmark",
+        "branch": "(detached head)"
+    },
+    "benchmarks": [
+        {
+            "group": "homeassistant",
+            "name": "test_fetch_diagnostics[updated-homeassistant-ty]",
+            "fullname": "src/benchmark/test_lsp_diagnostics.py::test_fetch_diagnostics[updated-homeassistant-ty]",
+            "params": {
+                "project_setup": [
+                    "homeassistant",
+                    "https://github.com/home-assistant/core.git",
+                    "c19ae285ede74cd64c3045a3a4aa43290c224f1b",
+                    [
+                        "-r",
+                        "requirements_all.txt",
+                        "-r",
+                        "requirements_test.txt",
+                        "--excludes",
+                        "/tmp/ty-benchmark-0.0.108-replay-ruff/scripts/ty_benchmark/src/benchmark/homeassistant-excludes.txt"
+                    ],
+                    "3.14",
+                    null,
+                    [
+                        "homeassistant"
+                    ],
+                    [],
+                    [
+                        "homeassistant/core.py",
+                        [
+                            "homeassistant/helpers/event.py"
+                        ],
+                        "type CALLBACK_TYPE = Callable[[], None]",
+                        "type CALLBACK_TYPE = Callable[[str], None]"
+                    ],
+                    []
+                ],
+                "tool": "UNSERIALIZABLE[<benchmark.tool.Ty object at 0x10b5e0910>]"
+            },
+            "param": "updated-homeassistant-ty",
+            "extra_info": {},
+            "options": {
+                "disable_gc": false,
+                "timer": "perf_counter",
+                "min_rounds": 5,
+                "max_time": 1.0,
+                "min_time": 5e-06,
+                "precision": null,
+                "confidence": null,
+                "warmup": false
+            },
+            "stats": {
+                "min": 0.09436508291400969,
+                "max": 0.11346916691400111,
+                "mean": 0.09924957486800849,
+                "stddev": 0.005327288473283945,
+                "rounds": 10,
+                "median": 0.09784416656475514,
+                "iqr": 0.002980833174660802,
+                "q1": 0.09706124989315867,
+                "q3": 0.10004208306781948,
+                "iqr_outliers": 1,
+                "stddev_outliers": 1,
+                "outliers": "1;1",
+                "ld15iqr": 0.09436508291400969,
+                "hd15iqr": 0.11346916691400111,
+                "ops": 10.07560990895825,
+                "total": 0.9924957486800849,
+                "data": [
+                    0.10032512503676116,
+                    0.09549787500873208,
+                    0.09436508291400969,
+                    0.09896087483502924,
+                    0.10004208306781948,
+                    0.11346916691400111,
+                    0.09782033297233284,
+                    0.09706124989315867,
+                    0.09786800015717745,
+                    0.09708595788106322
+                ],
+                "iterations": 1
+            }
+        },
+        {
+            "group": "homeassistant",
+            "name": "test_incremental_edit[updated-homeassistant-ty]",
+            "fullname": "src/benchmark/test_lsp_diagnostics.py::test_incremental_edit[updated-homeassistant-ty]",
+            "params": {
+                "project_setup": [
+                    "homeassistant",
+                    "https://github.com/home-assistant/core.git",
+                    "c19ae285ede74cd64c3045a3a4aa43290c224f1b",
+                    [
+                        "-r",
+                        "requirements_all.txt",
+                        "-r",
+                        "requirements_test.txt",
+                        "--excludes",
+                        "/tmp/ty-benchmark-0.0.108-replay-ruff/scripts/ty_benchmark/src/benchmark/homeassistant-excludes.txt"
+                    ],
+                    "3.14",
+                    null,
+                    [
+                        "homeassistant"
+                    ],
+                    [],
+                    [
+                        "homeassistant/core.py",
+                        [
+                            "homeassistant/helpers/event.py"
+                        ],
+                        "type CALLBACK_TYPE = Callable[[], None]",
+                        "type CALLBACK_TYPE = Callable[[str], None]"
+                    ],
+                    []
+                ],
+                "tool": "UNSERIALIZABLE[<benchmark.tool.Ty object at 0x10b5e0910>]"
+            },
+            "param": "updated-homeassistant-ty",
+            "extra_info": {},
+            "options": {
+                "disable_gc": false,
+                "timer": "perf_counter",
+                "min_rounds": 5,
+                "max_time": 1.0,
+                "min_time": 5e-06,
+                "precision": null,
+                "confidence": null,
+                "warmup": false
+            },
+            "stats": {
+                "min": 0.027094250079244375,
+                "max": 0.02805774984881282,
+                "mean": 0.027536387485451997,
+                "stddev": 0.0002931474436231911,
+                "rounds": 10,
+                "median": 0.027527312515303493,
+                "iqr": 0.0004699162673205137,
+                "q1": 0.027298333821818233,
+                "q3": 0.027768250089138746,
+                "iqr_outliers": 0,
+                "stddev_outliers": 3,
+                "outliers": "3;0",
+                "ld15iqr": 0.027094250079244375,
+                "hd15iqr": 0.02805774984881282,
+                "ops": 36.3155842620358,
+                "total": 0.27536387485451996,
+                "data": [
+                    0.027469458058476448,
+                    0.027094250079244375,
+                    0.027818250004202127,
+                    0.027587832883000374,
+                    0.027473750058561563,
+                    0.027768250089138746,
+                    0.027215125039219856,
+                    0.02758087497204542,
+                    0.02805774984881282,
+                    0.027298333821818233
+                ],
+                "iterations": 1
+            }
+        }
+    ],
+    "datetime": "2026-11-22T22:30:58.294529+00:00",
+    "version": "5.3.0"
+}

@@ -1,0 +1,1 @@
+{"extends": "./pyrightconfig.json", "include": ["homeassistant"], "exclude": ["homeassistant/util/event_type.py", "homeassistant/util/hass_dict.py", "homeassistant/util/signal_type.py"], "analyzeUnannotatedFunctions": true}

@@ -1,0 +1,200 @@
+{
+    "machine_info": {
+        "node": "MacBook-Pro-8.local",
+        "processor": "arm",
+        "machine": "arm64",
+        "python_compiler": "Clang 23.1.3 ",
+        "python_implementation": "CPython",
+        "python_implementation_version": "3.15.1",
+        "python_version": "3.15.1",
+        "python_build": [
+            "main",
+            "Oct 21 2026 17:39:16"
+        ],
+        "release": "25.5.0",
+        "system": "Darwin",
+        "cpu": {
+            "python_version": "3.15.1.final.0 (64 bit)",
+            "cpuinfo_version": [
+                10,
+                1,
+                1
+            ],
+            "cpuinfo_version_string": "10.1.1",
+            "arch": "ARM_8",
+            "bits": 64,
+            "count": 16,
+            "arch_string_raw": "arm64"
+        }
+    },
+    "commit_info": {
+        "id": "504457130a2183e9f0c6f4e92ce1c43e970b70ca",
+        "time": "2026-11-04T13:31:31-05:00",
+        "author_time": "2026-11-04T13:31:31-05:00",
+        "dirty": false,
+        "project": "ty_benchmark",
+        "branch": "(detached head)"
+    },
+    "benchmarks": [
+        {
+            "group": "rich",
+            "name": "test_fetch_diagnostics[updated-rich-ty]",
+            "fullname": "src/benchmark/test_lsp_diagnostics.py::test_fetch_diagnostics[updated-rich-ty]",
+            "params": {
+                "project_setup": [
+                    "rich",
+                    "https://github.com/Textualize/rich",
+                    "9d8f9a372cc5916fd4781fec207ced7ddac2f08f",
+                    [
+                        "pygments>=2.13,<3",
+                        "markdown-it-py>=2.2",
+                        "ipywidgets>=7.5.1,<9",
+                        "ipython",
+                        "attrs>=21.4",
+                        "typing-extensions>=4,<5"
+                    ],
+                    "3.11",
+                    null,
+                    [
+                        "rich"
+                    ],
+                    [],
+                    [
+                        "rich/color.py",
+                        [
+                            "rich/style.py"
+                        ],
+                        "def get_ansi_codes(self, foreground: bool = True) -> Tuple[str, ...]:",
+                        "def get_ansi_codes(self, foreground: bool = True) -> int:"
+                    ],
+                    []
+                ],
+                "tool": "UNSERIALIZABLE[<benchmark.tool.Ty object at 0x10bbdc910>]"
+            },
+            "param": "updated-rich-ty",
+            "extra_info": {},
+            "options": {
+                "disable_gc": false,
+                "timer": "perf_counter",
+                "min_rounds": 5,
+                "max_time": 1.0,
+                "min_time": 5e-06,
+                "precision": null,
+                "confidence": null,
+                "warmup": false
+            },
+            "stats": {
+                "min": 0.039125833194702864,
+                "max": 0.04053358291275799,
+                "mean": 0.03984892489388585,
+                "stddev": 0.00045378532133164896,
+                "rounds": 10,
+                "median": 0.039883895544335246,
+                "iqr": 0.0007542499806731939,
+                "q1": 0.039471291936933994,
+                "q3": 0.04022554191760719,
+                "iqr_outliers": 0,
+                "stddev_outliers": 3,
+                "outliers": "3;0",
+                "ld15iqr": 0.039125833194702864,
+                "hd15iqr": 0.04053358291275799,
+                "ops": 25.094779913458424,
+                "total": 0.3984892489388585,
+                "data": [
+                    0.039125833194702864,
+                    0.039471291936933994,
+                    0.04053358291275799,
+                    0.0398848750628531,
+                    0.03990462492220104,
+                    0.03940700017847121,
+                    0.03963112481869757,
+                    0.04022554191760719,
+                    0.04042245796881616,
+                    0.039882916025817394
+                ],
+                "iterations": 1
+            }
+        },
+        {
+            "group": "rich",
+            "name": "test_incremental_edit[updated-rich-ty]",
+            "fullname": "src/benchmark/test_lsp_diagnostics.py::test_incremental_edit[updated-rich-ty]",
+            "params": {
+                "project_setup": [
+                    "rich",
+                    "https://github.com/Textualize/rich",
+                    "9d8f9a372cc5916fd4781fec207ced7ddac2f08f",
+                    [
+                        "pygments>=2.13,<3",
+                        "markdown-it-py>=2.2",
+                        "ipywidgets>=7.5.1,<9",
+                        "ipython",
+                        "attrs>=21.4",
+                        "typing-extensions>=4,<5"
+                    ],
+                    "3.11",
+                    null,
+                    [
+                        "rich"
+                    ],
+                    [],
+                    [
+                        "rich/color.py",
+                        [
+                            "rich/style.py"
+                        ],
+                        "def get_ansi_codes(self, foreground: bool = True) -> Tuple[str, ...]:",
+                        "def get_ansi_codes(self, foreground: bool = True) -> int:"
+                    ],
+                    []
+                ],
+                "tool": "UNSERIALIZABLE[<benchmark.tool.Ty object at 0x10bbdc910>]"
+            },
+            "param": "updated-rich-ty",
+            "extra_info": {},
+            "options": {
+                "disable_gc": false,
+                "timer": "perf_counter",
+                "min_rounds": 5,
+                "max_time": 1.0,
+                "min_time": 5e-06,
+                "precision": null,
+                "confidence": null,
+                "warmup": false
+            },
+            "stats": {
+                "min": 0.005555624840781093,
+                "max": 0.006383916130289435,
+                "mean": 0.00585434976965189,
+                "stddev": 0.00023771655134776533,
+                "rounds": 10,
+                "median": 0.0058605000376701355,
+                "iqr": 0.00025254092179238796,
+                "q1": 0.005707249976694584,
+                "q3": 0.005959790898486972,
+                "iqr_outliers": 1,
+                "stddev_outliers": 3,
+                "outliers": "3;1",
+                "ld15iqr": 0.005555624840781093,
+                "hd15iqr": 0.006383916130289435,
+                "ops": 170.8131627501754,
+                "total": 0.0585434976965189,
+                "data": [
+                    0.0057531248312443495,
+                    0.005832375027239323,
+                    0.0059029581025242805,
+                    0.005959790898486972,
+                    0.005578916985541582,
+                    0.005888625048100948,
+                    0.005555624840781093,
+                    0.005980915855616331,
+                    0.006383916130289435,
+                    0.005707249976694584
+                ],
+                "iterations": 1
+            }
+        }
+    ],
+    "datetime": "2026-11-22T22:31:47.598776+00:00",
+    "version": "5.3.0"
+}

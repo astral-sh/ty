@@ -1,0 +1,7 @@
+project-includes = ["src/prefect/server/models", "src/prefect/concurrency", "src/prefect/events", "src/prefect/input"]
+project-excludes = []
+python-interpreter-path = "/tmp/ty-benchmark-0.0.96-2026-11-02/checkouts/updated-prefect/venv/bin/python"
+python-version = "3.11"
+site-package-path = ["/tmp/ty-benchmark-0.0.96-2026-11-02/checkouts/updated-prefect/venv"]
+untyped-def-behavior = "check-and-infer-return-any"
+search-path = ["src", "."]

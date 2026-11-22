@@ -1,0 +1,192 @@
+{
+    "machine_info": {
+        "node": "MacBook-Pro-8.local",
+        "processor": "arm",
+        "machine": "arm64",
+        "python_compiler": "Clang 23.1.3 ",
+        "python_implementation": "CPython",
+        "python_implementation_version": "3.15.1",
+        "python_version": "3.15.1",
+        "python_build": [
+            "main",
+            "Oct 21 2026 17:39:16"
+        ],
+        "release": "25.5.0",
+        "system": "Darwin",
+        "cpu": {
+            "python_version": "3.15.1.final.0 (64 bit)",
+            "cpuinfo_version": [
+                10,
+                1,
+                1
+            ],
+            "cpuinfo_version_string": "10.1.1",
+            "arch": "ARM_8",
+            "bits": 64,
+            "count": 16,
+            "arch_string_raw": "arm64"
+        }
+    },
+    "commit_info": {
+        "id": "504457130a2183e9f0c6f4e92ce1c43e970b70ca",
+        "time": "2026-11-04T13:31:31-05:00",
+        "author_time": "2026-11-04T13:31:31-05:00",
+        "dirty": false,
+        "project": "ty_benchmark",
+        "branch": "(detached head)"
+    },
+    "benchmarks": [
+        {
+            "group": "django",
+            "name": "test_fetch_diagnostics[updated-django-ty]",
+            "fullname": "src/benchmark/test_lsp_diagnostics.py::test_fetch_diagnostics[updated-django-ty]",
+            "params": {
+                "project_setup": [
+                    "django",
+                    "https://github.com/django/django",
+                    "b501b8493f31cf8cba31211d59b3b78642b8cb02",
+                    [
+                        "-r",
+                        "pyproject.toml"
+                    ],
+                    "3.12",
+                    null,
+                    [
+                        "django"
+                    ],
+                    [],
+                    [
+                        "django/utils/encoding.py",
+                        [
+                            "django/contrib/auth/hashers.py"
+                        ],
+                        "def force_str(s, encoding=\"utf-8\", strings_only=False, errors=\"strict\"):",
+                        "def force_str(s, encoding=\"utf-8\", strings_only=False, errors=\"strict\") -> int:"
+                    ],
+                    []
+                ],
+                "tool": "UNSERIALIZABLE[<benchmark.tool.Ty object at 0x109090910>]"
+            },
+            "param": "updated-django-ty",
+            "extra_info": {},
+            "options": {
+                "disable_gc": false,
+                "timer": "perf_counter",
+                "min_rounds": 5,
+                "max_time": 1.0,
+                "min_time": 5e-06,
+                "precision": null,
+                "confidence": null,
+                "warmup": false
+            },
+            "stats": {
+                "min": 0.02356120804324746,
+                "max": 0.024216500110924244,
+                "mean": 0.023802112438715994,
+                "stddev": 0.00023238124443281582,
+                "rounds": 10,
+                "median": 0.023762479075230658,
+                "iqr": 0.00033012498170137405,
+                "q1": 0.023591083008795977,
+                "q3": 0.02392120799049735,
+                "iqr_outliers": 0,
+                "stddev_outliers": 4,
+                "outliers": "4;0",
+                "ld15iqr": 0.02356120804324746,
+                "hd15iqr": 0.024216500110924244,
+                "ops": 42.01307772890871,
+                "total": 0.23802112438715994,
+                "data": [
+                    0.024140417110174894,
+                    0.02356120804324746,
+                    0.023789083119481802,
+                    0.023563958937302232,
+                    0.024216500110924244,
+                    0.023841916117817163,
+                    0.02392120799049735,
+                    0.023659874917939305,
+                    0.023735875030979514,
+                    0.023591083008795977
+                ],
+                "iterations": 1
+            }
+        },
+        {
+            "group": "django",
+            "name": "test_incremental_edit[updated-django-ty]",
+            "fullname": "src/benchmark/test_lsp_diagnostics.py::test_incremental_edit[updated-django-ty]",
+            "params": {
+                "project_setup": [
+                    "django",
+                    "https://github.com/django/django",
+                    "b501b8493f31cf8cba31211d59b3b78642b8cb02",
+                    [
+                        "-r",
+                        "pyproject.toml"
+                    ],
+                    "3.12",
+                    null,
+                    [
+                        "django"
+                    ],
+                    [],
+                    [
+                        "django/utils/encoding.py",
+                        [
+                            "django/contrib/auth/hashers.py"
+                        ],
+                        "def force_str(s, encoding=\"utf-8\", strings_only=False, errors=\"strict\"):",
+                        "def force_str(s, encoding=\"utf-8\", strings_only=False, errors=\"strict\") -> int:"
+                    ],
+                    []
+                ],
+                "tool": "UNSERIALIZABLE[<benchmark.tool.Ty object at 0x109090910>]"
+            },
+            "param": "updated-django-ty",
+            "extra_info": {},
+            "options": {
+                "disable_gc": false,
+                "timer": "perf_counter",
+                "min_rounds": 5,
+                "max_time": 1.0,
+                "min_time": 5e-06,
+                "precision": null,
+                "confidence": null,
+                "warmup": false
+            },
+            "stats": {
+                "min": 0.0037756669335067272,
+                "max": 0.003978000022470951,
+                "mean": 0.003854695777408779,
+                "stddev": 6.587124814473738e-05,
+                "rounds": 10,
+                "median": 0.0038349374663084745,
+                "iqr": 8.079200051724911e-05,
+                "q1": 0.0038098329678177834,
+                "q3": 0.0038906249683350325,
+                "iqr_outliers": 0,
+                "stddev_outliers": 3,
+                "outliers": "3;0",
+                "ld15iqr": 0.0037756669335067272,
+                "hd15iqr": 0.003978000022470951,
+                "ops": 259.42384503096235,
+                "total": 0.03854695777408779,
+                "data": [
+                    0.0037756669335067272,
+                    0.0038100420497357845,
+                    0.003855333896353841,
+                    0.0038556659128516912,
+                    0.003947708988562226,
+                    0.0038145410362631083,
+                    0.0038095409981906414,
+                    0.003978000022470951,
+                    0.0038906249683350325,
+                    0.0038098329678177834
+                ],
+                "iterations": 1
+            }
+        }
+    ],
+    "datetime": "2026-11-22T22:31:49.458368+00:00",
+    "version": "5.3.0"
+}

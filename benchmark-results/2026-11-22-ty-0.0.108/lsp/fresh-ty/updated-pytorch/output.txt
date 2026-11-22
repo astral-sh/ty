@@ -1,0 +1,33 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.15.1, pytest-9.1.1, pluggy-1.7.0 -- /tmp/ty-benchmark-0.0.108-replay-ruff/scripts/ty_benchmark/.venv/bin/python
+cachedir: .pytest_cache
+benchmark: 5.3.0 (defaults: timer=time.perf_counter disable_gc=False min_rounds=5 min_time=0.000005 max_time=1.0 calibration_precision=10 warmup=False warmup_iterations=100000)
+rootdir: /private/tmp/ty-benchmark-0.0.108-replay-ruff/scripts/ty_benchmark
+configfile: pyproject.toml
+plugins: benchmark-5.3.0
+collecting ... collected 2 items
+
+src/benchmark/test_lsp_diagnostics.py::test_fetch_diagnostics[updated-pytorch-ty] PASSED [ 50%]
+src/benchmark/test_lsp_diagnostics.py::test_incremental_edit[updated-pytorch-ty] PASSED [100%]
+Wrote benchmark data in: /tmp/ty-release-0.0.108-2026-11-22/lsp/updated-pytorch/results.json
+
+
+=============================== warnings summary ===============================
+src/benchmark/test_lsp_diagnostics.py: 48 warnings
+  /tmp/ty-benchmark-0.0.108-replay-ruff/scripts/ty_benchmark/.venv/lib/python3.15/site-packages/pygls/feature_manager.py:86: DeprecationWarning: 'asyncio.iscoroutinefunction' is deprecated and slated for removal in Python 3.16; use inspect.iscoroutinefunction() instead
+    if asyncio.iscoroutinefunction(f):
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+- generated xml file: /tmp/ty-release-0.0.108-2026-11-22/lsp/updated-pytorch/results.xml -
+
+----------------------------------------------------------------------------------------- benchmark 'pytorch': 2 tests ----------------------------------------------------------------------------------------
+Name (time in ms)                                  Min                Max               Mean            StdDev             Median               IQR            Outliers       OPS            Rounds  Iterations
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+test_incremental_edit[updated-pytorch-ty]       3.7468 (1.0)       4.9578 (1.0)       4.0814 (1.0)      0.3563 (1.0)       3.9728 (1.0)      0.3189 (1.0)           1;1  245.0115 (1.0)          10           1
+test_fetch_diagnostics[updated-pytorch-ty]     67.1467 (17.92)    69.4841 (14.02)    68.2710 (16.73)    0.8116 (2.28)     68.3885 (17.21)    1.6100 (5.05)          5;0   14.6475 (0.06)         10           1
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Legend:
+  Outliers: 1 Standard Deviation from Mean; 1.5 IQR (InterQuartile Range) from 1st Quartile and 3rd Quartile.
+  OPS: Operations Per Second, computed as 1 / Mean
+======================== 2 passed, 48 warnings in 2.52s ========================
