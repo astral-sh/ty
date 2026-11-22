@@ -185,8 +185,3 @@ type `float` or `int` as well.
 At runtime, `JustComplex` is an alias for the built-in `complex` class.
 
 [type-system special case]: https://typing.python.org/en/latest/spec/special-types.html#special-cases-for-float-and-complex
-
-## `NamedTupleLike`
-
-A protocol describing an interface that should be satisfied by all named tuples
-created using `typing.NamedTuple` or `collections.namedtuple`.
