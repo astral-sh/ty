@@ -1,1 +1,0 @@
-{"extends": "./pyrightconfig.json", "include": ["src/prefect/server/models", "src/prefect/concurrency", "src/prefect/events", "src/prefect/input"], "exclude": [], "analyzeUnannotatedFunctions": true}
