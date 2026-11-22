@@ -1,5 +1,117 @@
 # Changelog
 
+## 0.0.108
+
+Released on 2026-11-22.
+
+### Breaking changes
+
+- Split `mismatched-type-name` by type constructor ([#29957](https://github.com/astral-sh/ruff/pull/29957))
+
+### Bug fixes
+
+- Fix a panic when reporting invalid type parameter order in unpacked class bases ([#30630](https://github.com/astral-sh/ruff/pull/30630))
+- Fix lambda parameter inference with an unsolved ParamSpec ([#30547](https://github.com/astral-sh/ruff/pull/30547))
+- Forward the suffix of a positional unpack to a ParamSpec ([#30594](https://github.com/astral-sh/ruff/pull/30594))
+- Honor inline ignores on mismatched ParamSpec components ([#30595](https://github.com/astral-sh/ruff/pull/30595))
+- Honor shadowed-type-variable independently for nested classes ([#30588](https://github.com/astral-sh/ruff/pull/30588))
+- Keep logs above progress bars ([#30527](https://github.com/astral-sh/ruff/pull/30527))
+- Preserve argument inference for unannotated overload parameters ([#30549](https://github.com/astral-sh/ruff/pull/30549))
+- Preserve type variable constraints through identity aliases ([#30590](https://github.com/astral-sh/ruff/pull/30590))
+- Retain call-completion query keys ([#30759](https://github.com/astral-sh/ruff/pull/30759))
+
+### LSP server
+
+- Filter member completions before looking up documentation ([#30714](https://github.com/astral-sh/ruff/pull/30714))
+- Skip signature lookup when no argument can receive an inlay hint ([#30688](https://github.com/astral-sh/ruff/pull/30688))
+- Skip single-line statements when computing folding ranges ([#30696](https://github.com/astral-sh/ruff/pull/30696))
+- Skip unrelated definitions and imports in semantic token range requests ([#30665](https://github.com/astral-sh/ruff/pull/30665))
+- Use byte offsets for ASCII signature labels ([#30711](https://github.com/astral-sh/ruff/pull/30711))
+
+### Diagnostic improvements
+
+- Rename `uv-metadata` diagnostic to `project-manager` and improve its wording ([#30528](https://github.com/astral-sh/ruff/pull/30528))
+
+### Other changes
+
+- Avoid a quadratic scan when nested scopes capture the same name ([#30550](https://github.com/astral-sh/ruff/pull/30550))
+- Avoid checking identical mutable `TypedDict` field types twice ([#30554](https://github.com/astral-sh/ruff/pull/30554))
+- Avoid linear scans for parent places during semantic indexing ([#30633](https://github.com/astral-sh/ruff/pull/30633))
+- Avoid quadratic deduplication when displaying literal unions ([#30684](https://github.com/astral-sh/ruff/pull/30684))
+- Avoid quadratic fingerprint generation in GitLab reports ([#30724](https://github.com/astral-sh/ruff/pull/30724))
+- Avoid rebuilding ordinary function signatures to check for type guards ([#30671](https://github.com/astral-sh/ruff/pull/30671))
+- Avoid repeated path scans when building solver cache keys ([#30650](https://github.com/astral-sh/ruff/pull/30650))
+- Borrow single-part bytes literals during inference ([#30738](https://github.com/astral-sh/ruff/pull/30738))
+- Cache the source scan for legacy namespace packages ([#30646](https://github.com/astral-sh/ruff/pull/30646))
+- Check for complementary truthiness guards before rebuilding intersections ([#30731](https://github.com/astral-sh/ruff/pull/30731))
+- Collect each reachable constraint once in source order ([#30564](https://github.com/astral-sh/ruff/pull/30564))
+- Decode consecutive escapes in bytes literals without repeated searches ([#30729](https://github.com/astral-sh/ruff/pull/30729))
+- Defer constructing instance types during generated member lookup ([#30680](https://github.com/astral-sh/ruff/pull/30680))
+- Defer identity specialization when inferring collection literals ([#30689](https://github.com/astral-sh/ruff/pull/30689))
+- Defer rebuilding intersections during equality narrowing ([#30723](https://github.com/astral-sh/ruff/pull/30723))
+- Defer semantic indexing until `__all__` analysis needs an expression type ([#30668](https://github.com/astral-sh/ruff/pull/30668))
+- Index enum members by name ([#30634](https://github.com/astral-sh/ruff/pull/30634))
+- Infer wildcard import bindings on demand ([#30727](https://github.com/astral-sh/ruff/pull/30727))
+- Memoize more argument assignability checks ([#30483](https://github.com/astral-sh/ruff/pull/30483))
+- Move `NamedTupleLike` to `ty_extensions._internal` ([#30567](https://github.com/astral-sh/ruff/pull/30567))
+- Preserve the type of signed float literals ([#30720](https://github.com/astral-sh/ruff/pull/30720))
+- Read direct instance attributes from a single path segment ([#30678](https://github.com/astral-sh/ruff/pull/30678))
+- Reuse TypedDict fields when checking unpacked keyword parameters ([#30691](https://github.com/astral-sh/ruff/pull/30691))
+- Reuse candidate paths when solving the same constraints twice ([#30693](https://github.com/astral-sh/ruff/pull/30693))
+- Reuse disjoint union filtering during generic inference ([#30719](https://github.com/astral-sh/ruff/pull/30719))
+- Reuse expression inference across mismatched string literals ([#30642](https://github.com/astral-sh/ruff/pull/30642))
+- Reuse function declarations when checking overloads and building signatures ([#30686](https://github.com/astral-sh/ruff/pull/30686))
+- Reuse mapping value types when unpacking keyword arguments ([#30638](https://github.com/astral-sh/ruff/pull/30638))
+- Reuse materializations of shared unions ([#30645](https://github.com/astral-sh/ruff/pull/30645))
+- Reuse metaclass instances when comparing subclass types ([#30716](https://github.com/astral-sh/ruff/pull/30716))
+- Reuse missing in-place operator lookups across literals ([#30733](https://github.com/astral-sh/ruff/pull/30733))
+- Reuse normalization when the only input is a wide union ([#30741](https://github.com/astral-sh/ruff/pull/30741))
+- Reuse overload prefix checks across calls ([#30640](https://github.com/astral-sh/ruff/pull/30640))
+- Reuse parent package searches for dotted imports ([#30743](https://github.com/astral-sh/ruff/pull/30743))
+- Reuse scope reachability when applying pending constraints ([#30552](https://github.com/astral-sh/ruff/pull/30552))
+- Reuse the decision to infer from a whole union ([#30749](https://github.com/astral-sh/ruff/pull/30749))
+- Reuse the inferred value in augmented assignments to unions ([#30746](https://github.com/astral-sh/ruff/pull/30746))
+- Reuse tuple literal inference across non-tuple nominal contexts ([#30675](https://github.com/astral-sh/ruff/pull/30675))
+- Reuse unbound attribute declarations across multiple-inheritance checks ([#30676](https://github.com/astral-sh/ruff/pull/30676))
+- Reuse unchanged fixed-length tuples during cycle recovery ([#30690](https://github.com/astral-sh/ruff/pull/30690))
+- Reuse unchanged specializations during cycle recovery ([#30643](https://github.com/astral-sh/ruff/pull/30643))
+- Search ordered source ranges when checking reachability ([#30740](https://github.com/astral-sh/ruff/pull/30740))
+- Share Pydantic validator checks across constructor fields ([#30670](https://github.com/astral-sh/ruff/pull/30670))
+- Share the import context across wildcard predicates ([#30744](https://github.com/astral-sh/ruff/pull/30744))
+- Skip assignability queries from string and bytes literals to their builtin types ([#30556](https://github.com/astral-sh/ruff/pull/30556))
+- Skip building initializer signatures when finding shared inherited names ([#30725](https://github.com/astral-sh/ruff/pull/30725))
+- Skip impossible coverage checks in constraint diagrams ([#30658](https://github.com/astral-sh/ruff/pull/30658))
+- Skip impossible subtype checks for strings in class object unions ([#30698](https://github.com/astral-sh/ruff/pull/30698))
+- Skip inclusion checks when selecting a program under a source root ([#30702](https://github.com/astral-sh/ruff/pull/30702))
+- Skip incompatible TypedDict union members when inferring dictionary literals ([#30641](https://github.com/astral-sh/ruff/pull/30641))
+- Skip inherited field checks for TypedDicts without TypedDict bases ([#30706](https://github.com/astral-sh/ruff/pull/30706))
+- Skip narrowing alias scans for unrelated assignments ([#30637](https://github.com/astral-sh/ruff/pull/30637))
+- Skip prefix checks when no outer scope can bind a member ([#30700](https://github.com/astral-sh/ruff/pull/30700))
+- Skip redundant tuple checks for trivially assignable literals ([#30730](https://github.com/astral-sh/ruff/pull/30730))
+- Skip scalar sequence elements when indexing nested dictionary keys ([#30647](https://github.com/astral-sh/ruff/pull/30647))
+- Skip source-order traversal when solving a single bound ([#30750](https://github.com/astral-sh/ruff/pull/30750))
+- Skip the builtins recursion check outside module scope ([#30699](https://github.com/astral-sh/ruff/pull/30699))
+- Skip tuple specialization for unrelated nominal targets ([#30667](https://github.com/astral-sh/ruff/pull/30667))
+- Skip union comparisons between class literals with the same truthiness guard ([#30636](https://github.com/astral-sh/ruff/pull/30636))
+- Skip union comparisons between distinct gradual literals ([#30742](https://github.com/astral-sh/ruff/pull/30742))
+- Skip union comparisons between intersections with unrelated class bounds ([#30737](https://github.com/astral-sh/ruff/pull/30737))
+- Skip union comparisons between methods of distinct functions ([#30721](https://github.com/astral-sh/ruff/pull/30721))
+- Skip unnecessary member lookups for enum values ([#30674](https://github.com/astral-sh/ruff/pull/30674))
+- Skip unused flow snapshots in try statements ([#30739](https://github.com/astral-sh/ruff/pull/30739))
+- Stop searching for overlapping invariant arguments after finding a valid solution ([#30653](https://github.com/astral-sh/ruff/pull/30653))
+- Store the definition of a PEP 695 type alias ([#30682](https://github.com/astral-sh/ruff/pull/30682))
+- Use control flow checkpoints for statement calls ([#30561](https://github.com/astral-sh/ruff/pull/30561))
+- Walk union parameters once to find inherited gradual types ([#30685](https://github.com/astral-sh/ruff/pull/30685))
+
+### Contributors
+
+- [@MichaReiser](https://github.com/MichaReiser)
+- [@ibraheemdev](https://github.com/ibraheemdev)
+- [@charliermarsh](https://github.com/charliermarsh)
+- [@tamird](https://github.com/tamird)
+- [@AlexWaygood](https://github.com/AlexWaygood)
+- [@carljm](https://github.com/carljm)
+
 ## 0.0.107
 
 Released on 2026-11-18.
