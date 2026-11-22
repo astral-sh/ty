@@ -6,9 +6,10 @@ Released on 2026-11-22.
 
 ### Breaking changes
 
-- Replace `mismatched-type-name` with eight independently configurable rules. Update rule settings, CLI flags, and suppression comments to use `mismatched-newtype-name`, `mismatched-typevar-name`, `mismatched-paramspec-name`, `mismatched-typevartuple-name`, `mismatched-typeddict-name`, `mismatched-type-alias-name`, `mismatched-enum-name`, or `mismatched-namedtuple-name` as appropriate. The enum and named tuple rules are opt-in and check names that resolve to a single string literal. The other six warn by default. ([#29957](https://github.com/astral-sh/ruff/pull/29957))
+- Replace `mismatched-type-name` with eight rules. In configuration, CLI flags, and suppression comments, use the rule for each constructor you want to configure. ([#29957](https://github.com/astral-sh/ruff/pull/29957))
+    - `mismatched-newtype-name`, `mismatched-typevar-name`, `mismatched-paramspec-name`, `mismatched-typevartuple-name`, `mismatched-typeddict-name`, and `mismatched-type-alias-name` warn by default.
+    - `mismatched-enum-name` and `mismatched-namedtuple-name` are disabled by default. They check names only when ty can infer a single string literal.
 - Remove `NamedTupleLike` from the public `ty_extensions` stubs. The protocol now lives in the private `ty_extensions._internal` module. ([#30567](https://github.com/astral-sh/ruff/pull/30567))
-- Recognize definitions made with `TypeVar`, `ParamSpec`, `TypeVarTuple`, `NewType`, and `TypeAliasType` even when their names are supplied as runtime strings. The corresponding name-mismatch rule reports when ty cannot verify that the name matches the assigned variable. ([#29957](https://github.com/astral-sh/ruff/pull/29957))
 
 ### Bug fixes
 
@@ -17,10 +18,8 @@ Released on 2026-11-22.
 - Fix false errors in nested calls that pass a lambda through an unresolved `ParamSpec`. A lambda parameter stays `Unknown` when the callback signature supplies no type for it. ([#30547](https://github.com/astral-sh/ruff/pull/30547))
 - Preserve the type inferred for each overload when one overload leaves a parameter unannotated and another supplies an expected type. This avoids treating the call as ambiguous and inferring an `Unknown` result. ([#30549](https://github.com/astral-sh/ruff/pull/30549))
 - Preserve type-variable relationships through aliases such as `type Id[T] = T`, so ty can infer a generic call's result from the callback's return type. ([#30590](https://github.com/astral-sh/ruff/pull/30590))
-- Infer a float type that excludes `int` when unary `+` or `-` applies directly to a float literal such as `-0.5`. ([#30720](https://github.com/astral-sh/ruff/pull/30720))
 - Report `shadowed-type-variable` for nested classes when the rule is enabled, even if `invalid-generic-class` is disabled. ([#30588](https://github.com/astral-sh/ruff/pull/30588))
 - Honor `# ty: ignore[invalid-paramspec]` on a mismatched `*args` annotation without moving the diagnostic to the accompanying `**kwargs: P.kwargs` annotation. ([#30595](https://github.com/astral-sh/ruff/pull/30595))
-- Keep warnings and debug logs above progress bars during indexing and checking, and show progress bars during verbose runs. ([#30527](https://github.com/astral-sh/ruff/pull/30527))
 - Avoid re-indexing unchanged files that contain standalone calls after unrelated edits. ([#30759](https://github.com/astral-sh/ruff/pull/30759))
 
 ### LSP server
@@ -33,71 +32,87 @@ Released on 2026-11-22.
 
 ### CLI
 
-- Generate GitLab code quality reports faster when the same rule produces many diagnostics in one file. ([#30724](https://github.com/astral-sh/ruff/pull/30724))
+- Keep warnings and debug logs above progress bars during indexing and checking, and show progress bars during verbose runs. ([#30527](https://github.com/astral-sh/ruff/pull/30527))
+- Generate `ty check --output-format gitlab` reports faster when the same rule produces many diagnostics in one file. ([#30724](https://github.com/astral-sh/ruff/pull/30724))
 
 ### Diagnostic improvements
 
-- Rename `uv-metadata` to `project-manager` and clarify whether uv failed to load project metadata or set up a script environment. If ty cannot find or run a supported uv executable, the script diagnostic identifies `project-manager.script = "uv"` when that setting enabled the integration. ([#30528](https://github.com/astral-sh/ruff/pull/30528))
-- Show uv's dependency resolution error directly in concise output when uv cannot resolve a script's dependencies. ([#30528](https://github.com/astral-sh/ruff/pull/30528))
+- Rename the `uv-metadata` diagnostic to `project-manager` and clarify whether uv failed to load project metadata or set up a script environment. When `project-manager.script = "uv"` is set and ty cannot run a supported version of uv, the script diagnostic points to that setting. Concise output now includes uv's error when it cannot resolve a script's dependencies. ([#30528](https://github.com/astral-sh/ruff/pull/30528))
+
+### Core type checking
+
+- Recognize `TypeVar`, `ParamSpec`, `TypeVarTuple`, `NewType`, and `TypeAliasType` definitions even when their names are only known at runtime. By default, ty warns that it cannot verify the name and continues to use the defined type. ([#29957](https://github.com/astral-sh/ruff/pull/29957))
+- Infer the same type (`float*`) for `-0.5` and `+0.5` as for `0.5`. This lets ty rule out `int` when unary `+` or `-` applies directly to a float literal. ([#30720](https://github.com/astral-sh/ruff/pull/30720))
+
+### Performance improvements
+
+#### Calls and overloads
+
+- Reuse more argument type compatibility checks across calls. ([#30483](https://github.com/astral-sh/ruff/pull/30483))
+- Speed up repeated calls to overloaded functions when the same argument types match several overloads. ([#30640](https://github.com/astral-sh/ruff/pull/30640))
+- Check overloaded calls with `**`-unpacked mappings faster by reusing the inferred type for each keyword. ([#30638](https://github.com/astral-sh/ruff/pull/30638))
+- Check calls such as `boto3.client("s3")` faster when many overloads expect different string literals. This optimization applies to files that are not open in the editor. ([#30642](https://github.com/astral-sh/ruff/pull/30642))
+- For tuple arguments, rule out overloads that expect unrelated types such as `list` or `bytes` sooner. Reuse the inferred type of a tuple literal when those parameter types give its elements no type context. ([#30667](https://github.com/astral-sh/ruff/pull/30667), [#30675](https://github.com/astral-sh/ruff/pull/30675))
+- Reuse function declarations when checking overloads and building signatures. ([#30686](https://github.com/astral-sh/ruff/pull/30686))
+- Avoid rebuilding function signatures when the return type already rules out `TypeGuard` and `TypeIs`. ([#30671](https://github.com/astral-sh/ruff/pull/30671))
+
+#### Generics and recursive types
+
+- Solve complex type-variable constraints faster, such as those in Bokeh's overloaded constructors. ([#30564](https://github.com/astral-sh/ruff/pull/30564), [#30650](https://github.com/astral-sh/ruff/pull/30650), [#30658](https://github.com/astral-sh/ruff/pull/30658))
+- Stop searching once ty finds type arguments that let two invariant generic types, such as two `list` types, overlap. ([#30653](https://github.com/astral-sh/ruff/pull/30653))
+- When inferring type arguments, reuse earlier decisions about whether to consider the whole union or only some of its members. ([#30719](https://github.com/astral-sh/ruff/pull/30719), [#30749](https://github.com/astral-sh/ruff/pull/30749))
+- Infer `Any` from a generic base class faster when matching an argument to a union parameter. ([#30685](https://github.com/astral-sh/ruff/pull/30685))
+- Reuse candidate bounds across inference passes for generic calls with one argument. ([#30693](https://github.com/astral-sh/ruff/pull/30693))
+- Skip checking the order of constraints when a type variable has only one bound to solve. ([#30750](https://github.com/astral-sh/ruff/pull/30750))
+- Speed up type checking for deeply nested generic types that reuse the same union in several branches. ([#30645](https://github.com/astral-sh/ruff/pull/30645))
+- Reuse unchanged tuples and generic type arguments when simplifying recursively inferred types. ([#30690](https://github.com/astral-sh/ruff/pull/30690), [#30643](https://github.com/astral-sh/ruff/pull/30643))
+- Speed up detection of recursive type aliases declared with the `type` statement. ([#30682](https://github.com/astral-sh/ruff/pull/30682))
+
+#### Classes and typed dictionaries
+
+- Check enums with many members faster. ([#30634](https://github.com/astral-sh/ruff/pull/30634), [#30674](https://github.com/astral-sh/ruff/pull/30674))
+- Share checks for inherited field validators across constructor parameters in large Pydantic models. ([#30670](https://github.com/astral-sh/ruff/pull/30670))
+- Speed up checks for conflicts between inherited members in classes with generated methods, including dataclasses and Pydantic models. ([#30680](https://github.com/astral-sh/ruff/pull/30680), [#30725](https://github.com/astral-sh/ruff/pull/30725))
+- Reuse attribute lookups when checking multiple subclasses for conflicts between the same non-generic bases. ([#30676](https://github.com/astral-sh/ruff/pull/30676))
+- When checking a dictionary literal with string literal keys against a union of `TypedDict` types, rule out alternatives with missing required keys or conflicting literal tags before inferring field values. ([#30641](https://github.com/astral-sh/ruff/pull/30641))
+- Avoid copying every field of a `TypedDict` when checking a `**kwargs: Unpack[SomeTypedDict]` annotation. ([#30691](https://github.com/astral-sh/ruff/pull/30691))
+- Avoid redundant comparisons of mutable `TypedDict` fields with identical types, including recursive types. ([#30554](https://github.com/astral-sh/ruff/pull/30554))
+- Skip inherited field checks when a `TypedDict` does not inherit from another `TypedDict`. ([#30706](https://github.com/astral-sh/ruff/pull/30706))
+
+#### Unions, narrowing, and literals
+
+- Display large unions of literals faster in hovers, completions, and diagnostics. ([#30684](https://github.com/astral-sh/ruff/pull/30684))
+- Reuse the result of simplifying the same wide union during type inference. ([#30741](https://github.com/astral-sh/ruff/pull/30741))
+- Speed up construction of unions that mix class objects with string literals, such as the types accepted by NumPy's `dtype`. ([#30698](https://github.com/astral-sh/ruff/pull/30698))
+- Speed up repeated comparisons involving the same subclass type, such as `type[C]`. ([#30716](https://github.com/astral-sh/ruff/pull/30716))
+- Speed up type narrowing for equality comparisons that leave the original type unchanged. ([#30723](https://github.com/astral-sh/ruff/pull/30723))
+- Speed up type inference after a truthiness check when the two branches recombine to give the original type. ([#30731](https://github.com/astral-sh/ruff/pull/30731))
+- Speed up checking augmented assignments such as `|=` on unions of literals. ([#30746](https://github.com/astral-sh/ruff/pull/30746), [#30733](https://github.com/astral-sh/ruff/pull/30733))
+- Infer list, set, and dictionary literals from their elements faster. ([#30689](https://github.com/astral-sh/ruff/pull/30689))
+- Parse and infer the types of bytes literals faster, including long runs of escape sequences and adjacent literals. ([#30729](https://github.com/astral-sh/ruff/pull/30729), [#30738](https://github.com/astral-sh/ruff/pull/30738))
+
+#### Imports, name resolution, and control flow
+
+- Resolve dotted imports faster when they share a parent package. Scan the initializer of a legacy namespace package only once across imports. ([#30743](https://github.com/astral-sh/ruff/pull/30743), [#30646](https://github.com/astral-sh/ruff/pull/30646))
+- Select the Python environment faster for files under a project source root. This speeds up workspace symbol searches and `ty check` runs that list many individual files. ([#30702](https://github.com/astral-sh/ruff/pull/30702))
+- Speed up indexing when many nested functions reference the same name. ([#30550](https://github.com/astral-sh/ruff/pull/30550))
+- Track nested dictionary keys in large collection literals faster. ([#30633](https://github.com/astral-sh/ruff/pull/30633), [#30647](https://github.com/astral-sh/ruff/pull/30647))
+- Find assignments to instance attributes such as `self.title` faster. ([#30678](https://github.com/astral-sh/ruff/pull/30678))
+- Skip unnecessary lookups for attributes and subscripts when no enclosing scope can supply a binding. ([#30700](https://github.com/astral-sh/ruff/pull/30700))
+- Resolve built-in names faster inside classes and other nested scopes. ([#30699](https://github.com/astral-sh/ruff/pull/30699))
+- Speed up reachability analysis in long functions with many standalone calls, including methods that alternate calls and assignments. ([#30561](https://github.com/astral-sh/ruff/pull/30561), [#30552](https://github.com/astral-sh/ruff/pull/30552))
+- Determine more quickly whether to suppress diagnostics in unreachable code after long sequences of standalone calls. ([#30740](https://github.com/astral-sh/ruff/pull/30740))
+- Speed up control flow analysis for `try` statements with one `except` clause and no `finally` block. ([#30739](https://github.com/astral-sh/ruff/pull/30739))
+- Skip unrelated assignments when checking whether an alias used for type narrowing is still valid. ([#30637](https://github.com/astral-sh/ruff/pull/30637))
 
 ### Memory usage improvements
 
 - Use less memory when building large unions of bound methods backed by distinct functions. ([#30721](https://github.com/astral-sh/ruff/pull/30721))
-- Use less memory when checking wildcard imports by inferring imported names on demand and sharing information across names from the same import. ([#30727](https://github.com/astral-sh/ruff/pull/30727), [#30744](https://github.com/astral-sh/ruff/pull/30744))
-- Use less memory when resolving wildcard re-exports by deferring full analysis of the imported module until determining `__all__` requires type inference. ([#30668](https://github.com/astral-sh/ruff/pull/30668))
 - Use less memory when simplifying unions of distinct class objects after truthiness checks. ([#30636](https://github.com/astral-sh/ruff/pull/30636))
 - Use less memory when simplifying large unions after `isinstance` checks, including unions of unrelated class types or disjoint literals combined with `Any`. ([#30737](https://github.com/astral-sh/ruff/pull/30737), [#30742](https://github.com/astral-sh/ruff/pull/30742))
-- Use less memory checking string and bytes literals against their built-in types and checking tuples whose literal elements already match their expected types. ([#30556](https://github.com/astral-sh/ruff/pull/30556), [#30730](https://github.com/astral-sh/ruff/pull/30730))
-
-### Other changes
-
-- Speed up type checking for deeply nested generic types that reuse the same union in several branches. ([#30645](https://github.com/astral-sh/ruff/pull/30645))
-- Check enums with many members faster. ([#30634](https://github.com/astral-sh/ruff/pull/30634), [#30674](https://github.com/astral-sh/ruff/pull/30674))
-- Solve complex type-variable constraints faster, such as those in Bokeh's overloaded constructors. ([#30564](https://github.com/astral-sh/ruff/pull/30564), [#30650](https://github.com/astral-sh/ruff/pull/30650), [#30658](https://github.com/astral-sh/ruff/pull/30658))
-- Speed up checking calls that require finding an overlap between invariant generic types, such as two `list` types. ([#30653](https://github.com/astral-sh/ruff/pull/30653))
-- Check dictionary literals with string literal keys against `TypedDict` unions faster by ruling out alternatives with missing required keys or conflicting literal tags before inferring field values. ([#30641](https://github.com/astral-sh/ruff/pull/30641))
-- Speed up checking Pydantic constructors for models with many fields and inherited field validators. ([#30670](https://github.com/astral-sh/ruff/pull/30670))
-- Speed up checking for conflicting inherited members in classes with generated methods, such as dataclasses and Pydantic models. ([#30680](https://github.com/astral-sh/ruff/pull/30680), [#30725](https://github.com/astral-sh/ruff/pull/30725))
-- Reuse attribute lookups when checking multiple subclasses for conflicts between the same non-generic bases. ([#30676](https://github.com/astral-sh/ruff/pull/30676))
-- Resolve dotted imports that share a parent package faster. ([#30743](https://github.com/astral-sh/ruff/pull/30743))
-- Resolve multiple imports from the same legacy namespace package faster. ([#30646](https://github.com/astral-sh/ruff/pull/30646))
-- Speed up selecting the Python environment for files under a project source root, improving workspace symbol searches and `ty check` runs that pass many files individually. ([#30702](https://github.com/astral-sh/ruff/pull/30702))
-- Display large unions of literals faster in hovers, completions, and diagnostics. ([#30684](https://github.com/astral-sh/ruff/pull/30684))
-- Speed up type narrowing for equality comparisons that leave the original type unchanged. ([#30723](https://github.com/astral-sh/ruff/pull/30723))
-- Reuse the result of simplifying the same wide union during type inference. ([#30741](https://github.com/astral-sh/ruff/pull/30741))
-- Speed up rejoining types narrowed by opposite truthiness checks. ([#30731](https://github.com/astral-sh/ruff/pull/30731))
-- Build unions that mix class objects with string literals faster, such as the types accepted by NumPy's `dtype`. ([#30698](https://github.com/astral-sh/ruff/pull/30698))
-- Speed up repeated comparisons involving the same subclass type, such as `type[C]`. ([#30716](https://github.com/astral-sh/ruff/pull/30716))
-- Speed up generic inference from unions by reusing the decisions about which alternatives can contribute and when the whole union is needed. ([#30719](https://github.com/astral-sh/ruff/pull/30719), [#30749](https://github.com/astral-sh/ruff/pull/30749))
-- Speed up inferring `Any` through a generic base class when matching an argument to a union parameter. ([#30685](https://github.com/astral-sh/ruff/pull/30685))
-- Speed up inference for generic calls with one argument by reusing candidate bounds across inference passes. ([#30693](https://github.com/astral-sh/ruff/pull/30693))
-- Speed up inference when a type variable has a single bound to solve. ([#30750](https://github.com/astral-sh/ruff/pull/30750))
-- Reuse more argument type compatibility checks across calls. ([#30483](https://github.com/astral-sh/ruff/pull/30483))
-- Speed up repeated calls to overloaded functions when the same argument types match several overloads. ([#30640](https://github.com/astral-sh/ruff/pull/30640))
-- Check overloaded calls with `**`-unpacked mappings faster by reusing the inferred type for each keyword. ([#30638](https://github.com/astral-sh/ruff/pull/30638))
-- Check `**kwargs: Unpack[SomeTypedDict]` annotations with many fields faster. ([#30691](https://github.com/astral-sh/ruff/pull/30691))
-- Speed up comparing mutable `TypedDict` fields with identical types, including recursive field types. ([#30554](https://github.com/astral-sh/ruff/pull/30554))
-- Check `TypedDict` definitions without a `TypedDict` base faster. ([#30706](https://github.com/astral-sh/ruff/pull/30706))
-- Speed up checking calls with a string literal argument when many overloads expect different string literals and the file is outside the editor's open files. ([#30642](https://github.com/astral-sh/ruff/pull/30642))
-- Rule out tuple literals faster for overloads that expect an unrelated class, such as `list` or `bytes`. ([#30667](https://github.com/astral-sh/ruff/pull/30667))
-- Reuse the inferred type of a tuple literal across overloads whose non-tuple parameter types supply no context for its elements. ([#30675](https://github.com/astral-sh/ruff/pull/30675))
-- Infer list, set, and dictionary literals from their elements faster. ([#30689](https://github.com/astral-sh/ruff/pull/30689))
-- Speed up checking augmented assignments such as `|=` on unions of literals. ([#30746](https://github.com/astral-sh/ruff/pull/30746), [#30733](https://github.com/astral-sh/ruff/pull/30733))
-- Decode bytes literals with long runs of escape sequences faster. ([#30729](https://github.com/astral-sh/ruff/pull/30729))
-- Speed up inferring bytes literal types, including when adjacent literals are concatenated. ([#30738](https://github.com/astral-sh/ruff/pull/30738))
-- Speed up normalizing recursively inferred types when tuple elements or generic type arguments stay the same. ([#30690](https://github.com/astral-sh/ruff/pull/30690), [#30643](https://github.com/astral-sh/ruff/pull/30643))
-- Recognize recursive type aliases declared with the `type` statement faster. ([#30682](https://github.com/astral-sh/ruff/pull/30682))
-- Speed up indexing files where many nested functions reference the same name. ([#30550](https://github.com/astral-sh/ruff/pull/30550))
-- Track nested dictionary keys in large collection literals faster. ([#30633](https://github.com/astral-sh/ruff/pull/30633), [#30647](https://github.com/astral-sh/ruff/pull/30647))
-- Speed up reachability analysis in long functions with many standalone calls, including methods that alternate calls and assignments. ([#30561](https://github.com/astral-sh/ruff/pull/30561), [#30552](https://github.com/astral-sh/ruff/pull/30552))
-- Speed up checking whether diagnostics fall in unreachable code when a long scope contains many standalone calls. ([#30740](https://github.com/astral-sh/ruff/pull/30740))
-- Check files with many `try` statements that have one handler and no `finally` block faster. ([#30739](https://github.com/astral-sh/ruff/pull/30739))
-- Speed up checking scopes that use aliases for type narrowing by skipping unrelated assignments when determining which aliases are still valid. ([#30637](https://github.com/astral-sh/ruff/pull/30637))
-- Speed up looking up directly assigned instance attributes such as `self.title`. ([#30678](https://github.com/astral-sh/ruff/pull/30678))
-- Speed up looking up attributes and subscripts when no enclosing scope can supply a binding. ([#30700](https://github.com/astral-sh/ruff/pull/30700))
-- Resolve built-in names faster inside classes and other nested scopes. ([#30699](https://github.com/astral-sh/ruff/pull/30699))
-- Speed up checking overload declarations and building function signatures. ([#30686](https://github.com/astral-sh/ruff/pull/30686))
-- Speed up checking ordinary function definitions by reusing known return types to rule out `TypeGuard` and `TypeIs`. ([#30671](https://github.com/astral-sh/ruff/pull/30671))
+- Use less memory when checking wildcard imports by inferring imported names on demand and sharing information across names from the same import. ([#30727](https://github.com/astral-sh/ruff/pull/30727), [#30744](https://github.com/astral-sh/ruff/pull/30744))
+- When resolving wildcard re-exports, build an index of the imported module only if ty needs to infer a type to determine `__all__`. ([#30668](https://github.com/astral-sh/ruff/pull/30668))
+- Avoid caching a separate type check for each string or bytes literal that matches its expected built-in type, or for each tuple whose literal elements already match their expected types. ([#30556](https://github.com/astral-sh/ruff/pull/30556), [#30730](https://github.com/astral-sh/ruff/pull/30730))
 
 ### Contributors
 
