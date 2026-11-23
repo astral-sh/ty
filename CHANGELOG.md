@@ -1,5 +1,82 @@
 # Changelog
 
+## 0.0.109
+
+Released on 2026-11-23.
+
+### Bug fixes
+
+- Exclude `init=False` dataclass fields from `__replace__` ([#30850](https://github.com/astral-sh/ruff/pull/30850))
+- Preserve literals when discarding a redundant union member ([#30774](https://github.com/astral-sh/ruff/pull/30774))
+- Preserve receiver checks for aliased methods ([#29341](https://github.com/astral-sh/ruff/pull/29341))
+- Treat caller-fixed type variables as concrete during inference ([#30423](https://github.com/astral-sh/ruff/pull/30423))
+
+### LSP server
+
+- Binary search statements when looking up attribute docstrings ([#30707](https://github.com/astral-sh/ruff/pull/30707))
+
+### Diagnostic improvements
+
+- Rename `ignore-comment-unknown-rule` to `unknown-rule-in-ignore-comment` ([#30827](https://github.com/astral-sh/ruff/pull/30827))
+
+### Performance improvements
+
+- Avoid redundant copies during call inference ([#30826](https://github.com/astral-sh/ruff/pull/30826))
+- Binary search imported submodules during member lookup ([#30722](https://github.com/astral-sh/ruff/pull/30722))
+- Borrow incoming definitions and merge matching constraints in place ([#30803](https://github.com/astral-sh/ruff/pull/30803))
+- Check all-negative counterexamples directly in isolated type relations ([#30748](https://github.com/astral-sh/ruff/pull/30748))
+- Check dataclass ordering flags before looking up decorators ([#30810](https://github.com/astral-sh/ruff/pull/30810))
+- Keep the binding type out of narrowing projection keys ([#30773](https://github.com/astral-sh/ruff/pull/30773))
+- Keep the first narrowing key inline ([#30816](https://github.com/astral-sh/ruff/pull/30816))
+- Merge built-in literal exclusions by set membership ([#30736](https://github.com/astral-sh/ruff/pull/30736))
+- Recognize identity decorators during abstract-method discovery ([#30802](https://github.com/astral-sh/ruff/pull/30802))
+- Resolve alias chains only for aliases and recursive types ([#30828](https://github.com/astral-sh/ruff/pull/30828))
+- Resolve diagnostic colors once per run of identically styled characters ([#30708](https://github.com/astral-sh/ruff/pull/30708))
+- Return a single normalized type directly from the union builder ([#30817](https://github.com/astral-sh/ruff/pull/30817))
+- Reuse builtin literal promotions within long tuples ([#30677](https://github.com/astral-sh/ruff/pull/30677))
+- Reuse completed TypedDict comparisons against unions ([#30555](https://github.com/astral-sh/ruff/pull/30555))
+- Reuse cycle recovery for nested unions shared by type arguments ([#30735](https://github.com/astral-sh/ruff/pull/30735))
+- Reuse empty sequent maps across constraint walks ([#30788](https://github.com/astral-sh/ruff/pull/30788))
+- Reuse freshened overload signatures ([#30813](https://github.com/astral-sh/ruff/pull/30813))
+- Reuse generic inference for calls with the same argument types ([#30815](https://github.com/astral-sh/ruff/pull/30815))
+- Reuse literal exclusions when rebuilding intersections ([#30767](https://github.com/astral-sh/ruff/pull/30767))
+- Reuse normalized numeric unions within a program ([#30695](https://github.com/astral-sh/ruff/pull/30695))
+- Reuse parameter specializations inferred from the expected return type ([#30785](https://github.com/astral-sh/ruff/pull/30785))
+- Reuse pending narrowing up to a shared branch point ([#30787](https://github.com/astral-sh/ruff/pull/30787))
+- Reuse scope reachability for multiple matching definitions ([#30784](https://github.com/astral-sh/ruff/pull/30784))
+- Reuse the element type of synchronous iterables ([#30814](https://github.com/astral-sh/ruff/pull/30814))
+- Reuse the statement-call index when checking reachability ([#30771](https://github.com/astral-sh/ruff/pull/30771))
+- Reuse type equivalence checks across overloaded calls ([#30781](https://github.com/astral-sh/ruff/pull/30781))
+- Reuse union normalization for inferred instance attributes ([#30775](https://github.com/astral-sh/ruff/pull/30775))
+- Reuse wide unions when narrowing and merging bindings ([#30705](https://github.com/astral-sh/ruff/pull/30705))
+- Share materialized argument tuples across adjacent overloads ([#30789](https://github.com/astral-sh/ruff/pull/30789))
+- Share union normalization when narrowing a place ([#30829](https://github.com/astral-sh/ruff/pull/30829))
+- Skip descriptor lookups for tuple-valued enum members ([#30777](https://github.com/astral-sh/ruff/pull/30777))
+- Skip directory-only exclude patterns when matching files ([#30772](https://github.com/astral-sh/ruff/pull/30772))
+- Skip frozen field lookups when no base class is frozen ([#30820](https://github.com/astral-sh/ruff/pull/30820))
+- Skip repeated tuple checks for promoted collection elements ([#30796](https://github.com/astral-sh/ruff/pull/30796))
+- Skip the default include glob for files ([#30794](https://github.com/astral-sh/ruff/pull/30794))
+- Skip union comparisons between distinct cycle markers ([#30791](https://github.com/astral-sh/ruff/pull/30791))
+- Skip union comparisons between tuples with disjoint literal tags ([#30793](https://github.com/astral-sh/ruff/pull/30793))
+- Skip union comparisons for `str.startswith` bound to different literals ([#30811](https://github.com/astral-sh/ruff/pull/30811))
+- Skip variadic argument unions for ordinary functions ([#30734](https://github.com/astral-sh/ruff/pull/30734))
+- Use one map for reachability constraint results ([#30778](https://github.com/astral-sh/ruff/pull/30778))
+
+### Core type checking
+
+- Infer enum.auto() values from preceding members ([#30548](https://github.com/astral-sh/ruff/pull/30548))
+- Resolve exception-handler aliases ([#30758](https://github.com/astral-sh/ruff/pull/30758))
+- attrs: Strip leading underscores for private fields ([#30824](https://github.com/astral-sh/ruff/pull/30824))
+- attrs: Support field validator decorators ([#30839](https://github.com/astral-sh/ruff/pull/30839))
+
+### Contributors
+
+- [@sharkdp](https://github.com/sharkdp)
+- [@tamird](https://github.com/tamird)
+- [@charliermarsh](https://github.com/charliermarsh)
+- [@carljm](https://github.com/carljm)
+- [@MichaReiser](https://github.com/MichaReiser)
+
 ## 0.0.108
 
 Released on 2026-11-22.
