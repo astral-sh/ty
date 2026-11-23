@@ -6,68 +6,82 @@ Released on 2026-11-23.
 
 ### Bug fixes
 
-- Exclude `init=False` dataclass fields from `__replace__` ([#30850](https://github.com/astral-sh/ruff/pull/30850))
-- Preserve literals when discarding a redundant union member ([#30774](https://github.com/astral-sh/ruff/pull/30774))
-- Preserve receiver checks for aliased methods ([#29341](https://github.com/astral-sh/ruff/pull/29341))
-- Treat caller-fixed type variables as concrete during inference ([#30423](https://github.com/astral-sh/ruff/pull/30423))
+- Preserve type variables from the surrounding scope when inferring generic calls. For example, forwarding a `list[T]` through a generic helper can now preserve `list[T]` as the result type. ([#30423](https://github.com/astral-sh/ruff/pull/30423))
+- Use the receiver’s type to select overloads when a method is called through an alias. For example, an alias of a Redis method can now infer an awaitable return type for an asynchronous client. ([#29341](https://github.com/astral-sh/ruff/pull/29341))
+- Report `unknown-argument` when `copy.replace` or a generated `__replace__` receives an `init=False` field. This applies to standard-library and Pydantic dataclasses, attrs classes, and other classes using `dataclass_transform`. ([#30850](https://github.com/astral-sh/ruff/pull/30850))
+- Preserve literals when union simplification discards the member that would have made them redundant. This also fixes a crash when checking some unions of recursive protocols. ([#30774](https://github.com/astral-sh/ruff/pull/30774))
+- Accept `self` as a field keyword in dataclass and Pydantic constructors and in dataclass and named tuple replacement methods. ([#29341](https://github.com/astral-sh/ruff/pull/29341))
+- Infer `Self` from the receiver and field arguments in generated dataclass and named tuple methods, so an inherited method can accept a base-class value for a field annotated with `Self`. ([#29341](https://github.com/astral-sh/ruff/pull/29341))
 
 ### LSP server
 
-- Binary search statements when looking up attribute docstrings ([#30707](https://github.com/astral-sh/ruff/pull/30707))
+- Speed up member completions when looking up documentation for classes and enums with many attributes, such as Flet’s `Icons` and PySide6’s `Qt.Key`. ([#30707](https://github.com/astral-sh/ruff/pull/30707))
 
 ### Diagnostic improvements
 
-- Rename `ignore-comment-unknown-rule` to `unknown-rule-in-ignore-comment` ([#30827](https://github.com/astral-sh/ruff/pull/30827))
+- Rename the diagnostic for unknown rules in ignore comments to `unknown-rule-in-ignore-comment`. The old name, `ignore-comment-unknown-rule`, remains a compatibility alias in configuration and ignore comments. Run `ty check --fix` to update ignore comments automatically. ([#30827](https://github.com/astral-sh/ruff/pull/30827))
 
 ### Performance improvements
 
-- Avoid redundant copies during call inference ([#30826](https://github.com/astral-sh/ruff/pull/30826))
-- Binary search imported submodules during member lookup ([#30722](https://github.com/astral-sh/ruff/pull/30722))
-- Borrow incoming definitions and merge matching constraints in place ([#30803](https://github.com/astral-sh/ruff/pull/30803))
-- Check all-negative counterexamples directly in isolated type relations ([#30748](https://github.com/astral-sh/ruff/pull/30748))
-- Check dataclass ordering flags before looking up decorators ([#30810](https://github.com/astral-sh/ruff/pull/30810))
-- Keep the binding type out of narrowing projection keys ([#30773](https://github.com/astral-sh/ruff/pull/30773))
-- Keep the first narrowing key inline ([#30816](https://github.com/astral-sh/ruff/pull/30816))
-- Merge built-in literal exclusions by set membership ([#30736](https://github.com/astral-sh/ruff/pull/30736))
-- Recognize identity decorators during abstract-method discovery ([#30802](https://github.com/astral-sh/ruff/pull/30802))
-- Resolve alias chains only for aliases and recursive types ([#30828](https://github.com/astral-sh/ruff/pull/30828))
-- Resolve diagnostic colors once per run of identically styled characters ([#30708](https://github.com/astral-sh/ruff/pull/30708))
-- Return a single normalized type directly from the union builder ([#30817](https://github.com/astral-sh/ruff/pull/30817))
-- Reuse builtin literal promotions within long tuples ([#30677](https://github.com/astral-sh/ruff/pull/30677))
-- Reuse completed TypedDict comparisons against unions ([#30555](https://github.com/astral-sh/ruff/pull/30555))
-- Reuse cycle recovery for nested unions shared by type arguments ([#30735](https://github.com/astral-sh/ruff/pull/30735))
-- Reuse empty sequent maps across constraint walks ([#30788](https://github.com/astral-sh/ruff/pull/30788))
-- Reuse freshened overload signatures ([#30813](https://github.com/astral-sh/ruff/pull/30813))
-- Reuse generic inference for calls with the same argument types ([#30815](https://github.com/astral-sh/ruff/pull/30815))
-- Reuse literal exclusions when rebuilding intersections ([#30767](https://github.com/astral-sh/ruff/pull/30767))
-- Reuse normalized numeric unions within a program ([#30695](https://github.com/astral-sh/ruff/pull/30695))
-- Reuse parameter specializations inferred from the expected return type ([#30785](https://github.com/astral-sh/ruff/pull/30785))
-- Reuse pending narrowing up to a shared branch point ([#30787](https://github.com/astral-sh/ruff/pull/30787))
-- Reuse scope reachability for multiple matching definitions ([#30784](https://github.com/astral-sh/ruff/pull/30784))
-- Reuse the element type of synchronous iterables ([#30814](https://github.com/astral-sh/ruff/pull/30814))
-- Reuse the statement-call index when checking reachability ([#30771](https://github.com/astral-sh/ruff/pull/30771))
-- Reuse type equivalence checks across overloaded calls ([#30781](https://github.com/astral-sh/ruff/pull/30781))
-- Reuse union normalization for inferred instance attributes ([#30775](https://github.com/astral-sh/ruff/pull/30775))
-- Reuse wide unions when narrowing and merging bindings ([#30705](https://github.com/astral-sh/ruff/pull/30705))
-- Share materialized argument tuples across adjacent overloads ([#30789](https://github.com/astral-sh/ruff/pull/30789))
-- Share union normalization when narrowing a place ([#30829](https://github.com/astral-sh/ruff/pull/30829))
-- Skip descriptor lookups for tuple-valued enum members ([#30777](https://github.com/astral-sh/ruff/pull/30777))
-- Skip directory-only exclude patterns when matching files ([#30772](https://github.com/astral-sh/ruff/pull/30772))
-- Skip frozen field lookups when no base class is frozen ([#30820](https://github.com/astral-sh/ruff/pull/30820))
-- Skip repeated tuple checks for promoted collection elements ([#30796](https://github.com/astral-sh/ruff/pull/30796))
-- Skip the default include glob for files ([#30794](https://github.com/astral-sh/ruff/pull/30794))
-- Skip union comparisons between distinct cycle markers ([#30791](https://github.com/astral-sh/ruff/pull/30791))
-- Skip union comparisons between tuples with disjoint literal tags ([#30793](https://github.com/astral-sh/ruff/pull/30793))
-- Skip union comparisons for `str.startswith` bound to different literals ([#30811](https://github.com/astral-sh/ruff/pull/30811))
-- Skip variadic argument unions for ordinary functions ([#30734](https://github.com/astral-sh/ruff/pull/30734))
-- Use one map for reachability constraint results ([#30778](https://github.com/astral-sh/ruff/pull/30778))
+#### Calls and overloads
+
+- Check nested calls such as NumPy’s `dot(dot(a, b), c)` faster when several outer overloads give the inner call the same expected return type. ([#30785](https://github.com/astral-sh/ruff/pull/30785))
+- Reuse successful inference for ordinary type variables and `Self` across generic calls with matching parameter and argument types, when there’s no expected return type or unpacked variadic parameter. ([#30815](https://github.com/astral-sh/ruff/pull/30815))
+- Speed up overload resolution by reusing comparisons of parameter and return types when several overloads match. ([#30781](https://github.com/astral-sh/ruff/pull/30781))
+- Check whether matching overloads cover all possible arguments faster when consecutive overloads infer the same argument types, as can happen with `boto3` client calls. ([#30789](https://github.com/astral-sh/ruff/pull/30789))
+- Speed up repeated calls to overloads that share a type variable, such as `TypedDict.get` overloads that share the type of the default argument. ([#30813](https://github.com/astral-sh/ruff/pull/30813))
+- Check calls to ordinary functions faster when many arguments are captured by `*args` or `**kwargs`. ([#30734](https://github.com/astral-sh/ruff/pull/30734))
+- Speed up call inference by avoiding unnecessary copies of inferred argument types, including on the first pass of generic inference. ([#30826](https://github.com/astral-sh/ruff/pull/30826))
+
+#### Generics and recursive types
+
+- Speed up type compatibility checks that must hold for every specialization of a type variable, including assignability and equivalence checks. ([#30748](https://github.com/astral-sh/ruff/pull/30748))
+- Solve generic type constraints faster by reusing results for pairs of constraints that yield no new information. ([#30788](https://github.com/astral-sh/ruff/pull/30788))
+- Speed up inference for recursive types whose generic arguments share nested unions. ([#30735](https://github.com/astral-sh/ruff/pull/30735))
+- Limit alias expansion and cycle checks to aliases and recursive types. ([#30828](https://github.com/astral-sh/ruff/pull/30828))
+
+#### Classes and `TypedDict`s
+
+- Check assignments to instance attributes faster when repeated assignments give the attribute a wide union type, as in tokenizer state machines. ([#30775](https://github.com/astral-sh/ruff/pull/30775))
+- Speed up repeated comparisons between `TypedDict`s and unions, including recursive unions such as Pydantic’s `CoreSchema`. ([#30555](https://github.com/astral-sh/ruff/pull/30555))
+- Determine whether a class is abstract faster when its methods use decorators that preserve the method’s type. ([#30802](https://github.com/astral-sh/ruff/pull/30802))
+- Check enums with built-in tuple values faster when using the bundled standard-library stubs. ([#30777](https://github.com/astral-sh/ruff/pull/30777))
+- Check attribute assignments and deletions faster when the class and its bases are unfrozen. ([#30820](https://github.com/astral-sh/ruff/pull/30820))
+- Speed up checks for inherited dataclass ordering by looking up decorators only on base classes with ordering enabled. ([#30810](https://github.com/astral-sh/ruff/pull/30810))
+
+#### Unions, narrowing, and literals
+
+- Speed up large `match` statements that rule out many literal values, such as integer opcode dispatch. ([#30736](https://github.com/astral-sh/ruff/pull/30736), [#30767](https://github.com/astral-sh/ruff/pull/30767))
+- Reuse the result of simplifying wide unions when narrowing types or merging assignments across branches. ([#30705](https://github.com/astral-sh/ruff/pull/30705))
+- Speed up narrowing when a name or attribute has a single possible type. With `analysis.strict-generic-narrowing = true`, this also lets an `isinstance` check narrow a value to a more specific type when a recursively inferred type argument was approximated as `object`. ([#30829](https://github.com/astral-sh/ruff/pull/30829))
+- Simplify unions of fixed-length tuples faster when their first elements have disjoint literal types. ([#30793](https://github.com/astral-sh/ruff/pull/30793))
+- Simplify unions faster when their members come from different unresolved inference cycles. ([#30791](https://github.com/astral-sh/ruff/pull/30791))
+- Speed up `str.startswith` checks on values with many possible literal strings, such as enum member names. ([#30811](https://github.com/astral-sh/ruff/pull/30811))
+- Reduce the cost of narrowing names, attributes, and subscripts, including when the relevant conditions are in the current scope. ([#30773](https://github.com/astral-sh/ruff/pull/30773), [#30816](https://github.com/astral-sh/ruff/pull/30816))
+- Simplify unions faster when they collapse to a single type. ([#30817](https://github.com/astral-sh/ruff/pull/30817))
+
+#### Collections and iteration
+
+- Infer collection literals faster when several elements widen to the same type, such as a list of floats. Reuse the numeric unions ty infers for `float` and `complex`. ([#30796](https://github.com/astral-sh/ruff/pull/30796), [#30695](https://github.com/astral-sh/ruff/pull/30695))
+- Infer long tuple literals faster when many elements widen to the same built-in type. ([#30677](https://github.com/astral-sh/ruff/pull/30677))
+- Reuse the inferred element type when iterating over the same synchronous iterable type again. ([#30814](https://github.com/astral-sh/ruff/pull/30814))
+
+#### File discovery, imports, and control flow
+
+- Speed up control flow analysis in large dispatch functions by reusing narrowing and reachability results along shared paths. ([#30787](https://github.com/astral-sh/ruff/pull/30787), [#30784](https://github.com/astral-sh/ruff/pull/30784))
+- Discover files faster with the default `src.include` pattern or when all exclude patterns apply only to directories. ([#30772](https://github.com/astral-sh/ruff/pull/30772), [#30794](https://github.com/astral-sh/ruff/pull/30794))
+- Check which code is reachable faster in large scopes, including those where wildcard imports bring many names into scope. ([#30771](https://github.com/astral-sh/ruff/pull/30771), [#30778](https://github.com/astral-sh/ruff/pull/30778))
+- Speed up control flow analysis when branches leave the same definitions in scope, including in deeply nested `with` blocks. ([#30803](https://github.com/astral-sh/ruff/pull/30803))
+- Resolve references to imported submodules faster after dotted imports such as `import a.b.c`. ([#30722](https://github.com/astral-sh/ruff/pull/30722))
 
 ### Core type checking
 
-- Infer enum.auto() values from preceding members ([#30548](https://github.com/astral-sh/ruff/pull/30548))
-- Resolve exception-handler aliases ([#30758](https://github.com/astral-sh/ruff/pull/30758))
-- attrs: Strip leading underscores for private fields ([#30824](https://github.com/astral-sh/ruff/pull/30824))
-- attrs: Support field validator decorators ([#30839](https://github.com/astral-sh/ruff/pull/30839))
+- Infer `enum.auto()` values from preceding members in both class-based and functional enums. For sequential integer values, ty counts from the last value through Python 3.10 and from the highest value for Python 3.11 and later targets. It can infer `int` when the exact value depends on runtime data or control flow. ([#30548](https://github.com/astral-sh/ruff/pull/30548))
+- Use the underscore-stripped name of an attrs field in constructors and `copy.replace`. For example, a field accessed as `_id` takes the keyword `id` by default. An explicit `alias` takes precedence. ([#30824](https://github.com/astral-sh/ruff/pull/30824))
+- Infer the specific exception type bound by `except ... as exc` when the handler uses a type alias for a tuple of exception classes or a union of an exception class and a tuple. ([#30758](https://github.com/astral-sh/ruff/pull/30758))
+- Recognize `@field_name.validator` on fields declared with `attrs.field` or `attr.ib`, fixing false missing-attribute errors and preserving the decorated method’s signature. ([#30839](https://github.com/astral-sh/ruff/pull/30839))
+- Fix false `not-callable` errors on attrs `@field_name.default` decorators for fields that ty treats as required constructor arguments. ([#30839](https://github.com/astral-sh/ruff/pull/30839))
+- Infer the enum type when conditional member declarations make an alias’s canonical member uncertain. ([#30548](https://github.com/astral-sh/ruff/pull/30548))
 
 ### Contributors
 
