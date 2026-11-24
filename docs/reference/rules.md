@@ -8243,7 +8243,7 @@ Python code.
 [fully-static]: https://typing.python.org/en/latest/spec/glossary.html#term-fully-static-type
 [subtype]: https://typing.python.org/en/latest/spec/glossary.html#term-subtype
 
-<a id="unsound-return-statement"></a>
+<a id="unsound-return"></a>
 
 ## `unsound-return`
 
@@ -8281,7 +8281,7 @@ def returns_any() -> Any:
 
 
 def returns_int() -> int:
-    # error: "Unsound return statement: `Any` is not a subtype of `int`"
+    # error: "Unsound return: `Any` is not a subtype of `int`"
     return returns_any()
 
 
@@ -8342,7 +8342,7 @@ def returns_any() -> Any:
 
 
 def returns_int() -> int:
-    # error: "Unsound return statement: `Any` is not a subtype of `int`"
+    # error: "Unsound return: `Any` is not a subtype of `int`"
     return returns_any()
 ```
 
@@ -8380,10 +8380,9 @@ Python code.
 
 **Rule history**
 
-
-- v0.0.70: Added as [`unsound-return-statement`](#unsound-return-statement).
-- v0.0.102: Renamed to [`unsound-return`](#unsound-return). [`unsound-return-statement`](#unsound-return-statement) remains as a compatibility alias
-    for this rule.
+- v0.0.70: Added as `unsound-return-statement`.
+- v0.0.102: Renamed to `unsound-return`. `unsound-return-statement` remains as a compatibility alias
+  for this rule.
 
 [ann201]: https://docs.astral.sh/ruff/rules/missing-return-type-undocumented-public-function/
 [ann202]: https://docs.astral.sh/ruff/rules/missing-return-type-private-function/
