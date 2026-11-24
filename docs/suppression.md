@@ -65,14 +65,15 @@ sum_three_numbers(3, 2, "1")
 ty supports the standard [`type: ignore`](https://typing.python.org/en/latest/spec/directives.html#type-ignore-comments) comment
 format introduced by PEP 484.
 
-`type: ignore` suppresses all violations on that line.
+Like `# ty: ignore`, `# type: ignore` suppresses all rule violations on that line, with
+[a few narrow exceptions](#unused-suppression-comments).
 
 `type: ignore[ty:<rule>]` behaves like `ty: ignore[<rule>]` and only suppresses the matching
 rule. Codes without a `ty:` prefix are ignored, which makes it possible to combine
-suppressions for multiple type checkers in a single comment.
+suppressions for multiple type checkers in a single comment:
 
 ```python
-# Ignore all typing errors on the next line
+# Suppress both the missing argument and the invalid argument type
 sum_three_numbers("one", 5)  # type: ignore
 
 # Ignore a mypy code and a ty rule in the same comment
@@ -95,11 +96,24 @@ result = calculate()  # fmt: off  # ty: ignore[invalid-argument-type]
 
 ## Unused suppression comments
 
-If the [`unused-ignore-comment`](./reference/rules.md#unused-ignore-comment) rule is enabled, ty
-will report unused `ty: ignore` and `type: ignore` comments.
+By default, ty warns about unused suppression comments. Each comment format has its own rule that
+you can configure independently.
 
-`unused-ignore-comment` violations can only be suppressed using `# ty: ignore[unused-ignore-comment]`.
-They cannot be suppressed using `# ty: ignore` without a rule code or `# type: ignore`.
+- [`unused-ignore-comment`](./reference/rules.md#unused-ignore-comment) checks `# ty: ignore` comments.
+- [`unused-type-ignore-comment`](./reference/rules.md#unused-type-ignore-comment) checks blanket
+    `# type: ignore` comments and codes prefixed with `ty:`. For example, in
+    `# type: ignore[arg-type, ty:invalid-argument-type]`, ty checks whether the suppression of
+    ty's `invalid-argument-type` rule is used, but skips checking whether the suppression of
+    mypy's `arg-type` rule is used.
+
+Most ty rules can be suppressed by a blanket `# ty: ignore` or `# type: ignore`. These two rules
+are exceptions so that an unused blanket comment can't silence the warning about itself.
+The same restriction applies to the opt-in
+[`blanket-ignore-comment`](./reference/rules.md#blanket-ignore-comment) rule, which flags
+`# ty: ignore` comments that omit rule names.
+
+To keep a `# ty: ignore` comment even when it is unused, include `unused-ignore-comment` in its
+list of rules, as in `# ty: ignore[invalid-assignment, unused-ignore-comment]`.
 
 ## `@no_type_check` directive
 
