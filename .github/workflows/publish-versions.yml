@@ -53,8 +53,8 @@ jobs:
         uses: astral-sh/setup-uv@1db35dd8eee11c5894872e0b383ae6c406cf738d # v10.4.0
         with:
           # renovate: datasource=github-release-attachments depName=astral-sh/uv
-          version: "0.13.7"
-          checksum: "c5221ff41b7892bfc223543883600125f6a47fe845093e0f5bdff4f359196d83"
+          version: "0.13.10"
+          checksum: "bf65ac1a0af10f92c522d91ac096c7c0a39657647b155577e7836c2cbbb4526c"
           python-version: "3.13"
           enable-cache: false
 
