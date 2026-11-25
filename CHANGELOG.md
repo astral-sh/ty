@@ -1,5 +1,38 @@
 # Changelog
 
+## 0.0.111
+
+Released on 2026-11-25.
+
+### Bug fixes
+
+- Fix a crash when choosing an overload for a class decorator depends on an inherited attribute whose type refers back to the decorated class. ty preserves the original class for `Self` inference even if the decorated name widens to a union. ([#30845](https://github.com/astral-sh/ruff/pull/30845))
+
+### Performance improvements
+
+- Infer repeated generic calls faster by reusing type arguments when the argument types and expected return type match, including for bounded type variables. ([#30909](https://github.com/astral-sh/ruff/pull/30909))
+- Speed up type checking by reducing the work needed to collect and merge inferred expression types, as in geomaglib. ([#30882](https://github.com/astral-sh/ruff/pull/30882))
+- Analyze control flow faster when switching between branches or exception handlers, such as in generated bindings with many `try` statements. ([#30776](https://github.com/astral-sh/ruff/pull/30776))
+- Narrow names and attributes faster by looking up only the conditions that can affect them and reusing those lookups as ty follows control flow. ([#30792](https://github.com/astral-sh/ruff/pull/30792), [#30780](https://github.com/astral-sh/ruff/pull/30780))
+- Speed up reachability analysis when branches merge and leave the same definitions in scope. ([#30865](https://github.com/astral-sh/ruff/pull/30865))
+- Preserve narrowing from a later check when complex control flow reaches ty's limit for combining narrowing conditions. ([#30865](https://github.com/astral-sh/ruff/pull/30865))
+- Resolve overloaded calls with `Any` arguments faster when the earlier overloads infer the same argument types and all rule out `object()` at the same argument position. ([#30866](https://github.com/astral-sh/ruff/pull/30866))
+- Infer instance attributes such as `self.name` faster by indexing their assignments and declarations once per class. ([#30901](https://github.com/astral-sh/ruff/pull/30901))
+- Check assignments to unannotated instance attributes faster when the value already has the attribute's inferred type, such as when the call in `self.items = wrap(value)` determines the type of `items`. ([#30862](https://github.com/astral-sh/ruff/pull/30862))
+- Look up inherited members faster on standard generic types such as `list[int]` and `list[str]` by reusing their method resolution order across type arguments. ([#30908](https://github.com/astral-sh/ruff/pull/30908))
+- Determine instance types faster by reusing information about a class and its bases, including whether it is a `TypedDict` or a protocol or inherits from explicit `Any`. ([#30906](https://github.com/astral-sh/ruff/pull/30906))
+- Look up members faster across different string or integer literals, while retaining exact lengths for string `__len__`. ([#30907](https://github.com/astral-sh/ruff/pull/30907))
+- Bind methods without overloads faster by reusing whether they are class methods or static methods. ([#30907](https://github.com/astral-sh/ruff/pull/30907))
+- Speed up inference for unannotated collections such as `items = []` by looking up the initializer only for uses that can constrain its type, such as `items.append(1)`. ([#30904](https://github.com/astral-sh/ruff/pull/30904))
+- Index names, attributes, and subscripts faster, including common accesses such as `self.name`. ([#30904](https://github.com/astral-sh/ruff/pull/30904))
+- Resolve recursive types faster when wide unions of distinct instance types stay the same, as in Pygments' Sphinx extension. ([#30805](https://github.com/astral-sh/ruff/pull/30805))
+- Reduce indexing overhead by making it cheaper to store and share information about assignments and declarations. ([#30905](https://github.com/astral-sh/ruff/pull/30905))
+- Reduce the cost of storing inferred expression types when finishing a scope. ([#30895](https://github.com/astral-sh/ruff/pull/30895))
+
+### Contributors
+
+- [@charliermarsh](https://github.com/charliermarsh)
+
 ## 0.0.110
 
 Released on 2026-11-25.
