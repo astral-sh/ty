@@ -1,5 +1,36 @@
 # Changelog
 
+## 0.0.111
+
+Released on 2026-11-25.
+
+### Bug fixes
+
+- Retain the original class when applying decorators ([#30845](https://github.com/astral-sh/ruff/pull/30845))
+
+### Performance improvements
+
+- Avoid copying names and tracking unrelated collection reads ([#30904](https://github.com/astral-sh/ruff/pull/30904))
+- Index receiver attributes by name within each class ([#30901](https://github.com/astral-sh/ruff/pull/30901))
+- Intern bindings and declarations without rehashing place states ([#30905](https://github.com/astral-sh/ruff/pull/30905))
+- Keep inferred expression types in node order ([#30882](https://github.com/astral-sh/ruff/pull/30882))
+- Move outgoing place states when restoring a flow snapshot ([#30776](https://github.com/astral-sh/ruff/pull/30776))
+- Reuse class headers and inherited flags when classifying instances ([#30906](https://github.com/astral-sh/ruff/pull/30906))
+- Reuse generic call solutions with expected return types and bounds ([#30909](https://github.com/astral-sh/ruff/pull/30909))
+- Reuse narrowing nodes when resuming a projection ([#30780](https://github.com/astral-sh/ruff/pull/30780))
+- Reuse the ancestor order of known generic classes ([#30908](https://github.com/astral-sh/ruff/pull/30908))
+- Reuse unchanged nominal unions during cycle recovery ([#30805](https://github.com/astral-sh/ruff/pull/30805))
+- Search only the narrowing predicates for the current place ([#30792](https://github.com/astral-sh/ruff/pull/30792))
+- Share branch reachability for unchanged bindings ([#30865](https://github.com/astral-sh/ruff/pull/30865))
+- Share literal member lookups and reuse the descriptor kind when binding methods ([#30907](https://github.com/astral-sh/ruff/pull/30907))
+- Share repeated scope types with a fixed-size cache ([#30895](https://github.com/astral-sh/ruff/pull/30895))
+- Skip overload coverage checks when a parameter rules out object ([#30866](https://github.com/astral-sh/ruff/pull/30866))
+- Skip re-inferring a value that matches an implicit attribute ([#30862](https://github.com/astral-sh/ruff/pull/30862))
+
+### Contributors
+
+- [@charliermarsh](https://github.com/charliermarsh)
+
 ## 0.0.110
 
 Released on 2026-11-25.
