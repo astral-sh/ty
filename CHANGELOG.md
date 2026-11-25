@@ -1,5 +1,57 @@
 # Changelog
 
+## 0.0.110
+
+Released on 2026-11-25.
+
+### Bug fixes
+
+- Preserve peer context for collection literals in boolean and conditional expressions ([#30911](https://github.com/astral-sh/ruff/pull/30911))
+- Prevent circular hints in nested generic calls ([#30847](https://github.com/astral-sh/ruff/pull/30847))
+- Recognize list equality in comparison and membership narrowing ([#30762](https://github.com/astral-sh/ruff/pull/30762))
+- Restore folding for indented region comments ([#30893](https://github.com/astral-sh/ruff/pull/30893))
+
+### Diagnostic improvements
+
+- Explain slots and custom setters in override diagnostics ([#29531](https://github.com/astral-sh/ruff/pull/29531))
+
+### Configuration changes
+
+- Add `project-manager.project` configuration ([#30568](https://github.com/astral-sh/ruff/pull/30568))
+
+### Performance improvements
+
+- Avoid caching abstract-method checks for plain assignments ([#30804](https://github.com/astral-sh/ruff/pull/30804))
+- Bound constraint construction during generic inference ([#30842](https://github.com/astral-sh/ruff/pull/30842))
+- Format the union once when reporting call errors ([#30857](https://github.com/astral-sh/ruff/pull/30857))
+- Index the first cached constraint pair by node ([#30885](https://github.com/astral-sh/ruff/pull/30885))
+- Initialize constraint solver storage lazily ([#30887](https://github.com/astral-sh/ruff/pull/30887))
+- Look up syntax node uses and scopes in fixed-size pages ([#30886](https://github.com/astral-sh/ruff/pull/30886))
+- Resolve version and platform guards while indexing bundled stubs ([#30863](https://github.com/astral-sh/ruff/pull/30863))
+- Reuse the builtin module scopes for each program ([#30884](https://github.com/astral-sh/ruff/pull/30884))
+- Share class namespace inputs across member lookups ([#30870](https://github.com/astral-sh/ruff/pull/30870))
+- Skip collecting bound violations when folding solutions ([#30864](https://github.com/astral-sh/ruff/pull/30864))
+- Skip inferring more decorated methods during abstract-method discovery ([#30903](https://github.com/astral-sh/ruff/pull/30903))
+- Skip redundant path lookups for `--force-exclude` ([#30635](https://github.com/astral-sh/ruff/pull/30635))
+- Store a single argument type context inline ([#30883](https://github.com/astral-sh/ruff/pull/30883))
+
+### Core type checking
+
+- Ignore declared type for failed collection literal assignments ([#30478](https://github.com/astral-sh/ruff/pull/30478))
+- Less aggressive generic call narrowing ([#30480](https://github.com/astral-sh/ruff/pull/30480))
+- Request the preview uv metadata schema ([#30529](https://github.com/astral-sh/ruff/pull/30529))
+- Support `__attrs_init__` on attrs classes with `init=False` ([#30852](https://github.com/astral-sh/ruff/pull/30852))
+- Support decorated field defaults in attrs constructors ([#30872](https://github.com/astral-sh/ruff/pull/30872))
+
+### Contributors
+
+- [@AlexWaygood](https://github.com/AlexWaygood)
+- [@carljm](https://github.com/carljm)
+- [@charliermarsh](https://github.com/charliermarsh)
+- [@sharkdp](https://github.com/sharkdp)
+- [@MichaReiser](https://github.com/MichaReiser)
+- [@ibraheemdev](https://github.com/ibraheemdev)
+
 ## 0.0.109
 
 Released on 2026-11-23.
