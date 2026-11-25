@@ -1,5 +1,57 @@
 # Changelog
 
+## 0.0.110
+
+Released on 2026-11-25.
+
+### Bug fixes
+
+- Avoid long type-checking delays in nested generic calls where a child argument can match both a type variable and a parameterized type, such as `T | Tree[T]`. ([#30847](https://github.com/astral-sh/ruff/pull/30847))
+- Infer more precise return types when a generic argument can match multiple members of a union. For example, passing `[1]` to a function with parameter type `T | list[T]` and return type `list[T]` can now infer `list[int]` when that choice fits the other arguments and the expected return type. ([#30847](https://github.com/astral-sh/ruff/pull/30847))
+- Use the types of other operands or branches when inferring fresh collection literals in boolean and conditional expressions. If `values` is `list[int] | None`, ty now accepts appending `1` to the result of `values or [None]` and still rejects appending `None`. ([#30911](https://github.com/astral-sh/ruff/pull/30911))
+- Narrow types using built-in list equality in comparison and membership checks. For example, `value in ("all", "open")` now narrows `str | list[str]` to the two string literals under the default equality settings. The change also covers `!=` for built-in lists and dictionaries, while respecting custom comparison methods and `analysis.strict-equality-semantics`. ([#30762](https://github.com/astral-sh/ruff/pull/30762))
+- Restore editor folding for indented `# region` and `# endregion` comments, such as those inside a function. ([#30893](https://github.com/astral-sh/ruff/pull/30893))
+
+### Diagnostic improvements
+
+- Explain in `incompatible-property-override` and `incompatible-mutable-override` diagnostics when an attribute has neither a matching `__slots__` entry nor an instance dictionary. When a custom `__setattr__` rejects writes of a type accepted by the base class, point to that method. ([#29531](https://github.com/astral-sh/ruff/pull/29531))
+
+### Configuration changes
+
+- Opt in to uv discovery of your workspace, Python environment, and dependency metadata with the preview setting `project-manager.project = "uv"`. It requires uv 0.12.3 or later and an already synchronized environment. The default is `"none"`, and an explicit `TY_UV` takes precedence. ([#30568](https://github.com/astral-sh/ruff/pull/30568))
+
+### Performance improvements
+
+- Prevent runaway memory use during generic call inference, such as when passing a union of string literals to `pandas.Series`. ([#30842](https://github.com/astral-sh/ruff/pull/30842))
+- Discover files faster when many paths are passed explicitly to `ty check --force-exclude`. ([#30635](https://github.com/astral-sh/ruff/pull/30635))
+- Report errors faster when a call fails for several members of a large union by reusing the formatted union across diagnostics at that call site. ([#30857](https://github.com/astral-sh/ruff/pull/30857))
+- Index bundled stubs faster by resolving Python version checks and, when targeting a specific platform, platform checks up front. `LiteralString` inlay hints can also link to the declaration for the configured Python version. ([#30863](https://github.com/astral-sh/ruff/pull/30863))
+- Determine whether classes are abstract faster when they contain plain assignments or methods with decorators that preserve concreteness, such as `contextlib.contextmanager`. ([#30804](https://github.com/astral-sh/ruff/pull/30804), [#30903](https://github.com/astral-sh/ruff/pull/30903))
+- Speed up repeated member lookups on the same class, including across different specializations of a generic class. ([#30870](https://github.com/astral-sh/ruff/pull/30870))
+- Resolve built-in names faster by reusing lookups of the standard `builtins` module and the project’s optional `__builtins__` module. ([#30884](https://github.com/astral-sh/ruff/pull/30884))
+- Speed up lookups of name uses and their enclosing scopes. ([#30886](https://github.com/astral-sh/ruff/pull/30886))
+- Reduce the overhead of reusing results when combining conditions for type narrowing and reachability analysis. ([#30885](https://github.com/astral-sh/ruff/pull/30885))
+- Reduce the overhead of simple type compatibility checks, such as comparing identical types, by allocating constraint solver storage only when needed. ([#30887](https://github.com/astral-sh/ruff/pull/30887))
+- Speed up generic call inference by skipping unused explanations when candidate type arguments violate their bounds. ([#30864](https://github.com/astral-sh/ruff/pull/30864))
+- Reduce the overhead of inferring a call argument against a single expected parameter type. ([#30883](https://github.com/astral-sh/ruff/pull/30883))
+
+### Core type checking
+
+- Check calls to `__attrs_init__` on attrs classes declared with `init=False`, using the same field parameters as a generated `__init__`. ([#30852](https://github.com/astral-sh/ruff/pull/30852))
+- Allow callers to omit an attrs constructor argument when the field’s default is supplied by a method decorated with `@field_name.default`. ([#30872](https://github.com/astral-sh/ruff/pull/30872))
+- Avoid overly narrow return types for generic calls in assignments annotated with unions. For example, a call that returns the first item of a list or `None` can infer `int | None` from an assignment annotation when the list contains an `Any` value and ty previously inferred only `None`. ([#30480](https://github.com/astral-sh/ruff/pull/30480))
+- Show the type inferred from the literal itself in `invalid-assignment` diagnostics for incompatible collections. For example, `x: list[int] = ["a"]` now reports `list[str]` as the source type. ([#30478](https://github.com/astral-sh/ruff/pull/30478))
+- Use uv’s versioned preview format to load workspace and script metadata, with a fallback to the unversioned request on uv 0.12.3 through 0.13.6. ([#30529](https://github.com/astral-sh/ruff/pull/30529))
+
+### Contributors
+
+- [@AlexWaygood](https://github.com/AlexWaygood)
+- [@carljm](https://github.com/carljm)
+- [@charliermarsh](https://github.com/charliermarsh)
+- [@sharkdp](https://github.com/sharkdp)
+- [@MichaReiser](https://github.com/MichaReiser)
+- [@ibraheemdev](https://github.com/ibraheemdev)
+
 ## 0.0.109
 
 Released on 2026-11-23.
