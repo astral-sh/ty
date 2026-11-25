@@ -1,6 +1,0 @@
-project-includes = ["django"]
-project-excludes = []
-python-interpreter-path = "/tmp/ty-benchmark-0.0.96-2026-11-02/checkouts/updated-django/venv/bin/python"
-python-version = "3.12"
-site-package-path = ["/tmp/ty-benchmark-0.0.96-2026-11-02/checkouts/updated-django/venv"]
-untyped-def-behavior = "check-and-infer-return-any"
