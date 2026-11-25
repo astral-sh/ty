@@ -1,0 +1,10 @@
+[tool.zuban]
+mode = "mypy"
+python_version = "3.14"
+python_executable = "/tmp/ty-benchmark-0.0.96-2026-11-02/checkouts/updated-homeassistant/venv/bin/python"
+mypy_path = ["/tmp/ty-benchmark-0.0.96-2026-11-02/checkouts/updated-homeassistant"]
+files = ["homeassistant"]
+exclude = ["\\A(?s:homeassistant[/\\\\]util[/\\\\]event_type\\.py)(?:[/\\\\].*)?\\z", "\\A(?s:homeassistant[/\\\\]util[/\\\\]hass_dict\\.py)(?:[/\\\\].*)?\\z", "\\A(?s:homeassistant[/\\\\]util[/\\\\]signal_type\\.py)(?:[/\\\\].*)?\\z"]
+exclude_gitignore = false
+check_untyped_defs = true
+untyped_function_return_mode = "any"

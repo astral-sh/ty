@@ -1,0 +1,33 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.15.1, pytest-9.1.1, pluggy-1.7.0 -- /tmp/ty-benchmark-0.0.108-replay-ruff/scripts/ty_benchmark/.venv/bin/python
+cachedir: .pytest_cache
+benchmark: 5.3.0 (defaults: timer=time.perf_counter disable_gc=False min_rounds=5 min_time=0.000005 max_time=1.0 calibration_precision=10 warmup=False warmup_iterations=100000)
+rootdir: /private/tmp/ty-benchmark-0.0.108-replay-ruff/scripts/ty_benchmark
+configfile: pyproject.toml
+plugins: benchmark-5.3.0
+collecting ... collected 2 items
+
+src/benchmark/test_lsp_diagnostics.py::test_fetch_diagnostics[updated-discord.py-ty] PASSED [ 50%]
+src/benchmark/test_lsp_diagnostics.py::test_incremental_edit[updated-discord.py-ty] PASSED [100%]
+Wrote benchmark data in: /tmp/ty-release-0.0.110-2026-11-25/lsp/updated-discord.py/results.json
+
+
+=============================== warnings summary ===============================
+src/benchmark/test_lsp_diagnostics.py: 48 warnings
+  /tmp/ty-benchmark-0.0.108-replay-ruff/scripts/ty_benchmark/.venv/lib/python3.15/site-packages/pygls/feature_manager.py:86: DeprecationWarning: 'asyncio.iscoroutinefunction' is deprecated and slated for removal in Python 3.16; use inspect.iscoroutinefunction() instead
+    if asyncio.iscoroutinefunction(f):
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+- generated xml file: /tmp/ty-release-0.0.110-2026-11-25/lsp/updated-discord.py/results.xml -
+
+---------------------------------------------------------------------------------------- benchmark 'discord.py': 2 tests ----------------------------------------------------------------------------------------
+Name (time in ms)                                     Min                Max               Mean            StdDev             Median               IQR            Outliers      OPS            Rounds  Iterations
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+test_incremental_edit[updated-discord.py-ty]      18.8740 (1.0)      24.6758 (1.0)      20.0876 (1.0)      2.1832 (2.52)     19.0685 (1.0)      0.6511 (1.01)          2;2  49.7820 (1.0)          10           1
+test_fetch_diagnostics[updated-discord.py-ty]     80.2123 (4.25)     83.0548 (3.37)     80.8108 (4.02)     0.8653 (1.0)      80.5531 (4.22)     0.6466 (1.0)           1;1  12.3746 (0.25)         10           1
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Legend:
+  Outliers: 1 Standard Deviation from Mean; 1.5 IQR (InterQuartile Range) from 1st Quartile and 3rd Quartile.
+  OPS: Operations Per Second, computed as 1 / Mean
+======================== 2 passed, 48 warnings in 3.25s ========================

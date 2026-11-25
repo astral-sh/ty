@@ -1,0 +1,13 @@
+ast-serialize==0.13.1
+greenlet==3.5.6
+iniconfig==2.3.1
+librt==0.16.0
+mypy==2.4.0
+mypy-extensions==1.1.0
+packaging==26.3
+pathspec==1.1.1
+pluggy==1.7.0
+pygments==2.21.0
+pytest==9.1.1
+types-greenlet==3.5.0.20260518
+typing-extensions==4.16.0

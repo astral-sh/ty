@@ -1,0 +1,198 @@
+{
+    "machine_info": {
+        "node": "MacBook-Pro-8.local",
+        "processor": "arm",
+        "machine": "arm64",
+        "python_compiler": "Clang 23.1.3 ",
+        "python_implementation": "CPython",
+        "python_implementation_version": "3.15.1",
+        "python_version": "3.15.1",
+        "python_build": [
+            "main",
+            "Oct 21 2026 17:39:16"
+        ],
+        "release": "25.5.0",
+        "system": "Darwin",
+        "cpu": {
+            "python_version": "3.15.1.final.0 (64 bit)",
+            "cpuinfo_version": [
+                10,
+                1,
+                1
+            ],
+            "cpuinfo_version_string": "10.1.1",
+            "arch": "ARM_8",
+            "bits": 64,
+            "count": 16,
+            "arch_string_raw": "arm64"
+        }
+    },
+    "commit_info": {
+        "id": "504457130a2183e9f0c6f4e92ce1c43e970b70ca",
+        "time": "2026-11-04T13:31:31-05:00",
+        "author_time": "2026-11-04T13:31:31-05:00",
+        "dirty": false,
+        "project": "ty_benchmark",
+        "branch": "(detached head)"
+    },
+    "benchmarks": [
+        {
+            "group": "numpy",
+            "name": "test_fetch_diagnostics[updated-numpy-ty]",
+            "fullname": "src/benchmark/test_lsp_diagnostics.py::test_fetch_diagnostics[updated-numpy-ty]",
+            "params": {
+                "project_setup": [
+                    "numpy",
+                    "https://github.com/numpy/numpy",
+                    "f9f1772ce010001208475f751d19253469788410",
+                    [
+                        "typing-extensions",
+                        "packaging"
+                    ],
+                    "3.12",
+                    null,
+                    [
+                        "numpy"
+                    ],
+                    [
+                        "numpy/tests/**",
+                        "numpy/**/tests/**"
+                    ],
+                    [
+                        "numpy/_core/multiarray.pyi",
+                        [
+                            "numpy/_core/numeric.py"
+                        ],
+                        "def normalize_axis_index(axis: int, ndim: int, msg_prefix: str | None = None) -> int: ...",
+                        "def normalize_axis_index(axis: int, ndim: int, msg_prefix: str | None = None) -> str: ..."
+                    ],
+                    []
+                ],
+                "tool": "UNSERIALIZABLE[<benchmark.tool.Ty object at 0x107bb8910>]"
+            },
+            "param": "updated-numpy-ty",
+            "extra_info": {},
+            "options": {
+                "disable_gc": false,
+                "timer": "perf_counter",
+                "min_rounds": 5,
+                "max_time": 1.0,
+                "min_time": 5e-06,
+                "precision": null,
+                "confidence": null,
+                "warmup": false
+            },
+            "stats": {
+                "min": 0.1606400420423597,
+                "max": 0.18262704205699265,
+                "mean": 0.16593397483229638,
+                "stddev": 0.006302463175243062,
+                "rounds": 10,
+                "median": 0.1643488120753318,
+                "iqr": 0.003254750045016408,
+                "q1": 0.16224862495437264,
+                "q3": 0.16550337499938905,
+                "iqr_outliers": 1,
+                "stddev_outliers": 1,
+                "outliers": "1;1",
+                "ld15iqr": 0.1606400420423597,
+                "hd15iqr": 0.18262704205699265,
+                "ops": 6.026493374914118,
+                "total": 1.6593397483229637,
+                "data": [
+                    0.16224862495437264,
+                    0.1606400420423597,
+                    0.16195258311927319,
+                    0.18262704205699265,
+                    0.16475991602055728,
+                    0.1634153330232948,
+                    0.16550337499938905,
+                    0.16393770813010633,
+                    0.1653068328741938,
+                    0.16894829110242426
+                ],
+                "iterations": 1
+            }
+        },
+        {
+            "group": "numpy",
+            "name": "test_incremental_edit[updated-numpy-ty]",
+            "fullname": "src/benchmark/test_lsp_diagnostics.py::test_incremental_edit[updated-numpy-ty]",
+            "params": {
+                "project_setup": [
+                    "numpy",
+                    "https://github.com/numpy/numpy",
+                    "f9f1772ce010001208475f751d19253469788410",
+                    [
+                        "typing-extensions",
+                        "packaging"
+                    ],
+                    "3.12",
+                    null,
+                    [
+                        "numpy"
+                    ],
+                    [
+                        "numpy/tests/**",
+                        "numpy/**/tests/**"
+                    ],
+                    [
+                        "numpy/_core/multiarray.pyi",
+                        [
+                            "numpy/_core/numeric.py"
+                        ],
+                        "def normalize_axis_index(axis: int, ndim: int, msg_prefix: str | None = None) -> int: ...",
+                        "def normalize_axis_index(axis: int, ndim: int, msg_prefix: str | None = None) -> str: ..."
+                    ],
+                    []
+                ],
+                "tool": "UNSERIALIZABLE[<benchmark.tool.Ty object at 0x107bb8910>]"
+            },
+            "param": "updated-numpy-ty",
+            "extra_info": {},
+            "options": {
+                "disable_gc": false,
+                "timer": "perf_counter",
+                "min_rounds": 5,
+                "max_time": 1.0,
+                "min_time": 5e-06,
+                "precision": null,
+                "confidence": null,
+                "warmup": false
+            },
+            "stats": {
+                "min": 0.017703708028420806,
+                "max": 0.020231457892805338,
+                "mean": 0.018076870869845153,
+                "stddev": 0.0007670923952634642,
+                "rounds": 10,
+                "median": 0.017821353976614773,
+                "iqr": 0.00025458307936787605,
+                "q1": 0.017744791926816106,
+                "q3": 0.017999375006183982,
+                "iqr_outliers": 1,
+                "stddev_outliers": 1,
+                "outliers": "1;1",
+                "ld15iqr": 0.017703708028420806,
+                "hd15iqr": 0.020231457892805338,
+                "ops": 55.319308701161624,
+                "total": 0.18076870869845152,
+                "data": [
+                    0.017744791926816106,
+                    0.01809529191814363,
+                    0.017999375006183982,
+                    0.017703708028420806,
+                    0.017816124949604273,
+                    0.017727334052324295,
+                    0.01776374992914498,
+                    0.020231457892805338,
+                    0.017826583003625274,
+                    0.017860291991382837
+                ],
+                "iterations": 1
+            }
+        }
+    ],
+    "datetime": "2026-11-25T20:47:27.049740+00:00",
+    "version": "5.3.0"
+}
