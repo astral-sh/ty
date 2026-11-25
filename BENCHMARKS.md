@@ -5,7 +5,7 @@ All benchmarks were computed on macOS (Apple M3 Max 16, 128 GB) with the followi
 - [Pyrefly](https://pypi.org/project/pyrefly/) 1.4.0
 - [Pyright](https://www.npmjs.com/package/pyright) 1.1.414
 - [mypy](https://pypi.org/project/mypy/) 2.4.0
-- [ty](https://pypi.org/project/ty/) 0.0.108
+- [ty](https://pypi.org/project/ty/) 0.0.110
 - [Zuban](https://pypi.org/project/zuban/) 0.10.2
 
 Benchmark performance may vary across operating systems, and from project to project. This document
@@ -33,9 +33,9 @@ black
 -----
 
 Benchmark 1: ty
-  Time (mean ± σ):      62.5 ms ±   2.7 ms    [User: 432.2 ms, System: 30.4 ms]
-  Range (min … max):    57.2 ms …  70.9 ms    34 runs
-  Memory (peak RSS):  133.8 MiB
+  Time (mean ± σ):      56.2 ms ±   1.9 ms    [User: 397.5 ms, System: 27.8 ms]
+  Range (min … max):    52.4 ms …  60.6 ms    38 runs
+  Memory (peak RSS):  130.8 MiB
 
   Warning: Ignoring non-zero exit code.
 
@@ -69,10 +69,10 @@ Benchmark 5: Zuban
 
 Summary
   ty ran
-    2.04 ± 0.09 times faster than Pyrefly
-    2.30 ± 0.10 times faster than Zuban
-   14.75 ± 0.64 times faster than mypy
-   26.63 ± 1.15 times faster than Pyright
+    2.26 ± 0.08 times faster than Pyrefly
+    2.56 ± 0.10 times faster than Zuban
+   16.38 ± 0.58 times faster than mypy
+   29.59 ± 1.05 times faster than Pyright
 
 -------------------------------------------------------------------------------
 
@@ -80,9 +80,9 @@ discord.py
 ----------
 
 Benchmark 1: ty
-  Time (mean ± σ):     126.8 ms ±   7.3 ms    [User: 1202.7 ms, System: 68.2 ms]
-  Range (min … max):   109.0 ms … 142.9 ms    19 runs
-  Memory (peak RSS):  220.7 MiB
+  Time (mean ± σ):     111.3 ms ±   5.3 ms    [User: 1051.5 ms, System: 62.0 ms]
+  Range (min … max):   103.4 ms … 122.7 ms    22 runs
+  Memory (peak RSS):  214.6 MiB
 
   Warning: Ignoring non-zero exit code.
 
@@ -116,10 +116,10 @@ Benchmark 5: Zuban
 
 Summary
   ty ran
-    1.37 ± 0.09 times faster than Pyrefly
-    2.81 ± 0.16 times faster than Zuban
-   16.45 ± 0.95 times faster than mypy
-   31.45 ± 1.81 times faster than Pyright
+    1.56 ± 0.08 times faster than Pyrefly
+    3.20 ± 0.16 times faster than Zuban
+   18.75 ± 0.90 times faster than mypy
+   35.83 ± 1.70 times faster than Pyright
 
 -------------------------------------------------------------------------------
 
@@ -127,9 +127,9 @@ homeassistant
 -------------
 
 Benchmark 1: ty
-  Time (mean ± σ):      2.099 s ±  0.100 s    [User: 25.313 s, System: 4.196 s]
-  Range (min … max):    2.003 s …  2.321 s    10 runs
-  Memory (peak RSS):  3,476 MiB
+  Time (mean ± σ):      1.872 s ±  0.019 s    [User: 23.476 s, System: 3.538 s]
+  Range (min … max):    1.848 s …  1.905 s    10 runs
+  Memory (peak RSS):  3,448 MiB
 
   Warning: Ignoring non-zero exit code.
 
@@ -163,10 +163,10 @@ Benchmark 5: Zuban
 
 Summary
   ty ran
-    1.10 ± 0.05 times faster than Pyrefly
-    3.55 ± 0.17 times faster than Zuban
-   24.79 ± 1.20 times faster than mypy
-   60.49 ± 4.48 times faster than Pyright
+    1.23 ± 0.02 times faster than Pyrefly
+    3.98 ± 0.05 times faster than Zuban
+   27.80 ± 0.37 times faster than mypy
+   67.82 ± 3.90 times faster than Pyright
 
 -------------------------------------------------------------------------------
 
@@ -174,9 +174,9 @@ isort
 -----
 
 Benchmark 1: ty
-  Time (mean ± σ):      62.7 ms ±   1.4 ms    [User: 198.6 ms, System: 16.1 ms]
-  Range (min … max):    60.5 ms …  65.8 ms    34 runs
-  Memory (peak RSS):   86.1 MiB
+  Time (mean ± σ):      57.9 ms ±   1.8 ms    [User: 183.7 ms, System: 15.4 ms]
+  Range (min … max):    55.4 ms …  63.2 ms    37 runs
+  Memory (peak RSS):   86.0 MiB
 
   Warning: Ignoring non-zero exit code.
 
@@ -208,10 +208,10 @@ Benchmark 5: Zuban
 
 Summary
   ty ran
-    1.05 ± 0.03 times faster than Zuban
-    1.68 ± 0.05 times faster than Pyrefly
-    7.25 ± 0.17 times faster than mypy
-   26.00 ± 0.63 times faster than Pyright
+    1.14 ± 0.04 times faster than Zuban
+    1.82 ± 0.07 times faster than Pyrefly
+    7.85 ± 0.25 times faster than mypy
+   28.14 ± 0.90 times faster than Pyright
 
 -------------------------------------------------------------------------------
 
@@ -219,9 +219,9 @@ jinja
 -----
 
 Benchmark 1: ty
-  Time (mean ± σ):      52.1 ms ±   1.4 ms    [User: 250.8 ms, System: 17.3 ms]
-  Range (min … max):    49.6 ms …  56.2 ms    38 runs
-  Memory (peak RSS):   98.9 MiB
+  Time (mean ± σ):      46.2 ms ±   1.0 ms    [User: 230.3 ms, System: 16.6 ms]
+  Range (min … max):    43.8 ms …  48.7 ms    42 runs
+  Memory (peak RSS):   95.8 MiB
 
   Warning: Ignoring non-zero exit code.
 
@@ -253,10 +253,10 @@ Benchmark 5: Zuban
 
 Summary
   ty ran
-    1.62 ± 0.05 times faster than Zuban
-    2.00 ± 0.06 times faster than Pyrefly
-   10.53 ± 0.33 times faster than mypy
-   22.60 ± 0.61 times faster than Pyright
+    1.82 ± 0.05 times faster than Zuban
+    2.25 ± 0.06 times faster than Pyrefly
+   11.88 ± 0.33 times faster than mypy
+   25.49 ± 0.59 times faster than Pyright
 
 -------------------------------------------------------------------------------
 
@@ -264,9 +264,9 @@ pandas
 ------
 
 Benchmark 1: ty
-  Time (mean ± σ):     371.5 ms ±  26.4 ms    [User: 4101.0 ms, System: 213.4 ms]
-  Range (min … max):   342.0 ms … 412.2 ms    10 runs
-  Memory (peak RSS):  581.9 MiB
+  Time (mean ± σ):     336.8 ms ±  26.8 ms    [User: 3765.0 ms, System: 204.8 ms]
+  Range (min … max):   304.6 ms … 391.3 ms    10 runs
+  Memory (peak RSS):  588.7 MiB
 
   Warning: Ignoring non-zero exit code.
 
@@ -300,10 +300,10 @@ Benchmark 5: Zuban
 
 Summary
   ty ran
-    2.39 ± 0.19 times faster than Pyrefly
-    3.79 ± 0.27 times faster than Zuban
-   28.18 ± 2.00 times faster than mypy
-   42.50 ± 3.03 times faster than Pyright
+    2.64 ± 0.23 times faster than Pyrefly
+    4.18 ± 0.33 times faster than Zuban
+   31.09 ± 2.48 times faster than mypy
+   46.89 ± 3.74 times faster than Pyright
 
 -------------------------------------------------------------------------------
 
@@ -311,9 +311,9 @@ pandas-stubs
 ------------
 
 Benchmark 1: ty
-  Time (mean ± σ):      72.8 ms ±   4.2 ms    [User: 342.3 ms, System: 40.5 ms]
-  Range (min … max):    65.6 ms …  80.7 ms    32 runs
-  Memory (peak RSS):  154.4 MiB
+  Time (mean ± σ):      68.5 ms ±   4.1 ms    [User: 329.3 ms, System: 41.3 ms]
+  Range (min … max):    58.6 ms …  74.6 ms    36 runs
+  Memory (peak RSS):  154.0 MiB
 
   Warning: Ignoring non-zero exit code.
 
@@ -343,10 +343,10 @@ Benchmark 5: Zuban
 
 Summary
   ty ran
-    2.69 ± 0.16 times faster than Pyrefly
-    3.72 ± 0.22 times faster than Zuban
-   29.80 ± 1.72 times faster than Pyright
-   65.42 ± 3.81 times faster than mypy
+    2.86 ± 0.17 times faster than Pyrefly
+    3.96 ± 0.24 times faster than Zuban
+   31.69 ± 1.90 times faster than Pyright
+   69.56 ± 4.20 times faster than mypy
 
 -------------------------------------------------------------------------------
 
@@ -354,9 +354,9 @@ prefect
 -------
 
 Benchmark 1: ty
-  Time (mean ± σ):     103.5 ms ±   5.5 ms    [User: 642.2 ms, System: 48.0 ms]
-  Range (min … max):    95.9 ms … 117.2 ms    21 runs
-  Memory (peak RSS):  224.4 MiB
+  Time (mean ± σ):      98.7 ms ±   4.2 ms    [User: 597.3 ms, System: 46.0 ms]
+  Range (min … max):    93.3 ms … 110.8 ms    24 runs
+  Memory (peak RSS):  223.4 MiB
 
   Warning: Ignoring non-zero exit code.
 
@@ -390,10 +390,10 @@ Benchmark 5: Zuban
 
 Summary
   ty ran
-    2.62 ± 0.17 times faster than Pyrefly
-    9.16 ± 0.49 times faster than Zuban
-   27.28 ± 1.46 times faster than Pyright
-   69.48 ± 3.79 times faster than mypy
+    2.75 ± 0.15 times faster than Pyrefly
+    9.60 ± 0.41 times faster than Zuban
+   28.60 ± 1.22 times faster than Pyright
+   72.83 ± 3.21 times faster than mypy
 
 -------------------------------------------------------------------------------
 
@@ -401,9 +401,9 @@ pytorch
 -------
 
 Benchmark 1: ty
-  Time (mean ± σ):      1.235 s ±  0.055 s    [User: 15.349 s, System: 1.120 s]
-  Range (min … max):    1.175 s …  1.332 s    10 runs
-  Memory (peak RSS):  1,590 MiB
+  Time (mean ± σ):      1.125 s ±  0.038 s    [User: 14.004 s, System: 1.052 s]
+  Range (min … max):    1.077 s …  1.176 s    10 runs
+  Memory (peak RSS):  1,578 MiB
 
   Warning: Ignoring non-zero exit code.
 
@@ -436,11 +436,11 @@ Benchmark 5: Zuban
   Warning: Ignoring non-zero exit code.
 
 Summary
-  Pyrefly ran
-    1.02 ± 0.05 times faster than ty
-    2.87 ± 0.04 times faster than Zuban
-   21.05 ± 0.26 times faster than mypy
-   61.41 ± 1.46 times faster than Pyright
+  ty ran
+    1.07 ± 0.04 times faster than Pyrefly
+    3.08 ± 0.11 times faster than Zuban
+   22.56 ± 0.77 times faster than mypy
+   65.81 ± 2.61 times faster than Pyright
 
 -------------------------------------------------------------------------------
 
@@ -448,9 +448,9 @@ httpx
 -----
 
 Benchmark 1: ty
-  Time (mean ± σ):      59.6 ms ±   1.7 ms    [User: 206.0 ms, System: 18.1 ms]
-  Range (min … max):    56.6 ms …  63.1 ms    35 runs
-  Memory (peak RSS):  102.8 MiB
+  Time (mean ± σ):      56.3 ms ±   1.5 ms    [User: 191.4 ms, System: 18.0 ms]
+  Range (min … max):    53.8 ms …  59.2 ms    38 runs
+  Memory (peak RSS):   99.3 MiB
 
   Warning: Ignoring non-zero exit code.
 
@@ -484,10 +484,10 @@ Benchmark 5: Zuban
 
 Summary
   ty ran
-    1.76 ± 0.05 times faster than Zuban
-    1.98 ± 0.07 times faster than Pyrefly
-   15.12 ± 0.46 times faster than mypy
-   15.93 ± 0.49 times faster than Pyright
+    1.86 ± 0.06 times faster than Zuban
+    2.09 ± 0.07 times faster than Pyrefly
+   16.02 ± 0.46 times faster than mypy
+   16.87 ± 0.50 times faster than Pyright
 
 -------------------------------------------------------------------------------
 
@@ -495,9 +495,9 @@ numpy
 -----
 
 Benchmark 1: ty
-  Time (mean ± σ):     170.0 ms ±   6.9 ms    [User: 989.3 ms, System: 71.7 ms]
-  Range (min … max):   159.3 ms … 185.2 ms    15 runs
-  Memory (peak RSS):  258.7 MiB
+  Time (mean ± σ):     168.4 ms ±   8.6 ms    [User: 951.4 ms, System: 69.9 ms]
+  Range (min … max):   157.8 ms … 182.1 ms    15 runs
+  Memory (peak RSS):  264.3 MiB
 
   Warning: Ignoring non-zero exit code.
 
@@ -527,9 +527,9 @@ Benchmark 5: Zuban
 
 Summary
   ty ran
-     3.42 ±  0.22 times faster than Pyrefly
-   124.83 ±  5.07 times faster than Pyright
-   476.08 ± 19.61 times faster than mypy
+     3.45 ±  0.25 times faster than Pyrefly
+   125.96 ±  6.43 times faster than Pyright
+   480.41 ± 24.72 times faster than mypy
 
 -------------------------------------------------------------------------------
 
@@ -537,9 +537,9 @@ fastapi
 -------
 
 Benchmark 1: ty
-  Time (mean ± σ):      75.8 ms ±   4.6 ms    [User: 347.7 ms, System: 27.1 ms]
-  Range (min … max):    69.6 ms …  85.9 ms    31 runs
-  Memory (peak RSS):  142.2 MiB
+  Time (mean ± σ):      70.4 ms ±   2.7 ms    [User: 326.1 ms, System: 27.5 ms]
+  Range (min … max):    66.1 ms …  76.4 ms    32 runs
+  Memory (peak RSS):  139.7 MiB
 
   Warning: Ignoring non-zero exit code.
 
@@ -573,10 +573,10 @@ Benchmark 5: Zuban
 
 Summary
   ty ran
-    2.52 ± 0.15 times faster than Zuban
-    3.92 ± 0.24 times faster than Pyrefly
-   25.77 ± 1.57 times faster than mypy
-   29.24 ± 1.76 times faster than Pyright
+    2.72 ± 0.11 times faster than Zuban
+    4.22 ± 0.17 times faster than Pyrefly
+   27.75 ± 1.10 times faster than mypy
+   31.48 ± 1.23 times faster than Pyright
 
 -------------------------------------------------------------------------------
 
@@ -584,9 +584,9 @@ sqlalchemy
 ----------
 
 Benchmark 1: ty
-  Time (mean ± σ):     295.4 ms ±  16.4 ms    [User: 3113.2 ms, System: 138.8 ms]
-  Range (min … max):   272.3 ms … 327.2 ms    10 runs
-  Memory (peak RSS):  411.1 MiB
+  Time (mean ± σ):     247.3 ms ±  13.9 ms    [User: 2823.9 ms, System: 138.3 ms]
+  Range (min … max):   229.6 ms … 283.4 ms    11 runs
+  Memory (peak RSS):  392.4 MiB
 
   Warning: Ignoring non-zero exit code.
 
@@ -620,10 +620,10 @@ Benchmark 5: Zuban
 
 Summary
   ty ran
-    1.03 ± 0.06 times faster than Pyrefly
-    2.24 ± 0.12 times faster than Zuban
-   13.31 ± 0.75 times faster than mypy
-   33.17 ± 1.86 times faster than Pyright
+    1.23 ± 0.07 times faster than Pyrefly
+    2.67 ± 0.15 times faster than Zuban
+   15.90 ± 0.90 times faster than mypy
+   39.63 ± 2.24 times faster than Pyright
 
 -------------------------------------------------------------------------------
 
@@ -631,9 +631,9 @@ rich
 ----
 
 Benchmark 1: ty
-  Time (mean ± σ):      59.7 ms ±   3.6 ms    [User: 368.8 ms, System: 30.2 ms]
-  Range (min … max):    52.7 ms …  67.2 ms    33 runs
-  Memory (peak RSS):  121.7 MiB
+  Time (mean ± σ):      55.8 ms ±   2.9 ms    [User: 351.4 ms, System: 29.7 ms]
+  Range (min … max):    48.0 ms …  60.9 ms    38 runs
+  Memory (peak RSS):  121.8 MiB
 
   Warning: Ignoring non-zero exit code.
 
@@ -667,10 +667,10 @@ Benchmark 5: Zuban
 
 Summary
   ty ran
-    2.06 ± 0.14 times faster than Pyrefly
-    2.18 ± 0.14 times faster than Zuban
-   20.26 ± 1.25 times faster than mypy
-   42.08 ± 2.56 times faster than Pyright
+    2.20 ± 0.13 times faster than Pyrefly
+    2.33 ± 0.13 times faster than Zuban
+   21.66 ± 1.14 times faster than mypy
+   44.99 ± 2.32 times faster than Pyright
 
 -------------------------------------------------------------------------------
 
@@ -678,9 +678,9 @@ django
 ------
 
 Benchmark 1: ty
-  Time (mean ± σ):     236.7 ms ±  17.9 ms    [User: 2212.9 ms, System: 622.8 ms]
-  Range (min … max):   221.9 ms … 280.3 ms    10 runs
-  Memory (peak RSS):  319.7 MiB
+  Time (mean ± σ):     213.4 ms ±   6.5 ms    [User: 2083.7 ms, System: 564.1 ms]
+  Range (min … max):   202.4 ms … 227.0 ms    12 runs
+  Memory (peak RSS):  308.0 MiB
 
   Warning: Ignoring non-zero exit code.
 
@@ -714,10 +714,10 @@ Benchmark 5: Zuban
 
 Summary
   ty ran
-    1.10 ± 0.08 times faster than Pyrefly
-    2.16 ± 0.17 times faster than Zuban
-   10.33 ± 0.79 times faster than mypy
-   29.28 ± 2.22 times faster than Pyright
+    1.22 ± 0.04 times faster than Pyrefly
+    2.39 ± 0.08 times faster than Zuban
+   11.46 ± 0.36 times faster than mypy
+   32.47 ± 1.01 times faster than Pyright
 
 -------------------------------------------------------------------------------
 
@@ -725,9 +725,9 @@ sympy
 -----
 
 Benchmark 1: ty
-  Time (mean ± σ):     635.2 ms ±  11.8 ms    [User: 7430.2 ms, System: 583.4 ms]
-  Range (min … max):   619.2 ms … 658.6 ms    10 runs
-  Memory (peak RSS):  717.7 MiB
+  Time (mean ± σ):     629.0 ms ± 110.9 ms    [User: 6544.2 ms, System: 606.8 ms]
+  Range (min … max):   527.7 ms … 822.2 ms    10 runs
+  Memory (peak RSS):  703.6 MiB
 
   Warning: Ignoring non-zero exit code.
 
@@ -761,7 +761,7 @@ Benchmark 5: Zuban
 
 Summary
   Pyrefly ran
-    1.21 ± 0.03 times faster than ty
+    1.19 ± 0.21 times faster than ty
     2.33 ± 0.03 times faster than Zuban
    12.61 ± 0.15 times faster than mypy
    57.02 ± 0.72 times faster than Pyright
@@ -772,9 +772,9 @@ openai
 ------
 
 Benchmark 1: ty
-  Time (mean ± σ):     259.8 ms ±  20.1 ms    [User: 2131.0 ms, System: 476.3 ms]
-  Range (min … max):   225.0 ms … 285.3 ms    12 runs
-  Memory (peak RSS):  335.0 MiB
+  Time (mean ± σ):     237.0 ms ±  19.8 ms    [User: 1999.4 ms, System: 447.3 ms]
+  Range (min … max):   217.1 ms … 287.4 ms    12 runs
+  Memory (peak RSS):  329.9 MiB
 
   Warning: Ignoring non-zero exit code.
 
@@ -808,10 +808,10 @@ Benchmark 5: Zuban
 
 Summary
   ty ran
-    1.79 ± 0.15 times faster than Pyrefly
-    3.31 ± 0.26 times faster than Zuban
-   26.06 ± 2.02 times faster than mypy
-   31.44 ± 2.44 times faster than Pyright
+    1.96 ± 0.17 times faster than Pyrefly
+    3.63 ± 0.31 times faster than Zuban
+   28.56 ± 2.39 times faster than mypy
+   34.47 ± 2.89 times faster than Pyright
 
 -------------------------------------------------------------------------------
 
@@ -819,9 +819,9 @@ pytest
 ------
 
 Benchmark 1: ty
-  Time (mean ± σ):     165.4 ms ±  12.6 ms    [User: 1298.9 ms, System: 79.0 ms]
-  Range (min … max):   141.7 ms … 186.1 ms    18 runs
-  Memory (peak RSS):  249.5 MiB
+  Time (mean ± σ):     154.7 ms ±  13.9 ms    [User: 1203.9 ms, System: 80.3 ms]
+  Range (min … max):   124.8 ms … 169.8 ms    16 runs
+  Memory (peak RSS):  245.9 MiB
 
   Warning: Ignoring non-zero exit code.
 
@@ -855,10 +855,10 @@ Benchmark 5: Zuban
 
 Summary
   ty ran
-    1.37 ± 0.17 times faster than Pyrefly
-    3.57 ± 0.27 times faster than Zuban
-   14.39 ± 1.11 times faster than mypy
-   27.66 ± 2.11 times faster than Pyright
+    1.47 ± 0.19 times faster than Pyrefly
+    3.82 ± 0.34 times faster than Zuban
+   15.39 ± 1.39 times faster than mypy
+   29.56 ± 2.66 times faster than Pyright
 ```
 
 ## LSP
@@ -871,140 +871,140 @@ Zuban's server crashed on the incremental edits in discord.py, NumPy, and PyTorc
 ---------------------------------------------------------------------------------------- benchmark 'black': 4 tests ----------------------------------------------------------------------------------------
 Name (time in ms)                             Min                 Max                Mean            StdDev              Median               IQR            Outliers      OPS            Rounds  Iterations
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-test_incremental_edit[black-ty]           14.2012 (1.0)       15.8957 (1.0)       14.7891 (1.0)      0.4404 (1.0)       14.6921 (1.0)      0.2497 (1.0)           2;2  67.6172 (1.0)          10           1
-test_incremental_edit[black-zuban]        18.8832 (1.33)      20.8855 (1.31)      19.3794 (1.31)     0.6267 (1.42)      19.2328 (1.31)     0.5062 (2.03)          2;1  51.6012 (0.76)         10           1
-test_incremental_edit[black-pyrefly]      86.7763 (6.11)      97.2985 (6.12)      91.4009 (6.18)     3.0032 (6.82)      91.2891 (6.21)     4.0361 (16.16)         2;0  10.9408 (0.16)         10           1
-test_incremental_edit[black-pyright]     540.2310 (38.04)    562.2411 (35.37)    549.4405 (37.15)    6.7233 (15.27)    548.0737 (37.30)    8.5098 (34.08)         4;0   1.8200 (0.03)         10           1
+test_incremental_edit[black-ty]           12.3932 (1.0)       12.8353 (1.0)       12.5927 (1.0)      0.1482 (1.0)       12.5999 (1.0)      0.2329 (1.0)           4;0  79.4109 (1.0)          10           1
+test_incremental_edit[black-zuban]        18.8832 (1.52)      20.8855 (1.63)      19.3794 (1.54)     0.6267 (4.23)      19.2328 (1.53)     0.5062 (2.17)          2;1  51.6012 (0.65)         10           1
+test_incremental_edit[black-pyrefly]      86.7763 (7.00)      97.2985 (7.58)      91.4009 (7.26)     3.0032 (20.27)     91.2891 (7.25)     4.0361 (17.33)         2;0  10.9408 (0.14)         10           1
+test_incremental_edit[black-pyright]     540.2310 (43.59)    562.2411 (43.80)    549.4405 (43.63)    6.7233 (45.37)    548.0737 (43.50)    8.5098 (36.54)         4;0   1.8200 (0.02)         10           1
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ----------------------------------------------------------------------------------------- benchmark 'discord.py': 3 tests -----------------------------------------------------------------------------------------
 Name (time in ms)                                  Min                 Max                Mean             StdDev              Median                IQR            Outliers      OPS            Rounds  Iterations
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-test_incremental_edit[discord.py-ty]           23.4332 (1.0)       28.1313 (1.0)       24.7526 (1.0)       1.3417 (1.0)       24.4432 (1.0)       0.5507 (1.0)           1;2  40.3998 (1.0)          10           1
-test_incremental_edit[discord.py-pyrefly]      72.6280 (3.10)      82.8766 (2.95)      76.5269 (3.09)      3.7789 (2.82)      74.9435 (3.07)      7.2071 (13.09)         4;0  13.0673 (0.32)         10           1
-test_incremental_edit[discord.py-pyright]     488.6511 (20.85)    541.3492 (19.24)    517.2384 (20.90)    16.5382 (12.33)    512.2913 (20.96)    22.0510 (40.04)         3;0   1.9333 (0.05)         10           1
+test_incremental_edit[discord.py-ty]           18.8740 (1.0)       24.6758 (1.0)       20.0876 (1.0)       2.1832 (1.0)       19.0685 (1.0)       0.6511 (1.0)           2;2  49.7820 (1.0)          10           1
+test_incremental_edit[discord.py-pyrefly]      72.6280 (3.85)      82.8766 (3.36)      76.5269 (3.81)      3.7789 (1.73)      74.9435 (3.93)      7.2071 (11.07)         4;0  13.0673 (0.26)         10           1
+test_incremental_edit[discord.py-pyright]     488.6511 (25.89)    541.3492 (21.94)    517.2384 (25.75)    16.5382 (7.58)     512.2913 (26.87)    22.0510 (33.87)         3;0   1.9333 (0.04)         10           1
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ---------------------------------------------------------------------------------------- benchmark 'homeassistant': 4 tests ----------------------------------------------------------------------------------------
 Name (time in ms)                                     Min                 Max                Mean            StdDev              Median               IQR            Outliers      OPS            Rounds  Iterations
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-test_incremental_edit[homeassistant-ty]           27.0943 (1.0)       28.0577 (1.0)       27.5364 (1.0)      0.2931 (1.0)       27.5273 (1.0)      0.4699 (1.20)          3;0  36.3156 (1.0)          10           1
-test_incremental_edit[homeassistant-pyrefly]      55.8462 (2.06)      85.5288 (3.05)      75.6855 (2.75)     8.0570 (27.48)     76.3312 (2.77)     4.9400 (12.58)         3;1  13.2126 (0.36)         10           1
-test_incremental_edit[homeassistant-zuban]        56.2561 (2.08)      57.5430 (2.05)      57.0332 (2.07)     0.3593 (1.23)      57.0851 (2.07)     0.3927 (1.0)           2;0  17.5336 (0.48)         10           1
-test_incremental_edit[homeassistant-pyright]     564.8898 (20.85)    580.5012 (20.69)    574.4756 (20.86)    4.9935 (17.03)    573.7045 (20.84)    6.9113 (17.60)         3;0   1.7407 (0.05)         10           1
+test_incremental_edit[homeassistant-ty]           22.0430 (1.0)       25.6657 (1.0)       22.6308 (1.0)      1.0774 (3.00)      22.3201 (1.0)      0.2474 (1.0)           1;1  44.1876 (1.0)          10           1
+test_incremental_edit[homeassistant-pyrefly]      55.8462 (2.53)      85.5288 (3.33)      75.6855 (3.34)     8.0570 (22.42)     76.3312 (3.42)     4.9400 (19.97)         3;1  13.2126 (0.30)         10           1
+test_incremental_edit[homeassistant-zuban]        56.2561 (2.55)      57.5430 (2.24)      57.0332 (2.52)     0.3593 (1.0)       57.0851 (2.56)     0.3927 (1.59)          2;0  17.5336 (0.40)         10           1
+test_incremental_edit[homeassistant-pyright]     564.8898 (25.63)    580.5012 (22.62)    574.4756 (25.38)    4.9935 (13.90)    573.7045 (25.70)    6.9113 (27.93)         3;0   1.7407 (0.04)         10           1
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ----------------------------------------------------------------------------------------- benchmark 'isort': 4 tests ----------------------------------------------------------------------------------------
 Name (time in ms)                             Min                 Max                Mean            StdDev              Median               IQR            Outliers       OPS            Rounds  Iterations
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 test_incremental_edit[isort-zuban]         5.6747 (1.0)        5.9072 (1.0)        5.7474 (1.0)      0.0701 (1.0)        5.7302 (1.0)      0.0773 (1.0)           2;1  173.9902 (1.0)          10           1
-test_incremental_edit[isort-ty]           20.1878 (3.56)      21.3272 (3.61)      20.9220 (3.64)     0.3366 (4.81)      21.0118 (3.67)     0.4201 (5.43)          2;0   47.7966 (0.27)         10           1
+test_incremental_edit[isort-ty]           17.3874 (3.06)      17.7855 (3.01)      17.5375 (3.05)     0.1275 (1.82)      17.5074 (3.06)     0.1806 (2.34)          4;0   57.0207 (0.33)         10           1
 test_incremental_edit[isort-pyrefly]      42.7818 (7.54)      57.5799 (9.75)      52.8906 (9.20)     4.5220 (64.55)     54.9351 (9.59)     5.5654 (71.97)         2;0   18.9070 (0.11)         10           1
 test_incremental_edit[isort-pyright]     419.7210 (73.96)    429.1457 (72.65)    425.1017 (73.96)    2.9371 (41.93)    424.9466 (74.16)    4.3485 (56.23)         3;0    2.3524 (0.01)         10           1
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
------------------------------------------------------------------------------------------ benchmark 'jinja': 4 tests -----------------------------------------------------------------------------------------
-Name (time in ms)                             Min                 Max                Mean             StdDev              Median                IQR            Outliers      OPS            Rounds  Iterations
---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-test_incremental_edit[jinja-ty]           11.7900 (1.0)       13.7590 (1.0)       12.3526 (1.0)       0.5212 (3.89)      12.2479 (1.0)       0.1973 (1.09)          2;2  80.9545 (1.0)          10           1
-test_incremental_edit[jinja-zuban]        19.9754 (1.69)      20.4125 (1.48)      20.1366 (1.63)      0.1340 (1.0)       20.1239 (1.64)      0.1803 (1.0)           3;0  49.6609 (0.61)         10           1
-test_incremental_edit[jinja-pyrefly]      53.2751 (4.52)      67.2008 (4.88)      60.3027 (4.88)      4.5815 (34.19)     59.1167 (4.83)      5.8406 (32.40)         4;0  16.5830 (0.20)         10           1
-test_incremental_edit[jinja-pyright]     476.3300 (40.40)    530.7210 (38.57)    503.8855 (40.79)    14.1706 (105.75)   505.3668 (41.26)    11.4062 (63.28)         2;2   1.9846 (0.02)         10           1
---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------ benchmark 'jinja': 4 tests -----------------------------------------------------------------------------------------
+Name (time in ms)                             Min                 Max                Mean             StdDev              Median                IQR            Outliers       OPS            Rounds  Iterations
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+test_incremental_edit[jinja-ty]            9.1586 (1.0)       10.2422 (1.0)        9.3816 (1.0)       0.3424 (2.56)       9.2578 (1.0)       0.0847 (1.0)           2;2  106.5919 (1.0)          10           1
+test_incremental_edit[jinja-zuban]        19.9754 (2.18)      20.4125 (1.99)      20.1366 (2.15)      0.1340 (1.0)       20.1239 (2.17)      0.1803 (2.13)          3;0   49.6609 (0.47)         10           1
+test_incremental_edit[jinja-pyrefly]      53.2751 (5.82)      67.2008 (6.56)      60.3027 (6.43)      4.5815 (34.19)     59.1167 (6.39)      5.8406 (68.98)         4;0   16.5830 (0.16)         10           1
+test_incremental_edit[jinja-pyright]     476.3300 (52.01)    530.7210 (51.82)    503.8855 (53.71)    14.1706 (105.75)   505.3668 (54.59)    11.4062 (134.72)        2;2    1.9846 (0.02)         10           1
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ---------------------------------------------------------------------------------------- benchmark 'pandas': 4 tests -----------------------------------------------------------------------------------------
 Name (time in ms)                              Min                 Max                Mean             StdDev              Median               IQR            Outliers      OPS            Rounds  Iterations
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-test_incremental_edit[pandas-ty]           48.2998 (1.0)       51.3248 (1.0)       49.8587 (1.0)       1.1924 (1.0)       50.1217 (1.0)      2.3663 (1.14)          5;0  20.0567 (1.0)          10           1
-test_incremental_edit[pandas-pyrefly]     243.4753 (5.04)     256.9783 (5.01)     248.6074 (4.99)      4.2473 (3.56)     247.6178 (4.94)     6.6526 (3.21)          2;0   4.0224 (0.20)         10           1
-test_incremental_edit[pandas-zuban]       251.8713 (5.21)     259.0576 (5.05)     254.0977 (5.10)      2.2326 (1.87)     253.3567 (5.05)     2.0706 (1.0)           2;1   3.9355 (0.20)         10           1
-test_incremental_edit[pandas-pyright]     662.6549 (13.72)    701.7632 (13.67)    691.2085 (13.86)    11.6618 (9.78)     695.5558 (13.88)    8.8209 (4.26)          1;1   1.4467 (0.07)         10           1
+test_incremental_edit[pandas-ty]           34.9681 (1.0)       36.9436 (1.0)       35.4396 (1.0)       0.5832 (1.0)       35.2583 (1.0)      0.3973 (1.0)           1;1  28.2170 (1.0)          10           1
+test_incremental_edit[pandas-pyrefly]     243.4753 (6.96)     256.9783 (6.96)     248.6074 (7.01)      4.2473 (7.28)     247.6178 (7.02)     6.6526 (16.74)         2;0   4.0224 (0.14)         10           1
+test_incremental_edit[pandas-zuban]       251.8713 (7.20)     259.0576 (7.01)     254.0977 (7.17)      2.2326 (3.83)     253.3567 (7.19)     2.0706 (5.21)          2;1   3.9355 (0.14)         10           1
+test_incremental_edit[pandas-pyright]     662.6549 (18.95)    701.7632 (19.00)    691.2085 (19.50)    11.6618 (20.00)    695.5558 (19.73)    8.8209 (22.20)         1;1   1.4467 (0.05)         10           1
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ------------------------------------------------------------------------------------------ benchmark 'prefect': 4 tests -----------------------------------------------------------------------------------------
 Name (time in ms)                               Min                 Max                Mean             StdDev              Median                IQR            Outliers       OPS            Rounds  Iterations
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-test_incremental_edit[prefect-ty]            7.7652 (1.0)        8.3372 (1.0)        7.9939 (1.0)       0.1783 (1.0)        7.9367 (1.0)       0.2481 (1.0)           3;0  125.0950 (1.0)          10           1
-test_incremental_edit[prefect-pyrefly]      51.3062 (6.61)      61.9334 (7.43)      56.2614 (7.04)      3.5354 (19.82)     57.8409 (7.29)      5.8660 (23.64)         4;0   17.7742 (0.14)         10           1
-test_incremental_edit[prefect-zuban]       131.5461 (16.94)    132.8311 (15.93)    132.0289 (16.52)     0.4032 (2.26)     131.9307 (16.62)     0.4938 (1.99)          3;0    7.5741 (0.06)         10           1
-test_incremental_edit[prefect-pyright]     660.4608 (85.05)    695.6145 (83.43)    680.8583 (85.17)    10.4803 (58.77)    682.6589 (86.01)    14.5401 (58.60)         3;0    1.4687 (0.01)         10           1
+test_incremental_edit[prefect-ty]            6.8997 (1.0)        7.1183 (1.0)        7.0151 (1.0)       0.0738 (1.0)        7.0045 (1.0)       0.1042 (1.0)           3;0  142.5487 (1.0)          10           1
+test_incremental_edit[prefect-pyrefly]      51.3062 (7.44)      61.9334 (8.70)      56.2614 (8.02)      3.5354 (47.88)     57.8409 (8.26)      5.8660 (56.29)         4;0   17.7742 (0.12)         10           1
+test_incremental_edit[prefect-zuban]       131.5461 (19.07)    132.8311 (18.66)    132.0289 (18.82)     0.4032 (5.46)     131.9307 (18.84)     0.4938 (4.74)          3;0    7.5741 (0.05)         10           1
+test_incremental_edit[prefect-pyright]     660.4608 (95.72)    695.6145 (97.72)    680.8583 (97.06)    10.4803 (141.94)   682.6589 (97.46)    14.5401 (139.53)        3;0    1.4687 (0.01)         10           1
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ----------------------------------------------------------------------------------------- benchmark 'pytorch': 3 tests ----------------------------------------------------------------------------------------
 Name (time in ms)                               Min                 Max                Mean            StdDev              Median               IQR            Outliers       OPS            Rounds  Iterations
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-test_incremental_edit[pytorch-ty]            3.7468 (1.0)        4.9578 (1.0)        4.0814 (1.0)      0.3563 (1.0)        3.9728 (1.0)      0.3189 (1.0)           1;1  245.0115 (1.0)          10           1
-test_incremental_edit[pytorch-pyrefly]      20.1780 (5.39)      25.2127 (5.09)      22.7988 (5.59)     1.8837 (5.29)      23.4518 (5.90)     3.4646 (10.86)         4;0   43.8619 (0.18)         10           1
-test_incremental_edit[pytorch-pyright]     411.6034 (109.85)   420.5795 (84.83)    416.2569 (101.99)   2.2362 (6.28)     416.0866 (104.73)   1.0938 (3.43)          2;2    2.4024 (0.01)         10           1
+test_incremental_edit[pytorch-ty]            3.3809 (1.0)        3.8737 (1.0)        3.5010 (1.0)      0.1415 (1.0)        3.4548 (1.0)      0.0805 (1.0)           1;1  285.6306 (1.0)          10           1
+test_incremental_edit[pytorch-pyrefly]      20.1780 (5.97)      25.2127 (6.51)      22.7988 (6.51)     1.8837 (13.31)     23.4518 (6.79)     3.4646 (43.06)         4;0   43.8619 (0.15)         10           1
+test_incremental_edit[pytorch-pyright]     411.6034 (121.74)   420.5795 (108.57)   416.2569 (118.90)   2.2362 (15.80)    416.0866 (120.44)   1.0938 (13.59)         2;2    2.4024 (0.01)         10           1
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ------------------------------------------------------------------------------------------ benchmark 'httpx': 4 tests -----------------------------------------------------------------------------------------
 Name (time in ms)                             Min                 Max                Mean             StdDev              Median                IQR            Outliers       OPS            Rounds  Iterations
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-test_incremental_edit[httpx-ty]            7.9867 (1.0)        9.8584 (1.0)        8.5427 (1.0)       0.5679 (1.0)        8.4037 (1.0)       0.5983 (3.19)          1;1  117.0592 (1.0)          10           1
-test_incremental_edit[httpx-zuban]         9.5517 (1.20)      11.7660 (1.19)       9.9430 (1.16)      0.6486 (1.14)       9.7386 (1.16)      0.1877 (1.0)           1;1  100.5729 (0.86)         10           1
-test_incremental_edit[httpx-pyrefly]      47.6866 (5.97)      57.0288 (5.78)      51.7039 (6.05)      2.8466 (5.01)      52.0920 (6.20)      3.3798 (18.01)         3;0   19.3409 (0.17)         10           1
-test_incremental_edit[httpx-pyright]     414.3220 (51.88)    441.5353 (44.79)    426.5495 (49.93)    10.4990 (18.49)    426.0099 (50.69)    20.2930 (108.11)        5;0    2.3444 (0.02)         10           1
+test_incremental_edit[httpx-ty]            6.7227 (1.0)        7.1053 (1.0)        6.8640 (1.0)       0.1125 (1.0)        6.8557 (1.0)       0.1466 (1.0)           3;0  145.6880 (1.0)          10           1
+test_incremental_edit[httpx-zuban]         9.5517 (1.42)      11.7660 (1.66)       9.9430 (1.45)      0.6486 (5.77)       9.7386 (1.42)      0.1877 (1.28)          1;1  100.5729 (0.69)         10           1
+test_incremental_edit[httpx-pyrefly]      47.6866 (7.09)      57.0288 (8.03)      51.7039 (7.53)      2.8466 (25.30)     52.0920 (7.60)      3.3798 (23.05)         3;0   19.3409 (0.13)         10           1
+test_incremental_edit[httpx-pyright]     414.3220 (61.63)    441.5353 (62.14)    426.5495 (62.14)    10.4990 (93.33)    426.0099 (62.14)    20.2930 (138.40)        5;0    2.3444 (0.02)         10           1
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 --------------------------------------------------------------------------------------------- benchmark 'numpy': 3 tests --------------------------------------------------------------------------------------------
 Name (time in ms)                               Min                   Max                  Mean             StdDev                Median               IQR            Outliers      OPS            Rounds  Iterations
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-test_incremental_edit[numpy-ty]             19.4522 (1.0)         21.7454 (1.0)         20.0771 (1.0)       0.7126 (1.0)         19.8050 (1.0)      0.7391 (1.0)           1;1  49.8079 (1.0)          10           1
-test_incremental_edit[numpy-pyrefly]       330.8268 (17.01)      350.2634 (16.11)      343.7851 (17.12)     6.4024 (8.99)       346.1157 (17.48)    7.2750 (9.84)          3;0   2.9088 (0.06)         10           1
-test_incremental_edit[numpy-pyright]     1,171.7334 (60.24)    1,205.3624 (55.43)    1,188.2385 (59.18)    10.2539 (14.39)    1,189.4224 (60.06)    9.2393 (12.50)         3;0   0.8416 (0.02)         10           1
+test_incremental_edit[numpy-ty]             17.7037 (1.0)         20.2315 (1.0)         18.0769 (1.0)       0.7671 (1.0)         17.8214 (1.0)      0.2546 (1.0)           1;1  55.3193 (1.0)          10           1
+test_incremental_edit[numpy-pyrefly]       330.8268 (18.69)      350.2634 (17.31)      343.7851 (19.02)     6.4024 (8.35)       346.1157 (19.42)    7.2750 (28.58)         3;0   2.9088 (0.05)         10           1
+test_incremental_edit[numpy-pyright]     1,171.7334 (66.19)    1,205.3624 (59.58)    1,188.2385 (65.73)    10.2539 (13.37)    1,189.4224 (66.74)    9.2393 (36.29)         3;0   0.8416 (0.02)         10           1
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ----------------------------------------------------------------------------------------- benchmark 'fastapi': 4 tests ----------------------------------------------------------------------------------------
 Name (time in ms)                               Min                 Max                Mean            StdDev              Median               IQR            Outliers       OPS            Rounds  Iterations
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-test_incremental_edit[fastapi-ty]            7.3285 (1.0)        8.0183 (1.0)        7.6094 (1.0)      0.2079 (1.62)       7.6191 (1.0)      0.2937 (1.65)          2;0  131.4160 (1.0)          10           1
-test_incremental_edit[fastapi-zuban]         8.3563 (1.14)       8.7793 (1.09)       8.5171 (1.12)     0.1283 (1.0)        8.4884 (1.11)     0.1784 (1.0)           2;0  117.4108 (0.89)         10           1
-test_incremental_edit[fastapi-pyrefly]      58.2667 (7.95)      69.4830 (8.67)      65.8294 (8.65)     3.4123 (26.60)     67.0105 (8.80)     4.0596 (22.76)         2;0   15.1908 (0.12)         10           1
-test_incremental_edit[fastapi-pyright]     604.3037 (82.46)    621.4753 (77.51)    614.2073 (80.72)    5.5771 (43.48)    614.2024 (80.61)    8.3417 (46.76)         3;0    1.6281 (0.01)         10           1
+test_incremental_edit[fastapi-ty]            6.5237 (1.0)        7.0582 (1.0)        6.7083 (1.0)      0.1551 (1.21)       6.6963 (1.0)      0.1643 (1.0)           3;1  149.0690 (1.0)          10           1
+test_incremental_edit[fastapi-zuban]         8.3563 (1.28)       8.7793 (1.24)       8.5171 (1.27)     0.1283 (1.0)        8.4884 (1.27)     0.1784 (1.09)          2;0  117.4108 (0.79)         10           1
+test_incremental_edit[fastapi-pyrefly]      58.2667 (8.93)      69.4830 (9.84)      65.8294 (9.81)     3.4123 (26.60)     67.0105 (10.01)    4.0596 (24.70)         2;0   15.1908 (0.10)         10           1
+test_incremental_edit[fastapi-pyright]     604.3037 (92.63)    621.4753 (88.05)    614.2073 (91.56)    5.5771 (43.48)    614.2024 (91.72)    8.3417 (50.76)         3;0    1.6281 (0.01)         10           1
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
----------------------------------------------------------------------------------------- benchmark 'sqlalchemy': 4 tests ----------------------------------------------------------------------------------------
-Name (time in ms)                                  Min                 Max                Mean            StdDev              Median               IQR            Outliers      OPS            Rounds  Iterations
------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-test_incremental_edit[sqlalchemy-ty]           12.9194 (1.0)       16.9897 (1.0)       13.6793 (1.0)      1.2165 (1.24)      13.2267 (1.0)      0.6256 (1.0)           1;1  73.1032 (1.0)          10           1
-test_incremental_edit[sqlalchemy-pyrefly]      56.7484 (4.39)      84.5526 (4.98)      76.4313 (5.59)     7.9762 (8.11)      76.2125 (5.76)     7.9097 (12.64)         2;1  13.0836 (0.18)         10           1
-test_incremental_edit[sqlalchemy-zuban]       198.5378 (15.37)    201.8470 (11.88)    199.5849 (14.59)    0.9838 (1.0)      199.1490 (15.06)    1.1792 (1.88)          2;0   5.0104 (0.07)         10           1
-test_incremental_edit[sqlalchemy-pyright]     632.0858 (48.93)    647.3986 (38.11)    639.0595 (46.72)    5.6518 (5.74)     640.6409 (48.44)    9.4287 (15.07)         5;0   1.5648 (0.02)         10           1
------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------- benchmark 'sqlalchemy': 4 tests -----------------------------------------------------------------------------------------
+Name (time in ms)                                  Min                 Max                Mean            StdDev              Median               IQR            Outliers       OPS            Rounds  Iterations
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+test_incremental_edit[sqlalchemy-ty]            9.4911 (1.0)        9.7282 (1.0)        9.6110 (1.0)      0.0787 (1.0)        9.6316 (1.0)      0.1459 (1.0)           4;0  104.0469 (1.0)          10           1
+test_incremental_edit[sqlalchemy-pyrefly]      56.7484 (5.98)      84.5526 (8.69)      76.4313 (7.95)     7.9762 (101.33)    76.2125 (7.91)     7.9097 (54.22)         2;1   13.0836 (0.13)         10           1
+test_incremental_edit[sqlalchemy-zuban]       198.5378 (20.92)    201.8470 (20.75)    199.5849 (20.77)    0.9838 (12.50)    199.1490 (20.68)    1.1792 (8.08)          2;0    5.0104 (0.05)         10           1
+test_incremental_edit[sqlalchemy-pyright]     632.0858 (66.60)    647.3986 (66.55)    639.0595 (66.49)    5.6518 (71.80)    640.6409 (66.51)    9.4287 (64.64)         5;0    1.5648 (0.02)         10           1
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ----------------------------------------------------------------------------------------- benchmark 'rich': 4 tests -----------------------------------------------------------------------------------------
 Name (time in ms)                            Min                 Max                Mean            StdDev              Median                IQR            Outliers       OPS            Rounds  Iterations
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-test_incremental_edit[rich-ty]            5.5556 (1.0)        6.3839 (1.0)        5.8543 (1.0)      0.2377 (1.0)        5.8605 (1.0)       0.2525 (1.03)          3;1  170.8132 (1.0)          10           1
-test_incremental_edit[rich-zuban]        12.7459 (2.29)      14.8288 (2.32)      13.1219 (2.24)     0.6140 (2.58)      12.9070 (2.20)      0.2442 (1.0)           1;1   76.2082 (0.45)         10           1
-test_incremental_edit[rich-pyrefly]      20.0278 (3.60)      41.4377 (6.49)      31.1428 (5.32)     7.2154 (30.35)     34.0170 (5.80)     12.2488 (50.16)         4;0   32.1102 (0.19)         10           1
-test_incremental_edit[rich-pyright]     433.5527 (78.04)    446.9955 (70.02)    440.7714 (75.29)    4.4355 (18.66)    442.3849 (75.49)     6.2345 (25.53)         3;0    2.2687 (0.01)         10           1
+test_incremental_edit[rich-ty]            4.9403 (1.0)        5.1406 (1.0)        5.0498 (1.0)      0.0697 (1.0)        5.0382 (1.0)       0.1152 (1.0)           5;0  198.0263 (1.0)          10           1
+test_incremental_edit[rich-zuban]        12.7459 (2.58)      14.8288 (2.88)      13.1219 (2.60)     0.6140 (8.81)      12.9070 (2.56)      0.2442 (2.12)          1;1   76.2082 (0.38)         10           1
+test_incremental_edit[rich-pyrefly]      20.0278 (4.05)      41.4377 (8.06)      31.1428 (6.17)     7.2154 (103.55)    34.0170 (6.75)     12.2488 (106.32)        4;0   32.1102 (0.16)         10           1
+test_incremental_edit[rich-pyright]     433.5527 (87.76)    446.9955 (86.95)    440.7714 (87.28)    4.4355 (63.65)    442.3849 (87.81)     6.2345 (54.12)         3;0    2.2687 (0.01)         10           1
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ----------------------------------------------------------------------------------------- benchmark 'django': 4 tests ------------------------------------------------------------------------------------------
 Name (time in ms)                              Min                 Max                Mean             StdDev              Median                IQR            Outliers       OPS            Rounds  Iterations
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-test_incremental_edit[django-zuban]         1.7699 (1.0)        1.9427 (1.0)        1.8348 (1.0)       0.0613 (1.0)        1.8271 (1.0)       0.1039 (1.29)          4;0  545.0284 (1.0)          10           1
-test_incremental_edit[django-ty]            3.7757 (2.13)       3.9780 (2.05)       3.8547 (2.10)      0.0659 (1.07)       3.8349 (2.10)      0.0808 (1.0)           3;0  259.4238 (0.48)         10           1
-test_incremental_edit[django-pyrefly]      21.2110 (11.98)     29.9794 (15.43)     25.4880 (13.89)     3.1539 (51.45)     26.3823 (14.44)     5.5899 (69.19)         4;0   39.2342 (0.07)         10           1
-test_incremental_edit[django-pyright]     330.7418 (186.87)   381.0605 (196.15)   354.0818 (192.98)   21.3677 (348.54)   341.3754 (186.84)   39.9063 (493.94)        5;0    2.8242 (0.01)         10           1
+test_incremental_edit[django-zuban]         1.7699 (1.0)        1.9427 (1.0)        1.8348 (1.0)       0.0613 (1.63)       1.8271 (1.0)       0.1039 (4.35)          4;0  545.0284 (1.0)          10           1
+test_incremental_edit[django-ty]            3.3010 (1.87)       3.4511 (1.78)       3.3853 (1.85)      0.0375 (1.0)        3.3894 (1.85)      0.0239 (1.0)           2;2  295.3970 (0.54)         10           1
+test_incremental_edit[django-pyrefly]      21.2110 (11.98)     29.9794 (15.43)     25.4880 (13.89)     3.1539 (84.09)     26.3823 (14.44)     5.5899 (234.12)        4;0   39.2342 (0.07)         10           1
+test_incremental_edit[django-pyright]     330.7418 (186.87)   381.0605 (196.15)   354.0818 (192.98)   21.3677 (569.69)   341.3754 (186.84)   39.9063 (>1000.0)       5;0    2.8242 (0.01)         10           1
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ----------------------------------------------------------------------------------------- benchmark 'sympy': 4 tests -----------------------------------------------------------------------------------------
 Name (time in ms)                             Min                 Max                Mean            StdDev              Median                IQR            Outliers       OPS            Rounds  Iterations
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-test_incremental_edit[sympy-ty]            3.4788 (1.0)        3.8779 (1.0)        3.6264 (1.0)      0.1231 (1.0)        3.6030 (1.0)       0.1003 (1.0)           3;2  275.7550 (1.0)          10           1
-test_incremental_edit[sympy-pyrefly]      28.2025 (8.11)      38.2077 (9.85)      33.0703 (9.12)     3.0461 (24.74)     32.1000 (8.91)      4.1055 (40.92)         3;0   30.2386 (0.11)         10           1
-test_incremental_edit[sympy-zuban]        62.8081 (18.05)     67.0972 (17.30)     63.7676 (17.58)    1.3140 (10.67)     63.3715 (17.59)     0.7175 (7.15)          1;2   15.6819 (0.06)         10           1
-test_incremental_edit[sympy-pyright]     465.8610 (133.91)   487.8697 (125.81)   479.7846 (132.30)   7.3209 (59.46)    478.8293 (132.90)   10.6199 (105.85)        3;0    2.0843 (0.01)         10           1
+test_incremental_edit[sympy-ty]            3.0396 (1.0)        3.2818 (1.0)        3.1235 (1.0)      0.0776 (1.0)        3.1079 (1.0)       0.1102 (1.0)           3;0  320.1507 (1.0)          10           1
+test_incremental_edit[sympy-pyrefly]      28.2025 (9.28)      38.2077 (11.64)     33.0703 (10.59)    3.0461 (39.27)     32.1000 (10.33)     4.1055 (37.27)         3;0   30.2386 (0.09)         10           1
+test_incremental_edit[sympy-zuban]        62.8081 (20.66)     67.0972 (20.45)     63.7676 (20.42)    1.3140 (16.94)     63.3715 (20.39)     0.7175 (6.51)          1;2   15.6819 (0.05)         10           1
+test_incremental_edit[sympy-pyright]     465.8610 (153.26)   487.8697 (148.66)   479.7846 (153.60)   7.3209 (94.37)    478.8293 (154.07)   10.6199 (96.40)         3;0    2.0843 (0.01)         10           1
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ---------------------------------------------------------------------------------------- benchmark 'openai': 4 tests -----------------------------------------------------------------------------------------
 Name (time in ms)                              Min                 Max                Mean            StdDev              Median               IQR            Outliers       OPS            Rounds  Iterations
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 test_incremental_edit[openai-zuban]         3.4460 (1.0)        3.6128 (1.0)        3.5186 (1.0)      0.0547 (1.0)        3.5069 (1.0)      0.0987 (1.0)           4;0  284.2066 (1.0)          10           1
-test_incremental_edit[openai-ty]            4.2651 (1.24)       4.7099 (1.30)       4.4452 (1.26)     0.1547 (2.83)       4.4445 (1.27)     0.2586 (2.62)          3;0  224.9632 (0.79)         10           1
+test_incremental_edit[openai-ty]            3.7644 (1.09)       4.1036 (1.14)       3.9680 (1.13)     0.1045 (1.91)       3.9882 (1.14)     0.1589 (1.61)          3;0  252.0137 (0.89)         10           1
 test_incremental_edit[openai-pyrefly]      70.9413 (20.59)     87.7718 (24.30)     82.7103 (23.51)    5.0859 (93.06)     83.1189 (23.70)    5.0480 (51.16)         1;1   12.0904 (0.04)         10           1
 test_incremental_edit[openai-pyright]     457.0089 (132.62)   489.3018 (135.44)   478.7871 (136.07)   8.6623 (158.50)   481.2125 (137.22)   7.4462 (75.47)         2;1    2.0886 (0.01)         10           1
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -1012,10 +1012,10 @@ test_incremental_edit[openai-pyright]     457.0089 (132.62)   489.3018 (135.44) 
 ---------------------------------------------------------------------------------------- benchmark 'pytest': 4 tests -----------------------------------------------------------------------------------------
 Name (time in ms)                              Min                 Max                Mean            StdDev              Median               IQR            Outliers       OPS            Rounds  Iterations
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-test_incremental_edit[pytest-ty]            8.8387 (1.0)       10.1693 (1.0)        9.2703 (1.0)      0.4956 (2.82)       9.0366 (1.0)      0.4686 (2.33)          2;2  107.8716 (1.0)          10           1
-test_incremental_edit[pytest-zuban]        26.0735 (2.95)      26.7175 (2.63)      26.3351 (2.84)     0.1758 (1.0)       26.3459 (2.92)     0.2007 (1.0)           2;1   37.9721 (0.35)         10           1
-test_incremental_edit[pytest-pyrefly]      55.3168 (6.26)      62.2285 (6.12)      58.5314 (6.31)     2.2135 (12.59)     58.4364 (6.47)     2.6986 (13.45)         3;0   17.0848 (0.16)         10           1
-test_incremental_edit[pytest-pyright]     458.6860 (51.90)    490.4299 (48.23)    481.3327 (51.92)    8.7184 (49.58)    483.3412 (53.49)    6.7729 (33.74)         2;1    2.0776 (0.02)         10           1
+test_incremental_edit[pytest-ty]            7.6362 (1.0)        9.3470 (1.0)        7.9488 (1.0)      0.5006 (2.85)       7.8129 (1.0)      0.1154 (1.0)           1;1  125.8056 (1.0)          10           1
+test_incremental_edit[pytest-zuban]        26.0735 (3.41)      26.7175 (2.86)      26.3351 (3.31)     0.1758 (1.0)       26.3459 (3.37)     0.2007 (1.74)          2;1   37.9721 (0.30)         10           1
+test_incremental_edit[pytest-pyrefly]      55.3168 (7.24)      62.2285 (6.66)      58.5314 (7.36)     2.2135 (12.59)     58.4364 (7.48)     2.6986 (23.38)         3;0   17.0848 (0.14)         10           1
+test_incremental_edit[pytest-pyright]     458.6860 (60.07)    490.4299 (52.47)    481.3327 (60.55)    8.7184 (49.58)    483.3412 (61.86)    6.7729 (58.68)         2;1    2.0776 (0.02)         10           1
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ```
 
@@ -1025,153 +1025,153 @@ test_incremental_edit[pytest-pyright]     458.6860 (51.90)    490.4299 (48.23)  
 ----------------------------------------------------------------------------------------- benchmark 'black': 4 tests ----------------------------------------------------------------------------------------
 Name (time in ms)                              Min                 Max                Mean            StdDev              Median               IQR            Outliers      OPS            Rounds  Iterations
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-test_fetch_diagnostics[black-ty]           61.3446 (1.0)       64.2571 (1.0)       62.0019 (1.0)      0.9246 (2.25)      61.5498 (1.0)      1.1715 (1.86)          1;0  16.1285 (1.0)          10           1
-test_fetch_diagnostics[black-zuban]        68.9572 (1.12)      73.7763 (1.15)      71.2262 (1.15)     1.4690 (3.57)      71.0236 (1.15)     2.1367 (3.40)          2;0  14.0398 (0.87)         10           1
-test_fetch_diagnostics[black-pyrefly]     179.8352 (2.93)     181.0037 (2.82)     180.5095 (2.91)     0.4111 (1.0)      180.5079 (2.93)     0.6513 (1.03)          4;0   5.5399 (0.34)         10           1
-test_fetch_diagnostics[black-pyright]     299.9607 (4.89)     302.2230 (4.70)     300.9091 (4.85)     0.6684 (1.63)     300.8832 (4.89)     0.6293 (1.0)           3;0   3.3233 (0.21)         10           1
+test_fetch_diagnostics[black-ty]           53.1848 (1.0)       55.7492 (1.0)       53.6592 (1.0)      0.7535 (1.83)      53.4633 (1.0)      0.3916 (1.0)           1;1  18.6361 (1.0)          10           1
+test_fetch_diagnostics[black-zuban]        68.9572 (1.30)      73.7763 (1.32)      71.2262 (1.33)     1.4690 (3.57)      71.0236 (1.33)     2.1367 (5.46)          2;0  14.0398 (0.75)         10           1
+test_fetch_diagnostics[black-pyrefly]     179.8352 (3.38)     181.0037 (3.25)     180.5095 (3.36)     0.4111 (1.0)      180.5079 (3.38)     0.6513 (1.66)          4;0   5.5399 (0.30)         10           1
+test_fetch_diagnostics[black-pyright]     299.9607 (5.64)     302.2230 (5.42)     300.9091 (5.61)     0.6684 (1.63)     300.8832 (5.63)     0.6293 (1.61)          3;0   3.3233 (0.18)         10           1
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ----------------------------------------------------------------------------------------- benchmark 'discord.py': 4 tests ------------------------------------------------------------------------------------------
 Name (time in ms)                                   Min                 Max                Mean             StdDev              Median                IQR            Outliers      OPS            Rounds  Iterations
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-test_fetch_diagnostics[discord.py-ty]           91.9899 (1.0)       96.7191 (1.0)       93.3359 (1.0)       1.2987 (5.15)      92.9172 (1.0)       0.9487 (4.89)          2;1  10.7140 (1.0)          10           1
-test_fetch_diagnostics[discord.py-zuban]       177.4120 (1.93)     184.2058 (1.90)     180.0302 (1.93)      2.0807 (8.26)     179.8533 (1.94)      1.9461 (10.03)         3;1   5.5546 (0.52)         10           1
-test_fetch_diagnostics[discord.py-pyrefly]     187.9900 (2.04)     188.8244 (1.95)     188.3708 (2.02)      0.2520 (1.0)      188.3499 (2.03)      0.1941 (1.0)           4;2   5.3087 (0.50)         10           1
-test_fetch_diagnostics[discord.py-pyright]     621.1201 (6.75)     663.5259 (6.86)     630.2578 (6.75)     12.6775 (50.30)    626.5515 (6.74)     11.5769 (59.64)         1;1   1.5867 (0.15)         10           1
+test_fetch_diagnostics[discord.py-ty]           80.2123 (1.0)       83.0548 (1.0)       80.8108 (1.0)       0.8653 (3.43)      80.5531 (1.0)       0.6466 (3.33)          1;1  12.3746 (1.0)          10           1
+test_fetch_diagnostics[discord.py-zuban]       177.4120 (2.21)     184.2058 (2.22)     180.0302 (2.23)      2.0807 (8.26)     179.8533 (2.23)      1.9461 (10.03)         3;1   5.5546 (0.45)         10           1
+test_fetch_diagnostics[discord.py-pyrefly]     187.9900 (2.34)     188.8244 (2.27)     188.3708 (2.33)      0.2520 (1.0)      188.3499 (2.34)      0.1941 (1.0)           4;2   5.3087 (0.43)         10           1
+test_fetch_diagnostics[discord.py-pyright]     621.1201 (7.74)     663.5259 (7.99)     630.2578 (7.80)     12.6775 (50.30)    626.5515 (7.78)     11.5769 (59.64)         1;1   1.5867 (0.13)         10           1
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ---------------------------------------------------------------------------------------------- benchmark 'homeassistant': 4 tests ---------------------------------------------------------------------------------------------
 Name (time in ms)                                        Min                   Max                  Mean             StdDev                Median                IQR            Outliers      OPS            Rounds  Iterations
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-test_fetch_diagnostics[homeassistant-ty]             94.3651 (1.0)        113.4692 (1.0)         99.2496 (1.0)       5.3273 (5.09)        97.8442 (1.0)       2.9808 (2.89)          1;1  10.0756 (1.0)          10           1
-test_fetch_diagnostics[homeassistant-zuban]         214.2382 (2.27)       219.2897 (1.93)       217.0925 (2.19)      1.7237 (1.65)       217.0206 (2.22)      2.0827 (2.02)          4;0   4.6063 (0.46)         10           1
-test_fetch_diagnostics[homeassistant-pyrefly]       236.2060 (2.50)       239.4906 (2.11)       237.6687 (2.39)      1.0456 (1.0)        237.4407 (2.43)      1.0302 (1.0)           3;0   4.2075 (0.42)         10           1
-test_fetch_diagnostics[homeassistant-pyright]     1,890.3885 (20.03)    1,924.0052 (16.96)    1,905.1369 (19.20)    10.7615 (10.29)    1,903.1950 (19.45)    14.3797 (13.96)         4;0   0.5249 (0.05)         10           1
+test_fetch_diagnostics[homeassistant-ty]             81.0942 (1.0)         81.6612 (1.0)         81.3481 (1.0)       0.1928 (1.0)         81.3268 (1.0)       0.2609 (1.0)           3;0  12.2928 (1.0)          10           1
+test_fetch_diagnostics[homeassistant-zuban]         214.2382 (2.64)       219.2897 (2.69)       217.0925 (2.67)      1.7237 (8.94)       217.0206 (2.67)      2.0827 (7.98)          4;0   4.6063 (0.37)         10           1
+test_fetch_diagnostics[homeassistant-pyrefly]       236.2060 (2.91)       239.4906 (2.93)       237.6687 (2.92)      1.0456 (5.42)       237.4407 (2.92)      1.0302 (3.95)          3;0   4.2075 (0.34)         10           1
+test_fetch_diagnostics[homeassistant-pyright]     1,890.3885 (23.31)    1,924.0052 (23.56)    1,905.1369 (23.42)    10.7615 (55.83)    1,903.1950 (23.40)    14.3797 (55.11)         4;0   0.5249 (0.04)         10           1
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ----------------------------------------------------------------------------------------- benchmark 'isort': 4 tests -----------------------------------------------------------------------------------------
 Name (time in ms)                              Min                 Max                Mean            StdDev              Median                IQR            Outliers      OPS            Rounds  Iterations
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-test_fetch_diagnostics[isort-zuban]        39.6183 (1.0)       44.7363 (1.0)       41.2833 (1.0)      1.4294 (1.14)      40.9556 (1.0)       1.3667 (1.0)           2;1  24.2229 (1.0)          10           1
-test_fetch_diagnostics[isort-ty]           49.0504 (1.24)      52.8668 (1.18)      50.6651 (1.23)     1.2549 (1.0)       50.9217 (1.24)      2.2342 (1.63)          4;0  19.7375 (0.81)         10           1
-test_fetch_diagnostics[isort-pyrefly]     126.7168 (3.20)     140.7936 (3.15)     134.1324 (3.25)     5.9800 (4.77)     134.6929 (3.29)     11.4701 (8.39)          4;0   7.4553 (0.31)         10           1
-test_fetch_diagnostics[isort-pyright]     355.6153 (8.98)     360.0408 (8.05)     358.0638 (8.67)     1.4327 (1.14)     358.1251 (8.74)      2.5620 (1.87)          4;0   2.7928 (0.12)         10           1
+test_fetch_diagnostics[isort-zuban]        39.6183 (1.0)       44.7363 (1.06)      41.2833 (1.0)      1.4294 (10.85)     40.9556 (1.0)       1.3667 (13.35)         2;1  24.2229 (1.0)          10           1
+test_fetch_diagnostics[isort-ty]           41.5515 (1.05)      42.0646 (1.0)       41.7895 (1.01)     0.1317 (1.0)       41.7718 (1.02)      0.1024 (1.0)           2;2  23.9294 (0.99)         10           1
+test_fetch_diagnostics[isort-pyrefly]     126.7168 (3.20)     140.7936 (3.35)     134.1324 (3.25)     5.9800 (45.41)    134.6929 (3.29)     11.4701 (112.04)        4;0   7.4553 (0.31)         10           1
+test_fetch_diagnostics[isort-pyright]     355.6153 (8.98)     360.0408 (8.56)     358.0638 (8.67)     1.4327 (10.88)    358.1251 (8.74)      2.5620 (25.03)         4;0   2.7928 (0.12)         10           1
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ----------------------------------------------------------------------------------------- benchmark 'jinja': 4 tests ----------------------------------------------------------------------------------------
 Name (time in ms)                              Min                 Max                Mean            StdDev              Median               IQR            Outliers      OPS            Rounds  Iterations
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-test_fetch_diagnostics[jinja-ty]           49.2497 (1.0)       53.0704 (1.0)       50.4838 (1.0)      1.3901 (3.72)      49.9364 (1.0)      2.3340 (3.52)          2;0  19.8083 (1.0)          10           1
-test_fetch_diagnostics[jinja-zuban]        85.7727 (1.74)      88.3310 (1.66)      86.9519 (1.72)     0.7278 (1.95)      87.0239 (1.74)     0.7648 (1.15)          2;0  11.5006 (0.58)         10           1
-test_fetch_diagnostics[jinja-pyrefly]     125.6743 (2.55)     126.7780 (2.39)     126.3703 (2.50)     0.3741 (1.0)      126.4106 (2.53)     0.6636 (1.0)           4;0   7.9133 (0.40)         10           1
-test_fetch_diagnostics[jinja-pyright]     353.2582 (7.17)     361.2105 (6.81)     356.3589 (7.06)     2.3240 (6.21)     355.8286 (7.13)     3.4593 (5.21)          2;0   2.8062 (0.14)         10           1
+test_fetch_diagnostics[jinja-ty]           43.3489 (1.0)       43.7942 (1.0)       43.5760 (1.0)      0.1517 (1.0)       43.5660 (1.0)      0.2734 (1.0)           4;0  22.9484 (1.0)          10           1
+test_fetch_diagnostics[jinja-zuban]        85.7727 (1.98)      88.3310 (2.02)      86.9519 (2.00)     0.7278 (4.80)      87.0239 (2.00)     0.7648 (2.80)          2;0  11.5006 (0.50)         10           1
+test_fetch_diagnostics[jinja-pyrefly]     125.6743 (2.90)     126.7780 (2.89)     126.3703 (2.90)     0.3741 (2.47)     126.4106 (2.90)     0.6636 (2.43)          4;0   7.9133 (0.34)         10           1
+test_fetch_diagnostics[jinja-pyright]     353.2582 (8.15)     361.2105 (8.25)     356.3589 (8.18)     2.3240 (15.32)    355.8286 (8.17)     3.4593 (12.65)         2;0   2.8062 (0.12)         10           1
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
----------------------------------------------------------------------------------------- benchmark 'pandas': 4 tests -----------------------------------------------------------------------------------------
-Name (time in ms)                               Min                 Max                Mean            StdDev              Median                IQR            Outliers     OPS            Rounds  Iterations
---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-test_fetch_diagnostics[pandas-ty]          351.8684 (1.0)      365.9209 (1.0)      356.7117 (1.0)      5.5499 (1.23)     354.0003 (1.0)      10.3039 (4.19)          3;0  2.8034 (1.0)          10           1
-test_fetch_diagnostics[pandas-pyrefly]     539.1561 (1.53)     562.5021 (1.54)     543.9112 (1.52)     6.9893 (1.55)     541.4131 (1.53)      2.4565 (1.0)           1;2  1.8385 (0.66)         10           1
-test_fetch_diagnostics[pandas-pyright]     629.9906 (1.79)     647.6225 (1.77)     639.1170 (1.79)     5.6742 (1.26)     640.4880 (1.81)      9.5839 (3.90)          4;0  1.5647 (0.56)         10           1
-test_fetch_diagnostics[pandas-zuban]       666.4379 (1.89)     680.6972 (1.86)     673.7827 (1.89)     4.4995 (1.0)      673.4846 (1.90)      6.0168 (2.45)          3;0  1.4842 (0.53)         10           1
---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------- benchmark 'pandas': 4 tests ----------------------------------------------------------------------------------------
+Name (time in ms)                               Min                 Max                Mean            StdDev              Median               IQR            Outliers     OPS            Rounds  Iterations
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+test_fetch_diagnostics[pandas-ty]          298.5411 (1.0)      304.3703 (1.0)      299.9820 (1.0)      1.8750 (1.0)      299.2466 (1.0)      2.4159 (1.0)           1;0  3.3335 (1.0)          10           1
+test_fetch_diagnostics[pandas-pyrefly]     539.1561 (1.81)     562.5021 (1.85)     543.9112 (1.81)     6.9893 (3.73)     541.4131 (1.81)     2.4565 (1.02)          1;2  1.8385 (0.55)         10           1
+test_fetch_diagnostics[pandas-pyright]     629.9906 (2.11)     647.6225 (2.13)     639.1170 (2.13)     5.6742 (3.03)     640.4880 (2.14)     9.5839 (3.97)          4;0  1.5647 (0.47)         10           1
+test_fetch_diagnostics[pandas-zuban]       666.4379 (2.23)     680.6972 (2.24)     673.7827 (2.25)     4.4995 (2.40)     673.4846 (2.25)     6.0168 (2.49)          3;0  1.4842 (0.45)         10           1
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 --------------------------------------------------------------------------------------------- benchmark 'prefect': 4 tests ---------------------------------------------------------------------------------------------
 Name (time in ms)                                  Min                   Max                  Mean             StdDev                Median                IQR            Outliers     OPS            Rounds  Iterations
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-test_fetch_diagnostics[prefect-ty]            157.0433 (1.0)        159.3191 (1.0)        157.9034 (1.0)       0.6149 (1.0)        157.8847 (1.0)       0.6349 (1.0)           2;1  6.3330 (1.0)          10           1
-test_fetch_diagnostics[prefect-pyrefly]       332.9010 (2.12)       467.9147 (2.94)       452.5213 (2.87)     42.0522 (68.39)      465.0061 (2.95)      2.8783 (4.53)          1;1  2.2098 (0.35)         10           1
-test_fetch_diagnostics[prefect-zuban]         859.7134 (5.47)       865.6050 (5.43)       863.4421 (5.47)      2.2602 (3.68)       864.5682 (5.48)      3.9808 (6.27)          3;0  1.1582 (0.18)         10           1
-test_fetch_diagnostics[prefect-pyright]     1,102.1569 (7.02)     1,130.7971 (7.10)     1,113.3106 (7.05)     10.0063 (16.27)    1,112.3842 (7.05)     16.5983 (26.14)         5;0  0.8982 (0.14)         10           1
+test_fetch_diagnostics[prefect-ty]            141.6225 (1.0)        145.8938 (1.0)        143.3660 (1.0)       1.5674 (1.0)        142.6658 (1.0)       3.0057 (1.04)          4;0  6.9752 (1.0)          10           1
+test_fetch_diagnostics[prefect-pyrefly]       332.9010 (2.35)       467.9147 (3.21)       452.5213 (3.16)     42.0522 (26.83)      465.0061 (3.26)      2.8783 (1.0)           1;1  2.2098 (0.32)         10           1
+test_fetch_diagnostics[prefect-zuban]         859.7134 (6.07)       865.6050 (5.93)       863.4421 (6.02)      2.2602 (1.44)       864.5682 (6.06)      3.9808 (1.38)          3;0  1.1582 (0.17)         10           1
+test_fetch_diagnostics[prefect-pyright]     1,102.1569 (7.78)     1,130.7971 (7.75)     1,113.3106 (7.77)     10.0063 (6.38)     1,112.3842 (7.80)     16.5983 (5.77)          5;0  0.8982 (0.13)         10           1
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ---------------------------------------------------------------------------------------------- benchmark 'pytorch': 4 tests ---------------------------------------------------------------------------------------------
 Name (time in ms)                                  Min                   Max                  Mean             StdDev                Median                IQR            Outliers      OPS            Rounds  Iterations
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-test_fetch_diagnostics[pytorch-ty]             67.1467 (1.0)         69.4841 (1.0)         68.2710 (1.0)       0.8116 (1.0)         68.3885 (1.0)       1.6100 (1.0)           5;0  14.6475 (1.0)          10           1
-test_fetch_diagnostics[pytorch-pyrefly]       116.7863 (1.74)       145.4521 (2.09)       128.6864 (1.88)     14.0053 (17.26)      118.9156 (1.74)     27.4318 (17.04)         4;0   7.7708 (0.53)         10           1
-test_fetch_diagnostics[pytorch-pyright]       702.6213 (10.46)      709.5476 (10.21)      705.4807 (10.33)     2.5295 (3.12)       704.5238 (10.30)     4.3440 (2.70)          3;0   1.4175 (0.10)         10           1
-test_fetch_diagnostics[pytorch-zuban]       1,825.0715 (27.18)    1,860.6000 (26.78)    1,835.6793 (26.89)     9.9072 (12.21)    1,835.3201 (26.84)     8.8780 (5.51)          2;1   0.5448 (0.04)         10           1
+test_fetch_diagnostics[pytorch-ty]             59.0455 (1.0)         62.8995 (1.0)         59.8251 (1.0)       1.1568 (1.0)         59.4721 (1.0)       0.4351 (1.0)           1;2  16.7154 (1.0)          10           1
+test_fetch_diagnostics[pytorch-pyrefly]       116.7863 (1.98)       145.4521 (2.31)       128.6864 (2.15)     14.0053 (12.11)      118.9156 (2.00)     27.4318 (63.04)         4;0   7.7708 (0.46)         10           1
+test_fetch_diagnostics[pytorch-pyright]       702.6213 (11.90)      709.5476 (11.28)      705.4807 (11.79)     2.5295 (2.19)       704.5238 (11.85)     4.3440 (9.98)          3;0   1.4175 (0.08)         10           1
+test_fetch_diagnostics[pytorch-zuban]       1,825.0715 (30.91)    1,860.6000 (29.58)    1,835.6793 (30.68)     9.9072 (8.56)     1,835.3201 (30.86)     8.8780 (20.40)         2;1   0.5448 (0.03)         10           1
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ----------------------------------------------------------------------------------------- benchmark 'httpx': 4 tests ----------------------------------------------------------------------------------------
 Name (time in ms)                              Min                 Max                Mean            StdDev              Median               IQR            Outliers      OPS            Rounds  Iterations
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-test_fetch_diagnostics[httpx-ty]           43.9061 (1.0)       44.6345 (1.0)       44.2958 (1.0)      0.2083 (1.0)       44.3242 (1.0)      0.2969 (1.0)           2;0  22.5755 (1.0)          10           1
-test_fetch_diagnostics[httpx-zuban]        69.2425 (1.58)      71.2874 (1.60)      70.2522 (1.59)     0.6870 (3.30)      70.2971 (1.59)     0.9758 (3.29)          3;0  14.2344 (0.63)         10           1
-test_fetch_diagnostics[httpx-pyrefly]     114.3010 (2.60)     118.0325 (2.64)     115.3196 (2.60)     1.1948 (5.74)     114.8530 (2.59)     1.1663 (3.93)          2;1   8.6716 (0.38)         10           1
-test_fetch_diagnostics[httpx-pyright]     224.9341 (5.12)     228.4704 (5.12)     226.4147 (5.11)     1.0548 (5.06)     226.3045 (5.11)     1.0174 (3.43)          3;1   4.4167 (0.20)         10           1
+test_fetch_diagnostics[httpx-ty]           39.1986 (1.0)       40.1746 (1.0)       39.6171 (1.0)      0.3942 (1.0)       39.4998 (1.0)      0.7537 (1.0)           5;0  25.2416 (1.0)          10           1
+test_fetch_diagnostics[httpx-zuban]        69.2425 (1.77)      71.2874 (1.77)      70.2522 (1.77)     0.6870 (1.74)      70.2971 (1.78)     0.9758 (1.29)          3;0  14.2344 (0.56)         10           1
+test_fetch_diagnostics[httpx-pyrefly]     114.3010 (2.92)     118.0325 (2.94)     115.3196 (2.91)     1.1948 (3.03)     114.8530 (2.91)     1.1663 (1.55)          2;1   8.6716 (0.34)         10           1
+test_fetch_diagnostics[httpx-pyright]     224.9341 (5.74)     228.4704 (5.69)     226.4147 (5.72)     1.0548 (2.68)     226.3045 (5.73)     1.0174 (1.35)          3;1   4.4167 (0.17)         10           1
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ------------------------------------------------------------------------------------------------ benchmark 'numpy': 4 tests -----------------------------------------------------------------------------------------------
 Name (time in ms)                                 Min                    Max                   Mean             StdDev                 Median                 IQR            Outliers     OPS            Rounds  Iterations
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-test_fetch_diagnostics[numpy-ty]             176.7615 (1.0)         186.8349 (1.0)         180.0022 (1.0)       3.6389 (2.53)        178.5085 (1.0)        1.1902 (1.28)          2;2  5.5555 (1.0)          10           1
-test_fetch_diagnostics[numpy-pyrefly]        562.9346 (3.18)        568.0607 (3.04)        564.3641 (3.14)      1.4365 (1.0)         564.1055 (3.16)       0.9281 (1.0)           1;1  1.7719 (0.32)         10           1
-test_fetch_diagnostics[numpy-pyright]      1,182.4547 (6.69)      1,212.2849 (6.49)      1,199.6223 (6.66)      9.0291 (6.29)      1,198.6239 (6.71)      12.4973 (13.47)         3;0  0.8336 (0.15)         10           1
-test_fetch_diagnostics[numpy-zuban]       36,078.9349 (204.11)   36,423.6785 (194.95)   36,193.5729 (201.07)   98.8916 (68.84)    36,198.7695 (202.78)   119.7505 (129.02)        2;1  0.0276 (0.00)         10           1
+test_fetch_diagnostics[numpy-ty]             160.6400 (1.0)         182.6270 (1.0)         165.9340 (1.0)       6.3025 (4.39)        164.3488 (1.0)        3.2548 (3.51)          1;1  6.0265 (1.0)          10           1
+test_fetch_diagnostics[numpy-pyrefly]        562.9346 (3.50)        568.0607 (3.11)        564.3641 (3.40)      1.4365 (1.0)         564.1055 (3.43)       0.9281 (1.0)           1;1  1.7719 (0.29)         10           1
+test_fetch_diagnostics[numpy-pyright]      1,182.4547 (7.36)      1,212.2849 (6.64)      1,199.6223 (7.23)      9.0291 (6.29)      1,198.6239 (7.29)      12.4973 (13.47)         3;0  0.8336 (0.14)         10           1
+test_fetch_diagnostics[numpy-zuban]       36,078.9349 (224.59)   36,423.6785 (199.44)   36,193.5729 (218.12)   98.8916 (68.84)    36,198.7695 (220.26)   119.7505 (129.02)        2;1  0.0276 (0.00)         10           1
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ----------------------------------------------------------------------------------------- benchmark 'fastapi': 4 tests ----------------------------------------------------------------------------------------
 Name (time in ms)                                Min                 Max                Mean            StdDev              Median               IQR            Outliers      OPS            Rounds  Iterations
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-test_fetch_diagnostics[fastapi-ty]           95.9351 (1.0)       99.0770 (1.0)       98.0754 (1.0)      1.1617 (1.99)      98.5677 (1.0)      1.5366 (2.52)          2;0  10.1962 (1.0)          10           1
-test_fetch_diagnostics[fastapi-zuban]       171.4969 (1.79)     177.0828 (1.79)     173.4509 (1.77)     1.8097 (3.10)     173.0481 (1.76)     2.5310 (4.14)          3;0   5.7653 (0.57)         10           1
-test_fetch_diagnostics[fastapi-pyrefly]     199.6927 (2.08)     201.7180 (2.04)     200.3882 (2.04)     0.5838 (1.0)      200.3402 (2.03)     0.6110 (1.0)           2;1   4.9903 (0.49)         10           1
-test_fetch_diagnostics[fastapi-pyright]     457.2369 (4.77)     470.3823 (4.75)     465.9305 (4.75)     3.9981 (6.85)     466.0065 (4.73)     4.5289 (7.41)          3;1   2.1462 (0.21)         10           1
+test_fetch_diagnostics[fastapi-ty]           85.1741 (1.0)       88.4667 (1.0)       86.0940 (1.0)      1.0142 (1.74)      85.8062 (1.0)      0.4641 (1.0)           2;2  11.6152 (1.0)          10           1
+test_fetch_diagnostics[fastapi-zuban]       171.4969 (2.01)     177.0828 (2.00)     173.4509 (2.01)     1.8097 (3.10)     173.0481 (2.02)     2.5310 (5.45)          3;0   5.7653 (0.50)         10           1
+test_fetch_diagnostics[fastapi-pyrefly]     199.6927 (2.34)     201.7180 (2.28)     200.3882 (2.33)     0.5838 (1.0)      200.3402 (2.33)     0.6110 (1.32)          2;1   4.9903 (0.43)         10           1
+test_fetch_diagnostics[fastapi-pyright]     457.2369 (5.37)     470.3823 (5.32)     465.9305 (5.41)     3.9981 (6.85)     466.0065 (5.43)     4.5289 (9.76)          3;1   2.1462 (0.18)         10           1
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ---------------------------------------------------------------------------------------- benchmark 'sqlalchemy': 4 tests ----------------------------------------------------------------------------------------
 Name (time in ms)                                   Min                 Max                Mean            StdDev              Median               IQR            Outliers     OPS            Rounds  Iterations
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-test_fetch_diagnostics[sqlalchemy-ty]          207.4063 (1.0)      231.8568 (1.0)      213.2610 (1.0)      7.5025 (4.69)     211.4731 (1.0)      5.5045 (3.51)          1;1  4.6891 (1.0)          10           1
-test_fetch_diagnostics[sqlalchemy-pyrefly]     250.0255 (1.21)     256.0001 (1.10)     251.9413 (1.18)     1.6665 (1.04)     251.7372 (1.19)     1.6916 (1.08)          2;1  3.9692 (0.85)         10           1
-test_fetch_diagnostics[sqlalchemy-pyright]     270.1789 (1.30)     276.0185 (1.19)     272.7359 (1.28)     1.6008 (1.0)      272.7561 (1.29)     1.5684 (1.0)           2;1  3.6666 (0.78)         10           1
-test_fetch_diagnostics[sqlalchemy-zuban]       383.2057 (1.85)     399.6241 (1.72)     386.9370 (1.81)     4.6166 (2.88)     385.5155 (1.82)     2.3762 (1.52)          1;1  2.5844 (0.55)         10           1
+test_fetch_diagnostics[sqlalchemy-ty]          184.4423 (1.0)      189.6220 (1.0)      187.2045 (1.0)      1.4448 (1.0)      187.2169 (1.0)      2.0694 (1.32)          2;0  5.3418 (1.0)          10           1
+test_fetch_diagnostics[sqlalchemy-pyrefly]     250.0255 (1.36)     256.0001 (1.35)     251.9413 (1.35)     1.6665 (1.15)     251.7372 (1.34)     1.6916 (1.08)          2;1  3.9692 (0.74)         10           1
+test_fetch_diagnostics[sqlalchemy-pyright]     270.1789 (1.46)     276.0185 (1.46)     272.7359 (1.46)     1.6008 (1.11)     272.7561 (1.46)     1.5684 (1.0)           2;1  3.6666 (0.69)         10           1
+test_fetch_diagnostics[sqlalchemy-zuban]       383.2057 (2.08)     399.6241 (2.11)     386.9370 (2.07)     4.6166 (3.20)     385.5155 (2.06)     2.3762 (1.52)          1;1  2.5844 (0.48)         10           1
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ---------------------------------------------------------------------------------------- benchmark 'rich': 4 tests -----------------------------------------------------------------------------------------
 Name (time in ms)                             Min                 Max                Mean            StdDev              Median               IQR            Outliers      OPS            Rounds  Iterations
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-test_fetch_diagnostics[rich-ty]           39.1258 (1.0)       40.5336 (1.0)       39.8489 (1.0)      0.4538 (1.0)       39.8839 (1.0)      0.7542 (1.41)          3;0  25.0948 (1.0)          10           1
-test_fetch_diagnostics[rich-zuban]        79.5685 (2.03)      82.3503 (2.03)      80.7725 (2.03)     0.8009 (1.76)      80.6681 (2.02)     0.5338 (1.0)           3;2  12.3804 (0.49)         10           1
-test_fetch_diagnostics[rich-pyrefly]      99.5237 (2.54)     115.1077 (2.84)     110.9954 (2.79)     5.6315 (12.41)    113.2185 (2.84)     1.7742 (3.32)          2;2   9.0094 (0.36)         10           1
-test_fetch_diagnostics[rich-pyright]     309.8927 (7.92)     314.1458 (7.75)     311.3170 (7.81)     1.3331 (2.94)     310.9984 (7.80)     1.9001 (3.56)          3;0   3.2122 (0.13)         10           1
+test_fetch_diagnostics[rich-ty]           36.1197 (1.0)       38.5802 (1.0)       36.6509 (1.0)      0.7291 (1.0)       36.3236 (1.0)      0.4692 (1.0)           1;1  27.2845 (1.0)          10           1
+test_fetch_diagnostics[rich-zuban]        79.5685 (2.20)      82.3503 (2.13)      80.7725 (2.20)     0.8009 (1.10)      80.6681 (2.22)     0.5338 (1.14)          3;2  12.3804 (0.45)         10           1
+test_fetch_diagnostics[rich-pyrefly]      99.5237 (2.76)     115.1077 (2.98)     110.9954 (3.03)     5.6315 (7.72)     113.2185 (3.12)     1.7742 (3.78)          2;2   9.0094 (0.33)         10           1
+test_fetch_diagnostics[rich-pyright]     309.8927 (8.58)     314.1458 (8.14)     311.3170 (8.49)     1.3331 (1.83)     310.9984 (8.56)     1.9001 (4.05)          3;0   3.2122 (0.12)         10           1
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ---------------------------------------------------------------------------------------- benchmark 'django': 4 tests -----------------------------------------------------------------------------------------
 Name (time in ms)                               Min                 Max                Mean            StdDev              Median               IQR            Outliers      OPS            Rounds  Iterations
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-test_fetch_diagnostics[django-ty]           23.5612 (1.0)       24.2165 (1.0)       23.8021 (1.0)      0.2324 (1.0)       23.7625 (1.0)      0.3301 (1.0)           4;0  42.0131 (1.0)          10           1
-test_fetch_diagnostics[django-zuban]        45.0162 (1.91)      47.3812 (1.96)      46.3298 (1.95)     0.7499 (3.23)      46.4050 (1.95)     0.7135 (2.16)          4;1  21.5844 (0.51)         10           1
-test_fetch_diagnostics[django-pyrefly]      90.8160 (3.85)      96.1161 (3.97)      94.1640 (3.96)     2.2035 (9.48)      95.3465 (4.01)     4.3802 (13.27)         3;0  10.6198 (0.25)         10           1
-test_fetch_diagnostics[django-pyright]     587.8771 (24.95)    610.7550 (25.22)    593.6576 (24.94)    8.6595 (37.26)    589.8123 (24.82)    2.7981 (8.48)          2;2   1.6845 (0.04)         10           1
+test_fetch_diagnostics[django-ty]           21.7860 (1.0)       24.7737 (1.0)       22.2781 (1.0)      0.8924 (1.19)      21.9620 (1.0)      0.3634 (1.0)           1;1  44.8872 (1.0)          10           1
+test_fetch_diagnostics[django-zuban]        45.0162 (2.07)      47.3812 (1.91)      46.3298 (2.08)     0.7499 (1.0)       46.4050 (2.11)     0.7135 (1.96)          4;1  21.5844 (0.48)         10           1
+test_fetch_diagnostics[django-pyrefly]      90.8160 (4.17)      96.1161 (3.88)      94.1640 (4.23)     2.2035 (2.94)      95.3465 (4.34)     4.3802 (12.05)         3;0  10.6198 (0.24)         10           1
+test_fetch_diagnostics[django-pyright]     587.8771 (26.98)    610.7550 (24.65)    593.6576 (26.65)    8.6595 (11.55)    589.8123 (26.86)    2.7981 (7.70)          2;2   1.6845 (0.04)         10           1
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ----------------------------------------------------------------------------------------- benchmark 'sympy': 4 tests ----------------------------------------------------------------------------------------
 Name (time in ms)                              Min                 Max                Mean            StdDev              Median               IQR            Outliers      OPS            Rounds  Iterations
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-test_fetch_diagnostics[sympy-ty]           71.8480 (1.0)       73.1758 (1.0)       72.2481 (1.0)      0.3895 (1.0)       72.1690 (1.0)      0.4300 (1.0)           2;1  13.8412 (1.0)          10           1
-test_fetch_diagnostics[sympy-pyrefly]     179.4386 (2.50)     183.1834 (2.50)     180.5083 (2.50)     1.0781 (2.77)     180.2387 (2.50)     0.5938 (1.38)          1;1   5.5399 (0.40)         10           1
-test_fetch_diagnostics[sympy-zuban]       260.1722 (3.62)     274.6859 (3.75)     265.9684 (3.68)     4.4955 (11.54)    264.4641 (3.66)     7.1645 (16.66)         2;0   3.7598 (0.27)         10           1
-test_fetch_diagnostics[sympy-pyright]     392.3544 (5.46)     400.7913 (5.48)     396.7093 (5.49)     2.7972 (7.18)     396.7134 (5.50)     5.3469 (12.43)         4;0   2.5207 (0.18)         10           1
+test_fetch_diagnostics[sympy-ty]           65.4690 (1.0)       69.7235 (1.0)       66.3799 (1.0)      1.2557 (1.16)      65.9127 (1.0)      0.6829 (1.15)          1;1  15.0648 (1.0)          10           1
+test_fetch_diagnostics[sympy-pyrefly]     179.4386 (2.74)     183.1834 (2.63)     180.5083 (2.72)     1.0781 (1.0)      180.2387 (2.73)     0.5938 (1.0)           1;1   5.5399 (0.37)         10           1
+test_fetch_diagnostics[sympy-zuban]       260.1722 (3.97)     274.6859 (3.94)     265.9684 (4.01)     4.4955 (4.17)     264.4641 (4.01)     7.1645 (12.07)         2;0   3.7598 (0.25)         10           1
+test_fetch_diagnostics[sympy-pyright]     392.3544 (5.99)     400.7913 (5.75)     396.7093 (5.98)     2.7972 (2.59)     396.7134 (6.02)     5.3469 (9.01)          4;0   2.5207 (0.17)         10           1
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ---------------------------------------------------------------------------------------- benchmark 'openai': 4 tests -----------------------------------------------------------------------------------------
 Name (time in ms)                               Min                 Max                Mean            StdDev              Median               IQR            Outliers      OPS            Rounds  Iterations
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-test_fetch_diagnostics[openai-ty]           66.3099 (1.0)       70.3884 (1.0)       67.1152 (1.0)      1.2358 (1.0)       66.6806 (1.0)      1.0648 (1.0)           1;1  14.8998 (1.0)          10           1
-test_fetch_diagnostics[openai-zuban]       139.0193 (2.10)     143.9898 (2.05)     141.1401 (2.10)     1.4470 (1.17)     140.7476 (2.11)     1.9043 (1.79)          2;0   7.0852 (0.48)         10           1
-test_fetch_diagnostics[openai-pyrefly]     188.4392 (2.84)     202.4323 (2.88)     199.4188 (2.97)     5.1057 (4.13)     201.7685 (3.03)     1.2412 (1.17)          2;2   5.0146 (0.34)         10           1
-test_fetch_diagnostics[openai-pyright]     513.3347 (7.74)     518.7722 (7.37)     515.7981 (7.69)     2.2311 (1.81)     515.5012 (7.73)     4.6511 (4.37)          5;0   1.9387 (0.13)         10           1
+test_fetch_diagnostics[openai-ty]           58.5604 (1.0)       60.8052 (1.0)       59.6067 (1.0)      0.7767 (1.0)       59.6806 (1.0)      1.1436 (1.0)           4;0  16.7766 (1.0)          10           1
+test_fetch_diagnostics[openai-zuban]       139.0193 (2.37)     143.9898 (2.37)     141.1401 (2.37)     1.4470 (1.86)     140.7476 (2.36)     1.9043 (1.67)          2;0   7.0852 (0.42)         10           1
+test_fetch_diagnostics[openai-pyrefly]     188.4392 (3.22)     202.4323 (3.33)     199.4188 (3.35)     5.1057 (6.57)     201.7685 (3.38)     1.2412 (1.09)          2;2   5.0146 (0.30)         10           1
+test_fetch_diagnostics[openai-pyright]     513.3347 (8.77)     518.7722 (8.53)     515.7981 (8.65)     2.2311 (2.87)     515.5012 (8.64)     4.6511 (4.07)          5;0   1.9387 (0.12)         10           1
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ---------------------------------------------------------------------------------------- benchmark 'pytest': 4 tests -----------------------------------------------------------------------------------------
 Name (time in ms)                               Min                 Max                Mean            StdDev              Median               IQR            Outliers      OPS            Rounds  Iterations
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-test_fetch_diagnostics[pytest-ty]           75.5960 (1.0)       79.3887 (1.0)       76.5090 (1.0)      1.0781 (1.37)      76.1527 (1.0)      0.6201 (1.0)           1;1  13.0704 (1.0)          10           1
-test_fetch_diagnostics[pytest-zuban]       132.7784 (1.76)     135.7364 (1.71)     134.2270 (1.75)     1.0887 (1.38)     134.4337 (1.77)     1.9573 (3.16)          5;0   7.4501 (0.57)         10           1
-test_fetch_diagnostics[pytest-pyrefly]     183.1395 (2.42)     186.5047 (2.35)     185.1065 (2.42)     1.0400 (1.32)     185.1994 (2.43)     1.2209 (1.97)          4;0   5.4023 (0.41)         10           1
-test_fetch_diagnostics[pytest-pyright]     289.3343 (3.83)     291.7467 (3.67)     290.7208 (3.80)     0.7864 (1.0)      290.6446 (3.82)     1.2309 (1.99)          3;0   3.4397 (0.26)         10           1
+test_fetch_diagnostics[pytest-ty]           67.6779 (1.0)       70.2133 (1.0)       68.7026 (1.0)      0.7623 (1.0)       68.6753 (1.0)      0.8243 (1.0)           3;0  14.5555 (1.0)          10           1
+test_fetch_diagnostics[pytest-zuban]       132.7784 (1.96)     135.7364 (1.93)     134.2270 (1.95)     1.0887 (1.43)     134.4337 (1.96)     1.9573 (2.37)          5;0   7.4501 (0.51)         10           1
+test_fetch_diagnostics[pytest-pyrefly]     183.1395 (2.71)     186.5047 (2.66)     185.1065 (2.69)     1.0400 (1.36)     185.1994 (2.70)     1.2209 (1.48)          4;0   5.4023 (0.37)         10           1
+test_fetch_diagnostics[pytest-pyright]     289.3343 (4.28)     291.7467 (4.16)     290.7208 (4.23)     0.7864 (1.03)     290.6446 (4.23)     1.2309 (1.49)          3;0   3.4397 (0.24)         10           1
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ```
