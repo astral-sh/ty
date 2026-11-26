@@ -546,7 +546,8 @@ def profile_language_server(
             stderr=subprocess.PIPE,
             bufsize=0,
         )
-        if process.stdin is None or process.stdout is None or process.stderr is None:
+        stdin, stdout = process.stdin, process.stdout
+        if stdin is None or stdout is None or process.stderr is None:
             process.kill()
             process.wait()
             raise RuntimeError("Could not open language-server pipes")
@@ -559,7 +560,7 @@ def profile_language_server(
                 while True:
                     headers: dict[str, str] = {}
                     while True:
-                        line = process.stdout.readline()
+                        line = stdout.readline()
                         if not line:
                             raise RuntimeError("Language server closed its output")
                         if line in (b"\r\n", b"\n"):
@@ -570,7 +571,7 @@ def profile_language_server(
                     remaining = int(headers["content-length"])
                     chunks: list[bytes] = []
                     while remaining:
-                        chunk = process.stdout.read(remaining)
+                        chunk = stdout.read(remaining)
                         if not chunk:
                             raise RuntimeError("Language server closed its output")
                         chunks.append(chunk)
@@ -591,10 +592,8 @@ def profile_language_server(
 
         def send(message: dict[str, object]) -> None:
             payload = json.dumps(message, separators=(",", ":")).encode("utf-8")
-            process.stdin.write(
-                f"Content-Length: {len(payload)}\r\n\r\n".encode("ascii")
-            )
-            process.stdin.write(payload)
+            stdin.write(f"Content-Length: {len(payload)}\r\n\r\n".encode("ascii"))
+            stdin.write(payload)
 
         def request(method: str, params: dict[str, object] | None = None) -> object:
             nonlocal request_id
@@ -717,7 +716,7 @@ def profile_language_server(
 
             request("shutdown")
             notify("exit")
-            process.stdin.close()
+            stdin.close()
             if process.wait(timeout=10):
                 raise RuntimeError(
                     process.stderr.read().decode("utf-8", errors="replace")
