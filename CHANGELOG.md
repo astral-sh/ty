@@ -1,5 +1,33 @@
 # Changelog
 
+## 0.0.112
+
+Released on 2026-11-26.
+
+### Bug fixes
+
+- Fix a crash when pressing Ctrl+C just after saving a watched file. `ty check --watch` now exits with the usual interrupt status 130. ([#29976](https://github.com/astral-sh/ruff/pull/29976))
+
+### Performance improvements
+
+- Check assignments faster by looking up type annotations and imported `Final` qualifiers together. ([#30797](https://github.com/astral-sh/ruff/pull/30797))
+- Simplify unions of fixed-length tuples faster when a pair of elements at any matching position contains disjoint literals or distinct class objects, as in Django’s registry for arithmetic expressions. ([#30940](https://github.com/astral-sh/ruff/pull/30940))
+- Speed up control flow analysis for type narrowing and reachability, especially in files with large wildcard imports such as `from OpenGL.GL import *`. ([#30790](https://github.com/astral-sh/ruff/pull/30790))
+- Infer types faster for collections of functions such as Jinja’s filter registry. When each function has a single standard signature, ty can rule out a match if required parameters at the same position accept different keyword names or if one function requires more positional arguments than the other accepts. ([#30858](https://github.com/astral-sh/ruff/pull/30858))
+- Infer type arguments faster, including element types for list literals. ty uses a single lower bound directly and removes duplicate types after selecting the bounds relevant to inference or validation. ([#30786](https://github.com/astral-sh/ruff/pull/30786))
+- Speed up checks of modules and functions without `Final` declarations by skipping the search for `Final` names that never receive a value. ([#30946](https://github.com/astral-sh/ruff/pull/30946))
+
+### Core type checking
+
+- Use the input type of an attrs `@field_name.converter` method when checking generated constructor arguments and field assignments. Reading the field gives its declared type. If several converters are registered, the first one determines the accepted input type. ([#30959](https://github.com/astral-sh/ruff/pull/30959))
+- Recognize `__attrs_attrs__` as a tuple of field metadata on attrs classes and instances. ty also recognizes the attribute after `attrs.has` narrows a class to `type[AttrsInstance]`. ([#30958](https://github.com/astral-sh/ruff/pull/30958))
+- Report `invalid-argument-type` when `attrs.fields` or `attrs.asdict` receives an argument that lacks the `__attrs_attrs__` member required by the `AttrsInstance` protocol. ([#30958](https://github.com/astral-sh/ruff/pull/30958))
+
+### Contributors
+
+- [@charliermarsh](https://github.com/charliermarsh)
+- [@sharkdp](https://github.com/sharkdp)
+
 ## 0.0.111
 
 Released on 2026-11-25.
