@@ -1,7 +1,0 @@
-project-includes = ["src", "testing"]
-project-excludes = ["testing/example_scripts"]
-python-interpreter-path = "/tmp/ty-benchmark-0.0.96-2026-11-02/checkouts/updated-pytest/venv/bin/python"
-python-version = "3.11"
-site-package-path = ["/tmp/ty-benchmark-0.0.96-2026-11-02/checkouts/updated-pytest/venv"]
-untyped-def-behavior = "check-and-infer-return-any"
-search-path = ["src", "."]
