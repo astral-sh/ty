@@ -1,5 +1,32 @@
 # Changelog
 
+## 0.0.112
+
+Released on 2026-11-26.
+
+### Bug fixes
+
+- Avoid a panic when interrupting watch mode after a save ([#29976](https://github.com/astral-sh/ruff/pull/29976))
+
+### Performance improvements
+
+- Avoid redundant declaration lookups when checking assignments ([#30797](https://github.com/astral-sh/ruff/pull/30797))
+- Deduplicate lower bound types after filtering by provenance ([#30786](https://github.com/astral-sh/ruff/pull/30786))
+- Skip checking for unassigned `Final` names in scopes without `Final` declarations ([#30946](https://github.com/astral-sh/ruff/pull/30946))
+- Skip comparisons between callables with incompatible parameter lists ([#30858](https://github.com/astral-sh/ruff/pull/30858))
+- Skip union comparisons when tuple elements are disjoint ([#30940](https://github.com/astral-sh/ruff/pull/30940))
+- Track used constraint nodes a word at a time ([#30790](https://github.com/astral-sh/ruff/pull/30790))
+
+### Core type checking
+
+- attrs: Support `__attrs_attrs__` and the `AttrsInstance` protocol ([#30958](https://github.com/astral-sh/ruff/pull/30958))
+- attrs: Support field converter decorators ([#30959](https://github.com/astral-sh/ruff/pull/30959))
+
+### Contributors
+
+- [@charliermarsh](https://github.com/charliermarsh)
+- [@sharkdp](https://github.com/sharkdp)
+
 ## 0.0.111
 
 Released on 2026-11-25.
