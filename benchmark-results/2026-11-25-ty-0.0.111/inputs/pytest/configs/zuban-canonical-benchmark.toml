@@ -1,0 +1,10 @@
+[tool.zuban]
+mode = "mypy"
+python_version = "3.11"
+python_executable = "/tmp/ty-benchmark-0.0.96-2026-11-02/checkouts/updated-pytest/venv/bin/python"
+mypy_path = ["/private/tmp/ty-benchmark-0.0.96-2026-11-02/checkouts/updated-pytest/src", "/private/tmp/ty-benchmark-0.0.96-2026-11-02/checkouts/updated-pytest/testing"]
+files = ["src", "testing"]
+exclude = ["\\A(?s:testing[/\\\\]example_scripts)(?:[/\\\\].*)?\\z", "\\A(?s:example_scripts)(?:[/\\\\].*)?\\z"]
+exclude_gitignore = false
+check_untyped_defs = true
+untyped_function_return_mode = "any"

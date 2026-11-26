@@ -1,0 +1,1 @@
+{"extends": "./pyrightconfig.json", "include": ["src"], "exclude": [], "analyzeUnannotatedFunctions": true}

@@ -1,0 +1,200 @@
+{
+    "machine_info": {
+        "node": "MacBook-Pro-8.local",
+        "processor": "arm",
+        "machine": "arm64",
+        "python_compiler": "Clang 23.1.3 ",
+        "python_implementation": "CPython",
+        "python_implementation_version": "3.15.1",
+        "python_version": "3.15.1",
+        "python_build": [
+            "main",
+            "Oct 21 2026 17:39:16"
+        ],
+        "release": "25.5.0",
+        "system": "Darwin",
+        "cpu": {
+            "python_version": "3.15.1.final.0 (64 bit)",
+            "cpuinfo_version": [
+                10,
+                1,
+                1
+            ],
+            "cpuinfo_version_string": "10.1.1",
+            "arch": "ARM_8",
+            "bits": 64,
+            "count": 16,
+            "arch_string_raw": "arm64"
+        }
+    },
+    "commit_info": {
+        "id": "504457130a2183e9f0c6f4e92ce1c43e970b70ca",
+        "time": "2026-11-04T13:31:31-05:00",
+        "author_time": "2026-11-04T13:31:31-05:00",
+        "dirty": false,
+        "project": "ty_benchmark",
+        "branch": "(detached head)"
+    },
+    "benchmarks": [
+        {
+            "group": "jinja",
+            "name": "test_fetch_diagnostics[updated-jinja-ty]",
+            "fullname": "src/benchmark/test_lsp_diagnostics.py::test_fetch_diagnostics[updated-jinja-ty]",
+            "params": {
+                "project_setup": [
+                    "jinja",
+                    "https://github.com/pallets/jinja",
+                    "5ef70112a1ff19c05324ff889dd30405b1002044",
+                    [
+                        "-r",
+                        "pyproject.toml"
+                    ],
+                    "3.11",
+                    null,
+                    [
+                        "src"
+                    ],
+                    [],
+                    [
+                        "src/jinja2/nodes.py",
+                        [
+                            "src/jinja2/compiler.py",
+                            "src/jinja2/idtracking.py",
+                            "src/jinja2/visitor.py"
+                        ],
+                        "def iter_child_nodes(\n        self,\n        exclude: t.Container[str] | None = None,\n        only: t.Container[str] | None = None,\n    ) -> t.Iterator[\"Node\"]",
+                        "def iter_child_nodes(\n        self,\n        exclude: t.Container[str] | None = None,\n        only: t.Container[str] | None = None,\n    ) -> t.Iterator[str]"
+                    ],
+                    [
+                        "src"
+                    ]
+                ],
+                "tool": "UNSERIALIZABLE[<benchmark.tool.Ty object at 0x10ba54910>]"
+            },
+            "param": "updated-jinja-ty",
+            "extra_info": {},
+            "options": {
+                "disable_gc": false,
+                "timer": "perf_counter",
+                "min_rounds": 5,
+                "max_time": 1.0,
+                "min_time": 5e-06,
+                "precision": null,
+                "confidence": null,
+                "warmup": false
+            },
+            "stats": {
+                "min": 0.04071187484078109,
+                "max": 0.0486519169062376,
+                "mean": 0.04344489583745599,
+                "stddev": 0.002716547238576835,
+                "rounds": 10,
+                "median": 0.04332406248431653,
+                "iqr": 0.004782749805599451,
+                "q1": 0.04084850009530783,
+                "q3": 0.04563124990090728,
+                "iqr_outliers": 0,
+                "stddev_outliers": 2,
+                "outliers": "2;0",
+                "ld15iqr": 0.04071187484078109,
+                "hd15iqr": 0.0486519169062376,
+                "ops": 23.01766365700089,
+                "total": 0.4344489583745599,
+                "data": [
+                    0.04399816691875458,
+                    0.04071187484078109,
+                    0.04328495799563825,
+                    0.043363166972994804,
+                    0.04076320887543261,
+                    0.04084850009530783,
+                    0.046121457824483514,
+                    0.04563124990090728,
+                    0.0486519169062376,
+                    0.04107445804402232
+                ],
+                "iterations": 1
+            }
+        },
+        {
+            "group": "jinja",
+            "name": "test_incremental_edit[updated-jinja-ty]",
+            "fullname": "src/benchmark/test_lsp_diagnostics.py::test_incremental_edit[updated-jinja-ty]",
+            "params": {
+                "project_setup": [
+                    "jinja",
+                    "https://github.com/pallets/jinja",
+                    "5ef70112a1ff19c05324ff889dd30405b1002044",
+                    [
+                        "-r",
+                        "pyproject.toml"
+                    ],
+                    "3.11",
+                    null,
+                    [
+                        "src"
+                    ],
+                    [],
+                    [
+                        "src/jinja2/nodes.py",
+                        [
+                            "src/jinja2/compiler.py",
+                            "src/jinja2/idtracking.py",
+                            "src/jinja2/visitor.py"
+                        ],
+                        "def iter_child_nodes(\n        self,\n        exclude: t.Container[str] | None = None,\n        only: t.Container[str] | None = None,\n    ) -> t.Iterator[\"Node\"]",
+                        "def iter_child_nodes(\n        self,\n        exclude: t.Container[str] | None = None,\n        only: t.Container[str] | None = None,\n    ) -> t.Iterator[str]"
+                    ],
+                    [
+                        "src"
+                    ]
+                ],
+                "tool": "UNSERIALIZABLE[<benchmark.tool.Ty object at 0x10ba54910>]"
+            },
+            "param": "updated-jinja-ty",
+            "extra_info": {},
+            "options": {
+                "disable_gc": false,
+                "timer": "perf_counter",
+                "min_rounds": 5,
+                "max_time": 1.0,
+                "min_time": 5e-06,
+                "precision": null,
+                "confidence": null,
+                "warmup": false
+            },
+            "stats": {
+                "min": 0.008169125067070127,
+                "max": 0.00994229200296104,
+                "mean": 0.008599875192157925,
+                "stddev": 0.0005804060648446292,
+                "rounds": 10,
+                "median": 0.008353979443199933,
+                "iqr": 0.00012737512588500977,
+                "q1": 0.008303958922624588,
+                "q3": 0.008431334048509598,
+                "iqr_outliers": 2,
+                "stddev_outliers": 2,
+                "outliers": "2;2",
+                "ld15iqr": 0.008169125067070127,
+                "hd15iqr": 0.009385790908709168,
+                "ops": 116.28075729655734,
+                "total": 0.08599875192157924,
+                "data": [
+                    0.008352292003110051,
+                    0.008297499967738986,
+                    0.008303958922624588,
+                    0.008349834010004997,
+                    0.009385790908709168,
+                    0.008355666883289814,
+                    0.00994229200296104,
+                    0.008431334048509598,
+                    0.008169125067070127,
+                    0.008410958107560873
+                ],
+                "iterations": 1
+            }
+        }
+    ],
+    "datetime": "2026-11-26T00:34:33.373847+00:00",
+    "version": "5.3.0"
+}

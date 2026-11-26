@@ -1,0 +1,192 @@
+{
+    "machine_info": {
+        "node": "MacBook-Pro-8.local",
+        "processor": "arm",
+        "machine": "arm64",
+        "python_compiler": "Clang 23.1.3 ",
+        "python_implementation": "CPython",
+        "python_implementation_version": "3.15.1",
+        "python_version": "3.15.1",
+        "python_build": [
+            "main",
+            "Oct 21 2026 17:39:16"
+        ],
+        "release": "25.5.0",
+        "system": "Darwin",
+        "cpu": {
+            "python_version": "3.15.1.final.0 (64 bit)",
+            "cpuinfo_version": [
+                10,
+                1,
+                1
+            ],
+            "cpuinfo_version_string": "10.1.1",
+            "arch": "ARM_8",
+            "bits": 64,
+            "count": 16,
+            "arch_string_raw": "arm64"
+        }
+    },
+    "commit_info": {
+        "id": "504457130a2183e9f0c6f4e92ce1c43e970b70ca",
+        "time": "2026-11-04T13:31:31-05:00",
+        "author_time": "2026-11-04T13:31:31-05:00",
+        "dirty": false,
+        "project": "ty_benchmark",
+        "branch": "(detached head)"
+    },
+    "benchmarks": [
+        {
+            "group": "isort",
+            "name": "test_fetch_diagnostics[updated-isort-ty]",
+            "fullname": "src/benchmark/test_lsp_diagnostics.py::test_fetch_diagnostics[updated-isort-ty]",
+            "params": {
+                "project_setup": [
+                    "isort",
+                    "https://github.com/pycqa/isort",
+                    "a514c71ed86c2216d0040c7d60e302ed76a4f7ab",
+                    [
+                        "types-colorama",
+                        "colorama"
+                    ],
+                    "3.11",
+                    null,
+                    [
+                        "isort"
+                    ],
+                    [],
+                    [
+                        "isort/settings.py",
+                        [
+                            "isort/files.py"
+                        ],
+                        "def is_skipped(self, file_path: Path) -> bool:",
+                        "def is_skipped(self, file_path: str) -> bool:"
+                    ],
+                    []
+                ],
+                "tool": "UNSERIALIZABLE[<benchmark.tool.Ty object at 0x106f34910>]"
+            },
+            "param": "updated-isort-ty",
+            "extra_info": {},
+            "options": {
+                "disable_gc": false,
+                "timer": "perf_counter",
+                "min_rounds": 5,
+                "max_time": 1.0,
+                "min_time": 5e-06,
+                "precision": null,
+                "confidence": null,
+                "warmup": false
+            },
+            "stats": {
+                "min": 0.03840370895341039,
+                "max": 0.04136220784857869,
+                "mean": 0.03898277953267097,
+                "stddev": 0.0008802370106985321,
+                "rounds": 10,
+                "median": 0.03869956301059574,
+                "iqr": 0.00023724976927042007,
+                "q1": 0.03854025015607476,
+                "q3": 0.03877749992534518,
+                "iqr_outliers": 2,
+                "stddev_outliers": 1,
+                "outliers": "1;2",
+                "ld15iqr": 0.03840370895341039,
+                "hd15iqr": 0.03942195908166468,
+                "ops": 25.65235244864755,
+                "total": 0.38982779532670975,
+                "data": [
+                    0.038650209084153175,
+                    0.0387489169370383,
+                    0.03852533409371972,
+                    0.03840370895341039,
+                    0.038768584141507745,
+                    0.03854025015607476,
+                    0.03877749992534518,
+                    0.04136220784857869,
+                    0.03942195908166468,
+                    0.0386291251052171
+                ],
+                "iterations": 1
+            }
+        },
+        {
+            "group": "isort",
+            "name": "test_incremental_edit[updated-isort-ty]",
+            "fullname": "src/benchmark/test_lsp_diagnostics.py::test_incremental_edit[updated-isort-ty]",
+            "params": {
+                "project_setup": [
+                    "isort",
+                    "https://github.com/pycqa/isort",
+                    "a514c71ed86c2216d0040c7d60e302ed76a4f7ab",
+                    [
+                        "types-colorama",
+                        "colorama"
+                    ],
+                    "3.11",
+                    null,
+                    [
+                        "isort"
+                    ],
+                    [],
+                    [
+                        "isort/settings.py",
+                        [
+                            "isort/files.py"
+                        ],
+                        "def is_skipped(self, file_path: Path) -> bool:",
+                        "def is_skipped(self, file_path: str) -> bool:"
+                    ],
+                    []
+                ],
+                "tool": "UNSERIALIZABLE[<benchmark.tool.Ty object at 0x106f34910>]"
+            },
+            "param": "updated-isort-ty",
+            "extra_info": {},
+            "options": {
+                "disable_gc": false,
+                "timer": "perf_counter",
+                "min_rounds": 5,
+                "max_time": 1.0,
+                "min_time": 5e-06,
+                "precision": null,
+                "confidence": null,
+                "warmup": false
+            },
+            "stats": {
+                "min": 0.01419925014488399,
+                "max": 0.014631957979872823,
+                "mean": 0.014428937761113047,
+                "stddev": 0.00012427145909657073,
+                "rounds": 10,
+                "median": 0.014450563117861748,
+                "iqr": 0.0001310841180384159,
+                "q1": 0.0143584159668535,
+                "q3": 0.014489500084891915,
+                "iqr_outliers": 0,
+                "stddev_outliers": 3,
+                "outliers": "3;0",
+                "ld15iqr": 0.01419925014488399,
+                "hd15iqr": 0.014631957979872823,
+                "ops": 69.3051710774626,
+                "total": 0.14428937761113048,
+                "data": [
+                    0.014415792189538479,
+                    0.014287334168329835,
+                    0.014485334046185017,
+                    0.014487834181636572,
+                    0.014489500084891915,
+                    0.014524458907544613,
+                    0.014409499941393733,
+                    0.01419925014488399,
+                    0.014631957979872823,
+                    0.0143584159668535
+                ],
+                "iterations": 1
+            }
+        }
+    ],
+    "datetime": "2026-11-26T00:34:31.053565+00:00",
+    "version": "5.3.0"
+}

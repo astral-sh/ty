@@ -1,0 +1,1 @@
+{"extends": "./pyrightconfig.json", "include": ["pandas-stubs"], "exclude": ["pandas-stubs/io/parsers.pyi"], "analyzeUnannotatedFunctions": true}

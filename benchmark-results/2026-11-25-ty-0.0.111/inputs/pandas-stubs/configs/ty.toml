@@ -1,0 +1,8 @@
+[src]
+include = ["pandas-stubs"]
+exclude = ["pandas-stubs/io/parsers.pyi"]
+
+[environment]
+python-version = "3.11"
+python = "/tmp/ty-benchmark-0.0.96-2026-11-02/checkouts/updated-pandas-stubs/venv"
+extra-paths = []

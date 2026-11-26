@@ -1,0 +1,202 @@
+{
+    "machine_info": {
+        "node": "MacBook-Pro-8.local",
+        "processor": "arm",
+        "machine": "arm64",
+        "python_compiler": "Clang 23.1.3 ",
+        "python_implementation": "CPython",
+        "python_implementation_version": "3.15.1",
+        "python_version": "3.15.1",
+        "python_build": [
+            "main",
+            "Oct 21 2026 17:39:16"
+        ],
+        "release": "25.5.0",
+        "system": "Darwin",
+        "cpu": {
+            "python_version": "3.15.1.final.0 (64 bit)",
+            "cpuinfo_version": [
+                10,
+                1,
+                1
+            ],
+            "cpuinfo_version_string": "10.1.1",
+            "arch": "ARM_8",
+            "bits": 64,
+            "count": 16,
+            "arch_string_raw": "arm64"
+        }
+    },
+    "commit_info": {
+        "id": "504457130a2183e9f0c6f4e92ce1c43e970b70ca",
+        "time": "2026-11-04T13:31:31-05:00",
+        "author_time": "2026-11-04T13:31:31-05:00",
+        "dirty": false,
+        "project": "ty_benchmark",
+        "branch": "(detached head)"
+    },
+    "benchmarks": [
+        {
+            "group": "openai",
+            "name": "test_fetch_diagnostics[updated-openai-ty]",
+            "fullname": "src/benchmark/test_lsp_diagnostics.py::test_fetch_diagnostics[updated-openai-ty]",
+            "params": {
+                "project_setup": [
+                    "openai",
+                    "https://github.com/openai/openai-python",
+                    "f6e8480f9a5b2a4d02b17a1da54a1e57964bc312",
+                    [
+                        "-r",
+                        "pyproject.toml",
+                        "--all-extras"
+                    ],
+                    "3.11",
+                    null,
+                    [
+                        "src/openai"
+                    ],
+                    [
+                        "src/openai/_vendor/**"
+                    ],
+                    [
+                        "src/openai/_compat.py",
+                        [
+                            "src/openai/_models.py"
+                        ],
+                        "def get_model_fields(model: type[pydantic.BaseModel]) -> dict[str, FieldInfo]:",
+                        "def get_model_fields(model: type[pydantic.BaseModel]) -> int:"
+                    ],
+                    [
+                        "src"
+                    ]
+                ],
+                "tool": "UNSERIALIZABLE[<benchmark.tool.Ty object at 0x10affc910>]"
+            },
+            "param": "updated-openai-ty",
+            "extra_info": {},
+            "options": {
+                "disable_gc": false,
+                "timer": "perf_counter",
+                "min_rounds": 5,
+                "max_time": 1.0,
+                "min_time": 5e-06,
+                "precision": null,
+                "confidence": null,
+                "warmup": false
+            },
+            "stats": {
+                "min": 0.05455495812930167,
+                "max": 0.0557154999114573,
+                "mean": 0.054813454090617594,
+                "stddev": 0.00033778483885330777,
+                "rounds": 10,
+                "median": 0.05473218753468245,
+                "iqr": 0.00018349988386034966,
+                "q1": 0.05462445807643235,
+                "q3": 0.0548079579602927,
+                "iqr_outliers": 1,
+                "stddev_outliers": 1,
+                "outliers": "1;1",
+                "ld15iqr": 0.05455495812930167,
+                "hd15iqr": 0.0557154999114573,
+                "ops": 18.243696125166643,
+                "total": 0.548134540906176,
+                "data": [
+                    0.0546812079846859,
+                    0.054598291870206594,
+                    0.05462445807643235,
+                    0.05455495812930167,
+                    0.0557154999114573,
+                    0.054939999943599105,
+                    0.0548079579602927,
+                    0.05478316708467901,
+                    0.05478637502528727,
+                    0.054642624920234084
+                ],
+                "iterations": 1
+            }
+        },
+        {
+            "group": "openai",
+            "name": "test_incremental_edit[updated-openai-ty]",
+            "fullname": "src/benchmark/test_lsp_diagnostics.py::test_incremental_edit[updated-openai-ty]",
+            "params": {
+                "project_setup": [
+                    "openai",
+                    "https://github.com/openai/openai-python",
+                    "f6e8480f9a5b2a4d02b17a1da54a1e57964bc312",
+                    [
+                        "-r",
+                        "pyproject.toml",
+                        "--all-extras"
+                    ],
+                    "3.11",
+                    null,
+                    [
+                        "src/openai"
+                    ],
+                    [
+                        "src/openai/_vendor/**"
+                    ],
+                    [
+                        "src/openai/_compat.py",
+                        [
+                            "src/openai/_models.py"
+                        ],
+                        "def get_model_fields(model: type[pydantic.BaseModel]) -> dict[str, FieldInfo]:",
+                        "def get_model_fields(model: type[pydantic.BaseModel]) -> int:"
+                    ],
+                    [
+                        "src"
+                    ]
+                ],
+                "tool": "UNSERIALIZABLE[<benchmark.tool.Ty object at 0x10affc910>]"
+            },
+            "param": "updated-openai-ty",
+            "extra_info": {},
+            "options": {
+                "disable_gc": false,
+                "timer": "perf_counter",
+                "min_rounds": 5,
+                "max_time": 1.0,
+                "min_time": 5e-06,
+                "precision": null,
+                "confidence": null,
+                "warmup": false
+            },
+            "stats": {
+                "min": 0.0035868750419467688,
+                "max": 0.0038647500332444906,
+                "mean": 0.0037531042005866768,
+                "stddev": 9.33023942863092e-05,
+                "rounds": 10,
+                "median": 0.0037760419072583318,
+                "iqr": 8.799904026091099e-05,
+                "q1": 0.0037242090329527855,
+                "q3": 0.0038122080732136965,
+                "iqr_outliers": 1,
+                "stddev_outliers": 4,
+                "outliers": "4;1",
+                "ld15iqr": 0.003610125044360757,
+                "hd15iqr": 0.0038647500332444906,
+                "ops": 266.4461060909746,
+                "total": 0.037531042005866766,
+                "data": [
+                    0.0037805838510394096,
+                    0.0035868750419467688,
+                    0.003771499963477254,
+                    0.0037242090329527855,
+                    0.003852125024423003,
+                    0.0038122080732136965,
+                    0.003610125044360757,
+                    0.0038647500332444906,
+                    0.0037302079144865274,
+                    0.0037984580267220736
+                ],
+                "iterations": 1
+            }
+        }
+    ],
+    "datetime": "2026-11-26T00:35:16.566473+00:00",
+    "version": "5.3.0"
+}

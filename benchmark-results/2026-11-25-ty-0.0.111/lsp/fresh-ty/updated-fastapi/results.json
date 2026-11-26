@@ -1,0 +1,196 @@
+{
+    "machine_info": {
+        "node": "MacBook-Pro-8.local",
+        "processor": "arm",
+        "machine": "arm64",
+        "python_compiler": "Clang 23.1.3 ",
+        "python_implementation": "CPython",
+        "python_implementation_version": "3.15.1",
+        "python_version": "3.15.1",
+        "python_build": [
+            "main",
+            "Oct 21 2026 17:39:16"
+        ],
+        "release": "25.5.0",
+        "system": "Darwin",
+        "cpu": {
+            "python_version": "3.15.1.final.0 (64 bit)",
+            "cpuinfo_version": [
+                10,
+                1,
+                1
+            ],
+            "cpuinfo_version_string": "10.1.1",
+            "arch": "ARM_8",
+            "bits": 64,
+            "count": 16,
+            "arch_string_raw": "arm64"
+        }
+    },
+    "commit_info": {
+        "id": "504457130a2183e9f0c6f4e92ce1c43e970b70ca",
+        "time": "2026-11-04T13:31:31-05:00",
+        "author_time": "2026-11-04T13:31:31-05:00",
+        "dirty": false,
+        "project": "ty_benchmark",
+        "branch": "(detached head)"
+    },
+    "benchmarks": [
+        {
+            "group": "fastapi",
+            "name": "test_fetch_diagnostics[updated-fastapi-ty]",
+            "fullname": "src/benchmark/test_lsp_diagnostics.py::test_fetch_diagnostics[updated-fastapi-ty]",
+            "params": {
+                "project_setup": [
+                    "fastapi",
+                    "https://github.com/fastapi/fastapi",
+                    "7a0a3f0b286c6c865cf4398ea0e957a87b8bffa4",
+                    [
+                        "-r",
+                        "pyproject.toml",
+                        "--extra",
+                        "standard"
+                    ],
+                    "3.11",
+                    null,
+                    [
+                        "fastapi"
+                    ],
+                    [],
+                    [
+                        "fastapi/utils.py",
+                        [
+                            "fastapi/routing.py"
+                        ],
+                        "def generate_unique_id(route: \"APIRoute\") -> str:",
+                        "def generate_unique_id(route: \"APIRoute\") -> int:"
+                    ],
+                    []
+                ],
+                "tool": "UNSERIALIZABLE[<benchmark.tool.Ty object at 0x10b48c910>]"
+            },
+            "param": "updated-fastapi-ty",
+            "extra_info": {},
+            "options": {
+                "disable_gc": false,
+                "timer": "perf_counter",
+                "min_rounds": 5,
+                "max_time": 1.0,
+                "min_time": 5e-06,
+                "precision": null,
+                "confidence": null,
+                "warmup": false
+            },
+            "stats": {
+                "min": 0.07846737490035594,
+                "max": 0.07904304191470146,
+                "mean": 0.07873426671139896,
+                "stddev": 0.0002185866792705551,
+                "rounds": 10,
+                "median": 0.07869089604355395,
+                "iqr": 0.0003843759186565876,
+                "q1": 0.0785509580746293,
+                "q3": 0.0789353339932859,
+                "iqr_outliers": 0,
+                "stddev_outliers": 3,
+                "outliers": "3;0",
+                "ld15iqr": 0.07846737490035594,
+                "hd15iqr": 0.07904304191470146,
+                "ops": 12.700950193205044,
+                "total": 0.7873426671139896,
+                "data": [
+                    0.0785509580746293,
+                    0.07890320802107453,
+                    0.07846737490035594,
+                    0.07897208305075765,
+                    0.07852783310227096,
+                    0.07857270911335945,
+                    0.0789353339932859,
+                    0.07904304191470146,
+                    0.07856104196980596,
+                    0.07880908297374845
+                ],
+                "iterations": 1
+            }
+        },
+        {
+            "group": "fastapi",
+            "name": "test_incremental_edit[updated-fastapi-ty]",
+            "fullname": "src/benchmark/test_lsp_diagnostics.py::test_incremental_edit[updated-fastapi-ty]",
+            "params": {
+                "project_setup": [
+                    "fastapi",
+                    "https://github.com/fastapi/fastapi",
+                    "7a0a3f0b286c6c865cf4398ea0e957a87b8bffa4",
+                    [
+                        "-r",
+                        "pyproject.toml",
+                        "--extra",
+                        "standard"
+                    ],
+                    "3.11",
+                    null,
+                    [
+                        "fastapi"
+                    ],
+                    [],
+                    [
+                        "fastapi/utils.py",
+                        [
+                            "fastapi/routing.py"
+                        ],
+                        "def generate_unique_id(route: \"APIRoute\") -> str:",
+                        "def generate_unique_id(route: \"APIRoute\") -> int:"
+                    ],
+                    []
+                ],
+                "tool": "UNSERIALIZABLE[<benchmark.tool.Ty object at 0x10b48c910>]"
+            },
+            "param": "updated-fastapi-ty",
+            "extra_info": {},
+            "options": {
+                "disable_gc": false,
+                "timer": "perf_counter",
+                "min_rounds": 5,
+                "max_time": 1.0,
+                "min_time": 5e-06,
+                "precision": null,
+                "confidence": null,
+                "warmup": false
+            },
+            "stats": {
+                "min": 0.005845041945576668,
+                "max": 0.0068365419283509254,
+                "mean": 0.006062116683460772,
+                "stddev": 0.00031943590385313185,
+                "rounds": 10,
+                "median": 0.00593268743250519,
+                "iqr": 0.00011470913887023926,
+                "q1": 0.005904915975406766,
+                "q3": 0.006019625114277005,
+                "iqr_outliers": 2,
+                "stddev_outliers": 2,
+                "outliers": "2;2",
+                "ld15iqr": 0.005845041945576668,
+                "hd15iqr": 0.00642987503670156,
+                "ops": 164.9588835411718,
+                "total": 0.06062116683460772,
+                "data": [
+                    0.006019625114277005,
+                    0.005911000072956085,
+                    0.005945916986092925,
+                    0.005942541873082519,
+                    0.005845041945576668,
+                    0.005922832991927862,
+                    0.005904915975406766,
+                    0.005862874910235405,
+                    0.0068365419283509254,
+                    0.00642987503670156
+                ],
+                "iterations": 1
+            }
+        }
+    ],
+    "datetime": "2026-11-26T00:35:01.647590+00:00",
+    "version": "5.3.0"
+}

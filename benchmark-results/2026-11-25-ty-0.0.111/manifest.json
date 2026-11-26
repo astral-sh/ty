@@ -1,0 +1,2498 @@
+{
+  "schema_version": 1,
+  "release": {
+    "release": "0.0.111",
+    "version": "ty 0.0.111 (f270073e9 2026-11-25)",
+    "binary_sha256": "c9a6bb353b02b546fb1513a4ebc344a5c0625fb3d922010618b7427b6f1e176f"
+  },
+  "baseline_archive": {
+    "url": "https://github.com/astral-sh/ty/tree/5931a2e2dcfc01b1036606a95617b543744ec6ff/benchmark-results/2026-11-25-ty-0.0.110",
+    "manifest_sha256": "0d7da4bd8caa441507f76df0f480b0c3e1650c7497fab8ee382cf145eb10706b",
+    "scope": "Immutable prior ty measurements, retained other-checker exports and earlier input metadata."
+  },
+  "source": {
+    "repository": "astral-sh/ruff",
+    "commit": "504457130a2183e9f0c6f4e92ce1c43e970b70ca",
+    "guide_url": "https://github.com/astral-sh/ruff/blob/504457130a2183e9f0c6f4e92ce1c43e970b70ca/scripts/ty_benchmark/README.md"
+  },
+  "tool_versions": {
+    "uv": "uv 0.13.5 (46776a95d 2026-10-21 aarch64-apple-darwin)",
+    "hyperfine": "hyperfine 2.0.0",
+    "node": "v26.12.1",
+    "npm": "12.2.1",
+    "ty": "ty 0.0.111 (f270073e9 2026-11-25)",
+    "pyrefly": "pyrefly 1.4.0",
+    "zuban": "zuban 0.10.2",
+    "pyright": "pyright 1.1.414",
+    "mypy": "mypy 2.4.0 (compiled: yes)"
+  },
+  "measurement": {
+    "cli": {
+      "warmup": 3,
+      "minimum_measured_runs": 10,
+      "concurrency": "native checker defaults",
+      "cold_mypy": "Result cache removed before each warmup/measured invocation; OS caches not flushed.",
+      "rss": "Hyperfine2 peak process RSS on macOS; concurrent process memory is not summed."
+    },
+    "lsp": {
+      "warmup_rounds": 2,
+      "measured_rounds": 10,
+      "iterations": 1,
+      "server_pool_threads": 16
+    }
+  },
+  "machine": {
+    "system": "macOS 26.5.2 arm64",
+    "processor": "Apple M3 Max",
+    "cores": 16,
+    "performance_cores": 12,
+    "efficiency_cores": 4,
+    "memory_gib": 128
+  },
+  "published_report": {
+    "commit": "65a5e069acf85d92357eec02086c568db0007d27",
+    "url": "https://github.com/astral-sh/ty/blob/65a5e069acf85d92357eec02086c568db0007d27/BENCHMARKS.md"
+  },
+  "dates": {
+    "fresh_ty_cli": {
+      "started_at": "2026-11-26T00:35:48.207285+00:00",
+      "completed_at": "2026-11-26T00:37:35.606881+00:00"
+    },
+    "fresh_ty_lsp": {
+      "started_at": "2026-11-26T00:34:18.275036+00:00",
+      "completed_at": "2026-11-26T00:35:19.612086+00:00"
+    },
+    "retained_cli": "2026-11-04",
+    "retained_lsp": "2026-11-03"
+  },
+  "counts": {
+    "fresh_ty_cli_exports": 18,
+    "fresh_ty_cli_samples": 421,
+    "retained_cli_outcomes_linked": 72,
+    "active_cli_successful_outcomes": 89,
+    "retained_cli_failures": 1,
+    "fresh_ty_lsp_full_exports": 17,
+    "fresh_ty_lsp_benchmarks": 34,
+    "fresh_ty_lsp_samples": 340,
+    "active_lsp_timing_objects": 133,
+    "active_lsp_outcomes": 136,
+    "retained_lsp_failures": 3
+  },
+  "projects": [
+    {
+      "name": "black",
+      "input_key": "updated-black",
+      "revision": "55996d1fb8342725c8a19b6023cd9439c3c1d6f7",
+      "python_version": "3.11",
+      "root_count": 42,
+      "workload": {
+        "roots": 42,
+        "stubs": 1,
+        "eligible_implementation_lines": 20011,
+        "selected_implementation_lines": 20011,
+        "omitted_implementation_line_fraction": 0.0,
+        "manifest_sha256": "d43588222fe8fbc476269df02caa3ca4d9203a391700a9e443ecc3115655f79d"
+      },
+      "root_manifest_sha256": "d43588222fe8fbc476269df02caa3ca4d9203a391700a9e443ecc3115655f79d",
+      "dependency_freeze_sha256": "6e66bdc1ad811c338de3496b0a24647fa38e1eb89fe35936e13e1383cbe32811",
+      "root_list": "inputs/black/benchmark-files.txt",
+      "dependency_freeze": "inputs/black/dependencies.txt",
+      "configs": [
+        "inputs/black/configs/mypy-benchmark.toml",
+        "inputs/black/configs/pyrefly.toml",
+        "inputs/black/configs/pyrightconfig.benchmark.json",
+        "inputs/black/configs/ty.toml",
+        "inputs/black/configs/zuban-benchmark.toml",
+        "inputs/black/configs/zuban-canonical-benchmark.toml"
+      ]
+    },
+    {
+      "name": "discord.py",
+      "input_key": "updated-discord.py",
+      "revision": "65232c38702be5844cf2ce865a4777eb1928b5d0",
+      "python_version": "3.11",
+      "root_count": 144,
+      "workload": {
+        "roots": 144,
+        "stubs": 0,
+        "eligible_implementation_lines": 90510,
+        "selected_implementation_lines": 90510,
+        "omitted_implementation_line_fraction": 0.0,
+        "manifest_sha256": "acc49699cabeba8f137b492eba0bfe52af923e7fcb3af2e11181f3e1ded08a1e"
+      },
+      "root_manifest_sha256": "acc49699cabeba8f137b492eba0bfe52af923e7fcb3af2e11181f3e1ded08a1e",
+      "dependency_freeze_sha256": "6f0e910e8f49d0f7d3fab925f46ef7e518c50fd9498938bf96221d11758040dd",
+      "root_list": "inputs/discord.py/benchmark-files.txt",
+      "dependency_freeze": "inputs/discord.py/dependencies.txt",
+      "configs": [
+        "inputs/discord.py/configs/mypy-benchmark.toml",
+        "inputs/discord.py/configs/pyrefly.toml",
+        "inputs/discord.py/configs/pyrightconfig.benchmark.json",
+        "inputs/discord.py/configs/ty.toml",
+        "inputs/discord.py/configs/zuban-benchmark.toml",
+        "inputs/discord.py/configs/zuban-canonical-benchmark.toml"
+      ]
+    },
+    {
+      "name": "homeassistant",
+      "input_key": "updated-homeassistant",
+      "revision": "c19ae285ede74cd64c3045a3a4aa43290c224f1b",
+      "python_version": "3.14",
+      "root_count": 10765,
+      "workload": {
+        "roots": 10765,
+        "stubs": 3,
+        "eligible_implementation_lines": 1632937,
+        "selected_implementation_lines": 1632877,
+        "omitted_implementation_line_fraction": 3.6743609826972445e-05,
+        "manifest_sha256": "7d54c399da2cb39a697d4e631e7fe8c504c6ee54dffdfde1ffd92ef727512539"
+      },
+      "root_manifest_sha256": "7d54c399da2cb39a697d4e631e7fe8c504c6ee54dffdfde1ffd92ef727512539",
+      "dependency_freeze_sha256": "3292616cacb5f17f36aac5db9656766ee7e6631fb2f3700c2db274dbbac80c1f",
+      "root_list": "inputs/homeassistant/benchmark-files.txt",
+      "dependency_freeze": "inputs/homeassistant/dependencies.txt",
+      "configs": [
+        "inputs/homeassistant/configs/mypy-benchmark.toml",
+        "inputs/homeassistant/configs/pyrefly.toml",
+        "inputs/homeassistant/configs/pyrightconfig.benchmark.json",
+        "inputs/homeassistant/configs/ty.toml",
+        "inputs/homeassistant/configs/zuban-benchmark.toml",
+        "inputs/homeassistant/configs/zuban-canonical-benchmark.toml"
+      ]
+    },
+    {
+      "name": "isort",
+      "input_key": "updated-isort",
+      "revision": "a514c71ed86c2216d0040c7d60e302ed76a4f7ab",
+      "python_version": "3.11",
+      "root_count": 40,
+      "workload": {
+        "roots": 40,
+        "stubs": 0,
+        "eligible_implementation_lines": 10871,
+        "selected_implementation_lines": 10871,
+        "omitted_implementation_line_fraction": 0.0,
+        "manifest_sha256": "6732b296157e8cadd201facc3b142fead537037810de35151b336b02ef6ccb7f"
+      },
+      "root_manifest_sha256": "6732b296157e8cadd201facc3b142fead537037810de35151b336b02ef6ccb7f",
+      "dependency_freeze_sha256": "d789cd104bf289366583a5f0a30c40e82fc7994e2f923cc451214a15e7dfb412",
+      "root_list": "inputs/isort/benchmark-files.txt",
+      "dependency_freeze": "inputs/isort/dependencies.txt",
+      "configs": [
+        "inputs/isort/configs/mypy-benchmark.toml",
+        "inputs/isort/configs/pyrefly.toml",
+        "inputs/isort/configs/pyrightconfig.benchmark.json",
+        "inputs/isort/configs/ty.toml",
+        "inputs/isort/configs/zuban-benchmark.toml",
+        "inputs/isort/configs/zuban-canonical-benchmark.toml"
+      ]
+    },
+    {
+      "name": "jinja",
+      "input_key": "updated-jinja",
+      "revision": "5ef70112a1ff19c05324ff889dd30405b1002044",
+      "python_version": "3.11",
+      "root_count": 25,
+      "workload": {
+        "roots": 25,
+        "stubs": 0,
+        "eligible_implementation_lines": 14351,
+        "selected_implementation_lines": 14351,
+        "omitted_implementation_line_fraction": 0.0,
+        "manifest_sha256": "8b7527c7ce393863462811693a3d30f54c357351d241912c952514ece2fa15ba"
+      },
+      "root_manifest_sha256": "8b7527c7ce393863462811693a3d30f54c357351d241912c952514ece2fa15ba",
+      "dependency_freeze_sha256": "5faae045958aef33d0bcd48e0db9f31a398b5ee7810f53a731bf216982553c99",
+      "root_list": "inputs/jinja/benchmark-files.txt",
+      "dependency_freeze": "inputs/jinja/dependencies.txt",
+      "configs": [
+        "inputs/jinja/configs/mypy-benchmark.toml",
+        "inputs/jinja/configs/pyrefly.toml",
+        "inputs/jinja/configs/pyrightconfig.benchmark.json",
+        "inputs/jinja/configs/ty.toml",
+        "inputs/jinja/configs/zuban-benchmark.toml",
+        "inputs/jinja/configs/zuban-canonical-benchmark.toml"
+      ]
+    },
+    {
+      "name": "pandas",
+      "input_key": "updated-pandas",
+      "revision": "a0225b65720018f4654390bb16d254daa6ee5e54",
+      "python_version": "3.11",
+      "root_count": 337,
+      "workload": {
+        "roots": 337,
+        "stubs": 41,
+        "eligible_implementation_lines": 276310,
+        "selected_implementation_lines": 276310,
+        "omitted_implementation_line_fraction": 0.0,
+        "manifest_sha256": "7a01984ee8d028744741b2b6853d52fd8ba711a9223efedaadd3f6c7d347d2df"
+      },
+      "root_manifest_sha256": "7a01984ee8d028744741b2b6853d52fd8ba711a9223efedaadd3f6c7d347d2df",
+      "dependency_freeze_sha256": "f5f35bc23997751f05b11d8d822f3b7815f41007f76873e8d341a52536dc5657",
+      "root_list": "inputs/pandas/benchmark-files.txt",
+      "dependency_freeze": "inputs/pandas/dependencies.txt",
+      "configs": [
+        "inputs/pandas/configs/mypy-benchmark.toml",
+        "inputs/pandas/configs/pyrefly.toml",
+        "inputs/pandas/configs/pyrightconfig.benchmark.json",
+        "inputs/pandas/configs/ty.toml",
+        "inputs/pandas/configs/zuban-benchmark.toml",
+        "inputs/pandas/configs/zuban-canonical-benchmark.toml"
+      ]
+    },
+    {
+      "name": "pandas-stubs",
+      "input_key": "updated-pandas-stubs",
+      "revision": "8dd6d91b1c05b26e30f7ddbe3dc3d4042a92bdd6",
+      "python_version": "3.11",
+      "root_count": 183,
+      "workload": {
+        "roots": 183,
+        "stubs": 183,
+        "eligible_implementation_lines": 0,
+        "selected_implementation_lines": 0,
+        "omitted_implementation_line_fraction": 0,
+        "manifest_sha256": "1308b818f6cd705b6ad0b6ab972caf4065c66b51cd29599c39880b677ca5fdeb"
+      },
+      "root_manifest_sha256": "1308b818f6cd705b6ad0b6ab972caf4065c66b51cd29599c39880b677ca5fdeb",
+      "dependency_freeze_sha256": "f330b1346af0e7a5f9cffdb785390af9dea2e619106897521a64c69cd012a1aa",
+      "root_list": "inputs/pandas-stubs/benchmark-files.txt",
+      "dependency_freeze": "inputs/pandas-stubs/dependencies.txt",
+      "configs": [
+        "inputs/pandas-stubs/configs/mypy-benchmark.toml",
+        "inputs/pandas-stubs/configs/pyrefly.toml",
+        "inputs/pandas-stubs/configs/pyrightconfig.benchmark.json",
+        "inputs/pandas-stubs/configs/ty.toml",
+        "inputs/pandas-stubs/configs/zuban-benchmark.toml",
+        "inputs/pandas-stubs/configs/zuban-canonical-benchmark.toml"
+      ]
+    },
+    {
+      "name": "prefect",
+      "input_key": "updated-prefect",
+      "revision": "a9452ac21852755311913cb27887b083b5007c03",
+      "python_version": "3.11",
+      "root_count": 58,
+      "workload": {
+        "roots": 58,
+        "stubs": 0,
+        "eligible_implementation_lines": 17612,
+        "selected_implementation_lines": 17612,
+        "omitted_implementation_line_fraction": 0.0,
+        "manifest_sha256": "9a73fd6fb704d752f4bf4b8d26668428aa12de6a3f7b7ebda755340502febc52"
+      },
+      "root_manifest_sha256": "9a73fd6fb704d752f4bf4b8d26668428aa12de6a3f7b7ebda755340502febc52",
+      "dependency_freeze_sha256": "44bd442159782765272dafe9fbfb358018cf2fbfed0efe90a4a78800c231c8b0",
+      "root_list": "inputs/prefect/benchmark-files.txt",
+      "dependency_freeze": "inputs/prefect/dependencies.txt",
+      "configs": [
+        "inputs/prefect/configs/mypy-benchmark.toml",
+        "inputs/prefect/configs/pyrefly.toml",
+        "inputs/prefect/configs/pyrightconfig.benchmark.json",
+        "inputs/prefect/configs/ty.toml",
+        "inputs/prefect/configs/zuban-benchmark.toml",
+        "inputs/prefect/configs/zuban-canonical-benchmark.toml"
+      ]
+    },
+    {
+      "name": "pytorch",
+      "input_key": "updated-pytorch",
+      "revision": "ab92945cea42e47ae398aead69af0872d340ea0f",
+      "python_version": "3.11",
+      "root_count": 2416,
+      "workload": {
+        "roots": 2416,
+        "stubs": 37,
+        "eligible_implementation_lines": 1221996,
+        "selected_implementation_lines": 1218144,
+        "omitted_implementation_line_fraction": 0.0031522198108667743,
+        "manifest_sha256": "59b7eb4ea16968bbd533ad42a9da3181268cd5311552ee1ff5a27b6379c0b216"
+      },
+      "root_manifest_sha256": "59b7eb4ea16968bbd533ad42a9da3181268cd5311552ee1ff5a27b6379c0b216",
+      "dependency_freeze_sha256": "e635c63eda3d086df2892ed766e3f1d363222636747f170116e9d3a31e44b96e",
+      "root_list": "inputs/pytorch/benchmark-files.txt",
+      "dependency_freeze": "inputs/pytorch/dependencies.txt",
+      "configs": [
+        "inputs/pytorch/configs/mypy-benchmark.toml",
+        "inputs/pytorch/configs/pyrefly.toml",
+        "inputs/pytorch/configs/pyrightconfig.benchmark.json",
+        "inputs/pytorch/configs/ty.toml",
+        "inputs/pytorch/configs/zuban-benchmark.toml",
+        "inputs/pytorch/configs/zuban-canonical-benchmark.toml"
+      ]
+    },
+    {
+      "name": "httpx",
+      "input_key": "updated-httpx",
+      "revision": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254",
+      "python_version": "3.11",
+      "root_count": 23,
+      "workload": {
+        "roots": 23,
+        "stubs": 0,
+        "eligible_implementation_lines": 8827,
+        "selected_implementation_lines": 8827,
+        "omitted_implementation_line_fraction": 0.0,
+        "manifest_sha256": "6c94a127c86bca35d803c9de52e2b1ff1a8d0b48d3d9fd54bd30f7562eda0e63"
+      },
+      "root_manifest_sha256": "6c94a127c86bca35d803c9de52e2b1ff1a8d0b48d3d9fd54bd30f7562eda0e63",
+      "dependency_freeze_sha256": "0f37628eb395fc20e3cf79aaa21c94059acd556738e984cdf44e8d7347050a36",
+      "root_list": "inputs/httpx/benchmark-files.txt",
+      "dependency_freeze": "inputs/httpx/dependencies.txt",
+      "configs": [
+        "inputs/httpx/configs/mypy-benchmark.toml",
+        "inputs/httpx/configs/pyrefly.toml",
+        "inputs/httpx/configs/pyrightconfig.benchmark.json",
+        "inputs/httpx/configs/ty.toml",
+        "inputs/httpx/configs/zuban-benchmark.toml",
+        "inputs/httpx/configs/zuban-canonical-benchmark.toml"
+      ]
+    },
+    {
+      "name": "numpy",
+      "input_key": "updated-numpy",
+      "revision": "f9f1772ce010001208475f751d19253469788410",
+      "python_version": "3.12",
+      "root_count": 205,
+      "workload": {
+        "roots": 205,
+        "stubs": 167,
+        "eligible_implementation_lines": 125021,
+        "selected_implementation_lines": 12660,
+        "omitted_implementation_line_fraction": 0.8987370121819535,
+        "manifest_sha256": "73ffa00552444e85c8570d19596ecf3b21121ee4422ef9431dba281f5c99ac33"
+      },
+      "root_manifest_sha256": "73ffa00552444e85c8570d19596ecf3b21121ee4422ef9431dba281f5c99ac33",
+      "dependency_freeze_sha256": "b50b9c9157e96d30a206975c58dbc58182f4669242586252a7bc491b5602e0b8",
+      "root_list": "inputs/numpy/benchmark-files.txt",
+      "dependency_freeze": "inputs/numpy/dependencies.txt",
+      "configs": [
+        "inputs/numpy/configs/mypy-benchmark.toml",
+        "inputs/numpy/configs/pyrefly.toml",
+        "inputs/numpy/configs/pyrightconfig.benchmark.json",
+        "inputs/numpy/configs/ty.toml",
+        "inputs/numpy/configs/zuban-benchmark.toml",
+        "inputs/numpy/configs/zuban-canonical-benchmark.toml"
+      ]
+    },
+    {
+      "name": "fastapi",
+      "input_key": "updated-fastapi",
+      "revision": "7a0a3f0b286c6c865cf4398ea0e957a87b8bffa4",
+      "python_version": "3.11",
+      "root_count": 52,
+      "workload": {
+        "roots": 52,
+        "stubs": 0,
+        "eligible_implementation_lines": 22748,
+        "selected_implementation_lines": 22748,
+        "omitted_implementation_line_fraction": 0.0,
+        "manifest_sha256": "a5301dd6beba5eaf8de5a1f6176a2df197ea4509b45630d6ca855f5f72380df2"
+      },
+      "root_manifest_sha256": "a5301dd6beba5eaf8de5a1f6176a2df197ea4509b45630d6ca855f5f72380df2",
+      "dependency_freeze_sha256": "a3cdec0dad559d0739b234839a49edce6355c423ec450858a14d00a959d90c9d",
+      "root_list": "inputs/fastapi/benchmark-files.txt",
+      "dependency_freeze": "inputs/fastapi/dependencies.txt",
+      "configs": [
+        "inputs/fastapi/configs/mypy-benchmark.toml",
+        "inputs/fastapi/configs/pyrefly.toml",
+        "inputs/fastapi/configs/pyrightconfig.benchmark.json",
+        "inputs/fastapi/configs/ty.toml",
+        "inputs/fastapi/configs/zuban-benchmark.toml",
+        "inputs/fastapi/configs/zuban-canonical-benchmark.toml"
+      ]
+    },
+    {
+      "name": "sqlalchemy",
+      "input_key": "updated-sqlalchemy",
+      "revision": "10f4d1e2d706a7722ca78e79ce05b00333a7aa5b",
+      "python_version": "3.11",
+      "root_count": 258,
+      "workload": {
+        "roots": 258,
+        "stubs": 0,
+        "eligible_implementation_lines": 253551,
+        "selected_implementation_lines": 253551,
+        "omitted_implementation_line_fraction": 0.0,
+        "manifest_sha256": "63af6a6d83d2936bea987cfc1c1309a043d232df9154025e275457588a3ee6a2"
+      },
+      "root_manifest_sha256": "63af6a6d83d2936bea987cfc1c1309a043d232df9154025e275457588a3ee6a2",
+      "dependency_freeze_sha256": "9cea4f1162845529f3bce3e0e1b79699be70b68aa6330363dc05d795574e67e4",
+      "root_list": "inputs/sqlalchemy/benchmark-files.txt",
+      "dependency_freeze": "inputs/sqlalchemy/dependencies.txt",
+      "configs": [
+        "inputs/sqlalchemy/configs/mypy-benchmark.toml",
+        "inputs/sqlalchemy/configs/pyrefly.toml",
+        "inputs/sqlalchemy/configs/pyrightconfig.benchmark.json",
+        "inputs/sqlalchemy/configs/ty.toml",
+        "inputs/sqlalchemy/configs/zuban-benchmark.toml",
+        "inputs/sqlalchemy/configs/zuban-canonical-benchmark.toml"
+      ]
+    },
+    {
+      "name": "rich",
+      "input_key": "updated-rich",
+      "revision": "9d8f9a372cc5916fd4781fec207ced7ddac2f08f",
+      "python_version": "3.11",
+      "root_count": 100,
+      "workload": {
+        "roots": 100,
+        "stubs": 0,
+        "eligible_implementation_lines": 38515,
+        "selected_implementation_lines": 38515,
+        "omitted_implementation_line_fraction": 0.0,
+        "manifest_sha256": "aeef23ee3d29b7af5c31eba7be061a0d0c91d711291d958e7719a5ad71294aaa"
+      },
+      "root_manifest_sha256": "aeef23ee3d29b7af5c31eba7be061a0d0c91d711291d958e7719a5ad71294aaa",
+      "dependency_freeze_sha256": "a80910586483fe4f9decccc82f6081574c831cff7ae2c4c5bae240f9f355af8b",
+      "root_list": "inputs/rich/benchmark-files.txt",
+      "dependency_freeze": "inputs/rich/dependencies.txt",
+      "configs": [
+        "inputs/rich/configs/mypy-benchmark.toml",
+        "inputs/rich/configs/pyrefly.toml",
+        "inputs/rich/configs/pyrightconfig.benchmark.json",
+        "inputs/rich/configs/ty.toml",
+        "inputs/rich/configs/zuban-benchmark.toml",
+        "inputs/rich/configs/zuban-canonical-benchmark.toml"
+      ]
+    },
+    {
+      "name": "django",
+      "input_key": "updated-django",
+      "revision": "b501b8493f31cf8cba31211d59b3b78642b8cb02",
+      "python_version": "3.12",
+      "root_count": 907,
+      "workload": {
+        "roots": 907,
+        "stubs": 0,
+        "eligible_implementation_lines": 166155,
+        "selected_implementation_lines": 166155,
+        "omitted_implementation_line_fraction": 0.0,
+        "manifest_sha256": "04ab42f1fd9d44eb0aea5bf837c0cfea4e0abf41449610afead753160fa36e09"
+      },
+      "root_manifest_sha256": "04ab42f1fd9d44eb0aea5bf837c0cfea4e0abf41449610afead753160fa36e09",
+      "dependency_freeze_sha256": "12cdfc5584daf7465d068f18f3e6057efbc6d7a951b95df99924a286d14f7a65",
+      "root_list": "inputs/django/benchmark-files.txt",
+      "dependency_freeze": "inputs/django/dependencies.txt",
+      "configs": [
+        "inputs/django/configs/mypy-benchmark.toml",
+        "inputs/django/configs/pyrefly.toml",
+        "inputs/django/configs/pyrightconfig.benchmark.json",
+        "inputs/django/configs/ty.toml",
+        "inputs/django/configs/zuban-benchmark.toml",
+        "inputs/django/configs/zuban-canonical-benchmark.toml"
+      ]
+    },
+    {
+      "name": "sympy",
+      "input_key": "updated-sympy",
+      "revision": "85d3998a4517ffbc8a9709b8efa769bb417c174a",
+      "python_version": "3.11",
+      "root_count": 835,
+      "workload": {
+        "roots": 835,
+        "stubs": 0,
+        "eligible_implementation_lines": 525457,
+        "selected_implementation_lines": 525457,
+        "omitted_implementation_line_fraction": 0.0,
+        "manifest_sha256": "3343a81689cd989b2424777a101a9337498868276a32df892d8c4f4377b35811"
+      },
+      "root_manifest_sha256": "3343a81689cd989b2424777a101a9337498868276a32df892d8c4f4377b35811",
+      "dependency_freeze_sha256": "e16306e964ec07cd33a1f9dac8810c16f0f6a3a3683d3cd8653a3c859d621254",
+      "root_list": "inputs/sympy/benchmark-files.txt",
+      "dependency_freeze": "inputs/sympy/dependencies.txt",
+      "configs": [
+        "inputs/sympy/configs/mypy-benchmark.toml",
+        "inputs/sympy/configs/pyrefly.toml",
+        "inputs/sympy/configs/pyrightconfig.benchmark.json",
+        "inputs/sympy/configs/ty.toml",
+        "inputs/sympy/configs/zuban-benchmark.toml",
+        "inputs/sympy/configs/zuban-canonical-benchmark.toml"
+      ]
+    },
+    {
+      "name": "openai",
+      "input_key": "updated-openai",
+      "revision": "f6e8480f9a5b2a4d02b17a1da54a1e57964bc312",
+      "python_version": "3.11",
+      "root_count": 2053,
+      "workload": {
+        "roots": 2053,
+        "stubs": 0,
+        "eligible_implementation_lines": 240665,
+        "selected_implementation_lines": 240665,
+        "omitted_implementation_line_fraction": 0.0,
+        "manifest_sha256": "8280f192b9c7c2a789587baa2f2b3804fd85ecf45743c6c4097e5d17cb434002"
+      },
+      "root_manifest_sha256": "8280f192b9c7c2a789587baa2f2b3804fd85ecf45743c6c4097e5d17cb434002",
+      "dependency_freeze_sha256": "72c48ef8f47de31b6a343d03f49f8a51ff2a157bcf2de38a1d44a5f1feb68678",
+      "root_list": "inputs/openai/benchmark-files.txt",
+      "dependency_freeze": "inputs/openai/dependencies.txt",
+      "configs": [
+        "inputs/openai/configs/mypy-benchmark.toml",
+        "inputs/openai/configs/pyrefly.toml",
+        "inputs/openai/configs/pyrightconfig.benchmark.json",
+        "inputs/openai/configs/ty.toml",
+        "inputs/openai/configs/zuban-benchmark.toml",
+        "inputs/openai/configs/zuban-canonical-benchmark.toml"
+      ]
+    },
+    {
+      "name": "pytest",
+      "input_key": "updated-pytest",
+      "revision": "8b005ed7f972987033ec34dc1e68b0635fb8142b",
+      "python_version": "3.11",
+      "root_count": 172,
+      "workload": {
+        "roots": 172,
+        "stubs": 0,
+        "eligible_implementation_lines": 114385,
+        "selected_implementation_lines": 114385,
+        "omitted_implementation_line_fraction": 0.0,
+        "manifest_sha256": "0d53395951799c5938baeb709b1e64bd46fd4bace69de789aceefc227844d54b"
+      },
+      "root_manifest_sha256": "0d53395951799c5938baeb709b1e64bd46fd4bace69de789aceefc227844d54b",
+      "dependency_freeze_sha256": "082cc54c5dd5684a458766a28c849637fa5ffbb87f01791d209a7527d3b5e781",
+      "root_list": "inputs/pytest/benchmark-files.txt",
+      "dependency_freeze": "inputs/pytest/dependencies.txt",
+      "configs": [
+        "inputs/pytest/configs/mypy-benchmark.toml",
+        "inputs/pytest/configs/pyrefly.toml",
+        "inputs/pytest/configs/pyrightconfig.benchmark.json",
+        "inputs/pytest/configs/ty.toml",
+        "inputs/pytest/configs/zuban-benchmark.toml",
+        "inputs/pytest/configs/zuban-canonical-benchmark.toml"
+      ]
+    }
+  ],
+  "files": [
+    {
+      "path": "cli/black/ty.json",
+      "size": 31003,
+      "sha256": "6c36eb66f64e998dc14a80b2efbea114aec9e5565fd72c92432f851c66d406e9",
+      "role": "original-hyperfine2-export",
+      "origin": {
+        "mode": "fresh",
+        "checker_version": "ty 0.0.111 (f270073e9 2026-11-25)",
+        "started_at": "2026-11-26T00:35:50.048474+00:00",
+        "completed_at": "2026-11-26T00:35:53.416174+00:00"
+      }
+    },
+    {
+      "path": "cli/discord.py/ty.json",
+      "size": 18752,
+      "sha256": "c449775880b50ca534d6d9e7bc5631558ae5c940fa356e684503a9d127b7f207",
+      "role": "original-hyperfine2-export",
+      "origin": {
+        "mode": "fresh",
+        "checker_version": "ty 0.0.111 (f270073e9 2026-11-25)",
+        "started_at": "2026-11-26T00:35:53.459208+00:00",
+        "completed_at": "2026-11-26T00:35:56.901422+00:00"
+      }
+    },
+    {
+      "path": "cli/django/ty.json",
+      "size": 11559,
+      "sha256": "9a5a28ea7926425980bae7286c3291591046a28c8581246f9a4bc410a6971181",
+      "role": "original-hyperfine2-export",
+      "origin": {
+        "mode": "fresh",
+        "checker_version": "ty 0.0.111 (f270073e9 2026-11-25)",
+        "started_at": "2026-11-26T00:37:14.225189+00:00",
+        "completed_at": "2026-11-26T00:37:18.123192+00:00"
+      }
+    },
+    {
+      "path": "cli/fastapi/ty.json",
+      "size": 23686,
+      "sha256": "e98b21acf15f823b9afd455cdb9db5ae88a194f9e14654707b056922fd8477ae",
+      "role": "original-hyperfine2-export",
+      "origin": {
+        "mode": "fresh",
+        "checker_version": "ty 0.0.111 (f270073e9 2026-11-25)",
+        "started_at": "2026-11-26T00:37:03.817239+00:00",
+        "completed_at": "2026-11-26T00:37:06.937916+00:00"
+      }
+    },
+    {
+      "path": "cli/homeassistant/ty.json",
+      "size": 9351,
+      "sha256": "a31c42fa4fe2a2c95a43dd5c18186fc772fbe5926f84844ddcf4346a33049763",
+      "role": "original-hyperfine2-export",
+      "origin": {
+        "mode": "fresh",
+        "checker_version": "ty 0.0.111 (f270073e9 2026-11-25)",
+        "started_at": "2026-11-26T00:35:56.941984+00:00",
+        "completed_at": "2026-11-26T00:36:22.685235+00:00"
+      }
+    },
+    {
+      "path": "cli/httpx/ty.json",
+      "size": 30907,
+      "sha256": "21296e85c05fa67892ba718466835d8341e809a950cd7c9f11487087c5795e84",
+      "role": "original-hyperfine2-export",
+      "origin": {
+        "mode": "fresh",
+        "checker_version": "ty 0.0.111 (f270073e9 2026-11-25)",
+        "started_at": "2026-11-26T00:36:56.984650+00:00",
+        "completed_at": "2026-11-26T00:37:00.320078+00:00"
+      }
+    },
+    {
+      "path": "cli/isort/ty.json",
+      "size": 30104,
+      "sha256": "63a14e6e4e005be2513884a87b23e60029e63e958e3c73a4a15f875ea0454c3c",
+      "role": "original-hyperfine2-export",
+      "origin": {
+        "mode": "fresh",
+        "checker_version": "ty 0.0.111 (f270073e9 2026-11-25)",
+        "started_at": "2026-11-26T00:36:23.383129+00:00",
+        "completed_at": "2026-11-26T00:36:26.744836+00:00"
+      }
+    },
+    {
+      "path": "cli/jinja/ty.json",
+      "size": 33014,
+      "sha256": "6bc4f3290a99b8d7f051168c49dd4ae43c6c439e6d4dd6c4d2a105d0d4ebe723",
+      "role": "original-hyperfine2-export",
+      "origin": {
+        "mode": "fresh",
+        "checker_version": "ty 0.0.111 (f270073e9 2026-11-25)",
+        "started_at": "2026-11-26T00:36:26.780587+00:00",
+        "completed_at": "2026-11-26T00:36:29.956724+00:00"
+      }
+    },
+    {
+      "path": "cli/numpy/ty.json",
+      "size": 12175,
+      "sha256": "693ed2395309fd804f3e340aed0e0cb90b972dd035c04f2e6403e54d404e74ac",
+      "role": "original-hyperfine2-export",
+      "origin": {
+        "mode": "fresh",
+        "checker_version": "ty 0.0.111 (f270073e9 2026-11-25)",
+        "started_at": "2026-11-26T00:37:00.355077+00:00",
+        "completed_at": "2026-11-26T00:37:03.755798+00:00"
+      }
+    },
+    {
+      "path": "cli/openai/ty.json",
+      "size": 11588,
+      "sha256": "6814b6d31e2908118de980cadd7f5510990c7064b442f3e038ea1d15ee1be654",
+      "role": "original-hyperfine2-export",
+      "origin": {
+        "mode": "fresh",
+        "checker_version": "ty 0.0.111 (f270073e9 2026-11-25)",
+        "started_at": "2026-11-26T00:37:25.733142+00:00",
+        "completed_at": "2026-11-26T00:37:29.899570+00:00"
+      }
+    },
+    {
+      "path": "cli/pandas-stubs/ty.json",
+      "size": 26582,
+      "sha256": "cf85fcf7450ce99eccf088836f5a67bbf268a1b7ba40d3887ae76d78c038f8d6",
+      "role": "original-hyperfine2-export",
+      "origin": {
+        "mode": "fresh",
+        "checker_version": "ty 0.0.111 (f270073e9 2026-11-25)",
+        "started_at": "2026-11-26T00:36:34.876358+00:00",
+        "completed_at": "2026-11-26T00:36:38.217773+00:00"
+      }
+    },
+    {
+      "path": "cli/pandas/ty.json",
+      "size": 9433,
+      "sha256": "2bf5544515f1b34e055b7a336a5d845d95add476896a6710e580073f115eaef9",
+      "role": "original-hyperfine2-export",
+      "origin": {
+        "mode": "fresh",
+        "checker_version": "ty 0.0.111 (f270073e9 2026-11-25)",
+        "started_at": "2026-11-26T00:36:29.990967+00:00",
+        "completed_at": "2026-11-26T00:36:34.780487+00:00"
+      }
+    },
+    {
+      "path": "cli/prefect/ty.json",
+      "size": 20892,
+      "sha256": "24dd8c0a9cc7dcebd39dac353eb8031bee688c0589ee692956cbae889d0b3988",
+      "role": "original-hyperfine2-export",
+      "origin": {
+        "mode": "fresh",
+        "checker_version": "ty 0.0.111 (f270073e9 2026-11-25)",
+        "started_at": "2026-11-26T00:36:38.264158+00:00",
+        "completed_at": "2026-11-26T00:36:41.757421+00:00"
+      }
+    },
+    {
+      "path": "cli/pytest/ty.json",
+      "size": 15007,
+      "sha256": "807d4777b15f9189a6645d6f47c9580d83f6050ff0063758d17999e5818ba1f1",
+      "role": "original-hyperfine2-export",
+      "origin": {
+        "mode": "fresh",
+        "checker_version": "ty 0.0.111 (f270073e9 2026-11-25)",
+        "started_at": "2026-11-26T00:37:30.005263+00:00",
+        "completed_at": "2026-11-26T00:37:33.521815+00:00"
+      }
+    },
+    {
+      "path": "cli/pytorch/ty.json",
+      "size": 9347,
+      "sha256": "892f3639dd2a13d96aae9dcd19b9d923b6e593bffb6105d514fd6a71bb6b18c2",
+      "role": "original-hyperfine2-export",
+      "origin": {
+        "mode": "fresh",
+        "checker_version": "ty 0.0.111 (f270073e9 2026-11-25)",
+        "started_at": "2026-11-26T00:36:41.862907+00:00",
+        "completed_at": "2026-11-26T00:36:56.762230+00:00"
+      }
+    },
+    {
+      "path": "cli/rich/ty.json",
+      "size": 28858,
+      "sha256": "9c6e2fde9883a99feda137d8988e25219355ef7e8dc8c75c92e5aadfc79fb499",
+      "role": "original-hyperfine2-export",
+      "origin": {
+        "mode": "fresh",
+        "checker_version": "ty 0.0.111 (f270073e9 2026-11-25)",
+        "started_at": "2026-11-26T00:37:11.019530+00:00",
+        "completed_at": "2026-11-26T00:37:14.184920+00:00"
+      }
+    },
+    {
+      "path": "cli/sqlalchemy/ty.json",
+      "size": 10136,
+      "sha256": "057855dc36ef2d69b60b338581cf39e78d252e0aa7521c66153e14b5f14e75f1",
+      "role": "original-hyperfine2-export",
+      "origin": {
+        "mode": "fresh",
+        "checker_version": "ty 0.0.111 (f270073e9 2026-11-25)",
+        "started_at": "2026-11-26T00:37:07.010881+00:00",
+        "completed_at": "2026-11-26T00:37:10.959445+00:00"
+      }
+    },
+    {
+      "path": "cli/sympy/ty.json",
+      "size": 9378,
+      "sha256": "55df1ccf81df9a4ec3f0e77927742df0d46be9846022387c9083a2c06632b5eb",
+      "role": "original-hyperfine2-export",
+      "origin": {
+        "mode": "fresh",
+        "checker_version": "ty 0.0.111 (f270073e9 2026-11-25)",
+        "started_at": "2026-11-26T00:37:18.244755+00:00",
+        "completed_at": "2026-11-26T00:37:25.645011+00:00"
+      }
+    },
+    {
+      "path": "inputs/black/benchmark-files.txt",
+      "size": 1072,
+      "sha256": "d43588222fe8fbc476269df02caa3ca4d9203a391700a9e443ecc3115655f79d",
+      "role": "verified-project-root-list"
+    },
+    {
+      "path": "inputs/black/configs/mypy-benchmark.toml",
+      "size": 32,
+      "sha256": "9741962a3f723aa264496392c9eece257b92cd577872c2306b7b25d8c402ec0c",
+      "role": "actual-generated-benchmark-config"
+    },
+    {
+      "path": "inputs/black/configs/pyrefly.toml",
+      "size": 345,
+      "sha256": "0b7f646b7a3e0c56e1a68d7ee2a673b0737aae80e9fc48b344b90a00c70f0f88",
+      "role": "actual-generated-benchmark-config"
+    },
+    {
+      "path": "inputs/black/configs/pyrightconfig.benchmark.json",
+      "size": 107,
+      "sha256": "e4461113a782b81e172f855ab71756f65b8dc8dd7f10c3c9eb558ef4b0e52340",
+      "role": "actual-generated-benchmark-config"
+    },
+    {
+      "path": "inputs/black/configs/ty.toml",
+      "size": 174,
+      "sha256": "bfa47c95058a83bd6218eb569a15b0e2b35ccf490a758c50b2c791b6063ec9a2",
+      "role": "actual-generated-benchmark-config"
+    },
+    {
+      "path": "inputs/black/configs/zuban-benchmark.toml",
+      "size": 347,
+      "sha256": "593b182c4c662af7129c7da4c0525bd6ab096d56d0d208e143f06feab9078859",
+      "role": "actual-generated-benchmark-config"
+    },
+    {
+      "path": "inputs/black/configs/zuban-canonical-benchmark.toml",
+      "size": 355,
+      "sha256": "9465c92638982bf561658a38466a13df8a03ed46d2e8d5e9f5fb1422d484db2c",
+      "role": "actual-generated-benchmark-config"
+    },
+    {
+      "path": "inputs/black/dependencies.txt",
+      "size": 357,
+      "sha256": "6e66bdc1ad811c338de3496b0a24647fa38e1eb89fe35936e13e1383cbe32811",
+      "role": "verified-project-dependency-freeze"
+    },
+    {
+      "path": "inputs/discord.py/benchmark-files.txt",
+      "size": 3698,
+      "sha256": "acc49699cabeba8f137b492eba0bfe52af923e7fcb3af2e11181f3e1ded08a1e",
+      "role": "verified-project-root-list"
+    },
+    {
+      "path": "inputs/discord.py/configs/mypy-benchmark.toml",
+      "size": 27,
+      "sha256": "b3c4e583128412327e0da99f3f180c1782febb7b442fcea0f5d33eacb1b084c2",
+      "role": "actual-generated-benchmark-config"
+    },
+    {
+      "path": "inputs/discord.py/configs/pyrefly.toml",
+      "size": 332,
+      "sha256": "05d521fd85a8799250903408946b0b7d17d0910ccf83ccbae9bbd05010fabd57",
+      "role": "actual-generated-benchmark-config"
+    },
+    {
+      "path": "inputs/discord.py/configs/pyrightconfig.benchmark.json",
+      "size": 111,
+      "sha256": "7b978ef57d161be53bf7aa1a73d4339e785174f0371714202d6cdd7453a0f544",
+      "role": "actual-generated-benchmark-config"
+    },
+    {
+      "path": "inputs/discord.py/configs/ty.toml",
+      "size": 178,
+      "sha256": "13dd856d33de7c96230d6a75424ae2cc33f7e12fac16b2d01c39f6f7ff607c79",
+      "role": "actual-generated-benchmark-config"
+    },
+    {
+      "path": "inputs/discord.py/configs/zuban-benchmark.toml",
+      "size": 357,
+      "sha256": "42860eaa328a486de3e0fa638ebb50e6ef56769152101b3e19909ec31bb6443f",
+      "role": "actual-generated-benchmark-config"
+    },
+    {
+      "path": "inputs/discord.py/configs/zuban-canonical-benchmark.toml",
+      "size": 365,
+      "sha256": "6075c8ba358b74a7770f6e4cea6a02e000dffea8799e0f5998cf9a4b253a8349",
+      "role": "actual-generated-benchmark-config"
+    },
+    {
+      "path": "inputs/discord.py/dependencies.txt",
+      "size": 260,
+      "sha256": "6f0e910e8f49d0f7d3fab925f46ef7e518c50fd9498938bf96221d11758040dd",
+      "role": "verified-project-dependency-freeze"
+    },
+    {
+      "path": "inputs/django/benchmark-files.txt",
+      "size": 34610,
+      "sha256": "04ab42f1fd9d44eb0aea5bf837c0cfea4e0abf41449610afead753160fa36e09",
+      "role": "verified-project-root-list"
+    },
+    {
+      "path": "inputs/django/configs/mypy-benchmark.toml",
+      "size": 27,
+      "sha256": "b3c4e583128412327e0da99f3f180c1782febb7b442fcea0f5d33eacb1b084c2",
+      "role": "actual-generated-benchmark-config"
+    },
+    {
+      "path": "inputs/django/configs/pyrefly.toml",
+      "size": 323,
+      "sha256": "0442c9cfb94e8045c0699cec22d3dff8bc018ea000d5e05d2ca6323644e6828f",
+      "role": "actual-generated-benchmark-config"
+    },
+    {
+      "path": "inputs/django/configs/pyrightconfig.benchmark.json",
+      "size": 110,
+      "sha256": "742b1c5f59df24d3bda817875e025c5e081517d2795b3acd1816849f9252ab8d",
+      "role": "actual-generated-benchmark-config"
+    },
+    {
+      "path": "inputs/django/configs/ty.toml",
+      "size": 173,
+      "sha256": "9f00013fea926abbe8820b65abb55badcc5fe347f8009402cb7c56ee60350c8f",
+      "role": "actual-generated-benchmark-config"
+    },
+    {
+      "path": "inputs/django/configs/zuban-benchmark.toml",
+      "size": 348,
+      "sha256": "df3673f5bdc17175645da4d7a24d777456f50996111038460b89274584cfb5bd",
+      "role": "actual-generated-benchmark-config"
+    },
+    {
+      "path": "inputs/django/configs/zuban-canonical-benchmark.toml",
+      "size": 356,
+      "sha256": "73e71f762bed632bfa02b43f047bac3c57b3933e23c21bd66b7f151e8930028e",
+      "role": "actual-generated-benchmark-config"
+    },
+    {
+      "path": "inputs/django/dependencies.txt",
+      "size": 145,
+      "sha256": "12cdfc5584daf7465d068f18f3e6057efbc6d7a951b95df99924a286d14f7a65",
+      "role": "verified-project-dependency-freeze"
+    },
+    {
+      "path": "inputs/fastapi/benchmark-files.txt",
+      "size": 1421,
+      "sha256": "a5301dd6beba5eaf8de5a1f6176a2df197ea4509b45630d6ca855f5f72380df2",
+      "role": "verified-project-root-list"
+    },
+    {
+      "path": "inputs/fastapi/configs/mypy-benchmark.toml",
+      "size": 27,
+      "sha256": "b3c4e583128412327e0da99f3f180c1782febb7b442fcea0f5d33eacb1b084c2",
+      "role": "actual-generated-benchmark-config"
+    },
+    {
+      "path": "inputs/fastapi/configs/pyrefly.toml",
+      "size": 326,
+      "sha256": "4b082c5343e47b45b61bcbc993989edca421cd871b981dc78a7acc9b0424caa8",
+      "role": "actual-generated-benchmark-config"
+    },
+    {
+      "path": "inputs/fastapi/configs/pyrightconfig.benchmark.json",
+      "size": 111,
+      "sha256": "fa187c7751e6e0e0af9951b080fcd5ba60c6133deb811c3170e6d6a10459ce53",
+      "role": "actual-generated-benchmark-config"
+    },
+    {
+      "path": "inputs/fastapi/configs/ty.toml",
+      "size": 175,
+      "sha256": "7c3934bb9d0adb491b76e380417cd7ad7a23a26eb19b011847fbdd7e7c747721",
+      "role": "actual-generated-benchmark-config"
+    },
+    {
+      "path": "inputs/fastapi/configs/zuban-benchmark.toml",
+      "size": 351,
+      "sha256": "96b7706debf0a5ef411a0ee2d05933dd191c97839369d2080f6fbbc25127d648",
+      "role": "actual-generated-benchmark-config"
+    },
+    {
+      "path": "inputs/fastapi/configs/zuban-canonical-benchmark.toml",
+      "size": 359,
+      "sha256": "6958135760abd43d5c96263112ecde7287f1daa12de4a9516a03077ae38f980e",
+      "role": "actual-generated-benchmark-config"
+    },
+    {
+      "path": "inputs/fastapi/dependencies.txt",
+      "size": 1337,
+      "sha256": "a3cdec0dad559d0739b234839a49edce6355c423ec450858a14d00a959d90c9d",
+      "role": "verified-project-dependency-freeze"
+    },
+    {
+      "path": "inputs/homeassistant/benchmark-files.txt",
+      "size": 525528,
+      "sha256": "7d54c399da2cb39a697d4e631e7fe8c504c6ee54dffdfde1ffd92ef727512539",
+      "role": "verified-project-root-list"
+    },
+    {
+      "path": "inputs/homeassistant/configs/mypy-benchmark.toml",
+      "size": 27,
+      "sha256": "b3c4e583128412327e0da99f3f180c1782febb7b442fcea0f5d33eacb1b084c2",
+      "role": "actual-generated-benchmark-config"
+    },
+    {
+      "path": "inputs/homeassistant/configs/pyrefly.toml",
+      "size": 450,
+      "sha256": "8f08d8de7778f498b981b8f744b347c3ef283ea6e1cb43cc7a1961bcc43aa072",
+      "role": "actual-generated-benchmark-config"
+    },
+    {
+      "path": "inputs/homeassistant/configs/pyrightconfig.benchmark.json",
+      "size": 223,
+      "sha256": "4974683bdd162ca3991a013cbe1ec11a74239a2156c672aeabbfc2111204b95f",
+      "role": "actual-generated-benchmark-config"
+    },
+    {
+      "path": "inputs/homeassistant/configs/ty.toml",
+      "size": 293,
+      "sha256": "fe675f0c6bb85c33e6732d7c1b8b0976902ced98513756f976e8f79a558b8660",
+      "role": "actual-generated-benchmark-config"
+    },
+    {
+      "path": "inputs/homeassistant/configs/zuban-benchmark.toml",
+      "size": 592,
+      "sha256": "ec1aa3d6be1457e785177f6a59e1f4011f27aac936bb61ee2b5f46ddd0ba0844",
+      "role": "actual-generated-benchmark-config"
+    },
+    {
+      "path": "inputs/homeassistant/configs/zuban-canonical-benchmark.toml",
+      "size": 600,
+      "sha256": "e1eba2d069ed152bcb0df7b85467ff6cf25de7ab9360f685c1b545c9da2e1493",
+      "role": "actual-generated-benchmark-config"
+    },
+    {
+      "path": "inputs/homeassistant/dependencies.txt",
+      "size": 33172,
+      "sha256": "3292616cacb5f17f36aac5db9656766ee7e6631fb2f3700c2db274dbbac80c1f",
+      "role": "verified-project-dependency-freeze"
+    },
+    {
+      "path": "inputs/httpx/benchmark-files.txt",
+      "size": 510,
+      "sha256": "6c94a127c86bca35d803c9de52e2b1ff1a8d0b48d3d9fd54bd30f7562eda0e63",
+      "role": "verified-project-root-list"
+    },
+    {
+      "path": "inputs/httpx/configs/mypy-benchmark.toml",
+      "size": 27,
+      "sha256": "b3c4e583128412327e0da99f3f180c1782febb7b442fcea0f5d33eacb1b084c2",
+      "role": "actual-generated-benchmark-config"
+    },
+    {
+      "path": "inputs/httpx/configs/pyrefly.toml",
+      "size": 320,
+      "sha256": "8fe1b488432d6652281743b6b35e6a5ce596e05db451c7bfaca9c7a4326a58d6",
+      "role": "actual-generated-benchmark-config"
+    },
+    {
+      "path": "inputs/httpx/configs/pyrightconfig.benchmark.json",
+      "size": 109,
+      "sha256": "f6bb5d576da41ff14aae39cc9954f29542a6a7eeb2566eff74e1882d9a9d9303",
+      "role": "actual-generated-benchmark-config"
+    },
+    {
+      "path": "inputs/httpx/configs/ty.toml",
+      "size": 171,
+      "sha256": "43c716733502a5d3c1064011686ece5198a5787068f0708fe2fef34e8e72c2bc",
+      "role": "actual-generated-benchmark-config"
+    },
+    {
+      "path": "inputs/httpx/configs/zuban-benchmark.toml",
+      "size": 345,
+      "sha256": "98fb7d3e7eccb360478d3268d980694202a0da47d82f1e25bf1a8c6af28846c7",
+      "role": "actual-generated-benchmark-config"
+    },
+    {
+      "path": "inputs/httpx/configs/zuban-canonical-benchmark.toml",
+      "size": 353,
+      "sha256": "3539fe44c78405d2268eb4dea2a7f632fc65608218f2220f4f9d7649189938f8",
+      "role": "actual-generated-benchmark-config"
+    },
+    {
+      "path": "inputs/httpx/dependencies.txt",
+      "size": 352,
+      "sha256": "0f37628eb395fc20e3cf79aaa21c94059acd556738e984cdf44e8d7347050a36",
+      "role": "verified-project-dependency-freeze"
+    },
+    {
+      "path": "inputs/isort/benchmark-files.txt",
+      "size": 831,
+      "sha256": "6732b296157e8cadd201facc3b142fead537037810de35151b336b02ef6ccb7f",
+      "role": "verified-project-root-list"
+    },
+    {
+      "path": "inputs/isort/configs/mypy-benchmark.toml",
+      "size": 27,
+      "sha256": "b3c4e583128412327e0da99f3f180c1782febb7b442fcea0f5d33eacb1b084c2",
+      "role": "actual-generated-benchmark-config"
+    },
+    {
+      "path": "inputs/isort/configs/pyrefly.toml",
+      "size": 320,
+      "sha256": "d93a3a5bb2a86d8cda400994373a34f1198638f1ba4197c4f8e95582897167c1",
+      "role": "actual-generated-benchmark-config"
+    },
+    {
+      "path": "inputs/isort/configs/pyrightconfig.benchmark.json",
+      "size": 109,
+      "sha256": "1ac09605be0470b466ef2ac263a3c13755e229007550f85acc6adeffc2a10450",
+      "role": "actual-generated-benchmark-config"
+    },
+    {
+      "path": "inputs/isort/configs/ty.toml",
+      "size": 171,
+      "sha256": "fd9a44f3c306d7c4aa95cb0b48507c78a3e27c32f585e8a63e0c85e0a7c1c7e8",
+      "role": "actual-generated-benchmark-config"
+    },
+    {
+      "path": "inputs/isort/configs/zuban-benchmark.toml",
+      "size": 345,
+      "sha256": "818a00b20361c09c0e4cca5e584d4df914015c5d654e5a7dac47bda3bbba17cd",
+      "role": "actual-generated-benchmark-config"
+    },
+    {
+      "path": "inputs/isort/configs/zuban-canonical-benchmark.toml",
+      "size": 353,
+      "sha256": "066dba9aa4a1c0736b691a83bec6cb318ce923ace092b0349d3732e8fa64520f",
+      "role": "actual-generated-benchmark-config"
+    },
+    {
+      "path": "inputs/isort/dependencies.txt",
+      "size": 161,
+      "sha256": "d789cd104bf289366583a5f0a30c40e82fc7994e2f923cc451214a15e7dfb412",
+      "role": "verified-project-dependency-freeze"
+    },
+    {
+      "path": "inputs/jinja/benchmark-files.txt",
+      "size": 611,
+      "sha256": "8b7527c7ce393863462811693a3d30f54c357351d241912c952514ece2fa15ba",
+      "role": "verified-project-root-list"
+    },
+    {
+      "path": "inputs/jinja/configs/mypy-benchmark.toml",
+      "size": 32,
+      "sha256": "9741962a3f723aa264496392c9eece257b92cd577872c2306b7b25d8c402ec0c",
+      "role": "actual-generated-benchmark-config"
+    },
+    {
+      "path": "inputs/jinja/configs/pyrefly.toml",
+      "size": 345,
+      "sha256": "e5d809aed0fb0d194a97344ec704a7342e51ef2796256a23a54547d01b229431",
+      "role": "actual-generated-benchmark-config"
+    },
+    {
+      "path": "inputs/jinja/configs/pyrightconfig.benchmark.json",
+      "size": 107,
+      "sha256": "e4461113a782b81e172f855ab71756f65b8dc8dd7f10c3c9eb558ef4b0e52340",
+      "role": "actual-generated-benchmark-config"
+    },
+    {
+      "path": "inputs/jinja/configs/ty.toml",
+      "size": 174,
+      "sha256": "2fe519b13ebaf7a0fa0fd05ab0e7b50f8136e42b187ab529702aa79db21f3325",
+      "role": "actual-generated-benchmark-config"
+    },
+    {
+      "path": "inputs/jinja/configs/zuban-benchmark.toml",
+      "size": 347,
+      "sha256": "dec2db19485bd8cf9accdd2ee171bde6fd36c4a73c8d64a4a9893f19e123b93b",
+      "role": "actual-generated-benchmark-config"
+    },
+    {
+      "path": "inputs/jinja/configs/zuban-canonical-benchmark.toml",
+      "size": 355,
+      "sha256": "160404ac357046b59ca72622d43e089c2cd23e5bc2728eb6b960e269d375283d",
+      "role": "actual-generated-benchmark-config"
+    },
+    {
+      "path": "inputs/jinja/dependencies.txt",
+      "size": 131,
+      "sha256": "5faae045958aef33d0bcd48e0db9f31a398b5ee7810f53a731bf216982553c99",
+      "role": "verified-project-dependency-freeze"
+    },
+    {
+      "path": "inputs/numpy/benchmark-files.txt",
+      "size": 6238,
+      "sha256": "73ffa00552444e85c8570d19596ecf3b21121ee4422ef9431dba281f5c99ac33",
+      "role": "verified-project-root-list"
+    },
+    {
+      "path": "inputs/numpy/configs/mypy-benchmark.toml",
+      "size": 27,
+      "sha256": "b3c4e583128412327e0da99f3f180c1782febb7b442fcea0f5d33eacb1b084c2",
+      "role": "actual-generated-benchmark-config"
+    },
+    {
+      "path": "inputs/numpy/configs/pyrefly.toml",
+      "size": 5009,
+      "sha256": "276f91077cd246211b21d8912eb811b334ccd2c5cda6062ca130719385a7f19b",
+      "role": "actual-generated-benchmark-config"
+    },
+    {
+      "path": "inputs/numpy/configs/pyrightconfig.benchmark.json",
+      "size": 4798,
+      "sha256": "10ef747dc279d3d4d4688a729c7dc96918e192228ba3e2a357775f4f2401f270",
+      "role": "actual-generated-benchmark-config"
+    },
+    {
+      "path": "inputs/numpy/configs/ty.toml",
+      "size": 4860,
+      "sha256": "bcea493f7538cd68d2fc668d96da0cc7bec35f97d0724e18bdc4f8b7e16f2dd7",
+      "role": "actual-generated-benchmark-config"
+    },
+    {
+      "path": "inputs/numpy/configs/zuban-benchmark.toml",
+      "size": 11419,
+      "sha256": "990513388ccb5fdc5fb3f0e7094b027c53faa8c5529149e1f04f7259d13c8c2f",
+      "role": "actual-generated-benchmark-config"
+    },
+    {
+      "path": "inputs/numpy/configs/zuban-canonical-benchmark.toml",
+      "size": 11427,
+      "sha256": "3ab291c02e01f6e40fe6d1dc7aac5dcc5f445c424ad1c7c19c774a509c1d9189",
+      "role": "actual-generated-benchmark-config"
+    },
+    {
+      "path": "inputs/numpy/dependencies.txt",
+      "size": 129,
+      "sha256": "b50b9c9157e96d30a206975c58dbc58182f4669242586252a7bc491b5602e0b8",
+      "role": "verified-project-dependency-freeze"
+    },
+    {
+      "path": "inputs/openai/benchmark-files.txt",
+      "size": 117274,
+      "sha256": "8280f192b9c7c2a789587baa2f2b3804fd85ecf45743c6c4097e5d17cb434002",
+      "role": "verified-project-root-list"
+    },
+    {
+      "path": "inputs/openai/configs/mypy-benchmark.toml",
+      "size": 32,
+      "sha256": "9741962a3f723aa264496392c9eece257b92cd577872c2306b7b25d8c402ec0c",
+      "role": "actual-generated-benchmark-config"
+    },
+    {
+      "path": "inputs/openai/configs/pyrefly.toml",
+      "size": 374,
+      "sha256": "dd3ed7a254de68b21280cbf39e2389c013985ba5a3fbe3896ca7753d84f151f3",
+      "role": "actual-generated-benchmark-config"
+    },
+    {
+      "path": "inputs/openai/configs/pyrightconfig.benchmark.json",
+      "size": 134,
+      "sha256": "fe222f617c27c8a7293d74e94b9462f1be6173f6798014cb49b1445a027e007c",
+      "role": "actual-generated-benchmark-config"
+    },
+    {
+      "path": "inputs/openai/configs/ty.toml",
+      "size": 202,
+      "sha256": "accb16b78429b9e947f773db5bcfd63f0015fc4e8d5368a8b1fd31bd5348f402",
+      "role": "actual-generated-benchmark-config"
+    },
+    {
+      "path": "inputs/openai/configs/zuban-benchmark.toml",
+      "size": 462,
+      "sha256": "5b36ffd59d59c70afc057868abbb859be73248b405e0d7daef50c9f891d09d23",
+      "role": "actual-generated-benchmark-config"
+    },
+    {
+      "path": "inputs/openai/configs/zuban-canonical-benchmark.toml",
+      "size": 470,
+      "sha256": "0b4a6f848dc86552b4e5990e6cb9b7e98a26c8a5c960bcef64bd0520ceb02438",
+      "role": "actual-generated-benchmark-config"
+    },
+    {
+      "path": "inputs/openai/dependencies.txt",
+      "size": 778,
+      "sha256": "72c48ef8f47de31b6a343d03f49f8a51ff2a157bcf2de38a1d44a5f1feb68678",
+      "role": "verified-project-dependency-freeze"
+    },
+    {
+      "path": "inputs/pandas-stubs/benchmark-files.txt",
+      "size": 6845,
+      "sha256": "1308b818f6cd705b6ad0b6ab972caf4065c66b51cd29599c39880b677ca5fdeb",
+      "role": "verified-project-root-list"
+    },
+    {
+      "path": "inputs/pandas-stubs/configs/mypy-benchmark.toml",
+      "size": 27,
+      "sha256": "b3c4e583128412327e0da99f3f180c1782febb7b442fcea0f5d33eacb1b084c2",
+      "role": "actual-generated-benchmark-config"
+    },
+    {
+      "path": "inputs/pandas-stubs/configs/pyrefly.toml",
+      "size": 370,
+      "sha256": "0955f80450c6895a59ce66cfec92ef5434f76c0e39944ef99ba84aaf35d2b1e9",
+      "role": "actual-generated-benchmark-config"
+    },
+    {
+      "path": "inputs/pandas-stubs/configs/pyrightconfig.benchmark.json",
+      "size": 145,
+      "sha256": "21a2773aa576479913431b6940be60e0c9e3bf801dffb705f43d6eda079f19c5",
+      "role": "actual-generated-benchmark-config"
+    },
+    {
+      "path": "inputs/pandas-stubs/configs/ty.toml",
+      "size": 214,
+      "sha256": "fe3baf6ca4c3c1cdc6d143dbd0434373aa2e445e4c2d261c359dd1354df45418",
+      "role": "actual-generated-benchmark-config"
+    },
+    {
+      "path": "inputs/pandas-stubs/configs/zuban-benchmark.toml",
+      "size": 436,
+      "sha256": "17445b0dc3847d046e7da10290a90a91d22d9335c34f7a95dc1d7d323ec46a0c",
+      "role": "actual-generated-benchmark-config"
+    },
+    {
+      "path": "inputs/pandas-stubs/configs/zuban-canonical-benchmark.toml",
+      "size": 444,
+      "sha256": "e16e52d8af273cdeb04b457618871197ea7a8adfd873dc0a59dcbbdf6c31b591",
+      "role": "actual-generated-benchmark-config"
+    },
+    {
+      "path": "inputs/pandas-stubs/dependencies.txt",
+      "size": 1816,
+      "sha256": "f330b1346af0e7a5f9cffdb785390af9dea2e619106897521a64c69cd012a1aa",
+      "role": "verified-project-dependency-freeze"
+    },
+    {
+      "path": "inputs/pandas/benchmark-files.txt",
+      "size": 10638,
+      "sha256": "7a01984ee8d028744741b2b6853d52fd8ba711a9223efedaadd3f6c7d347d2df",
+      "role": "verified-project-root-list"
+    },
+    {
+      "path": "inputs/pandas/configs/mypy-benchmark.toml",
+      "size": 27,
+      "sha256": "b3c4e583128412327e0da99f3f180c1782febb7b442fcea0f5d33eacb1b084c2",
+      "role": "actual-generated-benchmark-config"
+    },
+    {
+      "path": "inputs/pandas/configs/pyrefly.toml",
+      "size": 337,
+      "sha256": "93fdfa14af578e1b664cdd7a5121d1902abe03b01645af730609f84bcba0451e",
+      "role": "actual-generated-benchmark-config"
+    },
+    {
+      "path": "inputs/pandas/configs/pyrightconfig.benchmark.json",
+      "size": 124,
+      "sha256": "3b3593a711c0aca59b90545f628f81c555a8f2885dba927a142df82edd976a00",
+      "role": "actual-generated-benchmark-config"
+    },
+    {
+      "path": "inputs/pandas/configs/ty.toml",
+      "size": 187,
+      "sha256": "614c283feb98a3d4144216bfc89a22c9ffc38f03f41f75253c455256be5f68b3",
+      "role": "actual-generated-benchmark-config"
+    },
+    {
+      "path": "inputs/pandas/configs/zuban-benchmark.toml",
+      "size": 393,
+      "sha256": "5efbd3cc6714ab0846f898d549d7a6d9d58a7dde899b3fc8ddf1d521070679b4",
+      "role": "actual-generated-benchmark-config"
+    },
+    {
+      "path": "inputs/pandas/configs/zuban-canonical-benchmark.toml",
+      "size": 401,
+      "sha256": "a20dea55f2f3ef7581929bd42668408cf56a0f6cdbaaf9ead7133d0959b2fe2a",
+      "role": "actual-generated-benchmark-config"
+    },
+    {
+      "path": "inputs/pandas/dependencies.txt",
+      "size": 5455,
+      "sha256": "f5f35bc23997751f05b11d8d822f3b7815f41007f76873e8d341a52536dc5657",
+      "role": "verified-project-dependency-freeze"
+    },
+    {
+      "path": "inputs/prefect/benchmark-files.txt",
+      "size": 2327,
+      "sha256": "9a73fd6fb704d752f4bf4b8d26668428aa12de6a3f7b7ebda755340502febc52",
+      "role": "verified-project-root-list"
+    },
+    {
+      "path": "inputs/prefect/configs/mypy-benchmark.toml",
+      "size": 32,
+      "sha256": "9741962a3f723aa264496392c9eece257b92cd577872c2306b7b25d8c402ec0c",
+      "role": "actual-generated-benchmark-config"
+    },
+    {
+      "path": "inputs/prefect/configs/pyrefly.toml",
+      "size": 441,
+      "sha256": "40bc50f82a21607b90429150577ece5887c3e5b314793a7fbe2f7b4320153b48",
+      "role": "actual-generated-benchmark-config"
+    },
+    {
+      "path": "inputs/prefect/configs/pyrightconfig.benchmark.json",
+      "size": 199,
+      "sha256": "6dbbfc1dbbcb5f83ee30b12381b16f5fcdbc001b28eb497cef21f86fa4e8e0a9",
+      "role": "actual-generated-benchmark-config"
+    },
+    {
+      "path": "inputs/prefect/configs/ty.toml",
+      "size": 268,
+      "sha256": "2f08804aa9c7ef7e14c64cfe46686291dccab60ee4b964e67c6e058eb4f5ad0a",
+      "role": "actual-generated-benchmark-config"
+    },
+    {
+      "path": "inputs/prefect/configs/zuban-benchmark.toml",
+      "size": 443,
+      "sha256": "4939c48d6db5f7376e39e1a012450136f738ef901b19ad2514b0266668dacab2",
+      "role": "actual-generated-benchmark-config"
+    },
+    {
+      "path": "inputs/prefect/configs/zuban-canonical-benchmark.toml",
+      "size": 451,
+      "sha256": "cfe101baa54420445cae519f892c1f66c7b7bb71d74ad953ce4ed60ceaafab76",
+      "role": "actual-generated-benchmark-config"
+    },
+    {
+      "path": "inputs/prefect/dependencies.txt",
+      "size": 4347,
+      "sha256": "44bd442159782765272dafe9fbfb358018cf2fbfed0efe90a4a78800c231c8b0",
+      "role": "verified-project-dependency-freeze"
+    },
+    {
+      "path": "inputs/pytest/benchmark-files.txt",
+      "size": 5286,
+      "sha256": "0d53395951799c5938baeb709b1e64bd46fd4bace69de789aceefc227844d54b",
+      "role": "verified-project-root-list"
+    },
+    {
+      "path": "inputs/pytest/configs/mypy-benchmark.toml",
+      "size": 32,
+      "sha256": "9741962a3f723aa264496392c9eece257b92cd577872c2306b7b25d8c402ec0c",
+      "role": "actual-generated-benchmark-config"
+    },
+    {
+      "path": "inputs/pytest/configs/pyrefly.toml",
+      "size": 383,
+      "sha256": "28d5b25468197d9b84bb25d07a49bad1332cc7911aa0af23a3ff400d4064553c",
+      "role": "actual-generated-benchmark-config"
+    },
+    {
+      "path": "inputs/pytest/configs/pyrightconfig.benchmark.json",
+      "size": 143,
+      "sha256": "701f43d329400468a00bcb5f78317ce647b588396a9c33706f753fbb35d34a14",
+      "role": "actual-generated-benchmark-config"
+    },
+    {
+      "path": "inputs/pytest/configs/ty.toml",
+      "size": 211,
+      "sha256": "ab8bceb16f1f61d3e174f26f7314702e77a523b1ce9559ecebff23d06fbba68b",
+      "role": "actual-generated-benchmark-config"
+    },
+    {
+      "path": "inputs/pytest/configs/zuban-benchmark.toml",
+      "size": 532,
+      "sha256": "b64e13c0d632daedb4a0199c39b527173ad8f3c5ee4a30745a35997d587eef1c",
+      "role": "actual-generated-benchmark-config"
+    },
+    {
+      "path": "inputs/pytest/configs/zuban-canonical-benchmark.toml",
+      "size": 548,
+      "sha256": "d1aba3cc8b6b358da1b6fde3b7c5196e7d559b7b2d0b4bc92b2ffa4451e8511f",
+      "role": "actual-generated-benchmark-config"
+    },
+    {
+      "path": "inputs/pytest/dependencies.txt",
+      "size": 536,
+      "sha256": "082cc54c5dd5684a458766a28c849637fa5ffbb87f01791d209a7527d3b5e781",
+      "role": "verified-project-dependency-freeze"
+    },
+    {
+      "path": "inputs/pytorch/benchmark-files.txt",
+      "size": 101986,
+      "sha256": "59b7eb4ea16968bbd533ad42a9da3181268cd5311552ee1ff5a27b6379c0b216",
+      "role": "verified-project-root-list"
+    },
+    {
+      "path": "inputs/pytorch/configs/mypy-benchmark.toml",
+      "size": 27,
+      "sha256": "b3c4e583128412327e0da99f3f180c1782febb7b442fcea0f5d33eacb1b084c2",
+      "role": "actual-generated-benchmark-config"
+    },
+    {
+      "path": "inputs/pytorch/configs/pyrefly.toml",
+      "size": 1689,
+      "sha256": "543b398ef6e8ae33614fb8bd0381e26f3059471cef49ee0e5dad6ca5a941285b",
+      "role": "actual-generated-benchmark-config"
+    },
+    {
+      "path": "inputs/pytorch/configs/pyrightconfig.benchmark.json",
+      "size": 1474,
+      "sha256": "c667da23001b5317ddc0312a249202d5410e69abefb0f2e3c939ee18b08ad1e9",
+      "role": "actual-generated-benchmark-config"
+    },
+    {
+      "path": "inputs/pytorch/configs/ty.toml",
+      "size": 1538,
+      "sha256": "778260f062fd1cd0767ad525551701f27da4863fbca80b8f2502d814ce754d68",
+      "role": "actual-generated-benchmark-config"
+    },
+    {
+      "path": "inputs/pytorch/configs/zuban-benchmark.toml",
+      "size": 3391,
+      "sha256": "1fc50c5c2ff0b7a047a2102382d7680f6d4e2eb9d0fe1e6fa30972a8ac87d78a",
+      "role": "actual-generated-benchmark-config"
+    },
+    {
+      "path": "inputs/pytorch/configs/zuban-canonical-benchmark.toml",
+      "size": 3407,
+      "sha256": "773fac5663681c937637802ea42897b0ce96e16d919ceec6693000935eacc71f",
+      "role": "actual-generated-benchmark-config"
+    },
+    {
+      "path": "inputs/pytorch/dependencies.txt",
+      "size": 627,
+      "sha256": "e635c63eda3d086df2892ed766e3f1d363222636747f170116e9d3a31e44b96e",
+      "role": "verified-project-dependency-freeze"
+    },
+    {
+      "path": "inputs/rich/benchmark-files.txt",
+      "size": 2269,
+      "sha256": "aeef23ee3d29b7af5c31eba7be061a0d0c91d711291d958e7719a5ad71294aaa",
+      "role": "verified-project-root-list"
+    },
+    {
+      "path": "inputs/rich/configs/mypy-benchmark.toml",
+      "size": 27,
+      "sha256": "b3c4e583128412327e0da99f3f180c1782febb7b442fcea0f5d33eacb1b084c2",
+      "role": "actual-generated-benchmark-config"
+    },
+    {
+      "path": "inputs/rich/configs/pyrefly.toml",
+      "size": 317,
+      "sha256": "5e535ff2e66609a15e3a6527ae3a8cf623b09467c75919997de901087a16bf8c",
+      "role": "actual-generated-benchmark-config"
+    },
+    {
+      "path": "inputs/rich/configs/pyrightconfig.benchmark.json",
+      "size": 108,
+      "sha256": "0b96b52248dff1410aab63ee878f964c278aa167e417bced445b7953110dd8e8",
+      "role": "actual-generated-benchmark-config"
+    },
+    {
+      "path": "inputs/rich/configs/ty.toml",
+      "size": 169,
+      "sha256": "59791bb58a43025771512601068c927cdbec59fd466ab8dbcb2e37c1229243b5",
+      "role": "actual-generated-benchmark-config"
+    },
+    {
+      "path": "inputs/rich/configs/zuban-benchmark.toml",
+      "size": 342,
+      "sha256": "2a7de28276d36eac7a5a4f43cf9ecd743b6657cc7b95fc4acd3744c037177ae1",
+      "role": "actual-generated-benchmark-config"
+    },
+    {
+      "path": "inputs/rich/configs/zuban-canonical-benchmark.toml",
+      "size": 350,
+      "sha256": "de03d7803617c54fcd06b01e1a8691324a2c4e6108926e93b58761ca45a57e48",
+      "role": "actual-generated-benchmark-config"
+    },
+    {
+      "path": "inputs/rich/dependencies.txt",
+      "size": 533,
+      "sha256": "a80910586483fe4f9decccc82f6081574c831cff7ae2c4c5bae240f9f355af8b",
+      "role": "verified-project-dependency-freeze"
+    },
+    {
+      "path": "inputs/sqlalchemy/benchmark-files.txt",
+      "size": 9991,
+      "sha256": "63af6a6d83d2936bea987cfc1c1309a043d232df9154025e275457588a3ee6a2",
+      "role": "verified-project-root-list"
+    },
+    {
+      "path": "inputs/sqlalchemy/configs/mypy-benchmark.toml",
+      "size": 32,
+      "sha256": "007d66accdf2e73dc1a635e23b7c911cc81595cb8d26620e981a5ba84fc4a969",
+      "role": "actual-generated-benchmark-config"
+    },
+    {
+      "path": "inputs/sqlalchemy/configs/pyrefly.toml",
+      "size": 366,
+      "sha256": "857fc3c9e905516ff13a67304b98efb4acb8a11c8f93e7b7b7d132caedcdb2e3",
+      "role": "actual-generated-benchmark-config"
+    },
+    {
+      "path": "inputs/sqlalchemy/configs/pyrightconfig.benchmark.json",
+      "size": 118,
+      "sha256": "e14b91d2bc455b9b7f509abd52871a29ef566c1af08a131348bfaa0cfec1c4cb",
+      "role": "actual-generated-benchmark-config"
+    },
+    {
+      "path": "inputs/sqlalchemy/configs/ty.toml",
+      "size": 190,
+      "sha256": "8ea15fd382c61d0578b36756bafbb9f5598857d8757908e4a03e5d6e2cb6a2d7",
+      "role": "actual-generated-benchmark-config"
+    },
+    {
+      "path": "inputs/sqlalchemy/configs/zuban-benchmark.toml",
+      "size": 368,
+      "sha256": "0888cdc82b2d899b6cc18d0dc80190c6273bea1564987213019ea4623e5f3237",
+      "role": "actual-generated-benchmark-config"
+    },
+    {
+      "path": "inputs/sqlalchemy/configs/zuban-canonical-benchmark.toml",
+      "size": 376,
+      "sha256": "eb39332a17083e75cc2775908281f26918dda3ce8cf3ec5f60b9afd7197c81ec",
+      "role": "actual-generated-benchmark-config"
+    },
+    {
+      "path": "inputs/sqlalchemy/dependencies.txt",
+      "size": 238,
+      "sha256": "9cea4f1162845529f3bce3e0e1b79699be70b68aa6330363dc05d795574e67e4",
+      "role": "verified-project-dependency-freeze"
+    },
+    {
+      "path": "inputs/sympy/benchmark-files.txt",
+      "size": 28223,
+      "sha256": "3343a81689cd989b2424777a101a9337498868276a32df892d8c4f4377b35811",
+      "role": "verified-project-root-list"
+    },
+    {
+      "path": "inputs/sympy/configs/mypy-benchmark.toml",
+      "size": 27,
+      "sha256": "b3c4e583128412327e0da99f3f180c1782febb7b442fcea0f5d33eacb1b084c2",
+      "role": "actual-generated-benchmark-config"
+    },
+    {
+      "path": "inputs/sympy/configs/pyrefly.toml",
+      "size": 2442,
+      "sha256": "72aa6fbfb56d58c58ec6be3084f680edd0fd0ace71da844444deba07128dd532",
+      "role": "actual-generated-benchmark-config"
+    },
+    {
+      "path": "inputs/sympy/configs/pyrightconfig.benchmark.json",
+      "size": 2231,
+      "sha256": "6391b39b30c5f8846bee2240f301e1b75c42b7e6fb7ecfc2273e73599a41e758",
+      "role": "actual-generated-benchmark-config"
+    },
+    {
+      "path": "inputs/sympy/configs/ty.toml",
+      "size": 2293,
+      "sha256": "6186847f95fed95ca619bda5a4316a9a137205ab1d0b342982244bc67215582d",
+      "role": "actual-generated-benchmark-config"
+    },
+    {
+      "path": "inputs/sympy/configs/zuban-benchmark.toml",
+      "size": 5467,
+      "sha256": "eb7c65453d8816185e9691ac2ac59f1c261409f322133af0376fb8db7583bd03",
+      "role": "actual-generated-benchmark-config"
+    },
+    {
+      "path": "inputs/sympy/configs/zuban-canonical-benchmark.toml",
+      "size": 5475,
+      "sha256": "ed260ee62a8dadb70856790474d3d75990e7e5fca6f889f80e3b172cb899cffd",
+      "role": "actual-generated-benchmark-config"
+    },
+    {
+      "path": "inputs/sympy/dependencies.txt",
+      "size": 127,
+      "sha256": "e16306e964ec07cd33a1f9dac8810c16f0f6a3a3683d3cd8653a3c859d621254",
+      "role": "verified-project-dependency-freeze"
+    },
+    {
+      "path": "lsp/current-benchmarks.json",
+      "size": 225505,
+      "sha256": "79927b8d2fcf1d17962202a4ec30da5d00221f5895b5df25fbdacc14fc5470d5",
+      "role": "active-lsp-timing-objects-with-full-round-data"
+    },
+    {
+      "path": "lsp/current-testcases.json",
+      "size": 30189,
+      "sha256": "203b992e1555f005e9ac8f53bc382bc1cd3ca7dfe02d97978531556212970a67",
+      "role": "active-lsp-outcomes-including-retained-failures"
+    },
+    {
+      "path": "lsp/fresh-ty/updated-black/output.txt",
+      "size": 2949,
+      "sha256": "57c090be93459243f418f6847b7fcd3cee844339821c686637b329c0095ff6a4",
+      "role": "original-pytest-benchmark-export-or-trace",
+      "origin": {
+        "mode": "fresh",
+        "checker_version": "ty 0.0.111 (f270073e9 2026-11-25)",
+        "started_at": "2026-11-26T00:34:18.306407+00:00",
+        "completed_at": "2026-11-26T00:34:20.776090+00:00"
+      }
+    },
+    {
+      "path": "lsp/fresh-ty/updated-black/results.json",
+      "size": 7175,
+      "sha256": "15b490df86d098ebaeec8045f5cbf259ad266c0c0ec5b9085cb394ff0af7c080",
+      "role": "original-pytest-benchmark-export-or-trace",
+      "origin": {
+        "mode": "fresh",
+        "checker_version": "ty 0.0.111 (f270073e9 2026-11-25)",
+        "started_at": "2026-11-26T00:34:18.306407+00:00",
+        "completed_at": "2026-11-26T00:34:20.776090+00:00"
+      }
+    },
+    {
+      "path": "lsp/fresh-ty/updated-black/results.xml",
+      "size": 494,
+      "sha256": "834c5669719d912eb7bf0f52a6c541d890fa48a9be8499cccfbb7467e8b7aad2",
+      "role": "original-pytest-benchmark-export-or-trace",
+      "origin": {
+        "mode": "fresh",
+        "checker_version": "ty 0.0.111 (f270073e9 2026-11-25)",
+        "started_at": "2026-11-26T00:34:18.306407+00:00",
+        "completed_at": "2026-11-26T00:34:20.776090+00:00"
+      }
+    },
+    {
+      "path": "lsp/fresh-ty/updated-discord.py/output.txt",
+      "size": 2999,
+      "sha256": "9da3ce9433e39e6654583cecb0f7dad3714a3565dcdbc7260a7674a83e913290",
+      "role": "original-pytest-benchmark-export-or-trace",
+      "origin": {
+        "mode": "fresh",
+        "checker_version": "ty 0.0.111 (f270073e9 2026-11-25)",
+        "started_at": "2026-11-26T00:34:20.797223+00:00",
+        "completed_at": "2026-11-26T00:34:24.193341+00:00"
+      }
+    },
+    {
+      "path": "lsp/fresh-ty/updated-discord.py/results.json",
+      "size": 6754,
+      "sha256": "fcf9c88bcfa6396f923e80ccb420c4a5be172ecb759683f8d870c9549066a62f",
+      "role": "original-pytest-benchmark-export-or-trace",
+      "origin": {
+        "mode": "fresh",
+        "checker_version": "ty 0.0.111 (f270073e9 2026-11-25)",
+        "started_at": "2026-11-26T00:34:20.797223+00:00",
+        "completed_at": "2026-11-26T00:34:24.193341+00:00"
+      }
+    },
+    {
+      "path": "lsp/fresh-ty/updated-discord.py/results.xml",
+      "size": 504,
+      "sha256": "ea977035f2cf313533ce503d4636d54a5e0d2498eafbd1d6aa4724cedb396aaf",
+      "role": "original-pytest-benchmark-export-or-trace",
+      "origin": {
+        "mode": "fresh",
+        "checker_version": "ty 0.0.111 (f270073e9 2026-11-25)",
+        "started_at": "2026-11-26T00:34:20.797223+00:00",
+        "completed_at": "2026-11-26T00:34:24.193341+00:00"
+      }
+    },
+    {
+      "path": "lsp/fresh-ty/updated-django/output.txt",
+      "size": 2965,
+      "sha256": "25788bb4c5bd30d80bfb996d68fab5d4dab129cff83aabf223e4edc461851d6d",
+      "role": "original-pytest-benchmark-export-or-trace",
+      "origin": {
+        "mode": "fresh",
+        "checker_version": "ty 0.0.111 (f270073e9 2026-11-25)",
+        "started_at": "2026-11-26T00:35:09.710989+00:00",
+        "completed_at": "2026-11-26T00:35:11.308413+00:00"
+      }
+    },
+    {
+      "path": "lsp/fresh-ty/updated-django/results.json",
+      "size": 6972,
+      "sha256": "b6e0ed65bdbff208a142fb3c0441d6a4f4b41a1c3a61f0869b570383ff41bf9f",
+      "role": "original-pytest-benchmark-export-or-trace",
+      "origin": {
+        "mode": "fresh",
+        "checker_version": "ty 0.0.111 (f270073e9 2026-11-25)",
+        "started_at": "2026-11-26T00:35:09.710989+00:00",
+        "completed_at": "2026-11-26T00:35:11.308413+00:00"
+      }
+    },
+    {
+      "path": "lsp/fresh-ty/updated-django/results.xml",
+      "size": 496,
+      "sha256": "c017359488f3262f5550332420d3f12172ffe3000c3d785bfc89bbf05f813428",
+      "role": "original-pytest-benchmark-export-or-trace",
+      "origin": {
+        "mode": "fresh",
+        "checker_version": "ty 0.0.111 (f270073e9 2026-11-25)",
+        "started_at": "2026-11-26T00:35:09.710989+00:00",
+        "completed_at": "2026-11-26T00:35:11.308413+00:00"
+      }
+    },
+    {
+      "path": "lsp/fresh-ty/updated-fastapi/output.txt",
+      "size": 2975,
+      "sha256": "88e223ddeb7fbc729690142452762716e2534dc41a2e946b8e1f5a9558812ffb",
+      "role": "original-pytest-benchmark-export-or-trace",
+      "origin": {
+        "mode": "fresh",
+        "checker_version": "ty 0.0.111 (f270073e9 2026-11-25)",
+        "started_at": "2026-11-26T00:34:58.506647+00:00",
+        "completed_at": "2026-11-26T00:35:01.767552+00:00"
+      }
+    },
+    {
+      "path": "lsp/fresh-ty/updated-fastapi/results.json",
+      "size": 6945,
+      "sha256": "c80073e0057b5c9f12db3067915d3994b7c194b48df9010332cb035d380b1589",
+      "role": "original-pytest-benchmark-export-or-trace",
+      "origin": {
+        "mode": "fresh",
+        "checker_version": "ty 0.0.111 (f270073e9 2026-11-25)",
+        "started_at": "2026-11-26T00:34:58.506647+00:00",
+        "completed_at": "2026-11-26T00:35:01.767552+00:00"
+      }
+    },
+    {
+      "path": "lsp/fresh-ty/updated-fastapi/results.xml",
+      "size": 498,
+      "sha256": "2f22e818c048e75c350632577052f448de061f83e20bea0b8f887c596b78b5e7",
+      "role": "original-pytest-benchmark-export-or-trace",
+      "origin": {
+        "mode": "fresh",
+        "checker_version": "ty 0.0.111 (f270073e9 2026-11-25)",
+        "started_at": "2026-11-26T00:34:58.506647+00:00",
+        "completed_at": "2026-11-26T00:35:01.767552+00:00"
+      }
+    },
+    {
+      "path": "lsp/fresh-ty/updated-homeassistant/output.txt",
+      "size": 3029,
+      "sha256": "420b6f4a30c58162ce6b93cd52382992665828ff7707417884c15e9a8cd6f25e",
+      "role": "original-pytest-benchmark-export-or-trace",
+      "origin": {
+        "mode": "fresh",
+        "checker_version": "ty 0.0.111 (f270073e9 2026-11-25)",
+        "started_at": "2026-11-26T00:34:24.858360+00:00",
+        "completed_at": "2026-11-26T00:34:28.959153+00:00"
+      }
+    },
+    {
+      "path": "lsp/fresh-ty/updated-homeassistant/results.json",
+      "size": 7373,
+      "sha256": "6d12bb0a0d82e1cf07fb11db86363740c52808f710a0d53ed3923720d87d9419",
+      "role": "original-pytest-benchmark-export-or-trace",
+      "origin": {
+        "mode": "fresh",
+        "checker_version": "ty 0.0.111 (f270073e9 2026-11-25)",
+        "started_at": "2026-11-26T00:34:24.858360+00:00",
+        "completed_at": "2026-11-26T00:34:28.959153+00:00"
+      }
+    },
+    {
+      "path": "lsp/fresh-ty/updated-homeassistant/results.xml",
+      "size": 510,
+      "sha256": "899f472470f248c8ce50bd5718e4eb3f4c1de7ebf73de8f26b0df659a79a2716",
+      "role": "original-pytest-benchmark-export-or-trace",
+      "origin": {
+        "mode": "fresh",
+        "checker_version": "ty 0.0.111 (f270073e9 2026-11-25)",
+        "started_at": "2026-11-26T00:34:24.858360+00:00",
+        "completed_at": "2026-11-26T00:34:28.959153+00:00"
+      }
+    },
+    {
+      "path": "lsp/fresh-ty/updated-httpx/output.txt",
+      "size": 2955,
+      "sha256": "3bc0030018e59584465df216932af4d6ac8c4d717c3fd5fc7bf2fa77602815a0",
+      "role": "original-pytest-benchmark-export-or-trace",
+      "origin": {
+        "mode": "fresh",
+        "checker_version": "ty 0.0.111 (f270073e9 2026-11-25)",
+        "started_at": "2026-11-26T00:34:50.818966+00:00",
+        "completed_at": "2026-11-26T00:34:52.839482+00:00"
+      }
+    },
+    {
+      "path": "lsp/fresh-ty/updated-httpx/results.json",
+      "size": 6753,
+      "sha256": "4163cd4fe194f19f1eb7028a50e318ddf0a70d9a37164f17c9752ed1ab7fc1bd",
+      "role": "original-pytest-benchmark-export-or-trace",
+      "origin": {
+        "mode": "fresh",
+        "checker_version": "ty 0.0.111 (f270073e9 2026-11-25)",
+        "started_at": "2026-11-26T00:34:50.818966+00:00",
+        "completed_at": "2026-11-26T00:34:52.839482+00:00"
+      }
+    },
+    {
+      "path": "lsp/fresh-ty/updated-httpx/results.xml",
+      "size": 494,
+      "sha256": "072f56f0c7d72d41ba9d572d7918036a04e16d8fe8fbe3ee9edd9e69516c140e",
+      "role": "original-pytest-benchmark-export-or-trace",
+      "origin": {
+        "mode": "fresh",
+        "checker_version": "ty 0.0.111 (f270073e9 2026-11-25)",
+        "started_at": "2026-11-26T00:34:50.818966+00:00",
+        "completed_at": "2026-11-26T00:34:52.839482+00:00"
+      }
+    },
+    {
+      "path": "lsp/fresh-ty/updated-isort/output.txt",
+      "size": 2949,
+      "sha256": "8190a0fce8187ba1141ddc0af6cc01efe02a3b7f528255a0201150c89b5754bc",
+      "role": "original-pytest-benchmark-export-or-trace",
+      "origin": {
+        "mode": "fresh",
+        "checker_version": "ty 0.0.111 (f270073e9 2026-11-25)",
+        "started_at": "2026-11-26T00:34:28.986724+00:00",
+        "completed_at": "2026-11-26T00:34:31.144391+00:00"
+      }
+    },
+    {
+      "path": "lsp/fresh-ty/updated-isort/results.json",
+      "size": 6752,
+      "sha256": "5eaaf3587ebef8e7a7a7c61bc0d6ef1a61d4989776e37b584c40151aca0166ef",
+      "role": "original-pytest-benchmark-export-or-trace",
+      "origin": {
+        "mode": "fresh",
+        "checker_version": "ty 0.0.111 (f270073e9 2026-11-25)",
+        "started_at": "2026-11-26T00:34:28.986724+00:00",
+        "completed_at": "2026-11-26T00:34:31.144391+00:00"
+      }
+    },
+    {
+      "path": "lsp/fresh-ty/updated-isort/results.xml",
+      "size": 494,
+      "sha256": "4f9807c6ca913c211647c49ce9c60fe29f5befdc3400b6c25e5d2bd6d53781db",
+      "role": "original-pytest-benchmark-export-or-trace",
+      "origin": {
+        "mode": "fresh",
+        "checker_version": "ty 0.0.111 (f270073e9 2026-11-25)",
+        "started_at": "2026-11-26T00:34:28.986724+00:00",
+        "completed_at": "2026-11-26T00:34:31.144391+00:00"
+      }
+    },
+    {
+      "path": "lsp/fresh-ty/updated-jinja/output.txt",
+      "size": 2955,
+      "sha256": "0a6187e7f53aeaa01865f7dcbc7f81545be29de56c350a0b02f874fea587d8d3",
+      "role": "original-pytest-benchmark-export-or-trace",
+      "origin": {
+        "mode": "fresh",
+        "checker_version": "ty 0.0.111 (f270073e9 2026-11-25)",
+        "started_at": "2026-11-26T00:34:31.164514+00:00",
+        "completed_at": "2026-11-26T00:34:33.463956+00:00"
+      }
+    },
+    {
+      "path": "lsp/fresh-ty/updated-jinja/results.json",
+      "size": 7546,
+      "sha256": "85dcd2efc8813bb33fedebb315e9d0de8dd409904d0df681e6593e3cee288a1d",
+      "role": "original-pytest-benchmark-export-or-trace",
+      "origin": {
+        "mode": "fresh",
+        "checker_version": "ty 0.0.111 (f270073e9 2026-11-25)",
+        "started_at": "2026-11-26T00:34:31.164514+00:00",
+        "completed_at": "2026-11-26T00:34:33.463956+00:00"
+      }
+    },
+    {
+      "path": "lsp/fresh-ty/updated-jinja/results.xml",
+      "size": 494,
+      "sha256": "a7d20b664d84bcf0fd701ae461409b30334f6b98e8f7c63595431e0a8b45e0f3",
+      "role": "original-pytest-benchmark-export-or-trace",
+      "origin": {
+        "mode": "fresh",
+        "checker_version": "ty 0.0.111 (f270073e9 2026-11-25)",
+        "started_at": "2026-11-26T00:34:31.164514+00:00",
+        "completed_at": "2026-11-26T00:34:33.463956+00:00"
+      }
+    },
+    {
+      "path": "lsp/fresh-ty/updated-numpy/output.txt",
+      "size": 2973,
+      "sha256": "28072cde61d0f714a682b685a2f430be5879804d631bd187d14b432f62fe825e",
+      "role": "original-pytest-benchmark-export-or-trace",
+      "origin": {
+        "mode": "fresh",
+        "checker_version": "ty 0.0.111 (f270073e9 2026-11-25)",
+        "started_at": "2026-11-26T00:34:52.886184+00:00",
+        "completed_at": "2026-11-26T00:34:58.449613+00:00"
+      }
+    },
+    {
+      "path": "lsp/fresh-ty/updated-numpy/results.json",
+      "size": 7161,
+      "sha256": "42bb59f3dc201f48ea44ca6d6647eb4ee87961f048169050ec4340c1d280889b",
+      "role": "original-pytest-benchmark-export-or-trace",
+      "origin": {
+        "mode": "fresh",
+        "checker_version": "ty 0.0.111 (f270073e9 2026-11-25)",
+        "started_at": "2026-11-26T00:34:52.886184+00:00",
+        "completed_at": "2026-11-26T00:34:58.449613+00:00"
+      }
+    },
+    {
+      "path": "lsp/fresh-ty/updated-numpy/results.xml",
+      "size": 494,
+      "sha256": "fa579a25f8d75f2a66efdfb5fe48ca276c1c8e0e072d997338bbd3c6e275ca37",
+      "role": "original-pytest-benchmark-export-or-trace",
+      "origin": {
+        "mode": "fresh",
+        "checker_version": "ty 0.0.111 (f270073e9 2026-11-25)",
+        "started_at": "2026-11-26T00:34:52.886184+00:00",
+        "completed_at": "2026-11-26T00:34:58.449613+00:00"
+      }
+    },
+    {
+      "path": "lsp/fresh-ty/updated-openai/output.txt",
+      "size": 2965,
+      "sha256": "8df34b0839617031123192526d2140744f1e608701b3a5d7f64cb8f99aae67fc",
+      "role": "original-pytest-benchmark-export-or-trace",
+      "origin": {
+        "mode": "fresh",
+        "checker_version": "ty 0.0.111 (f270073e9 2026-11-25)",
+        "started_at": "2026-11-26T00:35:14.131359+00:00",
+        "completed_at": "2026-11-26T00:35:16.718229+00:00"
+      }
+    },
+    {
+      "path": "lsp/fresh-ty/updated-openai/results.json",
+      "size": 7235,
+      "sha256": "f3d2827a35fe7a3000446b221088a90ead036b50dc1d8e191570a5f879b7ce0e",
+      "role": "original-pytest-benchmark-export-or-trace",
+      "origin": {
+        "mode": "fresh",
+        "checker_version": "ty 0.0.111 (f270073e9 2026-11-25)",
+        "started_at": "2026-11-26T00:35:14.131359+00:00",
+        "completed_at": "2026-11-26T00:35:16.718229+00:00"
+      }
+    },
+    {
+      "path": "lsp/fresh-ty/updated-openai/results.xml",
+      "size": 496,
+      "sha256": "eeb9c927df21bc0b8503d70d95e1498a2743657443ab4a759ca681ee4be0a55b",
+      "role": "original-pytest-benchmark-export-or-trace",
+      "origin": {
+        "mode": "fresh",
+        "checker_version": "ty 0.0.111 (f270073e9 2026-11-25)",
+        "started_at": "2026-11-26T00:35:14.131359+00:00",
+        "completed_at": "2026-11-26T00:35:16.718229+00:00"
+      }
+    },
+    {
+      "path": "lsp/fresh-ty/updated-pandas/output.txt",
+      "size": 2983,
+      "sha256": "c9cb2a7e45ee798ef43fca93a958ff49998ba3585133790e4971706d913afef4",
+      "role": "original-pytest-benchmark-export-or-trace",
+      "origin": {
+        "mode": "fresh",
+        "checker_version": "ty 0.0.111 (f270073e9 2026-11-25)",
+        "started_at": "2026-11-26T00:34:33.544254+00:00",
+        "completed_at": "2026-11-26T00:34:42.816989+00:00"
+      }
+    },
+    {
+      "path": "lsp/fresh-ty/updated-pandas/results.json",
+      "size": 6952,
+      "sha256": "291b63b0666f5fc3df616106e86e6afdf6c835384d92631b228a1ad5b827eac8",
+      "role": "original-pytest-benchmark-export-or-trace",
+      "origin": {
+        "mode": "fresh",
+        "checker_version": "ty 0.0.111 (f270073e9 2026-11-25)",
+        "started_at": "2026-11-26T00:34:33.544254+00:00",
+        "completed_at": "2026-11-26T00:34:42.816989+00:00"
+      }
+    },
+    {
+      "path": "lsp/fresh-ty/updated-pandas/results.xml",
+      "size": 496,
+      "sha256": "02f890afac54e606178dd7f89541c13e48a11520c20792029d878fcc13625f35",
+      "role": "original-pytest-benchmark-export-or-trace",
+      "origin": {
+        "mode": "fresh",
+        "checker_version": "ty 0.0.111 (f270073e9 2026-11-25)",
+        "started_at": "2026-11-26T00:34:33.544254+00:00",
+        "completed_at": "2026-11-26T00:34:42.816989+00:00"
+      }
+    },
+    {
+      "path": "lsp/fresh-ty/updated-prefect/output.txt",
+      "size": 2999,
+      "sha256": "9b6a75959d47dcbedb91f3b6890ac6811da7b33924a7948ba58bad4046ed8f24",
+      "role": "original-pytest-benchmark-export-or-trace",
+      "origin": {
+        "mode": "fresh",
+        "checker_version": "ty 0.0.111 (f270073e9 2026-11-25)",
+        "started_at": "2026-11-26T00:34:42.907681+00:00",
+        "completed_at": "2026-11-26T00:34:47.951086+00:00"
+      }
+    },
+    {
+      "path": "lsp/fresh-ty/updated-prefect/results.json",
+      "size": 7866,
+      "sha256": "8ffb591b9241427848dfe86ffa11ed54d47c1877f91685a5a7d20eb23a94714b",
+      "role": "original-pytest-benchmark-export-or-trace",
+      "origin": {
+        "mode": "fresh",
+        "checker_version": "ty 0.0.111 (f270073e9 2026-11-25)",
+        "started_at": "2026-11-26T00:34:42.907681+00:00",
+        "completed_at": "2026-11-26T00:34:47.951086+00:00"
+      }
+    },
+    {
+      "path": "lsp/fresh-ty/updated-prefect/results.xml",
+      "size": 498,
+      "sha256": "810f33a2a0a7992752e46576b057a2af4701b2b5faa180ad91f7e1106f5b9155",
+      "role": "original-pytest-benchmark-export-or-trace",
+      "origin": {
+        "mode": "fresh",
+        "checker_version": "ty 0.0.111 (f270073e9 2026-11-25)",
+        "started_at": "2026-11-26T00:34:42.907681+00:00",
+        "completed_at": "2026-11-26T00:34:47.951086+00:00"
+      }
+    },
+    {
+      "path": "lsp/fresh-ty/updated-pytest/output.txt",
+      "size": 2965,
+      "sha256": "754048c5319f6c67f891459aed6a74d4e16bea3d2bcc6b3bf7f49f1955baea4c",
+      "role": "original-pytest-benchmark-export-or-trace",
+      "origin": {
+        "mode": "fresh",
+        "checker_version": "ty 0.0.111 (f270073e9 2026-11-25)",
+        "started_at": "2026-11-26T00:35:16.750787+00:00",
+        "completed_at": "2026-11-26T00:35:19.532258+00:00"
+      }
+    },
+    {
+      "path": "lsp/fresh-ty/updated-pytest/results.json",
+      "size": 7240,
+      "sha256": "509c82d67f0fd8df333c6b9fddf29f2bf0b2a11f4a6aa0f8b1f04980bc569c95",
+      "role": "original-pytest-benchmark-export-or-trace",
+      "origin": {
+        "mode": "fresh",
+        "checker_version": "ty 0.0.111 (f270073e9 2026-11-25)",
+        "started_at": "2026-11-26T00:35:16.750787+00:00",
+        "completed_at": "2026-11-26T00:35:19.532258+00:00"
+      }
+    },
+    {
+      "path": "lsp/fresh-ty/updated-pytest/results.xml",
+      "size": 496,
+      "sha256": "6b155936cb102e99e7ca94e200942a2c5e594432c9d632c7242ca046f5780e76",
+      "role": "original-pytest-benchmark-export-or-trace",
+      "origin": {
+        "mode": "fresh",
+        "checker_version": "ty 0.0.111 (f270073e9 2026-11-25)",
+        "started_at": "2026-11-26T00:35:16.750787+00:00",
+        "completed_at": "2026-11-26T00:35:19.532258+00:00"
+      }
+    },
+    {
+      "path": "lsp/fresh-ty/updated-pytorch/output.txt",
+      "size": 2975,
+      "sha256": "8b6b9baed790d5eb1afcc686f48583d96ea05a3743b02f6bbd3a45f73d6b9356",
+      "role": "original-pytest-benchmark-export-or-trace",
+      "origin": {
+        "mode": "fresh",
+        "checker_version": "ty 0.0.111 (f270073e9 2026-11-25)",
+        "started_at": "2026-11-26T00:34:48.164786+00:00",
+        "completed_at": "2026-11-26T00:34:50.794339+00:00"
+      }
+    },
+    {
+      "path": "lsp/fresh-ty/updated-pytorch/results.json",
+      "size": 12974,
+      "sha256": "0901f2bc1b0b3cc1166accc8e53bf930033c55c95c8bf1bad6aac556f28ff9f7",
+      "role": "original-pytest-benchmark-export-or-trace",
+      "origin": {
+        "mode": "fresh",
+        "checker_version": "ty 0.0.111 (f270073e9 2026-11-25)",
+        "started_at": "2026-11-26T00:34:48.164786+00:00",
+        "completed_at": "2026-11-26T00:34:50.794339+00:00"
+      }
+    },
+    {
+      "path": "lsp/fresh-ty/updated-pytorch/results.xml",
+      "size": 498,
+      "sha256": "2596903c8e95ea20ebec59ae006a3512bd9cf739a86cbb6ecee1ca4c060fcd11",
+      "role": "original-pytest-benchmark-export-or-trace",
+      "origin": {
+        "mode": "fresh",
+        "checker_version": "ty 0.0.111 (f270073e9 2026-11-25)",
+        "started_at": "2026-11-26T00:34:48.164786+00:00",
+        "completed_at": "2026-11-26T00:34:50.794339+00:00"
+      }
+    },
+    {
+      "path": "lsp/fresh-ty/updated-rich/output.txt",
+      "size": 2945,
+      "sha256": "02036f2109c94806f94c7096e14b37fc19358773a5832b893fc0ffff75dcdeca",
+      "role": "original-pytest-benchmark-export-or-trace",
+      "origin": {
+        "mode": "fresh",
+        "checker_version": "ty 0.0.111 (f270073e9 2026-11-25)",
+        "started_at": "2026-11-26T00:35:07.688728+00:00",
+        "completed_at": "2026-11-26T00:35:09.602122+00:00"
+      }
+    },
+    {
+      "path": "lsp/fresh-ty/updated-rich/results.json",
+      "size": 7193,
+      "sha256": "d5ec5f8d2fa0c14bc16d9333810ae3ca8b01de79b2fc8c7a96d861d23e3178db",
+      "role": "original-pytest-benchmark-export-or-trace",
+      "origin": {
+        "mode": "fresh",
+        "checker_version": "ty 0.0.111 (f270073e9 2026-11-25)",
+        "started_at": "2026-11-26T00:35:07.688728+00:00",
+        "completed_at": "2026-11-26T00:35:09.602122+00:00"
+      }
+    },
+    {
+      "path": "lsp/fresh-ty/updated-rich/results.xml",
+      "size": 492,
+      "sha256": "022a9571ce9495a6faf7ae6ee7401f992d353a4fdd6f6e0d377bef409661c711",
+      "role": "original-pytest-benchmark-export-or-trace",
+      "origin": {
+        "mode": "fresh",
+        "checker_version": "ty 0.0.111 (f270073e9 2026-11-25)",
+        "started_at": "2026-11-26T00:35:07.688728+00:00",
+        "completed_at": "2026-11-26T00:35:09.602122+00:00"
+      }
+    },
+    {
+      "path": "lsp/fresh-ty/updated-sqlalchemy/output.txt",
+      "size": 3029,
+      "sha256": "25960f190b26853af36f72161b051dc02df51c698544854e7ededd77b41669b6",
+      "role": "original-pytest-benchmark-export-or-trace",
+      "origin": {
+        "mode": "fresh",
+        "checker_version": "ty 0.0.111 (f270073e9 2026-11-25)",
+        "started_at": "2026-11-26T00:35:01.814751+00:00",
+        "completed_at": "2026-11-26T00:35:07.660655+00:00"
+      }
+    },
+    {
+      "path": "lsp/fresh-ty/updated-sqlalchemy/results.json",
+      "size": 7362,
+      "sha256": "1d20d7835f7c28e1d56759e8fb9273d8fda2c112d4b480cd1a70202d5a84664c",
+      "role": "original-pytest-benchmark-export-or-trace",
+      "origin": {
+        "mode": "fresh",
+        "checker_version": "ty 0.0.111 (f270073e9 2026-11-25)",
+        "started_at": "2026-11-26T00:35:01.814751+00:00",
+        "completed_at": "2026-11-26T00:35:07.660655+00:00"
+      }
+    },
+    {
+      "path": "lsp/fresh-ty/updated-sqlalchemy/results.xml",
+      "size": 504,
+      "sha256": "a7e3eb8d86592353624b19924656587a8a5cc176c051c7ac4895f5f4563c6c3b",
+      "role": "original-pytest-benchmark-export-or-trace",
+      "origin": {
+        "mode": "fresh",
+        "checker_version": "ty 0.0.111 (f270073e9 2026-11-25)",
+        "started_at": "2026-11-26T00:35:01.814751+00:00",
+        "completed_at": "2026-11-26T00:35:07.660655+00:00"
+      }
+    },
+    {
+      "path": "lsp/fresh-ty/updated-sympy/output.txt",
+      "size": 2955,
+      "sha256": "67dd7e7bd15db1921930a233b49288a4f919c1fc54a0e5e821e6e5dc0572badc",
+      "role": "original-pytest-benchmark-export-or-trace",
+      "origin": {
+        "mode": "fresh",
+        "checker_version": "ty 0.0.111 (f270073e9 2026-11-25)",
+        "started_at": "2026-11-26T00:35:11.384532+00:00",
+        "completed_at": "2026-11-26T00:35:14.032062+00:00"
+      }
+    },
+    {
+      "path": "lsp/fresh-ty/updated-sympy/results.json",
+      "size": 7227,
+      "sha256": "699db81e87c6a9bc6783065a1f9591c463e5ba1a5b6aa8e6023d850fba589847",
+      "role": "original-pytest-benchmark-export-or-trace",
+      "origin": {
+        "mode": "fresh",
+        "checker_version": "ty 0.0.111 (f270073e9 2026-11-25)",
+        "started_at": "2026-11-26T00:35:11.384532+00:00",
+        "completed_at": "2026-11-26T00:35:14.032062+00:00"
+      }
+    },
+    {
+      "path": "lsp/fresh-ty/updated-sympy/results.xml",
+      "size": 494,
+      "sha256": "db54cc61783152624c0b0b94d176a0285d6323b9379ed9535fa5ff0771e9a34e",
+      "role": "original-pytest-benchmark-export-or-trace",
+      "origin": {
+        "mode": "fresh",
+        "checker_version": "ty 0.0.111 (f270073e9 2026-11-25)",
+        "started_at": "2026-11-26T00:35:11.384532+00:00",
+        "completed_at": "2026-11-26T00:35:14.032062+00:00"
+      }
+    },
+    {
+      "path": "protocol/cli/black.json",
+      "size": 492,
+      "sha256": "51ad56889e53f0cf1021c588fe50b90921fe2deba6ca7685611988cee3690aac",
+      "role": "root-parity-proof"
+    },
+    {
+      "path": "protocol/cli/discord.py.json",
+      "size": 494,
+      "sha256": "ee559271463c0835a8629f9ffb61f11f7efcb3ae0c5b0c669269611629ea6b6e",
+      "role": "root-parity-proof"
+    },
+    {
+      "path": "protocol/cli/django.json",
+      "size": 494,
+      "sha256": "e50fe294ed6504938398e2e22ab0575c535f284adf934318699933c955655322",
+      "role": "root-parity-proof"
+    },
+    {
+      "path": "protocol/cli/fastapi.json",
+      "size": 492,
+      "sha256": "fe47a3eda49c7d1644d0878410cd2de59aa563e7910c2aac7160a0e926a3da8b",
+      "role": "root-parity-proof"
+    },
+    {
+      "path": "protocol/cli/homeassistant.json",
+      "size": 498,
+      "sha256": "e92a712d06f50a54929a83b2d2c187559180ee2407dfbf85a767d518d196ed55",
+      "role": "root-parity-proof"
+    },
+    {
+      "path": "protocol/cli/httpx.json",
+      "size": 492,
+      "sha256": "c6dd8c9dd3aa96b8a5d1dea1204c097345663a47e10ea297c0e859ad7491c125",
+      "role": "root-parity-proof"
+    },
+    {
+      "path": "protocol/cli/isort.json",
+      "size": 492,
+      "sha256": "e161ab63e7ad27be560c60a811e2cef250ab97046e5b05d888608cac6ebca8fe",
+      "role": "root-parity-proof"
+    },
+    {
+      "path": "protocol/cli/jinja.json",
+      "size": 492,
+      "sha256": "3803ea76db9b2690d27e2114e253cdfee1f193a0f86f312c9041bbcbcccb287f",
+      "role": "root-parity-proof"
+    },
+    {
+      "path": "protocol/cli/numpy.json",
+      "size": 494,
+      "sha256": "5170d62e82c9c265e767ec4dee1a0f95fee4d380e9dbb35af0c288bfbf7a8269",
+      "role": "root-parity-proof"
+    },
+    {
+      "path": "protocol/cli/openai.json",
+      "size": 496,
+      "sha256": "1d47ee7813d517e235299186240c536b8ee1ad1a8bd22102a3a92e0e1672ecea",
+      "role": "root-parity-proof"
+    },
+    {
+      "path": "protocol/cli/pandas-stubs.json",
+      "size": 494,
+      "sha256": "3e435bdbddf1f6d51c032cb7d3f7502ad741907e3162d1b3a901cf47c92cd20d",
+      "role": "root-parity-proof"
+    },
+    {
+      "path": "protocol/cli/pandas.json",
+      "size": 494,
+      "sha256": "d621ac068ad8504234c05d690ec6dcf6fb0ba11144227799581493724ad5cd21",
+      "role": "root-parity-proof"
+    },
+    {
+      "path": "protocol/cli/prefect.json",
+      "size": 492,
+      "sha256": "d25945b58a2fb97920e4a035f14d19e8698aaba2e27a45f5a96af1b377c51686",
+      "role": "root-parity-proof"
+    },
+    {
+      "path": "protocol/cli/pytest.json",
+      "size": 494,
+      "sha256": "e16e344e3f98283fc0db192b433b9f9d720eef7de7af9e69fff77463e7f8196e",
+      "role": "root-parity-proof"
+    },
+    {
+      "path": "protocol/cli/pytorch.json",
+      "size": 496,
+      "sha256": "df5e8aff9a5fbb97ab13d0614c83257c44af9a47216ade2a320bcd1f3101b3d1",
+      "role": "root-parity-proof"
+    },
+    {
+      "path": "protocol/cli/rich.json",
+      "size": 494,
+      "sha256": "9b20552f810749586eb473dfaebca384e707009974e21b9320608374feff289e",
+      "role": "root-parity-proof"
+    },
+    {
+      "path": "protocol/cli/sqlalchemy.json",
+      "size": 494,
+      "sha256": "e485a55ae5685c634a5acb8de56bed1e5c827dba42521f9c41f1894fd648b562",
+      "role": "root-parity-proof"
+    },
+    {
+      "path": "protocol/cli/sympy.json",
+      "size": 494,
+      "sha256": "b41838499363d316fdff6dfdf5b216540188a3a69ec857a70b6d2fe7693fe867",
+      "role": "root-parity-proof"
+    },
+    {
+      "path": "protocol/commands.json",
+      "size": 107691,
+      "sha256": "309c59547ae5bc72dc7c74143bf721d33834cae9895580a84decb708058fa7e5",
+      "role": "commands-or-immutable-retained-outcome-references"
+    },
+    {
+      "path": "protocol/lsp/updated-black.json",
+      "size": 360,
+      "sha256": "0f93067cd1b21072b5b0be5f263f6a5eed0daeced116382de111939081d9175f",
+      "role": "server-and-document-scope-proof"
+    },
+    {
+      "path": "protocol/lsp/updated-discord.py.json",
+      "size": 364,
+      "sha256": "1214b225058d2fb81897fcf0d008843587e5e268f5b77787dbf754980fdcc775",
+      "role": "server-and-document-scope-proof"
+    },
+    {
+      "path": "protocol/lsp/updated-django.json",
+      "size": 378,
+      "sha256": "892e065e64e6839246bb15bd8a530ed3d54b6c6593fb8a5c630b729c73d4abe5",
+      "role": "server-and-document-scope-proof"
+    },
+    {
+      "path": "protocol/lsp/updated-fastapi.json",
+      "size": 360,
+      "sha256": "d84aabea65be6267f157038b2f394fe71e9e70813df01508c721df5cc191f87b",
+      "role": "server-and-document-scope-proof"
+    },
+    {
+      "path": "protocol/lsp/updated-homeassistant.json",
+      "size": 389,
+      "sha256": "9f4b7b73358e1d44e9dd178d922f2dc11b85958b259e402d360c7a7e971e9586",
+      "role": "server-and-document-scope-proof"
+    },
+    {
+      "path": "protocol/lsp/updated-httpx.json",
+      "size": 352,
+      "sha256": "4d46aacb747c1b513c7279ad87ca68c0c6e2ba9fd4133e8d7f071204b31de1af",
+      "role": "server-and-document-scope-proof"
+    },
+    {
+      "path": "protocol/lsp/updated-isort.json",
+      "size": 353,
+      "sha256": "c0e5e9f409f20fe32b02d3347df5820584d572e474dc3c31a4be5da50363a667",
+      "role": "server-and-document-scope-proof"
+    },
+    {
+      "path": "protocol/lsp/updated-jinja.json",
+      "size": 602,
+      "sha256": "78f385106070364c460a9112d7256e80c768cbbcdce33320d6b1edf0696d355b",
+      "role": "server-and-document-scope-proof"
+    },
+    {
+      "path": "protocol/lsp/updated-numpy.json",
+      "size": 370,
+      "sha256": "2648c151503173b1f73b387f866561407a3c45846839b4538801cc19e3d11b08",
+      "role": "server-and-document-scope-proof"
+    },
+    {
+      "path": "protocol/lsp/updated-openai.json",
+      "size": 366,
+      "sha256": "23019746039ed4115c7575baa4274e26f2b226298eca8c8fa96a9974b971b1a2",
+      "role": "server-and-document-scope-proof"
+    },
+    {
+      "path": "protocol/lsp/updated-pandas.json",
+      "size": 361,
+      "sha256": "5952907912f5a88b48caef0e9df35e258dbb49b680614d1ed85c0cbdc0202062",
+      "role": "server-and-document-scope-proof"
+    },
+    {
+      "path": "protocol/lsp/updated-prefect.json",
+      "size": 401,
+      "sha256": "f18197ae9c88b2c4720fc09302719e4ddc8577b91ba71ec03481e970cd1db790",
+      "role": "server-and-document-scope-proof"
+    },
+    {
+      "path": "protocol/lsp/updated-pytest.json",
+      "size": 376,
+      "sha256": "9f71be389a8b53e1325ca87974ccb14c173add78dcdea038b0394b4a16d689b8",
+      "role": "server-and-document-scope-proof"
+    },
+    {
+      "path": "protocol/lsp/updated-pytorch.json",
+      "size": 387,
+      "sha256": "6b81b7c6cd4099502b8d5a033fbb69ee351df7bf106b247c4657cba5d9bd6c02",
+      "role": "server-and-document-scope-proof"
+    },
+    {
+      "path": "protocol/lsp/updated-rich.json",
+      "size": 346,
+      "sha256": "9245f888bddc4cd63d379834c794899bfae67936b7bf0637d261b4464f34fc79",
+      "role": "server-and-document-scope-proof"
+    },
+    {
+      "path": "protocol/lsp/updated-sqlalchemy.json",
+      "size": 395,
+      "sha256": "0a46efd14397bd2da57db4f97b20bfd0de668c4116a2a2655f1b399bfdc7cbff",
+      "role": "server-and-document-scope-proof"
+    },
+    {
+      "path": "protocol/lsp/updated-sympy.json",
+      "size": 362,
+      "sha256": "dea5ba587aac70d3d3df7637528c2794188fc735fd0c5a1d02169481c72c8933",
+      "role": "server-and-document-scope-proof"
+    }
+  ],
+  "private_provenance_excluded": [
+    "Full collection reports",
+    "Environment keys and value hashes",
+    "Source-file hash maps",
+    "Backups and task state"
+  ],
+  "checksum_scope": "All listed raw exports, verified inputs and protocol files; this manifest and README exclude themselves."
+}

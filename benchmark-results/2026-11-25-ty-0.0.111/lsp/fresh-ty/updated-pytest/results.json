@@ -1,0 +1,204 @@
+{
+    "machine_info": {
+        "node": "MacBook-Pro-8.local",
+        "processor": "arm",
+        "machine": "arm64",
+        "python_compiler": "Clang 23.1.3 ",
+        "python_implementation": "CPython",
+        "python_implementation_version": "3.15.1",
+        "python_version": "3.15.1",
+        "python_build": [
+            "main",
+            "Oct 21 2026 17:39:16"
+        ],
+        "release": "25.5.0",
+        "system": "Darwin",
+        "cpu": {
+            "python_version": "3.15.1.final.0 (64 bit)",
+            "cpuinfo_version": [
+                10,
+                1,
+                1
+            ],
+            "cpuinfo_version_string": "10.1.1",
+            "arch": "ARM_8",
+            "bits": 64,
+            "count": 16,
+            "arch_string_raw": "arm64"
+        }
+    },
+    "commit_info": {
+        "id": "504457130a2183e9f0c6f4e92ce1c43e970b70ca",
+        "time": "2026-11-04T13:31:31-05:00",
+        "author_time": "2026-11-04T13:31:31-05:00",
+        "dirty": false,
+        "project": "ty_benchmark",
+        "branch": "(detached head)"
+    },
+    "benchmarks": [
+        {
+            "group": "pytest",
+            "name": "test_fetch_diagnostics[updated-pytest-ty]",
+            "fullname": "src/benchmark/test_lsp_diagnostics.py::test_fetch_diagnostics[updated-pytest-ty]",
+            "params": {
+                "project_setup": [
+                    "pytest",
+                    "https://github.com/pytest-dev/pytest",
+                    "8b005ed7f972987033ec34dc1e68b0635fb8142b",
+                    [
+                        "-r",
+                        "pyproject.toml",
+                        "--all-extras"
+                    ],
+                    "3.11",
+                    null,
+                    [
+                        "src",
+                        "testing"
+                    ],
+                    [
+                        "testing/example_scripts/**"
+                    ],
+                    [
+                        "src/_pytest/pathlib.py",
+                        [
+                            "src/_pytest/config/__init__.py"
+                        ],
+                        "def absolutepath(path: str | os.PathLike[str]) -> Path:",
+                        "def absolutepath(path: str | os.PathLike[str]) -> int:"
+                    ],
+                    [
+                        "src"
+                    ]
+                ],
+                "tool": "UNSERIALIZABLE[<benchmark.tool.Ty object at 0x10969c910>]"
+            },
+            "param": "updated-pytest-ty",
+            "extra_info": {},
+            "options": {
+                "disable_gc": false,
+                "timer": "perf_counter",
+                "min_rounds": 5,
+                "max_time": 1.0,
+                "min_time": 5e-06,
+                "precision": null,
+                "confidence": null,
+                "warmup": false
+            },
+            "stats": {
+                "min": 0.06187575007788837,
+                "max": 0.06296212505549192,
+                "mean": 0.06231036651879549,
+                "stddev": 0.0003293090895165236,
+                "rounds": 10,
+                "median": 0.06220943748485297,
+                "iqr": 0.0004552502650767565,
+                "q1": 0.06212045787833631,
+                "q3": 0.06257570814341307,
+                "iqr_outliers": 0,
+                "stddev_outliers": 3,
+                "outliers": "3;0",
+                "ld15iqr": 0.06187575007788837,
+                "hd15iqr": 0.06296212505549192,
+                "ops": 16.048693915134603,
+                "total": 0.6231036651879549,
+                "data": [
+                    0.06268970808014274,
+                    0.06224137498065829,
+                    0.06257570814341307,
+                    0.06206154101528227,
+                    0.06296212505549192,
+                    0.06215812498703599,
+                    0.0622387919574976,
+                    0.06212045787833631,
+                    0.06218008301220834,
+                    0.06187575007788837
+                ],
+                "iterations": 1
+            }
+        },
+        {
+            "group": "pytest",
+            "name": "test_incremental_edit[updated-pytest-ty]",
+            "fullname": "src/benchmark/test_lsp_diagnostics.py::test_incremental_edit[updated-pytest-ty]",
+            "params": {
+                "project_setup": [
+                    "pytest",
+                    "https://github.com/pytest-dev/pytest",
+                    "8b005ed7f972987033ec34dc1e68b0635fb8142b",
+                    [
+                        "-r",
+                        "pyproject.toml",
+                        "--all-extras"
+                    ],
+                    "3.11",
+                    null,
+                    [
+                        "src",
+                        "testing"
+                    ],
+                    [
+                        "testing/example_scripts/**"
+                    ],
+                    [
+                        "src/_pytest/pathlib.py",
+                        [
+                            "src/_pytest/config/__init__.py"
+                        ],
+                        "def absolutepath(path: str | os.PathLike[str]) -> Path:",
+                        "def absolutepath(path: str | os.PathLike[str]) -> int:"
+                    ],
+                    [
+                        "src"
+                    ]
+                ],
+                "tool": "UNSERIALIZABLE[<benchmark.tool.Ty object at 0x10969c910>]"
+            },
+            "param": "updated-pytest-ty",
+            "extra_info": {},
+            "options": {
+                "disable_gc": false,
+                "timer": "perf_counter",
+                "min_rounds": 5,
+                "max_time": 1.0,
+                "min_time": 5e-06,
+                "precision": null,
+                "confidence": null,
+                "warmup": false
+            },
+            "stats": {
+                "min": 0.00661199982278049,
+                "max": 0.0068202081602066755,
+                "mean": 0.006714899884536862,
+                "stddev": 6.129477462328106e-05,
+                "rounds": 10,
+                "median": 0.00671733298804611,
+                "iqr": 9.495904669165611e-05,
+                "q1": 0.006667332956567407,
+                "q3": 0.006762292003259063,
+                "iqr_outliers": 0,
+                "stddev_outliers": 3,
+                "outliers": "3;0",
+                "ld15iqr": 0.00661199982278049,
+                "hd15iqr": 0.0068202081602066755,
+                "ops": 148.9225479448785,
+                "total": 0.06714899884536862,
+                "data": [
+                    0.0068202081602066755,
+                    0.006762292003259063,
+                    0.006691167131066322,
+                    0.006778124952688813,
+                    0.006667332956567407,
+                    0.006722957827150822,
+                    0.006660250015556812,
+                    0.006716207833960652,
+                    0.006718458142131567,
+                    0.00661199982278049
+                ],
+                "iterations": 1
+            }
+        }
+    ],
+    "datetime": "2026-11-26T00:35:19.435575+00:00",
+    "version": "5.3.0"
+}

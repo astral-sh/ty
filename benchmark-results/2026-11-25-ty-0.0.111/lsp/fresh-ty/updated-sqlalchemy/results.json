@@ -1,0 +1,204 @@
+{
+    "machine_info": {
+        "node": "MacBook-Pro-8.local",
+        "processor": "arm",
+        "machine": "arm64",
+        "python_compiler": "Clang 23.1.3 ",
+        "python_implementation": "CPython",
+        "python_implementation_version": "3.15.1",
+        "python_version": "3.15.1",
+        "python_build": [
+            "main",
+            "Oct 21 2026 17:39:16"
+        ],
+        "release": "25.5.0",
+        "system": "Darwin",
+        "cpu": {
+            "python_version": "3.15.1.final.0 (64 bit)",
+            "cpuinfo_version": [
+                10,
+                1,
+                1
+            ],
+            "cpuinfo_version_string": "10.1.1",
+            "arch": "ARM_8",
+            "bits": 64,
+            "count": 16,
+            "arch_string_raw": "arm64"
+        }
+    },
+    "commit_info": {
+        "id": "504457130a2183e9f0c6f4e92ce1c43e970b70ca",
+        "time": "2026-11-04T13:31:31-05:00",
+        "author_time": "2026-11-04T13:31:31-05:00",
+        "dirty": false,
+        "project": "ty_benchmark",
+        "branch": "(detached head)"
+    },
+    "benchmarks": [
+        {
+            "group": "sqlalchemy",
+            "name": "test_fetch_diagnostics[updated-sqlalchemy-ty]",
+            "fullname": "src/benchmark/test_lsp_diagnostics.py::test_fetch_diagnostics[updated-sqlalchemy-ty]",
+            "params": {
+                "project_setup": [
+                    "sqlalchemy",
+                    "https://github.com/sqlalchemy/sqlalchemy",
+                    "10f4d1e2d706a7722ca78e79ce05b00333a7aa5b",
+                    [
+                        "-r",
+                        "pyproject.toml",
+                        "--extra",
+                        "asyncio",
+                        "types-greenlet",
+                        "pytest"
+                    ],
+                    "3.11",
+                    null,
+                    [
+                        "lib/sqlalchemy"
+                    ],
+                    [],
+                    [
+                        "lib/sqlalchemy/util/_collections.py",
+                        [
+                            "lib/sqlalchemy/orm/mapper.py"
+                        ],
+                        "def to_list(x: Any, default: Optional[List[Any]] = None) -> List[Any]:",
+                        "def to_list(x: Any, default: Optional[List[Any]] = None) -> int:"
+                    ],
+                    [
+                        "lib"
+                    ]
+                ],
+                "tool": "UNSERIALIZABLE[<benchmark.tool.Ty object at 0x107564910>]"
+            },
+            "param": "updated-sqlalchemy-ty",
+            "extra_info": {},
+            "options": {
+                "disable_gc": false,
+                "timer": "perf_counter",
+                "min_rounds": 5,
+                "max_time": 1.0,
+                "min_time": 5e-06,
+                "precision": null,
+                "confidence": null,
+                "warmup": false
+            },
+            "stats": {
+                "min": 0.1687246251385659,
+                "max": 0.17987895803526044,
+                "mean": 0.17067160427104683,
+                "stddev": 0.003418311547061443,
+                "rounds": 10,
+                "median": 0.16904529160819948,
+                "iqr": 0.002122000092640519,
+                "q1": 0.16888737492263317,
+                "q3": 0.1710093750152737,
+                "iqr_outliers": 1,
+                "stddev_outliers": 1,
+                "outliers": "1;1",
+                "ld15iqr": 0.1687246251385659,
+                "hd15iqr": 0.17987895803526044,
+                "ops": 5.859205485710915,
+                "total": 1.7067160427104682,
+                "data": [
+                    0.16882170899771154,
+                    0.1689088752027601,
+                    0.1691155000589788,
+                    0.16888737492263317,
+                    0.1687246251385659,
+                    0.17051962506957352,
+                    0.16897508315742016,
+                    0.1710093750152737,
+                    0.17187491711229086,
+                    0.17987895803526044
+                ],
+                "iterations": 1
+            }
+        },
+        {
+            "group": "sqlalchemy",
+            "name": "test_incremental_edit[updated-sqlalchemy-ty]",
+            "fullname": "src/benchmark/test_lsp_diagnostics.py::test_incremental_edit[updated-sqlalchemy-ty]",
+            "params": {
+                "project_setup": [
+                    "sqlalchemy",
+                    "https://github.com/sqlalchemy/sqlalchemy",
+                    "10f4d1e2d706a7722ca78e79ce05b00333a7aa5b",
+                    [
+                        "-r",
+                        "pyproject.toml",
+                        "--extra",
+                        "asyncio",
+                        "types-greenlet",
+                        "pytest"
+                    ],
+                    "3.11",
+                    null,
+                    [
+                        "lib/sqlalchemy"
+                    ],
+                    [],
+                    [
+                        "lib/sqlalchemy/util/_collections.py",
+                        [
+                            "lib/sqlalchemy/orm/mapper.py"
+                        ],
+                        "def to_list(x: Any, default: Optional[List[Any]] = None) -> List[Any]:",
+                        "def to_list(x: Any, default: Optional[List[Any]] = None) -> int:"
+                    ],
+                    [
+                        "lib"
+                    ]
+                ],
+                "tool": "UNSERIALIZABLE[<benchmark.tool.Ty object at 0x107564910>]"
+            },
+            "param": "updated-sqlalchemy-ty",
+            "extra_info": {},
+            "options": {
+                "disable_gc": false,
+                "timer": "perf_counter",
+                "min_rounds": 5,
+                "max_time": 1.0,
+                "min_time": 5e-06,
+                "precision": null,
+                "confidence": null,
+                "warmup": false
+            },
+            "stats": {
+                "min": 0.00897429184988141,
+                "max": 0.010646499926224351,
+                "mean": 0.009228700096718967,
+                "stddev": 0.0005040538599425024,
+                "rounds": 10,
+                "median": 0.009063145495019853,
+                "iqr": 0.0001438329927623272,
+                "q1": 0.00900658406317234,
+                "q3": 0.009150417055934668,
+                "iqr_outliers": 1,
+                "stddev_outliers": 1,
+                "outliers": "1;1",
+                "ld15iqr": 0.00897429184988141,
+                "hd15iqr": 0.010646499926224351,
+                "ops": 108.35762236498778,
+                "total": 0.09228700096718967,
+                "data": [
+                    0.009005333064123988,
+                    0.010646499926224351,
+                    0.00903941597789526,
+                    0.009150417055934668,
+                    0.00897429184988141,
+                    0.00900658406317234,
+                    0.009109416976571083,
+                    0.009086875012144446,
+                    0.00922979204915464,
+                    0.009038374992087483
+                ],
+                "iterations": 1
+            }
+        }
+    ],
+    "datetime": "2026-11-26T00:35:07.545478+00:00",
+    "version": "5.3.0"
+}

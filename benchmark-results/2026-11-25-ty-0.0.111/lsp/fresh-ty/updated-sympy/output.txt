@@ -1,0 +1,33 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.15.1, pytest-9.1.1, pluggy-1.7.0 -- /tmp/ty-benchmark-0.0.108-replay-ruff/scripts/ty_benchmark/.venv/bin/python
+cachedir: .pytest_cache
+benchmark: 5.3.0 (defaults: timer=time.perf_counter disable_gc=False min_rounds=5 min_time=0.000005 max_time=1.0 calibration_precision=10 warmup=False warmup_iterations=100000)
+rootdir: /private/tmp/ty-benchmark-0.0.108-replay-ruff/scripts/ty_benchmark
+configfile: pyproject.toml
+plugins: benchmark-5.3.0
+collecting ... collected 2 items
+
+src/benchmark/test_lsp_diagnostics.py::test_fetch_diagnostics[updated-sympy-ty] PASSED [ 50%]
+src/benchmark/test_lsp_diagnostics.py::test_incremental_edit[updated-sympy-ty] PASSED [100%]
+Wrote benchmark data in: /tmp/ty-release-0.0.111-2026-11-25/lsp/updated-sympy/results.json
+
+
+=============================== warnings summary ===============================
+src/benchmark/test_lsp_diagnostics.py: 48 warnings
+  /tmp/ty-benchmark-0.0.108-replay-ruff/scripts/ty_benchmark/.venv/lib/python3.15/site-packages/pygls/feature_manager.py:86: DeprecationWarning: 'asyncio.iscoroutinefunction' is deprecated and slated for removal in Python 3.16; use inspect.iscoroutinefunction() instead
+    if asyncio.iscoroutinefunction(f):
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+- generated xml file: /tmp/ty-release-0.0.111-2026-11-25/lsp/updated-sympy/results.xml -
+
+----------------------------------------------------------------------------------------- benchmark 'sympy': 2 tests ----------------------------------------------------------------------------------------
+Name (time in ms)                                Min                Max               Mean            StdDev             Median               IQR            Outliers       OPS            Rounds  Iterations
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+test_incremental_edit[updated-sympy-ty]       2.8324 (1.0)       3.2685 (1.0)       3.0064 (1.0)      0.1084 (1.0)       2.9891 (1.0)      0.0503 (1.0)           2;2  332.6223 (1.0)          10           1
+test_fetch_diagnostics[updated-sympy-ty]     57.8503 (20.42)    58.8916 (18.02)    58.2277 (19.37)    0.3413 (3.15)     58.0762 (19.43)    0.4730 (9.40)          3;0   17.1740 (0.05)         10           1
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Legend:
+  Outliers: 1 Standard Deviation from Mean; 1.5 IQR (InterQuartile Range) from 1st Quartile and 3rd Quartile.
+  OPS: Operations Per Second, computed as 1 / Mean
+======================== 2 passed, 48 warnings in 2.26s ========================

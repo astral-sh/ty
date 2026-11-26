@@ -1,0 +1,818 @@
+[
+  {
+    "error": null,
+    "failure": null,
+    "name": "test_fetch_diagnostics[updated-jinja-pyright]",
+    "skipped": false
+  },
+  {
+    "error": null,
+    "failure": null,
+    "name": "test_fetch_diagnostics[updated-jinja-pyrefly]",
+    "skipped": false
+  },
+  {
+    "error": null,
+    "failure": null,
+    "name": "test_incremental_edit[updated-jinja-pyright]",
+    "skipped": false
+  },
+  {
+    "error": null,
+    "failure": null,
+    "name": "test_incremental_edit[updated-jinja-pyrefly]",
+    "skipped": false
+  },
+  {
+    "error": null,
+    "failure": null,
+    "name": "test_fetch_diagnostics[updated-httpx-pyright]",
+    "skipped": false
+  },
+  {
+    "error": null,
+    "failure": null,
+    "name": "test_fetch_diagnostics[updated-httpx-pyrefly]",
+    "skipped": false
+  },
+  {
+    "error": null,
+    "failure": null,
+    "name": "test_incremental_edit[updated-httpx-pyright]",
+    "skipped": false
+  },
+  {
+    "error": null,
+    "failure": null,
+    "name": "test_incremental_edit[updated-httpx-pyrefly]",
+    "skipped": false
+  },
+  {
+    "error": null,
+    "failure": null,
+    "name": "test_fetch_diagnostics[updated-numpy-pyright]",
+    "skipped": false
+  },
+  {
+    "error": null,
+    "failure": null,
+    "name": "test_fetch_diagnostics[updated-numpy-pyrefly]",
+    "skipped": false
+  },
+  {
+    "error": null,
+    "failure": null,
+    "name": "test_incremental_edit[updated-numpy-pyright]",
+    "skipped": false
+  },
+  {
+    "error": null,
+    "failure": null,
+    "name": "test_incremental_edit[updated-numpy-pyrefly]",
+    "skipped": false
+  },
+  {
+    "error": null,
+    "failure": null,
+    "name": "test_fetch_diagnostics[updated-fastapi-pyright]",
+    "skipped": false
+  },
+  {
+    "error": null,
+    "failure": null,
+    "name": "test_fetch_diagnostics[updated-fastapi-pyrefly]",
+    "skipped": false
+  },
+  {
+    "error": null,
+    "failure": null,
+    "name": "test_incremental_edit[updated-fastapi-pyright]",
+    "skipped": false
+  },
+  {
+    "error": null,
+    "failure": null,
+    "name": "test_incremental_edit[updated-fastapi-pyrefly]",
+    "skipped": false
+  },
+  {
+    "error": null,
+    "failure": null,
+    "name": "test_fetch_diagnostics[updated-sqlalchemy-pyright]",
+    "skipped": false
+  },
+  {
+    "error": null,
+    "failure": null,
+    "name": "test_fetch_diagnostics[updated-sqlalchemy-pyrefly]",
+    "skipped": false
+  },
+  {
+    "error": null,
+    "failure": null,
+    "name": "test_incremental_edit[updated-sqlalchemy-pyright]",
+    "skipped": false
+  },
+  {
+    "error": null,
+    "failure": null,
+    "name": "test_incremental_edit[updated-sqlalchemy-pyrefly]",
+    "skipped": false
+  },
+  {
+    "error": null,
+    "failure": null,
+    "name": "test_fetch_diagnostics[updated-rich-pyright]",
+    "skipped": false
+  },
+  {
+    "error": null,
+    "failure": null,
+    "name": "test_fetch_diagnostics[updated-rich-pyrefly]",
+    "skipped": false
+  },
+  {
+    "error": null,
+    "failure": null,
+    "name": "test_incremental_edit[updated-rich-pyright]",
+    "skipped": false
+  },
+  {
+    "error": null,
+    "failure": null,
+    "name": "test_incremental_edit[updated-rich-pyrefly]",
+    "skipped": false
+  },
+  {
+    "error": null,
+    "failure": null,
+    "name": "test_fetch_diagnostics[updated-black-pyright]",
+    "skipped": false
+  },
+  {
+    "error": null,
+    "failure": null,
+    "name": "test_fetch_diagnostics[updated-black-pyrefly]",
+    "skipped": false
+  },
+  {
+    "error": null,
+    "failure": null,
+    "name": "test_incremental_edit[updated-black-pyright]",
+    "skipped": false
+  },
+  {
+    "error": null,
+    "failure": null,
+    "name": "test_incremental_edit[updated-black-pyrefly]",
+    "skipped": false
+  },
+  {
+    "error": null,
+    "failure": null,
+    "name": "test_fetch_diagnostics[updated-discord.py-pyright]",
+    "skipped": false
+  },
+  {
+    "error": null,
+    "failure": null,
+    "name": "test_fetch_diagnostics[updated-discord.py-pyrefly]",
+    "skipped": false
+  },
+  {
+    "error": null,
+    "failure": null,
+    "name": "test_incremental_edit[updated-discord.py-pyright]",
+    "skipped": false
+  },
+  {
+    "error": null,
+    "failure": null,
+    "name": "test_incremental_edit[updated-discord.py-pyrefly]",
+    "skipped": false
+  },
+  {
+    "error": null,
+    "failure": null,
+    "name": "test_fetch_diagnostics[updated-homeassistant-pyright]",
+    "skipped": false
+  },
+  {
+    "error": null,
+    "failure": null,
+    "name": "test_fetch_diagnostics[updated-homeassistant-pyrefly]",
+    "skipped": false
+  },
+  {
+    "error": null,
+    "failure": null,
+    "name": "test_incremental_edit[updated-homeassistant-pyright]",
+    "skipped": false
+  },
+  {
+    "error": null,
+    "failure": null,
+    "name": "test_incremental_edit[updated-homeassistant-pyrefly]",
+    "skipped": false
+  },
+  {
+    "error": null,
+    "failure": null,
+    "name": "test_fetch_diagnostics[updated-isort-pyright]",
+    "skipped": false
+  },
+  {
+    "error": null,
+    "failure": null,
+    "name": "test_fetch_diagnostics[updated-isort-pyrefly]",
+    "skipped": false
+  },
+  {
+    "error": null,
+    "failure": null,
+    "name": "test_incremental_edit[updated-isort-pyright]",
+    "skipped": false
+  },
+  {
+    "error": null,
+    "failure": null,
+    "name": "test_incremental_edit[updated-isort-pyrefly]",
+    "skipped": false
+  },
+  {
+    "error": null,
+    "failure": null,
+    "name": "test_fetch_diagnostics[updated-pandas-pyright]",
+    "skipped": false
+  },
+  {
+    "error": null,
+    "failure": null,
+    "name": "test_fetch_diagnostics[updated-pandas-pyrefly]",
+    "skipped": false
+  },
+  {
+    "error": null,
+    "failure": null,
+    "name": "test_incremental_edit[updated-pandas-pyright]",
+    "skipped": false
+  },
+  {
+    "error": null,
+    "failure": null,
+    "name": "test_incremental_edit[updated-pandas-pyrefly]",
+    "skipped": false
+  },
+  {
+    "error": null,
+    "failure": null,
+    "name": "test_fetch_diagnostics[updated-prefect-pyright]",
+    "skipped": false
+  },
+  {
+    "error": null,
+    "failure": null,
+    "name": "test_fetch_diagnostics[updated-prefect-pyrefly]",
+    "skipped": false
+  },
+  {
+    "error": null,
+    "failure": null,
+    "name": "test_incremental_edit[updated-prefect-pyright]",
+    "skipped": false
+  },
+  {
+    "error": null,
+    "failure": null,
+    "name": "test_incremental_edit[updated-prefect-pyrefly]",
+    "skipped": false
+  },
+  {
+    "error": null,
+    "failure": null,
+    "name": "test_fetch_diagnostics[updated-pytorch-pyright]",
+    "skipped": false
+  },
+  {
+    "error": null,
+    "failure": null,
+    "name": "test_fetch_diagnostics[updated-pytorch-pyrefly]",
+    "skipped": false
+  },
+  {
+    "error": null,
+    "failure": null,
+    "name": "test_incremental_edit[updated-pytorch-pyright]",
+    "skipped": false
+  },
+  {
+    "error": null,
+    "failure": null,
+    "name": "test_incremental_edit[updated-pytorch-pyrefly]",
+    "skipped": false
+  },
+  {
+    "error": null,
+    "failure": null,
+    "name": "test_fetch_diagnostics[updated-django-pyright]",
+    "skipped": false
+  },
+  {
+    "error": null,
+    "failure": null,
+    "name": "test_fetch_diagnostics[updated-django-pyrefly]",
+    "skipped": false
+  },
+  {
+    "error": null,
+    "failure": null,
+    "name": "test_incremental_edit[updated-django-pyright]",
+    "skipped": false
+  },
+  {
+    "error": null,
+    "failure": null,
+    "name": "test_incremental_edit[updated-django-pyrefly]",
+    "skipped": false
+  },
+  {
+    "error": null,
+    "failure": null,
+    "name": "test_fetch_diagnostics[updated-sympy-pyright]",
+    "skipped": false
+  },
+  {
+    "error": null,
+    "failure": null,
+    "name": "test_fetch_diagnostics[updated-sympy-pyrefly]",
+    "skipped": false
+  },
+  {
+    "error": null,
+    "failure": null,
+    "name": "test_incremental_edit[updated-sympy-pyright]",
+    "skipped": false
+  },
+  {
+    "error": null,
+    "failure": null,
+    "name": "test_incremental_edit[updated-sympy-pyrefly]",
+    "skipped": false
+  },
+  {
+    "error": null,
+    "failure": null,
+    "name": "test_fetch_diagnostics[updated-openai-pyright]",
+    "skipped": false
+  },
+  {
+    "error": null,
+    "failure": null,
+    "name": "test_fetch_diagnostics[updated-openai-pyrefly]",
+    "skipped": false
+  },
+  {
+    "error": null,
+    "failure": null,
+    "name": "test_incremental_edit[updated-openai-pyright]",
+    "skipped": false
+  },
+  {
+    "error": null,
+    "failure": null,
+    "name": "test_incremental_edit[updated-openai-pyrefly]",
+    "skipped": false
+  },
+  {
+    "error": null,
+    "failure": null,
+    "name": "test_fetch_diagnostics[updated-pytest-pyright]",
+    "skipped": false
+  },
+  {
+    "error": null,
+    "failure": null,
+    "name": "test_fetch_diagnostics[updated-pytest-pyrefly]",
+    "skipped": false
+  },
+  {
+    "error": null,
+    "failure": null,
+    "name": "test_incremental_edit[updated-pytest-pyright]",
+    "skipped": false
+  },
+  {
+    "error": null,
+    "failure": null,
+    "name": "test_incremental_edit[updated-pytest-pyrefly]",
+    "skipped": false
+  },
+  {
+    "error": null,
+    "failure": null,
+    "name": "test_fetch_diagnostics[updated-black-zuban]",
+    "skipped": false
+  },
+  {
+    "error": null,
+    "failure": null,
+    "name": "test_incremental_edit[updated-black-zuban]",
+    "skipped": false
+  },
+  {
+    "error": null,
+    "failure": null,
+    "name": "test_fetch_diagnostics[updated-discord.py-zuban]",
+    "skipped": false
+  },
+  {
+    "error": null,
+    "failure": "request = <FixtureRequest for <Function test_incremental_edit[updated-discord.py-zuban]>>\nbenchmark = <pytest_benchmark.fixture.BenchmarkFixture object at 0x108a74050>\nproject_setup = (Project(name='discord.py', repository='unused', revision='65232c38702be5844cf2ce865a4777eb1928b5d0', install_argument...discord.py', project_path=PosixPath('/tmp/ty-benchmark-0.0.96-canonical-2026-11-03/lsp-checkouts/updated-discord.py')))\ntool = <benchmark.tool.Zuban object at 0x1082d7b60>\n\n    def test_incremental_edit(\n        request, benchmark, project_setup: tuple[Project, Venv], tool: Tool\n    ):\n        \"\"\"Benchmark the time to receive diagnostics after making an edit to a file.\"\"\"\n    \n        project, venv = project_setup\n    \n>       run_benchmark(request, benchmark, project, tool, venv, IncrementalEditTest)\n\n/tmp/ty-benchmark-0.0.96-canonical-2026-11-03/harness-lsp/ruff/scripts/ty_benchmark/src/benchmark/test_lsp_diagnostics.py:104: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n/tmp/ty-benchmark-0.0.96-canonical-2026-11-03/harness-lsp/ruff/scripts/ty_benchmark/src/benchmark/test_lsp_diagnostics.py:155: in run_benchmark\n    benchmark.pedantic(\n/tmp/ty-benchmark-zuban-runner/lib/python3.15/site-packages/pytest_benchmark/fixture.py:206: in pedantic\n    return self._raw_pedantic(\n/tmp/ty-benchmark-zuban-runner/lib/python3.15/site-packages/pytest_benchmark/fixture.py:331: in _raw_pedantic\n    runner(loops_range)\n/tmp/ty-benchmark-zuban-runner/lib/python3.15/site-packages/pytest_benchmark/fixture.py:152: in runner\n    result = function_to_benchmark(*args, **kwargs)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/tmp/ty-benchmark-0.0.96-canonical-2026-11-03/harness-lsp/ruff/scripts/ty_benchmark/src/benchmark/test_lsp_diagnostics.py:142: in run\n    runner.run(test.run())\n/Users/crmarsh/.local/share/uv/python/cpython-3.15.1-macos-aarch64-none/lib/python3.15/asyncio/runners.py:128: in run\n    return self._loop.run_until_complete(task)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/Users/crmarsh/.local/share/uv/python/cpython-3.15.1-macos-aarch64-none/lib/python3.15/asyncio/base_events.py:724: in run_until_complete\n    return future.result()\n           ^^^^^^^^^^^^^^^\n/tmp/ty-benchmark-0.0.96-canonical-2026-11-03/harness-lsp/ruff/scripts/ty_benchmark/src/benchmark/test_lsp_diagnostics.py:355: in run\n    await self.client.text_documents_diagnostics_async(all_files)\n/tmp/ty-benchmark-0.0.96-canonical-2026-11-03/harness-lsp/ruff/scripts/ty_benchmark/src/benchmark/lsp_client.py:142: in text_documents_diagnostics_async\n    responses = await asyncio.gather(\n/tmp/ty-benchmark-0.0.96-canonical-2026-11-03/harness-lsp/ruff/scripts/ty_benchmark/src/benchmark/lsp_client.py:122: in text_document_diagnostics_async\n    pull_diagnostics = await self.text_document_diagnostic_async(\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nself = <benchmark.lsp_client.LSPClient object at 0x10862ba10>\nparams = DocumentDiagnosticParams(text_document=TextDocumentIdentifier(uri='file:///private/tmp/ty-benchmark-0.0.96-canonical-2...discord.py/discord/abc.py'), identifier=None, previous_result_id=None, work_done_token=None, partial_result_token=None)\n\n    async def text_document_diagnostic_async(\n        self,\n        params: types.DocumentDiagnosticParams,\n    ) -> Union[types.RelatedFullDocumentDiagnosticReport, types.RelatedUnchangedDocumentDiagnosticReport]:\n        \"\"\"Make a :lsp:`textDocument/diagnostic` request.\n    \n        The document diagnostic request definition.\n    \n        @since 3.17.0\n        \"\"\"\n        if self.stopped:\n            raise RuntimeError(\"Client has been stopped.\")\n    \n>       return await self.protocol.send_request_async(\"textDocument/diagnostic\", params)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nE       pygls.exceptions.JsonRpcInternalError: Server panicked, will now restart (version 0.10.2)\n\n/tmp/ty-benchmark-zuban-runner/lib/python3.15/site-packages/pygls/lsp/_base_client.py:561: JsonRpcInternalError",
+    "name": "test_incremental_edit[updated-discord.py-zuban]",
+    "skipped": false
+  },
+  {
+    "error": null,
+    "failure": null,
+    "name": "test_fetch_diagnostics[updated-homeassistant-zuban]",
+    "skipped": false
+  },
+  {
+    "error": null,
+    "failure": null,
+    "name": "test_incremental_edit[updated-homeassistant-zuban]",
+    "skipped": false
+  },
+  {
+    "error": null,
+    "failure": null,
+    "name": "test_fetch_diagnostics[updated-isort-zuban]",
+    "skipped": false
+  },
+  {
+    "error": null,
+    "failure": null,
+    "name": "test_incremental_edit[updated-isort-zuban]",
+    "skipped": false
+  },
+  {
+    "error": null,
+    "failure": null,
+    "name": "test_fetch_diagnostics[updated-jinja-zuban]",
+    "skipped": false
+  },
+  {
+    "error": null,
+    "failure": null,
+    "name": "test_incremental_edit[updated-jinja-zuban]",
+    "skipped": false
+  },
+  {
+    "error": null,
+    "failure": null,
+    "name": "test_fetch_diagnostics[updated-pandas-zuban]",
+    "skipped": false
+  },
+  {
+    "error": null,
+    "failure": null,
+    "name": "test_incremental_edit[updated-pandas-zuban]",
+    "skipped": false
+  },
+  {
+    "error": null,
+    "failure": null,
+    "name": "test_fetch_diagnostics[updated-prefect-zuban]",
+    "skipped": false
+  },
+  {
+    "error": null,
+    "failure": null,
+    "name": "test_incremental_edit[updated-prefect-zuban]",
+    "skipped": false
+  },
+  {
+    "error": null,
+    "failure": null,
+    "name": "test_fetch_diagnostics[updated-pytorch-zuban]",
+    "skipped": false
+  },
+  {
+    "error": null,
+    "failure": "request = <FixtureRequest for <Function test_incremental_edit[updated-pytorch-zuban]>>\nbenchmark = <pytest_benchmark.fixture.BenchmarkFixture object at 0x10adbd590>\nproject_setup = (Project(name='pytorch', repository='unused', revision='ab92945cea42e47ae398aead69af0872d340ea0f', install_arguments=[...name='pytorch', project_path=PosixPath('/tmp/ty-benchmark-0.0.96-canonical-2026-11-03/lsp-checkouts/updated-pytorch')))\ntool = <benchmark.tool.Zuban object at 0x10a803b60>\n\n    def test_incremental_edit(\n        request, benchmark, project_setup: tuple[Project, Venv], tool: Tool\n    ):\n        \"\"\"Benchmark the time to receive diagnostics after making an edit to a file.\"\"\"\n    \n        project, venv = project_setup\n    \n>       run_benchmark(request, benchmark, project, tool, venv, IncrementalEditTest)\n\n/tmp/ty-benchmark-0.0.96-canonical-2026-11-03/harness-lsp/ruff/scripts/ty_benchmark/src/benchmark/test_lsp_diagnostics.py:104: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n/tmp/ty-benchmark-0.0.96-canonical-2026-11-03/harness-lsp/ruff/scripts/ty_benchmark/src/benchmark/test_lsp_diagnostics.py:155: in run_benchmark\n    benchmark.pedantic(\n/tmp/ty-benchmark-zuban-runner/lib/python3.15/site-packages/pytest_benchmark/fixture.py:206: in pedantic\n    return self._raw_pedantic(\n/tmp/ty-benchmark-zuban-runner/lib/python3.15/site-packages/pytest_benchmark/fixture.py:331: in _raw_pedantic\n    runner(loops_range)\n/tmp/ty-benchmark-zuban-runner/lib/python3.15/site-packages/pytest_benchmark/fixture.py:152: in runner\n    result = function_to_benchmark(*args, **kwargs)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/tmp/ty-benchmark-0.0.96-canonical-2026-11-03/harness-lsp/ruff/scripts/ty_benchmark/src/benchmark/test_lsp_diagnostics.py:142: in run\n    runner.run(test.run())\n/Users/crmarsh/.local/share/uv/python/cpython-3.15.1-macos-aarch64-none/lib/python3.15/asyncio/runners.py:128: in run\n    return self._loop.run_until_complete(task)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/Users/crmarsh/.local/share/uv/python/cpython-3.15.1-macos-aarch64-none/lib/python3.15/asyncio/base_events.py:724: in run_until_complete\n    return future.result()\n           ^^^^^^^^^^^^^^^\n/tmp/ty-benchmark-0.0.96-canonical-2026-11-03/harness-lsp/ruff/scripts/ty_benchmark/src/benchmark/test_lsp_diagnostics.py:355: in run\n    await self.client.text_documents_diagnostics_async(all_files)\n/tmp/ty-benchmark-0.0.96-canonical-2026-11-03/harness-lsp/ruff/scripts/ty_benchmark/src/benchmark/lsp_client.py:142: in text_documents_diagnostics_async\n    responses = await asyncio.gather(\n/tmp/ty-benchmark-0.0.96-canonical-2026-11-03/harness-lsp/ruff/scripts/ty_benchmark/src/benchmark/lsp_client.py:122: in text_document_diagnostics_async\n    pull_diagnostics = await self.text_document_diagnostic_async(\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nself = <benchmark.lsp_client.LSPClient object at 0x10ae9d1d0>\nparams = DocumentDiagnosticParams(text_document=TextDocumentIdentifier(uri='file:///private/tmp/ty-benchmark-0.0.96-canonical-2...d/pipelining/_backward.py'), identifier=None, previous_result_id=None, work_done_token=None, partial_result_token=None)\n\n    async def text_document_diagnostic_async(\n        self,\n        params: types.DocumentDiagnosticParams,\n    ) -> Union[types.RelatedFullDocumentDiagnosticReport, types.RelatedUnchangedDocumentDiagnosticReport]:\n        \"\"\"Make a :lsp:`textDocument/diagnostic` request.\n    \n        The document diagnostic request definition.\n    \n        @since 3.17.0\n        \"\"\"\n        if self.stopped:\n            raise RuntimeError(\"Client has been stopped.\")\n    \n>       return await self.protocol.send_request_async(\"textDocument/diagnostic\", params)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nE       pygls.exceptions.JsonRpcInternalError: Server panicked, will now restart (version 0.10.2)\n\n/tmp/ty-benchmark-zuban-runner/lib/python3.15/site-packages/pygls/lsp/_base_client.py:561: JsonRpcInternalError",
+    "name": "test_incremental_edit[updated-pytorch-zuban]",
+    "skipped": false
+  },
+  {
+    "error": null,
+    "failure": null,
+    "name": "test_fetch_diagnostics[updated-httpx-zuban]",
+    "skipped": false
+  },
+  {
+    "error": null,
+    "failure": null,
+    "name": "test_incremental_edit[updated-httpx-zuban]",
+    "skipped": false
+  },
+  {
+    "error": null,
+    "failure": null,
+    "name": "test_fetch_diagnostics[updated-fastapi-zuban]",
+    "skipped": false
+  },
+  {
+    "error": null,
+    "failure": null,
+    "name": "test_incremental_edit[updated-fastapi-zuban]",
+    "skipped": false
+  },
+  {
+    "error": null,
+    "failure": null,
+    "name": "test_fetch_diagnostics[updated-sqlalchemy-zuban]",
+    "skipped": false
+  },
+  {
+    "error": null,
+    "failure": null,
+    "name": "test_incremental_edit[updated-sqlalchemy-zuban]",
+    "skipped": false
+  },
+  {
+    "error": null,
+    "failure": null,
+    "name": "test_fetch_diagnostics[updated-rich-zuban]",
+    "skipped": false
+  },
+  {
+    "error": null,
+    "failure": null,
+    "name": "test_incremental_edit[updated-rich-zuban]",
+    "skipped": false
+  },
+  {
+    "error": null,
+    "failure": null,
+    "name": "test_fetch_diagnostics[updated-django-zuban]",
+    "skipped": false
+  },
+  {
+    "error": null,
+    "failure": null,
+    "name": "test_incremental_edit[updated-django-zuban]",
+    "skipped": false
+  },
+  {
+    "error": null,
+    "failure": null,
+    "name": "test_fetch_diagnostics[updated-sympy-zuban]",
+    "skipped": false
+  },
+  {
+    "error": null,
+    "failure": null,
+    "name": "test_incremental_edit[updated-sympy-zuban]",
+    "skipped": false
+  },
+  {
+    "error": null,
+    "failure": null,
+    "name": "test_fetch_diagnostics[updated-openai-zuban]",
+    "skipped": false
+  },
+  {
+    "error": null,
+    "failure": null,
+    "name": "test_incremental_edit[updated-openai-zuban]",
+    "skipped": false
+  },
+  {
+    "error": null,
+    "failure": null,
+    "name": "test_fetch_diagnostics[updated-pytest-zuban]",
+    "skipped": false
+  },
+  {
+    "error": null,
+    "failure": null,
+    "name": "test_incremental_edit[updated-pytest-zuban]",
+    "skipped": false
+  },
+  {
+    "error": null,
+    "failure": null,
+    "name": "test_fetch_diagnostics[updated-numpy-zuban]",
+    "skipped": false
+  },
+  {
+    "error": null,
+    "failure": "request = <FixtureRequest for <Function test_incremental_edit[updated-numpy-zuban]>>\nbenchmark = <pytest_benchmark.fixture.BenchmarkFixture object at 0x10ca04a50>\nproject_setup = (Project(name='numpy', repository='unused', revision='f9f1772ce010001208475f751d19253469788410', install_arguments=['t...ect_name='numpy', project_path=PosixPath('/tmp/ty-benchmark-0.0.96-canonical-2026-11-03/lsp-checkouts/updated-numpy')))\ntool = <benchmark.tool.Zuban object at 0x10c2fbb60>\n\n    def test_incremental_edit(\n        request, benchmark, project_setup: tuple[Project, Venv], tool: Tool\n    ):\n        \"\"\"Benchmark the time to receive diagnostics after making an edit to a file.\"\"\"\n    \n        project, venv = project_setup\n    \n>       run_benchmark(request, benchmark, project, tool, venv, IncrementalEditTest)\n\n/tmp/ty-benchmark-0.0.96-canonical-2026-11-03/harness-lsp/ruff/scripts/ty_benchmark/src/benchmark/test_lsp_diagnostics.py:104: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n/tmp/ty-benchmark-0.0.96-canonical-2026-11-03/harness-lsp/ruff/scripts/ty_benchmark/src/benchmark/test_lsp_diagnostics.py:155: in run_benchmark\n    benchmark.pedantic(\n/tmp/ty-benchmark-zuban-runner/lib/python3.15/site-packages/pytest_benchmark/fixture.py:206: in pedantic\n    return self._raw_pedantic(\n/tmp/ty-benchmark-zuban-runner/lib/python3.15/site-packages/pytest_benchmark/fixture.py:331: in _raw_pedantic\n    runner(loops_range)\n/tmp/ty-benchmark-zuban-runner/lib/python3.15/site-packages/pytest_benchmark/fixture.py:152: in runner\n    result = function_to_benchmark(*args, **kwargs)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/tmp/ty-benchmark-0.0.96-canonical-2026-11-03/harness-lsp/ruff/scripts/ty_benchmark/src/benchmark/test_lsp_diagnostics.py:142: in run\n    runner.run(test.run())\n/Users/crmarsh/.local/share/uv/python/cpython-3.15.1-macos-aarch64-none/lib/python3.15/asyncio/runners.py:128: in run\n    return self._loop.run_until_complete(task)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/Users/crmarsh/.local/share/uv/python/cpython-3.15.1-macos-aarch64-none/lib/python3.15/asyncio/base_events.py:724: in run_until_complete\n    return future.result()\n           ^^^^^^^^^^^^^^^\n/tmp/ty-benchmark-0.0.96-canonical-2026-11-03/harness-lsp/ruff/scripts/ty_benchmark/src/benchmark/test_lsp_diagnostics.py:355: in run\n    await self.client.text_documents_diagnostics_async(all_files)\n/tmp/ty-benchmark-0.0.96-canonical-2026-11-03/harness-lsp/ruff/scripts/ty_benchmark/src/benchmark/lsp_client.py:142: in text_documents_diagnostics_async\n    responses = await asyncio.gather(\n/tmp/ty-benchmark-0.0.96-canonical-2026-11-03/harness-lsp/ruff/scripts/ty_benchmark/src/benchmark/lsp_client.py:122: in text_document_diagnostics_async\n    pull_diagnostics = await self.text_document_diagnostic_async(\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nself = <benchmark.lsp_client.LSPClient object at 0x10c6d0bb0>\nparams = DocumentDiagnosticParams(text_document=TextDocumentIdentifier(uri='file:///private/tmp/ty-benchmark-0.0.96-canonical-2...py/numpy/_core/numeric.py'), identifier=None, previous_result_id=None, work_done_token=None, partial_result_token=None)\n\n    async def text_document_diagnostic_async(\n        self,\n        params: types.DocumentDiagnosticParams,\n    ) -> Union[types.RelatedFullDocumentDiagnosticReport, types.RelatedUnchangedDocumentDiagnosticReport]:\n        \"\"\"Make a :lsp:`textDocument/diagnostic` request.\n    \n        The document diagnostic request definition.\n    \n        @since 3.17.0\n        \"\"\"\n        if self.stopped:\n            raise RuntimeError(\"Client has been stopped.\")\n    \n>       return await self.protocol.send_request_async(\"textDocument/diagnostic\", params)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nE       pygls.exceptions.JsonRpcInternalError: Server panicked, will now restart (version 0.10.2)\n\n/tmp/ty-benchmark-zuban-runner/lib/python3.15/site-packages/pygls/lsp/_base_client.py:561: JsonRpcInternalError",
+    "name": "test_incremental_edit[updated-numpy-zuban]",
+    "skipped": false
+  },
+  {
+    "error": null,
+    "failure": null,
+    "name": "test_fetch_diagnostics[updated-jinja-ty]",
+    "skipped": false
+  },
+  {
+    "error": null,
+    "failure": null,
+    "name": "test_incremental_edit[updated-jinja-ty]",
+    "skipped": false
+  },
+  {
+    "error": null,
+    "failure": null,
+    "name": "test_fetch_diagnostics[updated-httpx-ty]",
+    "skipped": false
+  },
+  {
+    "error": null,
+    "failure": null,
+    "name": "test_incremental_edit[updated-httpx-ty]",
+    "skipped": false
+  },
+  {
+    "error": null,
+    "failure": null,
+    "name": "test_fetch_diagnostics[updated-numpy-ty]",
+    "skipped": false
+  },
+  {
+    "error": null,
+    "failure": null,
+    "name": "test_incremental_edit[updated-numpy-ty]",
+    "skipped": false
+  },
+  {
+    "error": null,
+    "failure": null,
+    "name": "test_fetch_diagnostics[updated-fastapi-ty]",
+    "skipped": false
+  },
+  {
+    "error": null,
+    "failure": null,
+    "name": "test_incremental_edit[updated-fastapi-ty]",
+    "skipped": false
+  },
+  {
+    "error": null,
+    "failure": null,
+    "name": "test_fetch_diagnostics[updated-sqlalchemy-ty]",
+    "skipped": false
+  },
+  {
+    "error": null,
+    "failure": null,
+    "name": "test_incremental_edit[updated-sqlalchemy-ty]",
+    "skipped": false
+  },
+  {
+    "error": null,
+    "failure": null,
+    "name": "test_fetch_diagnostics[updated-rich-ty]",
+    "skipped": false
+  },
+  {
+    "error": null,
+    "failure": null,
+    "name": "test_incremental_edit[updated-rich-ty]",
+    "skipped": false
+  },
+  {
+    "error": null,
+    "failure": null,
+    "name": "test_fetch_diagnostics[updated-black-ty]",
+    "skipped": false
+  },
+  {
+    "error": null,
+    "failure": null,
+    "name": "test_incremental_edit[updated-black-ty]",
+    "skipped": false
+  },
+  {
+    "error": null,
+    "failure": null,
+    "name": "test_fetch_diagnostics[updated-discord.py-ty]",
+    "skipped": false
+  },
+  {
+    "error": null,
+    "failure": null,
+    "name": "test_incremental_edit[updated-discord.py-ty]",
+    "skipped": false
+  },
+  {
+    "error": null,
+    "failure": null,
+    "name": "test_fetch_diagnostics[updated-homeassistant-ty]",
+    "skipped": false
+  },
+  {
+    "error": null,
+    "failure": null,
+    "name": "test_incremental_edit[updated-homeassistant-ty]",
+    "skipped": false
+  },
+  {
+    "error": null,
+    "failure": null,
+    "name": "test_fetch_diagnostics[updated-isort-ty]",
+    "skipped": false
+  },
+  {
+    "error": null,
+    "failure": null,
+    "name": "test_incremental_edit[updated-isort-ty]",
+    "skipped": false
+  },
+  {
+    "error": null,
+    "failure": null,
+    "name": "test_fetch_diagnostics[updated-pandas-ty]",
+    "skipped": false
+  },
+  {
+    "error": null,
+    "failure": null,
+    "name": "test_incremental_edit[updated-pandas-ty]",
+    "skipped": false
+  },
+  {
+    "error": null,
+    "failure": null,
+    "name": "test_fetch_diagnostics[updated-prefect-ty]",
+    "skipped": false
+  },
+  {
+    "error": null,
+    "failure": null,
+    "name": "test_incremental_edit[updated-prefect-ty]",
+    "skipped": false
+  },
+  {
+    "error": null,
+    "failure": null,
+    "name": "test_fetch_diagnostics[updated-pytorch-ty]",
+    "skipped": false
+  },
+  {
+    "error": null,
+    "failure": null,
+    "name": "test_incremental_edit[updated-pytorch-ty]",
+    "skipped": false
+  },
+  {
+    "error": null,
+    "failure": null,
+    "name": "test_fetch_diagnostics[updated-django-ty]",
+    "skipped": false
+  },
+  {
+    "error": null,
+    "failure": null,
+    "name": "test_incremental_edit[updated-django-ty]",
+    "skipped": false
+  },
+  {
+    "error": null,
+    "failure": null,
+    "name": "test_fetch_diagnostics[updated-sympy-ty]",
+    "skipped": false
+  },
+  {
+    "error": null,
+    "failure": null,
+    "name": "test_incremental_edit[updated-sympy-ty]",
+    "skipped": false
+  },
+  {
+    "error": null,
+    "failure": null,
+    "name": "test_fetch_diagnostics[updated-openai-ty]",
+    "skipped": false
+  },
+  {
+    "error": null,
+    "failure": null,
+    "name": "test_incremental_edit[updated-openai-ty]",
+    "skipped": false
+  },
+  {
+    "error": null,
+    "failure": null,
+    "name": "test_fetch_diagnostics[updated-pytest-ty]",
+    "skipped": false
+  },
+  {
+    "error": null,
+    "failure": null,
+    "name": "test_incremental_edit[updated-pytest-ty]",
+    "skipped": false
+  }
+]
